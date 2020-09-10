@@ -1,0 +1,46 @@
+@import 'core';
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;800&display=swap');
+
+:global {
+  * {
+    // stylelint-disable-next-line
+    box-sizing: border-box;
+    font-family: 'Nunito Sans', sans-serif;
+    -moz-osx-font-smoothing: auto;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+  }
+
+  #root {
+    padding: 15px 30px;
+  }
+
+  svg,
+  symbol {
+    [fill]:not([fill='none']):not([fill^='url(']) {
+      fill: currentColor !important;
+    }
+
+    [stroke]:not([stroke='none']):not([stroke^='url(']) {
+      stroke: currentColor !important;
+    }
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  a {
+    outline: none;
+    text-decoration: none;
+  }
+
+  input {
+    outline: none;
+  }
+
+  button {
+    outline: none;
+  }
+}

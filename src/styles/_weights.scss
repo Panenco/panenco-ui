@@ -1,0 +1,12 @@
+$lightWeight: 300;
+$medium: 500;
+
+$weights: (
+  lightweight: $lightWeight,
+  medium: $medium,
+);
+
+:export {
+  lightWeight: $lightWeight;
+  medium: $medium;
+}

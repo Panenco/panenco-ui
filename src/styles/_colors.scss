@@ -1,0 +1,64 @@
+//colors
+$light: #fff;
+$background: #fafafa;
+$table: #f5f5f5;
+$primary: #212121;
+$secondary: #90a4ae;
+
+$border: #eee;
+
+$hover: #cfd8dc;
+$disabled: #eceff1;
+$pressed: #b0bec5;
+$focus: #1976d2;
+
+$header: #334651;
+$accent: #2196f3;
+$hoverAccent: #64b5f6;
+
+$hoverError: #e57373;
+$error: #f44336;
+$pressedError: #d32f2f;
+
+$success: #4caf50;
+
+$colors: (
+  light: $light,
+  background: $background,
+  table: $table,
+  primary: $primary,
+  secondary: $secondary,
+  hover: $hover,
+  disabled: $disabled,
+  pressed: $pressed,
+  focus: $focus,
+  header: $header,
+  border: $border,
+  accent: $accent,
+  hoveraccent: $hoverAccent,
+  hovererror: $hoverError,
+  error: $error,
+  pressederror: $pressedError,
+  success: $success,
+);
+
+/* You can do `import colors from 'colors.scss'` in your js code to get variables in JSON format */
+
+:export {
+  accent: $accent;
+  background: $background;
+  disabled: $disabled;
+  error: $error;
+  focus: $focus;
+  header: $header;
+  hover: $hover;
+  hoverAccent: $hoverAccent;
+  hoverError: $hoverError;
+  light: $light;
+  pressed: $pressed;
+  pressedError: $pressedError;
+  primary: $primary;
+  secondary: $secondary;
+  success: $success;
+  table: $table;
+}

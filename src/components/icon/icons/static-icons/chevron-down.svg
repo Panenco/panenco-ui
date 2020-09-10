@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" height="100%" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>icon / m / chevron down</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icon-/-m-/-chevron-down" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" x="0" y="0" width="16" height="16"></rect>
+        <path d="M0.260349528,4.26034953 C0.580779716,3.93991934 1.0849851,3.91527086 1.43368839,4.1864041 L1.51742825,4.26034953 L8,10.7422222 L14.4825718,4.26034953 C14.8030019,3.93991934 15.3072073,3.91527086 15.6559106,4.1864041 L15.7396505,4.26034953 C16.0600807,4.58077972 16.0847291,5.0849851 15.8135959,5.43368839 L15.7396505,5.51742825 L8.62853936,12.6285394 C8.30810917,12.9489695 7.80390379,12.973618 7.45520049,12.7024848 L7.37146064,12.6285394 L0.260349528,5.51742825 C-0.0867831759,5.17029555 -0.0867831759,4.60748223 0.260349528,4.26034953 Z" id="Path" fill="#FFFFFF"></path>
+    </g>
+</svg>

@@ -1,0 +1,60 @@
+@import 'core';
+
+.pagination {
+  align-items: center;
+  align-self: flex-end;
+  display: inline-flex;
+  margin-top: 32px;
+
+  &Text {
+    margin: 0 4px 0 20px;
+  }
+
+  &Button {
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    display: flex;
+    height: 36px;
+    justify-content: center;
+    text-decoration: none;
+    width: 36px;
+
+    &Icon {
+      color: $primary;
+      height: 8px;
+      width: 6px;
+    }
+
+    &:hover {
+      background-color: $hover;
+
+      .paginationButtonIcon {
+        color: $primary;
+      }
+    }
+
+    &:focus {
+      background-color: $hover;
+      border: 1px solid $focus;
+
+      .paginationButtonIcon {
+        color: $primary;
+      }
+    }
+
+    &:active {
+      background-color: $pressed;
+      border: 1px solid transparent;
+
+      .paginationButtonIcon {
+        color: $primary;
+      }
+    }
+
+    &Disabled {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+  }
+}

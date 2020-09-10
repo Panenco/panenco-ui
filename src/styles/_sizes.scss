@@ -1,0 +1,21 @@
+$xs: 10px;
+$s: 14px;
+$m: 16px;
+$l: 24px;
+$xl: 36px;
+$xxl: 80px;
+
+$sizes: (
+  xs: $xs,
+  s: $s,
+  m: $m,
+  l: $l,
+  xl: $xl,
+  xxl: $xxl,
+);
+
+:export {
+  @each $name, $size in $sizes {
+    #{$name}: $size;
+  }
+}

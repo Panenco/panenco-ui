@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" height="100%" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon / m / plus</title>
+    <g id="icon-/-m-/-plus" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" x="0" y="0" width="16" height="16"></rect>
+        <path d="M8,0 C8.51283584,0 8.93550716,0.38604019 8.99327227,0.883378875 L9,1 L9,7 L15,7 C15.5522847,7 16,7.44771525 16,8 C16,8.51283584 15.6139598,8.93550716 15.1166211,8.99327227 L15,9 L9,9 L9,15 C9,15.5522847 8.55228475,16 8,16 C7.48716416,16 7.06449284,15.6139598 7.00672773,15.1166211 L7,15 L7,9 L1,9 C0.44771525,9 0,8.55228475 0,8 C0,7.48716416 0.38604019,7.06449284 0.883378875,7.00672773 L1,7 L7,7 L7,1 C7,0.44771525 7.44771525,0 8,0 Z" id="Combined-Shape" fill="#90A4AE"></path>
+    </g>
+</svg>

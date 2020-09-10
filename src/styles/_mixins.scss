@@ -1,0 +1,15 @@
+/* Mixins are going next */
+
+@mixin font($size, $type, $color) {
+  color: $color;
+  font-size: $size;
+  font-weight: $type;
+}
+
+@mixin primaryShadow() {
+  box-shadow: 0 1px 3px 0 rgba(#000, 0.3);
+}
+
+@mixin secondaryShadow() {
+  box-shadow: 0 2px 6px 0 rgba(#000, 0.2);
+}

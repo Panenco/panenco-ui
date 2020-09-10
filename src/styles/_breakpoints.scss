@@ -1,0 +1,45 @@
+$breakpoints: (
+  xs: 0,
+  s: 600px,
+  m: 960px,
+  l: 1280px,
+  xl: 1920px,
+);
+
+$breakpoints1: (
+  l: (gridsize: 12, gutter: 24px),
+  m: (break: 960px, gridsize: 8, gutter: 24px),
+  s: (break: 600px, gridsize: 4, gutter: 16px),
+);
+
+@function breakpoint-prev($name, $break: $breakpoints1, $breakpoint-names: map-keys($break)) {
+  $n: index($breakpoint-names, $name);
+
+  @return if($n != null and $n > 1, nth($breakpoint-names, $n - 1), null);
+}
+
+@function breakpoint-max($name, $break: $breakpoints1) {
+  $prev: breakpoint-prev($name, $break);
+
+  @return if($prev, map-get(map-get($break, $name), 'break') - 0.02px, null);
+}
+
+@mixin media-breakpoint-down($name, $break: $breakpoints1) {
+  $max: breakpoint-max($name, $break);
+
+  @if $max {
+    @media (max-width: $max) {
+      @content;
+    }
+  }
+
+  @else {
+    @content;
+  }
+}
+
+:export {
+  @each $name, $breakpoint in $breakpoints {
+    #{$name}: $breakpoint;
+  }
+}

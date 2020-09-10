@@ -1,0 +1,39 @@
+@import 'core';
+
+.avatar {
+  align-items: center;
+  background-color: $secondary;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+
+  &Huge {
+    height: 80px;
+    width: 80px;
+
+    @include font($xl, $medium, $light);
+  }
+
+  &Medium {
+    height: 36px;
+    width: 36px;
+
+    @include font($l, $medium, $light);
+  }
+
+  &Small {
+    height: 20px;
+    width: 20px;
+
+    @include font($s, $medium, $light);
+  }
+
+  &Fallback {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+}

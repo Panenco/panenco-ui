@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100%" height="100%" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.1 (78136) - https://sketchapp.com -->
+    <title>icon / 16 px / trash</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icon-/-16-px-/-trash" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" x="0" y="0" width="16" height="16"></rect>
+        <path d="M4.5,3 L4.5,2 C4.5,0.8954305 5.3954305,0 6.5,0 L9.5,0 C10.6045695,0 11.5,0.8954305 11.5,2 L11.5,3 L14.75,3 L14.75,4 L13.75,4 L13.75,14 C13.75,15.1045695 12.8545695,16 11.75,16 L4.25,16 C3.1454305,16 2.25,15.1045695 2.25,14 L2.25,4 L1.25,4 L1.25,3 L4.5,3 Z M5.5,3 L10.5,3 L10.5,2 C10.5,1.44771525 10.0522847,1 9.5,1 L6.5,1 C5.94771525,1 5.5,1.44771525 5.5,2 L5.5,3 Z M12.75,4 L3.25,4 L3.25,14 C3.25,14.5522847 3.69771525,15 4.25,15 L11.75,15 C12.3022847,15 12.75,14.5522847 12.75,14 L12.75,4 Z" id="Combined-Shape" fill="#90A4AE" fill-rule="nonzero"></path>
+    </g>
+</svg>

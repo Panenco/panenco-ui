@@ -1,0 +1,30 @@
+{
+  "extends": ["stylelint-config-standard", "linaria/stylelint-config"],
+  "plugins": ["stylelint-order"],
+  "syntax": "scss",
+  "rules": {
+    "indentation": 2,
+    "order/properties-alphabetical-order": true,
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["extend", "include", "mixin", "for", "if", "else", "each", "function", "return"]
+      }
+    ],
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global", "export"]
+      }
+    ],
+    "property-no-unknown": null,
+    "property-case": null,
+    "declaration-empty-line-before": null,
+    "value-keyword-case": [
+      "lower",
+      {
+        "ignoreKeywords": ["/Theme/"]
+      }
+    ]
+  }
+}
