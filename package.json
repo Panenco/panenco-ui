@@ -1,13 +1,13 @@
 {
   "name": "@panenco/ui",
-  "version": "1.0.14",
+  "version": "1.0.13",
   "description": "Panenco UI",
   "module": "lib/ui.esm.js",
   "main": "lib/ui.esm.js",
   "types": "lib/index.d.ts",
   "license": "MIT",
   "author": "Panenco <info@panenco.com>",
-  "repository": "git@github.com:Panenco/panenco.git",
+  "repository": "git@github.com:Panenco/panenco-ui.git",
   "private": false,
   "scripts": {
     "start": "start-storybook -p 9001 -s .storybook -c .storybook",
