@@ -71,7 +71,6 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
       }
     }, [tableWidth, parentWidth]);
 
-    // console.log('BIG REDNER', tableWidth, parentWidth, currentPriority);
     return (
       <Styles theme={theme} mode={mode} ref={innerParentRef}>
         <table {...getTableProps()} {...props} ref={combineRefs} className="mainTable">

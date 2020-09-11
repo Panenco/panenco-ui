@@ -8,12 +8,12 @@ import { StyledTextArea } from './style';
 
 interface InputPropsType extends React.InputHTMLAttributes<HTMLTextAreaElement> {
   [key: string]: any;
-  ref?: React.Ref<HTMLTextAreaElement>;
 }
 
 export interface TextAreaProps extends InputComponent, React.InputHTMLAttributes<HTMLTextAreaElement> {
   wrapperProps?: WrapperProps;
   inputProps?: InputPropsType; // will be removed in next versions
+  inputRef?: React.Ref<any>;
 }
 
 export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
@@ -28,6 +28,7 @@ export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
       onChange,
       wrapperProps,
       inputProps,
+      inputRef,
       placeholder = 'Placeholder',
       ...props
     },
@@ -35,7 +36,7 @@ export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
   ): JSX.Element => {
     const [counter, setCounter] = React.useState(0);
     const textareaRef = React.createRef() as any;
-    const useCombinedrefs = useCombinedRefs(textareaRef, inputProps?.ref);
+    const useCombinedrefs = useCombinedRefs(textareaRef, inputRef);
 
     React.useEffect(() => {
       useCombinedrefs.current = textareaRef.current;
@@ -67,7 +68,7 @@ export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
 
     return (
       <StyledTextArea
-        className={cx('textArea', wrapperProps?.className)}
+        className={cx('textArea', className)}
         error={error}
         theme={theme}
         mode={mode}
@@ -89,7 +90,7 @@ export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
           <div className="withErrorWrapperContent">
             <textarea
               aria-label={createAriaLabel()}
-              className={cx('input', error && 'inputError', disabled && 'inputDisabled', className)}
+              className={cx('input', error && 'inputError', disabled && 'inputDisabled')}
               ref={useCombinedrefs}
               onChange={handleChange}
               maxLength={maxLength}

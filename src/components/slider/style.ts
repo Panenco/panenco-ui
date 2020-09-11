@@ -31,7 +31,6 @@ export const StyledHandle = styled.div`
   }};
 
   left: ${(props: any): string => {
-    // console.log(props);
     return `${props.percent}%`;
   }};
   transform: ${(props: any): string => `translate(-${props.percent}%, -100%) `};

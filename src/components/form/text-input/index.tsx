@@ -8,6 +8,7 @@ import { StyledTextInput } from './style';
 export interface TextInputProps extends InputComponent, React.InputHTMLAttributes<HTMLInputElement> {
   iconBefore?: HTMLObjectElement | JSX.Element;
   iconAfter?: HTMLObjectElement | JSX.Element;
+  inputRef?: React.Ref<any>;
   wrapperProps?: WrapperProps;
   inputProps?: InputPropsType; // will be removed in next versions
 }
@@ -26,6 +27,7 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
       wrapperProps,
       inputProps,
       placeholder = 'Placeholder',
+      inputRef,
       ...props
     }: TextInputProps,
     ref,
@@ -35,7 +37,7 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
 
     return (
       <StyledTextInput
-        className={cx('textInput', wrapperProps?.className)}
+        className={cx('textInput', className)}
         error={error}
         theme={theme}
         mode={mode}
@@ -66,6 +68,7 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
               className="input"
               placeholder={placeholder}
               disabled={disabled}
+              ref={inputRef}
               {...inputProps}
               {...props}
             />
