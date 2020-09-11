@@ -18,6 +18,7 @@ export interface FileUploaderProps extends React.InputHTMLAttributes<HTMLInputEl
   icon?: HTMLObjectElement;
   iconClassName?: string;
   wrapperProps?: WrapperProps;
+  inputRef?: React.Ref<any>;
 }
 
 export const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
@@ -36,8 +37,9 @@ export const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
       wrapperProps,
       icon,
       iconClassName,
+      inputRef,
       ...props
-    },
+    }: FileUploaderProps,
     ref,
   ): JSX.Element => {
     const theme = useTheme();
@@ -113,6 +115,7 @@ export const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
               id={id || defaultId}
               disabled={disabled || loading}
               onChange={updateFileName}
+              ref={inputRef}
               key={key}
               {...inputProps}
               {...props}
