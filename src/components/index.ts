@@ -26,3 +26,4 @@ export * from './wizard';
 export * from './table';
 export * from './paper';
 export * from './banners';
+export * from './responsive-table';
