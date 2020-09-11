@@ -58,7 +58,7 @@
     "@babel/preset-typescript": "^7.9.0",
     "@commitlint/cli": "^9.1.2",
     "@commitlint/config-conventional": "^9.1.2",
-    "rollup-plugin-svg-sprite": "^1.0.0",
+    "@panenco/rollup-plugin-svg-sprite": "^1.0.0",
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-knobs": "^5.3.18",
     "@storybook/addon-notes": "^5.3.18",
