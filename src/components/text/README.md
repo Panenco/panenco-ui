@@ -24,7 +24,7 @@ render() {
 
 | propName | propType | defaultValue | isRequired |
 | -------- | -------- | ------------ | ---------- |
-| size     | string   | m            | -          |
+| size     | string   | s            | -          |
 | weight   | string   | inherit      | -          |
 | color    | string   | primary      | -          |
 | children | node     | -            | +          |
@@ -50,5 +50,5 @@ render() {
 | light   | 300   |
 | regular | 400   |
 | medium  | 500   |
-| bold    | 500   |
+| bold    | 700   |
 | black   | 900   |

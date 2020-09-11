@@ -11,6 +11,18 @@ export interface ChipProps extends React.ButtonHTMLAttributes<HTMLButtonElement>
   onIconClick?: any;
   iconClassName?: string;
   iconSize?: number | string;
+  textSize?: {
+    textSize: string;
+    lineHeight: string;
+  };
+  textWeight?: string;
+  textTypography?: {
+    weight: string;
+    size: {
+      textSize: string;
+      lineHeight: string;
+    };
+  };
 }
 
 export const Chip = React.forwardRef<HTMLButtonElement, ChipProps>(
@@ -25,6 +37,9 @@ export const Chip = React.forwardRef<HTMLButtonElement, ChipProps>(
       onIconClick,
       iconClassName,
       iconSize,
+      textSize,
+      textWeight,
+      textTypography,
       ...props
     }: ChipProps,
     ref,
@@ -54,8 +69,12 @@ export const Chip = React.forwardRef<HTMLButtonElement, ChipProps>(
         {...props}
       >
         <Text
-          weight={checked ? theme.typography.weights.bold : theme.typography.weights.regular}
-          size={theme.typography.sizes.s}
+          weight={
+            textTypography?.weight || textWeight || checked
+              ? theme.typography.weights.bold
+              : theme.typography.weights.regular
+          }
+          size={textTypography?.size || textSize || theme.typography.sizes.s}
           className="labelTitle"
         >
           {children}

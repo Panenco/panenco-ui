@@ -110,10 +110,17 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
   option: (provided, state): any => {
     const {
       value,
-      selectProps: { activeOptions },
+      selectProps: { activeOptions, getOptionValue },
       isSelected,
+      isFocused,
     } = state;
-    const isChoosedOption = !!activeOptions?.some((option) => option.value === value) || isSelected;
+    const isChoosedOption =
+      !!activeOptions?.some((option) => {
+        if (getOptionValue) {
+          return getOptionValue(option) === value;
+        }
+        return option.value === value;
+      }) || isSelected;
     // const notFoundLabel = 'No results found. Add new object';
 
     const isOptionColor = (): string => {
@@ -123,7 +130,7 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
       if (mode === ThemeMode.light) {
         return isChoosedOption ? theme.colors.accent500 : theme.colors.primary;
       }
-      return theme.colors.light;
+      return isFocused ? theme.colors.primary : theme.colors.light;
     };
     const isHoverColor = (): string => {
       if (mode === ThemeMode.light) {
@@ -132,9 +139,19 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
       return theme.colors.primary;
     };
 
+    const isBackgroundColor = (): string => {
+      if (state.isDisabled) {
+        return theme.colors.border;
+      }
+      if (isFocused) {
+        return mode === ThemeMode.dark ? theme.colors.border : theme.colors.background50;
+      }
+      return 'inherit';
+    };
+
     return {
       ...provided,
-      backgroundColor: state.isDisabled ? theme.colors.border : 'inherit',
+      backgroundColor: `${isBackgroundColor()}`,
       color: `${isOptionColor()}`,
       paddingLeft: '25px',
       paddingBottom: '18px',
@@ -208,12 +225,16 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
 });
 
 export const StyledSelectWrapper = styled.div`
-  width: ${(props: any): string => {
-    if (props.error) {
-      return '100%';
-    }
-    return 'calc(100% - 24px)';
-  }};
+  .wrapperSelect {
+    display: flex;
+    width: ${(props: any): string => {
+      if (props.error) {
+        return '100%';
+      }
+      return 'calc(100% - 24px)';
+    }};
+  }
+
   .isMultiActiveChips {
     display: flex;
     flex-wrap: wrap;
@@ -222,6 +243,12 @@ export const StyledSelectWrapper = styled.div`
 
   .multiSelectChip {
     margin: 10px 4px 0 0;
+  }
+
+  .col {
+    position: relative;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
   }
 
   .title {
@@ -239,14 +266,10 @@ export const StyledSelectWrapper = styled.div`
     margin-right: 24px;
   }
 
-  .wrapperSelect {
-    display: flex;
-  }
-
   .errorIconWrapper {
     align-items: center;
     display: flex;
-    min-width: 24px;
+    width: 24px;
     padding-left: 8px;
     flex-shrink: 0;
   }
@@ -265,7 +288,10 @@ export const StyledSelectWrapper = styled.div`
   }
 
   @media (max-width: ${breakpoints.l}) {
-    width: 100%;
+    .wrapperSelect {
+      width: 100%;
+    }
+
     .errorIconWrapper {
       display: none;
       /* opacity: 0; */

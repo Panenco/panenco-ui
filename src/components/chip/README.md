@@ -32,13 +32,19 @@ This component inherits the attributes of the **button** element and extends the
 - onIconClick - event for icon element;
 - iconClassName - override icon styles;
 - iconSize - icon size in px;
+- textSize - text size(by default **typography.s** from your theme);
+- textWeight - text weight;
+- textTypography - object with 2 properties (weight and size);
 - ref - ref;
 
-| propName      | propType          | defaultValue | isRequired |
-| ------------- | ----------------- | ------------ | ---------- |
-| checked       | boolean           | -            | -          |
-| onIconClick   | React.MouseEvent  | -            | -          |
-| icon          | HTMLObjectElement | -            | -          |
-| iconClassName | string            | -            | -          |
-| iconClassName | string (number)   | -            | -          |
-| ref           | React.RefObject   | -            | -          |
+| propName       | propType                                                      | defaultValue                                   | isRequired |
+| -------------- | ------------------------------------------------------------- | ---------------------------------------------- | ---------- |
+| checked        | boolean                                                       | -                                              | -          |
+| onIconClick    | React.MouseEvent                                              | -                                              | -          |
+| icon           | HTMLObjectElement                                             | -                                              | -          |
+| iconClassName  | string                                                        | -                                              | -          |
+| textSize       | {textSize: string, lineHeight: size}                          | theme.typography.sizes.s                       | -          |
+| textWeight     | string                                                        | bold (for checked) and regular (for unchecked) | -          |
+| textTypography | {size: {textSize: string, lineHeight: size} , weight: string} | -                                              | -          |
+| iconClassName  | string (number)                                               | -                                              | -          |
+| ref            | React.RefObject                                               | -                                              | -          |

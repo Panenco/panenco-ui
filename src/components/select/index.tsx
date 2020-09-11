@@ -2,22 +2,31 @@ import * as React from 'react';
 import Select, { components, Props as SelectProps } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 import AsyncSelect from 'react-select/async';
+import { AsyncPaginate } from 'react-select-async-paginate';
 import AsyncCreatableSelect from 'react-select/async-creatable';
 import { useTheme, useMode } from 'utils/hooks';
 import { InputComponent } from 'utils/types';
-import { Icon, Chip, Text } from 'components';
+import { idGenerator } from 'utils/helpers';
+import { Icon, Chip, Text, Row, Col } from 'components';
 import { customStyles, StyledSelectWrapper } from './style';
 
 const CustomOption = (props: any): JSX.Element => {
   const {
     children,
     value,
-    selectProps: { activeOptions, formatCreateLabel: notFoundLabel, inputValue },
+    selectProps: { activeOptions, formatCreateLabel: notFoundLabel, inputValue, getOptionValue },
     options,
     isSelected,
     label,
   } = props;
-  const showIcon = activeOptions?.some((option) => option.value === value) || isSelected;
+
+  const showIcon =
+    activeOptions?.some((option) => {
+      if (getOptionValue) {
+        return getOptionValue(option) === value;
+      }
+      return option.value === value;
+    }) || isSelected;
   let showButton = false; // btn add new option
 
   // const checkСoincidence = options
@@ -39,9 +48,30 @@ const CustomOption = (props: any): JSX.Element => {
 export interface SelectInputProps extends SelectProps, InputComponent {
   async?: boolean;
   creatable?: boolean;
+  asyncPaginate?: boolean;
   selectWrapperProps?: React.HTMLAttributes<HTMLDivElement>;
+  activeOptions?: any;
   chipIconSize?: number | string;
+  chipIcon?: any;
+  clearChips?: boolean;
+  chipTextWeight?: string;
+  chipTextSize?: {
+    textSize: string;
+    lineHeight: string;
+  };
+  chipTextTypography?: {
+    size: {
+      textSize: string;
+      lineHeight: string;
+    };
+    weight: string;
+  };
   onDeleteOption?: any;
+  wrapperSelectSizes?: {
+    l?: number | string;
+    m?: number | string;
+    s?: number | string;
+  };
 }
 
 export const SelectInput = React.forwardRef<HTMLDivElement, SelectInputProps>(
@@ -60,32 +90,65 @@ export const SelectInput = React.forwardRef<HTMLDivElement, SelectInputProps>(
       className,
       async,
       creatable,
+      asyncPaginate,
       components: propComponents,
       styles,
-      chipIconSize,
       loadingMessage,
+      activeOptions: activeOptionsProp,
       noOptionsMessage,
       onDeleteOption,
+      chipIconSize,
+      chipIcon,
+      chipTextSize,
+      chipTextWeight,
+      chipTextTypography,
       value,
+      wrapperSelectSizes = {
+        l: 12,
+        m: 8,
+        s: 4,
+      },
+      clearChips,
       filterOption,
+
       ...props
     }: SelectInputProps,
     ref,
   ): JSX.Element => {
     const theme = useTheme();
     const { mode } = useMode();
-    const [activeOptions, setOption] = React.useState([] as any);
+    const [activeOptions, setOption] = React.useState(activeOptionsProp || ([] as any));
+
+    if ((activeOptions.length !== 0 || activeOptions?.size !== 0) && clearChips) {
+      setOption(activeOptionsProp || []);
+    }
 
     const handleChange = (select: { value: string; label: string }, action): void => {
-      if (activeOptions.length === 0) {
+      let selectValue = select.value;
+      if (props.getOptionValue) {
+        selectValue = props.getOptionValue(select);
+      }
+      if (activeOptions.length === 0 || activeOptions?.size === 0) {
         setOption([...activeOptions, select]);
       } else {
-        const hasntElement = activeOptions.every((option) => option.value !== select.value);
+        const hasntElement = activeOptions.every((option) => {
+          if (props.getOptionValue) {
+            return props.getOptionValue(option) !== selectValue;
+          }
+          return option.value !== selectValue;
+        });
 
         if (hasntElement) {
           setOption([...activeOptions, select]);
         } else {
-          setOption(activeOptions.filter((option) => option.value !== select.value));
+          setOption(
+            activeOptions.filter((option) => {
+              if (props.getOptionValue) {
+                return props.getOptionValue(option) !== selectValue;
+              }
+              return option.value !== selectValue;
+            }),
+          );
         }
       }
 
@@ -104,24 +167,20 @@ export const SelectInput = React.forwardRef<HTMLDivElement, SelectInputProps>(
     if (async && creatable) {
       SelectComponent = AsyncCreatableSelect;
     }
+    if (asyncPaginate) {
+      SelectComponent = AsyncPaginate;
+    }
 
     const customFilterOption = (option, input): boolean => {
       if (input) {
-        return option.label.includes(input);
+        return option.label.toLowerCase().includes(input.toLowerCase());
       }
       return true;
     };
     const isOptionDisabled = (option: any): boolean => option.isdisabled;
-    return (
-      <StyledSelectWrapper
-        theme={theme}
-        mode={mode}
-        ref={ref}
-        style={style}
-        className={className}
-        error={error}
-        {...selectWrapperProps}
-      >
+
+    const Component = () => (
+      <>
         {title && (
           <Text className="title" weight={theme.typography.weights.bold}>
             {title}
@@ -163,28 +222,71 @@ export const SelectInput = React.forwardRef<HTMLDivElement, SelectInputProps>(
             {error}
           </Text>
         )}
-        {isMulti && activeOptions?.length > 0 && (
-          <div className="isMultiActiveChips">
-            {activeOptions
-              .sort((a, b) => (a.label > b.label ? 1 : b.label > a.label ? -1 : 0)) // eslint-disable-line
-              .map((activeOption) => {
-                return (
-                  <Chip
-                    className="multiSelectChip"
-                    key={activeOption.value}
-                    icon={Icon.icons.x}
-                    checked
-                    onIconClick={(): void => {
-                      setOption(activeOptions.filter((option) => option.value !== activeOption.value));
-                      if (onDeleteOption) onDeleteOption(activeOption);
-                    }}
-                    iconSize={chipIconSize}
-                  >
-                    {activeOption.label}
-                  </Chip>
+      </>
+    );
+
+    const ChipsComponent = () => (
+      <div className="isMultiActiveChips">
+        {activeOptions.map((activeOption, index) => {
+          let chipLabel = activeOption.label;
+          if (props.getOptionLabel) {
+            chipLabel = props.getOptionLabel(activeOption);
+          }
+
+          return (
+            <Chip
+              className="multiSelectChip"
+              key={idGenerator()} // eslint-disable-line
+              icon={chipIcon || Icon.icons.x}
+              checked
+              onIconClick={(): void => {
+                setOption(
+                  activeOptions.filter((option) => {
+                    if (props.getOptionValue) {
+                      return props.getOptionValue(option) !== props.getOptionValue(activeOption);
+                    }
+                    return option.value !== activeOption.value;
+                  }),
                 );
-              })}
-          </div>
+                if (onDeleteOption) onDeleteOption(activeOption);
+              }}
+              iconSize={chipIconSize}
+              textSize={chipTextSize}
+              textWeight={chipTextWeight}
+              textTypography={chipTextTypography}
+            >
+              {chipLabel}
+            </Chip>
+          );
+        })}
+      </div>
+    );
+
+    return (
+      <StyledSelectWrapper
+        theme={theme}
+        mode={mode}
+        ref={ref}
+        style={style}
+        className={className}
+        error={error}
+        wrapperSelectSizes={wrapperSelectSizes}
+        {...selectWrapperProps}
+      >
+        {wrapperSelectSizes ? (
+          <>
+            <Row className="row">
+              <Col l={wrapperSelectSizes.l} m={wrapperSelectSizes.m} s={wrapperSelectSizes.s} className="col">
+                <Component />
+              </Col>
+            </Row>
+            {isMulti && (activeOptions?.length > 0 || activeOptions?.size > 0) && <ChipsComponent />}
+          </>
+        ) : (
+          <>
+            <Component />
+            {isMulti && (activeOptions?.length > 0 || activeOptions?.size > 0) && <ChipsComponent />}
+          </>
         )}
       </StyledSelectWrapper>
     );

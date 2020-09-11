@@ -11,13 +11,13 @@ export interface TextProps extends React.HTMLAttributes<HTMLSpanElement> {
 const StyledSpan = styled.span`
   display: inline-block;
   font-size: ${(props: any): any => {
-    if (typeof props.size === 'string') {
+    if (typeof props.size === 'string' && Object.keys(props.theme.typography.sizes).includes(props.size)) {
       return props.theme.typography.sizes[props.size].textSize;
     }
     return props.size.textSize;
   }};
   line-height: ${(props: any): any => {
-    if (typeof props.size === 'string') {
+    if (typeof props.size === 'string' && Object.keys(props.theme.typography.sizes).includes(props.size)) {
       return props.theme.typography.sizes[props.size].lineHeight;
     }
     return props.size.lineHeight;
