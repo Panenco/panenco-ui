@@ -7,7 +7,7 @@
   "types": "lib/index.d.ts",
   "license": "MIT",
   "author": "Panenco <info@panenco.com>",
-  "repository": "git@github.com:Panenco/panenco.git",
+  "repository": "git@github.com:Panenco/panenco-ui.git",
   "private": false,
   "scripts": {
     "start": "start-storybook -p 9001 -s .storybook -c .storybook",

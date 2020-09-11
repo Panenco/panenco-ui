@@ -1344,9 +1344,9 @@
     mkdirp "^1.0.4"
 
 "@panenco/rollup-plugin-svg-sprite@^1.0.0":
-  version "1.0.2"
-  resolved "https://npm.pkg.github.com/download/@panenco/rollup-plugin-svg-sprite/1.0.2/194e8146ad4cab210a79684fc2c0eafb15421710b48d161e78874389f8777556#86ccc9dac3110c20eb6bad6911165b4ee8097662"
-  integrity sha512-wWZ3ySxIBoeWRZbLxbrjADJtX8boQO7JyiM2U6jHhpXbpVcCpQqZ/DrHWzp+TACAe/bnHej22XZt6QJtHAFVMg==
+  version "1.0.3"
+  resolved "https://npm.pkg.github.com/download/@panenco/rollup-plugin-svg-sprite/1.0.3/f48efb72217afc26314a235b32c56f16eb19b89d6a1348a3abacac9ebb3426da#809824a02a5f14e7390681e1383e39e7e2595323"
+  integrity sha512-lQmNsVqPo0ortxnYpQI2Fbx7L3NjBunBdL5XlYINLiP835GG5ixR6eHWcq3lVnE85ybD0rrkqNUGVw4wJpSaWg==
   dependencies:
     cheerio "^1.0.0-rc.3"
     fs-extra "^9.0.0"
