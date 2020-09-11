@@ -105,6 +105,7 @@
     "react-hot-loader": "^4.12.20",
     "react-router-dom": "^5.1.2",
     "react-select": "^3.0.4",
+    "react-select-async-paginate": "^0.4.0",
     "react-table": "^7.3.2",
     "react-toastify": "^6.0.5",
     "rimraf": "^3.0.2",
