@@ -16,8 +16,6 @@ Each theme has two different appearences. So interfaces built on top of **Panenc
 
 # Installation and usage
 
-Before starting, please read about usage of Panenco Packages with Github Package registry. Also ensure you have at least read access on it.
-
 ### Install
 
 In the project you'd like to add our lovely **Panenco UI** to, just add it as a depencency:
