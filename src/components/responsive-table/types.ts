@@ -1,4 +1,3 @@
-import * as PropTypes from 'prop-types';
 import { PUITheme, ThemeMode } from 'utils/types';
 
 export interface ColumnType {
@@ -46,29 +45,3 @@ export interface TableState {
   containerWidth?: number;
   props: TableProps;
 }
-
-export const columnsPropType = PropTypes.arrayOf(
-  PropTypes.shape({
-    accessor: PropTypes.string,
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    priorityLevel: PropTypes.number,
-    position: PropTypes.number,
-    minWidth: PropTypes.number,
-    isVisible: PropTypes.bool,
-    sortName: PropTypes.string,
-  }),
-);
-
-export const rowPropType = PropTypes.shape({
-  id: PropTypes.string,
-  // eslint-disable-next-line react/forbid-prop-types
-  data: PropTypes.object,
-  isOpen: PropTypes.bool,
-});
-
-export const rowsPropType = PropTypes.arrayOf(rowPropType);
-
-export const sortPropType = PropTypes.shape({
-  sort: PropTypes.string,
-  direction: PropTypes.oneOf(['asc', 'desc']),
-});

@@ -1,8 +1,7 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import cx from 'classnames';
 import { Icon, Text } from 'components';
-import { SortType, HandleSortType, sortPropType } from './types';
+import { SortType, HandleSortType } from './types';
 
 interface HeaderCellProps {
   label: any;
@@ -47,14 +46,6 @@ HeaderCell.defaultProps = {
   sortName: null,
   sort: null,
   handleSort: null,
-};
-
-HeaderCell.propTypes = {
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
-  minWidth: PropTypes.number.isRequired,
-  sortName: PropTypes.string,
-  sort: sortPropType,
-  handleSort: PropTypes.func,
 };
 
 export default HeaderCell;

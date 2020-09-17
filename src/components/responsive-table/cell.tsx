@@ -1,12 +1,11 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import { Icon } from 'components';
 import cx from 'classnames';
 import { useTheme, useMode } from 'utils/hooks';
 import { ThemeMode } from 'utils/types';
-import { RowType, ExpandRowType, rowPropType } from './types';
+import { RowType, ExpandRowType } from './types';
 
-interface CellProps {
+export interface CellProps {
   accessor: string;
   minWidth: number;
   cellIndex: number;
@@ -68,17 +67,6 @@ const Cell = ({
 
 Cell.defaultProps = {
   component: null,
-};
-
-Cell.propTypes = {
-  accessor: PropTypes.string.isRequired,
-  minWidth: PropTypes.number.isRequired,
-  cellIndex: PropTypes.number.isRequired,
-  rowIndex: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  row: rowPropType.isRequired,
-  expandRow: PropTypes.func.isRequired,
-  hiddenColumnLength: PropTypes.number.isRequired,
-  component: PropTypes.func,
 };
 
 export default Cell;

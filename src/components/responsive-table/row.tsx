@@ -1,7 +1,6 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import Cell from './cell';
-import { RowType, ColumnType, ExpandRowType, rowPropType, columnsPropType } from './types';
+import { RowType, ColumnType, ExpandRowType } from './types';
 
 interface RowProps {
   row: RowType;
@@ -29,14 +28,6 @@ const Row = ({ row, rowIndex, visibleColumns, hiddenColumns, expandRow }: RowPro
   });
 
   return <tr className="tableBodyRow">{cells}</tr>;
-};
-
-Row.propTypes = {
-  row: rowPropType.isRequired,
-  rowIndex: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  visibleColumns: columnsPropType.isRequired,
-  hiddenColumns: columnsPropType.isRequired,
-  expandRow: PropTypes.func.isRequired,
 };
 
 export default Row;

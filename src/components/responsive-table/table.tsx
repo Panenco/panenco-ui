@@ -1,13 +1,12 @@
 /* eslint-disable react/static-property-placement */
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import { throttle } from 'lodash-es';
 import ResizeObserver from 'resize-observer-polyfill';
 import { useTheme, useMode } from 'utils/hooks';
 import Columns from './columns';
 import Rows from './rows';
 import { expandRow, resizeTable } from './table-actions';
-import { TableProps, TableState, columnsPropType, rowsPropType, sortPropType } from './types';
+import { TableProps, TableState } from './types';
 import { Styles } from './style';
 
 class Table extends React.Component<TableProps, TableState> {
@@ -20,15 +19,6 @@ class Table extends React.Component<TableProps, TableState> {
     priorityLevelThreshold: null,
     sort: null,
     handleSort: null,
-  };
-
-  static propTypes = {
-    columns: columnsPropType.isRequired,
-    rows: rowsPropType.isRequired,
-    itemsPerPage: PropTypes.number,
-    priorityLevelThreshold: PropTypes.number,
-    sort: sortPropType,
-    handleSort: PropTypes.func,
   };
 
   constructor(props) {

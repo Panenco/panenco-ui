@@ -1,8 +1,7 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import AnimatedHeight from 'react-animate-height';
 import { Text } from 'components';
-import { RowType, ColumnType, rowPropType, columnsPropType } from './types';
+import { RowType, ColumnType } from './types';
 
 interface ExpandedRowProps {
   row: RowType;
@@ -47,13 +46,6 @@ const ExpandedRow = ({ row, hiddenColumns, visibleColumns, containerWidth }: Exp
 
 ExpandedRow.defaultProps = {
   containerWidth: null,
-};
-
-ExpandedRow.propTypes = {
-  row: rowPropType.isRequired,
-  visibleColumns: columnsPropType.isRequired,
-  hiddenColumns: columnsPropType.isRequired,
-  containerWidth: PropTypes.number,
 };
 
 export default ExpandedRow;

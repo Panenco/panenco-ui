@@ -1,7 +1,6 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import HeaderCell from './header-cell';
-import { ColumnType, SortType, HandleSortType, columnsPropType, sortPropType } from './types';
+import { ColumnType, SortType, HandleSortType } from './types';
 
 interface ColumnsProps {
   columns: Array<ColumnType>;
@@ -33,12 +32,6 @@ const Columns = ({ columns, sort, handleSort }: ColumnsProps): JSX.Element => {
 Columns.defaultProps = {
   sort: null,
   handleSort: null,
-};
-
-Columns.propTypes = {
-  columns: columnsPropType.isRequired,
-  sort: sortPropType,
-  handleSort: PropTypes.func,
 };
 
 export default Columns;
