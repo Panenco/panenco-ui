@@ -16,6 +16,11 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
       ...provided,
       color: mode === ThemeMode.dark ? theme.colors.light : theme.colors.secondary,
       fontWeight: weights.regular,
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      paddingRight: '5px',
+      width: '100%',
       ...additionalStyles('placeholder', styles, provided, state),
     };
   },
@@ -281,6 +286,7 @@ export const StyledSelectWrapper = styled.div`
   }
 
   .errorTitle {
+    position: absolute;
     color: ${(props: any): string =>
       props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.error};
     display: block;
@@ -294,8 +300,8 @@ export const StyledSelectWrapper = styled.div`
 
     .errorIconWrapper {
       display: none;
-      /* opacity: 0; */
     }
+
     .title,
     .subTitle {
       margin-right: 0;
