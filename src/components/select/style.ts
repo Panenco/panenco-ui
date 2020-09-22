@@ -230,6 +230,8 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
 });
 
 export const StyledSelectWrapper = styled.div`
+  position: relative;
+
   .wrapperSelect {
     display: flex;
     width: ${(props: any): string => {
@@ -286,10 +288,10 @@ export const StyledSelectWrapper = styled.div`
   }
 
   .errorTitle {
-    position: absolute;
     color: ${(props: any): string =>
       props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.error};
     display: block;
+    position: absolute;
     margin-top: 5px;
   }
 

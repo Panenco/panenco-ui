@@ -45,8 +45,6 @@ export const AutoComplete = React.forwardRef<HTMLDivElement, AutoCompleteProps>(
     const { mode } = useMode();
     const [newOptions, setOptions] = React.useState((options && [...options]) || []);
     const [inputValue, setValue] = React.useState('' as any);
-    // searchPlaceholder = 'Keep typing your search term';
-    // placeholder = 'Start typing your search term',
     const handleCreate = (input: string): void => {
       setOptions(newOptions?.concat({ label: input, value: uuidv4() }));
       setValue('');

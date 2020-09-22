@@ -27,11 +27,7 @@ export const SelectInput = React.forwardRef<HTMLDivElement, SelectInputProps>(
       selectWrapperProps,
       style,
       className,
-      wrapperSelectSizes = {
-        l: 12,
-        m: 8,
-        s: 4,
-      },
+      wrapperSelectSizes,
       ...props
     }: SelectInputProps,
     ref,

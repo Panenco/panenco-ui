@@ -1,6 +1,7 @@
 {
   "extends": ["stylelint-config-standard", "linaria/stylelint-config"],
   "plugins": ["stylelint-order"],
+  "ignoreFiles": ["**/*.ts"],
   "syntax": "scss",
   "rules": {
     "indentation": 2,
