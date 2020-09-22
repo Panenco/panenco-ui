@@ -36,6 +36,7 @@ export default decorator('Autocomplete', AutoCompleteDOCS, README).add('Autocomp
             searchPlaceholder={searchPlaceholder}
             title="Single Select"
             subTitle="Sub title"
+            formatCreateLabel={() => <span>Example</span>}
           />
         </Col>
         <Col s="2" m="4" l="4">
