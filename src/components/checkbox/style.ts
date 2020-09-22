@@ -1,45 +1,57 @@
 import { styled } from 'linaria/react';
 import { ThemeMode } from 'utils/types';
 
-export const StyledLabel = styled.label`
-  align-items: center;
-  display: flex;
-  width: max-content;
+export const StyledCheckbox = styled.div`
+  position: relative;
 
-  &:focus-within {
-    outline: 2px solid ${(props: any): string => props.theme.colors.outline};
-  }
+  & .label {
+    align-items: center;
+    display: flex;
+    width: max-content;
 
-  &:hover {
-    cursor: pointer;
-    .container {
-      border: ${(props: any): string => {
-        if (props.borderWidth) {
-          return `${props.borderWidth}px`;
-        }
-        return '2px';
-      }} solid
-        ${(props: any): string => {
-          if (props.color) {
-            return props.color;
-          }
-          return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover700;
-        }};
+    &:focus-within {
+      outline: 2px solid ${(props: any): string => props.theme.colors.outline};
+    }
+
+    &:hover {
+      cursor: pointer;
+
+      .container {
+        border: ${(props: any): string => {
+            if (props.borderWidth) {
+              return `${props.borderWidth}px`;
+            }
+            return '2px';
+          }}
+          solid
+          ${(props: any): string => {
+            if (props.color) {
+              return props.color;
+            }
+            return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover700;
+          }};
+      }
+    }
+
+    &.labelDisabled {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .labelTitle {
+      align-items: center;
+      display: flex;
+      margin-left: 8px;
+      vertical-align: middle;
+      color: ${(props: any): string =>
+        props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
     }
   }
 
-  &.labelDisabled {
-    opacity: 0.4;
-    pointer-events: none;
-  }
-
-  .labelTitle {
-    align-items: center;
-    display: flex;
-    margin-left: 8px;
-    vertical-align: middle;
-    color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
+  .error {
+    position: absolute;
+    left: 30px;
+    color: ${(props: any): string => props.theme.colors.error};
   }
 
   .checkbox {
@@ -54,11 +66,12 @@ export const StyledLabel = styled.label`
   .container {
     background-color: transparent;
     border: ${(props: any): string => {
-      if (props.borderWidth) {
-        return `${props.borderWidth}px`;
-      }
-      return '2px';
-    }} solid ${(props: any): string => props.theme.colors.secondary};
+        if (props.borderWidth) {
+          return `${props.borderWidth}px`;
+        }
+        return '2px';
+      }}
+      solid ${(props: any): string => props.theme.colors.secondary};
     border-radius: 4px;
     box-sizing: border-box;
     position: relative;
@@ -95,11 +108,12 @@ export const StyledLabel = styled.label`
       return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500;
     }};
     border: ${(props: any): string => {
-      if (props.borderWidth) {
-        return `${props.borderWidth}px`;
-      }
-      return '2px';
-    }} solid
+        if (props.borderWidth) {
+          return `${props.borderWidth}px`;
+        }
+        return '2px';
+      }}
+      solid
       ${(props: any): string => {
         if (props.color) {
           return props.color;
@@ -119,11 +133,12 @@ export const StyledLabel = styled.label`
           return props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover700;
         }};
         border: ${(props: any): string => {
-          if (props.borderWidth) {
-            return `${props.borderWidth}px`;
-          }
-          return '2px';
-        }} solid
+            if (props.borderWidth) {
+              return `${props.borderWidth}px`;
+            }
+            return '2px';
+          }}
+          solid
           ${(props: any): string => {
             if (props.color) {
               return props.color;

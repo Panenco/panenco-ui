@@ -5,15 +5,16 @@ import { Text } from 'components/text';
 import { useTheme, useMode } from 'utils/hooks';
 import { InputPropsType } from 'utils/types';
 import { idGenerator } from 'utils/helpers';
-import { StyledLabel } from './style';
+import { StyledCheckbox } from './style';
 
-interface WrapperProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
+interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {
   [key: string]: any;
 }
 
 export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   color?: string;
+  error?: string;
   borderWidth?: string | number;
   inputProps?: InputPropsType; // will be removed in next version
   wrapperProps?: WrapperProps;
@@ -26,7 +27,19 @@ export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElemen
 
 export const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
   (
-    { label, className, checked, disabled, id, inputProps, color, borderWidth, wrapperProps, ...props }: CheckboxProps,
+    {
+      label,
+      className,
+      checked,
+      disabled,
+      id,
+      inputProps,
+      color,
+      borderWidth,
+      wrapperProps,
+      error,
+      ...props
+    }: CheckboxProps,
     ref,
   ): JSX.Element => {
     const uniqueID = idGenerator();
@@ -35,32 +48,34 @@ export const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
     const { mode } = useMode();
 
     return (
-      <StyledLabel
-        className={cx('label', disabled && 'labelDisabled', wrapperProps?.className)}
-        htmlFor={id || defaultId}
-        theme={theme}
-        mode={mode}
-        ref={ref}
-        color={color}
-        borderWidth={borderWidth}
-        {...wrapperProps}
-      >
-        <input
-          className={cx('checkbox', className)}
-          type="checkbox"
-          id={id || defaultId}
-          disabled={disabled}
-          checked={checked}
-          {...inputProps}
-          {...props}
-        />
-        <div className="container">{checked && <Icon icon={Icon.icons.check} className="tick" />}</div>
-        {label && (
-          <Text weight={theme.typography.weights.regular} size={theme.typography.sizes.s} className="labelTitle">
-            {label}
+      <StyledCheckbox theme={theme} mode={mode} color={color} borderWidth={borderWidth} {...wrapperProps}>
+        <label
+          className={cx('label', disabled && 'labelDisabled', wrapperProps?.className)}
+          htmlFor={id || defaultId}
+          ref={ref}
+        >
+          <input
+            className={cx('checkbox', className)}
+            type="checkbox"
+            id={id || defaultId}
+            disabled={disabled}
+            checked={checked}
+            {...inputProps}
+            {...props}
+          />
+          <div className="container">{checked && <Icon icon={Icon.icons.check} className="tick" />}</div>
+          {label && (
+            <Text weight={theme.typography.weights.regular} size={theme.typography.sizes.s} className="labelTitle">
+              {label}
+            </Text>
+          )}
+        </label>
+        {error && (
+          <Text size={theme.typography.sizes.xs} className="error">
+            {error}
           </Text>
         )}
-      </StyledLabel>
+      </StyledCheckbox>
     );
   },
 );
