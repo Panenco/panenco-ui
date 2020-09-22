@@ -11,23 +11,13 @@ import { customStyles } from './style';
 const CustomOption = (props: any): JSX.Element => {
   const {
     children,
-    selectProps: { formatCreateLabel: notFoundLabel, inputValue },
-    options,
     isSelected,
-    label,
   } = props;
-
-  let showButton = false; // btn add new option
-  // TODO 
-  if (options && notFoundLabel && label === notFoundLabel()) {
-    showButton = true;
-  }
 
   return (
     <components.Option {...props}>
       {isSelected && <Icon icon={Icon.icons.check} />}
-      {children}
-      {showButton && <Text className="addNewOption">Create "{inputValue}"</Text>} {/* eslint-disable-line*/}
+      {children}      
     </components.Option>
   );
 };
@@ -75,9 +65,9 @@ const Component = ({
   }
 
   const customFilterOption = (option, input): boolean => {
-
-    if (input) {
-      return option?.label.toLowerCase().includes(input.toLowerCase());
+    const isValid = typeof option.label === 'string';
+    if (input && isValid) {
+      return option.label?.toLowerCase().includes(input.toLowerCase());
     }
     return true;
   };
