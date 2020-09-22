@@ -18,6 +18,15 @@ const options = [
 const searchPlaceholder = 'Some custom disable option';
 
 export default decorator('Autocomplete', AutoCompleteDOCS, README).add('Autocomplete component', () => {
+  const [value, setValue] = React.useState([]);
+  const handleChange = (val) => {
+    setValue(val);
+  };
+
+  const handleDeleteOption = (val, e) => {
+    setValue(value.filter((current) => current.value !== val.value));
+  };
+
   return (
     <WrappedComponent style={{ minHeight: '500px' }}>
       <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start' }}>
@@ -30,7 +39,15 @@ export default decorator('Autocomplete', AutoCompleteDOCS, README).add('Autocomp
           />
         </Col>
         <Col s="2" m="4" l="4">
-          <AutoComplete options={options} title="Multi Select" subTitle="Sub title" isMulti />
+          <AutoComplete
+            options={options}
+            title="Multi Select"
+            subTitle="Sub title"
+            isMulti
+            value={value}
+            onChange={handleChange}
+            onDeleteOption={handleDeleteOption}
+          />
         </Col>
       </Row>
       <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start' }}>
