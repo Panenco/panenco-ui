@@ -50,7 +50,7 @@ export const StyledCheckbox = styled.div`
 
   .error {
     position: absolute;
-    left: 30px;
+    left: 27px;
     color: ${(props: any): string => props.theme.colors.error};
   }
 
