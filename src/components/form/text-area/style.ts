@@ -4,6 +4,7 @@ import { transparentize } from 'polished';
 import { breakpoints } from 'styles';
 
 export const StyledTextArea = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   background-color: ${(props: any): string =>
@@ -100,7 +101,10 @@ export const StyledTextArea = styled.div`
       display: flex;
       justify-content: space-between;
       font-size: ${(props: any): string => props.theme.typography.sizes.xs.textSize};
-
+      position: absolute;
+      bottom: -15px;
+      width: 100%;
+      
       .counter {
         color: ${(props: any): string => props.theme.colors.secondary};
       }

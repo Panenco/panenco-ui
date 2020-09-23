@@ -31,7 +31,7 @@ export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
       inputRef,
       placeholder = 'Placeholder',
       ...props
-    },
+    }: TextAreaProps,
     ref,
   ): JSX.Element => {
     const [counter, setCounter] = React.useState(0);

@@ -29,7 +29,6 @@ export interface ComponentProps extends SelectProps, InputComponent {
   creatable?: boolean;
   value?: any;
   selectWrapperProps?: React.HTMLAttributes<HTMLDivElement>;
-  clearChips?: boolean;
   wrapperSelectSizes?: {
     l?: number | string;
     m?: number | string;
@@ -48,7 +47,6 @@ const Component = ({
   styles,
   loadingMessage,
   noOptionsMessage,
-  filterOption,
   ...props
 }: ComponentProps): JSX.Element => {
   let SelectComponent: any = Select;
@@ -63,14 +61,6 @@ const Component = ({
   if (async && creatable) {
     SelectComponent = AsyncCreatableSelect;
   }
-
-  const customFilterOption = (option, input): boolean => {
-    const isValid = typeof option.label === 'string';
-    if (input && isValid) {
-      return option.label?.toLowerCase().includes(input.toLowerCase());
-    }
-    return true;
-  };
 
   return (
     <>
@@ -94,7 +84,6 @@ const Component = ({
             styles={{ ...customStyles(theme, mode, error, styles) }}
             components={{ Option: CustomOption, MultiValue, ...propComponents }}
             noOptionsMessage={noOptionsMessage || (() => `Not found`)}
-            filterOption={filterOption || customFilterOption}
             error={error}
             isClearable={false}
             {...props}

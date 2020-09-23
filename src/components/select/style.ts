@@ -96,10 +96,11 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
 
     return {
       ...provided,
-      margin: '0',
       backgroundColor: mode === ThemeMode.dark ? theme.colors.dark : theme.colors.light,
       paddingTop: '5px',
       paddingBottom: '5px',
+      marginTop: '-2px !important', // TODO
+      margin: 0,
       boxShadow: menuIsOpen && 'none',
       border: `${isBorder()}`,
       borderTop: menuIsOpen && 'none',

@@ -9,6 +9,7 @@ export const StyledTextInput = styled.div`
   box-sizing: border-box;
   background-color: ${(props: any): string =>
     props.mode === ThemeMode.dark ? props.theme.colors.dark : props.theme.colors.light};
+  position: relative;
 
   .inputTitle {
     color: ${(props: any): string =>
@@ -102,6 +103,8 @@ export const StyledTextInput = styled.div`
   }
 
   .inputErrorLabel {
+    position: absolute;
+    bottom: -20px;
     color: ${(props: any): string =>
       props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.error};
     font-size: ${(props: any): string => props.theme.typography.sizes.xs.textSize};
