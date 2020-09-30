@@ -172,7 +172,7 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
           color: mode === ThemeMode.dark ? theme.colors.primary : theme.colors.accent500,
         },
       },
-      '& svg': {
+      '& .icon': {
         position: 'absolute',
         left: '8px',
         top: 'calc(50% - 6px)',

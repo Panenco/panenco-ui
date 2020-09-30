@@ -35,6 +35,7 @@ const ChipsComponent = ({
 }: ChipsProps): JSX.Element => (
   <div className="isMultiActiveChips">
     {value?.map((option) => {
+      if(!option) return null;
       let chipLabel = option.label;
       if (getOptionLabel) {
         chipLabel = getOptionLabel(option);

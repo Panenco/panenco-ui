@@ -16,7 +16,7 @@ const CustomOption = (props: any): JSX.Element => {
 
   return (
     <components.Option {...props}>
-      {isSelected && <Icon icon={Icon.icons.check} />}
+      {isSelected && <Icon icon={Icon.icons.check} className="icon" />}
       {children}      
     </components.Option>
   );
@@ -74,7 +74,7 @@ const Component = ({
           {subTitle}
         </Text>
       )}
-      <div>
+      <>
         <div className="wrapperSelect">
           <SelectComponent
             options={options}
@@ -99,7 +99,7 @@ const Component = ({
             {error}
           </Text>
         )}
-      </div>
+      </>
     </>
   );
 };
