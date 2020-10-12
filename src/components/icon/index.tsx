@@ -54,6 +54,7 @@ import unseen from './icons/static-icons/unseen.svg';
 import upload from './icons/static-icons/upload.svg';
 import x from './icons/static-icons/x.svg';
 import question from './icons/static-icons/question.svg';
+import unlink from './icons/static-icons/unlink.svg';
 
 // animated clock
 import animatedClock from './icons/animated-clock/animated-clock.svg';
@@ -155,4 +156,5 @@ Icon.icons = {
   sorting,
   sun,
   question,
+  unlink,
 };

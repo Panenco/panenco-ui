@@ -29,8 +29,8 @@ export const StyledButtonIcon = styled.button`
 
   & .iconClass {
     color: ${(props: any): string => props.theme.colors.secondary};
-    height: 15px;
-    width: 15px;
+    display: flex;
+    flex-shrink: 0;
     transition: 0.3s;
   }
 
@@ -44,9 +44,7 @@ export const StyledButtonIcon = styled.button`
 
   &.buttonIconLeft {
     flex-direction: row;
-
-    & .container {
-      margin-bottom: 0;
+    & .iconClass{
       margin-right: 5px;
     }
   }
