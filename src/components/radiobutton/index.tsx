@@ -33,8 +33,8 @@ export const Radio = React.forwardRef<HTMLLabelElement, RadioButtonProps>(
             className={cx('radiobox', className)}
             id={id || defaultId}
             disabled={disabled}
-            checked={value === id}
-            value={id}
+            checked={checked || value === id}
+            value={ id || value || defaultId}
             {...inputProps}
             {...props}
           />
