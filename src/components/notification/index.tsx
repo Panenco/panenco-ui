@@ -32,7 +32,7 @@ const baseOptions = {
   draggable: false,
   closeOnClick: false,
   // progress: 1,
-  autoClose: false as false,
+  // autoClose: false as false,
   // hideProgressBar: true,
 };
 

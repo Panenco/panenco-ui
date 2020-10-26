@@ -36,7 +36,7 @@ export const WizardTrack = ({ stepsMeta = steps, currentStepIndex = 0, ...props 
       {stepsMeta?.map((step, idx) => {
         return (
           <div
-            key={step.stepIndex}
+            key={idx}
             className={cx(
               'wizzardStep',
               idx === 0 && 'wizzardStepFirst',

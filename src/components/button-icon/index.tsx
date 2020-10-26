@@ -38,10 +38,9 @@ export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
         style={style}
         {...rest}
       >
-        <div className="container">
-          <Icon icon={icon} className={cx('iconClass', iconClassName)} />
-        </div>
-        <Text className="buttonIconTitle">{children}</Text>
+        
+        <Icon icon={icon} className={cx('iconClass', iconClassName)} />
+        {children && <Text className="buttonIconTitle">{children}</Text>}
       </StyledButtonIcon>
     );
   },

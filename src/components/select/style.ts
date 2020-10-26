@@ -16,6 +16,11 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
       ...provided,
       color: mode === ThemeMode.dark ? theme.colors.light : theme.colors.secondary,
       fontWeight: weights.regular,
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      paddingRight: '5px',
+      width: '100%',
       ...additionalStyles('placeholder', styles, provided, state),
     };
   },
@@ -91,10 +96,11 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
 
     return {
       ...provided,
-      margin: '0',
       backgroundColor: mode === ThemeMode.dark ? theme.colors.dark : theme.colors.light,
       paddingTop: '5px',
       paddingBottom: '5px',
+      marginTop: '-2px !important', // TODO
+      margin: 0,
       boxShadow: menuIsOpen && 'none',
       border: `${isBorder()}`,
       borderTop: menuIsOpen && 'none',
@@ -166,7 +172,7 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
           color: mode === ThemeMode.dark ? theme.colors.primary : theme.colors.accent500,
         },
       },
-      '& svg': {
+      '& .icon': {
         position: 'absolute',
         left: '8px',
         top: 'calc(50% - 6px)',
@@ -225,6 +231,8 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
 });
 
 export const StyledSelectWrapper = styled.div`
+  position: relative;
+
   .wrapperSelect {
     display: flex;
     width: ${(props: any): string => {
@@ -284,6 +292,7 @@ export const StyledSelectWrapper = styled.div`
     color: ${(props: any): string =>
       props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.error};
     display: block;
+    position: absolute;
     margin-top: 5px;
   }
 
@@ -294,8 +303,8 @@ export const StyledSelectWrapper = styled.div`
 
     .errorIconWrapper {
       display: none;
-      /* opacity: 0; */
     }
+
     .title,
     .subTitle {
       margin-right: 0;

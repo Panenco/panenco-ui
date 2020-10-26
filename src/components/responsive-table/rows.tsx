@@ -1,8 +1,7 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import Row from './row';
 import ExpandedRow from './expanded-row';
-import { RowType, ColumnType, ExpandRowType, rowsPropType, columnsPropType } from './types';
+import { RowType, ColumnType, ExpandRowType } from './types';
 
 interface RowsProps {
   rows: Array<RowType>;
@@ -55,15 +54,6 @@ const Rows = ({
 Rows.defaultProps = {
   containerWidth: null,
   itemsPerPage: null,
-};
-
-Rows.propTypes = {
-  rows: rowsPropType.isRequired,
-  visibleColumns: columnsPropType.isRequired,
-  hiddenColumns: columnsPropType.isRequired,
-  expandRow: PropTypes.func.isRequired,
-  containerWidth: PropTypes.number,
-  itemsPerPage: PropTypes.number,
 };
 
 export default Rows;
