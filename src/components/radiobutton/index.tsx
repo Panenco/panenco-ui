@@ -19,7 +19,7 @@ export interface RadioButtonProps extends React.InputHTMLAttributes<HTMLInputEle
 }
 
 export const Radio = React.forwardRef<HTMLLabelElement, RadioButtonProps>(
-  ({ label, id, className, checked, inputProps, wrapperProps, disabled, error, ...props }, ref): JSX.Element => {
+  ({ label, id, className, checked, value, inputProps, wrapperProps, disabled, error, ...props }, ref): JSX.Element => {
     const theme = useTheme();
     const { mode } = useMode();
     const uniqueID = idGenerator();
@@ -30,10 +30,11 @@ export const Radio = React.forwardRef<HTMLLabelElement, RadioButtonProps>(
         <label className={cx('label', disabled && 'labelDisabled', className)} htmlFor={id || defaultId}>
           <input
             type="radio"
-            checked={checked}
             className={cx('radiobox', className)}
             id={id || defaultId}
             disabled={disabled}
+            checked={value === id}
+            value={id}
             {...inputProps}
             {...props}
           />
