@@ -21,12 +21,14 @@ render() {
 - `weight` - font weight
 - `color` - font color
 - `children` - text content
+- `component` - paragraph or span
 
 | propName | propType | defaultValue | isRequired |
 | -------- | -------- | ------------ | ---------- |
 | size     | string   | s            | -          |
 | weight   | string   | inherit      | -          |
-| color    | string   | primary      | -          |
+| color    | string   | inherit      | -          |
+| component | string     | -            | -          |
 | children | node     | -            | +          |
 
 ### Sizes
