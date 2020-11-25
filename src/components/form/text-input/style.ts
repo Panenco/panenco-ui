@@ -41,19 +41,18 @@ export const StyledTextInput = styled.div`
       color: ${(props: any): string => props.theme.colors.secondary};
       border: 1px solid ${(props: any): string => props.theme.colors.secondary};
       border-radius: 4px;
-      padding: 14px 16px;
 
       & .iconBefore {
         width: 16px;
         height: 16px;
-        margin-right: 10px;
+        margin-left: 16px;
         color: ${(props: any): string => props.theme.colors.secondary};
       }
 
       & .iconAfter {
         width: 16px;
         height: 16px;
-        margin-left: 10px;
+        margin-right: 16px;
         color: ${(props: any): string => props.theme.colors.secondary};
       }
 
@@ -68,6 +67,7 @@ export const StyledTextInput = styled.div`
         &::placeholder {
           color: ${(props: any): string => props.theme.colors.secondary};
         }
+        padding: 14px 16px;
       }
 
       &Error {
