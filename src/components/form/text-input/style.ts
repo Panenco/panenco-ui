@@ -7,8 +7,7 @@ export const StyledTextInput = styled.div`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  background-color: ${(props: any): string =>
-    props.mode === ThemeMode.dark ? props.theme.colors.dark : props.theme.colors.light};
+  background-color: transparent;
   position: relative;
 
   .inputTitle {
