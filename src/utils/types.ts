@@ -36,10 +36,13 @@ export type PUIColors = {
 
 export type PUIWeights = {
   thin: number;
+  extraLight: number;
   light: number;
   regular: number;
   medium: number;
+  semiBold: number;
   bold: number;
+  extrabold: number;
   black: number;
 };
 
