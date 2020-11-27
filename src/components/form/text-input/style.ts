@@ -58,6 +58,7 @@ export const StyledTextInput = styled.div`
       & .input {
         width: 100%;
         border: none;
+        border-radius: 4px;
         color: ${(props: any): string =>
           props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.primary};
         background-color: transparent;
