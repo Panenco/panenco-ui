@@ -2,52 +2,52 @@ import * as React from 'react';
 import { styled } from 'linaria/react';
 import { sizes } from 'styles';
 import { useTheme } from 'utils/hooks';
+import { TextSize } from 'utils/types';
 
 export interface TextProps extends React.HTMLAttributes<HTMLElement> {
-  color?: any;
-  weight?: any;
-  size?: any;
-  component?: string;
+  color?: string;
+  weight?: string | number;
+  size?: string | TextSize;
+  component?: 'p' | 'span';
 }
 
 
 const StyledSpan =  styled.span`
   display: inline-block;
-  font-size: ${(props: any): any => {
+  font-size: ${(props: any): number => {
     if (typeof props.size === 'string' && Object.keys(props.theme.typography.sizes).includes(props.size)) {
       return props.theme.typography.sizes[props.size].textSize;
     }
     return props.size.textSize;
   }};
-  line-height: ${(props: any): any => {
+  line-height: ${(props: any): string | number   => {
     if (typeof props.size === 'string' && Object.keys(props.theme.typography.sizes).includes(props.size)) {
       return props.theme.typography.sizes[props.size].lineHeight;
     }
     return props.size.lineHeight;
   }};
-  color: ${(props: any): any => props.color};
-  font-weight: ${(props: any): any => {
+  color: ${(props: any): string => props.color};
+  font-weight: ${(props: any): string | number => {
     return props.weight;
   }};
 `;
 
 // TODO duplicated code 
 const StyledParagraph =  styled.p`
-  display: inline-block;
-  font-size: ${(props: any): any => {
+  font-size: ${(props: any): number | string => {
     if (typeof props.size === 'string' && Object.keys(props.theme.typography.sizes).includes(props.size)) {
       return props.theme.typography.sizes[props.size].textSize;
     }
     return props.size.textSize;
   }};
-  line-height: ${(props: any): any => {
+  line-height: ${(props: any): string | number  => {
     if (typeof props.size === 'string' && Object.keys(props.theme.typography.sizes).includes(props.size)) {
       return props.theme.typography.sizes[props.size].lineHeight;
     }
     return props.size.lineHeight;
   }};
-  color: ${(props: any): any => props.color};
-  font-weight: ${(props: any): any => {
+  color: ${(props: any): string => props.color};
+  font-weight: ${(props: any): string | number => {
     return props.weight;
   }};
 `;
