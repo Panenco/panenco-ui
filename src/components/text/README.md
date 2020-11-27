@@ -5,12 +5,14 @@
 ```js
 import { Text, useTheme } from '@panenco/ui';
 
-render() {
+const YourComponent = () => {
   const theme = useTheme();
   return (
-    <Text size={theme.typography.sizes.xl} weight={theme.typography.weights.bold} color={theme.colors.primary}>Hello world</Text>
+    <Text size={theme.typography.sizes.xl} weight={theme.typography.weights.bold} color={theme.colors.primary}>
+      Hello world
+    </Text>
   );
-}
+};
 ```
 
 <!-- STORY -->
@@ -21,13 +23,15 @@ render() {
 - `weight` - font weight
 - `color` - font color
 - `children` - text content
+- `component` - paragraph or span (p or span)
 
-| propName | propType | defaultValue | isRequired |
-| -------- | -------- | ------------ | ---------- |
-| size     | string   | s            | -          |
-| weight   | string   | inherit      | -          |
-| color    | string   | primary      | -          |
-| children | node     | -            | +          |
+| propName  | propType | defaultValue | isRequired |
+| --------- | -------- | ------------ | ---------- |
+| size      | string   | s            | -          |
+| weight    | string   | inherit      | -          |
+| color     | string   | inherit      | -          |
+| component | string   | -            | -          |
+| children  | node     | -            | +          |
 
 ### Sizes
 
@@ -44,11 +48,13 @@ render() {
 
 ### Weights
 
-| weight  | value |
-| ------- | ----- |
-| thin    | 100   |
-| light   | 300   |
-| regular | 400   |
-| medium  | 500   |
-| bold    | 700   |
-| black   | 900   |
+| weight     | value |
+| ---------- | ----- |
+| thin       | 100   |
+| extraLight | 200   |
+| light      | 300   |
+| regular    | 400   |
+| medium     | 500   |
+| semiBold   | 600   |
+| bold       | 700   |
+| black      | 900   |

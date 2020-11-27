@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Icon } from 'components';
+import { Icon, Text } from 'components';
 import cx from 'classnames';
 import { useTheme, useMode } from 'utils/hooks';
 import { ThemeMode } from 'utils/types';
@@ -44,23 +44,28 @@ const Cell = ({
         icon={Icon.icons.chevronRight}
       />
     ) : null;
+  
   const content = component ? (
     React.createElement(component, { row, rowIndex, cellIndex, accessor })
   ) : (
-    <>{row.data[accessor]}</>
+    row.data[accessor]
   );
   return (
     <td
       className="tableCell"
       style={{
         maxWidth: `${minWidth}px`,
-        width: `${minWidth}px`,
-        minWidth: `${minWidth}px`,
         color: mode === ThemeMode.light ? theme.colors.dark : theme.colors.light,
       }}
     >
-      {icon}
-      {content}
+      {icon ? (
+        <div className="tableCellWrap">
+          {icon}
+          {typeof content === 'string' ? <Text className="tableCellWrapContent">{content}</Text> : content}
+        </div>
+      ) : (
+        content
+      )}
     </td>
   );
 };

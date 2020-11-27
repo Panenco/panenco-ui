@@ -24,7 +24,20 @@ export const Styles = styled.div`
       }
 
       &ButtonIcon {
+        display: flex;
+        flex-shrink: 0;
         margin-right: 12px;
+      }
+
+      &Wrap {
+        display: flex;
+        align-items: center;
+
+        &Content {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
       }
     }
 
@@ -34,7 +47,6 @@ export const Styles = styled.div`
         border: none;
         cursor: pointer;
         display: flex;
-        margin-left: 5px;
 
         &Disabled {
           cursor: auto;
