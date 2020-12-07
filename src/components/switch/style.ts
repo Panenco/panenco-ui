@@ -2,9 +2,9 @@ import { styled } from 'linaria/react';
 
 export const StyledSwitch = styled.label`
   display: inline-block;
-  height: 18px;
+  height: ${(props: any): string => props.height || '18px'};
   position: relative;
-  width: 34px;
+  width: ${(props: any): string => props.width || '34px'};
 
   & input {
     height: 0;
@@ -28,12 +28,12 @@ export const StyledSwitch = styled.label`
     background-color: white;
     bottom: 1px;
     content: '';
-    height: 16px;
+    height: ${(props: any): string => props.height || '16px'};
     left: 1px;
     position: absolute;
     -webkit-transition: 0.4s;
     transition: 0.4s;
-    width: 16px;
+    width: ${(props: any): string => props.height || '16px'};
   }
 
   & input:checked + .slider {
@@ -50,7 +50,7 @@ export const StyledSwitch = styled.label`
 
   /* Rounded sliders */
   & .slider.round {
-    border-radius: 18px;
+    border-radius: ${(props: any): string => props.height || '16px'};
   }
 
   & .slider.round::before {
