@@ -24,6 +24,7 @@ import SelectStory from './select';
 import ResponsiveTableStory from './responsive-table';
 import TextStory from './text';
 import PaginationStory from './pagination';
+import SwitchStory from './switch';
 import WizardStory from './wizard';
 import BannersStory from './banners';
 
@@ -50,3 +51,4 @@ storiesOf('Notification', NotificationStory);
 storiesOf('Pagination', PaginationStory);
 storiesOf('Wizard', WizardStory);
 storiesOf('Banners', BannersStory);
+storiesOf('Switch', SwitchStory);
