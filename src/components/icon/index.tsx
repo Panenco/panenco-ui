@@ -3,12 +3,15 @@ import cx from 'classnames';
 import { StyledSVG } from './style';
 
 import add from './icons/static-icons/add.svg';
+import alignJustify from './icons/static-icons/align-justify.svg';
 import attachment from './icons/static-icons/attachment.svg';
 import bellUnactive from './icons/static-icons/bell-unactive.svg';
 import bell from './icons/static-icons/bell.svg';
 import burger from './icons/static-icons/burger.svg';
+import burger4Lines from './icons/static-icons/burger-4lines.svg';
 import calendar from './icons/static-icons/calendar.svg';
 import check from './icons/static-icons/check.svg';
+import checkSquare from './icons/static-icons/check-square.svg';
 import chevronDown from './icons/static-icons/chevron-down.svg';
 import chevronLeft from './icons/static-icons/chevron-left.svg';
 import chevronRight from './icons/static-icons/chevron-right.svg';
@@ -21,16 +24,21 @@ import copy from './icons/static-icons/copy.svg';
 import database from './icons/static-icons/database.svg';
 import deleteIcon from './icons/static-icons/delete.svg';
 import doneReport from './icons/static-icons/done-report.svg';
+import dotsVertical from './icons/static-icons/dots-vertical.svg';
 import duplicate from './icons/static-icons/duplicate.svg';
 import edit from './icons/static-icons/edit.svg';
+import editPen from './icons/static-icons/edit-pen.svg';
 import exclude from './icons/static-icons/exclude.svg';
 import eye from './icons/static-icons/eye.svg';
 import filledStart from './icons/static-icons/filled-star.svg';
+import filledPlus from './icons/static-icons/filled-plus.svg';
+import fileMinus from './icons/static-icons/file-minus.svg';
 import filter from './icons/static-icons/filter.svg';
 import home from './icons/static-icons/home.svg';
 import info from './icons/static-icons/info.svg';
 import loader from './icons/static-icons/loader.svg';
 import lock from './icons/static-icons/lock.svg';
+import logOut from './icons/static-icons/log-out.svg';
 import mapPin from './icons/static-icons/map-pin.svg';
 import maximize from './icons/static-icons/maximize.svg';
 import minimize from './icons/static-icons/minimize.svg';
@@ -52,6 +60,7 @@ import sun from './icons/static-icons/sun.svg';
 import trash from './icons/static-icons/trash.svg';
 import unseen from './icons/static-icons/unseen.svg';
 import upload from './icons/static-icons/upload.svg';
+import uploadDown from './icons/static-icons/upload-down.svg';
 import x from './icons/static-icons/x.svg';
 import question from './icons/static-icons/question.svg';
 import unlink from './icons/static-icons/unlink.svg';
@@ -126,10 +135,12 @@ Icon.icons = {
   minimize,
   minus,
   plus,
+  filledPlus,
   remove,
   search,
   trash,
   upload,
+  uploadDown,
   success,
   circle,
   filter,
@@ -157,4 +168,11 @@ Icon.icons = {
   sun,
   question,
   unlink,
+  logOut,
+  alignJustify,
+  fileMinus,
+  checkSquare,
+  editPen,
+  dotsVertical,
+  burger4Lines,
 };
