@@ -68,20 +68,6 @@ import unlink from './icons/static-icons/unlink.svg';
 // animated clock
 import animatedClock from './icons/animated-clock/animated-clock.svg';
 
-// const iconClass = css`
-//   [fill]:not([fill='none']):not([fill^='url(']) {
-//     fill: currentColor !important;
-//   }
-
-//   [stroke]:not([stroke='none']):not([stroke^='url(']) {
-//     stroke: currentColor !important;
-//   }
-// `;
-
-// const disabledClass = css`
-//   pointer-events: none;
-// `;
-
 export interface IconProps extends React.SVGAttributes<SVGElement> {
   icon: any;
   disabled?: boolean;

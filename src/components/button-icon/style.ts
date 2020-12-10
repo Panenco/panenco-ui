@@ -28,14 +28,14 @@ export const StyledButtonIcon = styled.button`
   }
 
   & .iconClass {
-    color: ${(props: any): string => props.theme.colors.secondary};
+    color: ${(props: any): string => props.color || props.theme.colors.secondary};
     display: flex;
     flex-shrink: 0;
     transition: 0.3s;
   }
 
   & .buttonIconTitle {
-    color: ${(props: any): string => props.theme.colors.secondary};
+    color: ${(props: any): string => props.color || props.theme.colors.secondary};
     font-weight: ${(props: any): string => props.theme.typography.weights.regular};
     font-size: ${(props: any): string => props.theme.typography.sizes.s.textSize};
     line-height: ${(props: any): string => props.theme.typography.sizes.s.lineHeight};
@@ -44,7 +44,7 @@ export const StyledButtonIcon = styled.button`
 
   &.buttonIconLeft {
     flex-direction: row;
-    & .iconClass{
+    & .iconClass {
       margin-right: 5px;
     }
   }

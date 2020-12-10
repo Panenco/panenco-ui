@@ -13,6 +13,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   iconClassName?: string;
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
+  color?: string;
 }
 
 export const Button = React.forwardRef<any, ButtonProps>(
@@ -29,6 +30,7 @@ export const Button = React.forwardRef<any, ButtonProps>(
       iconLeft,
       iconRight,
       tabIndex,
+      color,
       ...props
     }: ButtonProps,
     ref,
@@ -45,6 +47,7 @@ export const Button = React.forwardRef<any, ButtonProps>(
         theme={theme}
         mode={mode}
         ref={ref}
+        color={color}
         {...props}
         to={component === 'link' ? to : null}
         tabIndex={tabIndex || (disabled && component === 'link') ? -1 : null}

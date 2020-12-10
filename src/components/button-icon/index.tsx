@@ -9,6 +9,7 @@ export interface ButtonIconProps extends React.ButtonHTMLAttributes<HTMLButtonEl
   icon: HTMLObjectElement;
   iconClassName?: string;
   iconLeft?: boolean;
+  color?: string;
 }
 
 export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
@@ -22,6 +23,7 @@ export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
       disabled,
       style,
       iconClassName,
+      color,
       ...rest
     } = props;
     const theme = useTheme();
@@ -36,9 +38,9 @@ export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
         mode={mode}
         ref={ref}
         style={style}
+        color={color}
         {...rest}
       >
-        
         <Icon icon={icon} className={cx('iconClass', iconClassName)} />
         {children && <Text className="buttonIconTitle">{children}</Text>}
       </StyledButtonIcon>
