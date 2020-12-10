@@ -17,7 +17,7 @@ export const StyledButton = styled.button`
   background-color: ${(props: any): string =>
     props.mode === ThemeMode.dark ? props.theme.colors.dark : props.theme.colors.light};
   color: ${(props: any): string =>
-    props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500};
+    props.color || (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500)};
   cursor: pointer;
 
   &.disabled {
@@ -66,7 +66,7 @@ export const StyledButton = styled.button`
     background-color: ${(props: any): string =>
       props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500};
     color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.light};
+      props.color || (props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.light)};
 
     &:hover {
       background-color: ${(props: any): string =>
@@ -84,7 +84,7 @@ export const StyledButton = styled.button`
   &.buttonSecondary {
     border: 2px solid
       ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500};
+        props.color || (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500)};
 
     &:hover {
       border: 2px solid
@@ -118,7 +118,7 @@ export const StyledLink = styled(Link)`
   background-color: ${(props: any): string =>
     props.mode === ThemeMode.dark ? props.theme.colors.dark : props.theme.colors.light};
   color: ${(props: any): string =>
-    props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500};
+    props.color || (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500)};
   cursor: pointer;
 
   &.disabled {
@@ -167,7 +167,7 @@ export const StyledLink = styled(Link)`
     background-color: ${(props: any): string =>
       props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500};
     color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.light};
+      props.color || (props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.light)};
 
     &:hover {
       background-color: ${(props: any): string =>
@@ -185,7 +185,7 @@ export const StyledLink = styled(Link)`
   &.buttonSecondary {
     border: 2px solid
       ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500};
+        props.color || (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500)};
 
     &:hover {
       border: 2px solid
