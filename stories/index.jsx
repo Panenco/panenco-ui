@@ -51,4 +51,4 @@ storiesOf('Notification', NotificationStory);
 storiesOf('Pagination', PaginationStory);
 storiesOf('Wizard', WizardStory);
 storiesOf('Banners', BannersStory);
-storiesOf('Switch', SwitchStory);
+storiesOf('Switcher', SwitchStory);

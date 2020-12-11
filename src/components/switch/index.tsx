@@ -4,7 +4,7 @@ import { idGenerator } from 'utils/helpers';
 import { useTheme } from 'utils/hooks';
 import { StyledSwitch } from './style';
 
-export interface SwitchProps extends React.HTMLAttributes<HTMLElement> {
+export interface SwitcherProps extends React.HTMLAttributes<HTMLElement> {
   checked: boolean;
   setChecked: () => void;
   wrapperProps?: any;
@@ -12,11 +12,11 @@ export interface SwitchProps extends React.HTMLAttributes<HTMLElement> {
   width?: string | number;
 }
 
-export const Switch: React.FC<SwitchProps> = React.forwardRef<HTMLElement, SwitchProps>(
+export const Switcher: React.FC<SwitcherProps> = React.forwardRef<HTMLElement, SwitcherProps>(
   (
-    { id: idProp, checked = false, setChecked, height, width, className, wrapperProps, ...props }: SwitchProps,
+    { id: idProp, checked = false, setChecked, height, width, className, wrapperProps, ...props }: SwitcherProps,
     ref,
-  ): any => {
+  ): JSX.Element => {
     const theme = useTheme();
     const id = idProp || idGenerator();
 
