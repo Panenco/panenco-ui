@@ -3,7 +3,6 @@
 
 :global {
   * {
-    // stylelint-disable-next-line
     box-sizing: border-box;
     font-family: 'Nunito Sans', sans-serif;
     -moz-osx-font-smoothing: auto;
@@ -18,6 +17,9 @@
 
   svg,
   symbol {
+    width: 16px;
+    height: 16px;
+
     [fill]:not([fill='none']):not([fill^='url(']) {
       fill: currentColor !important;
     }

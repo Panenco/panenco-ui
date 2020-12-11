@@ -73,6 +73,7 @@ export interface IconProps extends React.SVGAttributes<SVGElement> {
   disabled?: boolean;
   width?: number | string;
   height?: number | string;
+  size?: number | string;
 }
 
 interface CompoundedComponent extends React.ForwardRefExoticComponent<IconProps> {
@@ -80,12 +81,13 @@ interface CompoundedComponent extends React.ForwardRefExoticComponent<IconProps>
 }
 
 export const Icon = React.forwardRef<any, IconProps>(
-  ({ icon, className, onClick, width, height, disabled, ...props }: IconProps, ref): JSX.Element => {
+  ({ icon, className, onClick, width, height, size, disabled, ...props }: IconProps, ref): JSX.Element => {
     return (
       <StyledSVG
-        className={cx(disabled && 'disabled', className)}
+        className={cx(disabled && 'disabled', (size || width || height) && 'svg', className)}
         width={width}
         height={height}
+        size={size}
         viewBox={icon.viewBox}
         onClick={onClick}
         ref={ref}
