@@ -24,14 +24,16 @@ This component inherits the attributes of the **svg** element and extends the fu
 - disabled - set disabled state
 - width - set icon width
 - height - set icon height
+- size - set icon width and height (size has less priority then width and height)
 - ref - ref
 
 | propName | propType        | defaultValue | isRequired |
 | -------- | --------------- | ------------ | ---------- |
 | icon     | any             | -            | +          |
 | disabled | boolean         | -            | -          |
-| width    | number(string)  | 16           | -          |
-| height   | number(string)  | 16           | -          |
+| width    | number(string)  | -            | -          |
+| height   | number(string)  | -            | -          |
+| size     | number(string)  | -            | -          |
 | ref      | React.RefObject | -            | -          |
 
 <!-- ### Sizes

@@ -1,6 +1,6 @@
 {
   "name": "@panenco/ui",
-  "version": "1.0.29",
+  "version": "1.0.30",
   "description": "Panenco UI",
   "module": "lib/ui.esm.js",
   "main": "lib/ui.esm.js",
@@ -10,7 +10,7 @@
   "repository": "git@github.com:Panenco/panenco-ui.git",
   "private": false,
   "scripts": {
-    "start": "start-storybook -p 9001 -s .storybook -c .storybook",
+    "start": "start-storybook -p 9000 -s .storybook -c .storybook",
     "build": "npm run clean && cross-env BABEL_ENV=production rollup --config rollup.config.js",
     "build:storybook": "build-storybook -s .storybook -c .storybook -o storybook-dist",
     "watch": "npm run clean && rollup --config rollup.config.js",
