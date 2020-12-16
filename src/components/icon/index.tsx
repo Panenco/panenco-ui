@@ -82,11 +82,12 @@ interface CompoundedComponent extends React.ForwardRefExoticComponent<IconProps>
 
 export const Icon = React.forwardRef<any, IconProps>(
   ({ icon, className, onClick, width, height, size, disabled, ...props }: IconProps, ref): JSX.Element => {
+    const defaultSize = icon.viewBox.split(' ')[3];
     return (
       <StyledSVG
         className={cx(disabled && 'disabled', (size || width || height) && 'svg', className)}
-        width={width}
-        height={height}
+        width={size || width || defaultSize}
+        height={size || height || defaultSize}
         size={size}
         viewBox={icon.viewBox}
         onClick={onClick}
