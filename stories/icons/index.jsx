@@ -9,7 +9,7 @@ export default decorator('Icon', IconDocs, IconReadme).add('Icon component', () 
   <div style={{ display: 'flex', flexWrap: 'wrap' }}>
     {Object.values(Icon.icons).map((el) => (
       <div key={el} style={{ display: 'flex', flexDirection: 'column', margin: '20px 20px 0 0', alignItems: 'center' }}>
-        <Icon icon={el} />
+        <Icon size={16} icon={el} />
         <Text>{el.id}</Text>
       </div>
     ))}
