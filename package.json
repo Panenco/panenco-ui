@@ -1,6 +1,6 @@
 {
   "name": "@panenco/ui",
-  "version": "1.0.31",
+  "version": "1.0.32",
   "description": "Panenco UI",
   "module": "lib/ui.esm.js",
   "main": "lib/ui.esm.js",
@@ -19,7 +19,8 @@
     "prettier": "prettier '{config,src,stories}/**/*.{js,jsx}' --write",
     "stylelint": "stylelint 'src/**/*.scss'",
     "deploy-storybook": "storybook-to-ghpages --existing-output-dir=storybook-dist",
-    "prepublishOnly": "npm run clean && cross-env BABEL_ENV=production rollup --config rollup.config.js"
+    "prepublishOnly": "npm run clean && cross-env BABEL_ENV=production rollup --config rollup.config.js",
+    "pack": "yarn build && npm pack"
   },
   "sideEffects": [
     "**.css"
