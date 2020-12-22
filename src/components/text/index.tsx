@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { styled } from 'linaria/react';
 import { useTheme } from 'utils/hooks';
-import { TextSize } from 'utils/types';
+import { TextSize } from '../../utils/types';
 
 export interface TextProps extends React.HTMLAttributes<HTMLElement> {
   color?: string;
@@ -29,6 +29,11 @@ const StyledSpan = styled.span`
       return 'inherit';
     }
     return props.size.lineHeight;
+  }};
+  color: ${(props: any): string => props.color};
+  font-weight: ${(props: any): string | number => {
+    return props.weight;
+  }};
 `;
 
 // TODO duplicated code

@@ -2,8 +2,8 @@ import * as React from 'react';
 import cx from 'classnames';
 import { Text } from 'components';
 import { useTheme, useMode } from 'utils/hooks';
-import { InputPropsType } from 'utils/types';
 import { idGenerator } from 'utils/helpers';
+import { InputPropsType } from '../../utils/types';
 import { StyledRadio } from './style';
 
 interface WrapperProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
@@ -34,7 +34,7 @@ export const Radio = React.forwardRef<HTMLLabelElement, RadioButtonProps>(
             id={id || defaultId}
             disabled={disabled}
             checked={checked || value === id}
-            value={ id || value || defaultId}
+            value={id || value || defaultId}
             {...inputProps}
             {...props}
           />

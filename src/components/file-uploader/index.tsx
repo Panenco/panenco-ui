@@ -2,8 +2,8 @@ import * as React from 'react';
 import cx from 'classnames';
 import { PrimaryButton, Text, Icon, Loader, ButtonIcon } from 'components';
 import { useTheme, useMode } from 'utils/hooks';
-import { ThemeMode, InputPropsType, WrapperProps } from 'utils/types';
 import { idGenerator } from 'utils/helpers';
+import { ThemeMode, InputPropsType, WrapperProps } from '../../utils/types';
 import { StyledFileUploader } from './style';
 
 export interface FileUploaderProps extends React.InputHTMLAttributes<HTMLInputElement> {

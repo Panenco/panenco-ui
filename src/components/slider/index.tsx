@@ -1,8 +1,8 @@
 import * as React from 'react';
 import cx from 'classnames';
 import { Slider as RCSlider, SliderProps as RSliderProps, Rail, Handles, Tracks } from 'react-compound-slider';
-import { PUITheme } from 'utils/types';
 import { withTheme } from 'utils/hocs';
+import { PUITheme } from '../../utils/types';
 import { SliderRail, Handle, Track } from './components';
 import { StyledRootSlider } from './style';
 

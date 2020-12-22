@@ -3,8 +3,8 @@ import cx from 'classnames';
 import { Icon } from 'components/icon';
 import { Text } from 'components/text';
 import { useTheme, useMode } from 'utils/hooks';
-import { InputPropsType } from 'utils/types';
 import { idGenerator } from 'utils/helpers';
+import { InputPropsType } from '../../utils/types';
 import { StyledCheckbox } from './style';
 
 interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {

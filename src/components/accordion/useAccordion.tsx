@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { PUITheme, ThemeMode } from 'utils/types';
 import { useCombinedRefs } from 'utils/hooks/combinedrefs';
+import { PUITheme, ThemeMode } from '../../utils/types';
 import { useAccordionContext } from './group';
 
-interface UseAccordinProps {
+export interface UseAccordinProps {
   ref?: any;
-  onClick?: any;
+  onClick?: (e?: MouseEvent) => void;
   isOpen?: boolean;
   theme: PUITheme;
   mode: ThemeMode;
 }
 
-interface UseAccordinReturn {
+export interface UseAccordinReturn {
   combinedRef: React.RefObject<React.ReactNode>;
   theme: PUITheme;
   mode: ThemeMode;

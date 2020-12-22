@@ -1,5 +1,5 @@
-import { PUITheme } from 'utils/types';
 import { colors, weights, sizes } from 'styles';
+import { PUITheme } from '../utils/types';
 
 const defaultTheme: PUITheme = {
   colors: {

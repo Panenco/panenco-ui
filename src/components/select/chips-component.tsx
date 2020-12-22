@@ -2,7 +2,7 @@ import * as React from 'react';
 import { idGenerator } from 'utils/helpers';
 import { Icon, Chip } from 'components';
 import { Props as SelectProps } from 'react-select';
-import { InputComponent } from 'utils/types';
+import { InputComponent } from '../../utils/types';
 
 export interface ChipsProps extends SelectProps, InputComponent {
   value?: any;
@@ -35,7 +35,7 @@ const ChipsComponent = ({
 }: ChipsProps): JSX.Element => (
   <div className="isMultiActiveChips">
     {value?.map((option) => {
-      if(!option) return null;
+      if (!option) return null;
       let chipLabel = option.label;
       if (getOptionLabel) {
         chipLabel = getOptionLabel(option);

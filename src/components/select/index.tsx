@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Props as SelectProps } from 'react-select';
-import { InputComponent } from 'utils/types';
 import { useTheme, useMode } from 'utils/hooks';
 import { Row, Col } from 'components';
+import { InputComponent } from '../../utils/types';
 import { StyledSelectWrapper } from './style';
 import ChipsComponent from './chips-component';
 import SelectComponent from './select-component';
@@ -20,16 +20,7 @@ export interface SelectInputProps extends SelectProps, InputComponent {
 
 export const SelectInput = React.forwardRef<HTMLDivElement, SelectInputProps>(
   (
-    {
-      value,
-      error,
-      isMulti,
-      selectWrapperProps,
-      style,
-      className,
-      wrapperSelectSizes,
-      ...props
-    }: SelectInputProps,
+    { value, error, isMulti, selectWrapperProps, style, className, wrapperSelectSizes, ...props }: SelectInputProps,
     ref,
   ): JSX.Element => {
     const theme = useTheme();
