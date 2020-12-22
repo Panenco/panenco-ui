@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { PUITheme, ThemeMode } from 'utils/types';
 import { PUIThemeContext } from 'utils/context';
+import { PUITheme, ThemeMode } from '../types';
 
 export const useTheme = (): PUITheme => {
   const { theme } = useContext(PUIThemeContext);

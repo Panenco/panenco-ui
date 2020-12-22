@@ -2,8 +2,8 @@ import * as React from 'react';
 import cx from 'classnames';
 import { Icon, Text } from 'components';
 import { useTheme, useMode } from 'utils/hooks';
-import { InputComponent, WrapperProps } from 'utils/types';
 import { useCombinedRefs } from 'utils/hooks/combinedrefs';
+import { InputComponent, WrapperProps } from '../../../utils/types';
 import { StyledTextArea } from './style';
 
 interface InputPropsType extends React.InputHTMLAttributes<HTMLTextAreaElement> {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PUIThemeContext } from 'utils/context';
-import { PUITheme, ThemeMode } from 'utils/types';
 import defaultTheme from 'themes/default';
+import { PUITheme, ThemeMode } from '../../utils/types';
 
 interface ThemeProviderProps {
   children: React.ReactNode;

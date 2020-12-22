@@ -1,23 +1,20 @@
 import * as React from 'react';
 import Select, { components, Props as SelectProps } from 'react-select';
-import { InputComponent } from 'utils/types';
 import { useTheme, useMode } from 'utils/hooks';
 import CreatableSelect from 'react-select/creatable';
 import AsyncSelect from 'react-select/async';
 import AsyncCreatableSelect from 'react-select/async-creatable';
 import { Icon, Text } from 'components';
+import { InputComponent } from '../../utils/types';
 import { customStyles } from './style';
 
 const CustomOption = (props: any): JSX.Element => {
-  const {
-    children,
-    isSelected,
-  } = props;
+  const { children, isSelected } = props;
 
   return (
     <components.Option {...props}>
       {isSelected && <Icon icon={Icon.icons.check} className="icon" />}
-      {children}      
+      {children}
     </components.Option>
   );
 };

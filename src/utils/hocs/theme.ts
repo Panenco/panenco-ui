@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useTheme, useMode } from 'utils/hooks';
-import { PUITheme, ThemeMode } from 'utils/types';
+import { PUITheme, ThemeMode } from '../types';
 
 export interface ThemeWrappedComponent {
   theme: PUITheme;
@@ -8,9 +8,7 @@ export interface ThemeWrappedComponent {
   setMode: (mode: ThemeMode) => void;
 }
 
-export const withTheme = <T extends ThemeWrappedComponent>(
-  WrappedComponent: React.ComponentType<T>,
-): React.FC<T> => {
+export const withTheme = <T extends ThemeWrappedComponent>(WrappedComponent: React.ComponentType<T>): React.FC<T> => {
   const ComponentWithTheme = (props: T): React.ReactElement<T> => {
     const { mode, setMode } = useMode();
     const theme = useTheme();
@@ -22,9 +20,7 @@ export const withTheme = <T extends ThemeWrappedComponent>(
     });
   };
 
-  ComponentWithTheme.displayName = `withTheme(${WrappedComponent.displayName ||
-    WrappedComponent.name ||
-    'Component'})`;
+  ComponentWithTheme.displayName = `withTheme(${WrappedComponent.displayName || WrappedComponent.name || 'Component'})`;
 
   return ComponentWithTheme;
 };

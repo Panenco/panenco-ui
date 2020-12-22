@@ -44,6 +44,7 @@ export type PUIWeights = {
   bold: number;
   extrabold: number;
   black: number;
+  [key: string]: any;
 };
 
 export type TextSize = { textSize: string; lineHeight: string | number };

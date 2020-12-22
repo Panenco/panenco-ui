@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { styled } from 'linaria/react';
 import { useTheme } from 'utils/hooks';
-import { TextSize } from 'utils/types';
+import { TextSize } from '../../utils/types';
 
 export interface TextProps extends React.HTMLAttributes<HTMLElement> {
   color?: string;
@@ -16,19 +16,18 @@ const StyledSpan = styled.span`
     if (typeof props.size === 'string' && Object.keys(props.theme.typography.sizes).includes(props.size)) {
       return props.theme.typography.sizes[props.size].textSize;
     }
-    if (props.size === 'inherit') {
-      return 'inherit';
-    }
     return props.size.textSize;
   }};
   line-height: ${(props: any): string | number => {
     if (typeof props.size === 'string' && Object.keys(props.theme.typography.sizes).includes(props.size)) {
       return props.theme.typography.sizes[props.size].lineHeight;
     }
-    if (props.size === 'inherit') {
-      return 'inherit';
-    }
     return props.size.lineHeight;
+  }};
+  color: ${(props: any): string => props.color};
+  font-weight: ${(props: any): string | number => {
+    return props.weight;
+  }};
 `;
 
 // TODO duplicated code
@@ -37,17 +36,11 @@ const StyledParagraph = styled.p`
     if (typeof props.size === 'string' && Object.keys(props.theme.typography.sizes).includes(props.size)) {
       return props.theme.typography.sizes[props.size].textSize;
     }
-    if (props.size === 'inherit') {
-      return 'inherit';
-    }
     return props.size.textSize;
   }};
   line-height: ${(props: any): string | number => {
     if (typeof props.size === 'string' && Object.keys(props.theme.typography.sizes).includes(props.size)) {
       return props.theme.typography.sizes[props.size].lineHeight;
-    }
-    if (props.size === 'inherit') {
-      return 'inherit';
     }
     return props.size.lineHeight;
   }};

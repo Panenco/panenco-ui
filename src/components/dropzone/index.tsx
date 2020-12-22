@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { useDropzone } from 'react-dropzone';
 import { useTheme, useMode } from 'utils/hooks';
 import { Text, Icon, Loader } from 'components';
-import { ThemeMode, WrapperProps, InputPropsType } from 'utils/types';
+import { ThemeMode, WrapperProps, InputPropsType } from '../../utils/types';
 import { StyledDropzone } from './style';
 
 export interface DropzoneProps extends React.HTMLAttributes<HTMLDivElement> {
