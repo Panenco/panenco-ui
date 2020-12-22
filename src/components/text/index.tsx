@@ -16,11 +16,17 @@ const StyledSpan = styled.span`
     if (typeof props.size === 'string' && Object.keys(props.theme.typography.sizes).includes(props.size)) {
       return props.theme.typography.sizes[props.size].textSize;
     }
+    if (props.size === 'inherit') {
+      return 'inherit';
+    }
     return props.size.textSize;
   }};
   line-height: ${(props: any): string | number => {
     if (typeof props.size === 'string' && Object.keys(props.theme.typography.sizes).includes(props.size)) {
       return props.theme.typography.sizes[props.size].lineHeight;
+    }
+    if (props.size === 'inherit') {
+      return 'inherit';
     }
     return props.size.lineHeight;
   }};
@@ -36,11 +42,17 @@ const StyledParagraph = styled.p`
     if (typeof props.size === 'string' && Object.keys(props.theme.typography.sizes).includes(props.size)) {
       return props.theme.typography.sizes[props.size].textSize;
     }
+    if (props.size === 'inherit') {
+      return 'inherit';
+    }
     return props.size.textSize;
   }};
   line-height: ${(props: any): string | number => {
     if (typeof props.size === 'string' && Object.keys(props.theme.typography.sizes).includes(props.size)) {
       return props.theme.typography.sizes[props.size].lineHeight;
+    }
+    if (props.size === 'inherit') {
+      return 'inherit';
     }
     return props.size.lineHeight;
   }};
