@@ -5,7 +5,7 @@ import { useAccordionContext } from './group';
 
 export interface UseAccordinProps {
   ref?: any;
-  onClick?: any;
+  onClick?: (e?: MouseEvent) => void;
   isOpen?: boolean;
   theme: PUITheme;
   mode: ThemeMode;
