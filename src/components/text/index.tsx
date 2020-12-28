@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { styled } from 'linaria/react';
 import { useTheme } from 'utils/hooks';
-import { TextSize } from '../../utils/types';
+import { TextSize, PUIColors } from '../../utils/types';
 
+type EnumColors = keyof PUIColors;
 export interface TextProps extends React.HTMLAttributes<HTMLElement> {
-  color?: string;
+  color?: string | EnumColors;
   weight?: string | number;
   size?: string | TextSize;
   component?: 'p' | 'span';
@@ -30,8 +31,19 @@ const StyledSpan = styled.span`
     }
     return props.size.lineHeight;
   }};
-  color: ${(props: any): string => props.color};
+  color: ${(props: any): string => {
+    if (typeof props.size === 'string' && Object.keys(props.theme.colors).includes(props.color)) {
+      return props.theme.colors[props.color];
+    }
+    return props.color;
+  }};
   font-weight: ${(props: any): string | number => {
+    if (
+      (typeof props.weight === 'number' || typeof props.weight === 'string') &&
+      Object.keys(props.theme.typography.weights).includes(props.weight)
+    ) {
+      return props.theme.typography.weights[props.weight];
+    }
     return props.weight;
   }};
 `;
@@ -56,14 +68,28 @@ const StyledParagraph = styled.p`
     }
     return props.size.lineHeight;
   }};
-  color: ${(props: any): string => props.color};
+  color: ${(props: any): string => {
+    if (typeof props.size === 'string' && Object.keys(props.theme.colors).includes(props.color)) {
+      return props.theme.colors[props.color];
+    }
+    return props.color;
+  }};
   font-weight: ${(props: any): string | number => {
+    if (
+      (typeof props.weight === 'number' || typeof props.weight === 'string') &&
+      Object.keys(props.theme.typography.weights).includes(props.weight)
+    ) {
+      return props.theme.typography.weights[props.weight];
+    }
     return props.weight;
   }};
 `;
 
-export const Text: React.FC<TextProps> = React.forwardRef<HTMLElement, TextProps>(
-  ({ color = 'inherit', size = 'inherit', weight = 'inherit', children, component, ...props }: TextProps, ref): any => {
+export const Text = React.forwardRef<HTMLElement, TextProps>(
+  (
+    { color = 'inherit', size = 'inherit', weight = 'inherit', children, component, ...props }: TextProps,
+    ref,
+  ): JSX.Element => {
     const theme = useTheme();
     const StyledComponent = component === 'p' ? StyledParagraph : StyledSpan;
 
