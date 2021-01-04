@@ -38,6 +38,7 @@ export const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
       borderWidth,
       wrapperProps,
       error,
+      children,
       ...props
     }: CheckboxProps,
     ref,
@@ -69,6 +70,7 @@ export const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
               {label}
             </Text>
           )}
+          {children}
         </label>
         {error && (
           <Text size={theme.typography.sizes.xs} className="error">
