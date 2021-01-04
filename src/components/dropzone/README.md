@@ -37,6 +37,7 @@ Component extends the functionality with next properties.
 - loader - you can set you own loader if you want;
   inputProps - it's props which will be added to input component;
 - wrapperProps - it's props which will be added to wrapper component;
+- options - options will be added to argument of useDropzone function
 - ref - ref;
 
 | propName          | propType                                | defaultValue                              | isRequired |
@@ -52,3 +53,4 @@ Component extends the functionality with next properties.
 | ref               | React.RefObject                         | -                                         | -          |
 | wrapperProps      | React.HTMLAttributes (HTMLDivElement)   | -                                         | -          |
 | inputProps        | React.HTMLAttributes (HTMLInputElement) | -                                         | -          |
+| options           | DropzoneOptions                         | -                                         | -          |
