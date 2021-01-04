@@ -31,16 +31,16 @@ This component inherits the attributes of the **input** element and extends the 
 - wrapperProps - it's props which will be added to wrapper component;
 - color - background color;
 - borderWidth - border width input element (px);
-- children - children;
+- labelClassName - class which be added to label content;
 - ref - ref;
 
-| propName     | propType                  | defaultValue      | isRequired |
-| ------------ | ------------------------- | ----------------- | ---------- |
-| id           | string or (any)           | generate uniqueID | -          |
-| label        | string                    | -                 | -          |
-| color        | string                    | -                 | -          |
-| borderWidth  | string (number)           | -                 | -          |
-| inputProps   | React.InputHTMLAttributes | -                 | -          |
-| wrapperProps | React.LabelHTMLAttributes | -                 | -          |
-| ref          | React.RefObject           | -                 | -          |
-| children     | React.ReactNode           | -                 | -          |
+| propName       | propType                  | defaultValue      | isRequired |
+| -------------- | ------------------------- | ----------------- | ---------- |
+| id             | string or (any)           | generate uniqueID | -          |
+| label          | string                    | -                 | -          |
+| color          | string                    | -                 | -          |
+| borderWidth    | string (number)           | -                 | -          |
+| inputProps     | React.InputHTMLAttributes | -                 | -          |
+| wrapperProps   | React.LabelHTMLAttributes | -                 | -          |
+| ref            | React.RefObject           | -                 | -          |
+| labelClassName | string                    | -                 | -          |
