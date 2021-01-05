@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cx from 'classnames';
-import { useDropzone } from 'react-dropzone';
+import { useDropzone, DropzoneOptions } from 'react-dropzone';
 import { useTheme, useMode } from 'utils/hooks';
 import { Text, Icon, Loader } from 'components';
 import { ThemeMode, WrapperProps, InputPropsType } from '../../utils/types';
@@ -17,32 +17,32 @@ export interface DropzoneProps extends React.HTMLAttributes<HTMLDivElement> {
   loader?: JSX.Element;
   wrapperProps?: WrapperProps;
   inputProps?: InputPropsType; // will be removed in next versions
+  options?: DropzoneOptions;
 }
 
 export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
   (
     {
-      style,
       loading,
       loadingText = 'Uploading',
       textContent = 'Drop your file here or click to this zone',
       textContentOnDrag = 'Drop your file here',
       // getInputProps: getOutsideInputProps,
       // getRootProps: getOutsideRootProps,
-      className,
       iconClassName,
       icon,
       wrapperProps,
       inputProps,
       error,
       loader,
+      options = {},
       ...props
     }: DropzoneProps,
     ref,
   ): JSX.Element => {
     const theme = useTheme();
     const { mode } = useMode();
-    const { getRootProps, getInputProps, isDragActive } = useDropzone();
+    const { getRootProps, getInputProps, isDragActive } = useDropzone(options);
 
     let textContentInBlock = '';
     let iconImage = Icon.icons.upload;

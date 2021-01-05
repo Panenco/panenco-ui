@@ -78,6 +78,8 @@ export const StyledCheckbox = styled.div`
     vertical-align: middle;
     width: 20px;
     height: 20px;
+    display: flex;
+    flex-shrink: 0;
 
     .checkbox {
       border: none;

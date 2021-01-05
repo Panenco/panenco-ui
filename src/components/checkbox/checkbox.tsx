@@ -18,6 +18,7 @@ export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElemen
   borderWidth?: string | number;
   inputProps?: InputPropsType; // will be removed in next version
   wrapperProps?: WrapperProps;
+  labelClassName?: string;
 }
 
 // interface CompoundedComponent
@@ -38,6 +39,7 @@ export const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
       borderWidth,
       wrapperProps,
       error,
+      labelClassName,
       ...props
     }: CheckboxProps,
     ref,
@@ -64,11 +66,7 @@ export const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
             {...props}
           />
           <div className="container">{checked && <Icon icon={Icon.icons.check} className="tick" />}</div>
-          {label && (
-            <Text weight={theme.typography.weights.regular} size={theme.typography.sizes.s} className="labelTitle">
-              {label}
-            </Text>
-          )}
+          {label && <Text className={cx('labelTitle', labelClassName)}>{label}</Text>}
         </label>
         {error && (
           <Text size={theme.typography.sizes.xs} className="error">

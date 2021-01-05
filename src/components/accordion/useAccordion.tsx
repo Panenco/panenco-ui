@@ -38,7 +38,7 @@ export const useAccordion = (props: UseAccordinProps): UseAccordinReturn => {
     }
   };
 
-  const handleClick = (event: React.UIEvent): void => {
+  const handleClick = (event): void => {
     event.persist();
     toggleOpened();
     if (isPartOfGroup) {

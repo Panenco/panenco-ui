@@ -13,6 +13,7 @@ export type PUIModeColors = {
   secondary?: string;
   primary?: string;
   dark?: string;
+  [key: string]: any;
 };
 
 export type PUIColors = {
