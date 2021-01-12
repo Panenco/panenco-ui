@@ -85,11 +85,6 @@ const Component = ({
             isClearable={false}
             {...props}
           />
-          {error && (
-            <div className="errorIconWrapper">
-              <Icon className="errorIcon" icon={Icon.icons.close} />
-            </div>
-          )}
         </div>
         {error && (
           <Text className="errorTitle" size={theme.typography.sizes.xs} color={theme.colors.error}>

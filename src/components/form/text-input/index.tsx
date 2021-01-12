@@ -76,11 +76,6 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
               <div className="iconAfter">{React.isValidElement(iconAfter) ? iconAfter : <Icon icon={iconAfter} />}</div>
             )}
           </div>
-          {error && (
-            <div className="errorIconWrapper">
-              <Icon className="errorIcon" icon={Icon.icons.close} />
-            </div>
-          )}
         </div>
 
         {error && <span className="inputErrorLabel">{error}</span>}

@@ -1,7 +1,6 @@
 import { styled } from 'linaria/react';
 import { ThemeMode } from 'utils/types';
 import { transparentize } from 'polished';
-import { breakpoints } from 'styles';
 
 export const StyledTextArea = styled.div`
   position: relative;
@@ -14,31 +13,17 @@ export const StyledTextArea = styled.div`
     color: ${(props: any): string =>
       props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
     margin-bottom: 4px;
-    margin-right: 24px;
   }
 
   .subtitle {
     color: ${(props: any): string => props.theme.colors.secondary};
     margin-bottom: 4px;
-    margin-right: 24px;
   }
 
   .withErrorWrapper {
     display: flex;
     align-items: flex-start;
-    width: ${(props: any): string => {
-      if (props.error) {
-        return '100%';
-      }
-      return 'calc(100% - 24px)';
-    }};
-
-    &Icon {
-      margin: 8px 0 0 8px;
-      height: 16px;
-      min-width: 16px;
-      color: ${(props: any): string => props.theme.colors.error};
-    }
+    width: 100%;
 
     &Content {
       width: 100%;
@@ -104,7 +89,7 @@ export const StyledTextArea = styled.div`
       position: absolute;
       bottom: -15px;
       width: 100%;
-      
+
       .counter {
         color: ${(props: any): string => props.theme.colors.secondary};
       }
@@ -117,19 +102,6 @@ export const StyledTextArea = styled.div`
       .hidden {
         visibility: hidden;
       }
-    }
-  }
-
-  @media (max-width: ${breakpoints.l}) {
-    .withErrorWrapper {
-      width: 100%;
-      &Icon {
-        display: none;
-      }
-    }
-    .title,
-    .subtitle {
-      margin-right: 0;
     }
   }
 `;

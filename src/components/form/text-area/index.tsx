@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cx from 'classnames';
-import { Icon, Text } from 'components';
+import { Text } from 'components';
 import { useTheme, useMode } from 'utils/hooks';
 import { useCombinedRefs } from 'utils/hooks/combinedrefs';
 import { InputComponent, WrapperProps } from '../../../utils/types';
@@ -109,8 +109,6 @@ export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
               )}
             </div>
           </div>
-
-          {error && <Icon className="withErrorWrapperIcon" icon={Icon.icons.close} />}
         </div>
       </StyledTextArea>
     );

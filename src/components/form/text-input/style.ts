@@ -1,7 +1,6 @@
 import { styled } from 'linaria/react';
 import { ThemeMode } from 'utils/types';
 import { transparentize } from 'polished';
-import { breakpoints } from 'styles';
 
 export const StyledTextInput = styled.div`
   display: flex;
@@ -14,24 +13,17 @@ export const StyledTextInput = styled.div`
     color: ${(props: any): string =>
       props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
     margin-bottom: 4px;
-    margin-right: 24px;
   }
 
   .inputSubtitle {
     color: ${(props: any): string => props.theme.colors.secondary};
     margin-bottom: 4px;
-    margin-right: 24px;
   }
 
   .fieldWrapper {
     display: flex;
     align-items: center;
-    width: ${(props: any): string => {
-      if (props.error) {
-        return '100%';
-      }
-      return 'calc(100% - 24px)';
-    }};
+    width: 100%;
 
     .inputField {
       width: 100%;
@@ -109,32 +101,5 @@ export const StyledTextInput = styled.div`
       props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.error};
     font-size: ${(props: any): string => props.theme.typography.sizes.xs.textSize};
     margin-top: 4px;
-  }
-
-  .errorIconWrapper {
-    align-items: center;
-    display: flex;
-    min-width: 24px;
-    padding-left: 8px;
-    flex-shrink: 0;
-  }
-
-  .errorIcon {
-    color: ${(props: any): string => props.theme.colors.error};
-    height: 16px;
-    width: 16px;
-  }
-
-  @media (max-width: ${breakpoints.l}) {
-    .errorIconWrapper {
-      display: none;
-    }
-    .fieldWrapper {
-      width: 100%;
-    }
-    .inputTitle,
-    .inputSubtitle {
-      margin-right: 0;
-    }
   }
 `;
