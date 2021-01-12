@@ -1,7 +1,7 @@
 import { PUITheme, ThemeMode } from 'utils/types';
 import { styled } from 'linaria/react';
 import { transparentize } from 'polished';
-import { breakpoints, weights } from 'styles';
+import { weights } from 'styles';
 
 const additionalStyles = (element: string, styles, ...arg): any => (styles?.[element] ? styles[element](...arg) : {});
 
@@ -235,12 +235,7 @@ export const StyledSelectWrapper = styled.div`
 
   .wrapperSelect {
     display: flex;
-    width: ${(props: any): string => {
-      if (props.error) {
-        return '100%';
-      }
-      return 'calc(100% - 24px)';
-    }};
+    width: 100%;
   }
 
   .isMultiActiveChips {
@@ -265,27 +260,11 @@ export const StyledSelectWrapper = styled.div`
 
     display: block;
     margin-bottom: 5px;
-    margin-right: 24px;
   }
 
   .subTitle {
     display: block;
     margin-bottom: 5px;
-    margin-right: 24px;
-  }
-
-  .errorIconWrapper {
-    align-items: center;
-    display: flex;
-    width: 24px;
-    padding-left: 8px;
-    flex-shrink: 0;
-  }
-
-  .errorIcon {
-    color: ${(props: any): string => props.theme.colors.error};
-    height: 16px;
-    width: 16px;
   }
 
   .errorTitle {
@@ -294,20 +273,5 @@ export const StyledSelectWrapper = styled.div`
     display: block;
     position: absolute;
     margin-top: 5px;
-  }
-
-  @media (max-width: ${breakpoints.l}) {
-    .wrapperSelect {
-      width: 100%;
-    }
-
-    .errorIconWrapper {
-      display: none;
-    }
-
-    .title,
-    .subTitle {
-      margin-right: 0;
-    }
   }
 `;
