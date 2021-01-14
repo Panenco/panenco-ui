@@ -7,7 +7,6 @@ export const StyledCheckbox = styled.div`
   & .label {
     align-items: center;
     display: flex;
-    width: max-content;
 
     &:focus-within {
       outline: 2px solid ${(props: any): string => props.theme.colors.outline};

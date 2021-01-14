@@ -6,7 +6,6 @@ export const StyledRadio = styled.div`
     position: relative;
     display: flex;
     width: 100%;
-    max-width: max-content;
     align-items: center;
 
     &Disabled {

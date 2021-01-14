@@ -21,7 +21,7 @@ export const StyledButton = styled.button`
   cursor: pointer;
 
   &.disabled {
-    opacity: 0.3;
+    opacity: 0.4;
     pointer-events: none !important;
   }
   &.iconLeft {
@@ -122,7 +122,7 @@ export const StyledLink = styled(Link)`
   cursor: pointer;
 
   &.disabled {
-    opacity: 0.3;
+    opacity: 0.4;
     pointer-events: none !important;
   }
   &.iconLeft {

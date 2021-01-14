@@ -6,8 +6,7 @@ export const StyledTextArea = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: ${(props: any): string =>
-    props.mode === ThemeMode.dark ? props.theme.colors.dark : props.theme.colors.light};
+  background-color: transparent;
 
   .title {
     color: ${(props: any): string =>
@@ -39,9 +38,7 @@ export const StyledTextArea = styled.div`
       border: 1px solid ${(props: any): string => props.theme.colors.secondary};
       border-radius: 4px;
       font-size: ${(props: any): string => props.theme.typography.sizes.s.textSize};
-      background-color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.dark : props.theme.colors.light};
-
+      background-color: transparent;
       &::placeholder {
         color: ${(props: any): string => props.theme.colors.secondary};
       }
@@ -59,11 +56,12 @@ export const StyledTextArea = styled.div`
 
       &Disabled {
         pointer-events: none;
-        border-color: ${(props: any): string => props.theme.colors.border};
+        /* border-color: ${(props: any): string => props.theme.colors.border}; */
         background-color: ${(props: any): string =>
           props.mode === ThemeMode.dark
             ? transparentize(0.4, props.theme.colors.secondary)
             : props.theme.colors.border};
+        opacity: 0.4;
       }
 
       &:hover {

@@ -32,18 +32,23 @@ export const StyledTextInput = styled.div`
       color: ${(props: any): string => props.theme.colors.secondary};
       border: 1px solid ${(props: any): string => props.theme.colors.secondary};
       border-radius: 4px;
+      position: relative;
 
       & .iconBefore {
+        position: absolute;
+        left: 16px;
+        top: calc(50% - 8px);
         width: 16px;
         height: 16px;
-        margin-left: 16px;
         color: ${(props: any): string => props.theme.colors.secondary};
       }
 
       & .iconAfter {
+        position: absolute;
+        right: 16px;
+        top: calc(50% - 8px);
         width: 16px;
         height: 16px;
-        margin-right: 16px;
         color: ${(props: any): string => props.theme.colors.secondary};
       }
 
@@ -55,11 +60,19 @@ export const StyledTextInput = styled.div`
           props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.primary};
         background-color: transparent;
         font-size: ${(props: any): string => props.theme.typography.sizes.s.textSize};
+        padding: 14px 16px;
+        padding-left: ${(props: any): string => {
+          if (props.iconbefore) return '40px';
+          return '16px';
+        }};
+        padding-right: ${(props: any): string => {
+          if (props.iconafter) return '40px';
+          return '16px';
+        }};
 
         &::placeholder {
           color: ${(props: any): string => props.theme.colors.secondary};
         }
-        padding: 14px 16px;
       }
 
       &Error {
@@ -74,11 +87,12 @@ export const StyledTextInput = styled.div`
 
       &Disabled {
         pointer-events: none;
-        border-color: ${(props: any): string => props.theme.colors.border};
+        /* border-color: ${(props: any): string => props.theme.colors.border}; */
         background-color: ${(props: any): string =>
           props.mode === ThemeMode.dark
             ? transparentize(0.4, props.theme.colors.secondary)
             : props.theme.colors.border};
+        opacity: 0.4;
       }
 
       &:hover {
