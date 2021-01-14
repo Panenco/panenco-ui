@@ -42,6 +42,8 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
         theme={theme}
         mode={mode}
         ref={ref}
+        iconafter={iconAfter}
+        iconbefore={iconBefore}
         {...wrapperProps}
       >
         {title && (
