@@ -26,7 +26,7 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
       error,
       wrapperProps,
       inputProps,
-      placeholder = 'Placeholder',
+      placeholder = '',
       inputRef,
       ...props
     }: TextInputProps,
@@ -42,8 +42,8 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
         theme={theme}
         mode={mode}
         ref={ref}
-        iconafter={iconAfter}
-        iconbefore={iconBefore}
+        iconAfter={iconAfter}
+        iconBefore={iconBefore}
         {...wrapperProps}
       >
         {title && (

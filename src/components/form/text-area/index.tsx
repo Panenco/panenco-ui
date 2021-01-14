@@ -29,7 +29,7 @@ export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
       wrapperProps,
       inputProps,
       inputRef,
-      placeholder = 'Placeholder',
+      placeholder = '',
       ...props
     }: TextAreaProps,
     ref,
