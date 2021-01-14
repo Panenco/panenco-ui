@@ -62,11 +62,11 @@ export const StyledTextInput = styled.div`
         font-size: ${(props: any): string => props.theme.typography.sizes.s.textSize};
         padding: 14px 16px;
         padding-left: ${(props: any): string => {
-          if (props.iconbefore) return '40px';
+          if (props.iconBefore) return '40px';
           return '16px';
         }};
         padding-right: ${(props: any): string => {
-          if (props.iconafter) return '40px';
+          if (props.iconAfter) return '40px';
           return '16px';
         }};
 
