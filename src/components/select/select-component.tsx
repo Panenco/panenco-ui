@@ -44,6 +44,7 @@ const Component = ({
   styles,
   loadingMessage,
   noOptionsMessage,
+  placeholder = '',
   ...props
 }: ComponentProps): JSX.Element => {
   let SelectComponent: any = Select;
@@ -83,6 +84,7 @@ const Component = ({
             noOptionsMessage={noOptionsMessage || (() => `Not found`)}
             error={error}
             isClearable={false}
+            placeholder={placeholder}
             {...props}
           />
         </div>
