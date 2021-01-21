@@ -68,8 +68,13 @@ import unlink from './icons/static-icons/unlink.svg';
 // animated clock
 import animatedClock from './icons/animated-clock/animated-clock.svg';
 
+type IconSpritesheetType = {
+  id: string;
+  viewBox: string;
+  url: string;
+};
 export interface IconProps extends React.SVGAttributes<SVGElement> {
-  icon: any;
+  icon: IconSpritesheetType;
   disabled?: boolean;
   width?: number | string;
   height?: number | string;
@@ -77,7 +82,7 @@ export interface IconProps extends React.SVGAttributes<SVGElement> {
 }
 
 interface CompoundedComponent extends React.ForwardRefExoticComponent<IconProps> {
-  icons: any;
+  icons: { [key: string]: IconSpritesheetType };
 }
 
 export const Icon = React.forwardRef<any, IconProps>(
