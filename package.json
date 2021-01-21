@@ -1,6 +1,6 @@
 {
   "name": "@panenco/ui",
-  "version": "1.0.38",
+  "version": "1.0.39",
   "description": "Panenco UI",
   "module": "lib/ui.esm.js",
   "main": "lib/ui.esm.js",
