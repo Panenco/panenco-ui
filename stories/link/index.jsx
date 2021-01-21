@@ -27,6 +27,11 @@ export default decorator('Link', LinkDocs, LinkReadme).add('Link component', () 
           <Col s="2" m="4" l="3">
             <Link to="">Link Component</Link>
           </Col>
+          <Col s="2" m="4" l="3">
+            <Link href="https://google.com" target="_blank">
+              External Link
+            </Link>
+          </Col>
         </Row>
       </BrowserRouter>
     </WrappedComponent>

@@ -82,6 +82,9 @@ export const LinkDecorator = decorator('Button', LinkDocs, LinkReadme).add('Link
             <Button component="link" disabled>
               Link disabled
             </Button>
+            <Button component="a" href="mailto:info@panenco.com?subject=Secret subject">
+              Link external
+            </Button>
           </Col>
         </Row>
         <Row style={{ justifyContent: 'center' }}>

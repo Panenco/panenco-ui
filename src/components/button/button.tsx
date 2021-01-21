@@ -3,7 +3,7 @@ import { Icon, Text } from 'components';
 import cx from 'classnames';
 import { useTheme, useMode } from 'utils/hooks';
 
-import { StyledButton, StyledLink } from './style';
+import { StyledButton, StyledLink, StyledAnchor } from './style';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   [key: string]: any;
@@ -37,7 +37,12 @@ export const Button = React.forwardRef<any, ButtonProps>(
   ) => {
     const theme = useTheme();
     const { mode } = useMode();
-    const StyledComponent = component === 'link' ? StyledLink : StyledButton;
+
+    const StyledComponent = React.useMemo(() => {
+      if (component === 'link') return StyledLink;
+      if (component === 'a') return StyledAnchor;
+      return StyledButton;
+    }, [component]);
 
     return (
       <StyledComponent
