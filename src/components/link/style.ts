@@ -19,22 +19,3 @@ export const StyledLink = styled(Link)`
     pointer-events: none;
   }
 `;
-
-export const StyledAnchor = styled.a`
-  padding: 3px;
-  color: ${(props: any): string => props.theme.colors.accent500};
-
-  &:hover {
-    border-bottom: 1px dashed ${(props: any): string => props.theme.colors.accent500};
-  }
-
-  &:focus {
-    outline: 2px solid ${(props: any): string => props.theme.colors.outline};
-    border-bottom: 1px dashed transparent;
-  }
-
-  &.disabled {
-    opacity: 0.4;
-    pointer-events: none;
-  }
-`;
