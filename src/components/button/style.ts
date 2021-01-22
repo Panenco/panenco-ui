@@ -2,6 +2,12 @@ import { styled } from 'linaria/react';
 import { ThemeMode } from 'utils/types';
 import { Link } from 'react-router-dom';
 
+const getBackgroundColor = (variant: any, mode: ThemeMode, darkColor: string, lightColor: string): string => {
+  if (variant) return 'transparent';
+  if (mode === ThemeMode.dark) return darkColor;
+  return lightColor;
+};
+
 export const StyledButton = styled.button`
   position: relative;
   border: 2px solid transparent;
@@ -14,8 +20,8 @@ export const StyledButton = styled.button`
   border-radius: 4px;
   transition: 0.3s;
   font-weight: ${(props: any): any => props.theme.typography.weights.bold};
-  background-color: ${(props: any): string =>
-    props.mode === ThemeMode.dark ? props.theme.colors.dark : props.theme.colors.light};
+  background-color: ${({ variant, mode, theme: { colors } }: any): string =>
+    getBackgroundColor(variant, mode, colors.dark, colors.light)};
   color: ${(props: any): string =>
     props.color || (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500)};
   cursor: pointer;
@@ -63,22 +69,22 @@ export const StyledButton = styled.button`
   }
 
   &.buttonPrimary {
-    background-color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500};
+    background-color: ${({ variant, mode, theme: { colors } }: any): string =>
+      getBackgroundColor(variant, mode, colors.light, colors.accent500)};
+
     color: ${(props: any): string =>
       props.color || (props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.light)};
 
     &:hover {
-      background-color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover700};
+      background-color: ${({ variant, mode, theme: { colors } }: any): string =>
+        getBackgroundColor(variant, mode, colors.background50, colors.hover700)};
       color: ${(props: any): string =>
         props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.light};
     }
 
     &:active {
-      background-color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover700};
-    }
+      background-color: ${({ variant, mode, theme: { colors } }: any): string =>
+        getBackgroundColor(variant, mode, colors.background50, colors.hover700)};
   }
 
   &.buttonSecondary {
@@ -90,15 +96,15 @@ export const StyledButton = styled.button`
       border: 2px solid
         ${(props: any): string =>
           props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover700};
-      background-color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.dark : props.theme.colors.background50};
+        background-color: ${({ variant, mode, theme: { colors } }: any): string =>
+          getBackgroundColor(variant, mode, colors.dark, colors.background50)};
       color: ${(props: any): string =>
         props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover700};
     }
 
     &:active {
-      background-color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.dark : props.theme.colors.background50};
+        background-color: ${({ variant, mode, theme: { colors } }: any): string =>
+          getBackgroundColor(variant, mode, colors.dark, colors.background50)};
     }
   }
 `;

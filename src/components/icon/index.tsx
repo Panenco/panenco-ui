@@ -68,7 +68,7 @@ import unlink from './icons/static-icons/unlink.svg';
 // animated clock
 import animatedClock from './icons/animated-clock/animated-clock.svg';
 
-type IconSpritesheetType = {
+export type IconSpritesheetType = {
   id: string;
   viewBox: string;
   url: string;

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Icon, Text } from 'components';
+import type { IconSpritesheetType } from 'components';
 import cx from 'classnames';
 import { useTheme, useMode } from 'utils/hooks';
 
@@ -9,11 +10,12 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   [key: string]: any;
   component?: string;
   to?: string;
-  icon?: HTMLObjectElement;
   iconClassName?: string;
-  iconLeft?: React.ReactNode;
-  iconRight?: React.ReactNode;
+  icon?: IconSpritesheetType;
+  iconLeft?: IconSpritesheetType;
+  iconRight?: IconSpritesheetType;
   color?: string;
+  variant: 'default' | 'transparent';
 }
 
 export const Button = React.forwardRef<any, ButtonProps>(
@@ -30,6 +32,7 @@ export const Button = React.forwardRef<any, ButtonProps>(
       iconLeft,
       iconRight,
       tabIndex,
+      variant = 'default',
       color,
       ...props
     }: ButtonProps,
@@ -48,6 +51,7 @@ export const Button = React.forwardRef<any, ButtonProps>(
         mode={mode}
         ref={ref}
         color={color}
+        variant={variant}
         {...props}
         to={component === 'link' ? to : null}
         tabIndex={tabIndex || (disabled && component === 'link') ? -1 : null}
