@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Icon, Text } from 'components';
-import type { IconSpritesheetType } from 'components';
 import cx from 'classnames';
 import { useTheme, useMode } from 'utils/hooks';
 
@@ -11,9 +10,9 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   component?: string;
   to?: string;
   iconClassName?: string;
-  icon?: IconSpritesheetType;
-  iconLeft?: IconSpritesheetType;
-  iconRight?: IconSpritesheetType;
+  icon?: any;
+  iconLeft?: any;
+  iconRight?: any;
   color?: string;
   variant: 'default' | 'transparent';
 }
