@@ -9,12 +9,13 @@ export interface LinkProps extends RRDLinkProps {
 }
 
 export const Link = React.forwardRef<RRDLink, LinkProps>(
-  ({ children, disabled, className, style, to = '', ...props }: LinkProps, ref): JSX.Element => {
+  ({ children, component, disabled, className, style, to = '', ...props }: LinkProps, ref): JSX.Element => {
     const theme = useTheme();
     const { mode } = useMode();
 
     return (
       <StyledLink
+        as={component}
         theme={theme}
         mode={mode}
         style={style}
