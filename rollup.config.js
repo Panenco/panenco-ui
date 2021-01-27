@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import path from 'path';
 
 import resolve from 'rollup-plugin-node-resolve';
@@ -40,6 +41,7 @@ export default {
       },
     }),
     typescript({
+      typescript: require('typescript'),
       tsconfigDefaults: {
         compilerOptions: { declaration: true, jsx: 'react' },
       },

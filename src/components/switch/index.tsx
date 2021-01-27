@@ -5,7 +5,7 @@ import { useTheme } from 'utils/hooks';
 import { StyledSwitch } from './style';
 
 export interface SwitcherProps extends React.HTMLAttributes<HTMLElement> {
-  checked: boolean;
+  checked: boolean | undefined;
   setChecked: () => void;
   wrapperProps?: any;
   height?: string | number;
@@ -28,6 +28,7 @@ export const Switcher: React.FC<SwitcherProps> = React.forwardRef<HTMLElement, S
         ref={ref}
         height={height}
         width={width}
+        checked={checked}
         {...wrapperProps}
       >
         <input id={id} type="checkbox" checked={checked} onChange={setChecked} {...props} />
