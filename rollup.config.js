@@ -41,7 +41,6 @@ export default {
       },
     }),
     typescript({
-      typescript: require('typescript'),
       tsconfigDefaults: {
         compilerOptions: { declaration: true, jsx: 'react' },
       },
