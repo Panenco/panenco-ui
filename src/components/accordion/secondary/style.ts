@@ -8,7 +8,7 @@ export const StyledAccordionSecondary = styled.div`
   border: none;
   background-color: ${(props: any): string =>
     props.mode === ThemeMode.dark ? props.theme.colors.dark : props.theme.colors.light};
-  font-size: ${(props: any): string => props.theme.typography.sizes.s.textSize};
+  font-size: ${(props: any): string => props.theme.typography.sizes.m.textSize};
   line-height: 1.3;
   width: 100%;
 

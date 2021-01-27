@@ -83,14 +83,14 @@ const CookiesBanner = ({
               <div className="cookieEntryTitle">
                 <Text
                   weight={theme.typography.weights.black}
-                  size={theme.typography.sizes.s}
+                  size={theme.typography.sizes.m}
                   className="cookieEntryTitleText"
                 >
                   {cookieEntry.cookieTitle}
                 </Text>
               </div>
               <div className="cookieEntryDescription">
-                <Text size={theme.typography.sizes.s} className="cookieEntryDescriptionText">
+                <Text size={theme.typography.sizes.m} className="cookieEntryDescriptionText">
                   {cookieEntry.cookieDescription}
                 </Text>
               </div>
@@ -131,7 +131,7 @@ const CookiesBanner = ({
     modalContent = (
       <>
         <div className="cookiesModalShortDescription">
-          <Text size={theme.typography.sizes.s} className="cookiesModalShortDescriptionText">
+          <Text size={theme.typography.sizes.m} className="cookiesModalShortDescriptionText">
             {shortContent}
           </Text>
         </div>

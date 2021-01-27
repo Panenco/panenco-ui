@@ -30,7 +30,7 @@
       "eslint --fix"
     ],
     "*.scss": [
-      "stylelint --fix"
+      "stylelint"
     ]
   },
   "husky": {

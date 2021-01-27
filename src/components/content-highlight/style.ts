@@ -7,8 +7,8 @@ export const StyledContent = styled.div`
   width: 100%;
   max-width: max-content;
   padding: 20px 16px;
-  font-size: ${(props: any): string => props.theme.typography.sizes.s.textSize};
-  line-height: ${(props: any): string => props.theme.typography.sizes.s.lineHeight};
+  font-size: ${(props: any): string => props.theme.typography.sizes.m.textSize};
+  line-height: ${(props: any): string => props.theme.typography.sizes.m.lineHeight};
   font-weight: ${(props: any): string => props.theme.typography.weights.regular};
   background-color: ${(props: any): string =>
     props.mode === ThemeMode.dark ? transparentize(0.4, props.theme.colors.secondary) : props.theme.colors.border};

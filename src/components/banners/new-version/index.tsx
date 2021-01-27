@@ -33,7 +33,7 @@ const NewVersion = ({
     <StyledNewVersionPaper className={className} mode={mode} theme={theme}>
       <div className="newVersionModalTitle">
         <Text
-          size={theme.typography.sizes.s}
+          size={theme.typography.sizes.m}
           weight={theme.typography.weights.black}
           className="newVersionModalTitleText"
         >
@@ -41,7 +41,7 @@ const NewVersion = ({
         </Text>
       </div>
       <div className="newVersionModalDescription">
-        <Text size={theme.typography.sizes.s} className="newVersionModalDescriptionText">
+        <Text size={theme.typography.sizes.m} className="newVersionModalDescriptionText">
           {description}
         </Text>
       </div>

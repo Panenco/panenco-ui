@@ -58,7 +58,7 @@ export const Button = React.forwardRef<any, ButtonProps>(
         {((icon && iconLeft) || iconLeft) && (
           <Icon icon={icon || iconLeft} className={cx('buttonIcon', iconLeft && 'buttonIconLeft', iconClassName)} />
         )}
-        <Text className="buttonTitle" size={theme.typography.sizes.s}>
+        <Text className="buttonTitle" size={theme.typography.sizes.m}>
           {children}
         </Text>
         {((icon && !iconLeft) || iconRight) && (

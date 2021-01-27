@@ -76,7 +76,7 @@ export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
         {...wrapperProps}
       >
         {title && (
-          <Text weight={theme.typography.weights.bold} size={theme.typography.sizes.s} className="title">
+          <Text weight={theme.typography.weights.bold} size={theme.typography.sizes.m} className="title">
             {title}
           </Text>
         )}

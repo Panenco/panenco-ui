@@ -31,7 +31,7 @@ const IosInstall = ({
         </div>
         <div className="installModalTitle">
           <Text
-            size={theme.typography.sizes.m}
+            size={theme.typography.sizes.l}
             weight={theme.typography.weights.black}
             className="installModalTitleText"
           >
@@ -39,7 +39,7 @@ const IosInstall = ({
           </Text>
         </div>
         <div className="installModalDescription">
-          <Text size={theme.typography.sizes.s} className="installModalDescriptionText">
+          <Text size={theme.typography.sizes.m} className="installModalDescriptionText">
             {description}
           </Text>
         </div>
