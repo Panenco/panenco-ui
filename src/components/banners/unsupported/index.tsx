@@ -32,7 +32,7 @@ const UnsupportedBanner = ({
       <Paper className={cx('unsupportedModalPaper', className)}>
         <div className="unsupportedModalTitle">
           <Text
-            size={theme.typography.sizes.s}
+            size={theme.typography.sizes.m}
             weight={theme.typography.weights.black}
             className="unsupportedModalTitleText"
           >
@@ -40,7 +40,7 @@ const UnsupportedBanner = ({
           </Text>
         </div>
         <div className="unsupportedModalDescription">
-          <Text size={theme.typography.sizes.s} className="unsupportedModalDescriptionText">
+          <Text size={theme.typography.sizes.m} className="unsupportedModalDescriptionText">
             {description}
           </Text>
         </div>

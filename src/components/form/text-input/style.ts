@@ -59,7 +59,7 @@ export const StyledTextInput = styled.div`
         color: ${(props: any): string =>
           props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.primary};
         background-color: transparent;
-        font-size: ${(props: any): string => props.theme.typography.sizes.s.textSize};
+        font-size: ${(props: any): string => props.theme.typography.sizes.m.textSize};
         padding: 14px 16px;
         padding-left: ${(props: any): string => {
           if (props.iconBefore) return '40px';

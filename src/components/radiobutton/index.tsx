@@ -41,7 +41,7 @@ export const Radio = React.forwardRef<HTMLLabelElement, RadioButtonProps>(
           <div className="container">
             <div className="point" />
           </div>
-          <Text weight={theme.typography.weights.regular} size={theme.typography.sizes.s} className="labelTitle">
+          <Text weight={theme.typography.weights.regular} size={theme.typography.sizes.m} className="labelTitle">
             {label}
           </Text>
         </label>

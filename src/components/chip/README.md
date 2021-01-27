@@ -43,7 +43,7 @@ This component inherits the attributes of the **button** element and extends the
 | onIconClick    | React.MouseEvent                                              | -                                              | -          |
 | icon           | HTMLObjectElement                                             | -                                              | -          |
 | iconClassName  | string                                                        | -                                              | -          |
-| textSize       | {textSize: string, lineHeight: size}                          | theme.typography.sizes.s                       | -          |
+| textSize       | {textSize: string, lineHeight: size}                          | theme.typography.sizes.m                       | -          |
 | textWeight     | string                                                        | bold (for checked) and regular (for unchecked) | -          |
 | textTypography | {size: {textSize: string, lineHeight: size} , weight: string} | -                                              | -          |
 | iconClassName  | string (number)                                               | -                                              | -          |

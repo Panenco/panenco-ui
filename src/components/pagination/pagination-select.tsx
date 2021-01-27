@@ -62,7 +62,7 @@ export const PaginationSelect = ({
   return (
     <StyledPagination mode={mode} theme={theme} className={cx('pagination', className)} {...otherProps}>
       <Text
-        size={theme.typography.sizes.s}
+        size={theme.typography.sizes.m}
         weight={theme.typography.weights.light}
         color={theme.colors.secondary}
         className="paginationTextBeforeSelect"
@@ -79,7 +79,7 @@ export const PaginationSelect = ({
         onChange={onPagination || ((option): void => setPerPage(option.value))}
         value={options.find((option) => Number(option.value) === Number(perPage))}
       />
-      <Text size={theme.typography.sizes.s} color={theme.colors.secondary} className="paginationText">
+      <Text size={theme.typography.sizes.m} color={theme.colors.secondary} className="paginationText">
         {`${totalItems > 0 ? from : 0}-${to} of ${totalItems}`}
       </Text>
       <Link

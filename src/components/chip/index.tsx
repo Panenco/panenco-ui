@@ -74,7 +74,7 @@ export const Chip = React.forwardRef<HTMLButtonElement, ChipProps>(
               ? theme.typography.weights.bold
               : theme.typography.weights.regular
           }
-          size={textTypography?.size || textSize || theme.typography.sizes.s}
+          size={textTypography?.size || textSize || theme.typography.sizes.m}
           className="labelTitle"
         >
           {children}

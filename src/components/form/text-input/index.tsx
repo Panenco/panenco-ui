@@ -47,7 +47,7 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
         {...wrapperProps}
       >
         {title && (
-          <Text weight={theme.typography.weights.bold} size={theme.typography.sizes.s} className="inputTitle">
+          <Text weight={theme.typography.weights.bold} size={theme.typography.sizes.m} className="inputTitle">
             {title}
           </Text>
         )}

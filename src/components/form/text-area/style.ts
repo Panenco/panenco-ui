@@ -37,7 +37,7 @@ export const StyledTextArea = styled.div`
         props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
       border: 1px solid ${(props: any): string => props.theme.colors.secondary};
       border-radius: 4px;
-      font-size: ${(props: any): string => props.theme.typography.sizes.s.textSize};
+      font-size: ${(props: any): string => props.theme.typography.sizes.m.textSize};
       background-color: transparent;
       &::placeholder {
         color: ${(props: any): string => props.theme.colors.secondary};

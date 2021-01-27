@@ -36,7 +36,7 @@ const AndroidInstall = ({
         <div className="installModalText">
           <div className="installModalTitle">
             <Text
-              size={theme.typography.sizes.m}
+              size={theme.typography.sizes.l}
               weight={theme.typography.weights.black}
               className="installModalTitleText"
             >
