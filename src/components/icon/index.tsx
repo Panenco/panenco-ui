@@ -77,7 +77,7 @@ export interface IconProps extends React.SVGAttributes<SVGElement> {
 }
 
 interface CompoundedComponent extends React.ForwardRefExoticComponent<IconProps> {
-  icons: any;
+  icons: { [key: string]: any };
 }
 
 export const Icon = React.forwardRef<any, IconProps>(
