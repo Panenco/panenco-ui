@@ -2,7 +2,7 @@ import { styled } from 'linaria/react';
 import { ThemeMode } from 'utils/types';
 
 const getBackgroundColor = (variant: any, mode: ThemeMode, darkColor: string, lightColor: string): string => {
-  if (variant) return 'transparent';
+  if (variant === 'transparent') return 'transparent';
   if (mode === ThemeMode.dark) return darkColor;
   return lightColor;
 };
