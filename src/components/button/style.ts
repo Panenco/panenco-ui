@@ -84,26 +84,28 @@ export const StyledButton = styled.button`
     &:active {
       background-color: ${({ variant, mode, theme: { colors } }: any): string =>
         getBackgroundColor(variant, mode, colors.background50, colors.hover700)};
+    }
   }
 
   &.buttonSecondary {
     border: 2px solid
-      ${(props: any): string =>
-        props.color || (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500)};
+      ${(props: any): string => {
+        return props.color || (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500);
+      }};
 
     &:hover {
       border: 2px solid
         ${(props: any): string =>
           props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover700};
-        background-color: ${({ variant, mode, theme: { colors } }: any): string =>
-          getBackgroundColor(variant, mode, colors.dark, colors.background50)};
+      background-color: ${({ variant, mode, theme: { colors } }: any): string =>
+        getBackgroundColor(variant, mode, colors.dark, colors.background50)};
       color: ${(props: any): string =>
         props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover700};
     }
 
     &:active {
-        background-color: ${({ variant, mode, theme: { colors } }: any): string =>
-          getBackgroundColor(variant, mode, colors.dark, colors.background50)};
+      background-color: ${({ variant, mode, theme: { colors } }: any): string =>
+        getBackgroundColor(variant, mode, colors.dark, colors.background50)};
     }
   }
 `;
