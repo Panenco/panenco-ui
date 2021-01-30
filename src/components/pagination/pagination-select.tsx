@@ -7,7 +7,7 @@ import { StyledPagination } from './styles';
 export interface PaginationProps extends React.HTMLAttributes<HTMLDivElement> {
   [key: string]: any;
   totalItems?: number;
-  onPagination?: () => void;
+  onPagination?: any;
   perPage?: number;
   formatUrl?: any;
   currentPage?: number;
@@ -87,7 +87,11 @@ export const PaginationSelect = ({
         onClick={(): void => {
           setCurrentPage(currentPage);
         }}
-        to={formatUrl(currentPage)}
+        to={
+          typeof formatUrl === 'object'
+            ? { ...formatUrl, pathname: formatUrl.pathname(currentPage) }
+            : formatUrl(currentPage)
+        }
       >
         <Icon icon={Icon.icons.chevronLeft} className="paginationButtonIcon" />
       </Link>
@@ -96,7 +100,11 @@ export const PaginationSelect = ({
         onClick={(): void => {
           setCurrentPage(currentPage + 2);
         }}
-        to={formatUrl(currentPage + 2)}
+        to={
+          typeof formatUrl === 'object'
+            ? { ...formatUrl, pathname: formatUrl.pathname(currentPage + 2) }
+            : formatUrl(currentPage + 2)
+        }
       >
         <Icon icon={Icon.icons.chevronRight} className="paginationButtonIcon" />
       </Link>
