@@ -14,7 +14,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   iconLeft?: any;
   iconRight?: any;
   color?: string;
-  variant: 'default' | 'transparent';
+  variant?: 'default' | 'transparent';
 }
 
 export const Button = React.forwardRef<any, ButtonProps>(
