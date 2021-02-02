@@ -45,8 +45,6 @@ export const StyledSwitch = styled.label`
   & input:checked + .slider {
     background-color: ${(props: any): string => props.theme.colors.success};
     color: ${(props: any): string => props.theme.colors.success};
-    -webkit-transition: 0.4s;
-    transition: color ease-out 0.1s;
   }
 
   & input:focus + .slider {
