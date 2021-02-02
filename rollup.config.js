@@ -4,8 +4,7 @@ import path from 'path';
 import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
-// import typescript from 'rollup-plugin-typescript2';
-import typescript from '@rollup/plugin-typescript';
+import typescript from 'rollup-plugin-typescript2';
 import replace from 'rollup-plugin-replace';
 import json from 'rollup-plugin-json';
 import svgSprite from '@panenco/rollup-plugin-svg-sprite';
@@ -42,10 +41,10 @@ export default {
       },
     }),
     typescript({
-      // tsconfigDefaults: {
-      // declaration: true,
-      // jsx: 'react',
-      // },
+      tsconfigDefaults: {
+        declaration: true,
+        jsx: 'react',
+      },
     }),
     linaria({
       sourceMap: process.env.NODE_ENV !== 'production',

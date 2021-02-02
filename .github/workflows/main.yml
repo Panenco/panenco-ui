@@ -2,7 +2,7 @@ name: Publishing NPM package
 
 on:
   push:
-    branches: [fix/switch]
+    branches: [master]
   # pull_request:
   #   branches: [master]
 
