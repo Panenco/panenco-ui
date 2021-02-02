@@ -1,6 +1,7 @@
 import * as React from 'react';
 import cx from 'classnames';
-import { idGenerator } from 'utils/helpers';
+import { Icon } from 'components';
+import { idGenerator, sizeToString } from 'utils/helpers';
 import { useTheme } from 'utils/hooks';
 import { StyledSwitch } from './style';
 
@@ -14,7 +15,16 @@ export interface SwitcherProps extends React.HTMLAttributes<HTMLElement> {
 
 export const Switcher: React.FC<SwitcherProps> = React.forwardRef<HTMLElement, SwitcherProps>(
   (
-    { id: idProp, checked = false, setChecked, height, width, className, wrapperProps, ...props }: SwitcherProps,
+    {
+      id: idProp,
+      checked = false,
+      setChecked,
+      height = 24,
+      width = 48,
+      className,
+      wrapperProps,
+      ...props
+    }: SwitcherProps,
     ref,
   ): JSX.Element => {
     const theme = useTheme();
@@ -26,13 +36,17 @@ export const Switcher: React.FC<SwitcherProps> = React.forwardRef<HTMLElement, S
         className={cx('switch', className)}
         htmlFor={id}
         ref={ref}
-        height={height}
-        width={width}
+        height={sizeToString(height)}
+        width={sizeToString(width)}
         checked={checked}
         {...wrapperProps}
       >
         <input id={id} type="checkbox" checked={checked} onChange={setChecked} {...props} />
-        <span className={cx('slider', 'round')} />
+        <div className={cx('slider')}>
+          <span className="round">
+            <Icon className="icon" icon={Icon.icons[checked ? 'check' : 'minus']} width={10} />
+          </span>
+        </div>
       </StyledSwitch>
     );
   },

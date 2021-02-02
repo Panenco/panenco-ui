@@ -16,10 +16,18 @@ export default decorator('Switch', StampDocs, StampReadme).add('Stamp component'
     <WrappedComponent>
       <Row style={{ justifyContent: 'center' }}>
         <Col s="3" m="3" l="3">
-          <Switcher checked={checked1} setChecked={() => setChecked1((prevState) => !prevState)} />
+          <Switcher checked={checked1} width={80} setChecked={() => setChecked1((prevState) => !prevState)} />
         </Col>
         <Col s="3" m="3" l="3">
           <Switcher checked={checked2} setChecked={() => setChecked2((prevState) => !prevState)} />
+        </Col>
+        <Col s="3" m="3" l="3">
+          <Switcher
+            height={32}
+            width={120}
+            checked={checked2}
+            setChecked={() => setChecked2((prevState) => !prevState)}
+          />
         </Col>
       </Row>
     </WrappedComponent>

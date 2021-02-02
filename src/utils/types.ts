@@ -66,6 +66,14 @@ export type PUITypography = {
   sizes: PUISizes;
 };
 
+export type PUIBreakpoints = {
+  xs: number;
+  s: number;
+  m: number;
+  l: number;
+  xl: number;
+};
+
 export type PUITheme = {
   colors: PUIColors & {
     darkMode?: PUIModeColors;
@@ -75,6 +83,7 @@ export type PUITheme = {
     sizes: PUISizes;
     weights: PUIWeights;
   };
+  breakpoints?: PUIBreakpoints;
 };
 
 export enum ThemeMode {
