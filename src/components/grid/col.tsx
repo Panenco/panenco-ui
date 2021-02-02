@@ -2,7 +2,7 @@ import * as React from 'react';
 import cx from 'classnames';
 import { Col as StyledCol } from './style';
 
-interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
   s?: number | string;
   m?: number | string;
   l?: number | string;
