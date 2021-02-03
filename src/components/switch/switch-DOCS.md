@@ -1,6 +1,6 @@
-# Switcher
+# Switch
 
-Switcher component
+Switch component
 
 ```js
 import { Switch, SwitchProps } from '@panenco/ui';

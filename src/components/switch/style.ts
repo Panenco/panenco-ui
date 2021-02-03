@@ -2,9 +2,9 @@ import { styled } from 'linaria/react';
 
 export const StyledSwitch = styled.label`
   display: inline-block;
-  height: ${({ size, height }: any): number => height || size / 2}px;
+  height: ${({ size, height }: any): string => height || `${size / 2}px`};
   position: relative;
-  width: ${({ size, width }: any): number => width || size}px;
+  width: ${({ size, width }: any): string => width || `${size}px`};
 
   & input {
     height: 0;
@@ -15,7 +15,7 @@ export const StyledSwitch = styled.label`
   & .slider {
     background-color: ${(props: any): string => props.theme.colors.accent500};
     color: ${(props: any): string => props.theme.colors.accent500};
-    border-radius: ${({ size, height }: any): number => height || size / 2}px;
+    border-radius: ${({ size, height }: any): number => height || `${size / 2}px`};
     bottom: 0;
     cursor: pointer;
     left: 0;
@@ -31,17 +31,17 @@ export const StyledSwitch = styled.label`
     background-color: white;
     border-radius: 50%;
     content: '';
-    height: calc(${({ height, size }: any): number => height || size / 2}px - 4px);
+    height: calc(${({ height, size }: any): string => height || `${size / 2}px`} - 4px);
     left: 2px;
     position: absolute;
     -webkit-transition: 0.4s;
     transition: 0.4s;
-    width: calc(${({ height, size }: any): number => height || size / 2}px - 4px);
+    width: calc(${({ height, size }: any): string => height || `${size / 2}px`} - 4px);
     display: flex;
     justify-content: center;
     align-items: center;
     .icon {
-      height: calc((${({ height, size }: any): number => height || size / 2}px - 4px) / 2);
+      height: calc((${({ height, size }: any): string => height || `${size / 2}px`} - 4px) / 2);
       width: auto;
     }
   }
@@ -51,7 +51,7 @@ export const StyledSwitch = styled.label`
     color: ${(props: any): string => props.theme.colors.success};
 
     .round {
-      left: calc(100% + 2px - ${({ size, height }: any): number => height || size / 2}px);
+      left: calc(100% + 2px - ${({ size, height }: any): number => height || `${size / 2}px`});
       right: 2px;
     }
   }
