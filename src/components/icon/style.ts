@@ -2,8 +2,8 @@ import { styled } from 'linaria/react';
 
 export const StyledSVG = styled.svg`
   &.svg {
-    width: ${({ size, width }: any): string => size || width};
-    height: ${({ size, height }: any): string => size || height};
+    width: ${({ width }: any): string => width};
+    height: ${({ height }: any): string => height};
   }
 
   [fill]:not([fill='none']):not([fill^='url(']) {
