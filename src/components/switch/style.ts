@@ -2,9 +2,9 @@ import { styled } from 'linaria/react';
 
 export const StyledSwitch = styled.label`
   display: inline-block;
-  height: ${({ size, height }: any): string => size || height};
+  height: ${({ size, height }: any): number => height || size / 2}px;
   position: relative;
-  width: ${({ size, width }: any): string => width || size * 2};
+  width: ${({ size, width }: any): number => width || size}px;
 
   & input {
     height: 0;
@@ -15,6 +15,7 @@ export const StyledSwitch = styled.label`
   & .slider {
     background-color: ${(props: any): string => props.theme.colors.accent500};
     color: ${(props: any): string => props.theme.colors.accent500};
+    border-radius: ${({ size, height }: any): number => height || size / 2}px;
     bottom: 0;
     cursor: pointer;
     left: 0;
@@ -24,39 +25,38 @@ export const StyledSwitch = styled.label`
     -webkit-transition: 0.4s;
     transition: 0.4s;
     padding: 2px;
-    // border: 2px solid transparent;
   }
 
   & .round {
     background-color: white;
     border-radius: 50%;
     content: '';
-    height: calc(${({ height, size }: any): string => size || height} - 4px);
+    height: calc(${({ height, size }: any): number => height || size / 2}px - 4px);
     left: 2px;
     position: absolute;
     -webkit-transition: 0.4s;
     transition: 0.4s;
-    width: calc(${({ height, size }: any): string => size || height} - 4px);
+    width: calc(${({ height, size }: any): number => height || size / 2}px - 4px);
     display: flex;
     justify-content: center;
     align-items: center;
+    .icon {
+      height: calc((${({ height, size }: any): number => height || size / 2}px - 4px) / 2);
+      width: auto;
+    }
   }
 
   & input:checked + .slider {
     background-color: ${(props: any): string => props.theme.colors.success};
     color: ${(props: any): string => props.theme.colors.success};
+
+    .round {
+      left: calc(100% + 2px - ${({ size, height }: any): number => height || size / 2}px);
+      right: 2px;
+    }
   }
 
   & input:focus + .slider {
     box-shadow: 0px 0px 0px 2px ${(props: any): string => props.theme.colors.outline};
-  }
-
-  & input:checked + .slider .round {
-    left: calc(100% + 2px - ${({ size, height }: any): string => size || height});
-    right: 2px;
-  }
-
-  & .slider {
-    border-radius: ${({ size, height }: any): string => size || height};
   }
 `;

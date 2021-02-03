@@ -1,3 +1,3 @@
 export * from './id-generator';
 export * from './injectIcons';
-export * from './size-to-string';
+export * from './size-to-number';

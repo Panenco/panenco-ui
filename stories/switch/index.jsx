@@ -22,12 +22,7 @@ export default decorator('Switch', StampDocs, StampReadme).add('Stamp component'
           <Switcher checked={checked2} setChecked={() => setChecked2((prevState) => !prevState)} />
         </Col>
         <Col s="3" m="3" l="3">
-          <Switcher
-            height={32}
-            width={120}
-            checked={checked2}
-            setChecked={() => setChecked2((prevState) => !prevState)}
-          />
+          <Switcher size={90} checked={checked2} setChecked={() => setChecked2((prevState) => !prevState)} />
         </Col>
       </Row>
     </WrappedComponent>
