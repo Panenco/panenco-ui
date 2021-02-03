@@ -3,7 +3,7 @@
 Switcher component
 
 ```js
-import { Switcher, SwitcherProps } from '@panenco/ui';
+import { Switch, SwitchProps } from '@panenco/ui';
 ```
 
 <!-- STORY -->
