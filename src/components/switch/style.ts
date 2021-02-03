@@ -2,9 +2,9 @@ import { styled } from 'linaria/react';
 
 export const StyledSwitch = styled.label`
   display: inline-block;
-  height: ${(props: any): string => props.height || '18px'};
+  height: ${({ size, height }: any): number => height || size / 2}px;
   position: relative;
-  width: ${(props: any): string => props.width || '34px'};
+  width: ${({ size, width }: any): number => width || size}px;
 
   & input {
     height: 0;
@@ -14,6 +14,8 @@ export const StyledSwitch = styled.label`
 
   & .slider {
     background-color: ${(props: any): string => props.theme.colors.accent500};
+    color: ${(props: any): string => props.theme.colors.accent500};
+    border-radius: ${({ size, height }: any): number => height || size / 2}px;
     bottom: 0;
     cursor: pointer;
     left: 0;
@@ -22,38 +24,39 @@ export const StyledSwitch = styled.label`
     top: 0;
     -webkit-transition: 0.4s;
     transition: 0.4s;
+    padding: 2px;
   }
 
-  & .slider::before {
+  & .round {
     background-color: white;
-    bottom: 1px;
+    border-radius: 50%;
     content: '';
-    height: ${(props: any): string => props.height || '16px'};
-    left: 1px;
+    height: calc(${({ height, size }: any): number => height || size / 2}px - 4px);
+    left: 2px;
     position: absolute;
     -webkit-transition: 0.4s;
     transition: 0.4s;
-    width: ${(props: any): string => props.height || '16px'};
+    width: calc(${({ height, size }: any): number => height || size / 2}px - 4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .icon {
+      height: calc((${({ height, size }: any): number => height || size / 2}px - 4px) / 2);
+      width: auto;
+    }
   }
 
   & input:checked + .slider {
     background-color: ${(props: any): string => props.theme.colors.success};
+    color: ${(props: any): string => props.theme.colors.success};
+
+    .round {
+      left: calc(100% + 2px - ${({ size, height }: any): number => height || size / 2}px);
+      right: 2px;
+    }
   }
 
   & input:focus + .slider {
-    // box-shadow: 0 0 1px $secondary;
-  }
-
-  & input:checked + .slider::before {
-    transform: translateX(16px);
-  }
-
-  /* Rounded sliders */
-  & .slider.round {
-    border-radius: ${(props: any): string => props.height || '16px'};
-  }
-
-  & .slider.round::before {
-    border-radius: 50%;
+    box-shadow: 0px 0px 0px 2px ${(props: any): string => props.theme.colors.outline};
   }
 `;

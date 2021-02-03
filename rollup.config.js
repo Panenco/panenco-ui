@@ -42,7 +42,8 @@ export default {
     }),
     typescript({
       tsconfigDefaults: {
-        compilerOptions: { declaration: true, jsx: 'react' },
+        declaration: true,
+        jsx: 'react',
       },
     }),
     linaria({

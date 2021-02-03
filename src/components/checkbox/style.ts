@@ -9,7 +9,9 @@ export const StyledCheckbox = styled.div`
     display: flex;
 
     &:focus-within {
-      outline: 2px solid ${(props: any): string => props.theme.colors.outline};
+      & .container {
+        box-shadow: 0px 0px 0px 2px ${(props: any): string => props.theme.colors.outline};
+      }
     }
 
     &:hover {
