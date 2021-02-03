@@ -41,6 +41,7 @@ export default {
       },
     }),
     typescript({
+      clean: true,
       tsconfigDefaults: {
         declaration: true,
         jsx: 'react',
