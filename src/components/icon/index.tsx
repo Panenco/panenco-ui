@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cx from 'classnames';
-import { sizeToNumber } from 'utils/helpers';
+import { sizeToString } from 'utils/helpers';
 import { StyledSVG } from './style';
 
 import add from './icons/static-icons/add.svg';
@@ -87,9 +87,8 @@ export const Icon = React.forwardRef<any, IconProps>(
     return (
       <StyledSVG
         className={cx(disabled && 'disabled', (size || width || height) && 'svg', className)}
-        width={sizeToNumber(size || width || defaultSize)}
-        height={sizeToNumber(size || height || defaultSize)}
-        size={sizeToNumber(size)}
+        width={sizeToString(width || size || defaultSize)}
+        height={sizeToString(height || size || defaultSize)}
         viewBox={icon.viewBox}
         onClick={onClick}
         ref={ref}

@@ -5,13 +5,13 @@
 ```js
 ...
 import React from 'react';
-import { Switcher, SwitcherProps } from '@panenco/ui';
+import { Switch, SwitchProps } from '@panenco/ui';
 
 const render = () => {
   const [checked, setChecked] = React.useState(false);
 
   return (
-    <Switcher checked={checked} setChecked={() => setChecked(prevState => !prevState)} />
+    <Switch value={checked} onChange={() => setChecked(prevState => !prevState)} />
 );
 ...
 ```
@@ -20,13 +20,11 @@ const render = () => {
 
 ### Properties
 
-This component inherits the attributes of the **HTML** element and extends the functionality with next properties.
+This component inherits the attributes of the **HTML** input element and extends the functionality with next properties.
 
-- checked - set value to true or false;
-- setChecked - function which will be set new value for checked property;
-- ref - ref
-
-| propName   | propType        | defaultValue | isRequired |
-| ---------- | --------------- | ------------ | ---------- |
-| checked    | bool            | -            | +          |
-| setChecked | React.RefObject | -            | +          |
+| propName | propType         | defaultValue | isRequired |
+| -------- | ---------------- | ------------ | ---------- |
+| value    | bool             | false        | +          |
+| height   | string or number | -            | -          |
+| width    | string or number | -            | -          |
+| size     | string or number | 48px         | -          |

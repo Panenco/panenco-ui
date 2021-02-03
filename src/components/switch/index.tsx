@@ -1,32 +1,22 @@
 import * as React from 'react';
 import cx from 'classnames';
 import { Icon } from 'components';
-import { idGenerator, sizeToNumber } from 'utils/helpers';
+import { idGenerator, sizeToString } from 'utils/helpers';
 import { useTheme } from 'utils/hooks';
 import { StyledSwitch } from './style';
 
-export interface SwitcherProps extends React.HTMLAttributes<HTMLElement> {
-  checked: boolean | undefined;
-  setChecked: () => void;
+export interface SwitchProps extends React.HTMLAttributes<HTMLElement> {
+  value: boolean;
   wrapperProps?: any;
   height?: string | number;
   width?: string | number;
-  size?: string | number;
+  size?: number;
+  inputRef?: React.Ref<HTMLInputElement>;
 }
 
-export const Switcher: React.FC<SwitcherProps> = React.forwardRef<HTMLElement, SwitcherProps>(
+export const Switch: React.FC<SwitchProps> = React.forwardRef<HTMLElement, SwitchProps>(
   (
-    {
-      id: idProp,
-      checked = false,
-      setChecked,
-      height,
-      width,
-      size = 48,
-      className,
-      wrapperProps,
-      ...props
-    }: SwitcherProps,
+    { id: idProp, inputRef, value = false, height, width, size = 48, className, wrapperProps, ...props }: SwitchProps,
     ref,
   ): JSX.Element => {
     const theme = useTheme();
@@ -38,16 +28,16 @@ export const Switcher: React.FC<SwitcherProps> = React.forwardRef<HTMLElement, S
         className={cx('switch', className)}
         htmlFor={id}
         ref={ref}
-        height={sizeToNumber(height)}
-        width={sizeToNumber(width)}
-        size={sizeToNumber(size)}
-        checked={checked}
+        height={sizeToString(height)}
+        width={sizeToString(width)}
+        size={size}
+        value={value}
         {...wrapperProps}
       >
-        <input id={id} type="checkbox" checked={checked} onChange={setChecked} {...props} />
+        <input ref={inputRef} id={id} type="checkbox" checked={value} {...props} />
         <div className={cx('slider')}>
           <span className="round">
-            <Icon className="icon" icon={Icon.icons[checked ? 'check' : 'minus']} />
+            <Icon className="icon" icon={Icon.icons[value ? 'check' : 'minus']} />
           </span>
         </div>
       </StyledSwitch>
