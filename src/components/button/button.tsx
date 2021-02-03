@@ -14,7 +14,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   iconLeft?: any;
   iconRight?: any;
   color?: string;
-  variant: 'default' | 'transparent';
+  variant?: 'default' | 'transparent';
 }
 
 export const Button = React.forwardRef<any, ButtonProps>(
@@ -77,7 +77,6 @@ export const PrimaryButton = React.forwardRef(
 
 export const SecondaryButton = React.forwardRef(
   ({ className, iconClassName, ...props }: ButtonProps, ref): JSX.Element => {
-    console.log(props);
     return <Button ref={ref} className={cx('buttonSecondary', className)} iconClassName={iconClassName} {...props} />;
   },
 );
