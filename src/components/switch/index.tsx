@@ -11,6 +11,7 @@ export interface SwitcherProps extends React.HTMLAttributes<HTMLElement> {
   wrapperProps?: any;
   height?: string | number;
   width?: string | number;
+  size?: string | number;
 }
 
 export const Switcher: React.FC<SwitcherProps> = React.forwardRef<HTMLElement, SwitcherProps>(
@@ -21,6 +22,7 @@ export const Switcher: React.FC<SwitcherProps> = React.forwardRef<HTMLElement, S
       setChecked,
       height = 24,
       width = 48,
+      size = 24,
       className,
       wrapperProps,
       ...props
@@ -38,6 +40,7 @@ export const Switcher: React.FC<SwitcherProps> = React.forwardRef<HTMLElement, S
         ref={ref}
         height={sizeToString(height)}
         width={sizeToString(width)}
+        size={sizeToString(size)}
         checked={checked}
         {...wrapperProps}
       >

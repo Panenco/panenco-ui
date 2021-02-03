@@ -2,9 +2,9 @@ import { styled } from 'linaria/react';
 
 export const StyledSwitch = styled.label`
   display: inline-block;
-  height: ${(props: any): string => props.height};
+  height: ${({ size, height }: any): string => size || height};
   position: relative;
-  width: ${(props: any): string => props.width};
+  width: ${({ size, width }: any): string => width || size * 2};
 
   & input {
     height: 0;
@@ -31,12 +31,12 @@ export const StyledSwitch = styled.label`
     background-color: white;
     border-radius: 50%;
     content: '';
-    height: calc(${(props: any): string => props.height} - 4px);
+    height: calc(${({ height, size }: any): string => size || height} - 4px);
     left: 2px;
     position: absolute;
     -webkit-transition: 0.4s;
     transition: 0.4s;
-    width: calc(${(props: any): string => props.height} - 4px);
+    width: calc(${({ height, size }: any): string => size || height} - 4px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,11 +52,11 @@ export const StyledSwitch = styled.label`
   }
 
   & input:checked + .slider .round {
-    left: calc(100% + 2px - ${(props: any): string => props.height || '20px'});
+    left: calc(100% + 2px - ${({ size, height }: any): string => size || height});
     right: 2px;
   }
 
   & .slider {
-    border-radius: ${(props: any): string => props.height || '20px'};
+    border-radius: ${({ size, height }: any): string => size || height};
   }
 `;
