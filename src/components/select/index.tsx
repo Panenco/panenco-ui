@@ -16,11 +16,22 @@ export interface SelectInputProps extends SelectProps, InputComponent {
     m?: number | string;
     s?: number | string;
   };
+  hideChips?: boolean;
 }
 
 export const SelectInput = React.forwardRef<HTMLDivElement, SelectInputProps>(
   (
-    { value, error, isMulti, selectWrapperProps, style, className, wrapperSelectSizes, ...props }: SelectInputProps,
+    {
+      value,
+      error,
+      isMulti,
+      selectWrapperProps,
+      style,
+      className,
+      wrapperSelectSizes,
+      hideChips,
+      ...props
+    }: SelectInputProps,
     ref,
   ): JSX.Element => {
     const theme = useTheme();
@@ -44,14 +55,14 @@ export const SelectInput = React.forwardRef<HTMLDivElement, SelectInputProps>(
                 <SelectComponent error={error} isMulti={isMulti} value={value} {...props} />
               </Col>
             </Row>
-            {isMulti && (value?.length > 0 || value?.size > 0) && (
+            {!hideChips && isMulti && (value?.length > 0 || value?.size > 0) && (
               <ChipsComponent error={error} value={value} {...props} />
             )}
           </>
         ) : (
           <>
             <SelectComponent error={error} isMulti={isMulti} value={value} {...props} />
-            {isMulti && (value?.length > 0 || value?.size > 0) && (
+            {!hideChips && isMulti && (value?.length > 0 || value?.size > 0) && (
               <ChipsComponent error={error} value={value} {...props} />
             )}
           </>

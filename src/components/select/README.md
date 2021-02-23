@@ -63,6 +63,7 @@ This component base on [**react-select**](https://react-select.com/home) library
 - chipIconSize - size chip's icon;
 - filterOption - custom method to filter whether an option should be displayed in the menu (by default, filtration is performed by option label);
 - wrapperSelectSizes - object which contain 3 property l, m and s (independ from grid layout) and set size for input element;
+- hideChips - don't render the chips
 - ref - ref;
 
 Else you can using Async, Creatable and AsyncCreatable Select with next props
@@ -89,6 +90,7 @@ Else you can using Async, Creatable and AsyncCreatable Select with next props
 | chipIcon           | any                                                           | -            | -          |
 | chipIconSize       | string                                                        | -            | -          |
 | onDeleteOption     | (option) => void                                              | -            | -          |
+| hideChips          | boolean                                                       | -            | -          |
 | ref                | React.RefObject                                               | -            | -          |
 
 It's a basic props what we using, you can look more complete documentation [**here**](https://react-select.com/home)
