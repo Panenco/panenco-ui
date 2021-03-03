@@ -200,6 +200,10 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
       ...additionalStyles('dropdownIndicator', styles, provided, state),
     };
   },
+  group: (provided, state): any => ({
+    ...provided,
+    ...additionalStyles('group', styles, provided, state),
+  }),
   groupHeading: (provided, state): any => ({
     ...provided,
     textTransform: 'none',
