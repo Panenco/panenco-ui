@@ -47,7 +47,7 @@ export const AccordionSecondary = React.forwardRef(
           )}
           {typeof title === 'string' ? (
             <Text weight={theme.typography.weights.bold} className="accordionHeaderTitle">
-              {children}
+              {title}
             </Text>
           ) : (
             title
