@@ -45,9 +45,14 @@ export const AccordionSecondary = React.forwardRef(
               icon={Icon.icons.chevronRight}
             />
           )}
-          <Text weight={theme.typography.weights.bold} className="accordionHeaderTitle">
-            {title}
-          </Text>
+          {typeof title === 'string' ? (
+            <Text weight={theme.typography.weights.bold} className="accordionHeaderTitle">
+              {children}
+            </Text>
+          ) : (
+            title
+          )}
+
           {iconsProp &&
             iconsProp.map((item) => (
               <Icon
