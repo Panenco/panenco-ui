@@ -85,6 +85,7 @@ const mediaQueriesForColumn = () => {
       }
     }
   });
+
   return mediaQueries;
 };
 

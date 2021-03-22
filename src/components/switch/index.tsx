@@ -21,7 +21,6 @@ export const Switch: React.FC<SwitchProps> = React.forwardRef<HTMLElement, Switc
   ): JSX.Element => {
     const theme = useTheme();
     const id = idProp || idGenerator();
-
     return (
       <StyledSwitch
         theme={theme}

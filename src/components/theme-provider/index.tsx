@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import * as React from 'react';
 import { PUIThemeContext } from 'utils/context';
 import defaultTheme from 'themes/default';
@@ -5,7 +6,7 @@ import { PUITheme, ThemeMode } from '../../utils/types';
 
 interface ThemeProviderProps {
   children: React.ReactNode;
-  theme: PUITheme;
+  theme?: PUITheme;
   mode?: ThemeMode;
 }
 
