@@ -14,6 +14,7 @@ export const StyledButton = styled.button`
   justify-content: center;
   align-items: center;
   padding: 14px 22px;
+  -webkit-appearance: none;
 
   min-height: 40px;
   border-radius: 4px;
