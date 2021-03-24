@@ -16,6 +16,7 @@ export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElemen
   color?: string;
   error?: string;
   borderWidth?: string | number;
+  borderColor?: string;
   inputProps?: InputPropsType; // will be removed in next version
   wrapperProps?: WrapperProps;
   labelClassName?: string;
@@ -37,6 +38,7 @@ export const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
       inputProps,
       color,
       borderWidth,
+      borderColor,
       wrapperProps,
       error,
       labelClassName,
@@ -50,7 +52,14 @@ export const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
     const { mode } = useMode();
 
     return (
-      <StyledCheckbox theme={theme} mode={mode} color={color} borderWidth={borderWidth} {...wrapperProps}>
+      <StyledCheckbox
+        theme={theme}
+        mode={mode}
+        color={color}
+        borderWidth={borderWidth}
+        borderColor={borderColor}
+        {...wrapperProps}
+      >
         <label
           className={cx('label', disabled && 'labelDisabled', wrapperProps?.className)}
           htmlFor={id || defaultId}

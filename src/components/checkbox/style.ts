@@ -72,7 +72,13 @@ export const StyledCheckbox = styled.div`
         }
         return '2px';
       }}
-      solid ${(props: any): string => props.theme.colors.secondary};
+      solid
+      ${(props: any): string => {
+        if (props.borderColor) {
+          return props.borderColor;
+        }
+        return props.theme.colors.secondary;
+      }};
     border-radius: 4px;
     box-sizing: border-box;
     position: relative;
