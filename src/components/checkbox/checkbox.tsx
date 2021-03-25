@@ -12,7 +12,7 @@ interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  label?: string;
+  label?: string | React.ReactNode;
   color?: string;
   error?: string;
   borderWidth?: string | number;
@@ -75,7 +75,11 @@ export const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
             {...props}
           />
           <div className="container">{checked && <Icon icon={Icon.icons.check} className="tick" />}</div>
-          {label && <Text className={cx('labelTitle', labelClassName)}>{label}</Text>}
+          {label && (
+            <Text component="p" className={cx('labelTitle', labelClassName)}>
+              {label}
+            </Text>
+          )}
         </label>
         {error && (
           <Text size={theme.typography.sizes.xs} className="error">

@@ -26,12 +26,6 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
   },
   container: (provided, state): any => ({
     ...provided,
-    backgroundColor: `${((): string => {
-      if (state.isDisabled) {
-        return mode === ThemeMode.dark ? transparentize(0.4, theme.colors.secondary) : theme.colors.border;
-      }
-      return mode === ThemeMode.dark ? theme.colors.dark : theme.colors.light;
-    })()}`,
     pointerEvents: state.isDisabled ? 'none' : 'auto',
     width: '100%',
     opacity: state.isDisabled ? '0.4' : '1',
@@ -68,7 +62,12 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
 
     return {
       ...provided,
-      backgroundColor: 'inherit',
+      backgroundColor: `${((): string => {
+        if (state.isDisabled) {
+          return mode === ThemeMode.dark ? transparentize(0.4, theme.colors.secondary) : theme.colors.border;
+        }
+        return mode === ThemeMode.dark ? theme.colors.dark : theme.colors.light;
+      })()}`,
       boxShadow: !menuIsOpen && isFocused && `0px 0px 0px 2px ${theme.colors.outline}`,
       border: `${error ? '2px' : '1px'} solid ${isBorderColor()}`,
       borderBottomColor: menuIsOpen && 'transparent',
