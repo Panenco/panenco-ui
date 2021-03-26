@@ -11,6 +11,10 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
     display: 'none',
     ...additionalStyles('indicatorSeparator', styles, provided, state),
   }),
+  menuPortal: (provided, state): any => ({
+    ...provided,
+    ...additionalStyles('menuPortal', styles, provided, state),
+  }),
   placeholder: (provided, state): any => {
     return {
       ...provided,
