@@ -6,7 +6,10 @@ import TextInputDocs from 'components/form/text-input/text-input-DOCS.md';
 import TextAreaReadme from 'components/form/text-area/text-area-README.md';
 import TextAreaDocs from 'components/form/text-area/text-area-DOCS.md';
 
-import { TextArea, TextInput, Icon, ButtonIcon, Row, Col } from 'components';
+import StepperReadme from 'components/form/stepper/stepper-README.md';
+import StepperDocs from 'components/form/stepper/stepper-DOCS.md';
+
+import { TextArea,TextInput, Stepper, Icon, ButtonIcon, Row, Col } from 'components';
 
 import { decorator } from '../../utils/decorator';
 import { WrappedComponent } from '../helpers/wrapped';
@@ -63,6 +66,32 @@ export const Textarea = decorator('Forms', TextAreaDocs, TextAreaReadme).add('Te
           </Col>
           <Col s="2" m="4" l="6">
             <TextArea placeholder="Error" error="Error label" maxLength="50" />
+          </Col>
+        </Row>
+      </div>
+    </WrappedComponent>
+  );
+});
+
+export const StepperComponent = decorator('Forms', StepperDocs, StepperReadme).add('Stepper', () => {
+  return (
+    <WrappedComponent>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <Row style={{ alignItems: 'flex-start' }}>
+          <Col s="2" m="4" l="6">
+            <Stepper title="Title" subTitle="Subtitle"  value={5} />
+          </Col>
+          <Col s="2" m="4" l="6">
+            <Stepper title="Title" subTitle="Subtitle" maxLength="10" />
+          </Col>
+        </Row>
+
+        <Row style={{ alignItems: 'flex-start' }}>
+          <Col s="2" m="4" l="6">
+            <Stepper disabled maxLength="10" />
+          </Col>
+          <Col s="2" m="4" l="6">
+            <Stepper error="Error label" maxLength="50" />
           </Col>
         </Row>
       </div>
