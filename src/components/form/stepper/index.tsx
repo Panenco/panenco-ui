@@ -2,14 +2,13 @@ import * as React from 'react';
 import cx from 'classnames';
 import { Text, Icon } from 'components';
 import { useTheme, useMode } from 'utils/hooks';
-import { InputComponent, WrapperProps, InputPropsType } from '../../../utils/types';
+import { InputComponent, WrapperProps } from '../../../utils/types';
 import { StyledStepper } from './style';
 
 export interface StepperProps extends InputComponent, React.InputHTMLAttributes<HTMLInputElement> {
   inputRef?: React.Ref<any>;
   wrapperProps?: WrapperProps;
-  inputProps?: InputPropsType; // will be removed in next versions
-  step: number;
+  step?: number;
 }
 
 export const Stepper = React.forwardRef<HTMLDivElement, StepperProps>(
@@ -22,12 +21,10 @@ export const Stepper = React.forwardRef<HTMLDivElement, StepperProps>(
       disabled,
       error,
       wrapperProps,
-      inputProps,
       inputRef,
       value,
       step = 1,
       onChange,
-      name,
       ...props
     }: StepperProps,
     ref,
@@ -37,7 +34,6 @@ export const Stepper = React.forwardRef<HTMLDivElement, StepperProps>(
     const [currentValue, setValue] = React.useState(Number(value) || 0);
 
     React.useEffect(() => {
-      console.log('on Change');
       if (onChange) onChange(currentValue as any);
     }, [currentValue]);
 
@@ -77,9 +73,7 @@ export const Stepper = React.forwardRef<HTMLDivElement, StepperProps>(
               className="input"
               disabled={disabled}
               ref={inputRef}
-              {...inputProps}
               {...props}
-              name={name}
               onChange={handleChange}
               value={currentValue}
             />

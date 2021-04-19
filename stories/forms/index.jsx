@@ -82,16 +82,16 @@ export const StepperComponent = decorator('Forms', StepperDocs, StepperReadme).a
             <Stepper title="Title" subTitle="Subtitle"  value={5} />
           </Col>
           <Col s="2" m="4" l="6">
-            <Stepper title="Title" subTitle="Subtitle" maxLength="10" />
+            <Stepper title="Title" subTitle="Subtitle" step={10} />
           </Col>
         </Row>
 
         <Row style={{ alignItems: 'flex-start' }}>
           <Col s="2" m="4" l="6">
-            <Stepper disabled maxLength="10" />
+            <Stepper title="Title" subTitle="Subtitle" disabled  />
           </Col>
           <Col s="2" m="4" l="6">
-            <Stepper error="Error label" maxLength="50" />
+            <Stepper title="Title" subTitle="Subtitle" error="Error label"  />
           </Col>
         </Row>
       </div>
