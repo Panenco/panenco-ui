@@ -6,6 +6,9 @@ import { StyledLink } from './style';
 
 export interface LinkProps extends RRDLinkProps {
   disabled?: boolean;
+  className?: string;
+  to: string;
+  children: React.ReactNode;
 }
 
 export const Link = React.forwardRef<RRDLink, LinkProps>(
