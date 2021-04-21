@@ -1,15 +1,30 @@
 $breakpoints: (
-  xs: 0,
-  s: 600px,
-  m: 960px,
-  l: 1280px,
-  xl: 1920px,
+  s: 0,
+  m: 600px,
+  ml: 720px,
+  l: 840px,
 );
 
 $breakpoints1: (
-  l: (gridsize: 12, gutter: 24px),
-  m: (break: 960px, gridsize: 8, gutter: 24px),
-  s: (break: 600px, gridsize: 4, gutter: 16px),
+  l: (
+    gridsize: 12,
+    gutter: 24px,
+  ),
+  ml: (
+    break: 840px,
+    gridsize: 8,
+    gutter: 24px,
+  ),
+  m: (
+    break: 720px,
+    gridsize: 8,
+    gutter: 16px,
+  ),
+  s: (
+    break: 600px,
+    gridsize: 4,
+    gutter: 16px,
+  ),
 );
 
 @function breakpoint-prev($name, $break: $breakpoints1, $breakpoint-names: map-keys($break)) {
@@ -31,9 +46,7 @@ $breakpoints1: (
     @media (max-width: $max) {
       @content;
     }
-  }
-
-  @else {
+  } @else {
     @content;
   }
 }

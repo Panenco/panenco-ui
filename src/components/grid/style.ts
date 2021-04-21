@@ -1,6 +1,6 @@
 import { css } from 'linaria';
 import { styled } from 'linaria/react';
-import { gridLayout, breakpoints } from 'styles/breakpoints';
+import { breakpoints, gridLayout } from 'styles/breakpoints';
 
 const breakPointPrev = (
   name: string,
@@ -110,7 +110,7 @@ const mediaQueriesForContainer = () => {
 };
 
 export const container = css`
-  width: ${breakpoints.xl};
+  width: ${breakpoints.l};
   max-width: 100%;
   margin: 0 auto;
   ${mediaQueriesForContainer()};

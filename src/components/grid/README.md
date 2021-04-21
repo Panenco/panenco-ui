@@ -12,9 +12,9 @@ import { Row, Col, GridContainer } from '@panenco/ui';
 const render  = () => {
   return (
     <Row>
-      <Col s="1" m="3" l="4">{children}</Col>
-      <Col s="1" m="3" l="4">{children}</Col>
-      <Col s="2" m="3" l="4">{children}</Col>
+      <Col s="1" m="2" l="4">{children}</Col>
+      <Col s="2" m="2" l="4">{children}</Col>
+      <Col s="1" m="4" l="4">{children}</Col>
     </Row>
   )
 }
@@ -32,11 +32,11 @@ Row component inherits the attributes of the **div** element.
 Col component inherits the attributes of the **div** element and extends the functionality with next properties.
 
 - `s` - size of columns to 600px;
-- `m` - size of columns to 960px;
-- `l` - size of columns over 960px;
+- `m` - size of columns to 840px;
+- `l` - size of columns over 840px;
 
-| propName | propType         | defaultValue | isRequired |
-| -------- | ---------------- | ------------ | ---------- |
-| s        | string or number | 1            | -          |
-| m        | string or number | 1            | -          |
-| l        | string or number | 1            | -          |
+| propName | propType         | defaultValue | isRequired | row size (maxColumns in a row) |
+| -------- | ---------------- | ------------ | ---------- | ------------------------------ |
+| s        | string or number | 4            | -          | 4                              |
+| m        | string or number | 8            | -          | 8                              |
+| l        | string or number | 12           | -          | 12                             |

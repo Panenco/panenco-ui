@@ -1,9 +1,7 @@
-import React from 'react';
-
-import GridReadme from 'components/grid/README.md';
+import { Col, GridContainer, Row } from 'components';
 import GridDocs from 'components/grid/DOCS.md';
-
-import { Row, Col, GridContainer } from 'components';
+import GridReadme from 'components/grid/README.md';
+import React from 'react';
 
 import { decorator } from '../../utils/decorator';
 
@@ -24,18 +22,18 @@ export default decorator('Grid', GridDocs, GridReadme).add('Grid component', () 
   <>
     <GridContainer>
       <Row>
-        <Col s="1" m="3" l="4">
+        <Col s="2" m="2" l="6">
           <Column />
         </Col>
 
-        <Col s="2" m="2" l="6">
+        <Col s="2" m="6" l="6">
           <Column />
         </Col>
       </Row>
     </GridContainer>
     <GridContainer>
       <Row>
-        <Col s="2" m="4" l="12">
+        <Col s="4" m="8" l="12">
           <Column />
         </Col>
       </Row>
@@ -45,7 +43,7 @@ export default decorator('Grid', GridDocs, GridReadme).add('Grid component', () 
         <Col s="2" m="3" l="2">
           <Column />
         </Col>
-        <Col s="2" m="3" l="5">
+        <Col s="2" m="5" l="10">
           <Column />
         </Col>
       </Row>
