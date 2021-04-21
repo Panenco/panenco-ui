@@ -27,3 +27,4 @@ export * from './paper';
 export * from './banners';
 export * from './responsive-table';
 export * from './switch';
+export * from './tooltip';
