@@ -27,6 +27,7 @@ import PaginationStory from './pagination';
 import SwitchStory from './switch';
 import WizardStory from './wizard';
 import BannersStory from './banners';
+import TooltipStory from './tooltip';
 
 storiesOf('Accordion', AccordionStory);
 storiesOf('AutoComplete', AutoCompleteStory);
@@ -52,3 +53,4 @@ storiesOf('Pagination', PaginationStory);
 storiesOf('Wizard', WizardStory);
 storiesOf('Banners', BannersStory);
 storiesOf('Switcher', SwitchStory);
+storiesOf('Tooltip', TooltipStory);
