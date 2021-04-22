@@ -22,11 +22,11 @@ export default decorator('Grid', GridDocs, GridReadme).add('Grid component', () 
   <>
     <GridContainer>
       <Row>
-        <Col s="2" m="2" l="6">
+        <Col s="2" m="2" l="6" xl="6">
           <Column />
         </Col>
 
-        <Col s="2" m="6" l="6">
+        <Col s="2" m="6" l="6" xl="6">
           <Column />
         </Col>
       </Row>

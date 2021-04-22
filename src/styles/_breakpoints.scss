@@ -3,10 +3,15 @@ $breakpoints: (
   m: 600px,
   ml: 720px,
   l: 840px,
+  xl: 1328px,
 );
 
 $breakpoints1: (
+  xl: (
+    gridsize: 12,
+  ),
   l: (
+    break: 1328px,
     gridsize: 12,
     gutter: 24px,
   ),

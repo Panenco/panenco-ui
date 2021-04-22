@@ -3,6 +3,7 @@ export const breakpoints = {
   m: '600px',
   ml: '720px',
   l: '840px',
+  xl: '1328px',
 };
 
 // export const breakpoints = {
@@ -14,7 +15,8 @@ export const breakpoints = {
 // };
 
 export const gridLayout = {
-  l: { gridSize: 12, gutter: '24px' },
+  xl: { gridSize: 12 },
+  l: { break: '1328px', gridSize: 12, gutter: '24px' },
   ml: { break: '840px', gridSize: 8, gutter: '24px' },
   m: { break: '720px', gridSize: 8, gutter: '16px' },
   s: { break: '600px', gridSize: 4, gutter: '16px' },

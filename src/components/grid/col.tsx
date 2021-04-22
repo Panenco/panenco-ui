@@ -7,11 +7,15 @@ export interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
   s?: number | string;
   m?: number | string;
   l?: number | string;
+  xl?: number | string;
 }
 
-export const Col = ({ className, s = 4, m = 8, l = 12, children, ...props }: ColProps): JSX.Element => {
+export const Col = ({ className, s = 4, m = 8, l = 12, xl = 12, children, ...props }: ColProps): JSX.Element => {
   return (
-    <StyledCol {...props} className={cx(`col-l-${l}`, `col-ml-${m}`, `col-m-${m}`, `col-s-${s}`, className)}>
+    <StyledCol
+      {...props}
+      className={cx(`col-xl-${xl}`, `col-l-${l}`, `col-ml-${m}`, `col-m-${m}`, `col-s-${s}`, className)}
+    >
       {children}
     </StyledCol>
   );

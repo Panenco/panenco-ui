@@ -42,8 +42,9 @@ const mediaBreakPointDown = (name, gridLayoutObject = gridLayout, content): any 
 const mediaQueriesForRow = () => {
   let mediaQueries = {};
   Object.keys(gridLayout).forEach((key) => {
+    const gutter = gridLayout[key].gutter || '(100vw - 1328px)/2';
     const content = {
-      margin: `0 calc((-1/2)*${gridLayout[key].gutter})`,
+      margin: `0 calc((-1/2)*${gutter})`,
     };
     mediaQueries = {
       ...mediaQueries,
@@ -61,9 +62,12 @@ const mediaQueriesForColumn = () => {
 
     for (let i = 1; i <= gridLayout[key].gridSize; i += 1) {
       const hasBreakpoint = Object.prototype.hasOwnProperty.call(mediaQueries, breakpoint);
+      // const padding = gridLayout[key].gutter
+      //   ? `calc(${gridLayout[key].gutter}/2)`
+      //   : `calc(24px/2) calc(((100vw - 1328px)/2)/2)`;
       const content = {
         [`&.col-${key}-${i}`]: {
-          padding: `calc(${gridLayout[key].gutter}/2)`,
+          padding: `calc(${gridLayout[key].gutter || '24px'}/2)`,
           width: `calc(100/${gridLayout[key].gridSize}*${i}*1%)`,
         },
       };
@@ -92,8 +96,9 @@ const mediaQueriesForColumn = () => {
 const mediaQueriesForContainer = () => {
   let mediaQueries = {};
   Object.keys(gridLayout).forEach((key) => {
+    // const padding = gridLayout[key].gutter ? `0 calc(${gridLayout[key].gutter})` : `0 calc((100vw - 1328px)/2)`;
     const content = {
-      padding: `0 calc(${gridLayout[key].gutter})`,
+      padding: `0 calc(${gridLayout[key].gutter || '24px'})`,
     };
     mediaQueries = {
       ...mediaQueries,
@@ -110,7 +115,7 @@ const mediaQueriesForContainer = () => {
 };
 
 export const container = css`
-  width: ${breakpoints.l};
+  width: ${breakpoints.xl};
   max-width: 100%;
   margin: 0 auto;
   ${mediaQueriesForContainer()};
