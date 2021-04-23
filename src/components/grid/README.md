@@ -31,14 +31,18 @@ Row component inherits the attributes of the **div** element.
 
 Col component inherits the attributes of the **div** element and extends the functionality with next properties.
 
-- `s` - size of columns to 600px;
+- `xs` - size of columns to 600px;
+- `s` - size of columns to 720px;
 - `m` - size of columns to 840px;
+- `ml` - size of columns to 960px;
 - `l` - size of columns to 1328px;
 - `xl` - size of columns over 1328px;
 
 | propName | propType         | defaultValue | isRequired | row size (maxColumns in a row) |
 | -------- | ---------------- | ------------ | ---------- | ------------------------------ |
-| s        | string or number | 4            | -          | 4                              |
+| xs       | string or number | 4            | -          | 4                              |
+| s        | string or number | 8            | -          | 8                              |
 | m        | string or number | 8            | -          | 8                              |
+| ml       | string or number | 12           | -          | 12                             |
 | l        | string or number | 12           | -          | 12                             |
 | xl       | string or number | 12           | -          | 12                             |

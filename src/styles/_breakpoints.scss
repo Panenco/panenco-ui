@@ -1,8 +1,9 @@
 $breakpoints: (
-  s: 0,
-  m: 600px,
-  ml: 720px,
-  l: 840px,
+  xs: 0,
+  s: 600px,
+  m: 720px,
+  ml: 840px,
+  l: 960px,
   xl: 1328px,
 );
 
@@ -16,16 +17,21 @@ $breakpoints1: (
     gutter: 24px,
   ),
   ml: (
+    break: 960px,
+    gridsize: 12,
+    gutter: 24px,
+  ),
+  m: (
     break: 840px,
     gridsize: 8,
     gutter: 24px,
   ),
-  m: (
+  s: (
     break: 720px,
     gridsize: 8,
     gutter: 16px,
   ),
-  s: (
+  xs: (
     break: 600px,
     gridsize: 4,
     gutter: 16px,

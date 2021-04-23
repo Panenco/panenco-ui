@@ -1,8 +1,9 @@
 export const breakpoints = {
-  s: '0',
-  m: '600px',
-  ml: '720px',
-  l: '840px',
+  xs: '0',
+  s: '600px',
+  m: '720px',
+  ml: '840px',
+  l: '960px',
   xl: '1328px',
 };
 
@@ -17,7 +18,8 @@ export const breakpoints = {
 export const gridLayout = {
   xl: { gridSize: 12 },
   l: { break: '1328px', gridSize: 12, gutter: '24px' },
-  ml: { break: '840px', gridSize: 8, gutter: '24px' },
-  m: { break: '720px', gridSize: 8, gutter: '16px' },
-  s: { break: '600px', gridSize: 4, gutter: '16px' },
+  ml: { break: '960px', gridSize: 12, gutter: '24px' },
+  m: { break: '840px', gridSize: 8, gutter: '24px' },
+  s: { break: '720px', gridSize: 8, gutter: '16px' },
+  xs: { break: '600px', gridSize: 4, gutter: '16px' },
 };

@@ -26,7 +26,7 @@ export default decorator('Grid', GridDocs, GridReadme).add('Grid component', () 
           <Column />
         </Col>
 
-        <Col s="2" m="6" l="6" xl="6">
+        <Col s="6" m="6" l="6" xl="6">
           <Column />
         </Col>
       </Row>
