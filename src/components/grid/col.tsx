@@ -16,10 +16,10 @@ export const Col = ({
   className,
   xs = 4,
   s = 8,
-  m = 8,
+  m = s,
   ml = 12,
-  l = 12,
-  xl = 12,
+  l = ml,
+  xl = l,
   children,
   ...props
 }: ColProps): JSX.Element => {

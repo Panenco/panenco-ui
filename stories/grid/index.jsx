@@ -22,32 +22,23 @@ export default decorator('Grid', GridDocs, GridReadme).add('Grid component', () 
   <>
     <GridContainer>
       <Row>
-        <Col s="2" m="2" l="6" xl="6">
+        <Col s="4" ml="6" l="6" xl="3">
           <Column />
         </Col>
 
-        <Col s="6" m="6" l="6" xl="6">
+        <Col s="4" ml="6" l="6" xl="3">
+          <Column />
+        </Col>
+        <Col s="4" ml="6" l="6" xl="3">
+          <Column />
+        </Col>
+
+        <Col s="4" ml="6" l="6" xl="3">
           <Column />
         </Col>
       </Row>
     </GridContainer>
-    <GridContainer>
-      <Row>
-        <Col s="4" m="8" l="12">
-          <Column />
-        </Col>
-      </Row>
-    </GridContainer>
-    <GridContainer>
-      <Row>
-        <Col s="2" m="3" l="2">
-          <Column />
-        </Col>
-        <Col s="2" m="5" l="10">
-          <Column />
-        </Col>
-      </Row>
-    </GridContainer>
+
     {/* <Row>
       <Col xs="5">
         <Column />
