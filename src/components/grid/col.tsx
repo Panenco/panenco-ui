@@ -14,10 +14,10 @@ export interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export const Col = ({
   className,
-  xs = 4,
-  s = 8,
+  xs = 12,
+  s = xs,
   m = s,
-  ml = 12,
+  ml = m,
   l = ml,
   xl = l,
   children,

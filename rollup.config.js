@@ -1,15 +1,14 @@
 /* eslint-disable global-require */
-import path from 'path';
-
-import resolve from 'rollup-plugin-node-resolve';
-import babel from 'rollup-plugin-babel';
-import commonjs from 'rollup-plugin-commonjs';
-import typescript from 'rollup-plugin-typescript2';
-import replace from 'rollup-plugin-replace';
-import json from 'rollup-plugin-json';
 import svgSprite from '@panenco/rollup-plugin-svg-sprite';
 import linaria from 'linaria/rollup';
+import path from 'path';
+import babel from 'rollup-plugin-babel';
+import commonjs from 'rollup-plugin-commonjs';
 import css from 'rollup-plugin-css-only';
+import json from 'rollup-plugin-json';
+import resolve from 'rollup-plugin-node-resolve';
+import replace from 'rollup-plugin-replace';
+import typescript from 'rollup-plugin-typescript2';
 
 import packageJson from './package.json';
 
@@ -54,9 +53,11 @@ export default {
       output: path.join(paths.outputPath, 'styles.css'),
     }),
     commonjs({
-      // namedExports: {
-      //   'node_modules/react-is/index.js': ['isValidElementType'],
-      // },
+      namedExports: {
+        'node_modules/react/index.js': ['cloneElement', 'createContext', 'Component', 'createElement'],
+        'node_modules/react-dom/index.js': ['render', 'hydrate'],
+        'node_modules/react-is/index.js': ['isElement', 'isValidElementType', 'ForwardRef', 'Memo'],
+      },
     }),
     json(),
     svgSprite({

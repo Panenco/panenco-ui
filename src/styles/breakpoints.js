@@ -19,7 +19,7 @@ export const gridLayout = {
   xl: { gridSize: 12, gutter: '24px' },
   l: { break: '1328px', gridSize: 12, gutter: '24px' },
   ml: { break: '960px', gridSize: 12, gutter: '24px' },
-  m: { break: '840px', gridSize: 8, gutter: '24px' },
-  s: { break: '720px', gridSize: 8, gutter: '16px' },
-  xs: { break: '600px', gridSize: 4, gutter: '16px' },
+  m: { break: '840px', gridSize: 12, gutter: '24px' },
+  s: { break: '720px', gridSize: 12, gutter: '16px' },
+  xs: { break: '600px', gridSize: 12, gutter: '16px' },
 };

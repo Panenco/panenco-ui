@@ -40,9 +40,9 @@ Col component inherits the attributes of the **div** element and extends the fun
 
 | propName | propType         | defaultValue | isRequired | row size (maxColumns in a row) |
 | -------- | ---------------- | ------------ | ---------- | ------------------------------ |
-| xs       | string or number | 4            | -          | 4                              |
-| s        | string or number | 8            | -          | 8                              |
-| m        | string or number | s            | -          | 8                              |
-| ml       | string or number | 12           | -          | 12                             |
+| xs       | string or number | 12           | -          | 12                             |
+| s        | string or number | xs           | -          | 12                             |
+| m        | string or number | s            | -          | 12                             |
+| ml       | string or number | m            | -          | 12                             |
 | l        | string or number | ml           | -          | 12                             |
 | xl       | string or number | l            | -          | 12                             |
