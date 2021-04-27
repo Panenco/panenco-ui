@@ -118,7 +118,7 @@ export const container = css`
 `;
 
 export const row = css`
-  align-items: center;
+  align-items: start;
   display: flex;
   flex-wrap: wrap;
   ${mediaQueriesForRow()};
