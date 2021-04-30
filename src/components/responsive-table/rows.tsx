@@ -49,18 +49,14 @@ const Rows = ({
     return r;
   }, []);
 
-  let tbody = <tbody></tbody>;
+  let content;
 
   if (isLoading) {
-    tbody = (
-      <tbody>
-        <TableFiller columnsLength={visibleColumns.length} rowsLength={itemsPerPage} />
-      </tbody>
-    );
+    content = <TableFiller columnsLength={visibleColumns.length} rowsLength={itemsPerPage} />;
   } else if (tableRows.length) {
-    tbody = <tbody>{tableRows}</tbody>;
+    content = tableRows;
   }
-  return tbody;
+  return <tbody>{content}</tbody>;
 };
 
 Rows.defaultProps = {
