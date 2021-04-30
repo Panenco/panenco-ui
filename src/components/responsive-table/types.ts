@@ -36,6 +36,7 @@ export interface TableProps extends React.HTMLAttributes<HTMLTableElement> {
   innerRef?: any;
   theme?: PUITheme;
   mode?: ThemeMode;
+  isLoading: boolean;
 }
 
 export interface TableState {

@@ -157,4 +157,33 @@ export const Styles = styled.div`
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
   }
+
+  @keyframes AnimationName {
+    0% {
+      background-position: 24% 0%;
+    }
+    50% {
+      background-position: 50% 100%;
+    }
+    100% {
+      background-position: 24% 0%;
+    }
+  }
+
+  .fillerWrapper {
+    animation: AnimationName 1s ease infinite;
+
+    color: ${(props: any): string =>
+      props.mode === ThemeMode.light ? props.theme.colors.dark : props.theme.colors.light};
+    background: linear-gradient(
+      90deg,
+      ${(props: any): string => props.theme.colors.light},
+      ${(props: any): string => props.theme.colors.border},
+      ${(props: any): string => props.theme.colors.light}
+    );
+    background-size: 200% 200%;
+
+    height: 20px;
+    width: 100%;
+  }
 `;
