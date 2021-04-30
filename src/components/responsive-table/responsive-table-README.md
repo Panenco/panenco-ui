@@ -124,9 +124,15 @@ const SomeComponentWithTable = ({
   return (
     <div className={s.page}>
       ...
-      {listLoaded ? (
-        <ResponsiveTable columns={columns} priorityLevelThreshold={2} rows={rows} sort={sort} handleSort={handleSort} />
-      ) : null}
+
+        <ResponsiveTable
+          isLoading={loadingState}
+          columns={columns}
+          priorityLevelThreshold={2}
+          rows={rows}
+          sort={sort}
+          handleSort={handleSort}
+        />
       ...
     </div>
   );
@@ -150,6 +156,7 @@ const SomeComponentWithTable = ({
 | priorityLevelThreshold | number   | null         | -          |
 | sort                   | object   | null         | -          |
 | handleSort             | func     | null         | -          |
+| isLoading              | boolean  | false        | -          |
 
 ### Column fields
 
