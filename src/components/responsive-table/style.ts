@@ -173,8 +173,6 @@ export const Styles = styled.div`
   .fillerWrapper {
     animation: AnimationName 1s ease infinite;
 
-    color: ${(props: any): string =>
-      props.mode === ThemeMode.light ? props.theme.colors.dark : props.theme.colors.light};
     background: linear-gradient(
       90deg,
       ${(props: any): string => props.theme.colors.light},
