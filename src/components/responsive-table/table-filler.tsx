@@ -1,5 +1,5 @@
 import * as React from 'react';
-import uuid from 'uuid/v4';
+import { idGenerator } from 'utils/helpers';
 
 import CellFiller from './cell-filler';
 
@@ -12,9 +12,9 @@ const TableFiller = ({ rowsLength, columnsLength }: TableFillerProps): JSX.Eleme
   const width = 100 / columnsLength;
 
   const fillerRender = [...Array(rowsLength)].map(() => (
-    <tr key={uuid()}>
+    <tr key={idGenerator()}>
       {[...Array(columnsLength)].map(() => (
-        <CellFiller key={uuid()} width={`${width}%`} />
+        <CellFiller key={idGenerator()} width={`${width}%`} />
       ))}
     </tr>
   ));
