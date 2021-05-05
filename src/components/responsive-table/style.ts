@@ -175,9 +175,10 @@ export const Styles = styled.div`
 
     background: linear-gradient(
       90deg,
-      ${(props: any): string => props.theme.colors.light},
-      ${(props: any): string => props.theme.colors.border},
-      ${(props: any): string => props.theme.colors.light}
+      ${(props: any): string => (props.mode === ThemeMode.light ? props.theme.colors.light : props.theme.colors.dark)},
+      ${(props: any): string =>
+        props.mode === ThemeMode.light ? props.theme.colors.border : transparentize(0.6, props.theme.colors.secondary)},
+      ${(props: any): string => (props.mode === ThemeMode.light ? props.theme.colors.light : props.theme.colors.dark)}
     );
     background-size: 200% 200%;
 
