@@ -17,7 +17,7 @@ const SomeComponentWithTable = ({
   someData,
   sort,
   handleSort,
-  listLoaded,
+  loadingState,
 }) => {
   const columns = [
     {
@@ -55,9 +55,13 @@ const SomeComponentWithTable = ({
   return (
     <div className={s.page}>
       ...
-      {listLoaded ? (
-        <ResponsiveTable columns={columns} rows={rows} sort={sort} handleSort={handleSort} />
-      ) : null}
+        <ResponsiveTable
+          columns={columns}
+          rows={rows}
+          sort={sort}
+          handleSort={handleSort}
+          isLoading={loadingState}
+        />
       ...
     </div>
   );
@@ -85,7 +89,7 @@ const SomeComponentWithTable = ({
   someData,
   sort,
   handleSort,
-  listLoaded,
+  loadingState,
 }) => {
   const columns = [
     {
@@ -124,7 +128,6 @@ const SomeComponentWithTable = ({
   return (
     <div className={s.page}>
       ...
-
         <ResponsiveTable
           isLoading={loadingState}
           columns={columns}
@@ -148,6 +151,7 @@ const SomeComponentWithTable = ({
 - `priorityLevelThreshold` - A number greater than zero, if is set, then only the columns with priorityLevel less than this value, may be displayed
 - `sort` - Says which column and in which direction is sorted right now
 - `handleSort` - A callback that triggers a request to the server for the new sorted data
+- `isLoading` - Is data loading right now. Says if we need to show animated skeleton inside of the cells.
 
 | propName               | propType | defaultValue | isRequired |
 | ---------------------- | -------- | ------------ | ---------- |
