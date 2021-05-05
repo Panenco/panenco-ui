@@ -1,13 +1,14 @@
 /* eslint-disable react/static-property-placement */
-import * as React from 'react';
 import { throttle } from 'lodash-es';
+import * as React from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
-import { useTheme, useMode } from 'utils/hooks';
+import { useMode, useTheme } from 'utils/hooks';
+
 import Columns from './columns';
 import Rows from './rows';
+import { Styles } from './style';
 import { expandRow, resizeTable } from './table-actions';
 import { TableProps, TableState } from './types';
-import { Styles } from './style';
 
 class Table extends React.Component<TableProps, TableState> {
   divRef: React.RefObject<HTMLElement>;
@@ -95,6 +96,7 @@ class Table extends React.Component<TableProps, TableState> {
       innerRef,
       theme,
       mode,
+      isLoading,
       ...tableProps
     } = this.props;
     const visibleColumns = columns.filter((column) => column.isVisible);
@@ -111,6 +113,7 @@ class Table extends React.Component<TableProps, TableState> {
             hiddenColumns={hiddenColumns}
             expandRow={this.expandRow}
             containerWidth={containerWidth}
+            isLoading={isLoading}
           />
         </table>
       </Styles>

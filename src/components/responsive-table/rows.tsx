@@ -1,7 +1,9 @@
 import * as React from 'react';
-import Row from './row';
+
 import ExpandedRow from './expanded-row';
-import { RowType, ColumnType, ExpandRowType } from './types';
+import Row from './row';
+import TableFiller from './table-filler';
+import { ColumnType, ExpandRowType, RowType } from './types';
 
 interface RowsProps {
   rows: Array<RowType>;
@@ -9,7 +11,8 @@ interface RowsProps {
   hiddenColumns: Array<ColumnType>;
   expandRow: ExpandRowType;
   containerWidth?: number;
-  itemsPerPage?: number;
+  itemsPerPage: number;
+  isLoading?: boolean;
 }
 
 const Rows = ({
@@ -19,6 +22,7 @@ const Rows = ({
   expandRow,
   containerWidth,
   itemsPerPage,
+  isLoading,
 }: RowsProps): JSX.Element => {
   const tableRows = rows.reduce((r: Array<JSX.Element>, row) => {
     const rowComponent = (
@@ -44,11 +48,15 @@ const Rows = ({
     r.push(expandedRowComponent);
     return r;
   }, []);
-  let tbody = <tbody />;
-  if (tableRows.length) {
-    tbody = <tbody>{tableRows}</tbody>;
+
+  let content;
+
+  if (isLoading) {
+    content = <TableFiller columnsLength={visibleColumns.length} rowsLength={itemsPerPage} />;
+  } else if (tableRows.length) {
+    content = tableRows;
   }
-  return tbody;
+  return <tbody>{content}</tbody>;
 };
 
 Rows.defaultProps = {

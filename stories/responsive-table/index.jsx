@@ -1,9 +1,8 @@
+import { Button, Col, ResponsiveTable, Row } from 'components';
+import TableDocs from 'components/responsive-table/responsive-table-DOCS.md';
+import TableReadme from 'components/responsive-table/responsive-table-README.md';
 import React from 'react';
 
-import TableReadme from 'components/responsive-table/responsive-table-README.md';
-import TableDocs from 'components/responsive-table/responsive-table-DOCS.md';
-
-import { ResponsiveTable } from 'components';
 import { decorator } from '../../utils/decorator';
 import { WrappedComponent } from '../helpers/wrapped';
 
@@ -196,6 +195,7 @@ export default decorator('ResponsiveTable', TableDocs, TableReadme).add('Respons
     direction: 'asc',
   };
   const [sort, setSort] = React.useState(defaultSort);
+  const [loading, setLoading] = React.useState(false);
   const handleSort = (sortName, direction) => {
     console.log(`Column ${sortName} is now sorted in ${direction === 'desc' ? 'asc' : 'desc'} direction`);
 
@@ -207,7 +207,20 @@ export default decorator('ResponsiveTable', TableDocs, TableReadme).add('Respons
   };
   return (
     <WrappedComponent>
-      <ResponsiveTable columns={columns} rows={rows} sort={sort} handleSort={handleSort} />
+      <Row style={{ justifyContent: 'space-around', marginTop: '20px' }}>
+        <Col>
+          <Button onClick={() => setLoading(!loading)}>Toggle Loading</Button>
+        </Col>
+      </Row>
+
+      <ResponsiveTable
+        isLoading={loading}
+        itemsPerPage={10}
+        columns={columns}
+        rows={rows}
+        sort={sort}
+        handleSort={handleSort}
+      />
     </WrappedComponent>
   );
 });
