@@ -1,5 +1,6 @@
-import { Col, DayPicker, Row } from 'components';
-import SelectInputDocs from 'components/select/DOCS.md';
+import { Col, DateInput, DayPicker, Row } from 'components';
+import DateInputDocs from 'components/form/date-input/date-input-DOCS.md';
+import DateInputReadme from 'components/form/date-input/date-input-README.md';
 import README from 'components/select/README.md';
 import React from 'react';
 
@@ -32,7 +33,7 @@ const dateFormatMapping = {
   M: '1',
 };
 
-export default decorator('DayPicker', SelectInputDocs, README).add('DayPciker', () => {
+export default decorator('DayPicker', DateInputDocs, README).add('DayPicker', () => {
   return (
     <WrappedComponent style={{ minHeight: '500px' }}>
       <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start' }}>
@@ -40,6 +41,126 @@ export default decorator('DayPicker', SelectInputDocs, README).add('DayPciker', 
           <DayPicker format="" />
         </Col>
       </Row>
+      <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start' }}>
+        <Col s="12" m="12" l="12">
+          <DayPicker format="" isTimePicker />
+        </Col>
+      </Row>
+    </WrappedComponent>
+  );
+});
+
+const inputs1 = [
+  {
+    title: 'Day',
+    type: 'date',
+    format: 'dd',
+    placeholder: '01',
+  },
+  {
+    title: 'Month',
+    type: 'month',
+    format: 'MM',
+    placeholder: '12',
+  },
+  {
+    title: 'Year',
+    type: 'year',
+    format: 'yyyy',
+    placeholder: '2021',
+  },
+];
+
+const inputs2 = [
+  {
+    title: 'Hour',
+    type: 'hours',
+    format: 'HH',
+    placeholder: '00',
+  },
+  {
+    title: 'Minute',
+    type: 'minutes',
+    format: 'mm',
+    placeholder: '00',
+  },
+];
+
+const inputs3 = [
+  {
+    title: 'Day',
+    type: 'date',
+    format: 'dd',
+    placeholder: '01',
+  },
+  {
+    title: 'Month',
+    type: 'month',
+    format: 'MM',
+    placeholder: '01',
+  },
+];
+
+const inputs4 = [
+  {
+    title: 'Month',
+    type: 'month',
+    format: 'MM',
+    placeholder: '12',
+  },
+  {
+    title: 'Year',
+    type: 'year',
+    format: 'yyyy',
+    placeholder: '2021',
+  },
+];
+
+export const DateInputStory = decorator('DateInput', DateInputDocs, DateInputReadme).add('DateInput', () => {
+  return (
+    <WrappedComponent>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <Row style={{ alignItems: 'flex-start' }}>
+          <Col s="2" m="4" l="6">
+            <DateInput inputs={inputs1} />
+          </Col>
+        </Row>
+        <Row style={{ alignItems: 'flex-start' }}>
+          <Col s="2" m="4" l="6">
+            <DateInput inputs={inputs2} divider=":" />
+          </Col>
+        </Row>
+        <Row style={{ alignItems: 'flex-start' }}>
+          <Col s="2" m="4" l="6">
+            <DateInput inputs={inputs3} />
+          </Col>
+        </Row>
+        <Row style={{ alignItems: 'flex-start' }}>
+          <Col s="2" m="4" l="6">
+            <DateInput inputs={inputs4} />
+          </Col>
+        </Row>
+        <Row style={{ alignItems: 'flex-start' }}>
+          <Col s="2" m="4" l="6">
+            <DateInput inputs={inputs1} divider="/" />
+          </Col>
+        </Row>
+        <Row style={{ alignItems: 'flex-start' }}>
+          <Col s="2" m="4" l="6">
+            <DateInput inputs={inputs2} divider="/" />
+          </Col>
+        </Row>
+        <Row style={{ alignItems: 'flex-start' }}>
+          <Col s="2" m="4" l="6">
+            <DateInput inputs={inputs3} divider="/" />
+          </Col>
+        </Row>
+        <Row style={{ alignItems: 'flex-start' }}>
+          <Col s="2" m="4" l="6">
+            <DateInput inputs={inputs4} divider="/" />
+          </Col>
+        </Row>
+      </div>
     </WrappedComponent>
   );
 });

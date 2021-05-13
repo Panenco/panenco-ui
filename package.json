@@ -149,6 +149,8 @@
     "react-animate-height": "^2.0.21",
     "react-compound-slider": "^2.5.0",
     "react-day-picker": "^7.4.10",
-    "react-dropzone": "^11.0.1"
+    "react-dropzone": "^11.0.1",
+    "react-text-mask": "^5.4.3",
+    "text-mask-addons": "^3.8.0"
   }
 }
