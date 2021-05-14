@@ -1,6 +1,7 @@
 import { Icon, Text } from 'index';
 import * as React from 'react';
 import { toast as toastify, ToastContainerProps } from 'react-toastify';
+import { colors, sizes } from 'styles';
 import { useMode, useTheme } from 'utils/hooks';
 
 import { StyledNotificationContainer } from './style';
@@ -15,24 +16,35 @@ const CloseButton = ({ closeToast }: any): JSX.Element => {
   );
 };
 
-const NotifyBody = ({ children, status, undo }: any): JSX.Element => {
+const NotifyBody = ({ children, status, undo, closeToast }: any): JSX.Element => {
   let icon = Icon.icons.success;
-  if (status === toastify.TYPE.WARNING || status === toastify.TYPE.ERROR) {
+  if (status === toastify.TYPE.ERROR) {
     icon = Icon.icons.close;
   }
 
-  if (status === toastify.TYPE.INFO) {
+  if (status === toastify.TYPE.INFO || status === toastify.TYPE.WARNING) {
     icon = Icon.icons.info;
   }
 
+  const handleUndo = () => {
+    undo();
+    closeToast();
+  };
+
   return (
     <div className="body">
-      <>
-        <Icon icon={icon} className="Toastify__toast-body--icon" />
+      <Icon icon={icon} className="Toastify__toast-body--icon" />
+      <div className="bodyContent">
         {typeof children === 'string' ? <Text className="Toastify__toast-body--content">{children}</Text> : children}
-      </>
 
-      {undo ? <button onClick={undo}>kkek</button> : null}
+        {undo ? (
+          <button className="bodyContentUndo" onClick={handleUndo}>
+            <Text size={sizes.m} color={colors.accent500}>
+              Undo
+            </Text>
+          </button>
+        ) : null}
+      </div>
     </div>
   );
 };
@@ -71,7 +83,7 @@ for (const t in toastify.TYPE) {
   if (toast.TYPE[t] !== toast.TYPE.DEFAULT) {
     toast[status] = (content, options) =>
       toastify[status](
-        <NotifyBody status={status} undo={options.undo}>
+        <NotifyBody status={status} undo={options?.undo}>
           {content}
         </NotifyBody>,
         {

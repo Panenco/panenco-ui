@@ -9,7 +9,29 @@ export const StyledNotificationContainer = styled(ToastContainer)`
 
   .body {
     display: flex;
-    flex-direction: column;
+
+    &Content {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+
+      &Undo {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid transparent;
+        cursor: pointer;
+        margin-top: 4px;
+
+        &:hover {
+          border-bottom: 1px solid ${(props: any): string => props.theme.colors.accent500};
+          border-bottom-style: dashed;
+        }
+
+        &:focus {
+          outline: 2px solid ${(props: any): string => props.theme.colors.outline};
+        }
+      }
+    }
   }
 
   .Toastify__toast {
@@ -59,7 +81,7 @@ export const StyledNotificationContainer = styled(ToastContainer)`
   .Toastify__toast-body {
     display: flex;
     align-items: center;
-    padding: 12px 16px 12px 8px;
+    padding: 16px 16px 12px 16px;
     color: ${(props: any): string =>
       props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
     cursor: default;
@@ -102,6 +124,10 @@ export const StyledNotificationContainer = styled(ToastContainer)`
       }
       &:focus {
         outline: 2px solid ${(props: any): string => props.theme.colors.outline};
+      }
+
+      &:hover {
+        color: ${(props: any): string => props.theme.colors.accent500};
       }
     }
   }
