@@ -1,10 +1,11 @@
+import { Icon, Text } from 'index';
 import * as React from 'react';
 import { toast as toastify, ToastContainerProps } from 'react-toastify';
-import { Text, Icon } from 'index';
-import { useTheme, useMode } from 'utils/hooks';
+import { useMode, useTheme } from 'utils/hooks';
+
 import { StyledNotificationContainer } from './style';
 
-export type NotificationContainerProps = ToastContainerProps;
+export type NotificationContainerProps = ToastContainerProps & { undo: any };
 
 const CloseButton = ({ closeToast }: any): JSX.Element => {
   return (
@@ -14,16 +15,25 @@ const CloseButton = ({ closeToast }: any): JSX.Element => {
   );
 };
 
-const NotifyBody = ({ children, status }: any): JSX.Element => {
+const NotifyBody = ({ children, status, undo }: any): JSX.Element => {
   let icon = Icon.icons.success;
   if (status === toastify.TYPE.WARNING || status === toastify.TYPE.ERROR) {
     icon = Icon.icons.close;
   }
+
+  if (status === toastify.TYPE.INFO) {
+    icon = Icon.icons.info;
+  }
+
   return (
-    <>
-      <Icon icon={icon} className="Toastify__toast-body--icon" />
-      {typeof children === 'string' ? <Text className="Toastify__toast-body--content">{children}</Text> : children}
-    </>
+    <div className="body">
+      <>
+        <Icon icon={icon} className="Toastify__toast-body--icon" />
+        {typeof children === 'string' ? <Text className="Toastify__toast-body--content">{children}</Text> : children}
+      </>
+
+      {undo ? <button onClick={undo}>kkek</button> : null}
+    </div>
   );
 };
 
@@ -31,16 +41,20 @@ const baseOptions = {
   closeButton: <CloseButton />,
   draggable: false,
   closeOnClick: false,
+  onChange: () => {},
   // progress: 1,
   // autoClose: false as false,
-  // hideProgressBar: true,
+  hideProgressBar: true,
 };
 
-export const toast = (content: string | React.ReactNode | { (): void }, options = {}): number | string =>
-  toastify(<NotifyBody>{content}</NotifyBody>, {
+export const toast = (content: string | React.ReactNode | { (): void }, options): number | string => {
+  const renderToast = toastify(<NotifyBody options={options}>{content}</NotifyBody>, {
     ...baseOptions,
     ...options,
   });
+
+  return renderToast;
+};
 
 toast.isActive = toastify.isActive;
 toast.dismiss = toastify.dismiss;
@@ -56,10 +70,15 @@ for (const t in toastify.TYPE) {
   const status = toastify.TYPE[t].toLowerCase();
   if (toast.TYPE[t] !== toast.TYPE.DEFAULT) {
     toast[status] = (content, options) =>
-      toastify[status](<NotifyBody status={status}>{content}</NotifyBody>, {
-        ...baseOptions,
-        ...options,
-      });
+      toastify[status](
+        <NotifyBody status={status} undo={options.undo}>
+          {content}
+        </NotifyBody>,
+        {
+          ...baseOptions,
+          ...options,
+        },
+      );
   }
 }
 /* eslint-enable */

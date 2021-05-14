@@ -1,11 +1,16 @@
 import { styled } from 'linaria/react';
-import { ThemeMode } from 'utils/types';
 import { ToastContainer } from 'react-toastify';
+import { ThemeMode } from 'utils/types';
 
 export const StyledNotificationContainer = styled(ToastContainer)`
   padding: 0;
   width: 420px;
   color: ${(props: any): string => props.theme.colors.primary};
+
+  .body {
+    display: flex;
+    flex-direction: column;
+  }
 
   .Toastify__toast {
     min-height: 74px;
@@ -19,6 +24,16 @@ export const StyledNotificationContainer = styled(ToastContainer)`
     background-color: ${(props: any): string =>
       props.mode === ThemeMode.dark ? props.theme.colors.dark : props.theme.colors.light};
 
+    &--info {
+      border-left: 4px solid ${(props: any): string => props.theme.colors.outline};
+
+      .Toastify__toast-body--icon {
+        color: ${(props: any): string => props.theme.colors.outline};
+      }
+      .Toastify__progress-bar {
+        background: ${(props: any): string => props.theme.colors.outline};
+      }
+    }
     &--warning {
       border-left: 4px solid ${(props: any): string => props.theme.colors.alert};
 
@@ -86,7 +101,7 @@ export const StyledNotificationContainer = styled(ToastContainer)`
         height: 100%;
       }
       &:focus {
-        outline: 2px solid ${(props: any): string => props.theme.colors.outline}
+        outline: 2px solid ${(props: any): string => props.theme.colors.outline};
       }
     }
   }
