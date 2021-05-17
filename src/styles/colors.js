@@ -4,6 +4,7 @@ export const colors = {
   accent500: '#FF5722',
   hover700: '#e64a24',
   header900: '#bf371b',
+  border500: '#808080',
 
   // root colors
   alert: '#faa030',
