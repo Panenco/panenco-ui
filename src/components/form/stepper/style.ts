@@ -1,5 +1,4 @@
 import { styled } from 'linaria/react';
-import { transparentize } from 'polished';
 import { ThemeMode } from 'utils/types';
 
 export const StyledStepperInput = styled.div`
@@ -9,6 +8,11 @@ export const StyledStepperInput = styled.div`
   flex-direction: column;
   max-width: 160px;
   position: relative;
+
+  .fieldWrapper {
+    display: flex;
+    width: 100%;
+  }
 
   /* Chrome, Safari, Edge, Opera */
   input::-webkit-outer-spin-button,
@@ -38,8 +42,8 @@ export const StyledStepperInput = styled.div`
 
   .stepperButton {
     align-items: center;
-    background: ${(props: any): string => props.theme.colors.accent500};
-    border: none;
+    background: transparent;
+    border: 2px solid ${(props: any): string => props.theme.colors.accent500};
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -56,18 +60,32 @@ export const StyledStepperInput = styled.div`
 
     &Icon {
       color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.light};
+        props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.accent500};
     }
 
     &.disabled {
       opacity: 0.4;
       pointer-events: none !important;
     }
+
+    &:hover {
+      background: ${(props: any): string =>
+        props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.accent500};
+
+      .stepperButtonIcon {
+        color: ${(props: any): string =>
+          props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.light};
+      }
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.outline};
+    }
   }
 
   .inputTitle {
     color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
+      props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.light};
     margin-bottom: 4px;
   }
 
@@ -76,49 +94,38 @@ export const StyledStepperInput = styled.div`
     margin-bottom: 4px;
   }
 
-  .fieldWrapper {
-    display: flex;
+  .inputField {
     width: 100%;
+    display: flex;
+    align-items: center;
+    color: ${(props: any): string => props.theme.colors.secondary};
+    border: 1px solid ${(props: any): string => props.theme.colors.secondary};
+    border-radius: 4px;
+    position: relative;
 
-    .inputField {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      color: ${(props: any): string => props.theme.colors.secondary};
-      border: 1px solid ${(props: any): string => props.theme.colors.secondary};
-      border-radius: 4px;
-      position: relative;
-
-      &Error {
-        box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.error};
-        border-color: transparent;
-        color: ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
-        &:hover {
-          box-shadow: none;
-        }
-      }
-
-      &Disabled {
-        pointer-events: none;
-        /* border-color: ${(props: any): string => props.theme.colors.border}; */
-        background-color: ${(props: any): string =>
-          props.mode === ThemeMode.dark
-            ? transparentize(0.4, props.theme.colors.secondary)
-            : props.theme.colors.border};
-        opacity: 0.4;
-      }
-
+    &Error {
+      border-color: transparent;
+      color: ${(props: any): string =>
+        props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
       &:hover {
-        border: 1px solid
-          ${(props: any): string =>
-            props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500};
+        box-shadow: none;
       }
+    }
 
-      &:focus-within {
-        border-color: transparent;
-        box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.outline};
-      }
+    &Disabled {
+      pointer-events: none;
+      opacity: 0.4;
+    }
+
+    &:hover {
+      border: 1px solid
+        ${(props: any): string =>
+          props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500};
+    }
+
+    &:focus-within {
+      border-color: transparent;
+      box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.outline};
     }
   }
 

@@ -13,7 +13,7 @@ export const colors = {
   outline: '#2296f3',
   light: '#fff',
   border: '#eceff1',
-  secondary: '#90A4AE',
+  secondary: '#767676',
   primary: '#37474f',
   dark: '#14141e',
 };

@@ -96,9 +96,13 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
         <div className={cx('fieldWrapper', error && 'inputFieldError')}>
           <button
             onClick={decrement}
-            className={cx(currentValue === minValue && 'disabled', 'stepperButton', 'stepperButtonDecrement')}
+            className={cx(
+              (currentValue === minValue || disabled) && 'disabled',
+              'stepperButton',
+              'stepperButtonDecrement',
+            )}
             type="button"
-            disabled={currentValue === minValue}
+            disabled={currentValue === minValue || disabled}
           >
             <Icon className={'stepperButtonIcon'} icon={Icon.icons.minus} />
           </button>
@@ -106,15 +110,20 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
             type="number"
             name={name}
             onChange={handleChange}
-            className={'stepperInput'}
+            className={cx('stepperInput', disabled && 'inputFieldDisabled')}
             value={currentValue}
+            disabled={disabled}
             {...inputProps}
             {...props}
           />
           <button
             onClick={increment}
-            disabled={currentValue === maxValue}
-            className={cx(currentValue === maxValue && 'disabled', 'stepperButton', 'stepperButtonIncrement')}
+            disabled={currentValue === maxValue || disabled}
+            className={cx(
+              (currentValue === maxValue || disabled) && 'disabled',
+              'stepperButton',
+              'stepperButtonIncrement',
+            )}
             type="button"
           >
             <Icon className={'stepperButtonIcon'} icon={Icon.icons.plus} />
