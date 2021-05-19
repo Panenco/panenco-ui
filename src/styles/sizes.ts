@@ -1,3 +1,5 @@
+import { PUISizes } from '../utils/types';
+
 export const sizes = {
   xs: { textSize: '12px', lineHeight: '130%' },
   s: { textSize: '14px', lineHeight: '130%' },
@@ -8,4 +10,4 @@ export const sizes = {
   h3: { textSize: '41px', lineHeight: '52px' },
   h2: { textSize: '52px', lineHeight: '66px' },
   h1: { textSize: '66px', lineHeight: '85px' },
-};
+} as PUISizes;

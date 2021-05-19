@@ -3,9 +3,11 @@ import { styled } from 'linaria/react';
 import { useTheme } from 'utils/hooks';
 import { TextSize, PUIColors } from '../../utils/types';
 
-type EnumColors = keyof PUIColors;
+type TextColors = keyof PUIColors;
+type TextColors1 = PUIColors[TextColors];
+
 export interface TextProps extends React.HTMLAttributes<HTMLElement> {
-  color?: string | EnumColors;
+  color?: 'inherit' | TextColors | TextColors1;
   weight?: string | number;
   size?: string | TextSize;
   component?: 'p' | 'span';
@@ -69,6 +71,7 @@ const StyledParagraph = styled.p`
     return props.size.lineHeight;
   }};
   color: ${(props: any): string => {
+    console.log('CHECK TEXT', props.color, props.theme.colors);
     if (typeof props.size === 'string' && Object.keys(props.theme.colors).includes(props.color)) {
       return props.theme.colors[props.color];
     }

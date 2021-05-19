@@ -1,3 +1,5 @@
+import { PUIWeights } from '../utils/types';
+
 export const weights = {
   thin: 100,
   extraLight: 200,
@@ -8,4 +10,4 @@ export const weights = {
   bold: 700,
   extrabold: 800,
   black: 900,
-};
+} as PUIWeights;

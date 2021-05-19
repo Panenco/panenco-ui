@@ -52,7 +52,7 @@ export const AccordionPrimary = React.forwardRef(
               icon={checkTypeIconLeft ? Icon.icons.chevronRight : iconLeft}
             />
           )}
-          <Text weight={theme.typography.weights.bold} className="accordionHeaderTitle">
+          <Text color={theme.colors.accent500} weight={theme.typography.weights.bold} className="accordionHeaderTitle">
             {title}
           </Text>
           {iconsProp &&

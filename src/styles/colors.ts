@@ -1,3 +1,5 @@
+import { PUIColors } from '../utils/types';
+
 export const colors = {
   // project colors
   background50: '#fbe9e7',
@@ -15,4 +17,4 @@ export const colors = {
   secondary: '#90A4AE',
   primary: '#37474f',
   dark: '#14141e',
-};
+} as PUIColors;
