@@ -36,15 +36,15 @@ export type PUIColors = {
 };
 
 export type PUIWeights = {
-  thin: number;
-  extraLight: number;
-  light: number;
-  regular: number;
-  medium: number;
-  semiBold: number;
-  bold: number;
-  extrabold: number;
-  black: number;
+  thin?: number;
+  extraLight?: number;
+  light?: number;
+  regular?: number;
+  medium?: number;
+  semiBold?: number;
+  bold?: number;
+  extrabold?: number;
+  black?: number;
   [key: string]: any;
 };
 
@@ -59,6 +59,7 @@ export type PUISizes = {
   h3: TextSize;
   h2: TextSize;
   h1: TextSize;
+  [key: string]: any;
 };
 
 export type PUITypography = {
