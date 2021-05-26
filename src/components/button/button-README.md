@@ -23,7 +23,7 @@ const render = () => {
 
 This component inherits the attributes of the **button** element and extends the functionality with next properties.
 
-- component - component to be rendered it could be **button** or **Link** from 'react-router-dom';
+- component - component will be rendered it can be **Link** or JSX.Element/React.ReactElement
 - to - path to redirect (prop for **Link** component);
 - icon - icon which will be rendered (default position right);
 - iconLeft - set icon with left position;
@@ -31,12 +31,12 @@ This component inherits the attributes of the **button** element and extends the
 - iconClassName - override styles for icon;
 - ref - ref;
 
-| propName      | propType          | defaultValue | isRequired |
-| ------------- | ----------------- | ------------ | ---------- |
-| component     | string            | -            | -          |
-| to            | string            | -            | -          |
-| icon          | HTMLObjectElement | -            | -          |
-| iconClassName | string            | -            | -          |
-| iconLeft      | ReactNode         | -            | -          |
-| iconRight     | ReactNode         | -            | -          |
-| ref           | React.RefObject   | -            | -          |
+| propName      | propType                                    | defaultValue | isRequired |
+| ------------- | ------------------------------------------- | ------------ | ---------- |
+| component     | 'link' or JSX.Element or React.ReactElement | -            | -          |
+| to            | string                                      | -            | -          |
+| icon          | HTMLObjectElement                           | -            | -          |
+| iconClassName | string                                      | -            | -          |
+| iconLeft      | ReactNode                                   | -            | -          |
+| iconRight     | ReactNode                                   | -            | -          |
+| ref           | React.RefObject                             | -            | -          |

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Icon, Text } from 'components';
 import { useTheme, useMode } from 'utils/hooks';
-
+import { Link } from 'react-router-dom';
 import cx from 'classnames';
 import { StyledButtonIcon } from './style';
 
@@ -10,6 +10,8 @@ export interface ButtonIconProps extends React.ButtonHTMLAttributes<HTMLButtonEl
   iconClassName?: string;
   iconLeft?: boolean;
   color?: string;
+  to?: string;
+  component?: 'link' | JSX.Element | React.ReactElement;
 }
 
 export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
@@ -24,6 +26,8 @@ export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
       style,
       iconClassName,
       color,
+      component,
+      to,
       ...rest
     } = props;
     const theme = useTheme();
@@ -31,6 +35,8 @@ export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
 
     return (
       <StyledButtonIcon
+        as={component === 'link' ? Link : component}
+        to={component === 'link' ? to : null}
         type={type}
         className={cx(iconLeft && 'buttonIconLeft', className)}
         disabled={disabled}
