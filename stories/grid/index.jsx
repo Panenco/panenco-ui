@@ -5,7 +5,7 @@ import React from 'react';
 
 import { decorator } from '../../utils/decorator';
 
-const Column = () => (
+const ColumnContent = () => (
   <div
     style={{
       alignItems: 'center',
@@ -21,66 +21,88 @@ const Column = () => (
 export default decorator('Grid', GridDocs, GridReadme).add('Grid component', () => (
   <>
     <GridContainer>
-      <Row>
+      <Row spacing="3">
         <Col m="6" l="3">
-          <Column />
+          <ColumnContent />
         </Col>
 
         <Col m="6" l="3">
-          <Column />
+          <ColumnContent />
         </Col>
         <Col m="6" l="3">
-          <Column />
+          <ColumnContent />
         </Col>
 
         <Col m="6" l="3">
-          <Column />
+          <ColumnContent />
+        </Col>
+      </Row>
+      <Row spacing="3">
+        <Col>
+          <ColumnContent />
+        </Col>
+        <Col>
+          <ColumnContent />
+        </Col>
+        <Col>
+          <ColumnContent />
+        </Col>
+      </Row>
+      <Row spacing="3">
+        <Col xs="3">
+          <ColumnContent />
+        </Col>
+        <Col xs="6">
+          <ColumnContent />
+        </Col>
+        <Col xs="3">
+          <ColumnContent />
         </Col>
       </Row>
     </GridContainer>
 
     {/* <Row>
       <Col xs="5">
-        <Column />
+        <ColumnContent />
       </Col>
       <Col xs="2">
-        <Column />
+        <ColumnContent />
       </Col>
       <Col xs="5">
-        <Column />
+        <ColumnContent />
       </Col>
     </Row>
     <Row>
       <Col xs="4">
-        <Column />
+        <ColumnContent />
       </Col>
       <Col xs="4">
-        <Column />
+        <ColumnContent />
       </Col>
       <Col xs="4">
-        <Column />
+        <ColumnContent />
       </Col>
     </Row>
     <Row>
       <Col xs="3">
-        <Column />
+        <ColumnContent />
       </Col>
       <Col xs="6">
-        <Column />
+        <ColumnContent />
       </Col>
       <Col xs="3">
-        <Column />
+        <ColumnContent />
       </Col>
     </Row>
     <Row>
       <Col xs="2">
-        <Column />
+        <ColumnContent />
       </Col>
       <Col xs="8">
-        <Column />
+        <ColumnContent />
       </Col>
       <Col xs="2">
-        <Column />
+        <ColumnContent />
       </Col>
     </Row> */}
   </>

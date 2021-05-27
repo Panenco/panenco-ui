@@ -1,13 +1,29 @@
 import * as React from 'react';
-import css from 'classnames';
-import { row } from './style';
+import cx from 'classnames';
+import { Row as StyledRow, row } from './style';
 
-type Props = React.HTMLAttributes<HTMLDivElement>;
+export interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
+  spacing?: number | string | null;
+}
 
-export const Row: React.FunctionComponent<Props> = ({ className, children, ...props }: Props): JSX.Element => {
+export const Row: React.FunctionComponent<RowProps> = ({
+  spacing,
+  className,
+  children,
+  ...props
+}: RowProps): JSX.Element => {
   return (
-    <div {...props} className={css(row, className)}>
+    <StyledRow
+      {...props}
+      className={cx(
+        row,
+        {
+          [`spacing-xs-${spacing}`]: !!spacing,
+        },
+        className,
+      )}
+    >
       {children}
-    </div>
+    </StyledRow>
   );
 };
