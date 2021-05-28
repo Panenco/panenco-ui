@@ -21,14 +21,18 @@ const render = () => {
 
 This component inherits the attributes of the **button** element and extends the functionality with next properties.
 
+- component - component will be rendered it can be **Link** or JSX.Element/React.ReactElement
+- to - path to redirect (prop for **Link** component);
 - icon - icon which will be rendered (default position top);
 - iconClassName - override styles for icon;
 - iconLeft - set icon position;
 - ref - ref;
 
-| propName      | propType          | defaultValue      | isRequired |
-| ------------- | ----------------- | ----------------- | ---------- |
-| icon          | HTMLObjectElement | Icon.icons.filter | +          |
-| iconClassName | string            | -                 | -          |
-| iconLeft      | string            | -                 | -          |
-| ref           | React.RefObject   | -                 | -          |
+| propName      | propType                                    | defaultValue      | isRequired |
+| ------------- | ------------------------------------------- | ----------------- | ---------- |
+| component     | 'link' or JSX.Element or React.ReactElement | -                 | -          |
+| to            | string                                      | -                 | -          |
+| icon          | HTMLObjectElement                           | Icon.icons.filter | +          |
+| iconClassName | string                                      | -                 | -          |
+| iconLeft      | string                                      | -                 | -          |
+| ref           | React.RefObject                             | -                 | -          |

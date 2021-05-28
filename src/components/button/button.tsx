@@ -7,7 +7,7 @@ import { StyledButton } from './style';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   [key: string]: any;
-  component?: string;
+  component?: 'link' | JSX.Element | React.ReactElement;
   to?: string;
   iconClassName?: string;
   icon?: any;
