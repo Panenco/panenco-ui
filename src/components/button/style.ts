@@ -26,6 +26,16 @@ export const StyledButton = styled.button`
     props.color || (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500)};
   cursor: pointer;
 
+  .content {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    &Invisible {
+      visibility: hidden;
+    }
+  }
+
   &.disabled {
     opacity: 0.4;
     pointer-events: none !important;
@@ -108,5 +118,37 @@ export const StyledButton = styled.button`
       background-color: ${({ variant, mode, theme: { colors } }: any): string =>
         getBackgroundColor(variant, mode, colors.dark, colors.background50)};
     }
+  }
+
+  @keyframes load-animation {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+
+  .spinner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    margin-left: -10px;
+    margin-top: -10px;
+    text-indent: -9999em;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: load-animation 2s infinite linear;
+    animation: load-animation 2s infinite linear;
+    border-top-color: rgba(black, 0.2);
+    border-right-color: rgba(black, 0.2);
+    border-bottom-color: rgba(black, 0.2);
+    border-left-color: white;
   }
 `;
