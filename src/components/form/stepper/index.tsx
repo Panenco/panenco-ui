@@ -54,15 +54,15 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
     }, [currentValue]);
 
     const increment = () => {
-      setValue(Number(currentValue) + step);
+      setValue(currentValue + step);
     };
 
     const decrement = () => {
-      setValue(Number(currentValue) - step);
+      setValue(currentValue - step);
     };
 
     const handleChange = (event) => {
-      setValue(event.target.value);
+      setValue(Number(event.target.value));
     };
 
     const isMinValue = typeof minValue !== 'undefined';
@@ -104,7 +104,7 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
             type="button"
             disabled={currentValue === minValue || disabled}
           >
-            <Icon className={'stepperButtonIcon'} icon={Icon.icons.minus} />
+            <Icon className="stepperButtonIcon" icon={Icon.icons.minus} />
           </button>
           <input
             type="number"
@@ -126,7 +126,7 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
             )}
             type="button"
           >
-            <Icon className={'stepperButtonIcon'} icon={Icon.icons.plus} />
+            <Icon className="stepperButtonIcon" icon={Icon.icons.plus} />
           </button>
         </div>
         <div className="inputError">
