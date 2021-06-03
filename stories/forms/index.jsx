@@ -74,10 +74,10 @@ export const StepperComponent = decorator('Forms', StepperDocs, StepperReadme).a
     <WrappedComponent>
       <Row style={{ justifyContent: 'center' }}>
         <Col s="3" m="3" l="3">
-          <StepperInput onChange={(v) => console.log(v)} title="Stepper title" subTitle="Stepper subtitle" />
+          <StepperInput title="Stepper title" subTitle="Stepper subtitle" />
         </Col>
       </Row>
-      <Row style={{ justifyContent: 'center' }}>
+      {/* <Row style={{ justifyContent: 'center' }}>
         <Col s="3" m="3" l="3">
           <StepperInput
             minValue={0}
@@ -126,7 +126,7 @@ export const StepperComponent = decorator('Forms', StepperDocs, StepperReadme).a
             error="Error label"
           />
         </Col>
-      </Row>
+      </Row> */}
     </WrappedComponent>
   );
 });

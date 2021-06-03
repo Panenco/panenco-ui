@@ -8,7 +8,6 @@ import { decorator } from '../../utils/decorator';
 import { WrappedComponent } from '../helpers/wrapped';
 
 export default decorator('Wizard', WizardTrackReadme, WizardTrackReadme).add('Wizard component', () => {
-
   return (
     <WrappedComponent>
       <Row style={{ justifyContent: 'center', margin: '50px auto 0 auto', width: '90%' }}>

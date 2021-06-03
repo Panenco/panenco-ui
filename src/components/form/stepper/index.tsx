@@ -14,7 +14,6 @@ export interface StepperInputProps extends InputComponent, React.InputHTMLAttrib
   step: number;
   iconBefore?: HTMLObjectElement | JSX.Element;
   iconAfter?: HTMLObjectElement | JSX.Element;
-  inputRef?: React.Ref<any>;
   wrapperProps?: WrapperProps;
   inputProps?: InputPropsType;
 }
@@ -34,7 +33,6 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
       error,
       wrapperProps,
       inputProps,
-      inputRef,
       ...props
     }: StepperInputProps,
     ref,
@@ -42,10 +40,11 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
     const theme = useTheme();
     const { mode } = useMode();
 
-    const [currentValue, setValue] = React.useState<number>(value);
+    const [currentValue, setValue] = React.useState(value);
 
     const moreThenAllowed = currentValue > maxValue;
     const lessThanAllowed = currentValue < minValue;
+
 
     React.useEffect(() => {
       if (onChange && !moreThenAllowed && !lessThanAllowed) {
@@ -53,16 +52,17 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
       }
     }, [currentValue]);
 
-    const increment = () => {
-      setValue(currentValue + step);
+    const increment = (): void => {
+      setValue(Number(currentValue) + step);
     };
 
-    const decrement = () => {
-      setValue(currentValue - step);
+    const decrement = (): void => {
+      setValue( Number(currentValue) - step);
     };
 
-    const handleChange = (event) => {
-      setValue(Number(event.target.value));
+    const handleChange = (e: React.FormEvent<HTMLInputElement>): void => {
+
+      setValue(Number(e.currentTarget.value));
     };
 
     const isMinValue = typeof minValue !== 'undefined';
@@ -108,10 +108,9 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
           </button>
           <input
             type="number"
-            name={name}
             onChange={handleChange}
             className={cx('stepperInput', disabled && 'inputFieldDisabled')}
-            value={currentValue}
+            value={Number(currentValue)}
             disabled={disabled}
             {...inputProps}
             {...props}
