@@ -16,10 +16,10 @@ export const breakpoints = {
 // };
 
 export const gridLayout = {
-  xl: { gridSize: 12, gutter: '24px' },
-  l: { break: '1328px', gridSize: 12, gutter: '24px' },
-  ml: { break: '960px', gridSize: 12, gutter: '24px' },
-  m: { break: '840px', gridSize: 12, gutter: '24px' },
-  s: { break: '720px', gridSize: 12, gutter: '16px' },
-  xs: { break: '600px', gridSize: 12, gutter: '16px' },
+  xl: { bottom: '1328px', gridSize: 12, gutter: '24px' },
+  l: { bottom: '960px', break: '1328px', gridSize: 12, gutter: '24px' },
+  ml: { bottom: '840px', break: '960px', gridSize: 12, gutter: '24px' },
+  m: { bottom: '720px', break: '840px', gridSize: 12, gutter: '24px' },
+  s: { bottom: '600px', break: '720px', gridSize: 12, gutter: '16px' },
+  xs: { bottom: '1px', break: '600px', gridSize: 12, gutter: '16px' },
 };

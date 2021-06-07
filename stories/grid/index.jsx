@@ -21,7 +21,7 @@ const ColumnContent = () => (
 export default decorator('Grid', GridDocs, GridReadme).add('Grid component', () => (
   <>
     <GridContainer>
-      <Row spacing="3">
+      <Row spacing={[3, 3]}>
         <Col m="6" l="3">
           <ColumnContent />
         </Col>
@@ -37,7 +37,7 @@ export default decorator('Grid', GridDocs, GridReadme).add('Grid component', () 
           <ColumnContent />
         </Col>
       </Row>
-      <Row spacing="3">
+      <Row spacing="3, 3">
         <Col>
           <ColumnContent />
         </Col>
@@ -49,6 +49,17 @@ export default decorator('Grid', GridDocs, GridReadme).add('Grid component', () 
         </Col>
       </Row>
       <Row spacing="3">
+        <Col>
+          <ColumnContent />
+        </Col>
+        <Col>
+          <ColumnContent />
+        </Col>
+        <Col>
+          <ColumnContent />
+        </Col>
+      </Row>
+      <Row spacing={3}>
         <Col xs="3">
           <ColumnContent />
         </Col>
