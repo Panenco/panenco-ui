@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cx from 'classnames';
-import { Row as StyledRow, row } from './style';
+import { Row as StyledRow } from './style';
 
 export interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
   spacing?: number | string | null;
@@ -24,7 +24,7 @@ export const Row: React.FunctionComponent<RowProps> = ({
     <StyledRow
       {...props}
       className={cx(
-        row,
+        `spacing-xs-auto-auto`,
         {
           [`spacing-xs-${formattedSpacingY || spacing}-${formattedSpacingX || spacing}`]: !!spacing,
         },

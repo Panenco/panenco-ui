@@ -38,20 +38,20 @@ const mediaBreakPointDown = (name, gridLayoutObject = gridLayout, content): any 
   };
 };
 
-const mediaQueriesForRow = () => {
-  let mediaQueries = {};
-  Object.keys(gridLayout).forEach((key) => {
-    const { gutter } = gridLayout[key];
-    const content = {
-      margin: `0 calc((-1/2)*${gutter})`,
-    };
-    mediaQueries = {
-      ...mediaQueries,
-      ...mediaBreakPointDown(key, gridLayout, content),
-    };
-  });
-  return mediaQueries;
-};
+// const mediaQueriesForRow = () => {
+//   let mediaQueries = {};
+//   Object.keys(gridLayout).forEach((key) => {
+//     const { gutter } = gridLayout[key];
+//     const content = {
+//       margin: `0 calc((-1/2)*${gutter})`,
+//     };
+//     mediaQueries = {
+//       ...mediaQueries,
+//       ...mediaBreakPointDown(key, gridLayout, content),
+//     };
+//   });
+//   return mediaQueries;
+// };
 
 const mediaQueriesForColumn = () => {
   let mediaQueries = {
@@ -61,36 +61,38 @@ const mediaQueriesForColumn = () => {
       maxWidth: '100%',
     },
   };
-  Object.keys(gridLayout).forEach((key) => {
-    const max = breakPointMax(key, gridLayout);
-    const breakpoint = `@media (min-width: ${max})`;
-    for (let i = 1; i <= gridLayout[key].gridSize; i += 1) {
-      const hasBreakpoint = Object.prototype.hasOwnProperty.call(mediaQueries, breakpoint);
-      const width = `${Math.round((i / 12) * 10e7) / 10e5}%`;
-      const content = {
-        [`&.col-${key}-${i}`]: {
-          flexBasis: width,
-          flexGrow: 0,
-          maxWidth: width,
-        },
-      };
-      const breakpointObject = mediaBreakPointDown(key, gridLayout, content);
-      if (max && hasBreakpoint) {
-        mediaQueries = {
-          ...mediaQueries,
-          [breakpoint]: {
-            ...mediaQueries[breakpoint],
-            ...breakpointObject[breakpoint],
+  Object.keys(gridLayout)
+    .reverse()
+    .forEach((key) => {
+      const max = breakPointMax(key, gridLayout);
+      const breakpoint = `@media (min-width: ${max})`;
+      for (let i = 1; i <= gridLayout[key].gridSize; i += 1) {
+        const hasBreakpoint = Object.prototype.hasOwnProperty.call(mediaQueries, breakpoint);
+        const width = `${Math.round((i / 12) * 10e7) / 10e5}%`;
+        const content = {
+          [`&.col-${key}-${i}`]: {
+            flexBasis: width,
+            flexGrow: 0,
+            maxWidth: width,
           },
         };
-      } else {
-        mediaQueries = {
-          ...mediaQueries,
-          ...breakpointObject,
-        };
+        const breakpointObject = mediaBreakPointDown(key, gridLayout, content);
+        if (max && hasBreakpoint) {
+          mediaQueries = {
+            ...mediaQueries,
+            [breakpoint]: {
+              ...mediaQueries[breakpoint],
+              ...breakpointObject[breakpoint],
+            },
+          };
+        } else {
+          mediaQueries = {
+            ...mediaQueries,
+            ...breakpointObject,
+          };
+        }
       }
-    }
-  });
+    });
 
   return mediaQueries;
 };
@@ -113,11 +115,21 @@ const mediaQueriesForContainer = () => {
 };
 
 const spacingForRow = () => {
-  let spacingQueries = {};
+  let spacingQueries = {
+    '&.spacing-xs-auto-auto': {
+      boxSizing: 'border-box',
+      display: 'flex',
+      flexWrap: 'wrap',
+    },
+  };
+  let mediaQueries = {};
   for (let i = 0; i <= 10; i += 1) {
     for (let j = 0; j <= 10; j += 1) {
       const content = {
         [`&.spacing-xs-${i}-${j}`]: {
+          boxSizing: 'border-box',
+          display: 'flex',
+          flexWrap: 'wrap',
           margin: `-${j * 4}px -${i * 4}px`,
           width: `calc(100% + ${i * 8}px)`,
           '& > div': {
@@ -132,7 +144,33 @@ const spacingForRow = () => {
       };
     }
   }
-  return { ...spacingQueries };
+  Object.keys(gridLayout)
+    .reverse()
+    .forEach((key) => {
+      const max = breakPointMax(key, gridLayout);
+      const breakpoint = `@media (min-width: ${max})`;
+      if (max) {
+        const content = {
+          [`&.spacing-xs-auto-auto`]: {
+            margin: `-${gridLayout[key].gutter} -${gridLayout[key].gutter}`,
+            width: `calc(100% + ${gridLayout[key].gutter} * 2)`,
+            '& > div': {
+              padding: `${gridLayout[key].gutter} ${gridLayout[key].gutter}`,
+            },
+          },
+        };
+        const breakpointObject = mediaBreakPointDown(key, gridLayout, content);
+        mediaQueries = {
+          ...mediaQueries,
+          [breakpoint]: {
+            ...mediaQueries[breakpoint],
+            ...breakpointObject[breakpoint],
+          },
+        };
+      }
+    });
+
+  return { ...mediaQueries, ...spacingQueries };
 };
 
 export const container = css`
@@ -142,13 +180,13 @@ export const container = css`
   ${mediaQueriesForContainer()};
 `;
 
-export const row = css`
-  align-items: start;
-  display: flex;
-  flex-wrap: wrap;
-  ${mediaQueriesForRow()};
-  /* margin: 0 -8px; */
-`;
+// export const row = css`
+//   align-items: start;
+//   display: flex;
+//   flex-wrap: wrap;
+//   ${mediaQueriesForRow()};
+//   /* margin: 0 -8px; */
+// `;
 
 export const Row = styled.div`
   ${spacingForRow()};
