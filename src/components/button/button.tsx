@@ -1,8 +1,10 @@
-import * as React from 'react';
-import { Icon, Text } from 'components';
 import cx from 'classnames';
-import { useTheme, useMode } from 'utils/hooks';
+import { Icon, Text } from 'components';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
+import { useMode, useTheme } from 'utils/hooks';
+
+import Spinner from './spinner';
 import { StyledButton } from './style';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -33,6 +35,7 @@ export const Button = React.forwardRef<any, ButtonProps>(
       tabIndex,
       variant = 'default',
       color,
+      isLoading,
       ...props
     }: ButtonProps,
     ref,
@@ -40,12 +43,14 @@ export const Button = React.forwardRef<any, ButtonProps>(
     const theme = useTheme();
     const { mode } = useMode();
 
+    const isDisabled = disabled || isLoading;
+
     return (
       <StyledButton
         as={component === 'link' ? Link : component}
         type={type}
-        disabled={disabled}
-        className={cx(disabled && 'disabled', iconLeft && 'iconLeft', iconRight && 'iconRight', className)}
+        disabled={isDisabled}
+        className={cx(iconLeft && 'iconLeft', iconRight && 'iconRight', className)}
         theme={theme}
         mode={mode}
         ref={ref}
@@ -53,17 +58,23 @@ export const Button = React.forwardRef<any, ButtonProps>(
         variant={variant}
         {...props}
         to={component === 'link' ? to : null}
-        tabIndex={tabIndex || (disabled && component === 'link') ? -1 : null}
+        tabIndex={tabIndex || (isDisabled && component === 'link') ? -1 : null}
       >
-        {((icon && iconLeft) || iconLeft) && (
-          <Icon icon={icon || iconLeft} className={cx('buttonIcon', iconLeft && 'buttonIconLeft', iconClassName)} />
-        )}
-        <Text className="buttonTitle" size={theme.typography.sizes.m}>
-          {children}
-        </Text>
-        {((icon && !iconLeft) || iconRight) && (
-          <Icon icon={icon || iconRight} className={cx('buttonIcon', iconRight && 'buttonIconRight', iconClassName)} />
-        )}
+        <div className={cx('content', isLoading && 'contentInvisible')}>
+          {((icon && iconLeft) || iconLeft) && (
+            <Icon icon={icon || iconLeft} className={cx('buttonIcon', iconLeft && 'buttonIconLeft', iconClassName)} />
+          )}
+          <Text className="buttonTitle" size={theme.typography.sizes.m}>
+            {children}
+          </Text>
+          {((icon && !iconLeft) || iconRight) && (
+            <Icon
+              icon={icon || iconRight}
+              className={cx('buttonIcon', iconRight && 'buttonIconRight', iconClassName)}
+            />
+          )}
+        </div>
+        {isLoading && <Spinner />}
       </StyledButton>
     );
   },
