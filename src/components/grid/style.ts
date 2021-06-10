@@ -38,21 +38,6 @@ const mediaBreakPointDown = (name, gridLayoutObject = gridLayout, content): any 
   };
 };
 
-// const mediaQueriesForRow = () => {
-//   let mediaQueries = {};
-//   Object.keys(gridLayout).forEach((key) => {
-//     const { gutter } = gridLayout[key];
-//     const content = {
-//       margin: `0 calc((-1/2)*${gutter})`,
-//     };
-//     mediaQueries = {
-//       ...mediaQueries,
-//       ...mediaBreakPointDown(key, gridLayout, content),
-//     };
-//   });
-//   return mediaQueries;
-// };
-
 const mediaQueriesForColumn = () => {
   let mediaQueries = {
     '&.col-auto': {
@@ -179,14 +164,6 @@ export const container = css`
   margin: 0 auto;
   ${mediaQueriesForContainer()};
 `;
-
-// export const row = css`
-//   align-items: start;
-//   display: flex;
-//   flex-wrap: wrap;
-//   ${mediaQueriesForRow()};
-//   /* margin: 0 -8px; */
-// `;
 
 export const Row = styled.div`
   ${spacingForRow()};

@@ -11,7 +11,7 @@ import { Row, Col, GridContainer } from '@panenco/ui';
 
 const render  = () => {
   return (
-    <Row>
+    <Row spacing={3}>
       <Col s="1" m="2" l="4" xl="4" >{children}</Col>
       <Col s="2" m="2" l="4" xl="4" >{children}</Col>
       <Col s="1" m="4" l="4" xl="4" >{children}</Col>
@@ -25,7 +25,13 @@ const render  = () => {
 
 ### Row Properties
 
-Row component inherits the attributes of the **div** element.
+Row component inherits the attributes of the **div** element and extends the functionality with next properties.
+
+- `spacing` - size of intervals between columns ( can be set from 1 to 12 and will be multiply by 8px);
+
+| propName | propType                  | defaultValue             | isRequired | spacing size (max value in a prop) |
+| -------- | ------------------------- | ------------------------ | ---------- | ---------------------------------- |
+| spacing  | string or number or array | according to breakpoinst | -          | 12                                 |
 
 ### Column Properties
 
