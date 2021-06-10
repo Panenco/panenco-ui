@@ -36,7 +36,7 @@ export const StyledButton = styled.button`
     }
   }
 
-  &.disabled {
+  &:disabled {
     opacity: 0.4;
     pointer-events: none !important;
   }

@@ -50,7 +50,7 @@ export const Button = React.forwardRef<any, ButtonProps>(
         as={component === 'link' ? Link : component}
         type={type}
         disabled={isDisabled}
-        className={cx(isDisabled && 'disabled', iconLeft && 'iconLeft', iconRight && 'iconRight', className)}
+        className={cx(iconLeft && 'iconLeft', iconRight && 'iconRight', className)}
         theme={theme}
         mode={mode}
         ref={ref}
