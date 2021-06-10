@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import useWindowSize from './useWindowSize';
 
 const styles = {
@@ -17,13 +18,24 @@ const styles = {
 };
 
 // Usage
-function ScreenDimensions() {
+function ScreenDimensions({ children }) {
   const size = useWindowSize();
   return (
-    <div style={styles}>
-      {size.width}px / {size.height}px
-    </div>
+    <>
+      {children}
+      <div style={styles}>
+        {size.width}px / {size.height}px
+      </div>
+    </>
   );
 }
+
+ScreenDimensions.propTypes = {
+  children: PropTypes.node,
+};
+
+ScreenDimensions.defaultProps = {
+  children: null,
+};
 
 export default ScreenDimensions;
