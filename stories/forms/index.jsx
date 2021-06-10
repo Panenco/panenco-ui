@@ -74,7 +74,7 @@ export const StepperComponent = decorator('Forms', StepperDocs, StepperReadme).a
     <WrappedComponent>
       <Row style={{ justifyContent: 'center' }}>
         <Col s="3" m="3" l="3">
-          <StepperInput title="Stepper title" subTitle="Stepper subtitle" />
+          <StepperInput title="Stepper title" subTitle="Stepper subtitle" error='Error' />
         </Col>
       </Row>
       {/* <Row style={{ justifyContent: 'center' }}>

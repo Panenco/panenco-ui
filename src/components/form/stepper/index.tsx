@@ -45,7 +45,6 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
     const moreThenAllowed = currentValue > maxValue;
     const lessThanAllowed = currentValue < minValue;
 
-
     React.useEffect(() => {
       if (onChange && !moreThenAllowed && !lessThanAllowed) {
         onChange(currentValue);
@@ -57,11 +56,10 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
     };
 
     const decrement = (): void => {
-      setValue( Number(currentValue) - step);
+      setValue(Number(currentValue) - step);
     };
 
     const handleChange = (e: React.FormEvent<HTMLInputElement>): void => {
-
       setValue(Number(e.currentTarget.value));
     };
 
@@ -74,14 +72,7 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
     const notInRange = (isMinValue || isMaxValue) && (moreThenAllowed || lessThanAllowed);
 
     return (
-      <StyledStepperInput
-        className={cx('stepper', className)}
-        error={error}
-        theme={theme}
-        mode={mode}
-        ref={ref}
-        {...wrapperProps}
-      >
+      <StyledStepperInput className={cx('stepper', className)} theme={theme} mode={mode} ref={ref} {...wrapperProps}>
         {title && (
           <Text weight={theme.typography.weights.bold} size={theme.typography.sizes.m} className="inputTitle">
             {title}

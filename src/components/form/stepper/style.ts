@@ -1,7 +1,10 @@
 import { styled } from 'linaria/react';
-import { ThemeMode } from 'utils/types';
+import { PUITheme, ThemeMode } from 'utils/types';
 
-export const StyledStepperInput = styled.div`
+export const StyledStepperInput = styled.div<{
+  mode: ThemeMode;
+  theme: PUITheme;
+}>`
   box-sizing: border-box;
   background-color: transparent;
   display: flex;
