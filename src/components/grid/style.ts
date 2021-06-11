@@ -15,7 +15,7 @@ const breakPointPrev = (
   return null;
 };
 
-const breakPointMax = (name: string, gridLayoutObject = gridLayout): any => {
+const breakPointMax = (name: string, gridLayoutObject = gridLayout): string | null => {
   const prev = breakPointPrev(name, gridLayoutObject);
   const corilationValue = 0.02; // Uses 0.02px rather than 0.01px to work around a current rounding bug in Safari.
   if (prev !== null) {

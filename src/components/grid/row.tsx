@@ -12,8 +12,8 @@ export const Row: React.FunctionComponent<RowProps> = ({
   children,
   ...props
 }: RowProps): JSX.Element => {
-  let formattedSpacingX;
-  let formattedSpacingY;
+  let formattedSpacingX = spacing;
+  let formattedSpacingY = spacing;
   if (typeof spacing === 'string' && spacing.includes(',')) {
     const re = /\s*,\s*/;
     [formattedSpacingX, formattedSpacingY] = spacing.split(re);
@@ -26,7 +26,7 @@ export const Row: React.FunctionComponent<RowProps> = ({
       className={cx(
         `spacing-xs-auto-auto`,
         {
-          [`spacing-xs-${formattedSpacingY || spacing}-${formattedSpacingX || spacing}`]: !!spacing,
+          [`spacing-xs-${formattedSpacingY}-${formattedSpacingX}`]: !!spacing,
         },
         className,
       )}

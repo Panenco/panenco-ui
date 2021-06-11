@@ -3,13 +3,15 @@ import * as React from 'react';
 
 import { Col as StyledCol } from './style';
 
+type ColSize = number | string | null;
+
 export interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
-  xs?: number | string | null;
-  s?: number | string | null;
-  m?: number | string | null;
-  ml?: number | string | null;
-  l?: number | string | null;
-  xl?: number | string | null;
+  xs?: ColSize;
+  s?: ColSize;
+  m?: ColSize;
+  ml?: ColSize;
+  l?: ColSize;
+  xl?: ColSize;
 }
 
 export const Col = ({ className, xs, s, m, ml, l, xl, children, ...props }: ColProps): JSX.Element => {
