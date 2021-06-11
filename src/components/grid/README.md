@@ -31,6 +31,8 @@ Row component inherits the attributes of the **div** element and extends the fun
 
 `spacing` can be set using single number, single string, string with two values separated `,` and by array. First values is `x-axis` interval, second is `y-axis` interval.
 
+spacing css class (example: `spacing-auto-3-3`) consist of starting breakpoint, `x-axis` multiplier and `y-axis` multiplier.
+
 | propName | propType                  | defaultValue             | isRequired | spacing size (max value in a prop) |
 | -------- | ------------------------- | ------------------------ | ---------- | ---------------------------------- |
 | spacing  | string or number or array | according to breakpoinst | -          | 12                                 |
