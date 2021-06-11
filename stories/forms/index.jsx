@@ -74,15 +74,15 @@ export const StepperComponent = decorator('Forms', StepperDocs, StepperReadme).a
     <WrappedComponent>
       <Row style={{ justifyContent: 'center' }}>
         <Col s="3" m="3" l="3">
-          <StepperInput title="Stepper title" subTitle="Stepper subtitle" error='Error' />
+          <StepperInput title="Stepper with error" subTitle="Stepper subtitle" error='Error' />
         </Col>
       </Row>
-      {/* <Row style={{ justifyContent: 'center' }}>
+      <Row style={{ justifyContent: 'center' }}>
         <Col s="3" m="3" l="3">
           <StepperInput
             minValue={0}
             maxValue={5}
-            error="Error label"
+            
             onChange={(v) => console.log(v)}
             title="Min and Max"
             subTitle="Stepper subtitle"
@@ -96,7 +96,6 @@ export const StepperComponent = decorator('Forms', StepperDocs, StepperReadme).a
             onChange={(v) => console.log(v)}
             title="Min"
             subTitle="Stepper subtitle"
-            error="Error label"
           />
         </Col>
       </Row>
@@ -107,13 +106,12 @@ export const StepperComponent = decorator('Forms', StepperDocs, StepperReadme).a
             onChange={(v) => console.log(v)}
             title="Max"
             subTitle="Stepper subtitle"
-            error="Error label"
           />
         </Col>
       </Row>
       <Row style={{ justifyContent: 'center' }}>
         <Col s="3" m="3" l="3">
-          <StepperInput onChange={(v) => console.log(v)} title="No" subTitle="Stepper subtitle" error="Error label" />
+          <StepperInput onChange={(v) => console.log(v)} title="No" subTitle="Stepper subtitle" />
         </Col>
       </Row>
       <Row style={{ justifyContent: 'center' }}>
@@ -123,10 +121,9 @@ export const StepperComponent = decorator('Forms', StepperDocs, StepperReadme).a
             onChange={(v) => console.log(v)}
             title="No"
             subTitle="Stepper subtitle"
-            error="Error label"
           />
         </Col>
-      </Row> */}
+      </Row> 
     </WrappedComponent>
   );
 });
