@@ -38,12 +38,7 @@ export default decorator('Select', SelectInputDocs, README).add('Select componen
     <WrappedComponent style={{ minHeight: '500px' }}>
       <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start' }}>
         <Col s="2" m="4" l="4">
-          <SelectInput
-            options={options}
-            title="Single Select"
-            subTitle="Sub title"
-            placeholder="Choose one option"
-          />
+          <SelectInput options={options} title="Single Select" subTitle="Sub title" placeholder="Choose one option" />
         </Col>
         <Col s="2" m="4" l="4">
           <SelectInput
