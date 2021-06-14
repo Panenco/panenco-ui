@@ -11,15 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      # - uses: actions/setup-node@v1
-      #   with:
-      #     node-version: 12
-      # - run: npm install
-      # - run: npm run build
+
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
+        with:
+          useLockFile: false
 
-      - name: Build data
+      - name: Build app
         run: yarn build
 
       # - run: npm prepublishOnly
