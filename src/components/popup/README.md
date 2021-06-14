@@ -3,18 +3,32 @@
 ### Usage
 
 ```js
-...
 import { Popup } from '@panenco/ui';
 
-const render  = () => {
+const YourComponent = () => {
+  const [popupOpen, setPopupOpen] = useState(false);
+
+  const handlePopupShow = () => {
+    setPopupOpen(true);
+  }
+  const handlePopupHide = () => {
+    setPopupOpen(false);
+  }
 
   return (
-    <Popup content="Popup message will show up here" position="bottom">
-      <button>Button</button>
-    </Popup>
-  )
-}
-...
+    <>
+      <PrimaryButton onClick={handlePopupShow}>Open modal</PrimaryButton>
+      <Popup
+        show={popupOpen}
+        onHide={handlePopupHide}
+        title="Title"
+        description="Description text"
+      >
+        <p>Popup body</p>
+      </Popup>
+    </>
+  );
+});
 ```
 
 <!-- STORY -->
@@ -23,15 +37,21 @@ const render  = () => {
 
 This component inherits the attributes of the **div** element and extends the functionality with next properties.
 
-- content - content of the tooltip;
-- delay - delay displaying tooltip;
-- position - position of the tooltip (top, right, left, bottom);
+- title - title of the modal;
+- description - description of the modal;
+- onHide - a callback fired when the header closeButton or backdrop is clicked;
+- show - when true The popup will show itself;
+- clickOutHide - trigger an "onHide" when backdrop clicked;
+- closeBtn - specify whether the Component should contain a close button;
 - ref - ref;
 
-| propName | propType        | defaultValue | isRequired |
-| -------- | --------------- | ------------ | ---------- |
-| children | React.ReactNode | \_           | +          |
-| ref      | React.RefObject | -            | -          |
-| content  | React.ReactNode | -            | +          |
-| delay    | number          | 400          | \_         |
-| position | string          | top          | \_         |
+| propName     | propType        | defaultValue | isRequired |
+| ------------ | --------------- | ------------ | ---------- |
+| children     | React.ReactNode | -            | -          |
+| ref          | React.RefObject | -            | -          |
+| title        | string          | -            | -          |
+| description  | string          | -            | -          |
+| onHide       | any             | -            | +          |
+| show         | boolean         | -            | +          |
+| clickOutHide | boolean         | true         | -          |
+| closeBtn     | boolean         | true         | -          |
