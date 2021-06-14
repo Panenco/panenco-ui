@@ -15,9 +15,6 @@ jobs:
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
 
-      # - name: Clean
-      #   run: yarn clean
-
       - name: Build app
         run: yarn build
 
