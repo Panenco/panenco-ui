@@ -40,11 +40,11 @@ export const StyledPopup = styled.div`
   border-radius: 4px;
   outline: 0;
   @media (max-width: ${breakpoints.s}) {
-    max-height: 500px;
+    max-height: min(100%, 500px);
     margin-top: auto;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: auto;
   }
 `;
 

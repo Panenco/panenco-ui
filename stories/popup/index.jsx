@@ -26,9 +26,6 @@ export default decorator('Popup', PopupDocs, README).add('Popup component', () =
           <TextInput placeholder="Icon before" iconBefore={Icon.icons.mapPin} />
         </div>
         <div style={{marginBottom: '16px'}}>
-          <TextArea subTitle="Subtitle" placeholder="Placeholder" />
-        </div>
-        <div style={{marginBottom: '16px'}}>
           <TextInput placeholder="Icon before" iconBefore={Icon.icons.mapPin} />
         </div>
         <div style={{marginBottom: '16px'}}>
