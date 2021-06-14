@@ -27,6 +27,7 @@ import SwitchStory from './switch';
 import TextStory from './text';
 import TooltipStory from './tooltip';
 import WizardStory from './wizard';
+import PopupStory from './popup';
 
 // import AvatarStory from './avatar';
 storiesOf('Accordion', AccordionStory);
@@ -54,3 +55,4 @@ storiesOf('Wizard', WizardStory);
 storiesOf('Banners', BannersStory);
 storiesOf('Switcher', SwitchStory);
 storiesOf('Tooltip', TooltipStory);
+storiesOf('Popup', PopupStory);
