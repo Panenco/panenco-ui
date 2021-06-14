@@ -23,6 +23,7 @@ export const StyledPopupBody = styled.div`
     padding: 0 16px 16px 16px;
     overflow-x: hidden;
     overflow-y: auto;
+    flex: 1;
   }
 `;
 
@@ -41,6 +42,9 @@ export const StyledPopup = styled.div`
   @media (max-width: ${breakpoints.s}) {
     max-height: 500px;
     margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
 `;
 
