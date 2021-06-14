@@ -40,10 +40,10 @@ export default {
     }),
     typescript({
       clean: true,
-      tsconfigDefaults: {
-        declaration: true,
-        jsx: 'react',
-      },
+      // tsconfigDefaults: {
+      //   declaration: true,
+      //   jsx: 'react',
+      // },
     }),
     linaria({
       sourceMap: process.env.NODE_ENV !== 'production',
