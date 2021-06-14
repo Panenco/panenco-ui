@@ -26,7 +26,7 @@ const NotifyBody = ({ children, status, undo, closeToast }: any): JSX.Element =>
     icon = Icon.icons.info;
   }
 
-  const handleUndo = () => {
+  const handleUndo = (): void => {
     undo();
     closeToast();
   };
@@ -38,7 +38,7 @@ const NotifyBody = ({ children, status, undo, closeToast }: any): JSX.Element =>
         {typeof children === 'string' ? <Text className="Toastify__toast-body--content">{children}</Text> : children}
 
         {undo ? (
-          <button className="bodyContentUndo" onClick={handleUndo}>
+          <button className="bodyContentUndo" onClick={handleUndo} type="button">
             <Text size={sizes.m} color={colors.accent500}>
               Undo
             </Text>
@@ -53,7 +53,7 @@ const baseOptions = {
   closeButton: <CloseButton />,
   draggable: false,
   closeOnClick: false,
-  onChange: () => {},
+  onChange: (): void => {},
   // progress: 1,
   // autoClose: false as false,
   hideProgressBar: true,
