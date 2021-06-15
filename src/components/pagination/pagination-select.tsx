@@ -9,17 +9,16 @@ import { StyledPagination, StyledListPagination } from './styles';
 export type PaginationProps = {
   [key: string]: any;
   totalItems?: number;
-  perPage?: number;
-  formatUrl?: any;
-  currentPage?: number;
+  perPage: number;
+  currentPage: number;
   disabled?: boolean;
 } & (
   | {
       type?: 'table';
       contentBeforeSelect?: string;
       options?: any;
-      onPageChange?: any;
-      onPerPageChange?: any;
+      onPageChange: any;
+      onPerPageChange: any;
     }
   | {
       type?: 'list';
@@ -30,7 +29,7 @@ export type PaginationProps = {
       variant?: 'contained' | 'outlined' | 'text';
     }
 ) &
-  ({ component?: 'link' } | { component?: 'button'; onButtonClick: (page: number) => void }) &
+  ({ component?: 'link'; formatUrl: any } | { component?: 'button'; onButtonClick: (page: number) => void }) &
   React.HTMLAttributes<HTMLDivElement>;
 
 export type PaginationComponentProps = {
@@ -40,11 +39,9 @@ export type PaginationComponentProps = {
   theme: PUITheme;
   from: number;
   to: number;
-  setPerPage: (val: number) => void;
   pagesAmount: number;
   isFirst: boolean;
   isLast: boolean;
-  setCurrentPage: (val: number) => void;
   pagesOptions: { value: number; label: number }[];
 } & PaginationProps;
 
@@ -87,12 +84,10 @@ const TablePagination = ({
   from,
   to,
   perPage,
-  setPerPage,
   currentPage,
   pagesAmount,
   isFirst,
   disabled,
-  setCurrentPage,
   formatUrl,
   pagesOptions,
   isLast,
@@ -120,7 +115,7 @@ const TablePagination = ({
           isSearchable={false}
           styles={additionStyles()}
           isDisabled={disabled}
-          onChange={onPerPageChange || ((option): void => setPerPage(option.value))}
+          onChange={onPerPageChange}
           value={options.find((option) => Number(option.value) === Number(perPage))}
         />
         <div className={cx('paginationDivider', 'paginationDividerLeft')} />
@@ -135,15 +130,9 @@ const TablePagination = ({
         <div className={cx('paginationDivider', 'paginationDividerRight')} />
         <PageComponent
           className={cx('paginationButton', (isFirst || disabled) && 'paginationButtonDisabled')}
-          onClick={
-            onButtonClick
-              ? (): void => {
-                  onButtonClick(currentPage - 1);
-                }
-              : (): void => {
-                  setCurrentPage(currentPage - 1);
-                }
-          }
+          onClick={(): void => {
+            onButtonClick(currentPage - 1);
+          }}
           to={
             typeof formatUrl === 'object'
               ? { ...formatUrl, pathname: formatUrl.pathname(currentPage) }
@@ -160,20 +149,14 @@ const TablePagination = ({
           isSearchable={false}
           styles={additionStyles()}
           isDisabled={disabled}
-          onChange={onPageChange || ((option): void => setCurrentPage(option.value))}
+          onChange={onPageChange}
           value={pagesOptions.find((option) => Number(option.value) === Number(currentPage))}
         />
         <PageComponent
           className={cx('paginationButton', (isLast || disabled) && 'paginationButtonDisabled')}
-          onClick={
-            onButtonClick
-              ? (): void => {
-                  onButtonClick(currentPage + 1);
-                }
-              : (): void => {
-                  setCurrentPage(currentPage + 1);
-                }
-          }
+          onClick={(): void => {
+            onButtonClick(currentPage + 1);
+          }}
           to={
             typeof formatUrl === 'object'
               ? { ...formatUrl, pathname: formatUrl.pathname(currentPage + 2) }
@@ -191,7 +174,6 @@ const ListPagination = ({
   pagesAmount,
   currentPage,
   formatUrl,
-  setCurrentPage,
   isFirst,
   isLast,
   disabled,
@@ -206,10 +188,6 @@ const ListPagination = ({
   const items = generateItems({ pagesAmount, currentPage: currentPage + 1, ...otherProps });
   const PageComponent = component === 'link' ? Link : 'button';
 
-  const handleButtonClick = (page) => () => {
-    return onButtonClick ? onButtonClick(page) : setCurrentPage(page);
-  };
-
   const renderListItem = (item: string | number): JSX.Element => {
     switch (item) {
       case 'ellipsis':
@@ -218,7 +196,7 @@ const ListPagination = ({
         return (
           <PageComponent
             className={cx('paginationListItem', disabled && 'paginationButtonDisabled')}
-            onClick={handleButtonClick(0)}
+            onClick={() => onButtonClick(0)}
             to={typeof formatUrl === 'object' ? { ...formatUrl, pathname: formatUrl.pathname(1) } : formatUrl(1)}
           >
             First
@@ -228,7 +206,7 @@ const ListPagination = ({
         return (
           <PageComponent
             className={cx('paginationListItem', disabled && 'paginationButtonDisabled')}
-            onClick={handleButtonClick(pagesAmount - 1)}
+            onClick={() => onButtonClick(pagesAmount - 1)}
             to={
               typeof formatUrl === 'object'
                 ? { ...formatUrl, pathname: formatUrl.pathname(pagesAmount) }
@@ -242,7 +220,7 @@ const ListPagination = ({
         return (
           <PageComponent
             className={cx('paginationListItem', (isFirst || disabled) && 'paginationButtonDisabled')}
-            onClick={handleButtonClick(currentPage - 1)}
+            onClick={() => onButtonClick(currentPage - 1)}
             to={
               typeof formatUrl === 'object'
                 ? { ...formatUrl, pathname: formatUrl.pathname(currentPage) }
@@ -257,7 +235,7 @@ const ListPagination = ({
         return (
           <PageComponent
             className={cx('paginationListItem', (isLast || disabled) && 'paginationButtonDisabled')}
-            onClick={handleButtonClick(currentPage + 1)}
+            onClick={() => onButtonClick(currentPage + 1)}
             to={
               typeof formatUrl === 'object'
                 ? { ...formatUrl, pathname: formatUrl.pathname(currentPage + 2) }
@@ -276,7 +254,7 @@ const ListPagination = ({
               disabled && 'paginationButtonDisabled',
               currentPage === (item as number) - 1 && 'paginationListItemActive',
             )}
-            onClick={handleButtonClick((item as number) - 1)}
+            onClick={() => onButtonClick((item as number) - 1)}
             to={typeof formatUrl === 'object' ? { ...formatUrl, pathname: formatUrl.pathname(item) } : formatUrl(item)}
           >
             {item}
@@ -301,17 +279,16 @@ const ListPagination = ({
 export const PaginationSelect = ({
   contentBeforeSelect = 'Show rows:',
   totalItems = 150,
-  perPage: perPageProp = 12,
+  perPage = 12,
   formatUrl = (path?: any): string => path,
-  currentPage: currentPageProp = 0,
+  onButtonClick = () => {},
+  currentPage = 0,
   disabled = false,
   options = defaultOptions,
   type = 'list',
   variant = 'contained',
   ...otherProps
 }: PaginationProps): JSX.Element => {
-  const [perPage, setPerPage] = React.useState(perPageProp);
-  const [currentPage, setCurrentPage] = React.useState(currentPageProp);
   const from = currentPage * perPage + 1;
 
   const isFirst = Number(currentPage) === 0;
@@ -334,12 +311,11 @@ export const PaginationSelect = ({
       from={from}
       to={to}
       perPage={perPage}
-      setPerPage={setPerPage}
       currentPage={currentPage}
       pagesAmount={pagesAmount}
       isFirst={isFirst}
       disabled={disabled}
-      setCurrentPage={setCurrentPage}
+      onButtonClick={onButtonClick}
       formatUrl={formatUrl}
       pagesOptions={pagesOptions}
       isLast={isLast}

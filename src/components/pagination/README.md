@@ -62,15 +62,15 @@ This component inherits the attributes of the **div** element and extends the fu
 | showFirstButton | boolean                             | false        | -          |
 | showLastButton  | boolean                             | false        | -          |
 | siblingCount    | number                              | 1            | -          |
-| currentPage     | number                              | 0            | -          |
-| totalItems      | number                              | 150          | -          |
-| perPage         | number                              | 12           | -          |
-| formatUrl       | number                              | -            | -          |
+| currentPage     | number                              | 0            | +          |
+| totalItems      | number                              | 150          | +          |
+| perPage         | number                              | 12           | +          |
+| formatUrl       | number                              | -            | +          |
 | disabled        | boolean                             | false        | -          |
 | options         | {value: number, label: number}[]    | options      | -          |
 | type            | 'table' or 'list'                   | 'list'       | -          |
 | variant         | 'contained' or 'outlined' or 'text' | 'contained'  | -          |
-| onPageChange    | func                                | -            | -          |
-| onPerPageChange | func                                | -            | -          |
-| onButtonClick   | func                                | -            | -          |
+| onPageChange    | func                                | -            | +          |
+| onPerPageChange | func                                | -            | +          |
+| onButtonClick   | func                                | -            | +          |
 | component       | 'link' or 'button'                  | 'link'       | -          |

@@ -10,7 +10,23 @@ import { BrowserRouter } from 'react-router-dom';
 import { decorator } from '../../utils/decorator';
 import { WrappedComponent } from '../helpers/wrapped';
 
-export default decorator('Pagination', PaginationDocs, PaginationReadme).add('Pagination component', () => {
+export const TablePagination = decorator('Pagination', PaginationDocs, PaginationReadme).add('TablePagination component', () => {
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(12);
+
+  const handleChangePage = (option) => {
+    setPage(Number(option.value));
+  };
+
+  const handleChangeRowsPerPage = (option) => {
+    setRowsPerPage(Number(option.value));
+    setPage(0);
+  };
+
+  const handleButtonClick = (val) => {
+    setPage(val);
+  }
+
   return (
     <WrappedComponent>
       <BrowserRouter>
@@ -18,23 +34,44 @@ export default decorator('Pagination', PaginationDocs, PaginationReadme).add('Pa
           <Col s="3" m="6" l="12">
             <PaginationSelect
             type="table"
-            component="button"
-            currentPage={Number(0)}
+            component="link"
+            currentPage={page}
+            onPageChange={handleChangePage}
+            onPerPageChange={handleChangeRowsPerPage}
+            onButtonClick={handleButtonClick}
           totalItems={201}
           formatUrl={p => `/page/${p}`}
-          perPage={24}
+          perPage={rowsPerPage}
             />
           </Col>
         </Row>
+      </BrowserRouter>
+    </WrappedComponent>
+  );
+});
+
+
+export default decorator('Pagination', PaginationDocs, PaginationReadme).add('Pagination component', () => {
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(12);
+
+  const handleButtonClick = (val) => {
+    setPage(val);
+  }
+
+  return (
+    <WrappedComponent>
+      <BrowserRouter>
         <Row style={{ justifyContent: 'center', marginTop: '20px' }}>
           <Col s="3" m="6" l="6">
             <PaginationSelect
             type="list"
             variant="contained"
-            currentPage={Number(0)}
-          totalItems={201}
-          formatUrl={p => `/page/${p}`}
-          perPage={10}
+            totalItems={201}
+            formatUrl={p => `/page/${p}`}
+            perPage={rowsPerPage}
+            currentPage={page}
+            onButtonClick={handleButtonClick}
             />
           </Col>
         </Row>
@@ -43,9 +80,11 @@ export default decorator('Pagination', PaginationDocs, PaginationReadme).add('Pa
             <PaginationSelect
             type="list"
             variant="outlined"
-              formatUrl={(path = 'path') => {
-                return path;
-              }}
+            totalItems={201}
+            formatUrl={p => `/page/${p}`}
+            perPage={rowsPerPage}
+            currentPage={page}
+            onButtonClick={handleButtonClick}
             />
           </Col>
         </Row>
@@ -54,9 +93,11 @@ export default decorator('Pagination', PaginationDocs, PaginationReadme).add('Pa
             <PaginationSelect
             type="list"
             variant="text"
-              formatUrl={(path = 'path') => {
-                return path;
-              }}
+            totalItems={201}
+            formatUrl={p => `/page/${p}`}
+            perPage={rowsPerPage}
+            currentPage={page}
+            onButtonClick={handleButtonClick}
             />
           </Col>
         </Row>
@@ -66,11 +107,12 @@ export default decorator('Pagination', PaginationDocs, PaginationReadme).add('Pa
             type="list"
             variant="text"
             component="button"
+            onButtonClick={handleButtonClick}
             showFirstButton
             showLastButton
-              formatUrl={(path = 'path') => {
-                return path;
-              }}
+            totalItems={201}
+            perPage={rowsPerPage}
+            currentPage={page}
             />
           </Col>
         </Row>
