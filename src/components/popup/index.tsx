@@ -55,40 +55,44 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
         document.body.style.paddingRight = '0';
       }
     }, [show]);
+
+    const emptyHeader: boolean = !title && !description && !closeBtn;
     return ReactDOM.createPortal(
       <>
         {show && (
           <>
-            <StyledPopupBackdrop />
+            <StyledPopupBackdrop theme={theme} />
 
             <StyledPopupContainer onClick={clickOutHide && onHide}>
               <StyledPopup onClick={popupStopPropagation} className={cx(className)} ref={ref} theme={theme} {...props}>
-                <StyledPopupHeader>
-                  <StyledPopupHeaderTitleRow>
-                    <StyledPopupTitle>
-                      {title && (
-                        <Text
-                          size={theme.typography.sizes.l}
-                          weight={theme.typography.weights.bold}
-                          color={theme.colors.dark}
-                        >
-                          {title}
-                        </Text>
+                {!emptyHeader && (
+                  <StyledPopupHeader>
+                    <StyledPopupHeaderTitleRow>
+                      <StyledPopupTitle>
+                        {title && (
+                          <Text
+                            size={theme.typography.sizes.l}
+                            weight={theme.typography.weights.bold}
+                            color={theme.colors.dark}
+                          >
+                            {title}
+                          </Text>
+                        )}
+                      </StyledPopupTitle>
+                      {closeBtn && (
+                        <div>
+                          <ButtonIcon onClick={onHide} icon={Icon.icons.delete} />
+                        </div>
                       )}
-                    </StyledPopupTitle>
-                    {closeBtn && (
-                      <div>
-                        <ButtonIcon onClick={onHide} icon={Icon.icons.delete} />
-                      </div>
+                    </StyledPopupHeaderTitleRow>
+                    {description && (
+                      <Text size={theme.typography.sizes.m} color={theme.colors.dark}>
+                        {description}
+                      </Text>
                     )}
-                  </StyledPopupHeaderTitleRow>
-                  {description && (
-                    <Text size={theme.typography.sizes.m} color={theme.colors.dark}>
-                      {description}
-                    </Text>
-                  )}
-                </StyledPopupHeader>
-                <StyledPopupBody>{children}</StyledPopupBody>
+                  </StyledPopupHeader>
+                )}
+                <StyledPopupBody emptyHeader={emptyHeader}>{children}</StyledPopupBody>
               </StyledPopup>
             </StyledPopupContainer>
           </>
