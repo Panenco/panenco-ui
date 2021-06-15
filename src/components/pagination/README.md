@@ -73,4 +73,4 @@ This component inherits the attributes of the **div** element and extends the fu
 | onPageChange    | func                                | -            | -          |
 | onPerPageChange | func                                | -            | -          |
 | onButtonClick   | func                                | -            | -          |
-| component       | 'link' or 'button'                  | -            | -          |
+| component       | 'link' or 'button'                  | 'link'       | -          |
