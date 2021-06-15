@@ -49,7 +49,10 @@ This component inherits the attributes of the **div** element and extends the fu
 - type - Pagination component type.
 - variant - The variant to use.
 - options - array of options that populate the per page select menu.
-- onPagination - Function on select change.
+- onPageChange - Callback fired when the page is changed.
+- onPerPageChange - Callback fired when the items per page is changed.
+- onButtonClick - Callback fired when page change button clicked.
+- component - The component used for the page change item
 
 | propName        | propType                            | defaultValue | isRequired |
 | --------------- | ----------------------------------- | ------------ | ---------- |
@@ -67,4 +70,7 @@ This component inherits the attributes of the **div** element and extends the fu
 | options         | {value: number, label: number}[]    | options      | -          |
 | type            | 'table' or 'list'                   | 'list'       | -          |
 | variant         | 'contained' or 'outlined' or 'text' | 'contained'  | -          |
-| onPagination    | func                                | -            | -          |
+| onPageChange    | func                                | -            | -          |
+| onPerPageChange | func                                | -            | -          |
+| onButtonClick   | func                                | -            | -          |
+| component       | 'link' or 'button'                  | -            | -          |

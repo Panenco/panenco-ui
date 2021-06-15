@@ -6,25 +6,34 @@ import { generateItems } from './generateItems';
 import { PUITheme, ThemeMode } from '../../utils/types';
 import { StyledPagination, StyledListPagination } from './styles';
 
-export interface PaginationProps extends React.HTMLAttributes<HTMLDivElement> {
+export type PaginationProps = {
   [key: string]: any;
   totalItems?: number;
   perPage?: number;
   formatUrl?: any;
   currentPage?: number;
   disabled?: boolean;
-  contentBeforeSelect?: string;
-  options?: any;
-  hidePrevButton?: boolean;
-  hideNextButton?: boolean;
-  showLastButton?: boolean;
-  showFirstButton?: boolean;
-  onPagination?: any;
-  type?: 'table' | 'list';
-  variant?: 'contained' | 'outlined' | 'text';
-}
+} & (
+  | {
+      type?: 'table';
+      contentBeforeSelect?: string;
+      options?: any;
+      onPageChange?: any;
+      onPerPageChange?: any;
+    }
+  | {
+      type?: 'list';
+      hidePrevButton?: boolean;
+      hideNextButton?: boolean;
+      showLastButton?: boolean;
+      showFirstButton?: boolean;
+      variant?: 'contained' | 'outlined' | 'text';
+    }
+) &
+  ({ component?: 'link' } | { component?: 'button'; onButtonClick: (page: number) => void }) &
+  React.HTMLAttributes<HTMLDivElement>;
 
-export interface PaginationComponentProps extends PaginationProps {
+export type PaginationComponentProps = {
   currentPage: number;
   totalItems: number;
   mode: ThemeMode;
@@ -37,7 +46,7 @@ export interface PaginationComponentProps extends PaginationProps {
   isLast: boolean;
   setCurrentPage: (val: number) => void;
   pagesOptions: { value: number; label: number }[];
-}
+} & PaginationProps;
 
 const defaultOptions = [
   { label: '12', value: '12' },
@@ -71,7 +80,9 @@ const TablePagination = ({
   className,
   contentBeforeSelect,
   options,
-  onPagination,
+  onPageChange,
+  onPerPageChange,
+  onButtonClick,
   totalItems,
   from,
   to,
@@ -85,79 +96,96 @@ const TablePagination = ({
   formatUrl,
   pagesOptions,
   isLast,
+  component = 'link',
   ...otherProps
-}: PaginationComponentProps): JSX.Element => (
-  <StyledPagination mode={mode} theme={theme} className={cx('pagination', className)} {...otherProps}>
-    <div className="paginationSection">
-      <Text
-        size={theme.typography.sizes.m}
-        weight={theme.typography.weights.light}
-        color={theme.colors.primary}
-        className="paginationTextBeforeSelect"
-      >
-        {contentBeforeSelect}
-      </Text>
-      <SelectInput
-        options={options}
-        className="paginationSelect"
-        id="perPage"
-        name="perPage"
-        isSearchable={false}
-        styles={additionStyles()}
-        isDisabled={disabled}
-        onChange={onPagination || ((option): void => setPerPage(option.value))}
-        value={options.find((option) => Number(option.value) === Number(perPage))}
-      />
-      <div className={cx('paginationDivider', 'paginationDividerLeft')} />
-      <Text size={theme.typography.sizes.m} color={theme.colors.primary} className="paginationText">
-        {`${totalItems > 0 ? from : 0}-${to} of ${totalItems} items`}
-      </Text>
-    </div>
-    <div className="paginationSection">
-      <Text size={theme.typography.sizes.m} color={theme.colors.primary} className="paginationText">
-        {`${currentPage + 1} of ${pagesAmount} pages`}
-      </Text>
-      <div className={cx('paginationDivider', 'paginationDividerRight')} />
-      <Link
-        className={cx('paginationButton', (isFirst || disabled) && 'paginationButtonDisabled')}
-        onClick={(): void => {
-          setCurrentPage(currentPage - 1);
-        }}
-        to={
-          typeof formatUrl === 'object'
-            ? { ...formatUrl, pathname: formatUrl.pathname(currentPage) }
-            : formatUrl(currentPage)
-        }
-      >
-        <Icon icon={Icon.icons.chevronLeft} className="paginationButtonIcon" />
-      </Link>
-      <SelectInput
-        options={pagesOptions}
-        className="paginationSelect"
-        id="page"
-        name="page"
-        isSearchable={false}
-        styles={additionStyles()}
-        isDisabled={disabled}
-        onChange={onPagination || ((option): void => setCurrentPage(option.value))}
-        value={pagesOptions.find((option) => Number(option.value) === Number(currentPage))}
-      />
-      <Link
-        className={cx('paginationButton', (isLast || disabled) && 'paginationButtonDisabled')}
-        onClick={(): void => {
-          setCurrentPage(currentPage + 1);
-        }}
-        to={
-          typeof formatUrl === 'object'
-            ? { ...formatUrl, pathname: formatUrl.pathname(currentPage + 2) }
-            : formatUrl(currentPage + 2)
-        }
-      >
-        <Icon icon={Icon.icons.chevronRight} className="paginationButtonIcon" />
-      </Link>
-    </div>
-  </StyledPagination>
-);
+}: PaginationComponentProps): JSX.Element => {
+  const PageComponent = component === 'link' ? Link : 'button';
+
+  return (
+    <StyledPagination mode={mode} theme={theme} className={cx('pagination', className)} {...otherProps}>
+      <div className="paginationSection">
+        <Text
+          size={theme.typography.sizes.m}
+          weight={theme.typography.weights.light}
+          color={theme.colors.primary}
+          className="paginationTextBeforeSelect"
+        >
+          {contentBeforeSelect}
+        </Text>
+        <SelectInput
+          options={options}
+          className="paginationSelect"
+          id="perPage"
+          name="perPage"
+          isSearchable={false}
+          styles={additionStyles()}
+          isDisabled={disabled}
+          onChange={onPerPageChange || ((option): void => setPerPage(option.value))}
+          value={options.find((option) => Number(option.value) === Number(perPage))}
+        />
+        <div className={cx('paginationDivider', 'paginationDividerLeft')} />
+        <Text size={theme.typography.sizes.m} color={theme.colors.primary} className="paginationText">
+          {`${totalItems > 0 ? from : 0}-${to} of ${totalItems} items`}
+        </Text>
+      </div>
+      <div className="paginationSection">
+        <Text size={theme.typography.sizes.m} color={theme.colors.primary} className="paginationText">
+          {`${currentPage + 1} of ${pagesAmount} pages`}
+        </Text>
+        <div className={cx('paginationDivider', 'paginationDividerRight')} />
+        <PageComponent
+          className={cx('paginationButton', (isFirst || disabled) && 'paginationButtonDisabled')}
+          onClick={
+            onButtonClick
+              ? (): void => {
+                  onButtonClick(currentPage - 1);
+                }
+              : (): void => {
+                  setCurrentPage(currentPage - 1);
+                }
+          }
+          to={
+            typeof formatUrl === 'object'
+              ? { ...formatUrl, pathname: formatUrl.pathname(currentPage) }
+              : formatUrl(currentPage)
+          }
+        >
+          <Icon icon={Icon.icons.chevronLeft} className="paginationButtonIcon" />
+        </PageComponent>
+        <SelectInput
+          options={pagesOptions}
+          className="paginationSelect"
+          id="page"
+          name="page"
+          isSearchable={false}
+          styles={additionStyles()}
+          isDisabled={disabled}
+          onChange={onPageChange || ((option): void => setCurrentPage(option.value))}
+          value={pagesOptions.find((option) => Number(option.value) === Number(currentPage))}
+        />
+        <PageComponent
+          className={cx('paginationButton', (isLast || disabled) && 'paginationButtonDisabled')}
+          onClick={
+            onButtonClick
+              ? (): void => {
+                  onButtonClick(currentPage + 1);
+                }
+              : (): void => {
+                  setCurrentPage(currentPage + 1);
+                }
+          }
+          to={
+            typeof formatUrl === 'object'
+              ? { ...formatUrl, pathname: formatUrl.pathname(currentPage + 2) }
+              : formatUrl(currentPage + 2)
+          }
+        >
+          <Icon icon={Icon.icons.chevronRight} className="paginationButtonIcon" />
+        </PageComponent>
+      </div>
+    </StyledPagination>
+  );
+};
 
 const ListPagination = ({
   pagesAmount,
@@ -171,9 +199,16 @@ const ListPagination = ({
   theme,
   mode,
   variant,
+  component = 'link',
+  onButtonClick,
   ...otherProps
 }: PaginationComponentProps): JSX.Element => {
   const items = generateItems({ pagesAmount, currentPage: currentPage + 1, ...otherProps });
+  const PageComponent = component === 'link' ? Link : 'button';
+
+  const handleButtonClick = (page) => () => {
+    return onButtonClick ? onButtonClick(page) : setCurrentPage(page);
+  };
 
   const renderListItem = (item: string | number): JSX.Element => {
     switch (item) {
@@ -181,23 +216,19 @@ const ListPagination = ({
         return <div className={cx('paginationListItem', disabled && 'paginationButtonDisabled')}>...</div>;
       case 'first':
         return (
-          <Link
+          <PageComponent
             className={cx('paginationListItem', disabled && 'paginationButtonDisabled')}
-            onClick={(): void => {
-              setCurrentPage(0);
-            }}
+            onClick={handleButtonClick(0)}
             to={typeof formatUrl === 'object' ? { ...formatUrl, pathname: formatUrl.pathname(1) } : formatUrl(1)}
           >
             First
-          </Link>
+          </PageComponent>
         );
       case 'last':
         return (
-          <Link
+          <PageComponent
             className={cx('paginationListItem', disabled && 'paginationButtonDisabled')}
-            onClick={(): void => {
-              setCurrentPage(pagesAmount - 1);
-            }}
+            onClick={handleButtonClick(pagesAmount - 1)}
             to={
               typeof formatUrl === 'object'
                 ? { ...formatUrl, pathname: formatUrl.pathname(pagesAmount) }
@@ -205,15 +236,13 @@ const ListPagination = ({
             }
           >
             Last
-          </Link>
+          </PageComponent>
         );
       case 'previous':
         return (
-          <Link
+          <PageComponent
             className={cx('paginationListItem', (isFirst || disabled) && 'paginationButtonDisabled')}
-            onClick={(): void => {
-              setCurrentPage(currentPage - 1);
-            }}
+            onClick={handleButtonClick(currentPage - 1)}
             to={
               typeof formatUrl === 'object'
                 ? { ...formatUrl, pathname: formatUrl.pathname(currentPage) }
@@ -222,15 +251,13 @@ const ListPagination = ({
           >
             <Icon icon={Icon.icons.chevronLeft} className="paginationButtonIcon" />
             {variant === 'text' && <Text className="paginationButtonLeftText">Previous</Text>}
-          </Link>
+          </PageComponent>
         );
       case 'next':
         return (
-          <Link
+          <PageComponent
             className={cx('paginationListItem', (isLast || disabled) && 'paginationButtonDisabled')}
-            onClick={(): void => {
-              setCurrentPage(currentPage + 1);
-            }}
+            onClick={handleButtonClick(currentPage + 1)}
             to={
               typeof formatUrl === 'object'
                 ? { ...formatUrl, pathname: formatUrl.pathname(currentPage + 2) }
@@ -239,23 +266,21 @@ const ListPagination = ({
           >
             {variant === 'text' && <Text className="paginationButtonRightText">Next</Text>}
             <Icon icon={Icon.icons.chevronRight} className="paginationButtonIcon" />
-          </Link>
+          </PageComponent>
         );
       default:
         return (
-          <Link
+          <PageComponent
             className={cx(
               'paginationListItem',
               disabled && 'paginationButtonDisabled',
               currentPage === (item as number) - 1 && 'paginationListItemActive',
             )}
-            onClick={(): void => {
-              setCurrentPage((item as number) - 1);
-            }}
+            onClick={handleButtonClick((item as number) - 1)}
             to={typeof formatUrl === 'object' ? { ...formatUrl, pathname: formatUrl.pathname(item) } : formatUrl(item)}
           >
             {item}
-          </Link>
+          </PageComponent>
         );
     }
   };

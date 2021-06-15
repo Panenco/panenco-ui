@@ -18,6 +18,7 @@ export default decorator('Pagination', PaginationDocs, PaginationReadme).add('Pa
           <Col s="3" m="6" l="12">
             <PaginationSelect
             type="table"
+            component="button"
             currentPage={Number(0)}
           totalItems={201}
           formatUrl={p => `/page/${p}`}
@@ -64,6 +65,7 @@ export default decorator('Pagination', PaginationDocs, PaginationReadme).add('Pa
             <PaginationSelect
             type="list"
             variant="text"
+            component="button"
             showFirstButton
             showLastButton
               formatUrl={(path = 'path') => {

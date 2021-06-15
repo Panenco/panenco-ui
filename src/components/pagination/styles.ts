@@ -26,6 +26,8 @@ export const StyledPagination = styled.div`
       text-decoration: none;
       width: 28px;
       border-bottom: none;
+      background-color: transparent;
+      cursor: pointer;
 
       &:hover {
         border-bottom: none;
@@ -89,6 +91,11 @@ export const StyledListPagination = styled.div`
         border-radius: 3px;
         margin-left: 8px;
         color: ${(props: any): any => `${props.theme.colors.primary}`};
+        min-height: auto;
+        font-weight: 400;
+        background-color: transparent;
+        font-size: 16px;
+        cursor: pointer;
 
         &:hover {
           background-color: ${(props: any): any => `${props.theme.colors.border}`};
