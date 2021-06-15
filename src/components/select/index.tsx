@@ -12,9 +12,9 @@ export interface SelectInputProps extends SelectProps, InputComponent {
   selectWrapperProps?: React.HTMLAttributes<HTMLDivElement>;
   clearChips?: boolean;
   wrapperSelectSizes?: {
-    l?: number | string;
-    m?: number | string;
-    s?: number | string;
+    lg?: number | string;
+    md?: number | string;
+    sm?: number | string;
   };
   hideChips?: boolean;
 }
@@ -51,7 +51,7 @@ export const SelectInput = React.forwardRef<HTMLDivElement, SelectInputProps>(
         {wrapperSelectSizes ? (
           <>
             <Row className="row">
-              <Col l={wrapperSelectSizes.l} m={wrapperSelectSizes.m} s={wrapperSelectSizes.s} className="col">
+              <Col lg={wrapperSelectSizes.lg} md={wrapperSelectSizes.md} sm={wrapperSelectSizes.sm} className="col">
                 <SelectComponent error={error} isMulti={isMulti} value={value} {...props} />
               </Col>
             </Row>

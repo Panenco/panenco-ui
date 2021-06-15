@@ -7,25 +7,21 @@ type ColSize = number | string | null;
 
 export interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
   xs?: ColSize;
-  s?: ColSize;
-  m?: ColSize;
-  ml?: ColSize;
-  l?: ColSize;
-  xl?: ColSize;
+  sm?: ColSize;
+  md?: ColSize;
+  lg?: ColSize;
 }
 
-export const Col = ({ className, xs, s, m, ml, l, xl, children, ...props }: ColProps): JSX.Element => {
+export const Col = ({ className, xs, sm, md, lg, children, ...props }: ColProps): JSX.Element => {
   return (
     <StyledCol
       {...props}
       className={cx(
         `col-auto`,
         {
-          [`col-xl-${xl}`]: !!xl,
-          [`col-l-${l}`]: !!l,
-          [`col-ml-${ml}`]: !!ml,
-          [`col-m-${m}`]: !!m,
-          [`col-s-${s}`]: !!s,
+          [`col-lg-${lg}`]: !!lg,
+          [`col-md-${md}`]: !!md,
+          [`col-sm-${sm}`]: !!sm,
           [`col-xs-${xs}`]: !!xs,
         },
         className,

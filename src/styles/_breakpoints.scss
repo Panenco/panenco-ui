@@ -1,27 +1,22 @@
 $breakpoints: (
   xs: 0,
   sm: 600px,
-  md: 960px,
-  lg: 1280px,
-  xl: 1920px,
+  md: 840px,
+  lg: 1332px,
 );
 
 $breakpoints1: (
-  xl: (
-    gridsize: 12,
-  ),
   lg: (
-    break: 1920px,
     gridsize: 12,
     gutter: 24px,
   ),
   md: (
-    break: 1280px,
+    break: 1332px,
     gridsize: 12,
     gutter: 24px,
   ),
   sm: (
-    break: 960px,
+    break: 840px,
     gridsize: 12,
     gutter: 16px,
   ),

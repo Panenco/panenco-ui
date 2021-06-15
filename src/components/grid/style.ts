@@ -159,7 +159,7 @@ const spacingForRow = () => {
 };
 
 export const container = css`
-  width: ${breakpoints.xl};
+  width: ${breakpoints.lg};
   max-width: 100%;
   margin: 0 auto;
   ${mediaQueriesForContainer()};

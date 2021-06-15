@@ -16,7 +16,7 @@ export const decorator = (title, doc, readme) =>
     .addDecorator(withReadme(readme))
     .addDecorator((story) => (
       <ThemeProvider>
-        <ScreenDimensions>{story()}</ScreenDimensions>
+        {title === 'Grid' ? <ScreenDimensions>{story()}</ScreenDimensions> : story()}
         <NotificationContainer />
       </ThemeProvider>
     ));

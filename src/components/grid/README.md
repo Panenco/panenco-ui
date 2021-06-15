@@ -12,9 +12,9 @@ import { Row, Col, GridContainer } from '@panenco/ui';
 const render  = () => {
   return (
     <Row spacing={3}>
-      <Col xs="1" sm="2" lg="4" xl="4" >{children}</Col>
-      <Col xs="2" sm="2" lg="4" xl="4" >{children}</Col>
-      <Col xs="1" sm="4" lg="4" xl="4" >{children}</Col>
+      <Col xs="1" sm="2" lg="4" >{children}</Col>
+      <Col xs="2" sm="2" lg="4" >{children}</Col>
+      <Col xs="1" sm="4" lg="4" >{children}</Col>
     </Row>
   )
 }
@@ -42,10 +42,9 @@ spacing css class (example: `spacing-auto-3-3`) consist of starting breakpoint, 
 Col component inherits the attributes of the **div** element and extends the functionality with next properties.
 
 - `xs` - size of columns to 600px;
-- `sm` - size of columns to 960px;
-- `md` - size of columns to 1280px;
-- `lg` - size of columns to 1920px;
-- `xl` - size of columns over 1920px;
+- `sm` - size of columns to 840px;
+- `md` - size of columns to 1332px;
+- `lg` - size of columns over 1332px;
 
 | propName | propType         | defaultValue | isRequired | row size (maxColumns in a row) |
 | -------- | ---------------- | ------------ | ---------- | ------------------------------ |
@@ -53,4 +52,3 @@ Col component inherits the attributes of the **div** element and extends the fun
 | sm       | string or number | xs           | -          | 12                             |
 | md       | string or number | sm           | -          | 12                             |
 | lg       | string or number | md           | -          | 12                             |
-| xl       | string or number | lg           | -          | 12                             |
