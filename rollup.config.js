@@ -2,12 +2,12 @@
 import svgSprite from '@panenco/rollup-plugin-svg-sprite';
 import linaria from 'linaria/rollup';
 import path from 'path';
-import babel from 'rollup-plugin-babel';
-import commonjs from 'rollup-plugin-commonjs';
+import babel from '@rollup/plugin-babel';
+import commonjs from '@rollup/plugin-commonjs';
 import css from 'rollup-plugin-css-only';
-import json from 'rollup-plugin-json';
-import resolve from 'rollup-plugin-node-resolve';
-import replace from 'rollup-plugin-replace';
+import json from '@rollup/plugin-json';
+import resolve from '@rollup/plugin-node-resolve';
+import replace from '@rollup/plugin-replace';
 import typescript from 'rollup-plugin-typescript2';
 
 import packageJson from './package.json';
@@ -27,6 +27,7 @@ export default {
     //   config: paths.appConfig,
     // }),
     replace({
+      preventAssignment: true,
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
     babel({
@@ -35,9 +36,7 @@ export default {
     resolve({
       extensions: ['.ts', '.tsx', '.json'],
       preferBuiltins: false,
-      customResolveOptions: {
-        moduleDirectory: ['node_modules', paths.nodeModules, paths.src],
-      },
+      moduleDirectories: ['node_modules', paths.nodeModules, paths.src],
     }),
     typescript({
       clean: true,
@@ -52,13 +51,15 @@ export default {
     css({
       output: path.join(paths.outputPath, 'styles.css'),
     }),
-    commonjs({
-      namedExports: {
-        'node_modules/react/index.js': ['cloneElement', 'createContext', 'Component', 'createElement'],
-        'node_modules/react-dom/index.js': ['render', 'hydrate'],
-        'node_modules/react-is/index.js': ['isElement', 'isValidElementType', 'ForwardRef', 'Memo'],
-      },
-    }),
+    commonjs(
+    //   {
+    //   namedExports: {
+    //     'node_modules/react/index.js': ['cloneElement', 'createContext', 'Component', 'createElement'],
+    //     'node_modules/react-dom/index.js': ['render', 'hydrate'],
+    //     'node_modules/react-is/index.js': ['isElement', 'isValidElementType', 'ForwardRef', 'Memo'],
+    //   },
+    // }
+    ),
     json(),
     svgSprite({
       outputFolder: paths.outputPath,
