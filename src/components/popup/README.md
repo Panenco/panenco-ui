@@ -51,7 +51,7 @@ This component inherits the attributes of the **div** element and extends the fu
 | ref          | React.RefObject | -            | -          |
 | title        | string          | -            | -          |
 | description  | string          | -            | -          |
-| onHide       | any             | -            | +          |
+| onHide       | (e) => void;    | -            | +          |
 | show         | boolean         | -            | +          |
 | clickOutHide | boolean         | true         | -          |
 | closeBtn     | boolean         | true         | -          |

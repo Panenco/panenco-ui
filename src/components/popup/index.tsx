@@ -18,7 +18,7 @@ export interface PopupProps extends React.HTMLAttributes<HTMLDivElement> {
   description?: string;
   className?: string;
   children?: React.ReactNode;
-  onHide: any;
+  onHide: (e: React.MouseEvent<HTMLElement>) => void;
   show: boolean;
   clickOutHide?: boolean;
   closeBtn?: boolean;
@@ -63,7 +63,7 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
           <>
             <StyledPopupBackdrop theme={theme} />
 
-            <StyledPopupContainer onClick={clickOutHide && onHide}>
+            <StyledPopupContainer onClick={clickOutHide ? onHide : undefined}>
               <StyledPopup onClick={popupStopPropagation} className={cx(className)} ref={ref} theme={theme} {...props}>
                 {!emptyHeader && (
                   <StyledPopupHeader>
