@@ -19,6 +19,7 @@ export const StyledPagination = styled.div`
 
     &Button {
       align-items: center;
+      padding: 0 5px;
       border: 1px solid transparent;
       display: flex;
       height: 28px;
@@ -127,6 +128,10 @@ export const StyledListPagination = styled.div`
           props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.secondary};
         height: 16px;
         width: 16px;
+
+        &NoMargin {
+          margin: 0;
+        }
       }
 
       &Disabled {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cx from 'classnames';
 import { useTheme, useMode } from 'utils/hooks';
-import { Text, Icon, Link, SelectInput } from 'components';
+import { Text, Icon, SelectInput, Button } from 'components';
 import { generateItems } from './generateItems';
 import { PUITheme, ThemeMode } from '../../utils/types';
 import { StyledPagination, StyledListPagination } from './styles';
@@ -12,6 +12,7 @@ export type PaginationProps = {
   perPage: number;
   currentPage: number;
   disabled?: boolean;
+  onButtonClick: (page: number) => void;
 } & (
   | {
       type?: 'table';
@@ -29,7 +30,6 @@ export type PaginationProps = {
       variant?: 'contained' | 'outlined' | 'text';
     }
 ) &
-  ({ component?: 'link'; formatUrl: any } | { component?: 'button'; onButtonClick: (page: number) => void }) &
   React.HTMLAttributes<HTMLDivElement>;
 
 export type PaginationComponentProps = {
@@ -88,14 +88,10 @@ const TablePagination = ({
   pagesAmount,
   isFirst,
   disabled,
-  formatUrl,
   pagesOptions,
   isLast,
-  component = 'link',
   ...otherProps
 }: PaginationComponentProps): JSX.Element => {
-  const PageComponent = component === 'link' ? Link : 'button';
-
   return (
     <StyledPagination mode={mode} theme={theme} className={cx('pagination', className)} {...otherProps}>
       <div className="paginationSection">
@@ -128,19 +124,14 @@ const TablePagination = ({
           {`${currentPage + 1} of ${pagesAmount} pages`}
         </Text>
         <div className={cx('paginationDivider', 'paginationDividerRight')} />
-        <PageComponent
+        <Button
           className={cx('paginationButton', (isFirst || disabled) && 'paginationButtonDisabled')}
           onClick={(): void => {
             onButtonClick(currentPage - 1);
           }}
-          to={
-            typeof formatUrl === 'object'
-              ? { ...formatUrl, pathname: formatUrl.pathname(currentPage) }
-              : formatUrl(currentPage)
-          }
         >
           <Icon icon={Icon.icons.chevronLeft} className="paginationButtonIcon" />
-        </PageComponent>
+        </Button>
         <SelectInput
           options={pagesOptions}
           className="paginationSelect"
@@ -152,19 +143,14 @@ const TablePagination = ({
           onChange={onPageChange}
           value={pagesOptions.find((option) => Number(option.value) === Number(currentPage))}
         />
-        <PageComponent
+        <Button
           className={cx('paginationButton', (isLast || disabled) && 'paginationButtonDisabled')}
           onClick={(): void => {
             onButtonClick(currentPage + 1);
           }}
-          to={
-            typeof formatUrl === 'object'
-              ? { ...formatUrl, pathname: formatUrl.pathname(currentPage + 2) }
-              : formatUrl(currentPage + 2)
-          }
         >
           <Icon icon={Icon.icons.chevronRight} className="paginationButtonIcon" />
-        </PageComponent>
+        </Button>
       </div>
     </StyledPagination>
   );
@@ -173,7 +159,6 @@ const TablePagination = ({
 const ListPagination = ({
   pagesAmount,
   currentPage,
-  formatUrl,
   isFirst,
   isLast,
   disabled,
@@ -181,12 +166,10 @@ const ListPagination = ({
   theme,
   mode,
   variant,
-  component = 'link',
   onButtonClick,
   ...otherProps
 }: PaginationComponentProps): JSX.Element => {
   const items = generateItems({ pagesAmount, currentPage: currentPage + 1, ...otherProps });
-  const PageComponent = component === 'link' ? Link : 'button';
 
   const renderListItem = (item: string | number): JSX.Element => {
     switch (item) {
@@ -194,71 +177,56 @@ const ListPagination = ({
         return <div className={cx('paginationListItem', disabled && 'paginationButtonDisabled')}>...</div>;
       case 'first':
         return (
-          <PageComponent
+          <Button
             className={cx('paginationListItem', disabled && 'paginationButtonDisabled')}
             onClick={() => onButtonClick(0)}
-            to={typeof formatUrl === 'object' ? { ...formatUrl, pathname: formatUrl.pathname(1) } : formatUrl(1)}
           >
             First
-          </PageComponent>
+          </Button>
         );
       case 'last':
         return (
-          <PageComponent
+          <Button
             className={cx('paginationListItem', disabled && 'paginationButtonDisabled')}
             onClick={() => onButtonClick(pagesAmount - 1)}
-            to={
-              typeof formatUrl === 'object'
-                ? { ...formatUrl, pathname: formatUrl.pathname(pagesAmount) }
-                : formatUrl(pagesAmount)
-            }
           >
             Last
-          </PageComponent>
+          </Button>
         );
       case 'previous':
         return (
-          <PageComponent
+          <Button
             className={cx('paginationListItem', (isFirst || disabled) && 'paginationButtonDisabled')}
+            iconLeft={Icon.icons.chevronLeft}
+            iconClassName={cx("paginationButtonIcon", variant !== 'text' && "paginationButtonIconNoMargin")}
             onClick={() => onButtonClick(currentPage - 1)}
-            to={
-              typeof formatUrl === 'object'
-                ? { ...formatUrl, pathname: formatUrl.pathname(currentPage) }
-                : formatUrl(currentPage)
-            }
           >
-            <Icon icon={Icon.icons.chevronLeft} className="paginationButtonIcon" />
-            {variant === 'text' && <Text className="paginationButtonLeftText">Previous</Text>}
-          </PageComponent>
+            {variant === 'text' && <Text>Previous</Text>}
+          </Button>
         );
       case 'next':
         return (
-          <PageComponent
+          <Button
             className={cx('paginationListItem', (isLast || disabled) && 'paginationButtonDisabled')}
+            iconRight={Icon.icons.chevronRight}
+            iconClassName={cx("paginationButtonIcon", variant !== 'text' && "paginationButtonIconNoMargin")}
             onClick={() => onButtonClick(currentPage + 1)}
-            to={
-              typeof formatUrl === 'object'
-                ? { ...formatUrl, pathname: formatUrl.pathname(currentPage + 2) }
-                : formatUrl(currentPage + 2)
-            }
           >
-            {variant === 'text' && <Text className="paginationButtonRightText">Next</Text>}
-            <Icon icon={Icon.icons.chevronRight} className="paginationButtonIcon" />
-          </PageComponent>
+            {variant === 'text' && <Text>Next</Text>}
+          </Button>
         );
       default:
         return (
-          <PageComponent
+          <Button
             className={cx(
               'paginationListItem',
               disabled && 'paginationButtonDisabled',
               currentPage === (item as number) - 1 && 'paginationListItemActive',
             )}
             onClick={() => onButtonClick((item as number) - 1)}
-            to={typeof formatUrl === 'object' ? { ...formatUrl, pathname: formatUrl.pathname(item) } : formatUrl(item)}
           >
             {item}
-          </PageComponent>
+          </Button>
         );
     }
   };
@@ -280,7 +248,6 @@ export const PaginationSelect = ({
   contentBeforeSelect = 'Show rows:',
   totalItems = 150,
   perPage = 12,
-  formatUrl = (path?: any): string => path,
   onButtonClick = () => {},
   currentPage = 0,
   disabled = false,
@@ -316,7 +283,6 @@ export const PaginationSelect = ({
       isFirst={isFirst}
       disabled={disabled}
       onButtonClick={onButtonClick}
-      formatUrl={formatUrl}
       pagesOptions={pagesOptions}
       isLast={isLast}
       variant={variant}

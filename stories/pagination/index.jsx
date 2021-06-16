@@ -1,6 +1,7 @@
 import React from 'react';
 
 import PaginationReadme from 'components/pagination/README.md';
+import TablePaginationReadme from 'components/pagination/TABLE-README.md';
 import PaginationDocs from 'components/pagination/DOCS.md';
 
 import { Row, Col, PaginationSelect } from 'components';
@@ -10,7 +11,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { decorator } from '../../utils/decorator';
 import { WrappedComponent } from '../helpers/wrapped';
 
-export const TablePagination = decorator('Pagination', PaginationDocs, PaginationReadme).add('TablePagination component', () => {
+export const TablePagination = decorator('Pagination', PaginationDocs, TablePaginationReadme).add('TablePagination component', () => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(12);
 
@@ -33,15 +34,13 @@ export const TablePagination = decorator('Pagination', PaginationDocs, Paginatio
         <Row style={{ justifyContent: 'center' }}>
           <Col s="3" m="6" l="12">
             <PaginationSelect
-            type="table"
-            component="link"
-            currentPage={page}
-            onPageChange={handleChangePage}
-            onPerPageChange={handleChangeRowsPerPage}
-            onButtonClick={handleButtonClick}
-          totalItems={201}
-          formatUrl={p => `/page/${p}`}
-          perPage={rowsPerPage}
+              type="table"
+              currentPage={page}
+              onPageChange={handleChangePage}
+              onPerPageChange={handleChangeRowsPerPage}
+              onButtonClick={handleButtonClick}
+              totalItems={201}
+              perPage={rowsPerPage}
             />
           </Col>
         </Row>
@@ -65,54 +64,50 @@ export default decorator('Pagination', PaginationDocs, PaginationReadme).add('Pa
         <Row style={{ justifyContent: 'center', marginTop: '20px' }}>
           <Col s="3" m="6" l="6">
             <PaginationSelect
-            type="list"
-            variant="contained"
-            totalItems={201}
-            formatUrl={p => `/page/${p}`}
-            perPage={rowsPerPage}
-            currentPage={page}
-            onButtonClick={handleButtonClick}
+              type="list"
+              variant="contained"
+              totalItems={201}
+              perPage={rowsPerPage}
+              currentPage={page}
+              onButtonClick={handleButtonClick}
             />
           </Col>
         </Row>
         <Row style={{ justifyContent: 'center', marginTop: '20px' }}>
           <Col s="3" m="6" l="6">
             <PaginationSelect
-            type="list"
-            variant="outlined"
-            totalItems={201}
-            formatUrl={p => `/page/${p}`}
-            perPage={rowsPerPage}
-            currentPage={page}
-            onButtonClick={handleButtonClick}
+              type="list"
+              variant="outlined"
+              totalItems={201}
+              perPage={rowsPerPage}
+              currentPage={page}
+              onButtonClick={handleButtonClick}
             />
           </Col>
         </Row>
         <Row style={{ justifyContent: 'center', marginTop: '20px' }}>
           <Col s="3" m="6" l="6">
             <PaginationSelect
-            type="list"
-            variant="text"
-            totalItems={201}
-            formatUrl={p => `/page/${p}`}
-            perPage={rowsPerPage}
-            currentPage={page}
-            onButtonClick={handleButtonClick}
+              type="list"
+              variant="text"
+              totalItems={201}
+              perPage={rowsPerPage}
+              currentPage={page}
+              onButtonClick={handleButtonClick}
             />
           </Col>
         </Row>
         <Row style={{ justifyContent: 'center', marginTop: '20px' }}>
           <Col s="3" m="6" l="8">
             <PaginationSelect
-            type="list"
-            variant="text"
-            component="button"
-            onButtonClick={handleButtonClick}
-            showFirstButton
-            showLastButton
-            totalItems={201}
-            perPage={rowsPerPage}
-            currentPage={page}
+              type="list"
+              variant="text"
+              onButtonClick={handleButtonClick}
+              showFirstButton
+              showLastButton
+              totalItems={201}
+              perPage={rowsPerPage}
+              currentPage={page}
             />
           </Col>
         </Row>
