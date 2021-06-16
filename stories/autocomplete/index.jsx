@@ -30,7 +30,7 @@ export default decorator('Autocomplete', AutoCompleteDOCS, README).add('Autocomp
   return (
     <WrappedComponent style={{ minHeight: '500px' }}>
       <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start' }}>
-        <Col s="2" m="4" l="4">
+        <Col sm="2" md="4" lg="4">
           <AutoComplete
             options={options}
             searchPlaceholder={searchPlaceholder}
@@ -39,7 +39,7 @@ export default decorator('Autocomplete', AutoCompleteDOCS, README).add('Autocomp
             formatCreateLabel={() => <span>Example</span>}
           />
         </Col>
-        <Col s="2" m="4" l="4">
+        <Col sm="2" md="4" lg="4">
           <AutoComplete
             options={options}
             title="Multi Select"
@@ -52,10 +52,10 @@ export default decorator('Autocomplete', AutoCompleteDOCS, README).add('Autocomp
         </Col>
       </Row>
       <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start' }}>
-        <Col s="2" m="4" l="4">
+        <Col sm="2" md="4" lg="4">
           <AutoComplete title="Select with Error" error="Error options" />
         </Col>
-        <Col s="2" m="4" l="4">
+        <Col sm="2" md="4" lg="4">
           <AutoComplete title="Disabled select" placeholder="Disabled" isDisabled />
         </Col>
       </Row>
