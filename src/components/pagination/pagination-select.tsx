@@ -198,7 +198,7 @@ const ListPagination = ({
           <Button
             className={cx('paginationListItem', (isFirst || disabled) && 'paginationButtonDisabled')}
             iconLeft={Icon.icons.chevronLeft}
-            iconClassName={cx("paginationButtonIcon", variant !== 'text' && "paginationButtonIconNoMargin")}
+            iconClassName={cx('paginationButtonIcon', variant !== 'text' && 'paginationButtonIconNoMargin')}
             onClick={() => onButtonClick(currentPage - 1)}
           >
             {variant === 'text' && <Text>Previous</Text>}
@@ -209,7 +209,7 @@ const ListPagination = ({
           <Button
             className={cx('paginationListItem', (isLast || disabled) && 'paginationButtonDisabled')}
             iconRight={Icon.icons.chevronRight}
-            iconClassName={cx("paginationButtonIcon", variant !== 'text' && "paginationButtonIconNoMargin")}
+            iconClassName={cx('paginationButtonIcon', variant !== 'text' && 'paginationButtonIconNoMargin')}
             onClick={() => onButtonClick(currentPage + 1)}
           >
             {variant === 'text' && <Text>Next</Text>}
