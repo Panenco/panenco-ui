@@ -33,9 +33,9 @@ Row component inherits the attributes of the **div** element and extends the fun
 
 spacing css class (example: `spacing-auto-3-3`) consist of starting breakpoint, `x-axis` multiplier and `y-axis` multiplier.
 
-| propName | propType                  | defaultValue             | isRequired | spacing size (max value in a prop) |
-| -------- | ------------------------- | ------------------------ | ---------- | ---------------------------------- |
-| spacing  | string or number or array | according to breakpoinst | -          | 12                                 |
+| propName | propType                  | defaultValue            | isRequired | spacing size (max value in a prop) |
+| -------- | ------------------------- | ----------------------- | ---------- | ---------------------------------- |
+| spacing  | string or number or array | according to breakpoint | -          | 12                                 |
 
 ### Column Properties
 
@@ -46,9 +46,10 @@ Col component inherits the attributes of the **div** element and extends the fun
 - `md` - size of columns to 1332px;
 - `lg` - size of columns over 1332px;
 
-| propName | propType         | defaultValue | isRequired | row size (maxColumns in a row) |
-| -------- | ---------------- | ------------ | ---------- | ------------------------------ |
-| xs       | string or number | 12           | -          | 12                             |
-| sm       | string or number | xs           | -          | 12                             |
-| md       | string or number | sm           | -          | 12                             |
-| lg       | string or number | md           | -          | 12                             |
+| propName | propType         | defaultValue             | isRequired |
+| -------- | ---------------- | ------------------------ | ---------- |
+| auto     | -                | equal free space / cells | -          |
+| xs       | string or number | -                        | -          |
+| sm       | string or number | -                        | -          |
+| md       | string or number | -                        | -          |
+| lg       | string or number | -                        | -          |
