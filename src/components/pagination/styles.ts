@@ -23,6 +23,7 @@ export const StyledPagination = styled.div`
       border: 1px solid transparent;
       display: flex;
       height: 28px;
+      min-height: 28px;
       justify-content: center;
       text-decoration: none;
       width: 28px;
@@ -38,11 +39,19 @@ export const StyledPagination = styled.div`
         border-bottom: none;
       }
 
+      &:last-child {
+        margin-left: 5px;
+      }
+
       &Icon {
         color: ${(props: any): any =>
           props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.secondary};
         height: 16px;
         width: 16px;
+
+        &NoMargin {
+          margin: 0;
+        }
       }
 
       &Disabled {

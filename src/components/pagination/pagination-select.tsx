@@ -127,12 +127,12 @@ const TablePagination = ({
         <Button
           className="paginationButton"
           disabled={isFirst || disabled}
+          iconLeft={Icon.icons.chevronLeft}
+          iconClassName={cx('paginationButtonIcon', 'paginationButtonIconNoMargin')}
           onClick={(): void => {
             onButtonClick(currentPage - 1);
           }}
-        >
-          <Icon icon={Icon.icons.chevronLeft} className="paginationButtonIcon" />
-        </Button>
+        />
         <SelectInput
           options={pagesOptions}
           className="paginationSelect"
@@ -147,12 +147,12 @@ const TablePagination = ({
         <Button
           className="paginationButton"
           disabled={isLast || disabled}
+          iconRight={Icon.icons.chevronRight}
+          iconClassName={cx('paginationButtonIcon', 'paginationButtonIconNoMargin')}
           onClick={(): void => {
             onButtonClick(currentPage + 1);
           }}
-        >
-          <Icon icon={Icon.icons.chevronRight} className="paginationButtonIcon" />
-        </Button>
+        />
       </div>
     </StyledPagination>
   );
