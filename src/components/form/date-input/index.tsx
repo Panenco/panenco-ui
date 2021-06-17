@@ -2,6 +2,7 @@ import cx from 'classnames';
 import { Text, TextInput } from 'components';
 import { set } from 'date-fns';
 import * as React from 'react';
+import { useRef } from 'react';
 import { useMode, useTheme } from 'utils/hooks';
 
 import { WrapperProps } from '../../../utils/types';
@@ -44,21 +45,51 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
     //   return format(dateObj, formatStr);
     // };
 
+    const input1 = useRef<HTMLInputElement>(null)
+    const input2 = useRef<HTMLInputElement>(null)
+    const input3 = useRef<HTMLInputElement>(null)
+
+    const inputToRef = {
+      0: input1,
+      1: input2,
+      2: input3,
+    }
+
     const [currentDate, setDateToState] = React.useState(new Date());
 
-    const formatter = (type: string, value) => {
+    const [dateValue, setDateValueToState] = React.useState("");
+    // const [month, setMonthValueToState] = React.useState(null);
+
+    // const typeToValue = {
+    //   "date": dateValue
+    // }
+
+    const formatter = (type: string, value, index) => {
+      if (value === ''){
+        return
+      }
       const formatValueMapping = {
         month: value - 1,
       };
-
+      console.log(type, value);
+      if (type === 'date'){
+        setDateValueToState(value.slice(0,2))
+        if(value.length > 2 && inputToRef[index + 1]?.current){
+          console.log('focus', inputToRef[index + 1].current, inputToRef[index + 1].current.focus);
+          inputToRef[index + 1].current.focus();
+        }
+      }
+      
       if (formatValueMapping[type]) {
+        console.log(1, formatValueMapping[type]);
         return formatValueMapping[type];
       } else {
+        console.log(2, value);
         return value;
       }
     };
 
-    console.log(currentDate);
+    console.log(currentDate, dateValue);
 
     return (
       <StyledDayPicker
@@ -73,15 +104,15 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
           const inputWidth = input.format.length * 10 + 40;
 
           const isLastItem = index + 1 !== inputs.length;
-
+          
           return (
             <div className="dateInputItem">
               <TextInput
                 // id={key}
                 // key={key}
-                onChange={(e) =>
-                  setDateToState(set(new Date(currentDate), { [input.type]: formatter(input.type, e.target.value) }))
+                onChange={(e) => setDateToState(set(new Date(currentDate), { [input.type]: formatter(input.type, e.target.value, index) }))
                 }
+                ref={inputToRef[index]}
                 title={input.title}
                 style={{ width: `${inputWidth}px` }}
                 placeholder={input.placeholder}
