@@ -125,7 +125,8 @@ const TablePagination = ({
         </Text>
         <div className={cx('paginationDivider', 'paginationDividerRight')} />
         <Button
-          className={cx('paginationButton', (isFirst || disabled) && 'paginationButtonDisabled')}
+          className="paginationButton"
+          disabled={isFirst || disabled}
           onClick={(): void => {
             onButtonClick(currentPage - 1);
           }}
@@ -144,7 +145,8 @@ const TablePagination = ({
           value={pagesOptions.find((option) => Number(option.value) === Number(currentPage))}
         />
         <Button
-          className={cx('paginationButton', (isLast || disabled) && 'paginationButtonDisabled')}
+          className="paginationButton"
+          disabled={isLast || disabled}
           onClick={(): void => {
             onButtonClick(currentPage + 1);
           }}
@@ -177,26 +179,21 @@ const ListPagination = ({
         return <div className={cx('paginationListItem', disabled && 'paginationButtonDisabled')}>...</div>;
       case 'first':
         return (
-          <Button
-            className={cx('paginationListItem', disabled && 'paginationButtonDisabled')}
-            onClick={() => onButtonClick(0)}
-          >
+          <Button className="paginationListItem" disabled={disabled} onClick={() => onButtonClick(0)}>
             First
           </Button>
         );
       case 'last':
         return (
-          <Button
-            className={cx('paginationListItem', disabled && 'paginationButtonDisabled')}
-            onClick={() => onButtonClick(pagesAmount - 1)}
-          >
+          <Button className="paginationListItem" disabled={disabled} onClick={() => onButtonClick(pagesAmount - 1)}>
             Last
           </Button>
         );
       case 'previous':
         return (
           <Button
-            className={cx('paginationListItem', (isFirst || disabled) && 'paginationButtonDisabled')}
+            className="paginationListItem"
+            disabled={isFirst || disabled}
             iconLeft={Icon.icons.chevronLeft}
             iconClassName={cx('paginationButtonIcon', variant !== 'text' && 'paginationButtonIconNoMargin')}
             onClick={() => onButtonClick(currentPage - 1)}
@@ -207,7 +204,8 @@ const ListPagination = ({
       case 'next':
         return (
           <Button
-            className={cx('paginationListItem', (isLast || disabled) && 'paginationButtonDisabled')}
+            className="paginationListItem"
+            disabled={isLast || disabled}
             iconRight={Icon.icons.chevronRight}
             iconClassName={cx('paginationButtonIcon', variant !== 'text' && 'paginationButtonIconNoMargin')}
             onClick={() => onButtonClick(currentPage + 1)}
@@ -218,11 +216,8 @@ const ListPagination = ({
       default:
         return (
           <Button
-            className={cx(
-              'paginationListItem',
-              disabled && 'paginationButtonDisabled',
-              currentPage === (item as number) - 1 && 'paginationListItemActive',
-            )}
+            className={cx('paginationListItem', currentPage === (item as number) - 1 && 'paginationListItemActive')}
+            disabled={disabled}
             onClick={() => onButtonClick((item as number) - 1)}
           >
             {item}
