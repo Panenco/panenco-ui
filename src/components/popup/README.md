@@ -41,17 +41,17 @@ This component inherits the attributes of the **div** element and extends the fu
 - description - description of the modal;
 - onHide - a callback fired when the header closeButton or backdrop is clicked;
 - show - when true The popup will show itself;
-- clickOutHide - trigger an "onHide" when backdrop clicked;
+- backdropClosable - trigger an "onHide" when backdrop clicked;
 - closeBtn - specify whether the Component should contain a close button;
 - ref - ref;
 
-| propName     | propType        | defaultValue | isRequired |
-| ------------ | --------------- | ------------ | ---------- |
-| children     | React.ReactNode | -            | -          |
-| ref          | React.RefObject | -            | -          |
-| title        | string          | -            | -          |
-| description  | string          | -            | -          |
-| onHide       | (e) => void;    | -            | +          |
-| show         | boolean         | -            | +          |
-| clickOutHide | boolean         | true         | -          |
-| closeBtn     | boolean         | true         | -          |
+| propName         | propType        | defaultValue | isRequired |
+| ---------------- | --------------- | ------------ | ---------- |
+| children         | React.ReactNode | -            | -          |
+| ref              | React.RefObject | -            | -          |
+| title            | string          | -            | -          |
+| description      | string          | -            | -          |
+| onHide           | (e) => void;    | -            | +          |
+| show             | boolean         | -            | +          |
+| backdropClosable | boolean         | true         | -          |
+| closeBtn         | boolean         | true         | -          |
