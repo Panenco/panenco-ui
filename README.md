@@ -78,12 +78,9 @@ Colors that are defined within theme is represented with next type:
 
 ```typescript
 export type PUIColors = {
-  // project colors
-  background50: string;
+  highlight: string;
   accent: string;
   hover: string;
-
-  // root colors
   alert: string;
   error: string;
   success: string;

@@ -18,7 +18,7 @@ export const StyledDropzone = styled.div`
         ? transparentize(0.4, props.theme.colors.secondary)
         : props.theme.colors.border;
     }
-    return props.mode === ThemeMode.dark ? props.theme.colors.dark : props.theme.colors.background50;
+    return props.mode === ThemeMode.dark ? props.theme.colors.dark : props.theme.colors.highlight;
   }};
   border-width: ${(props: any): string => {
     if (props.error) {
@@ -33,7 +33,7 @@ export const StyledDropzone = styled.div`
     if (props.isDragActive) {
       return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent;
     }
-    return props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.background50;
+    return props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.highlight;
   }};
   color: ${(props: any): string => {
     if (props.loading) {

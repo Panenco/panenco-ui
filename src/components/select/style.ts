@@ -154,7 +154,7 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
         return theme.colors.border;
       }
       if (isFocused) {
-        return mode === ThemeMode.dark ? theme.colors.border : theme.colors.background50;
+        return mode === ThemeMode.dark ? theme.colors.border : theme.colors.highlight;
       }
       return 'inherit';
     };
@@ -169,7 +169,7 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
       position: 'relative',
       pointerEvents: state.isDisabled ? 'none' : 'auto',
       '&:hover': {
-        backgroundColor: mode === ThemeMode.dark ? theme.colors.border : theme.colors.background50,
+        backgroundColor: mode === ThemeMode.dark ? theme.colors.border : theme.colors.highlight,
         color: `${isHoverColor()}`,
         cursor: 'pointer',
         '& .addNewOption': {

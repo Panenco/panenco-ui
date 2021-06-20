@@ -139,7 +139,7 @@ export const StyledCheckbox = styled.div`
           if (props.color) {
             return props.color;
           }
-          return props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover;
+          return props.mode === ThemeMode.dark ? props.theme.colors.highlight : props.theme.colors.hover;
         }};
         border: ${(props: any): string => {
             if (props.borderWidth) {
@@ -152,7 +152,7 @@ export const StyledCheckbox = styled.div`
             if (props.color) {
               return props.color;
             }
-            return props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover;
+            return props.mode === ThemeMode.dark ? props.theme.colors.highlight : props.theme.colors.hover;
           }};
       }
     }

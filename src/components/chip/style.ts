@@ -30,13 +30,13 @@ export const StyledChip = styled.button`
   &:active {
     background-color: ${(props: any): string => {
       if (props.mode === ThemeMode.dark) {
-        return props.checked ? props.theme.colors.background50 : props.theme.colors.dark;
+        return props.checked ? props.theme.colors.highlight : props.theme.colors.dark;
       }
-      return props.checked ? props.theme.colors.hover : props.theme.colors.background50;
+      return props.checked ? props.theme.colors.hover : props.theme.colors.highlight;
     }};
     border: 1px solid
       ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover};
+        props.mode === ThemeMode.dark ? props.theme.colors.highlight : props.theme.colors.hover};
     .labelTitle {
       color: ${(props: any): string => {
         if (props.mode === ThemeMode.dark) {
