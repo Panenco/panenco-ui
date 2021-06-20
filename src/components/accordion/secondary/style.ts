@@ -13,7 +13,7 @@ export const StyledAccordionSecondary = styled.div`
   width: 100%;
 
   &:hover {
-    border-color: ${(props: any): string => props.theme.colors.accent500};
+    border-color: ${(props: any): string => props.theme.colors.accent};
     .accordionHeader,
     .accordionHeaderIcon {
       cursor: pointer;
@@ -38,7 +38,7 @@ export const StyledAccordionSecondary = styled.div`
     align-items: center;
 
     color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500};
+      props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent};
 
     &Title {
       transition: 0.5s;

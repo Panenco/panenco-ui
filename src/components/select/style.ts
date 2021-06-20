@@ -55,13 +55,13 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
       if (mode === ThemeMode.dark) {
         return menuIsOpen ? theme.colors.light : theme.colors.secondary;
       }
-      return menuIsOpen ? theme.colors.accent500 : theme.colors.secondary;
+      return menuIsOpen ? theme.colors.accent : theme.colors.secondary;
     };
     const isHoverBorderColor = (): string => {
       if (error) {
         return theme.colors.error;
       }
-      return mode === ThemeMode.dark ? theme.colors.light : theme.colors.accent500;
+      return mode === ThemeMode.dark ? theme.colors.light : theme.colors.accent;
     };
 
     return {
@@ -95,7 +95,7 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
       if (error) {
         return `2px solid ${theme.colors.error}`;
       }
-      return `1px solid ${mode === ThemeMode.dark ? theme.colors.light : theme.colors.accent500}`;
+      return `1px solid ${mode === ThemeMode.dark ? theme.colors.light : theme.colors.accent}`;
     };
 
     return {
@@ -138,7 +138,7 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
         return theme.colors.secondary;
       }
       if (mode === ThemeMode.light) {
-        return isChoosedOption ? theme.colors.accent500 : theme.colors.primary;
+        return isChoosedOption ? theme.colors.accent : theme.colors.primary;
       }
       return isFocused ? theme.colors.primary : theme.colors.light;
     };
@@ -173,7 +173,7 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
         color: `${isHoverColor()}`,
         cursor: 'pointer',
         '& .addNewOption': {
-          color: mode === ThemeMode.dark ? theme.colors.primary : theme.colors.accent500,
+          color: mode === ThemeMode.dark ? theme.colors.primary : theme.colors.accent,
         },
       },
       '& .icon': {
@@ -185,7 +185,7 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
       },
       '& .addNewOption': {
         paddingLeft: '5px',
-        color: mode === ThemeMode.dark ? theme.colors.light : theme.colors.accent500,
+        color: mode === ThemeMode.dark ? theme.colors.light : theme.colors.accent,
       },
       ...additionalStyles('option', styles, provided, state),
     };

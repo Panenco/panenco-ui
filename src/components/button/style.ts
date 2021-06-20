@@ -23,7 +23,7 @@ export const StyledButton = styled.button`
   background-color: ${({ variant, mode, theme: { colors } }: any): string =>
     getBackgroundColor(variant, mode, colors.dark, colors.light)};
   color: ${(props: any): string =>
-    props.color || (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500)};
+    props.color || (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent)};
   cursor: pointer;
 
   &.disabled {
@@ -70,7 +70,7 @@ export const StyledButton = styled.button`
 
   &.buttonPrimary {
     background-color: ${({ variant, mode, theme: { colors } }: any): string =>
-      getBackgroundColor(variant, mode, colors.light, colors.accent500)};
+      getBackgroundColor(variant, mode, colors.light, colors.accent)};
 
     color: ${(props: any): string =>
       props.color || (props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.light)};
@@ -91,7 +91,7 @@ export const StyledButton = styled.button`
   &.buttonSecondary {
     border: 2px solid
       ${(props: any): string => {
-        return props.color || (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500);
+        return props.color || (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent);
       }};
 
     &:hover {

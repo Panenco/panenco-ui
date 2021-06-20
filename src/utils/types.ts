@@ -1,8 +1,7 @@
 export type PUIModeColors = {
   background50?: string;
-  accent500?: string;
+  accent?: string;
   hover700?: string;
-  header900?: string;
 
   alert?: string;
   error?: string;
@@ -19,9 +18,8 @@ export type PUIModeColors = {
 export type PUIColors = {
   // project colors
   background50: string;
-  accent500: string;
+  accent: string;
   hover700: string;
-  header900: string;
 
   // root colors
   alert: string;

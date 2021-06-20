@@ -80,9 +80,8 @@ Colors that are defined within theme is represented with next type:
 export type PUIColors = {
   // project colors
   background50: string;
-  accent500: string;
+  accent: string;
   hover700: string;
-  header900: string;
 
   // root colors
   alert: string;

@@ -1,9 +1,8 @@
 export const colors = {
   // project colors
   background50: '#fbe9e7',
-  accent500: '#FF5722',
+  accent: '#FF5722',
   hover700: '#e64a24',
-  header900: '#bf371b',
 
   // root colors
   alert: '#faa000',

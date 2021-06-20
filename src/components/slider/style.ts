@@ -27,7 +27,7 @@ export const StyledHandle = styled.div`
     if (props.isActive) {
       return props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover700;
     }
-    return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500;
+    return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent;
   }};
 
   left: ${(props: any): string => {

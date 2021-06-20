@@ -31,7 +31,7 @@ export const StyledDropzone = styled.div`
       return props.theme.colors.error;
     }
     if (props.isDragActive) {
-      return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500;
+      return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent;
     }
     return props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.background50;
   }};
@@ -39,7 +39,7 @@ export const StyledDropzone = styled.div`
     if (props.loading) {
       return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover700;
     }
-    return props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.accent500;
+    return props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.accent;
   }};
 
   &:hover {
@@ -59,7 +59,7 @@ export const StyledDropzone = styled.div`
       if (props.isDragActive) {
         return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover700;
       }
-      return props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.accent500;
+      return props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.accent;
     }};
   }
 
@@ -68,7 +68,7 @@ export const StyledDropzone = styled.div`
       if (props.isDragActive) {
         return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover700;
       }
-      return props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.accent500;
+      return props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.accent;
     }};
     text-align: center;
 
