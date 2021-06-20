@@ -81,7 +81,7 @@ export type PUIColors = {
   // project colors
   background50: string;
   accent: string;
-  hover700: string;
+  hover: string;
 
   // root colors
   alert: string;

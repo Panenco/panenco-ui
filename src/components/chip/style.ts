@@ -32,17 +32,17 @@ export const StyledChip = styled.button`
       if (props.mode === ThemeMode.dark) {
         return props.checked ? props.theme.colors.background50 : props.theme.colors.dark;
       }
-      return props.checked ? props.theme.colors.hover700 : props.theme.colors.background50;
+      return props.checked ? props.theme.colors.hover : props.theme.colors.background50;
     }};
     border: 1px solid
       ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover700};
+        props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover};
     .labelTitle {
       color: ${(props: any): string => {
         if (props.mode === ThemeMode.dark) {
           return props.checked ? props.theme.colors.primary : props.theme.colors.light;
         }
-        return props.checked ? props.theme.colors.light : props.theme.colors.hover700;
+        return props.checked ? props.theme.colors.light : props.theme.colors.hover;
       }};
     }
   }

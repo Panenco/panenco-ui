@@ -50,7 +50,7 @@ export const StyledFileUploader = styled.div`
       &:hover {
         box-shadow: 0 0 0 2px
           ${(props: any): string =>
-            props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover700};
+            props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover};
       }
       &:focus {
         box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.outline};

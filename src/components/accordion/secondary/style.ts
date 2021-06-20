@@ -18,7 +18,7 @@ export const StyledAccordionSecondary = styled.div`
     .accordionHeaderIcon {
       cursor: pointer;
       color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover700};
+        props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover};
     }
   }
 

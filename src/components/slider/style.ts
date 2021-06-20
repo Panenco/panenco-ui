@@ -25,7 +25,7 @@ export const StyledHandle = styled.div`
   z-index: 2;
   background-color: ${(props: any): string => {
     if (props.isActive) {
-      return props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover700;
+      return props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover;
     }
     return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent;
   }};
@@ -38,7 +38,7 @@ export const StyledHandle = styled.div`
 
   &:hover {
     background-color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover700};
+      props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover};
   }
 
   & .valueLabel {

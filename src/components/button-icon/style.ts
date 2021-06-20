@@ -19,7 +19,7 @@ export const StyledButtonIcon = styled.button`
     & .iconClass,
     & .buttonIconTitle {
       color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover700};
+        props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover};
     }
   }
 

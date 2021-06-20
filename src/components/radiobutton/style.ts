@@ -104,7 +104,7 @@ export const StyledRadio = styled.div`
               if (props.error) {
                 return props.theme.colors.error;
               }
-              return props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover700;
+              return props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover;
             }};
 
           & > .point {
@@ -112,7 +112,7 @@ export const StyledRadio = styled.div`
               if (props.error) {
                 return props.theme.colors.error;
               }
-              return props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover700;
+              return props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover;
             }};
           }
         }

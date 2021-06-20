@@ -144,7 +144,7 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
     };
     const isHoverColor = (): string => {
       if (mode === ThemeMode.light) {
-        return isChoosedOption ? theme.colors.hover700 : theme.colors.primary;
+        return isChoosedOption ? theme.colors.hover : theme.colors.primary;
       }
       return theme.colors.primary;
     };

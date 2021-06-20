@@ -37,7 +37,7 @@ export const StyledDropzone = styled.div`
   }};
   color: ${(props: any): string => {
     if (props.loading) {
-      return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover700;
+      return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover;
     }
     return props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.accent;
   }};
@@ -57,7 +57,7 @@ export const StyledDropzone = styled.div`
         return props.theme.colors.error;
       }
       if (props.isDragActive) {
-        return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover700;
+        return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover;
       }
       return props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.accent;
     }};
@@ -66,7 +66,7 @@ export const StyledDropzone = styled.div`
   .content {
     color: ${(props: any): string => {
       if (props.isDragActive) {
-        return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover700;
+        return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover;
       }
       return props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.accent;
     }};
