@@ -11,10 +11,10 @@ import { Row, Col, GridContainer } from '@panenco/ui';
 
 const render  = () => {
   return (
-    <Row>
-      <Col s="1" m="2" l="4" xl="4" >{children}</Col>
-      <Col s="2" m="2" l="4" xl="4" >{children}</Col>
-      <Col s="1" m="4" l="4" xl="4" >{children}</Col>
+    <Row spacing={3}>
+      <Col xs="1" sm="2" lg="4" >{children}</Col>
+      <Col xs="2" sm="2" lg="4" >{children}</Col>
+      <Col xs="1" sm="4" lg="4" >{children}</Col>
     </Row>
   )
 }
@@ -25,24 +25,31 @@ const render  = () => {
 
 ### Row Properties
 
-Row component inherits the attributes of the **div** element.
+Row component inherits the attributes of the **div** element and extends the functionality with next properties.
+
+- `spacing` - size of intervals between columns ( can be set from 1 to 12 and will be multiply by 8px);
+
+`spacing` can be set using single number, single string, string with two values separated `,` and by array. First values is `x-axis` interval, second is `y-axis` interval.
+
+spacing css class (example: `spacing-auto-3-3`) consist of starting breakpoint, `x-axis` multiplier and `y-axis` multiplier.
+
+| propName | propType                  | defaultValue            | isRequired | spacing size (max value in a prop) |
+| -------- | ------------------------- | ----------------------- | ---------- | ---------------------------------- |
+| spacing  | string or number or array | according to breakpoint | -          | 12                                 |
 
 ### Column Properties
 
 Col component inherits the attributes of the **div** element and extends the functionality with next properties.
 
 - `xs` - size of columns to 600px;
-- `s` - size of columns to 720px;
-- `m` - size of columns to 840px;
-- `ml` - size of columns to 960px;
-- `l` - size of columns to 1328px;
-- `xl` - size of columns over 1328px;
+- `sm` - size of columns to 840px;
+- `md` - size of columns to 1332px;
+- `lg` - size of columns over 1332px;
 
-| propName | propType         | defaultValue | isRequired | row size (maxColumns in a row) |
-| -------- | ---------------- | ------------ | ---------- | ------------------------------ |
-| xs       | string or number | 12           | -          | 12                             |
-| s        | string or number | xs           | -          | 12                             |
-| m        | string or number | s            | -          | 12                             |
-| ml       | string or number | m            | -          | 12                             |
-| l        | string or number | ml           | -          | 12                             |
-| xl       | string or number | l            | -          | 12                             |
+| propName | propType         | defaultValue             | isRequired |
+| -------- | ---------------- | ------------------------ | ---------- |
+| auto     | -                | equal free space / cells | -          |
+| xs       | string or number | -                        | -          |
+| sm       | string or number | -                        | -          |
+| md       | string or number | -                        | -          |
+| lg       | string or number | -                        | -          |

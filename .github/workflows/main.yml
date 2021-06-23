@@ -11,12 +11,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - run: npm install
-      - run: npm run build
+
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
+
+      - name: Build app
+        run: yarn build
+
       # - run: npm prepublishOnly
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.ACTION_PUBLISH_TOKEN }}
+
+      - name: Notify slack of successful deploy
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        uses: pullreminders/slack-action@master
+        with:
+          args: '{\"channel\":\"C0255H2GNK0\",\"text\":\"Successfully published PUI! :rocket:\"}'
+        if: success()

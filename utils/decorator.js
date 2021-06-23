@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { withReadme, withDocs } from 'storybook-readme';
 import { ThemeProvider } from 'components/theme-provider';
 import { NotificationContainer } from 'components/notification';
-
+import ScreenDimensions from './ScreenDimensions';
 // import defaultTheme from 'themes/default';
 // import { ThemeMode } from 'utils/types';
 
@@ -16,7 +16,7 @@ export const decorator = (title, doc, readme) =>
     .addDecorator(withReadme(readme))
     .addDecorator((story) => (
       <ThemeProvider>
-        {story()}
+        {title === 'Grid' ? <ScreenDimensions>{story()}</ScreenDimensions> : story()}
         <NotificationContainer />
       </ThemeProvider>
     ));
