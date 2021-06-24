@@ -8,18 +8,18 @@ import { StyledPagination, StyledListPagination } from './styles';
 
 export type PaginationProps = {
   [key: string]: any;
-  totalItems?: number;
-  perPage: number;
-  currentPage: number;
+  count?: number;
+  rowsPerPage: number;
+  page: number;
   disabled?: boolean;
   onButtonClick: (page: number) => void;
 } & (
   | {
       type?: 'table';
       contentBeforeSelect?: string;
-      options?: any;
-      onPageChange: any;
-      onPerPageChange: any;
+      rowsPerPageOptions?: any;
+      onChangePage: any;
+      onChangeRowsPerPage: any;
     }
   | {
       type?: 'list';
@@ -33,8 +33,8 @@ export type PaginationProps = {
   React.HTMLAttributes<HTMLDivElement>;
 
 export type PaginationComponentProps = {
-  currentPage: number;
-  totalItems: number;
+  page: number;
+  count: number;
   mode: ThemeMode;
   theme: PUITheme;
   from: number;
@@ -76,15 +76,15 @@ const TablePagination = ({
   theme,
   className,
   contentBeforeSelect,
-  options,
-  onPageChange,
-  onPerPageChange,
+  rowsPerPageOptions,
+  onChangePage,
+  onChangeRowsPerPage,
   onButtonClick,
-  totalItems,
+  count,
   from,
   to,
-  perPage,
-  currentPage,
+  rowsPerPage,
+  page,
   pagesAmount,
   isFirst,
   disabled,
@@ -104,24 +104,24 @@ const TablePagination = ({
           {contentBeforeSelect}
         </Text>
         <SelectInput
-          options={options}
+          rowsPerPageOptions={rowsPerPageOptions}
           className="paginationSelect"
-          id="perPage"
-          name="perPage"
+          id="rowsPerPage"
+          name="rowsPerPage"
           isSearchable={false}
           styles={additionStyles()}
           isDisabled={disabled}
-          onChange={onPerPageChange}
-          value={options.find((option) => Number(option.value) === Number(perPage))}
+          onChange={onChangeRowsPerPage}
+          value={rowsPerPageOptions.find((option) => Number(option.value) === Number(rowsPerPage))}
         />
         <div className={cx('paginationDivider', 'paginationDividerLeft')} />
         <Text size={theme.typography.sizes.m} color={theme.colors.primary} className="paginationText">
-          {`${totalItems > 0 ? from : 0}-${to} of ${totalItems} items`}
+          {`${count > 0 ? from : 0}-${to} of ${count} items`}
         </Text>
       </div>
       <div className="paginationSection">
         <Text size={theme.typography.sizes.m} color={theme.colors.primary} className="paginationText">
-          {`${currentPage + 1} of ${pagesAmount} pages`}
+          {`${page + 1} of ${pagesAmount} pages`}
         </Text>
         <div className={cx('paginationDivider', 'paginationDividerRight')} />
         <Button
@@ -130,19 +130,19 @@ const TablePagination = ({
           iconLeft={Icon.icons.chevronLeft}
           iconClassName={cx('paginationButtonIcon', 'paginationButtonIconNoMargin')}
           onClick={(): void => {
-            onButtonClick(currentPage - 1);
+            onButtonClick(page - 1);
           }}
         />
         <SelectInput
-          options={pagesOptions}
+          rowsPerPageOptions={pagesOptions}
           className="paginationSelect"
           id="page"
           name="page"
           isSearchable={false}
           styles={additionStyles()}
           isDisabled={disabled}
-          onChange={onPageChange}
-          value={pagesOptions.find((option) => Number(option.value) === Number(currentPage))}
+          onChange={onChangePage}
+          value={pagesOptions.find((option) => Number(option.value) === Number(page))}
         />
         <Button
           className="paginationButton"
@@ -150,7 +150,7 @@ const TablePagination = ({
           iconRight={Icon.icons.chevronRight}
           iconClassName={cx('paginationButtonIcon', 'paginationButtonIconNoMargin')}
           onClick={(): void => {
-            onButtonClick(currentPage + 1);
+            onButtonClick(page + 1);
           }}
         />
       </div>
@@ -160,7 +160,7 @@ const TablePagination = ({
 
 const ListPagination = ({
   pagesAmount,
-  currentPage,
+  page,
   isFirst,
   isLast,
   disabled,
@@ -171,7 +171,7 @@ const ListPagination = ({
   onButtonClick,
   ...otherProps
 }: PaginationComponentProps): JSX.Element => {
-  const items = generateItems({ pagesAmount, currentPage: currentPage + 1, ...otherProps });
+  const items = generateItems({ pagesAmount, currentPage: page + 1, ...otherProps });
 
   const renderListItem = (item: string | number): JSX.Element => {
     switch (item) {
@@ -196,7 +196,7 @@ const ListPagination = ({
             disabled={isFirst || disabled}
             iconLeft={Icon.icons.chevronLeft}
             iconClassName={cx('paginationButtonIcon', variant !== 'text' && 'paginationButtonIconNoMargin')}
-            onClick={() => onButtonClick(currentPage - 1)}
+            onClick={() => onButtonClick(page - 1)}
           >
             {variant === 'text' && <Text>Previous</Text>}
           </Button>
@@ -208,7 +208,7 @@ const ListPagination = ({
             disabled={isLast || disabled}
             iconRight={Icon.icons.chevronRight}
             iconClassName={cx('paginationButtonIcon', variant !== 'text' && 'paginationButtonIconNoMargin')}
-            onClick={() => onButtonClick(currentPage + 1)}
+            onClick={() => onButtonClick(page + 1)}
           >
             {variant === 'text' && <Text>Next</Text>}
           </Button>
@@ -216,7 +216,7 @@ const ListPagination = ({
       default:
         return (
           <Button
-            className={cx('paginationListItem', currentPage === (item as number) - 1 && 'paginationListItemActive')}
+            className={cx('paginationListItem', page === (item as number) - 1 && 'paginationListItemActive')}
             disabled={disabled}
             onClick={() => onButtonClick((item as number) - 1)}
           >
@@ -241,24 +241,24 @@ const ListPagination = ({
 
 export const PaginationSelect = ({
   contentBeforeSelect = 'Show rows:',
-  totalItems = 150,
-  perPage = 12,
+  count = 150,
+  rowsPerPage = 12,
   onButtonClick = () => {},
-  currentPage = 0,
+  page = 0,
   disabled = false,
-  options = defaultOptions,
+  rowsPerPageOptions = defaultOptions,
   type = 'list',
   variant = 'contained',
   ...otherProps
 }: PaginationProps): JSX.Element => {
-  const from = currentPage * perPage + 1;
+  const from = page * rowsPerPage + 1;
 
-  const isFirst = Number(currentPage) === 0;
-  const isLast = totalItems <= perPage * currentPage + Number(perPage);
-  const pagesAmount = Math.ceil(totalItems / perPage);
-  const pagesOptions = [...Array(pagesAmount)].map((page, index) => ({ value: index, label: index + 1 }));
+  const isFirst = Number(page) === 0;
+  const isLast = count <= rowsPerPage * page + Number(rowsPerPage);
+  const pagesAmount = Math.ceil(count / rowsPerPage);
+  const pagesOptions = [...Array(pagesAmount)].map((_, index) => ({ value: index, label: index + 1 }));
 
-  const to = !isLast ? perPage * currentPage + Number(perPage) : totalItems;
+  const to = !isLast ? rowsPerPage * page + Number(rowsPerPage) : count;
   const theme = useTheme();
   const { mode } = useMode();
   const PaginationComponent = type === 'table' ? TablePagination : ListPagination;
@@ -268,12 +268,12 @@ export const PaginationSelect = ({
       mode={mode}
       theme={theme}
       contentBeforeSelect={contentBeforeSelect}
-      options={options}
-      totalItems={totalItems}
+      rowsPerPageOptions={rowsPerPageOptions}
+      count={count}
       from={from}
       to={to}
-      perPage={perPage}
-      currentPage={currentPage}
+      rowsPerPage={rowsPerPage}
+      page={page}
       pagesAmount={pagesAmount}
       isFirst={isFirst}
       disabled={disabled}

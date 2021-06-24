@@ -6,7 +6,7 @@
 ...
 import { PaginationSelect } from '@panenco/ui';
 
-const options = [
+const rowsPerPageOptions = [
   { label: '12', value: '12' },
   { label: '24', value: '24' },
   { label: '36', value: '36' },
@@ -34,12 +34,12 @@ const render = () => {
   return (
     <PaginationSelect
       type="table"
-      currentPage={page}
-      onPageChange={handleChangePage}
-      onPerPageChange={handleChangeRowsPerPage}
+      page={page}
+      onChangePage={handleChangePage}
+      onChangeRowsPerPage={handleChangeRowsPerPage}
       onButtonClick={handleButtonClick}
-      totalItems={201}
-      perPage={rowsPerPage}
+      count={201}
+      rowsPerPage={rowsPerPage}
     />
 );
 }
@@ -54,28 +54,28 @@ This component inherits the attributes of the **div** element and extends the fu
 
 - boundaryCount - Number of always visible pages at the beginning and end.
 - siblingCount - Number of always visible pages before and after the current page.
-- currentPage - The current page.
-- totalItems - Total items.
-- perPage - Items per page.
+- page - The current page.
+- count - Total items.
+- rowsPerPage - Items per page.
 - disabled - If **true**, the pagination component will be disabled.
 - type - Pagination component type.
-- options - array of options that populate the per page select menu.
-- onPageChange - Callback fired when the page is changed.
-- onPerPageChange - Callback fired when the items per page is changed.
+- rowsPerPageOptions - array of options that populate the per page select menu.
+- onChangePage - Callback fired when the page is changed.
+- onChangeRowsPerPage - Callback fired when the items per page is changed.
 - onButtonClick - Callback fired when page change button clicked.
 - contentBeforeSelect - content berofe per page select.
 
-| propName            | propType                         | defaultValue | isRequired |
-| ------------------- | -------------------------------- | ------------ | ---------- |
-| boundaryCount       | number                           | 1            | -          |
-| siblingCount        | number                           | 1            | -          |
-| currentPage         | number                           | 0            | +          |
-| totalItems          | number                           | 150          | +          |
-| perPage             | number                           | 12           | +          |
-| disabled            | boolean                          | false        | -          |
-| options             | {value: number, label: number}[] | options      | -          |
-| type                | 'table' or 'list'                | 'list'       | -          |
-| onPageChange        | func                             | -            | +          |
-| onPerPageChange     | func                             | -            | +          |
-| onButtonClick       | func                             | -            | +          |
-| contentBeforeSelect | string                           | 'Show rows:' | -          |
+| propName            | propType                         | defaultValue       | isRequired |
+| ------------------- | -------------------------------- | ------------------ | ---------- |
+| boundaryCount       | number                           | 1                  | -          |
+| siblingCount        | number                           | 1                  | -          |
+| page                | number                           | 0                  | +          |
+| count               | number                           | 150                | +          |
+| rowsPerPage         | number                           | 12                 | +          |
+| disabled            | boolean                          | false              | -          |
+| rowsPerPageOptions  | {value: number, label: number}[] | rowsPerPageOptions | -          |
+| type                | 'table' or 'list'                | 'list'             | -          |
+| onChangePage        | func                             | -                  | +          |
+| onChangeRowsPerPage | func                             | -                  | +          |
+| onButtonClick       | func                             | -                  | +          |
+| contentBeforeSelect | string                           | 'Show rows:'       | -          |

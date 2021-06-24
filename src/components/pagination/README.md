@@ -22,9 +22,9 @@ const render = () => {
       onButtonClick={handleButtonClick}
       showFirstButton
       showLastButton
-      totalItems={201}
-      perPage={rowsPerPage}
-      currentPage={page}
+      count={201}
+      rowsPerPage={rowsPerPage}
+      page={page}
     />
 );
 }
@@ -43,9 +43,9 @@ This component inherits the attributes of the **div** element and extends the fu
 - showFirstButton - If **true**, show the first-page button.
 - showLastButton - If **true**, show the last-page button.
 - siblingCount - Number of always visible pages before and after the current page.
-- currentPage - The current page.
-- totalItems - Total items.
-- perPage - Items per page.
+- page - The current page.
+- count - Total items.
+- rowsPerPage - Items per page.
 - disabled - If **true**, the pagination component will be disabled.
 - type - Pagination component type.
 - variant - The variant to use.
@@ -59,9 +59,9 @@ This component inherits the attributes of the **div** element and extends the fu
 | showFirstButton | boolean                             | false        | -          |
 | showLastButton  | boolean                             | false        | -          |
 | siblingCount    | number                              | 1            | -          |
-| currentPage     | number                              | 0            | +          |
-| totalItems      | number                              | 150          | +          |
-| perPage         | number                              | 12           | +          |
+| page            | number                              | 0            | +          |
+| count           | number                              | 150          | +          |
+| rowsPerPage     | number                              | 12           | +          |
 | disabled        | boolean                             | false        | -          |
 | type            | 'table' or 'list'                   | 'list'       | -          |
 | variant         | 'contained' or 'outlined' or 'text' | 'contained'  | -          |
