@@ -104,7 +104,7 @@ const TablePagination = ({
           {contentBeforeSelect}
         </Text>
         <SelectInput
-          rowsPerPageOptions={rowsPerPageOptions}
+          options={rowsPerPageOptions}
           className="paginationSelect"
           id="rowsPerPage"
           name="rowsPerPage"
@@ -134,7 +134,7 @@ const TablePagination = ({
           }}
         />
         <SelectInput
-          rowsPerPageOptions={pagesOptions}
+          options={pagesOptions}
           className="paginationSelect"
           id="page"
           name="page"
