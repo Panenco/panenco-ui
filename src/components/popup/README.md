@@ -43,15 +43,17 @@ This component inherits the attributes of the **div** element and extends the fu
 - show - when true The popup will show itself;
 - backdropClosable - trigger an "onHide" when backdrop clicked;
 - closeBtn - specify whether the Component should contain a close button;
+- disableEscapeKeyDown - disable hiding modal on Escape Key click;
 - ref - ref;
 
-| propName         | propType        | defaultValue | isRequired |
-| ---------------- | --------------- | ------------ | ---------- |
-| children         | React.ReactNode | -            | -          |
-| ref              | React.RefObject | -            | -          |
-| title            | string          | -            | -          |
-| description      | string          | -            | -          |
-| onHide           | (e) => void;    | -            | +          |
-| show             | boolean         | -            | +          |
-| backdropClosable | boolean         | true         | -          |
-| closeBtn         | boolean         | true         | -          |
+| propName             | propType        | defaultValue | isRequired |
+| -------------------- | --------------- | ------------ | ---------- |
+| children             | React.ReactNode | -            | -          |
+| ref                  | React.RefObject | -            | -          |
+| title                | string          | -            | -          |
+| description          | string          | -            | -          |
+| onHide               | () => void;     | -            | +          |
+| show                 | boolean         | -            | +          |
+| backdropClosable     | boolean         | true         | -          |
+| closeBtn             | boolean         | true         | -          |
+| disableEscapeKeyDown | boolean         | false        | -          |

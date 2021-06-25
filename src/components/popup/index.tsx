@@ -18,10 +18,11 @@ export interface PopupProps extends React.HTMLAttributes<HTMLDivElement> {
   description?: string;
   className?: string;
   children?: React.ReactNode;
-  onHide: (e: React.MouseEvent<HTMLElement>) => void;
+  onHide: () => void;
   show: boolean;
   backdropClosable?: boolean;
   closeBtn?: boolean;
+  disableEscapeKeyDown?: boolean;
 }
 
 export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
@@ -35,6 +36,7 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
       show,
       backdropClosable = true,
       closeBtn = true,
+      disableEscapeKeyDown = false,
       ...props
     }: PopupProps,
     ref,
@@ -43,6 +45,10 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
 
     const popupStopPropagation = (e: React.MouseEvent<HTMLElement>): void => {
       e.stopPropagation();
+    };
+
+    const handleEscClose = (ev: KeyboardEvent): void => {
+      if (ev.key === 'Escape') onHide();
     };
 
     React.useEffect(() => {
@@ -54,7 +60,16 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
         document.body.style.overflow = 'visible';
         document.body.style.paddingRight = '0';
       }
-    }, [show]);
+
+      if (show && !disableEscapeKeyDown) {
+        document.addEventListener('keydown', handleEscClose);
+        return () => {
+          document.removeEventListener('keydown', handleEscClose);
+        };
+      }
+
+      return;
+    }, [show, disableEscapeKeyDown]);
 
     const emptyHeader: boolean = !title && !description && !closeBtn;
     return ReactDOM.createPortal(
