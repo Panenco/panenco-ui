@@ -3,7 +3,7 @@ import { Icon, Text } from 'components';
 import cx from 'classnames';
 import { useTheme, useMode } from 'utils/hooks';
 import { ThemeMode } from 'utils/types';
-import { RowType, ExpandRowType } from './types';
+import { RowType, ExpandRowType, CustomCellProps } from './types';
 
 export interface CellProps {
   accessor: string;
@@ -13,7 +13,7 @@ export interface CellProps {
   rowIndex: string | number;
   expandRow: ExpandRowType;
   hiddenColumnLength: number;
-  component?: any;
+  component?: React.ComponentType<CustomCellProps>;
 }
 
 const Cell = ({
@@ -44,12 +44,10 @@ const Cell = ({
         icon={Icon.icons.chevronRight}
       />
     ) : null;
-  
-  const content = component ? (
-    React.createElement(component, { row, rowIndex, cellIndex, accessor })
-  ) : (
-    row.data[accessor]
-  );
+
+  const content = component
+    ? React.createElement(component, { row, rowIndex, cellIndex, accessor })
+    : row.data[accessor];
   return (
     <td
       className="tableCell"

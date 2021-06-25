@@ -3,6 +3,7 @@ import { throttle } from 'lodash-es';
 import * as React from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
 import { useMode, useTheme } from 'utils/hooks';
+import { ColumnType } from '.';
 
 import Columns from './columns';
 import Rows from './rows';
@@ -11,13 +12,25 @@ import { expandRow, resizeTable } from './table-actions';
 import { TableProps, TableState } from './types';
 
 class Table extends React.Component<TableProps, TableState> {
+  static separateColumns(cols: ColumnType[]): ColumnType[][] {
+    const visible: ColumnType[] = [];
+    const hidden: ColumnType[] = [];
+
+    cols.forEach((col) => {
+      if (col.isVisible) visible.push(col);
+      else hidden.push(col);
+    });
+
+    return [visible, hidden];
+  }
+
   divRef: React.RefObject<HTMLElement>;
 
   divSizeObserver: ResizeObserver;
 
   static defaultProps = {
     itemsPerPage: null,
-    priorityLevelThreshold: null,
+
     sort: null,
     handleSort: null,
   };
@@ -40,8 +53,8 @@ class Table extends React.Component<TableProps, TableState> {
   }
 
   static getDerivedStateFromProps(newProps: TableProps, state: TableState): TableState {
-    if (newProps.rows !== state.props.rows) {
-      return { ...state, rows: newProps.rows, props: newProps };
+    if (newProps.rows !== state.props.rows || newProps.columns !== state.props.columns) {
+      return { ...state, rows: newProps.rows, columns: newProps.columns, props: newProps };
     }
     return state;
   }
@@ -85,32 +98,20 @@ class Table extends React.Component<TableProps, TableState> {
   }
 
   render(): JSX.Element {
-    const { columns, rows, containerWidth } = this.state;
-    const {
-      columns: columnsProp,
-      rows: rowsProp,
-      priorityLevelThreshold,
-      itemsPerPage,
-      sort,
-      handleSort,
-      innerRef,
-      theme,
-      mode,
-      isLoading,
-      ...tableProps
-    } = this.props;
-    const visibleColumns = columns.filter((column) => column.isVisible);
-    const hiddenColumns = columns.filter((column) => !column.isVisible);
+    const { containerWidth, columns, rows } = this.state;
+    const { itemsPerPage, sort, handleSort, innerRef, theme, mode, isLoading, ...tableProps } = this.props;
+
+    const [visibleCols, hiddenCols] = Table.separateColumns(columns);
 
     return (
       <Styles theme={theme} mode={mode} ref={this.divRef}>
         <table className="table" ref={innerRef} {...tableProps}>
-          <Columns columns={visibleColumns} sort={sort} handleSort={handleSort} />
+          <Columns columns={visibleCols} sort={sort} handleSort={handleSort} />
           <Rows
             rows={rows}
             itemsPerPage={itemsPerPage}
-            visibleColumns={visibleColumns}
-            hiddenColumns={hiddenColumns}
+            visibleColumns={visibleCols}
+            hiddenColumns={hiddenCols}
             expandRow={this.expandRow}
             containerWidth={containerWidth}
             isLoading={isLoading}
