@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 export const StyledLink = styled(Link)`
   padding: 3px;
-  color: ${(props: any): string => props.theme.colors.accent500};
+  color: ${(props: any): string => props.theme.colors.accent};
 
   &:hover {
-    border-bottom: 1px dashed ${(props: any): string => props.theme.colors.accent500};
+    border-bottom: 1px dashed ${(props: any): string => props.theme.colors.accent};
   }
 
   &:focus {

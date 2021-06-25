@@ -18,7 +18,7 @@ export const StyledDropzone = styled.div`
         ? transparentize(0.4, props.theme.colors.secondary)
         : props.theme.colors.border;
     }
-    return props.mode === ThemeMode.dark ? props.theme.colors.dark : props.theme.colors.background50;
+    return props.mode === ThemeMode.dark ? props.theme.colors.dark : props.theme.colors.highlight;
   }};
   border-width: ${(props: any): string => {
     if (props.error) {
@@ -31,15 +31,15 @@ export const StyledDropzone = styled.div`
       return props.theme.colors.error;
     }
     if (props.isDragActive) {
-      return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500;
+      return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent;
     }
-    return props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.background50;
+    return props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.highlight;
   }};
   color: ${(props: any): string => {
     if (props.loading) {
-      return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover700;
+      return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover;
     }
-    return props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.accent500;
+    return props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.accent;
   }};
 
   &:hover {
@@ -57,18 +57,18 @@ export const StyledDropzone = styled.div`
         return props.theme.colors.error;
       }
       if (props.isDragActive) {
-        return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover700;
+        return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover;
       }
-      return props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.accent500;
+      return props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.accent;
     }};
   }
 
   .content {
     color: ${(props: any): string => {
       if (props.isDragActive) {
-        return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover700;
+        return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover;
       }
-      return props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.accent500;
+      return props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.accent;
     }};
     text-align: center;
 
