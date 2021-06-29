@@ -3,15 +3,16 @@ import React from 'react';
 import PaginationReadme from 'components/pagination/README.md';
 import TablePaginationReadme from 'components/pagination/TABLE-README.md';
 import PaginationDocs from 'components/pagination/DOCS.md';
+import TablePaginationDocs from 'components/pagination/TABLE-DOCS.md';
 
-import { Row, Col, PaginationSelect } from 'components';
+import { Row, Col, Pagination, TablePagination as TablePaginationSelect } from 'components';
 
 import { BrowserRouter } from 'react-router-dom';
 
 import { decorator } from '../../utils/decorator';
 import { WrappedComponent } from '../helpers/wrapped';
 
-export const TablePagination = decorator('Pagination', PaginationDocs, TablePaginationReadme).add(
+export const TablePagination = decorator('Pagination', TablePaginationDocs, TablePaginationReadme).add(
   'TablePagination component',
   () => {
     const [page, setPage] = React.useState(0);
@@ -35,8 +36,7 @@ export const TablePagination = decorator('Pagination', PaginationDocs, TablePagi
         <BrowserRouter>
           <Row style={{ justifyContent: 'center' }}>
             <Col s="3" m="6" l="12">
-              <PaginationSelect
-                type="table"
+              <TablePaginationSelect
                 page={page}
                 onChangePage={handleChangePage}
                 onChangeRowsPerPage={handleChangeRowsPerPage}
@@ -65,8 +65,7 @@ export default decorator('Pagination', PaginationDocs, PaginationReadme).add('Pa
       <BrowserRouter>
         <Row style={{ justifyContent: 'center', marginTop: '20px' }}>
           <Col s="3" m="6" l="6">
-            <PaginationSelect
-              type="list"
+            <Pagination
               variant="contained"
               count={201}
               rowsPerPage={rowsPerPage}
@@ -77,8 +76,7 @@ export default decorator('Pagination', PaginationDocs, PaginationReadme).add('Pa
         </Row>
         <Row style={{ justifyContent: 'center', marginTop: '20px' }}>
           <Col s="3" m="6" l="6">
-            <PaginationSelect
-              type="list"
+            <Pagination
               variant="outlined"
               count={201}
               rowsPerPage={rowsPerPage}
@@ -89,8 +87,7 @@ export default decorator('Pagination', PaginationDocs, PaginationReadme).add('Pa
         </Row>
         <Row style={{ justifyContent: 'center', marginTop: '20px' }}>
           <Col s="3" m="6" l="6">
-            <PaginationSelect
-              type="list"
+            <Pagination
               variant="text"
               count={201}
               rowsPerPage={rowsPerPage}
@@ -101,8 +98,7 @@ export default decorator('Pagination', PaginationDocs, PaginationReadme).add('Pa
         </Row>
         <Row style={{ justifyContent: 'center', marginTop: '20px' }}>
           <Col s="3" m="6" l="8">
-            <PaginationSelect
-              type="list"
+            <Pagination
               variant="text"
               onButtonClick={handleButtonClick}
               showFirstButton

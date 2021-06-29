@@ -4,7 +4,7 @@
 
 ```js
 ...
-import { PaginationSelect } from '@panenco/ui';
+import { Pagination } from '@panenco/ui';
 
 const [page, setPage] = React.useState(0);
 const [rowsPerPage, setRowsPerPage] = React.useState(12);
@@ -16,8 +16,7 @@ const handleButtonClick = (val) => {
 
 const render = () => {
   return (
-    <PaginationSelect
-      type="list"
+    <Pagination
       variant="text"
       onButtonClick={handleButtonClick}
       showFirstButton
@@ -47,7 +46,6 @@ This component inherits the attributes of the **div** element and extends the fu
 - count - Total items.
 - rowsPerPage - Items per page.
 - disabled - If **true**, the pagination component will be disabled.
-- type - Pagination component type.
 - variant - The variant to use.
 - onButtonClick - Callback fired when page change button clicked.
 
@@ -63,6 +61,5 @@ This component inherits the attributes of the **div** element and extends the fu
 | count           | number                              | 150          | +          |
 | rowsPerPage     | number                              | 12           | +          |
 | disabled        | boolean                             | false        | -          |
-| type            | 'table' or 'list'                   | 'list'       | -          |
 | variant         | 'contained' or 'outlined' or 'text' | 'contained'  | -          |
 | onButtonClick   | func                                | -            | +          |

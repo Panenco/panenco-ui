@@ -1,1 +1,2 @@
-export * from './pagination-select';
+export * from './pagination';
+export * from './table-pagination';

@@ -120,6 +120,14 @@ export const StyledListPagination = styled.div`
             opacity: 0.9;
           }
         }
+
+        &Ellipsis {
+          cursor: text;
+
+          &:hover {
+            background-color: transparent;
+          }
+        }
       }
     }
 

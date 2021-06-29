@@ -1,7 +1,7 @@
 # Pagination
 
 ```js
-import { PaginationProps, PaginationSelect } from '@panenco/ui';
+import { PaginationProps, Pagination } from '@panenco/ui';
 ```
 
 <!-- STORY -->

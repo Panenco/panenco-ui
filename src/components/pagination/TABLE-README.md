@@ -4,7 +4,7 @@
 
 ```js
 ...
-import { PaginationSelect } from '@panenco/ui';
+import { TablePagination } from '@panenco/ui';
 
 const rowsPerPageOptions = [
   { label: '12', value: '12' },
@@ -32,8 +32,7 @@ const handleButtonClick = (val) => {
 
 const render = () => {
   return (
-    <PaginationSelect
-      type="table"
+    <TablePagination
       page={page}
       onChangePage={handleChangePage}
       onChangeRowsPerPage={handleChangeRowsPerPage}
@@ -58,7 +57,6 @@ This component inherits the attributes of the **div** element and extends the fu
 - count - Total items.
 - rowsPerPage - Items per page.
 - disabled - If **true**, the pagination component will be disabled.
-- type - Pagination component type.
 - rowsPerPageOptions - array of options that populate the per page select menu.
 - onChangePage - Callback fired when the page is changed.
 - onChangeRowsPerPage - Callback fired when the items per page is changed.
@@ -74,7 +72,6 @@ This component inherits the attributes of the **div** element and extends the fu
 | rowsPerPage         | number                           | 12                 | +          |
 | disabled            | boolean                          | false              | -          |
 | rowsPerPageOptions  | {value: number, label: number}[] | rowsPerPageOptions | -          |
-| type                | 'table' or 'list'                | 'list'             | -          |
 | onChangePage        | func                             | -                  | +          |
 | onChangeRowsPerPage | func                             | -                  | +          |
 | onButtonClick       | func                             | -                  | +          |
