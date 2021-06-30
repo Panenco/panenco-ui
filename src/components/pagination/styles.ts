@@ -96,8 +96,7 @@ export const StyledListPagination = styled.div`
         align-items: center;
         min-width: 32px;
         height: 32px;
-        border: 1px solid #767676;
-        border: ${(props: any): any => (props.variant === 'contained' ? '1px solid #767676' : 'none')};
+        border: ${(props: any): any => (props.variant === 'contained' ? `1px solid ${props.theme.colors.secondary}` : 'none')};
         border-radius: 3px;
         margin-left: 8px;
         color: ${(props: any): any => `${props.theme.colors.primary}`};
@@ -112,11 +111,11 @@ export const StyledListPagination = styled.div`
         }
 
         &Active {
-          background-color: ${(props: any): any => `${props.theme.colors.accent500}`};
+          background-color: ${(props: any): any => `${props.theme.colors.accent}`};
           color: ${(props: any): any => `${props.theme.colors.light}`};
 
           &:hover {
-            background-color: ${(props: any): any => `${props.theme.colors.accent500}`};
+            background-color: ${(props: any): any => `${props.theme.colors.accent}`};
             opacity: 0.9;
           }
         }
