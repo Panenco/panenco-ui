@@ -8,7 +8,7 @@ export const StyledLoader = styled.div`
 
   &::after {
     animation: loader 1.2s infinite;
-    border: 8px solid ${(props: any): string => props.theme.colors.accent500};
+    border: 8px solid ${(props: any): string => props.theme.colors.accent};
     border-color: ${(props: any): string => (props.color ? props.color : props.theme.colors.secondary)} transparent;
     border-radius: 50%;
     box-sizing: border-box;

@@ -23,10 +23,20 @@ export const StyledButton = styled.button`
   background-color: ${({ variant, mode, theme: { colors } }: any): string =>
     getBackgroundColor(variant, mode, colors.dark, colors.light)};
   color: ${(props: any): string =>
-    props.color || (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500)};
+    props.color || (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent)};
   cursor: pointer;
 
-  &.disabled {
+  .content {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    &Invisible {
+      visibility: hidden;
+    }
+  }
+
+  &:disabled {
     opacity: 0.4;
     pointer-events: none !important;
   }
@@ -43,7 +53,7 @@ export const StyledButton = styled.button`
 
   &:hover {
     color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover700};
+      props.mode === ThemeMode.dark ? props.theme.colors.highlight : props.theme.colors.hover};
   }
 
   &:active {
@@ -70,43 +80,75 @@ export const StyledButton = styled.button`
 
   &.buttonPrimary {
     background-color: ${({ variant, mode, theme: { colors } }: any): string =>
-      getBackgroundColor(variant, mode, colors.light, colors.accent500)};
+      getBackgroundColor(variant, mode, colors.light, colors.accent)};
 
     color: ${(props: any): string =>
       props.color || (props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.light)};
 
     &:hover {
       background-color: ${({ variant, mode, theme: { colors } }: any): string =>
-        getBackgroundColor(variant, mode, colors.background50, colors.hover700)};
+        getBackgroundColor(variant, mode, colors.highlight, colors.hover)};
       color: ${(props: any): string =>
         props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.light};
     }
 
     &:active {
       background-color: ${({ variant, mode, theme: { colors } }: any): string =>
-        getBackgroundColor(variant, mode, colors.background50, colors.hover700)};
+        getBackgroundColor(variant, mode, colors.highlight, colors.hover)};
     }
   }
 
   &.buttonSecondary {
     border: 2px solid
       ${(props: any): string => {
-        return props.color || (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500);
+        return props.color || (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent);
       }};
 
     &:hover {
       border: 2px solid
         ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover700};
+          props.mode === ThemeMode.dark ? props.theme.colors.highlight : props.theme.colors.hover};
       background-color: ${({ variant, mode, theme: { colors } }: any): string =>
-        getBackgroundColor(variant, mode, colors.dark, colors.background50)};
+        getBackgroundColor(variant, mode, colors.dark, colors.highlight)};
       color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover700};
+        props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover};
     }
 
     &:active {
       background-color: ${({ variant, mode, theme: { colors } }: any): string =>
-        getBackgroundColor(variant, mode, colors.dark, colors.background50)};
+        getBackgroundColor(variant, mode, colors.dark, colors.highlight)};
     }
+  }
+
+  @keyframes load-animation {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+
+  .spinner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    margin-left: -10px;
+    margin-top: -10px;
+    text-indent: -9999em;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: load-animation 2s infinite linear;
+    animation: load-animation 2s infinite linear;
+    border-top-color: rgba(black, 0.2);
+    border-right-color: rgba(black, 0.2);
+    border-bottom-color: rgba(black, 0.2);
+    border-left-color: white;
   }
 `;

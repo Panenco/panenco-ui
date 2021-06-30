@@ -12,18 +12,18 @@ export default decorator('Content highlight', ContentHighlightDOCS, README).add(
   return (
     <WrappedComponent>
       <Row style={{ justifyContent: 'space-around' }}>
-        <Col s="2" m="4" l="4">
+        <Col sm="2" md="4" lg="4">
           <ContentHighlight>{Content}</ContentHighlight>
         </Col>
-        <Col s="2" m="4" l="4">
+        <Col sm="2" md="4" lg="4">
           <ContentHighlight>{Content}</ContentHighlight>
         </Col>
       </Row>
       <Row style={{ justifyContent: 'space-around' }}>
-        <Col s="2" m="4" l="4">
+        <Col sm="2" md="4" lg="4">
           <ContentHighlight>ContentHighlight</ContentHighlight>
         </Col>
-        <Col s="2" m="4" l="4">
+        <Col sm="2" md="4" lg="4">
           <ContentHighlight>ContentHighlight</ContentHighlight>
         </Col>
       </Row>

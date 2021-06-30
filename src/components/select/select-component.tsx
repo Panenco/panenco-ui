@@ -27,9 +27,9 @@ export interface ComponentProps extends SelectProps, InputComponent {
   value?: any;
   selectWrapperProps?: React.HTMLAttributes<HTMLDivElement>;
   wrapperSelectSizes?: {
-    l?: number | string;
-    m?: number | string;
-    s?: number | string;
+    lg?: number | string;
+    md?: number | string;
+    sm?: number | string;
   };
 }
 

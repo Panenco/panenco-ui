@@ -13,12 +13,12 @@ export const StyledAccordionSecondary = styled.div`
   width: 100%;
 
   &:hover {
-    border-color: ${(props: any): string => props.theme.colors.accent500};
+    border-color: ${(props: any): string => props.theme.colors.accent};
     .accordionHeader,
     .accordionHeaderIcon {
       cursor: pointer;
       color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover700};
+        props.mode === ThemeMode.dark ? props.theme.colors.highlight : props.theme.colors.hover};
     }
   }
 
@@ -38,7 +38,7 @@ export const StyledAccordionSecondary = styled.div`
     align-items: center;
 
     color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500};
+      props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent};
 
     &Title {
       transition: 0.5s;

@@ -37,15 +37,10 @@ export default decorator('Select', SelectInputDocs, README).add('Select componen
   return (
     <WrappedComponent style={{ minHeight: '500px' }}>
       <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start' }}>
-        <Col s="2" m="4" l="4">
-          <SelectInput
-            options={options}
-            title="Single Select"
-            subTitle="Sub title"
-            placeholder="Choose one option"
-          />
+        <Col sm="2" md="4" lg="4">
+          <SelectInput options={options} title="Single Select" subTitle="Sub title" placeholder="Choose one option" />
         </Col>
-        <Col s="2" m="4" l="4">
+        <Col sm="2" md="4" lg="4">
           <SelectInput
             options={options}
             title="Multi Select"
@@ -60,15 +55,15 @@ export default decorator('Select', SelectInputDocs, README).add('Select componen
         </Col>
       </Row>
       <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start' }}>
-        <Col s="2" m="4" l="4">
+        <Col sm="2" md="4" lg="4">
           <SelectInput options={options} title="Select with Error" error="Error options" />
         </Col>
-        <Col s="2" m="4" l="4">
+        <Col sm="2" md="4" lg="4">
           <SelectInput placeholder="Disabled" isDisabled />
         </Col>
       </Row>
       {/* <Row>
-        <Col s="2" m="4" l="4">
+        <Col sm="2" md="4" lg="4">
           <TextInput error="1" />
         </Col>
       </Row> */}

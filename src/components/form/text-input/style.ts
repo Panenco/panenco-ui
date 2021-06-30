@@ -98,7 +98,7 @@ export const StyledTextInput = styled.div`
       &:hover {
         border: 1px solid
           ${(props: any): string =>
-            props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500};
+            props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent};
       }
 
       &:focus-within {
