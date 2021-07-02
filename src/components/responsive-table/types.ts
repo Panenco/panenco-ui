@@ -47,8 +47,8 @@ export interface TableState {
   containerWidth?: number;
 }
 
-export type CustomCellProps = {
-  row: RowType;
+export type CustomCellProps<T = Record<string, any>> = {
+  row: RowType<T>;
   rowIndex: number | string;
   cellIndex: number;
   accessor: string;
