@@ -12,7 +12,7 @@ export const StyledPopupHeaderTitleRow = styled.div`
 
 export const StyledPopupHeader = styled.div`
   padding: 24px 24px 8px 24px;
-  @media (max-width: ${breakpoints.s}) {
+  @media (max-width: ${breakpoints.sm}) {
     padding: 16px 16px 8px 16px;
   }
 `;
@@ -21,7 +21,7 @@ export const StyledPopupBody = styled.div<{
   emptyHeader: boolean;
 }>`
   padding: ${(props: any): string => (props.emptyHeader ? '24px' : '8px 24px 24px 24px')};
-  @media (max-width: ${breakpoints.s}) {
+  @media (max-width: ${breakpoints.sm}) {
     flex: 1;
     overflow-x: hidden;
     overflow-y: auto;
@@ -41,7 +41,7 @@ export const StyledPopup = styled.div`
   pointer-events: auto;
   position: relative;
   width: 100%;
-  @media (max-width: ${breakpoints.s}) {
+  @media (max-width: ${breakpoints.sm}) {
     display: flex;
     flex-direction: column;
     height: auto;
@@ -64,7 +64,7 @@ export const StyledPopupContainer = styled.div`
   right: 0;
   top: 0;
   z-index: 1060;
-  @media (max-width: ${breakpoints.s}) {
+  @media (max-width: ${breakpoints.sm}) {
     padding: 0;
   }
 `;
