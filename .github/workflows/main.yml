@@ -22,7 +22,13 @@ jobs:
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.ACTION_PUBLISH_TOKEN }}
-          
+
+      - name: Build storybook
+        run: yarn build:storybook
+
+      - name: Deploy storybook
+        run: yarn deploy-storybook
+
       - name: get-npm-version
         id: package-version
         uses: martinbeentjes/npm-get-version-action@master
