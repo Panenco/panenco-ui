@@ -19,7 +19,9 @@ jobs:
         run: yarn build:storybook
 
       - name: Deploy storybook
-        run: yarn deploy-storybook --ci --host-token-env-variable=GH_TOKEN
+        run: yarn storybook-to-ghpages --existing-output-dir=storybook-dist --ci
+        env:
+          GH_TOKEN: ${{ github.actor }}:${{ secrets.GH_TOKEN }}
 
       - name: Build app
         run: yarn build
