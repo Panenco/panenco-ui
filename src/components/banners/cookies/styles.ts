@@ -43,8 +43,7 @@ export const StyledCookiesContainer = styled.div`
     padding: 0;
 
     &Text {
-      color: ${(props: any) =>
-        props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500};
+      color: ${(props: any) => (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent)};
     }
   }
 `;

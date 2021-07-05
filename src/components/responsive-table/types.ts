@@ -12,9 +12,9 @@ export interface ColumnType {
   prevWidth?: number;
 }
 
-export interface RowType {
+export interface RowType<T = Record<string, any>> {
   id: string | number;
-  data: object;
+  data: T;
   isOpen?: boolean;
 }
 
@@ -27,8 +27,8 @@ export type HandleSortType = (sortName: string, direction: 'asc' | 'desc') => vo
 export type ExpandRowType = (rowIndex: string | number) => void;
 
 export interface TableProps extends React.HTMLAttributes<HTMLTableElement> {
-  columns: Array<ColumnType>;
-  rows: Array<RowType>;
+  columns: ColumnType[];
+  rows: RowType[];
   itemsPerPage?: number;
   priorityLevelThreshold?: number;
   sort?: SortType;
@@ -40,9 +40,16 @@ export interface TableProps extends React.HTMLAttributes<HTMLTableElement> {
 }
 
 export interface TableState {
-  columns: Array<ColumnType>;
-  rows: Array<RowType>;
+  columns: ColumnType[];
+  rows: RowType[];
+  props: TableProps;
   priorityLevelThreshold?: number;
   containerWidth?: number;
-  props: TableProps;
 }
+
+export type CustomCellProps<T = Record<string, any>> = {
+  row: RowType<T>;
+  rowIndex: number | string;
+  cellIndex: number;
+  accessor: string;
+};
