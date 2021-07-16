@@ -39,6 +39,7 @@ const Rows = ({
       <ExpandedRow
         key={`${row.id}-2`}
         row={row}
+        rowIndex={row.id}
         hiddenColumns={hiddenColumns}
         visibleColumns={visibleColumns}
         containerWidth={containerWidth}

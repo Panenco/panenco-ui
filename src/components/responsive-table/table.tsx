@@ -53,8 +53,18 @@ class Table extends React.Component<TableProps, TableState> {
   }
 
   static getDerivedStateFromProps(newProps: TableProps, state: TableState): TableState {
-    if (newProps.rows !== state.props.rows || newProps.columns !== state.props.columns) {
-      return { ...state, rows: newProps.rows, columns: newProps.columns, props: newProps };
+    if (
+      newProps.rows !== state.props.rows ||
+      newProps.columns !== state.props.columns ||
+      newProps.priorityLevelThreshold !== state.props.priorityLevelThreshold
+    ) {
+      return {
+        ...state,
+        priorityLevelThreshold: newProps.priorityLevelThreshold,
+        rows: newProps.rows,
+        columns: newProps.columns,
+        props: newProps,
+      };
     }
     return state;
   }

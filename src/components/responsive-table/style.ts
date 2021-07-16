@@ -118,15 +118,6 @@ export const Styles = styled.div`
     }
   }
 
-  @keyframes iconOpen {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(90deg);
-    }
-  }
-
   .tableBodyRow:nth-of-type(4n + 1) {
     background-color: ${(props: any): string =>
       transparentize(0.6, props.mode === ThemeMode.light ? props.theme.colors.border : props.theme.colors.secondary)};
@@ -135,27 +126,6 @@ export const Styles = styled.div`
   .tableBodyRow:nth-of-type(4n + 2) {
     background-color: ${(props: any): string =>
       transparentize(0.6, props.mode === ThemeMode.light ? props.theme.colors.border : props.theme.colors.secondary)};
-  }
-
-  @keyframes iconClose {
-    0% {
-      transform: rotate(90deg);
-    }
-    100% {
-      transform: rotate(0deg);
-    }
-  }
-
-  .animationIconOpen {
-    animation-name: iconOpen;
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
-  }
-
-  .animationIconClose {
-    animation-name: iconClose;
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
   }
 
   @keyframes AnimationName {
