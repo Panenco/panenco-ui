@@ -15,34 +15,34 @@ export const StyledChip = styled.button`
       return props.checked ? props.theme.colors.light : props.theme.colors.dark;
     }
 
-    return props.checked ? props.theme.colors.accent500 : props.theme.colors.light;
+    return props.checked ? props.theme.colors.accent : props.theme.colors.light;
   }};
   border: 1px solid
-    ${(props: any): string => (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500)};
+    ${(props: any): string => (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent)};
   color: ${(props: any): string => {
     if (props.mode === ThemeMode.dark) {
       return props.checked ? props.theme.colors.primary : props.theme.colors.light;
     }
-    return props.checked ? props.theme.colors.light : props.theme.colors.accent500;
+    return props.checked ? props.theme.colors.light : props.theme.colors.accent;
   }};
 
   &:hover,
   &:active {
     background-color: ${(props: any): string => {
       if (props.mode === ThemeMode.dark) {
-        return props.checked ? props.theme.colors.background50 : props.theme.colors.dark;
+        return props.checked ? props.theme.colors.highlight : props.theme.colors.dark;
       }
-      return props.checked ? props.theme.colors.hover700 : props.theme.colors.background50;
+      return props.checked ? props.theme.colors.hover : props.theme.colors.highlight;
     }};
     border: 1px solid
       ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover700};
+        props.mode === ThemeMode.dark ? props.theme.colors.highlight : props.theme.colors.hover};
     .labelTitle {
       color: ${(props: any): string => {
         if (props.mode === ThemeMode.dark) {
           return props.checked ? props.theme.colors.primary : props.theme.colors.light;
         }
-        return props.checked ? props.theme.colors.light : props.theme.colors.hover700;
+        return props.checked ? props.theme.colors.light : props.theme.colors.hover;
       }};
     }
   }

@@ -45,10 +45,12 @@ export const StyledFileUploader = styled.div`
       width: 100px;
       height: calc(100% - 4px);
       box-shadow: 0 0 0 2px
-        ${(props: any): string => props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500};
+        ${(props: any): string =>
+          props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent};
       &:hover {
         box-shadow: 0 0 0 2px
-          ${(props: any): string => props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover700};
+          ${(props: any): string =>
+            props.mode === ThemeMode.dark ? props.theme.colors.highlight : props.theme.colors.hover};
       }
       &:focus {
         box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.outline};
@@ -66,10 +68,10 @@ export const StyledFileUploader = styled.div`
       border: 2px solid transparent;
       border-radius: 4px 0 0 4px;
 
-        &:focus-within {
-          border: 2px solid ${(props: any): string => props.theme.colors.outline};
-          border-right-color: transparent;
-        }
+      &:focus-within {
+        border: 2px solid ${(props: any): string => props.theme.colors.outline};
+        border-right-color: transparent;
+      }
 
       &Title {
         color: ${(props: any): string => {
@@ -98,9 +100,9 @@ export const StyledFileUploader = styled.div`
         }};
         margin-right: 16px;
         > div {
-            display: inherit;
-            align-items: center;
-            justify-content: center;
+          display: inherit;
+          align-items: center;
+          justify-content: center;
         }
       }
     }

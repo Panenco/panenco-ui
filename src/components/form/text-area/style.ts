@@ -67,7 +67,7 @@ export const StyledTextArea = styled.div`
       &:hover {
         border: 1px solid
           ${(props: any): string =>
-            props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500};
+            props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent};
         color: ${(props: any): string =>
           props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.primary};
       }

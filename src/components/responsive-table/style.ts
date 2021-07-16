@@ -66,7 +66,7 @@ export const Styles = styled.div`
       }
 
       &Text:hover {
-        color: ${(props: any): string => props.theme.colors.accent500};
+        color: ${(props: any): string => props.theme.colors.accent};
       }
 
       &Icon {
@@ -76,7 +76,7 @@ export const Styles = styled.div`
         width: 10px;
 
         &Active {
-          color: ${(props: any): string => props.theme.colors.accent500};
+          color: ${(props: any): string => props.theme.colors.accent};
         }
       }
     }
