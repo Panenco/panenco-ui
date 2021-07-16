@@ -6,16 +6,27 @@ import { RowType, ColumnType } from './types';
 interface ExpandedRowProps {
   row: RowType;
   hiddenColumns: Array<ColumnType>;
+  rowIndex: string | number;
   visibleColumns: Array<ColumnType>;
   containerWidth?: number;
 }
 
-const ExpandedRow = ({ row, hiddenColumns, visibleColumns, containerWidth }: ExpandedRowProps): JSX.Element => {
-  const expandedRows = hiddenColumns.map((column) => {
+const ExpandedRow = ({
+  row,
+  hiddenColumns,
+  rowIndex,
+  visibleColumns,
+  containerWidth,
+}: ExpandedRowProps): JSX.Element => {
+  const expandedRows = hiddenColumns.map((column, cellIndex) => {
     return (
       <div key={column.accessor} className="tableHiddenCellContent">
         <Text className="tableHiddenCellContentLabel">{column.label}</Text>
-        <Text className="tableHiddenCellContentText">{row.data[column.accessor]}</Text>
+        <div className="tableHiddenCellContentText">
+          {column.component
+            ? React.createElement(column.component, { row, rowIndex, cellIndex, accessor: column.accessor })
+            : row.data[column.accessor]}
+        </div>
       </div>
     );
   });
@@ -25,7 +36,7 @@ const ExpandedRow = ({ row, hiddenColumns, visibleColumns, containerWidth }: Exp
   }, 0);
   const expandedRowWidth = visibleColumns.length === 1 ? containerWidth : tableWidth;
   return (
-    <tr className="tableBodyRow">
+    <tr className="tableBodyRow tableBodyRowExpandable">
       <td colSpan={visibleColumns.length}>
         <AnimatedHeight duration={500} height={row.isOpen ? 'auto' : 0}>
           <div

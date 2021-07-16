@@ -30,7 +30,7 @@ class Table extends React.Component<TableProps, TableState> {
 
   static defaultProps = {
     itemsPerPage: null,
-
+    shouldResize: true,
     sort: null,
     handleSort: null,
   };
@@ -53,8 +53,18 @@ class Table extends React.Component<TableProps, TableState> {
   }
 
   static getDerivedStateFromProps(newProps: TableProps, state: TableState): TableState {
-    if (newProps.rows !== state.props.rows || newProps.columns !== state.props.columns) {
-      return { ...state, rows: newProps.rows, columns: newProps.columns, props: newProps };
+    if (
+      newProps.rows !== state.props.rows ||
+      newProps.columns !== state.props.columns ||
+      newProps.priorityLevelThreshold !== state.props.priorityLevelThreshold
+    ) {
+      return {
+        ...state,
+        priorityLevelThreshold: newProps.priorityLevelThreshold,
+        rows: newProps.rows,
+        columns: newProps.columns,
+        props: newProps,
+      };
     }
     return state;
   }
@@ -92,14 +102,33 @@ class Table extends React.Component<TableProps, TableState> {
   }
 
   resizeTable(width: number): void {
-    this.setState((currentState) => {
-      return resizeTable({ width, state: currentState });
-    });
+    const { shouldResize } = this.props;
+    if (shouldResize) {
+      this.setState((currentState) => {
+        return resizeTable({ width, state: currentState });
+      });
+    }
   }
 
   render(): JSX.Element {
     const { containerWidth, columns, rows } = this.state;
-    const { itemsPerPage, sort, handleSort, innerRef, theme, mode, isLoading, ...tableProps } = this.props;
+    const {
+      itemsPerPage,
+      sort,
+      handleSort,
+      innerRef,
+      theme,
+      mode,
+      isLoading,
+
+      // exclude columns and threshold from tableprops so it doesn't appear as a dom attribute
+      /* eslint-disable */
+      columns: cols,
+      priorityLevelThreshold,
+      /* eslint-enable */
+
+      ...tableProps
+    } = this.props;
 
     const [visibleCols, hiddenCols] = Table.separateColumns(columns);
 

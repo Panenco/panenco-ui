@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Icon, Text } from 'components';
-import cx from 'classnames';
 import { useTheme, useMode } from 'utils/hooks';
 import { ThemeMode } from 'utils/types';
 import { RowType, ExpandRowType, CustomCellProps } from './types';
@@ -33,15 +32,11 @@ const Cell = ({
   const icon =
     IS_FIRST_CELL && IS_HIDDEN_COLUMNS ? (
       <Icon
-        className={cx(
-          'tableCellButtonIcon',
-          row.isOpen === true ? 'animationIconOpen' : null,
-          row.isOpen === false ? 'animationIconClose' : null,
-        )}
+        className="tableCellButtonIcon"
         onClick={(): void => {
           expandRow(rowIndex);
         }}
-        icon={Icon.icons.chevronRight}
+        icon={Icon.icons[row.isOpen ? 'minus' : 'plus']}
       />
     ) : null;
 
