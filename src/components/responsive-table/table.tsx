@@ -121,10 +121,11 @@ class Table extends React.Component<TableProps, TableState> {
       mode,
       isLoading,
 
-      // exclude columns and threshold from tableprops so it doesn't appear as a dom attribute
+      // exclude custom props so they don't appear as a dom attributes
       /* eslint-disable */
       columns: cols,
       priorityLevelThreshold,
+      shouldResize,
       /* eslint-enable */
 
       ...tableProps
