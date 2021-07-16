@@ -22,11 +22,11 @@ const ExpandedRow = ({
     return (
       <div key={column.accessor} className="tableHiddenCellContent">
         <Text className="tableHiddenCellContentLabel">{column.label}</Text>
-        <Text className="tableHiddenCellContentText" component="p">
+        <div className="tableHiddenCellContentText">
           {column.component
             ? React.createElement(column.component, { row, rowIndex, cellIndex, accessor: column.accessor })
             : row.data[column.accessor]}
-        </Text>
+        </div>
       </div>
     );
   });
