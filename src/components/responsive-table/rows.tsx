@@ -13,6 +13,7 @@ interface RowsProps {
   containerWidth?: number;
   itemsPerPage: number;
   isLoading?: boolean;
+  iconCreator?: (rowIsOpen: boolean) => string;
 }
 
 const Rows = ({
@@ -22,6 +23,7 @@ const Rows = ({
   expandRow,
   containerWidth,
   itemsPerPage,
+  iconCreator,
   isLoading,
 }: RowsProps): JSX.Element => {
   const tableRows = rows.reduce((r: Array<JSX.Element>, row) => {
@@ -32,6 +34,7 @@ const Rows = ({
         rowIndex={row.id}
         visibleColumns={visibleColumns}
         hiddenColumns={hiddenColumns}
+        iconCreator={iconCreator}
         expandRow={expandRow}
       />
     );
