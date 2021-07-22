@@ -101,4 +101,5 @@ export interface AccordinProps extends React.HTMLAttributes<HTMLDivElement> {
   iconLeft?: boolean | SVGElement;
   iconRight?: boolean | SVGElement;
   icons?: Array<SVGElement>;
+  shouldTurnIcon?: boolean;
 }
