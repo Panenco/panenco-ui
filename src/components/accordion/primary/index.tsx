@@ -19,6 +19,7 @@ export const AccordionPrimary = React.forwardRef(
       iconRight,
       iconLeft,
       onIconClick,
+      shouldRotateIcon = true,
       ...otherProps
     } = props;
     const theme = useTheme();
@@ -47,7 +48,7 @@ export const AccordionPrimary = React.forwardRef(
             <Icon
               className={cx(
                 'accordionHeaderIconLeft',
-                isOpen ? 'accordionHeaderIconLeftOpen' : 'accordionHeaderIconLeftClosed',
+                shouldRotateIcon && isOpen ? 'accordionHeaderIconLeftOpen' : 'accordionHeaderIconLeftClosed',
               )}
               icon={checkTypeIconLeft ? Icon.icons.chevronRight : iconLeft}
             />
@@ -68,7 +69,7 @@ export const AccordionPrimary = React.forwardRef(
             <Icon
               key={idGenerator()}
               className="accordionHeaderIcon"
-              icon={checkTypeIconRight ? (isOpen ? Icon.icons.minus : Icon.icons.add) : iconRight} // eslint-disable-line
+              icon={checkTypeIconRight ? (isOpen ? Icon.icons.minus : Icon.icons.plus) : iconRight} // eslint-disable-line
             />
           )}
         </button>
