@@ -18,7 +18,7 @@ export const AccordionSecondary = React.forwardRef(
       iconRight,
       iconLeft = true,
       onIconClick,
-      shouldRotateIcon,
+      shouldRotateIcon = true,
       ...otherProps
     } = props;
     const theme = useTheme();
