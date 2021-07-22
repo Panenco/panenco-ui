@@ -18,6 +18,7 @@ export const AccordionSecondary = React.forwardRef(
       iconRight,
       iconLeft = true,
       onIconClick,
+      shouldRotateIcon = true,
       ...otherProps
     } = props;
     const theme = useTheme();
@@ -30,6 +31,9 @@ export const AccordionSecondary = React.forwardRef(
       onIconClick(e);
     };
 
+    const checkTypeIconRight = typeof iconRight === 'boolean';
+    const checkTypeIconLeft = typeof iconLeft === 'boolean';
+
     return (
       <StyledAccordionSecondary
         {...otherProps}
@@ -41,8 +45,11 @@ export const AccordionSecondary = React.forwardRef(
         <button type="button" className="accordionHeader" onClick={handleClick} aria-expanded={isOpen || 'false'}>
           {iconLeft && (
             <Icon
-              className={cx('accordionHeaderIcon', isOpen ? 'accordionHeaderIconOpen' : 'accordionHeaderIconClosed')}
-              icon={Icon.icons.chevronRight}
+              className={cx(
+                'accordionHeaderIcon',
+                shouldRotateIcon && isOpen ? 'accordionHeaderIconOpen' : 'accordionHeaderIconClosed',
+              )}
+              icon={checkTypeIconLeft ? Icon.icons.chevronRight : iconLeft}
             />
           )}
           {typeof title === 'string' ? (
@@ -66,7 +73,7 @@ export const AccordionSecondary = React.forwardRef(
             <Icon
               key={idGenerator()}
               className="accordionHeaderIcon"
-              icon={isOpen ? Icon.icons.minus : Icon.icons.add}
+              icon={checkTypeIconRight ? (isOpen ? Icon.icons.minus : Icon.icons.plus) : iconRight} // eslint-disable-line
             />
           )}
         </button>
