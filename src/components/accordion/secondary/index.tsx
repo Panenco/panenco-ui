@@ -18,7 +18,7 @@ export const AccordionSecondary = React.forwardRef(
       iconRight,
       iconLeft = true,
       onIconClick,
-      shouldTurnIcon,
+      shouldRotateIcon,
       ...otherProps
     } = props;
     const theme = useTheme();
@@ -47,7 +47,7 @@ export const AccordionSecondary = React.forwardRef(
             <Icon
               className={cx(
                 'accordionHeaderIcon',
-                shouldTurnIcon && isOpen ? 'accordionHeaderIconOpen' : 'accordionHeaderIconClosed',
+                shouldRotateIcon && isOpen ? 'accordionHeaderIconOpen' : 'accordionHeaderIconClosed',
               )}
               icon={checkTypeIconLeft ? Icon.icons.chevronRight : iconLeft}
             />
