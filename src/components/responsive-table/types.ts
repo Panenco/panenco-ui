@@ -38,6 +38,7 @@ export interface TableProps extends React.HTMLAttributes<HTMLTableElement> {
   mode?: ThemeMode;
   isLoading?: boolean;
   shouldResize?: boolean;
+  iconCreator?: (rowIsOpen: boolean) => string;
 }
 
 export interface TableState {

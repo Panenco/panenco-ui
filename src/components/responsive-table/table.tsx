@@ -120,7 +120,7 @@ class Table extends React.Component<TableProps, TableState> {
       theme,
       mode,
       isLoading,
-
+      iconCreator,
       // exclude custom props so they don't appear as a dom attributes
       /* eslint-disable */
       columns: cols,
@@ -145,6 +145,7 @@ class Table extends React.Component<TableProps, TableState> {
             expandRow={this.expandRow}
             containerWidth={containerWidth}
             isLoading={isLoading}
+            iconCreator={iconCreator}
           />
         </table>
       </Styles>
