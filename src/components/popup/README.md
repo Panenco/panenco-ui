@@ -3,7 +3,7 @@
 ### How it works
 
 - Popups positioned over everything else in the document and remove scroll from the so that popup content scrolls instead.
-- Only one popup window at a time is supported.
+- Only one popup at a time is supported.
 - Clicking on the popup "backdrop" will close the popup (customizable).
 - Clicking the escape key will close the popup (customizable).
 

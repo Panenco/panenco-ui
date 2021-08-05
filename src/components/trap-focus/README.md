@@ -31,4 +31,4 @@ const YourComponent = () => {
 | propName | propType        | defaultValue | isRequired |
 | -------- | --------------- | ------------ | ---------- |
 | children | React.ReactNode | -            | -          |
-| active   | boolean         | -            | -          |
+| active   | boolean         | false        | -          |
