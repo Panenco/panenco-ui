@@ -10,7 +10,7 @@ export interface TabpanelProps {
 }
 
 export const Tabpanel = React.forwardRef(
-  ({ index, children, className, ...props }: TabpanelProps, ref: any): JSX.Element => {
+  ({ index, children, className, ...props }: TabpanelProps, ref: any): JSX.Element | null => {
     const context = useTabContext()!;
     const id = getTabPanelId(context, index)!;
     const { indexSelected } = context;
@@ -25,8 +25,6 @@ export const Tabpanel = React.forwardRef(
       >
         {children}
       </StyledTabpanel>
-    ) : (
-      <></>
-    );
+    ) : null;
   },
 );

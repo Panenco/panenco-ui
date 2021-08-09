@@ -10,8 +10,7 @@ export interface TabProps extends React.ButtonHTMLAttributes<HTMLButtonElement> 
   index: number;
   className?: string;
   iconClassName?: string;
-  icon: HTMLObjectElement;
-  to: string;
+  icon?: HTMLObjectElement;
   disabled?: boolean;
   selected?: boolean;
   children: React.ReactNode;
