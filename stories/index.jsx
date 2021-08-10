@@ -28,6 +28,7 @@ import TextStory from './text';
 import TooltipStory from './tooltip';
 import WizardStory from './wizard';
 import PopupStory from './popup';
+import TabStory from './tabs';
 
 // import AvatarStory from './avatar';
 storiesOf('Accordion', AccordionStory);
@@ -56,3 +57,4 @@ storiesOf('Banners', BannersStory);
 storiesOf('Switcher', SwitchStory);
 storiesOf('Tooltip', TooltipStory);
 storiesOf('Popup', PopupStory);
+storiesOf('Tab', TabStory);
