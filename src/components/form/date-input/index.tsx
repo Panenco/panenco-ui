@@ -1,6 +1,7 @@
 import cx from 'classnames';
 import { Text, TextInput } from 'components';
-import { set } from 'date-fns';
+import { set, getDate, getMonth, getYear, getMinutes, getHours, getDaysInMonth } from 'date-fns';
+// import { set, getDate,  getDaysInMonth } from 'date-fns';
 import * as React from 'react';
 import { useRef } from 'react';
 import { useMode, useTheme } from 'utils/hooks';
@@ -10,11 +11,17 @@ import { StyledDayPicker } from './style';
 
 // const WEEKDAYS_SHORT = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
-// import { DayPicker as DayPickerComponent } from 'react-day-picker';
-
 // const cx = cx_;
 
-// import DayPicker from "../../../../node_modules/react-day-picker/types"
+const typeToGetMethod = {
+  date: getDate,
+  month: getMonth,
+  year: getYear,
+  minutes: getMinutes,
+  hours: getHours,
+}
+
+
 interface InputPropsType extends React.InputHTMLAttributes<HTMLTextAreaElement> {
   [key: string]: any;
 }
@@ -54,42 +61,85 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
       1: input2,
       2: input3,
     }
+    
+    const handleFocusNextInput = (value, index): void => {
+      if(value.length > 1 && inputs[index + 1] && inputToRef[index + 1].current){
+        inputToRef[index + 1].current.focus();
+      }
+    }
 
     const [currentDate, setDateToState] = React.useState(new Date());
 
-    const [dateValue, setDateValueToState] = React.useState("");
-    // const [month, setMonthValueToState] = React.useState(null);
+    const handleChange = (type: string, value, index) => {
+      const re = /^[0-9\b]+$/;
+      if (value === '' || re.test(value)) {
 
-    // const typeToValue = {
-    //   "date": dateValue
-    // }
-
-    const formatter = (type: string, value, index) => {
-      if (value === ''){
-        return
-      }
       const formatValueMapping = {
         month: value - 1,
       };
-      console.log(type, value);
+
+      const dateParams = {[type]: value};
+      console.log(type, value, dateParams);
+
+      const daysInCurrentMonth = getDaysInMonth(set(new Date(currentDate), {'month': value - 1}))
+
+
       if (type === 'date'){
-        setDateValueToState(value.slice(0,2))
-        if(value.length > 2 && inputToRef[index + 1]?.current){
-          console.log('focus', inputToRef[index + 1].current, inputToRef[index + 1].current.focus);
-          inputToRef[index + 1].current.focus();
+        let date = value.slice(0, 2);
+        if (value > daysInCurrentMonth){
+          date = daysInCurrentMonth
         }
+        dateParams[type] = date
+       
+      }
+
+
+      if (type === 'month' ){
+          let month = value.slice(0, 2) - 1;
+          if(month > 12){
+            month = 12
+          }
+
+          if (getDate(currentDate) > daysInCurrentMonth){
+            dateParams.date = daysInCurrentMonth
+          }
+          dateParams[type] = month;
+         
+
+      }
+
+  
+      if (type === 'year'){
+        dateParams[type] = value.slice(0, 4)
+      }
+
+      if (type === 'hours'){
+        dateParams[type] = value > 24 ? 24 : value;
+       
+      }
+
+      if (type === 'minutes'){
+        dateParams[type] = value > 60 ? 60 : value;
+        console.log('minut', dateParams);
+       
       }
       
+      console.log(111, dateParams, set(new Date(currentDate), dateParams));
+      
+      setDateToState(set(new Date(currentDate), dateParams));
+
+      handleFocusNextInput(value, index)
+
       if (formatValueMapping[type]) {
-        console.log(1, formatValueMapping[type]);
         return formatValueMapping[type];
       } else {
-        console.log(2, value);
         return value;
       }
+      
+    }
     };
 
-    console.log(currentDate, dateValue);
+    console.log(currentDate);
 
     return (
       <StyledDayPicker
@@ -110,12 +160,14 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
               <TextInput
                 // id={key}
                 // key={key}
-                onChange={(e) => setDateToState(set(new Date(currentDate), { [input.type]: formatter(input.type, e.target.value, index) }))
-                }
-                ref={inputToRef[index]}
+                onChange={(e) => handleChange(input.type, e.target.value, index)}
+                // onChange={(e) => setDateToState(set(new Date(currentDate), { [input.type]: formatter(input.type, e.target.value, index) }))
+                // }
+                inputRef={inputToRef[index]}
                 title={input.title}
                 style={{ width: `${inputWidth}px` }}
                 placeholder={input.placeholder}
+                value={typeToGetMethod[input.type](currentDate)}
               />
               {isLastItem ? <Text className="dateInputItemDivider">{divider}</Text> : null}
             </div>
