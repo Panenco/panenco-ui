@@ -53,7 +53,7 @@ export const StyledButton = styled.button`
 
   &:hover {
     color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.highlight : props.theme.colors.hover};
+      props.color || (props.mode === ThemeMode.dark ? props.theme.colors.highlight : props.theme.colors.hover)};
   }
 
   &:active {
@@ -89,7 +89,7 @@ export const StyledButton = styled.button`
       background-color: ${({ variant, mode, theme: { colors } }: any): string =>
         getBackgroundColor(variant, mode, colors.highlight, colors.hover)};
       color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.light};
+        props.color || (props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.light)};
     }
 
     &:active {
@@ -111,7 +111,7 @@ export const StyledButton = styled.button`
       background-color: ${({ variant, mode, theme: { colors } }: any): string =>
         getBackgroundColor(variant, mode, colors.dark, colors.highlight)};
       color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover};
+        props.color || (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover)};
     }
 
     &:active {

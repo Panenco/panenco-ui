@@ -30,6 +30,7 @@ This component inherits the attributes of the **button** element and extends the
 - iconLeft - set icon with left position;
 - iconRight - set icon with right position;
 - iconClassName - override styles for icon;
+- color - text color;
 - ref - ref;
 
 | propName      | propType          | defaultValue | isRequired |
@@ -41,4 +42,5 @@ This component inherits the attributes of the **button** element and extends the
 | iconClassName | string            | -            | -          |
 | iconLeft      | ReactNode         | -            | -          |
 | iconRight     | ReactNode         | -            | -          |
+| color         | string            | -            | -          |
 | ref           | React.RefObject   | -            | -          |
