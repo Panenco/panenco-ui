@@ -14,19 +14,23 @@ interface WrapperProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
 export interface RadioButtonProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: string;
+  pointColor?: string;
   inputProps?: InputPropsType; // will be removed in next version
   wrapperProps?: WrapperProps;
 }
 
 export const Radio = React.forwardRef<HTMLLabelElement, RadioButtonProps>(
-  ({ label, id, className, checked, value, inputProps, wrapperProps, disabled, error, ...props }, ref): JSX.Element => {
+  (
+    { label, id, className, checked, value, inputProps, wrapperProps, disabled, error, pointColor, ...props },
+    ref,
+  ): JSX.Element => {
     const theme = useTheme();
     const { mode } = useMode();
     const uniqueID = idGenerator();
     const defaultId = id || uniqueID;
 
     return (
-      <StyledRadio theme={theme} mode={mode} ref={ref} error={error} {...wrapperProps}>
+      <StyledRadio theme={theme} mode={mode} ref={ref} error={error} pointColor={pointColor} {...wrapperProps}>
         <label className={cx('label', disabled && 'labelDisabled', className)} htmlFor={id || defaultId}>
           <input
             type="radio"
