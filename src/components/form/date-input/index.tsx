@@ -19,8 +19,7 @@ const typeToGetMethod = {
   year: getYear,
   minutes: getMinutes,
   hours: getHours,
-}
-
+};
 
 interface InputPropsType extends React.InputHTMLAttributes<HTMLTextAreaElement> {
   [key: string]: any;
@@ -52,91 +51,81 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
     //   return format(dateObj, formatStr);
     // };
 
-    const input1 = useRef<HTMLInputElement>(null)
-    const input2 = useRef<HTMLInputElement>(null)
-    const input3 = useRef<HTMLInputElement>(null)
+    const input1 = useRef<HTMLInputElement>(null);
+    const input2 = useRef<HTMLInputElement>(null);
+    const input3 = useRef<HTMLInputElement>(null);
 
     const inputToRef = {
       0: input1,
       1: input2,
       2: input3,
-    }
-    
+    };
+
     const handleFocusNextInput = (value, index): void => {
-      if(value.length > 1 && inputs[index + 1] && inputToRef[index + 1].current){
+      if (value.length > 1 && inputs[index + 1] && inputToRef[index + 1].current) {
         inputToRef[index + 1].current.focus();
       }
-    }
+    };
 
     const [currentDate, setDateToState] = React.useState(new Date());
 
-    const handleChange = (type: string, value, index) => {
+    const handleChange = (type: string, value, index): void => {
       const re = /^[0-9\b]+$/;
       if (value === '' || re.test(value)) {
+        const formatValueMapping = {
+          month: value - 1,
+        };
 
-      const formatValueMapping = {
-        month: value - 1,
-      };
+        const dateParams = { [type]: value };
+        console.log(type, value, dateParams);
 
-      const dateParams = {[type]: value};
-      console.log(type, value, dateParams);
+        const daysInCurrentMonth = getDaysInMonth(set(new Date(currentDate), { month: value - 1 }));
 
-      const daysInCurrentMonth = getDaysInMonth(set(new Date(currentDate), {'month': value - 1}))
-
-
-      if (type === 'date'){
-        let date = value.slice(0, 2);
-        if (value > daysInCurrentMonth){
-          date = daysInCurrentMonth
+        if (type === 'date') {
+          let date = value.slice(0, 2);
+          if (value > daysInCurrentMonth) {
+            date = daysInCurrentMonth;
+          }
+          dateParams[type] = date;
         }
-        dateParams[type] = date
-       
-      }
 
-
-      if (type === 'month' ){
+        if (type === 'month') {
           let month = value.slice(0, 2) - 1;
-          if(month > 12){
-            month = 12
+          if (month > 12) {
+            month = 12;
           }
 
-          if (getDate(currentDate) > daysInCurrentMonth){
-            dateParams.date = daysInCurrentMonth
+          if (getDate(currentDate) > daysInCurrentMonth) {
+            dateParams.date = daysInCurrentMonth;
           }
           dateParams[type] = month;
-         
+        }
 
+        if (type === 'year') {
+          dateParams[type] = value.slice(0, 4);
+        }
+
+        if (type === 'hours') {
+          dateParams[type] = value > 24 ? 24 : value;
+        }
+
+        if (type === 'minutes') {
+          dateParams[type] = value > 60 ? 60 : value;
+          console.log('minut', dateParams);
+        }
+
+        console.log(111, dateParams, set(new Date(currentDate), dateParams));
+
+        setDateToState(set(new Date(currentDate), dateParams));
+
+        handleFocusNextInput(value, index);
+
+        if (formatValueMapping[type]) {
+          return formatValueMapping[type];
+        } else {
+          return value;
+        }
       }
-
-  
-      if (type === 'year'){
-        dateParams[type] = value.slice(0, 4)
-      }
-
-      if (type === 'hours'){
-        dateParams[type] = value > 24 ? 24 : value;
-       
-      }
-
-      if (type === 'minutes'){
-        dateParams[type] = value > 60 ? 60 : value;
-        console.log('minut', dateParams);
-       
-      }
-      
-      console.log(111, dateParams, set(new Date(currentDate), dateParams));
-      
-      setDateToState(set(new Date(currentDate), dateParams));
-
-      handleFocusNextInput(value, index)
-
-      if (formatValueMapping[type]) {
-        return formatValueMapping[type];
-      } else {
-        return value;
-      }
-      
-    }
     };
 
     console.log(currentDate);
@@ -154,7 +143,7 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
           const inputWidth = input.format.length * 10 + 40;
 
           const isLastItem = index + 1 !== inputs.length;
-          
+
           return (
             <div className="dateInputItem">
               <TextInput
