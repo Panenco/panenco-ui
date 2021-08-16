@@ -3,9 +3,6 @@ name: Publishing NPM package
 on:
   push:
     branches: [master]
-  # pull_request:
-  #   branches: [master]
-  # rebuild
 jobs:
   publish:
     runs-on: ubuntu-latest
