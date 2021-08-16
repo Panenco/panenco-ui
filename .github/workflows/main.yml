@@ -40,7 +40,7 @@ jobs:
           WITH_V: true
 
       - name: Output
-        run: echo ${{ steps.tag-bumping.outputs.new_tag }}
+        run: echo ${{ steps.tag-bumping.outputs.tag }} ${{ steps.tag-bumping.outputs.new_tag }} ${{ steps.tag-bumping.outputs.part }}
 
       # - name: get-npm-version
       #   id: package-version
