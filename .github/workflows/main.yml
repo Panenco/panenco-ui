@@ -2,7 +2,7 @@ name: Publishing NPM package
 
 on:
   push:
-    branches: [master]
+    branches: [feat/tag-bump]
   # pull_request:
   #   branches: [master]
   # rebuild
@@ -14,39 +14,42 @@ jobs:
         with:
           fetch-depth: '0'
 
-      - name: Install dependencies
-        uses: bahmutov/npm-install@v1
+      # - name: Install dependencies
+      #   uses: bahmutov/npm-install@v1
 
-      - name: Build storybook
-        run: yarn build:storybook
+      # - name: Build storybook
+      #   run: yarn build:storybook
 
-      - name: Deploy storybook
-        run: yarn storybook-to-ghpages --existing-output-dir=storybook-dist --ci
-        env:
-          GH_TOKEN: ${{ github.actor }}:${{ secrets.GH_TOKEN }}
+      # - name: Deploy storybook
+      #   run: yarn storybook-to-ghpages --existing-output-dir=storybook-dist --ci
+      #   env:
+      #     GH_TOKEN: ${{ github.actor }}:${{ secrets.GH_TOKEN }}
 
-      - name: Build app
-        run: yarn build
+      # - name: Build app
+      #   run: yarn build
 
-      # - run: npm prepublishOnly
-      - uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.ACTION_PUBLISH_TOKEN }}
+      # - uses: JS-DevTools/npm-publish@v1
+      #   with:
+      #     token: ${{ secrets.ACTION_PUBLISH_TOKEN }}
 
       - name: Github Tag Bump
+        id: tag-bumping
         uses: anothrNick/github-tag-action@1.34.0
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           WITH_V: true
 
-      - name: get-npm-version
-        id: package-version
-        uses: martinbeentjes/npm-get-version-action@master
+      - name: Output
+        run: echo ${{ steps.tag-bumping.outputs.new_tag }}
 
-      - name: Notify slack of successful deploy
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-        uses: pullreminders/slack-action@master
-        with:
-          args: '{\"channel\":\"C0255H2GNK0\",\"text\":\"Successfully published PUI ${{ steps.package-version.outputs.current-version }} ! :rocket:\"}'
-        if: success()
+      # - name: get-npm-version
+      #   id: package-version
+      #   uses: martinbeentjes/npm-get-version-action@master
+
+      # - name: Notify slack of successful deploy
+      #   env:
+      #     SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+      #   uses: pullreminders/slack-action@master
+      #   with:
+      #     args: '{\"channel\":\"C0255H2GNK0\",\"text\":\"Successfully published PUI ${{ steps.package-version.outputs.current-version }} ! :rocket:\"}'
+      #   if: success()
