@@ -11,8 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          fetch-depth: '0'
 
       # - name: Install dependencies
       #   uses: bahmutov/npm-install@v1
@@ -39,6 +37,8 @@ jobs:
         uses: phips28/gh-action-bump-version@master
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          tag-prefix: 'v'
 
       # - uses: JS-DevTools/npm-publish@v1
       #   with:
