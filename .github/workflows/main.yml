@@ -7,8 +7,9 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        token: ${{ secrets.GH_TOKEN }}
+      - uses:
+        with:
+          token: ${{ secrets.GH_TOKEN }}
 
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
