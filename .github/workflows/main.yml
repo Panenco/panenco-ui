@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        token: ${{ secrets.GH_TOKEN }}
 
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
@@ -26,7 +27,7 @@ jobs:
       - name: Automated Version Bump
         uses: phips28/gh-action-bump-version@master
         env:
-          GITHUB_TOKEN: ${{ github.actor }}:${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
           tag-prefix: 'v'
 
