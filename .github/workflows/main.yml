@@ -2,7 +2,7 @@ name: Publishing NPM package
 
 on:
   push:
-    branches: [feat/tag-bump]
+    branches: [master]
   # pull_request:
   #   branches: [master]
   # rebuild
