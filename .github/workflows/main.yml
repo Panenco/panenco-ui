@@ -40,7 +40,7 @@ jobs:
           WITH_V: true
 
       - name: Update package.json version
-        run: npm version ${{ steps.tag-bumping.outputs.part }}
+        run: npm version ${{ steps.tag-bumping.outputs.new-tag }}
 
       # - name: get-npm-version
       #   id: package-version
