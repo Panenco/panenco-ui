@@ -17,12 +17,6 @@ jobs:
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
 
-      - name: Github Tag Bump
-        uses: anothrNick/github-tag-action@1.34.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          WITH_V: true
-
       - name: Build storybook
         run: yarn build:storybook
 
@@ -38,6 +32,12 @@ jobs:
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.ACTION_PUBLISH_TOKEN }}
+
+      - name: Github Tag Bump
+        uses: anothrNick/github-tag-action@1.34.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          WITH_V: true
 
       - name: get-npm-version
         id: package-version
