@@ -30,7 +30,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
-          tag-prefix: 'v'
+          tag-prefix: 'v'  
+          commit-message: 'CI: bumps version to {{version}} [skip ci]'
 
       - uses: JS-DevTools/npm-publish@v1
         with:
