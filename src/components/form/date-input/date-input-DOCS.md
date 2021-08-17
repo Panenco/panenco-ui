@@ -1,9 +1,9 @@
-# Search input
+# DateInput
 
-Search component
+DateInput component
 
 ```js
-import { Search } from '@panenco/ui';
+import { DateInput } from '@panenco/ui';
 ```
 
 <!-- STORY -->

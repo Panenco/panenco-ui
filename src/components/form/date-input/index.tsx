@@ -79,7 +79,10 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
         const dateParams = { [type]: value };
         console.log(type, value, dateParams);
 
-        const daysInCurrentMonth = getDaysInMonth(set(new Date(currentDate), { month: value - 1 }));
+        const daysInCurrentMonth =
+          type === 'month'
+            ? getDaysInMonth(set(new Date(currentDate), { month: value - 1 }))
+            : getDaysInMonth(new Date(currentDate));
 
         if (type === 'date') {
           let date = value.slice(0, 2);
@@ -91,8 +94,8 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
 
         if (type === 'month') {
           let month = value.slice(0, 2) - 1;
-          if (month > 12) {
-            month = 12;
+          if (month > 11) {
+            month = 11;
           }
 
           if (getDate(currentDate) > daysInCurrentMonth) {
@@ -129,7 +132,7 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
     };
 
     console.log(currentDate);
-
+    console.log(101010, set(new Date(currentDate), { month: 0 }));
     return (
       <StyledDayPicker
         className={cx('dateInput')}
@@ -156,7 +159,11 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
                 title={input.title}
                 style={{ width: `${inputWidth}px` }}
                 placeholder={input.placeholder}
-                value={typeToGetMethod[input.type](currentDate)}
+                value={
+                  input.type === 'month'
+                    ? typeToGetMethod[input.type](currentDate) + 1
+                    : typeToGetMethod[input.type](currentDate)
+                }
               />
               {isLastItem ? <Text className="dateInputItemDivider">{divider}</Text> : null}
             </div>

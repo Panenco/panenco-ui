@@ -1,7 +1,7 @@
-# Search input
+# DateInput
 
 ### Usage
 
 ```js
-import { Search } from '@panenco/ui';
+import { DateInput } from '@panenco/ui';
 ```
