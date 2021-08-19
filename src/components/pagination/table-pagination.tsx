@@ -11,10 +11,9 @@ export type TablePaginationProps = {
   rowsPerPage: number;
   page: number;
   disabled?: boolean;
-  onButtonClick: (page: number) => void;
   contentBeforeSelect?: string;
   rowsPerPageOptions?: any;
-  onChangePage: any;
+  onChangePage: (page: number) => void;
   onChangeRowsPerPage: any;
 } & React.HTMLAttributes<HTMLDivElement>;
 
@@ -48,7 +47,6 @@ export const TablePagination = ({
   contentBeforeSelect = 'Show rows:',
   count = 150,
   rowsPerPage = 12,
-  onButtonClick = () => {},
   page = 0,
   disabled = false,
   rowsPerPageOptions = defaultOptions,
@@ -103,7 +101,7 @@ export const TablePagination = ({
           iconLeft={Icon.icons.chevronLeft}
           iconClassName={cx('paginationButtonIcon', 'paginationButtonIconNoMargin')}
           onClick={(): void => {
-            onButtonClick(page - 1);
+            onChangePage(page - 1);
           }}
         />
         <SelectInput
@@ -114,7 +112,7 @@ export const TablePagination = ({
           isSearchable={false}
           styles={additionStyles()}
           isDisabled={disabled}
-          onChange={onChangePage}
+          onChange={(option: { label: string; value: number }): void => onChangePage(option.value)}
           value={pagesOptions.find((option) => Number(option.value) === Number(page))}
         />
         <Button
@@ -123,7 +121,7 @@ export const TablePagination = ({
           iconRight={Icon.icons.chevronRight}
           iconClassName={cx('paginationButtonIcon', 'paginationButtonIconNoMargin')}
           onClick={(): void => {
-            onButtonClick(page + 1);
+            onChangePage(page + 1);
           }}
         />
       </div>

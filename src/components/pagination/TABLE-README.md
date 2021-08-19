@@ -60,7 +60,6 @@ This component inherits the attributes of the **div** element and extends the fu
 - rowsPerPageOptions - array of options that populate the per page select menu.
 - onChangePage - Callback fired when the page is changed.
 - onChangeRowsPerPage - Callback fired when the items per page is changed.
-- onButtonClick - Callback fired when page change button clicked.
 - contentBeforeSelect - content berofe per page select.
 
 | propName            | propType                         | defaultValue       | isRequired |
@@ -74,5 +73,4 @@ This component inherits the attributes of the **div** element and extends the fu
 | rowsPerPageOptions  | {value: number, label: number}[] | rowsPerPageOptions | -          |
 | onChangePage        | func                             | -                  | +          |
 | onChangeRowsPerPage | func                             | -                  | +          |
-| onButtonClick       | func                             | -                  | +          |
 | contentBeforeSelect | string                           | 'Show rows:'       | -          |
