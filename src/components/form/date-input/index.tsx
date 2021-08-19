@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import { Text, TextInput } from 'components';
-import { set, getDate, getMonth, getYear, getMinutes, getHours, getDaysInMonth } from 'date-fns';
-// import { set, getDate,  getDaysInMonth } from 'date-fns';
+import { set, getDate, getMonth, getYear, getDaysInMonth as getDaysInMonthDateFns } from 'date-fns';
+
 import * as React from 'react';
 import { useRef } from 'react';
 import { useMode, useTheme } from 'utils/hooks';
@@ -9,16 +9,10 @@ import { useMode, useTheme } from 'utils/hooks';
 import { WrapperProps } from '../../../utils/types';
 import { StyledDayPicker } from './style';
 
-// const WEEKDAYS_SHORT = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-
-// const cx = cx_;
-
 const typeToGetMethod = {
   date: getDate,
   month: getMonth,
   year: getYear,
-  minutes: getMinutes,
-  hours: getHours,
 };
 
 interface InputPropsType extends React.InputHTMLAttributes<HTMLTextAreaElement> {
@@ -38,18 +32,16 @@ export interface DateInputProps extends React.InputHTMLAttributes<HTMLTextAreaEl
   divider: string;
 }
 
+export interface DateParamsProps extends React.InputHTMLAttributes<HTMLTextAreaElement> {
+  date?: number;
+  month?: number;
+  year?: number;
+}
+
 export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
-  (
-    { inputs, divider, className, inputProps, title, wrapperProps, placeholder = '', ...props }: DateInputProps,
-    ref,
-  ): JSX.Element => {
+  ({ inputs, divider, wrapperProps }: DateInputProps, ref): JSX.Element => {
     const theme = useTheme();
     const { mode } = useMode();
-
-    // const customFormat = (dateStr, formatStr) => {
-    //   const dateObj = dateStr ? new Date(dateStr) : new Date();
-    //   return format(dateObj, formatStr);
-    // };
 
     const input1 = useRef<HTMLInputElement>(null);
     const input2 = useRef<HTMLInputElement>(null);
@@ -61,100 +53,99 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
       2: input3,
     };
 
-    const handleFocusNextInput = (value, index): void => {
-      if (value.length > 1 && inputs[index + 1] && inputToRef[index + 1].current) {
+    const [currentDate, setDateToState] = React.useState(new Date());
+
+    const handleDayInput = (
+      strValue: string,
+      dateParams: DateParamsProps,
+      daysInCurrentMonth: number,
+    ): DateParamsProps => {
+      let value = Number(strValue.slice(0, 2));
+      if (value > daysInCurrentMonth) {
+        value = daysInCurrentMonth;
+      }
+      return { ...dateParams, date: value };
+    };
+
+    const handleMonthInput = (
+      strValue: string,
+      dateParams: DateParamsProps,
+      daysInCurrentMonth: number,
+    ): DateParamsProps => {
+      let value = Number(strValue.slice(0, 2)) - 1;
+      if (value > 11) {
+        value = 11;
+      }
+
+      if (getDate(currentDate) > daysInCurrentMonth) {
+        return { ...dateParams, date: daysInCurrentMonth, month: value };
+      }
+      return { ...dateParams, month: value };
+    };
+
+    const handleYearInput = (strValue: string, dateParams: DateParamsProps): DateParamsProps => {
+      return { ...dateParams, year: Number(strValue.slice(0, 4)) };
+    };
+
+    const typeToHandler = {
+      date: handleDayInput,
+      month: handleMonthInput,
+      year: handleYearInput,
+    };
+
+    const handleFocusNextInput = (value: number, index: number): void => {
+      if (value > 9 && inputs[index + 1] && inputToRef[index + 1].current) {
         inputToRef[index + 1].current.focus();
+      } else {
+        inputToRef[index].current.focus();
       }
     };
 
-    const [currentDate, setDateToState] = React.useState(new Date());
+    const getDaysInMonth = (type: string, value: number): number => {
+      return type === 'month'
+        ? getDaysInMonthDateFns(set(new Date(currentDate), { month: value - 1 }))
+        : getDaysInMonthDateFns(new Date(currentDate));
+    };
 
-    const handleChange = (type: string, value, index): void => {
+    const handleChange = (type: string, strValue: string, index: number): string => {
       const re = /^[0-9\b]+$/;
-      if (value === '' || re.test(value)) {
+      if (re.test(strValue)) {
+        const value = Number(strValue);
         const formatValueMapping = {
           month: value - 1,
         };
 
-        const dateParams = { [type]: value };
-        console.log(type, value, dateParams);
+        let dateParams = { [type]: value };
 
-        const daysInCurrentMonth =
-          type === 'month'
-            ? getDaysInMonth(set(new Date(currentDate), { month: value - 1 }))
-            : getDaysInMonth(new Date(currentDate));
-
-        if (type === 'date') {
-          let date = value.slice(0, 2);
-          if (value > daysInCurrentMonth) {
-            date = daysInCurrentMonth;
-          }
-          dateParams[type] = date;
-        }
-
-        if (type === 'month') {
-          let month = value.slice(0, 2) - 1;
-          if (month > 11) {
-            month = 11;
-          }
-
-          if (getDate(currentDate) > daysInCurrentMonth) {
-            dateParams.date = daysInCurrentMonth;
-          }
-          dateParams[type] = month;
-        }
-
-        if (type === 'year') {
-          dateParams[type] = value.slice(0, 4);
-        }
-
-        if (type === 'hours') {
-          dateParams[type] = value > 24 ? 24 : value;
-        }
-
-        if (type === 'minutes') {
-          dateParams[type] = value > 60 ? 60 : value;
-          console.log('minut', dateParams);
-        }
-
-        console.log(111, dateParams, set(new Date(currentDate), dateParams));
-
-        setDateToState(set(new Date(currentDate), dateParams));
+        const daysInCurrentMonth = getDaysInMonth(type, value);
 
         handleFocusNextInput(value, index);
 
+        dateParams = typeToHandler[type](strValue, dateParams, daysInCurrentMonth);
+
+        setDateToState(set(new Date(currentDate), dateParams));
+
         if (formatValueMapping[type]) {
           return formatValueMapping[type];
-        } else {
-          return value;
         }
+
+        return value.toString();
       }
+      return '';
     };
 
-    console.log(currentDate);
-    console.log(101010, set(new Date(currentDate), { month: 0 }));
     return (
-      <StyledDayPicker
-        className={cx('dateInput')}
-        // error={error}
-        theme={theme}
-        mode={mode}
-        ref={ref}
-        {...wrapperProps}
-      >
+      <StyledDayPicker className={cx('dateInput')} theme={theme} mode={mode} ref={ref} {...wrapperProps}>
         {inputs.map((input, index) => {
           const inputWidth = input.format.length * 10 + 40;
 
           const isLastItem = index + 1 !== inputs.length;
 
           return (
-            <div className="dateInputItem">
+            <div className="dateInputItem" key={`text-input-${input.type}-${currentDate}`}>
               <TextInput
-                // id={key}
-                // key={key}
-                onChange={(e) => handleChange(input.type, e.target.value, index)}
-                // onChange={(e) => setDateToState(set(new Date(currentDate), { [input.type]: formatter(input.type, e.target.value, index) }))
-                // }
+                id={`text-input-${input.type}-${currentDate}`}
+                onChange={(e): string => handleChange(input.type, e.target.value, index)}
                 inputRef={inputToRef[index]}
                 title={input.title}
                 style={{ width: `${inputWidth}px` }}

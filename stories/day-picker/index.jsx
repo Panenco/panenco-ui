@@ -73,21 +73,6 @@ const inputs1 = [
 
 const inputs2 = [
   {
-    title: 'Hour',
-    type: 'hours',
-    format: 'HH',
-    placeholder: '00',
-  },
-  {
-    title: 'Minute',
-    type: 'minutes',
-    format: 'mm',
-    placeholder: '00',
-  },
-];
-
-const inputs3 = [
-  {
     title: 'Day',
     type: 'date',
     format: 'dd',
@@ -101,7 +86,7 @@ const inputs3 = [
   },
 ];
 
-const inputs4 = [
+const inputs3 = [
   {
     title: 'Month',
     type: 'month',
@@ -127,17 +112,12 @@ export const DateInputStory = decorator('DateInput', DateInputDocs, DateInputRea
         </Row>
         <Row style={{ alignItems: 'flex-start' }}>
           <Col s="2" m="4" l="6">
-            <DateInput inputs={inputs2} divider=":" />
+            <DateInput inputs={inputs2} />
           </Col>
         </Row>
         <Row style={{ alignItems: 'flex-start' }}>
           <Col s="2" m="4" l="6">
             <DateInput inputs={inputs3} />
-          </Col>
-        </Row>
-        <Row style={{ alignItems: 'flex-start' }}>
-          <Col s="2" m="4" l="6">
-            <DateInput inputs={inputs4} />
           </Col>
         </Row>
         <Row style={{ alignItems: 'flex-start' }}>
@@ -153,11 +133,6 @@ export const DateInputStory = decorator('DateInput', DateInputDocs, DateInputRea
         <Row style={{ alignItems: 'flex-start' }}>
           <Col s="2" m="4" l="6">
             <DateInput inputs={inputs3} divider="/" />
-          </Col>
-        </Row>
-        <Row style={{ alignItems: 'flex-start' }}>
-          <Col s="2" m="4" l="6">
-            <DateInput inputs={inputs4} divider="/" />
           </Col>
         </Row>
       </div>
