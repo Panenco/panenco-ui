@@ -18,17 +18,13 @@ export const TablePagination = decorator('Pagination', TablePaginationDocs, Tabl
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(12);
 
-    const handleChangePage = (option) => {
-      setPage(Number(option.value));
+    const handleChangePage = (val) => {
+      setPage(Number(val));
     };
 
     const handleChangeRowsPerPage = (option) => {
       setRowsPerPage(Number(option.value));
       setPage(0);
-    };
-
-    const handleButtonClick = (val) => {
-      setPage(val);
     };
 
     return (
@@ -40,7 +36,6 @@ export const TablePagination = decorator('Pagination', TablePaginationDocs, Tabl
                 page={page}
                 onChangePage={handleChangePage}
                 onChangeRowsPerPage={handleChangeRowsPerPage}
-                onButtonClick={handleButtonClick}
                 count={201}
                 rowsPerPage={rowsPerPage}
               />
