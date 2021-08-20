@@ -6,7 +6,7 @@ import { useMode, useTheme } from 'utils/hooks';
 
 import { StyledNotificationContainer } from './style';
 
-export type NotificationContainerProps = ToastContainerProps & { undo: any; className?: string };
+export type NotificationContainerProps = ToastContainerProps & { undo?: any; className?: string };
 
 const CloseButton = ({ closeToast }: any): JSX.Element => {
   return (
