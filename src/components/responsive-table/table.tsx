@@ -3,6 +3,7 @@ import { throttle } from 'lodash-es';
 import * as React from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
 import { useMode, useTheme } from 'utils/hooks';
+import { PUITheme, ThemeMode } from 'utils/types';
 import { ColumnType } from '.';
 
 import Columns from './columns';
@@ -11,7 +12,13 @@ import { Styles } from './style';
 import { expandRow, resizeTable } from './table-actions';
 import { TableProps, TableState } from './types';
 
-class Table extends React.Component<TableProps, TableState> {
+class Table extends React.Component<
+  TableProps & {
+    theme: PUITheme;
+    mode: ThemeMode;
+  },
+  TableState
+> {
   static separateColumns(cols: ColumnType[]): ColumnType[][] {
     const visible: ColumnType[] = [];
     const hidden: ColumnType[] = [];
@@ -156,5 +163,5 @@ class Table extends React.Component<TableProps, TableState> {
 export const ResponsiveTable = React.forwardRef((props: TableProps, ref): JSX.Element => {
   const theme = useTheme();
   const { mode } = useMode();
-  return <Table innerRef={ref} {...props} theme={theme} mode={mode} />;
+  return <Table innerRef={ref} theme={theme} mode={mode} {...props} />;
 });
