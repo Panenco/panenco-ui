@@ -1,8 +1,14 @@
 import { styled } from 'linaria/react';
-import { ThemeMode } from 'utils/types';
+import { PUITheme, ThemeMode } from 'utils/types';
 import { transparentize } from 'polished';
 
-export const StyledTextArea = styled.div`
+export const StyledTextArea = styled.div<{
+  theme: PUITheme;
+  mode: ThemeMode;
+  loading?: boolean;
+  isDragActive?: boolean;
+  error?: string;
+}>`
   position: relative;
   display: flex;
   flex-direction: column;

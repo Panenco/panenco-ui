@@ -34,8 +34,8 @@ export interface TableProps extends React.HTMLAttributes<HTMLTableElement> {
   sort?: SortType;
   handleSort?: HandleSortType;
   innerRef?: any;
-  theme?: PUITheme;
-  mode?: ThemeMode;
+  theme: PUITheme;
+  mode: ThemeMode;
   isLoading?: boolean;
   shouldResize?: boolean;
   iconCreator?: (rowIsOpen: boolean) => string;

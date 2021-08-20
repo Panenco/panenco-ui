@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { styled } from 'linaria/react';
 import { useTheme } from 'utils/hooks';
-import { TextSize, PUIColors } from '../../utils/types';
+import { TextSize, PUIColors, PUITheme } from 'utils/types';
 
 type EnumColors = keyof PUIColors;
 export interface TextProps extends React.HTMLAttributes<HTMLElement> {
@@ -11,7 +11,11 @@ export interface TextProps extends React.HTMLAttributes<HTMLElement> {
   component?: 'p' | 'span';
 }
 
-const StyledSpan = styled.span`
+const StyledSpan = styled.span<{
+  theme: PUITheme;
+  size?: string | TextSize;
+  weight?: string | number;
+}>`
   display: inline-block;
   font-size: ${(props: any): number | string => {
     if (typeof props.size === 'string' && Object.keys(props.theme.typography.sizes).includes(props.size)) {
@@ -49,7 +53,11 @@ const StyledSpan = styled.span`
 `;
 
 // TODO duplicated code
-const StyledParagraph = styled.p`
+const StyledParagraph = styled.p<{
+  theme: PUITheme;
+  size?: string | TextSize;
+  weight?: string | number;
+}>`
   font-size: ${(props: any): number | string => {
     if (typeof props.size === 'string' && Object.keys(props.theme.typography.sizes).includes(props.size)) {
       return props.theme.typography.sizes[props.size].textSize;

@@ -24,12 +24,12 @@ class Table extends React.Component<TableProps, TableState> {
     return [visible, hidden];
   }
 
-  divRef: React.RefObject<HTMLElement>;
+  divRef: React.RefObject<HTMLTableElement>;
 
   divSizeObserver: ResizeObserver;
 
   static defaultProps = {
-    itemsPerPage: null,
+    itemsPerPage: 10,
     shouldResize: true,
     sort: null,
     handleSort: null,
@@ -153,10 +153,8 @@ class Table extends React.Component<TableProps, TableState> {
   }
 }
 
-export const ResponsiveTable = React.forwardRef(
-  (props: TableProps, ref): JSX.Element => {
-    const theme = useTheme();
-    const { mode } = useMode();
-    return <Table innerRef={ref} theme={theme} mode={mode} {...props} />;
-  },
-);
+export const ResponsiveTable = React.forwardRef((props: TableProps, ref): JSX.Element => {
+  const theme = useTheme();
+  const { mode } = useMode();
+  return <Table innerRef={ref} {...props} theme={theme} mode={mode} />;
+});

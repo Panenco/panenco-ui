@@ -55,7 +55,7 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
       const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
       if (show) {
         document.body.style.overflow = 'hidden';
-        document.body.style.paddingRight = scrollBarWidth + 'px';
+        document.body.style.paddingRight = `${scrollBarWidth} + 'px'`;
       } else {
         document.body.style.overflow = 'visible';
         document.body.style.paddingRight = '0';
@@ -68,7 +68,7 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
         };
       }
 
-      return;
+      return () => {};
     }, [show, disableEscapeKeyDown]);
 
     const emptyHeader: boolean = !title && !description && !closeBtn;

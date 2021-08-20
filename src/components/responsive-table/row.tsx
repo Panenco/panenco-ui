@@ -32,4 +32,8 @@ const Row = ({ row, rowIndex, visibleColumns, hiddenColumns, expandRow, iconCrea
   return <tr className="tableBodyRow">{cells}</tr>;
 };
 
+Row.defaultProps = {
+  iconCreator: () => '',
+};
+
 export default Row;

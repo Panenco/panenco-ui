@@ -14,8 +14,8 @@ interface HandleProps {
   formatValue: (value: any) => any;
   onChange?: any;
   isActive?: boolean;
-  theme?: PUITheme;
-  mode?: string;
+  theme: PUITheme;
+  mode: string;
 }
 
 export const Handle = ({
@@ -48,4 +48,6 @@ export const Handle = ({
 
 Handle.defaultProps = {
   isActive: false,
+  domain: 0,
+  onChange: () => {},
 };

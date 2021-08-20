@@ -1,7 +1,11 @@
 import { styled } from 'linaria/react';
-// import { ThemeMode } from 'utils/types';
+import { PUITheme, ThemeMode } from 'utils/types';
 
-export const StyledWizard = styled.div`
+export const StyledWizard = styled.div<{
+  mode: ThemeMode;
+  theme: PUITheme;
+  disabled: boolean;
+}>`
   width: 100%;
   display: flex;
   justify-content: space-between;

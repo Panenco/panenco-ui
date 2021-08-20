@@ -1,8 +1,11 @@
 import { styled } from 'linaria/react';
-import { ThemeMode } from 'utils/types';
+import { ThemeMode, PUITheme } from 'utils/types';
 import { transparentize } from 'polished';
 
-export const StyledAccordionSecondary = styled.div`
+export const StyledAccordionSecondary = styled.div<{
+  theme: PUITheme;
+  mode: ThemeMode;
+}>`
   display: flex;
   flex-direction: column;
   border: none;

@@ -1,8 +1,14 @@
 import { styled } from 'linaria/react';
-import { ThemeMode } from 'utils/types';
+import { PUITheme, ThemeMode } from 'utils/types';
 import { transparentize } from 'polished';
 
-export const StyledDropzone = styled.div`
+export const StyledDropzone = styled.div<{
+  theme: PUITheme;
+  mode: ThemeMode;
+  loading?: boolean;
+  isDragActive?: boolean;
+  error?: string;
+}>`
   display: flex;
   align-items: center;
   justify-content: center;

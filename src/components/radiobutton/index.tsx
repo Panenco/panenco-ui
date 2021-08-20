@@ -21,7 +21,19 @@ export interface RadioButtonProps extends React.InputHTMLAttributes<HTMLInputEle
 
 export const Radio = React.forwardRef<HTMLLabelElement, RadioButtonProps>(
   (
-    { label, id, className, checked, value, inputProps, wrapperProps, disabled, error, pointColor, ...props },
+    {
+      label,
+      id,
+      className,
+      checked,
+      value,
+      inputProps,
+      wrapperProps,
+      disabled,
+      error,
+      pointColor,
+      ...props
+    }: RadioButtonProps,
     ref,
   ): JSX.Element => {
     const theme = useTheme();

@@ -61,14 +61,14 @@ export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
 
     return (
       <StyledDropzone
+        {...getRootProps()}
+        {...wrapperProps}
         ref={ref}
         theme={theme}
         mode={mode}
         loading={loading}
         isDragActive={isDragActive}
         error={error}
-        {...getRootProps()}
-        {...wrapperProps}
       >
         {loading ? (
           <>

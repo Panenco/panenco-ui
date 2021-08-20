@@ -1,8 +1,14 @@
 import { styled } from 'linaria/react';
-import { ThemeMode } from 'utils/types';
+import { ThemeMode, PUITheme } from 'utils/types';
 import { transparentize } from 'polished';
 
-export const StyledTextInput = styled.div`
+export const StyledTextInput = styled.div<{
+  theme: PUITheme;
+  mode: ThemeMode;
+  error;
+  iconBefore?: HTMLObjectElement | JSX.Element;
+  iconAfter?: HTMLObjectElement | JSX.Element;
+}>`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
