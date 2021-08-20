@@ -23,7 +23,7 @@ export const Link = React.forwardRef<any, LinkProps>(
         mode={mode}
         style={style}
         to={to}
-        tabIndex={disabled ? -1 : undefined}
+        tabIndex={disabled ? -1 : 0}
         className={cx('link', disabled && 'disabled', className)}
         ref={ref}
         {...props}

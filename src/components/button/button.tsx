@@ -58,7 +58,7 @@ export const Button = React.forwardRef<any, ButtonProps>(
         variant={variant}
         {...props}
         to={component === 'link' ? to : undefined}
-        tabIndex={tabIndex || (isDisabled && component === 'link') ? -1 : undefined}
+        tabIndex={tabIndex || (isDisabled && component === 'link') ? -1 : 0}
       >
         <div className={cx('content', isLoading && 'contentInvisible')}>
           {((icon && iconLeft) || iconLeft) && (
