@@ -93,7 +93,7 @@ export interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {
   ref?: React.Ref<HTMLDivElement>;
 }
 
-export interface AccordinProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface AccordionProps extends React.HTMLAttributes<HTMLDivElement> {
   isOpen?: boolean;
   title?: string;
   onClick?: any;

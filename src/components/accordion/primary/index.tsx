@@ -3,12 +3,12 @@ import { Icon, Text } from 'components';
 import AnimatedHeight from 'react-animate-height';
 import cx from 'classnames';
 import { useAccordion } from 'components/accordion/useAccordion';
-import { AccordinProps } from 'utils/types';
+import { AccordionProps } from 'utils/types';
 import { useTheme, useMode } from 'utils/hooks';
 import { idGenerator } from 'utils/helpers';
 import { StyledAccordionPrimary } from './style';
 
-export const AccordionPrimary = React.forwardRef((props: AccordinProps, ref: any): JSX.Element => {
+export const AccordionPrimary = React.forwardRef((props: AccordionProps, ref: any): JSX.Element => {
   const {
     className,
     title = 'Title',
