@@ -1,6 +1,10 @@
 import { styled } from 'linaria/react';
+import { PUITheme, ThemeMode } from 'utils/types';
 
-export const StyledTab = styled.button`
+export const StyledTab = styled.button<{
+  theme: PUITheme;
+  mode: ThemeMode;
+}>`
   display: flex;
   justify-content: center;
   align-items: center;

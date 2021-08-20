@@ -1,8 +1,15 @@
+import { PUITheme, ThemeMode } from 'utils/types';
 import { styled } from 'linaria/react';
-import { ThemeMode } from 'utils/types';
 import { transparentize } from 'polished';
 
-export const StyledFileUploader = styled.div`
+export const StyledFileUploader = styled.div<{
+  theme: PUITheme;
+  mode: ThemeMode;
+  disabled?: boolean;
+  loading?: boolean;
+  hasContent?: boolean;
+  error?: string;
+}>`
   width: 100%;
   display: flex;
   flex-direction: column;

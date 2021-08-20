@@ -1,20 +1,20 @@
 import * as React from 'react';
-import * as cx_ from 'classnames';
+import cx from 'classnames';
 import { Icon } from 'components/icon';
 
-const cx = cx_;
 import s from './styles.scss';
 
 interface Props {
-  className?: string,
-  placeholder?: string,
-  onChange: (value: any) => any,
-  disabled?: boolean,
+  className?: string;
+  placeholder?: string;
+  onChange: (value: any) => any;
+  disabled?: boolean;
 }
 
-class Search extends React.Component<Props, {}> {
-  state = {
-    isOpen: false
+class Search extends React.Component<Props, { isOpen: boolean }> {
+  constructor(props) {
+    super(props);
+    this.state = { isOpen: false };
   }
 
   handleSearchOpen = () => {
@@ -37,7 +37,7 @@ class Search extends React.Component<Props, {}> {
                 type="search"
                 className={s.searchContainerInput}
                 placeholder={placeholder}
-                onChange={e => onChange(e.target.value)}
+                onChange={(e) => onChange(e.target.value)}
               />
               <button
                 type="button"

@@ -9,7 +9,7 @@ import { StyledButton } from './style';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   [key: string]: any;
-  component?: string;
+  component?: React.ElementType;
   to?: string;
   iconClassName?: string;
   icon?: any;
@@ -57,8 +57,8 @@ export const Button = React.forwardRef<any, ButtonProps>(
         color={color}
         variant={variant}
         {...props}
-        to={component === 'link' ? to : null}
-        tabIndex={tabIndex || (isDisabled && component === 'link') ? -1 : null}
+        to={component === 'link' ? to : undefined}
+        tabIndex={tabIndex || (isDisabled && component === 'link') ? -1 : undefined}
       >
         <div className={cx('content', isLoading && 'contentInvisible')}>
           {((icon && iconLeft) || iconLeft) && (

@@ -3,6 +3,8 @@ import { useMode, useTheme } from 'utils/hooks';
 import { Text } from 'components';
 import cx from 'classnames';
 import { Icon } from 'components/icon';
+import { v4 as uuidv4 } from 'uuid';
+
 import { StyledWizard } from './style';
 
 export interface WizardTrackProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -36,7 +38,7 @@ export const WizardTrack = ({ stepsMeta = steps, currentStepIndex = 0, ...props 
       {stepsMeta?.map((step, idx) => {
         return (
           <div
-            key={idx}
+            key={uuidv4()}
             className={cx(
               'wizzardStep',
               idx === 0 && 'wizzardStepFirst',

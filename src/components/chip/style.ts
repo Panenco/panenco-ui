@@ -1,7 +1,12 @@
 import { styled } from 'linaria/react';
-import { ThemeMode } from 'utils/types';
+import { PUITheme, ThemeMode } from 'utils/types';
 
-export const StyledChip = styled.button`
+export const StyledChip = styled.button<{
+  checked?: boolean;
+  mode: ThemeMode;
+  theme: PUITheme;
+  iconSize?: number | string;
+}>`
   align-items: center;
   cursor: pointer;
   display: flex;

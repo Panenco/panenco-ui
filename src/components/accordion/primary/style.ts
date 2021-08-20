@@ -1,7 +1,10 @@
 import { styled } from 'linaria/react';
-import { ThemeMode } from 'utils/types';
+import { PUITheme, ThemeMode } from 'utils/types';
 
-export const StyledAccordionPrimary = styled.div`
+export const StyledAccordionPrimary = styled.div<{
+  theme: PUITheme;
+  mode: ThemeMode;
+}>`
   display: flex;
   flex-direction: column;
   border-radius: 4px;

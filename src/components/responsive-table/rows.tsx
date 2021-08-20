@@ -11,7 +11,7 @@ interface RowsProps {
   hiddenColumns: Array<ColumnType>;
   expandRow: ExpandRowType;
   containerWidth?: number;
-  itemsPerPage: number;
+  itemsPerPage?: number;
   isLoading?: boolean;
   iconCreator?: (rowIsOpen: boolean) => string;
 }
@@ -21,8 +21,8 @@ const Rows = ({
   visibleColumns,
   hiddenColumns,
   expandRow,
-  containerWidth,
-  itemsPerPage,
+  containerWidth = 0,
+  itemsPerPage = 10,
   iconCreator,
   isLoading,
 }: RowsProps): JSX.Element => {
@@ -64,8 +64,10 @@ const Rows = ({
 };
 
 Rows.defaultProps = {
-  containerWidth: null,
-  itemsPerPage: null,
+  containerWidth: 0,
+  isLoading: false,
+  itemsPerPage: 10,
+  iconCreator: () => '',
 };
 
 export default Rows;

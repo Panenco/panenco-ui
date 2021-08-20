@@ -1,9 +1,12 @@
 import { styled } from 'linaria/react';
 // import { transparentize } from 'polished';
-import { ThemeMode } from '../../../utils/types';
+import { PUITheme, ThemeMode } from '../../../utils/types';
 import { Paper } from '../../paper';
 
-export const StyledNewVersionPaper = styled(Paper)`
+export const StyledNewVersionPaper = styled(Paper)<{
+  theme: PUITheme;
+  mode: ThemeMode;
+}>`
   bottom: 0;
   position: fixed;
   width: 100%;

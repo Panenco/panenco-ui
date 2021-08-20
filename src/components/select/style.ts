@@ -238,7 +238,12 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
   // },
 });
 
-export const StyledSelectWrapper = styled.div`
+export const StyledSelectWrapper = styled.div<{
+  theme: PUITheme;
+  mode: ThemeMode;
+  error;
+  wrapperSelectSizes;
+}>`
   position: relative;
 
   .wrapperSelect {

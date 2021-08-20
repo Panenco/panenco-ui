@@ -1,10 +1,13 @@
 import { styled } from 'linaria/react';
-import { ThemeMode } from 'utils/types';
+import { ThemeMode, PUITheme } from 'utils/types';
 
 const arrowSize = '6px';
 const tooltipMargin = '40px';
 
-export const StyledTooltip = styled.div`
+export const StyledTooltip = styled.div<{
+  mode: ThemeMode;
+  theme: PUITheme;
+}>`
   display: inline-block;
   position: relative;
 

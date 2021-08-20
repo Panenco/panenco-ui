@@ -1,7 +1,12 @@
 import { styled } from 'linaria/react';
-import { ThemeMode } from 'utils/types';
+import { ThemeMode, PUITheme } from 'utils/types';
 
-export const StyledRadio = styled.div`
+export const StyledRadio = styled.label<{
+  theme: PUITheme;
+  mode: ThemeMode;
+  error;
+  pointColor?: string;
+}>`
   .label {
     position: relative;
     display: flex;

@@ -1,5 +1,5 @@
 import { styled } from 'linaria/react';
-import { ThemeMode } from 'utils/types';
+import { PUITheme, ThemeMode } from 'utils/types';
 
 const getBackgroundColor = (variant: any, mode: ThemeMode, darkColor: string, lightColor: string): string => {
   if (variant === 'transparent') return 'transparent';
@@ -7,7 +7,13 @@ const getBackgroundColor = (variant: any, mode: ThemeMode, darkColor: string, li
   return lightColor;
 };
 
-export const StyledButton = styled.button`
+export const StyledButton = styled.button<{
+  theme: PUITheme;
+  mode: ThemeMode;
+  to?: string;
+  variant?: 'default' | 'transparent';
+  // as: HTMLElement;
+}>`
   position: relative;
   border: 2px solid transparent;
   display: flex;

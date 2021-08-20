@@ -12,7 +12,7 @@ export interface UseAccordinProps {
 }
 
 export interface UseAccordinReturn {
-  combinedRef: React.RefObject<React.ReactNode>;
+  combinedRef: React.RefObject<HTMLDivElement>;
   theme: PUITheme;
   mode: ThemeMode;
   isOpen?: boolean;

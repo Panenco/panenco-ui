@@ -1,7 +1,12 @@
 import { styled } from 'linaria/react';
-import { ThemeMode } from 'utils/types';
+import { PUITheme, ThemeMode } from 'utils/types';
 
-export const StyledCheckbox = styled.div`
+export const StyledCheckbox = styled.div<{
+  theme: PUITheme;
+  mode: ThemeMode;
+  borderWidth?: string | number;
+  borderColor?: string;
+}>`
   position: relative;
 
   & .label {

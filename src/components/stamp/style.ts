@@ -1,7 +1,10 @@
 import { styled } from 'linaria/react';
-import { ThemeMode } from 'utils/types';
+import { PUITheme, ThemeMode } from 'utils/types';
 
-export const StyledStamp = styled.div`
+export const StyledStamp = styled.div<{
+  theme: PUITheme;
+  mode: ThemeMode;
+}>`
   padding: 6px 16px;
   display: flex;
   justify-content: center;
