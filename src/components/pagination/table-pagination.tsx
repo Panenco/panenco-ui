@@ -5,6 +5,11 @@ import { Text, Icon, SelectInput, Button } from 'components';
 import { usePagination } from './usePagination';
 import { StyledPagination } from './styles';
 
+interface PaginationOption {
+  label: string;
+  value: string;
+}
+
 export type TablePaginationProps = {
   [key: string]: any;
   count?: number;
@@ -13,7 +18,7 @@ export type TablePaginationProps = {
   disabled?: boolean;
   contentBeforeSelect?: string;
   rowsPerPageOptions?: any;
-  onChangePage: (page: number) => void;
+  onChangePage: (page: number | PaginationOption) => void;
   onChangeRowsPerPage: any;
 } & React.HTMLAttributes<HTMLDivElement>;
 
