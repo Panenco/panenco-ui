@@ -22,8 +22,8 @@ export const TablePagination = decorator('Pagination', TablePaginationDocs, Tabl
       setPage(Number(val));
     };
 
-    const handleChangeRowsPerPage = (option) => {
-      setRowsPerPage(Number(option.value));
+    const handleChangeRowsPerPage = (val) => {
+      setRowsPerPage(Number(val));
       setPage(0);
     };
 

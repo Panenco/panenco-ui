@@ -7,7 +7,7 @@ import { StyledPagination } from './styles';
 
 interface PaginationOption {
   label: string;
-  value: string;
+  value: number;
 }
 
 export type TablePaginationProps = {
@@ -18,7 +18,7 @@ export type TablePaginationProps = {
   disabled?: boolean;
   contentBeforeSelect?: string;
   rowsPerPageOptions?: any;
-  onChangePage: (page: number | PaginationOption) => void;
+  onChangePage: (page: number) => void;
   onChangeRowsPerPage: any;
 } & React.HTMLAttributes<HTMLDivElement>;
 
@@ -68,6 +68,8 @@ export const TablePagination = ({
   const theme = useTheme();
   const { mode } = useMode();
 
+  const rowsPerPageHandler = (option: PaginationOption): void => onChangeRowsPerPage(option.value);
+
   return (
     <StyledPagination mode={mode} theme={theme} className={cx('pagination', className)} {...otherProps}>
       <div className="paginationSection">
@@ -87,7 +89,7 @@ export const TablePagination = ({
           isSearchable={false}
           styles={additionStyles()}
           isDisabled={disabled}
-          onChange={onChangeRowsPerPage}
+          onChange={rowsPerPageHandler}
           value={rowsPerPageOptions.find((option) => Number(option.value) === Number(rowsPerPage))}
         />
         <div className={cx('paginationDivider', 'paginationDividerLeft')} />
@@ -117,7 +119,7 @@ export const TablePagination = ({
           isSearchable={false}
           styles={additionStyles()}
           isDisabled={disabled}
-          onChange={(option: { label: string; value: number }): void => onChangePage(option.value)}
+          onChange={(option: PaginationOption): void => onChangePage(option.value)}
           value={pagesOptions.find((option) => Number(option.value) === Number(page))}
         />
         <Button
