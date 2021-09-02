@@ -33,7 +33,7 @@ const Row = ({ row, rowIndex, visibleColumns, hiddenColumns, expandRow, iconCrea
 };
 
 Row.defaultProps = {
-  iconCreator: () => '',
+  iconCreator: null,
 };
 
 export default Row;
