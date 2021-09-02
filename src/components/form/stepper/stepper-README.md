@@ -14,7 +14,6 @@ const render  = () => {
       onChange={(v) => console.log(v)}
       value={12}
       title="Title"
-      subTitle="Subtitle"
       error="Error label"
     />
   )
@@ -29,7 +28,6 @@ const render  = () => {
 This component inherits the attributes of the **input** element and extends the functionality with next properties.
 
 - title - title;
-- subTitle - subTitle;
 - step - step;
 - maxValue - maxValue;
 - minValue - minValue;
@@ -41,7 +39,6 @@ This component inherits the attributes of the **input** element and extends the 
 | propName     | propType                                | defaultValue | isRequired |
 | ------------ | --------------------------------------- | ------------ | ---------- |
 | title        | string                                  | -            | -          |
-| subTitle     | string                                  | -            | -          |
 | step         | number                                  | -            | -          |
 | minValue     | number                                  | -            | -          |
 | maxValue     | number                                  | -            | -          |
