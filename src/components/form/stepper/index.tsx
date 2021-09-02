@@ -115,7 +115,7 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
         </div>
         <div className="inputError">
           {notInRange ? <span className="inputErrorLabel">Must be in range: {`[${min}, ${max}]`}</span> : null}
-          {/* {error && !notInRange && <span className="inputErrorLabel">{error}</span>} */}
+          {error && !notInRange && <span className="inputErrorLabel">{error}</span>}
         </div>
       </StyledStepperInput>
     );

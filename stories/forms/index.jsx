@@ -74,56 +74,34 @@ export const StepperComponent = decorator('Forms', StepperDocs, StepperReadme).a
     <WrappedComponent>
       <Row style={{ justifyContent: 'center' }}>
         <Col s="3" m="3" l="3">
-          <StepperInput title="Stepper with error" subTitle="Stepper subtitle" error='Error' />
+          <StepperInput title="Stepper with error" error="Error" />
         </Col>
       </Row>
       <Row style={{ justifyContent: 'center' }}>
         <Col s="3" m="3" l="3">
-          <StepperInput
-            minValue={0}
-            maxValue={5}
-            
-            onChange={(v) => console.log(v)}
-            title="Min and Max"
-            subTitle="Stepper subtitle"
-          />
+          <StepperInput minValue={0} maxValue={5} title="Min and Max" />
         </Col>
       </Row>
       <Row style={{ justifyContent: 'center' }}>
         <Col s="3" m="3" l="3">
-          <StepperInput
-            minValue={0}
-            onChange={(v) => console.log(v)}
-            title="Min"
-            subTitle="Stepper subtitle"
-          />
+          <StepperInput minValue={0} title="Min" />
         </Col>
       </Row>
       <Row style={{ justifyContent: 'center' }}>
         <Col s="3" m="3" l="3">
-          <StepperInput
-            maxValue={5}
-            onChange={(v) => console.log(v)}
-            title="Max"
-            subTitle="Stepper subtitle"
-          />
+          <StepperInput maxValue={5} title="Max" />
         </Col>
       </Row>
       <Row style={{ justifyContent: 'center' }}>
         <Col s="3" m="3" l="3">
-          <StepperInput onChange={(v) => console.log(v)} title="No" subTitle="Stepper subtitle" />
+          <StepperInput title="No" />
         </Col>
       </Row>
       <Row style={{ justifyContent: 'center' }}>
         <Col s="3" m="3" l="3">
-          <StepperInput
-            disabled
-            onChange={(v) => console.log(v)}
-            title="No"
-            subTitle="Stepper subtitle"
-          />
+          <StepperInput disabled title="No" />
         </Col>
-      </Row> 
+      </Row>
     </WrappedComponent>
   );
 });
