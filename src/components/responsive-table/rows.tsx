@@ -67,7 +67,7 @@ Rows.defaultProps = {
   containerWidth: 0,
   isLoading: false,
   itemsPerPage: 10,
-  iconCreator: () => '',
+  iconCreator: null,
 };
 
 export default Rows;
