@@ -27,7 +27,6 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
       maxValue,
       className,
       title,
-      subTitle,
       step,
       disabled,
       error,
@@ -74,13 +73,8 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
     return (
       <StyledStepperInput className={cx('stepper', className)} theme={theme} mode={mode} ref={ref} {...wrapperProps}>
         {title && (
-          <Text weight={theme.typography.weights.bold} size={theme.typography.sizes.m} className="inputTitle">
+          <Text size={theme.typography.sizes.xs} className="inputTitle">
             {title}
-          </Text>
-        )}
-        {subTitle && (
-          <Text size={theme.typography.sizes.xs} className="inputSubtitle">
-            {subTitle}
           </Text>
         )}
 
@@ -121,7 +115,7 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
         </div>
         <div className="inputError">
           {notInRange ? <span className="inputErrorLabel">Must be in range: {`[${min}, ${max}]`}</span> : null}
-          {error && !notInRange && <span className="inputErrorLabel">{error}</span>}
+          {/* {error && !notInRange && <span className="inputErrorLabel">{error}</span>} */}
         </div>
       </StyledStepperInput>
     );

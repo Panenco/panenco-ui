@@ -2,7 +2,7 @@ import { styled } from 'linaria/react';
 import { transparentize } from 'polished';
 import { ThemeMode, PUITheme } from 'utils/types';
 
-export const Styles = styled.table<{
+export const Styles = styled.div<{
   theme: PUITheme;
   mode: ThemeMode;
 }>`

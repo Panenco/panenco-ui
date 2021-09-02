@@ -119,7 +119,7 @@ export const TablePagination = ({
           isSearchable={false}
           styles={additionStyles()}
           isDisabled={disabled}
-          onChange={(option: PaginationOption): void => onChangePage(option.value)}
+          onChange={(option): void => onChangePage(option.value)}
           value={pagesOptions.find((option) => Number(option.value) === Number(page))}
         />
         <Button

@@ -15,17 +15,6 @@ export const StyledTextInput = styled.div<{
   background-color: transparent;
   position: relative;
 
-  .inputTitle {
-    color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
-    margin-bottom: 4px;
-  }
-
-  .inputSubtitle {
-    color: ${(props: any): string => props.theme.colors.secondary};
-    margin-bottom: 4px;
-  }
-
   .fieldWrapper {
     display: flex;
     align-items: center;
@@ -66,7 +55,8 @@ export const StyledTextInput = styled.div<{
           props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.primary};
         background-color: transparent;
         font-size: ${(props: any): string => props.theme.typography.sizes.m.textSize};
-        padding: 14px 16px;
+        margin: -1px;
+        padding: 13px 16px;
         padding-left: ${(props: any): string => {
           if (props.iconBefore) return '40px';
           return '16px';
@@ -111,6 +101,16 @@ export const StyledTextInput = styled.div<{
         border-color: transparent;
         box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.outline};
       }
+    }
+
+    .inputTitle {
+      color: ${(props: any): string => props.theme.colors.secondary};
+      margin-bottom: 4px;
+    }
+
+    .inputSubtitle {
+      color: ${(props: any): string => props.theme.colors.secondary};
+      margin-bottom: 4px;
     }
   }
 
