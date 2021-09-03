@@ -272,7 +272,6 @@ export const StyledSelectWrapper = styled.div<{
       props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
 
     display: block;
-    margin-bottom: 5px;
   }
 
   .subTitle {
