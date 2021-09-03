@@ -63,7 +63,7 @@ const Component = ({
   return (
     <>
       {title && (
-        <Text className="title" weight={theme.typography.weights.bold}>
+        <Text className="title" weight={theme.typography.weights.bold} size={theme.typography.sizes.m}>
           {title}
         </Text>
       )}

@@ -102,16 +102,15 @@ export const StyledTextInput = styled.div<{
         box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.outline};
       }
     }
+  }
 
-    .inputTitle {
-      color: ${(props: any): string => props.theme.colors.secondary};
-      margin-bottom: 4px;
-    }
+  .inputTitle {
+    color: ${(props: any): string => props.theme.colors.primary};
+  }
 
-    .inputSubtitle {
-      color: ${(props: any): string => props.theme.colors.secondary};
-      margin-bottom: 4px;
-    }
+  .inputSubtitle {
+    color: ${(props: any): string => props.theme.colors.secondary};
+    margin-bottom: 4px;
   }
 
   .inputErrorLabel {
