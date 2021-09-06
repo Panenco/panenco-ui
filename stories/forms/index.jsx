@@ -15,7 +15,7 @@ export default decorator('Forms', TextInputDocs, TextInputReadme).add('TextInput
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <Row style={{ justifyContent: 'center' }}>
         <Col s="2" m="4" l="6">
-          <TextInput placeholder="Icon before" iconBefore={Icon.icons.mapPin} />
+          <TextInput placeholder="Icon before" iconBefore={Icon.icons.mapPin} maxLength={10} />
         </Col>
         <Col s="2" m="4" l="6">
           <TextInput placeholder="Icon after" iconAfter={<Icon icon={Icon.icons.closeEye} />} />
@@ -36,7 +36,7 @@ export default decorator('Forms', TextInputDocs, TextInputReadme).add('TextInput
           <TextInput title="Title" placeholder="Placeholder" iconAfter={<Icon icon={Icon.icons.closeEye} />} />
         </Col>
         <Col s="2" m="4" l="6">
-          <TextInput title="Title" subTitle="Subtitle" error="Error label" placeholder="Error" />
+          <TextInput title="Title" subTitle="Subtitle" error="Error label" placeholder="Error" maxLength={100} />
         </Col>
       </Row>
     </div>

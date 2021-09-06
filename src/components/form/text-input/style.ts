@@ -114,11 +114,29 @@ export const StyledTextInput = styled.div<{
   }
 
   .inputErrorLabel {
-    position: absolute;
-    bottom: -20px;
     color: ${(props: any): string =>
       props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.error};
     font-size: ${(props: any): string => props.theme.typography.sizes.xs.textSize};
-    margin-top: 4px;
+    height: 16px;
+  }
+
+  .counterWrapper {
+    display: flex;
+    justify-content: space-between;
+    font-size: ${(props: any): string => props.theme.typography.sizes.xs.textSize};
+    width: 100%;
+
+    .counter {
+      color: ${(props: any): string => props.theme.colors.secondary};
+    }
+
+    .errorLabel {
+      color: ${(props: any): string =>
+        props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.error};
+    }
+
+    .hidden {
+      visibility: hidden;
+    }
   }
 `;
