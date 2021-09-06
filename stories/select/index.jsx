@@ -37,10 +37,10 @@ export default decorator('Select', SelectInputDocs, README).add('Select componen
   return (
     <WrappedComponent style={{ minHeight: '500px' }}>
       <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start' }}>
-        <Col sm="2" md="4" lg="4">
+        <Col sm="2" md="3" lg="3">
           <SelectInput options={options} title="Single Select" subTitle="Sub title" placeholder="Choose one option" />
         </Col>
-        <Col sm="2" md="4" lg="4">
+        <Col sm="2" md="3" lg="3">
           <SelectInput
             options={options}
             title="Multi Select"
@@ -51,6 +51,20 @@ export default decorator('Select', SelectInputDocs, README).add('Select componen
             value={value}
             onChange={handleChange}
             onDeleteOption={handleDeleteOption}
+          />
+        </Col>
+        <Col sm="2" md="3" lg="3">
+          <SelectInput
+            options={options}
+            title="Multi Select"
+            subTitle="Sub title"
+            isMulti
+            chipIconSize={8}
+            placeholder="Choose many options ..."
+            value={value}
+            onChange={handleChange}
+            onDeleteOption={handleDeleteOption}
+            error="Error options"
           />
         </Col>
       </Row>
