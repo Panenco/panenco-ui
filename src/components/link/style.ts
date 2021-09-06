@@ -7,8 +7,9 @@ export const StyledLink = styled(Link)<{
   mode: ThemeMode;
   tabIndex?: number;
 }>`
-  padding: 3px;
   color: ${(props: any): string => props.theme.colors.accent};
+  padding: 3px;
+  white-space: nowrap;
 
   &:hover {
     border-bottom: 1px dashed ${(props: any): string => props.theme.colors.accent};
