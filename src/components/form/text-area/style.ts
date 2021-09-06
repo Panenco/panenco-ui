@@ -30,6 +30,8 @@ export const StyledTextArea = styled.div<{
     width: 100%;
 
     &Content {
+      display: flex;
+      flex-direction: column;
       width: 100%;
     }
 
@@ -85,12 +87,9 @@ export const StyledTextArea = styled.div<{
     }
 
     .counterWrapper {
-      margin-top: 4px;
       display: flex;
       justify-content: space-between;
       font-size: ${(props: any): string => props.theme.typography.sizes.xs.textSize};
-      position: absolute;
-      bottom: -15px;
       width: 100%;
 
       .counter {
