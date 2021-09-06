@@ -12,7 +12,7 @@ interface RowProps {
 }
 
 const Row = ({ row, rowIndex, visibleColumns, hiddenColumns, expandRow, iconCreator }: RowProps): JSX.Element => {
-  const cells = visibleColumns.map(({ accessor, minWidth, component }, index) => {
+  const cells = visibleColumns.map(({ accessor, minWidth, component, className }, index) => {
     return (
       <Cell
         key={accessor}
@@ -25,6 +25,7 @@ const Row = ({ row, rowIndex, visibleColumns, hiddenColumns, expandRow, iconCrea
         hiddenColumnLength={hiddenColumns.length}
         component={component}
         iconCreator={iconCreator}
+        className={className}
       />
     );
   });

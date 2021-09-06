@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Icon, Text } from 'components';
+import cx from 'classnames';
 import { useTheme, useMode } from 'utils/hooks';
 import { ThemeMode } from 'utils/types';
 import { ButtonIcon } from 'components/button-icon';
@@ -13,6 +14,7 @@ export interface CellProps {
   rowIndex: string | number;
   expandRow: ExpandRowType;
   hiddenColumnLength: number;
+  className?: string;
   component?: React.ComponentType<CustomCellProps>;
   iconCreator?: (rowIsOpen: boolean) => string;
 }
@@ -27,6 +29,7 @@ const Cell = ({
   hiddenColumnLength,
   component,
   iconCreator,
+  className,
 }: CellProps): JSX.Element => {
   const theme = useTheme();
   const { mode } = useMode();
@@ -47,7 +50,7 @@ const Cell = ({
     : row.data[accessor];
   return (
     <td
-      className="tableCell"
+      className={cx('tableCell', className)}
       style={{
         maxWidth: `${minWidth}px`,
         color: mode === ThemeMode.light ? theme.colors.dark : theme.colors.light,
