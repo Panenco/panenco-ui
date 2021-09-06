@@ -8,6 +8,7 @@ export interface ColumnType {
   sortName?: string;
   component?: any;
   prevWidth?: number;
+  className?: string;
 }
 
 export interface RowType<T = Record<string, any>> {

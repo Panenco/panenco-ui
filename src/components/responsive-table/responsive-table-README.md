@@ -172,3 +172,4 @@ const SomeComponentWithTable = ({
 - `isVisible` - value indicates whether the column is visible or not, you set it as true for all columns unless you want the table to be displayed as in second case
 - `sortName` - sort name of the column that is used on the server
 - `component` - you can wrap each cell in the column into your custom component, it receives an object with two props: row and accessor, so you can retrieve data for this column like this row.data[accessor]
+- `className` - you can set className to specific column

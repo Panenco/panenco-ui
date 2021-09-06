@@ -3,6 +3,7 @@ import TableDocs from 'components/responsive-table/responsive-table-DOCS.md';
 import TableReadme from 'components/responsive-table/responsive-table-README.md';
 import React from 'react';
 
+import s from './styles.scss';
 import { decorator } from '../../utils/decorator';
 import { WrappedComponent } from '../helpers/wrapped';
 
@@ -62,6 +63,7 @@ export default decorator('ResponsiveTable', TableDocs, TableReadme).add('Respons
       minWidth: 196,
       isVisible: true,
       component: () => <SelectInput options={options} />,
+      className: s.overflow,
     },
     {
       accessor: 'authors',
