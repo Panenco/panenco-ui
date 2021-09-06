@@ -88,11 +88,9 @@ const Component = ({
             {...props}
           />
         </div>
-        {error && (
-          <Text className="errorTitle" size={theme.typography.sizes.xs} color={theme.colors.error}>
-            {error}
-          </Text>
-        )}
+        <Text className="errorTitle" size={theme.typography.sizes.xs} color={theme.colors.error}>
+          {error}
+        </Text>
       </>
     </>
   );

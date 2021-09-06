@@ -258,7 +258,7 @@ export const StyledSelectWrapper = styled.div<{
   }
 
   .multiSelectChip {
-    margin: 10px 4px 0 0;
+    margin: 0 4px 4px 0;
   }
 
   .col {
@@ -283,7 +283,6 @@ export const StyledSelectWrapper = styled.div<{
     color: ${(props: any): string =>
       props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.error};
     display: block;
-    position: absolute;
-    margin-top: 5px;
+    height: 16px;
   }
 `;

@@ -13,7 +13,7 @@ export const StyledChip = styled.button<{
   justify-content: center;
   position: relative;
   transition: 0.3s;
-  padding: 10px 15px;
+  padding: 3px 11px;
   border-radius: 4px;
   background-color: ${(props: any): string => {
     if (props.mode === ThemeMode.dark) {
@@ -52,12 +52,17 @@ export const StyledChip = styled.button<{
     }
   }
 
+  &:focus {
+    box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.outline};
+  }
+
   &:focus-visible {
     box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.outline};
   }
 
   .labelTitle {
     color: inherit;
+    line-height: 16px;
   }
 
   & > svg {
