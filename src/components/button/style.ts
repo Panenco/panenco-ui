@@ -31,11 +31,13 @@ export const StyledButton = styled.button<{
   color: ${(props: any): string =>
     props.color || (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent)};
   cursor: pointer;
+  overflow: hidden;
 
   .content {
     align-items: center;
     display: flex;
     justify-content: center;
+    overflow: hidden;
 
     &Invisible {
       visibility: hidden;
@@ -68,6 +70,9 @@ export const StyledButton = styled.button<{
 
   .buttonTitle {
     color: inherit;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .buttonIcon {
