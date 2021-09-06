@@ -17,7 +17,6 @@ export const StyledTextArea = styled.div<{
   .title {
     color: ${(props: any): string =>
       props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
-    margin-bottom: 4px;
   }
 
   .subtitle {
