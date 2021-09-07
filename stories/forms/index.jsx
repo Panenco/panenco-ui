@@ -33,7 +33,7 @@ export default decorator('Forms', TextInputDocs, TextInputReadme).add('TextInput
 
       <Row style={{ justifyContent: 'center' }}>
         <Col s="2" m="4" l="6">
-          <TextInput title="Title" placeholder="Placeholder" iconAfter={<Icon icon={Icon.icons.closeEye} />} />
+          <TextInput title="Title" subTitle="Subtitle" placeholder="Error" maxLength={100} />
         </Col>
         <Col s="2" m="4" l="6">
           <TextInput title="Title" subTitle="Subtitle" error="Error label" placeholder="Error" maxLength={100} />

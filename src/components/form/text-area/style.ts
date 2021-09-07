@@ -51,13 +51,17 @@ export const StyledTextArea = styled.div<{
       }
 
       &Error {
-        box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.error};
-        border-color: transparent;
+        border: 2px solid ${(props: any): string => props.theme.colors.error};
+
         color: ${(props: any): string =>
           props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
 
+        .input {
+          margin: -2px;
+        }
+
         &:hover {
-          box-shadow: none;
+          padding: 7px 13px;
         }
       }
 
@@ -94,11 +98,13 @@ export const StyledTextArea = styled.div<{
 
       .counter {
         color: ${(props: any): string => props.theme.colors.secondary};
+        line-height: 1.3;
       }
 
       .errorLabel {
         color: ${(props: any): string =>
           props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.error};
+        line-height: 1.3;
       }
 
       .hidden {
