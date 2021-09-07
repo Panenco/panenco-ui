@@ -280,9 +280,11 @@ export const StyledSelectWrapper = styled.div<{
   }
 
   .errorTitle {
+    bottom: -16px;
     color: ${(props: any): string =>
       props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.error};
     display: block;
     height: 16px;
+    position: absolute;
   }
 `;

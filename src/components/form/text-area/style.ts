@@ -91,9 +91,11 @@ export const StyledTextArea = styled.div<{
     }
 
     .counterWrapper {
+      bottom: -16px;
       display: flex;
       justify-content: space-between;
       font-size: ${(props: any): string => props.theme.typography.sizes.xs.textSize};
+      position: absolute;
       width: 100%;
 
       .counter {

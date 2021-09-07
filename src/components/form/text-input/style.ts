@@ -127,19 +127,16 @@ export const StyledTextInput = styled.div<{
   }
 
   .counterWrapper {
+    bottom: -16px;
     display: flex;
     justify-content: space-between;
     font-size: ${(props: any): string => props.theme.typography.sizes.xs.textSize};
+    position: absolute;
     width: 100%;
 
     .counter {
       color: ${(props: any): string => props.theme.colors.secondary};
       line-height: 1.3;
-    }
-
-    .errorLabel {
-      color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.error};
     }
 
     .hidden {
