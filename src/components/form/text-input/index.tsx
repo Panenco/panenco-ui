@@ -91,14 +91,16 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
             )}
           </div>
         </div>
-        <div className="counterWrapper">
-          <span className="inputErrorLabel">{error}</span>
-          {maxLength && (
-            <span className="counter">
-              {counter}/{maxLength}
-            </span>
-          )}
-        </div>
+        {error || maxLength ? (
+          <div className="counterWrapper">
+            <span className="inputErrorLabel">{error}</span>
+            {maxLength && (
+              <span className="counter">
+                {counter}/{maxLength}
+              </span>
+            )}
+          </div>
+        ) : null}
       </StyledTextInput>
     );
   },

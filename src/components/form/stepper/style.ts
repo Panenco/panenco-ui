@@ -128,7 +128,7 @@ export const StyledStepperInput = styled.div<{
   }
 
   .inputError {
-    bottom: -20px;
+    bottom: -16px;
     display: flex;
     flex-direction: column;
     position: absolute;
