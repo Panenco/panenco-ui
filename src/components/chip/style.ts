@@ -65,12 +65,10 @@ export const StyledChip = styled.button<{
     line-height: 16px;
   }
 
-  & > svg {
-    width: ${(props: any): string => (props.iconSize ? `${props.iconSize}px` : '16px')};
-    height: ${(props: any): string => (props.iconSize ? `${props.iconSize}px` : '16px')};
+  .svg {
+    width: 16px;
+    height: 16px;
     margin-left: 10px;
-    color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.light};
   }
 
   &.chipDisabled {

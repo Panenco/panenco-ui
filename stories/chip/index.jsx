@@ -2,6 +2,7 @@ import React from 'react';
 import { Chip, Row, Col } from 'components';
 import ChipDocs from 'components/chip/DOCS.md';
 import README from 'components/chip/README.md';
+import { Icon } from 'components/icon';
 import { decorator } from '../../utils/decorator';
 import { WrappedComponent } from '../helpers/wrapped';
 
@@ -14,7 +15,7 @@ export default decorator('Chip', ChipDocs, README).add('Chip component', () => {
     <WrappedComponent>
       <Row style={{ justifyContent: 'space-around' }}>
         <Col s="2" m="4" l="3">
-          <Chip checked={isChecked1} onClick={() => setChecked1(!isChecked1)}>
+          <Chip checked={isChecked1} uncheckedIcon={Icon.icons.close} onClick={() => setChecked1(!isChecked1)}>
             Chip
           </Chip>
         </Col>
