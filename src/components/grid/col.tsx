@@ -3,36 +3,27 @@ import * as React from 'react';
 
 import { Col as StyledCol } from './style';
 
+type ColSize = number | string | null;
+
 export interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
-  xs?: number | string;
-  s?: number | string;
-  m?: number | string;
-  ml?: number | string;
-  l?: number | string;
-  xl?: number | string;
+  xs?: ColSize;
+  sm?: ColSize;
+  md?: ColSize;
+  lg?: ColSize;
 }
 
-export const Col = ({
-  className,
-  xs = 12,
-  s = xs,
-  m = s,
-  ml = m,
-  l = ml,
-  xl = l,
-  children,
-  ...props
-}: ColProps): JSX.Element => {
+export const Col = ({ className, xs, sm, md, lg, children, ...props }: ColProps): JSX.Element => {
   return (
     <StyledCol
       {...props}
       className={cx(
-        `col-xl-${xl}`,
-        `col-l-${l}`,
-        `col-ml-${ml}`,
-        `col-m-${m}`,
-        `col-s-${s}`,
-        `col-xs-${xs}`,
+        `col-auto`,
+        {
+          [`col-lg-${lg}`]: !!lg,
+          [`col-md-${md}`]: !!md,
+          [`col-sm-${sm}`]: !!sm,
+          [`col-xs-${xs}`]: !!xs,
+        },
         className,
       )}
     >

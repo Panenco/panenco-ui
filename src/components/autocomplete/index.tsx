@@ -57,7 +57,7 @@ export const AutoComplete = React.forwardRef<HTMLDivElement, AutoCompleteProps>(
 
       if (onChange) onChange(select, action);
     };
-    
+
     return (
       <SelectInput
         ref={ref}

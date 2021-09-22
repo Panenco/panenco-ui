@@ -1,7 +1,11 @@
 import { styled } from 'linaria/react';
-// import { ThemeMode } from 'utils/types';
+import { PUITheme, ThemeMode } from 'utils/types';
 
-export const StyledWizard = styled.div`
+export const StyledWizard = styled.div<{
+  mode: ThemeMode;
+  theme: PUITheme;
+  disabled: boolean;
+}>`
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -57,13 +61,13 @@ export const StyledWizard = styled.div`
 
     &Active {
       .wizzardStepBoxOneCurrStep {
-        background-color: ${(props: any): string => props.theme.colors.accent500};
+        background-color: ${(props: any): string => props.theme.colors.accent};
       }
       .wizzardStepBoxCurrTitle {
-        color: ${(props: any): string => props.theme.colors.accent500};
+        color: ${(props: any): string => props.theme.colors.accent};
       }
       .wizzardStepBoxOneLine {
-        border-top: 4px solid ${(props: any): string => props.theme.colors.accent500};
+        border-top: 4px solid ${(props: any): string => props.theme.colors.accent};
       }
     }
 

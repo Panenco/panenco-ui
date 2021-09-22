@@ -1,8 +1,11 @@
 import { styled } from 'linaria/react';
 import { transparentize } from 'polished';
-import { ThemeMode } from 'utils/types';
+import { ThemeMode, PUITheme } from 'utils/types';
 
-export const StyledDayPicker = styled.div`
+export const StyledDayPicker = styled.div<{
+  theme: PUITheme;
+  mode: ThemeMode;
+}>`
   position: relative;
   display: flex;
   background-color: transparent;
@@ -100,7 +103,7 @@ export const StyledDayPicker = styled.div`
       &:hover {
         border: 1px solid
           ${(props: any): string =>
-            props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500};
+            props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent};
         color: ${(props: any): string =>
           props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.primary};
       }

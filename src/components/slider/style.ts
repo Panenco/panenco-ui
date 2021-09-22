@@ -1,5 +1,5 @@
 import { styled } from 'linaria/react';
-import { ThemeMode } from 'utils/types';
+import { ThemeMode, PUITheme } from 'utils/types';
 
 export const StyledRootSlider = styled.div`
   position: relative;
@@ -12,7 +12,10 @@ export const StyledRootSlider = styled.div`
   }
 `;
 
-export const StyledHandle = styled.div`
+export const StyledHandle = styled.div<{
+  theme: PUITheme;
+  mode: ThemeMode;
+}>`
   align-items: center;
   border-radius: 4px;
   cursor: pointer;
@@ -25,9 +28,9 @@ export const StyledHandle = styled.div`
   z-index: 2;
   background-color: ${(props: any): string => {
     if (props.isActive) {
-      return props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover700;
+      return props.mode === ThemeMode.dark ? props.theme.colors.highlight : props.theme.colors.hover;
     }
-    return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500;
+    return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent;
   }};
 
   left: ${(props: any): string => {
@@ -38,7 +41,7 @@ export const StyledHandle = styled.div`
 
   &:hover {
     background-color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover700};
+      props.mode === ThemeMode.dark ? props.theme.colors.highlight : props.theme.colors.hover};
   }
 
   & .valueLabel {
@@ -48,7 +51,9 @@ export const StyledHandle = styled.div`
   }
 `;
 
-export const StyledInputRange = styled.div`
+export const StyledInputRange = styled.div<{
+  theme: PUITheme;
+}>`
   height: 32px;
   position: relative;
   width: 100%;
@@ -65,7 +70,10 @@ export const StyledInputRange = styled.div`
   }
 `;
 
-export const StyledTrack = styled.div`
+export const StyledTrack = styled.div<{
+  theme: PUITheme;
+  mode: ThemeMode;
+}>`
   border-radius: 4px;
   cursor: pointer;
   height: 32px;
@@ -73,5 +81,5 @@ export const StyledTrack = styled.div`
   transform: translate(0, -99%);
   z-index: 1;
   background-color: ${(props: any): string =>
-    props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.background50};
+    props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.highlight};
 `;

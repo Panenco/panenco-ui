@@ -1,7 +1,10 @@
 import { styled } from 'linaria/react';
-import { ThemeMode } from 'utils/types';
+import { PUITheme, ThemeMode } from 'utils/types';
 
-export const StyledButtonIcon = styled.button`
+export const StyledButtonIcon = styled.button<{
+  theme: PUITheme;
+  mode: ThemeMode;
+}>`
   align-items: center;
   background-color: transparent;
   border: 1px solid transparent;
@@ -19,7 +22,7 @@ export const StyledButtonIcon = styled.button`
     & .iconClass,
     & .buttonIconTitle {
       color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover700};
+        props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover};
     }
   }
 

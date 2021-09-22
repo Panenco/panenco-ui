@@ -188,17 +188,17 @@
   .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
     position: relative;
 
-    background-color: $accent500;
+    background-color: $accent;
     color: #fff;
   }
 
   .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):hover {
-    background-color: $hoverAccent500;
+    background-color: $hover;
   }
 
   .DayPicker:not(.DayPicker--interactionDisabled)
     .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
-    background-color: $hoverAccent500;
+    background-color: $hover;
     color: #fff;
   }
 

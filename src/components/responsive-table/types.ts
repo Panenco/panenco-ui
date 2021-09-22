@@ -1,5 +1,3 @@
-import { PUITheme, ThemeMode } from 'utils/types';
-
 export interface ColumnType {
   accessor: string;
   label: any;
@@ -10,11 +8,12 @@ export interface ColumnType {
   sortName?: string;
   component?: any;
   prevWidth?: number;
+  className?: string;
 }
 
-export interface RowType {
+export interface RowType<T = Record<string, any>> {
   id: string | number;
-  data: object;
+  data: T;
   isOpen?: boolean;
 }
 
@@ -27,21 +26,29 @@ export type HandleSortType = (sortName: string, direction: 'asc' | 'desc') => vo
 export type ExpandRowType = (rowIndex: string | number) => void;
 
 export interface TableProps extends React.HTMLAttributes<HTMLTableElement> {
-  columns: Array<ColumnType>;
-  rows: Array<RowType>;
+  columns: ColumnType[];
+  rows: RowType[];
   itemsPerPage?: number;
   priorityLevelThreshold?: number;
   sort?: SortType;
   handleSort?: HandleSortType;
   innerRef?: any;
-  theme?: PUITheme;
-  mode?: ThemeMode;
+  isLoading?: boolean;
+  shouldResize?: boolean;
+  iconCreator?: (rowIsOpen: boolean) => string;
 }
 
 export interface TableState {
-  columns: Array<ColumnType>;
-  rows: Array<RowType>;
+  columns: ColumnType[];
+  rows: RowType[];
+  props: TableProps;
   priorityLevelThreshold?: number;
   containerWidth?: number;
-  props: TableProps;
 }
+
+export type CustomCellProps<T = Record<string, any>> = {
+  row: RowType<T>;
+  rowIndex: number | string;
+  cellIndex: number;
+  accessor: string;
+};

@@ -1,8 +1,7 @@
 export type PUIModeColors = {
-  background50?: string;
-  accent500?: string;
-  hover700?: string;
-  header900?: string;
+  highlight?: string;
+  accent?: string;
+  hover?: string;
 
   alert?: string;
   error?: string;
@@ -17,13 +16,9 @@ export type PUIModeColors = {
 };
 
 export type PUIColors = {
-  // project colors
-  background50: string;
-  accent500: string;
-  hover700: string;
-  header900: string;
-
-  // root colors
+  highlight: string;
+  accent: string;
+  hover: string;
   alert: string;
   error: string;
   success: string;
@@ -36,15 +31,15 @@ export type PUIColors = {
 };
 
 export type PUIWeights = {
-  thin: number;
-  extraLight: number;
-  light: number;
-  regular: number;
-  medium: number;
-  semiBold: number;
-  bold: number;
-  extrabold: number;
-  black: number;
+  thin?: number;
+  extraLight?: number;
+  light?: number;
+  regular?: number;
+  medium?: number;
+  semiBold?: number;
+  bold?: number;
+  extrabold?: number;
+  black?: number;
   [key: string]: any;
 };
 
@@ -59,6 +54,7 @@ export type PUISizes = {
   h3: TextSize;
   h2: TextSize;
   h1: TextSize;
+  [key: string]: any;
 };
 
 export type PUITypography = {
@@ -97,7 +93,7 @@ export interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {
   ref?: React.Ref<HTMLDivElement>;
 }
 
-export interface AccordinProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface AccordionProps extends React.HTMLAttributes<HTMLDivElement> {
   isOpen?: boolean;
   title?: string;
   onClick?: any;
@@ -105,4 +101,5 @@ export interface AccordinProps extends React.HTMLAttributes<HTMLDivElement> {
   iconLeft?: boolean | SVGElement;
   iconRight?: boolean | SVGElement;
   icons?: Array<SVGElement>;
+  shouldRotateIcon?: boolean;
 }

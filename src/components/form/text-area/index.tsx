@@ -100,14 +100,16 @@ export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
               {...props}
             />
 
-            <div className="counterWrapper">
-              <span className={error ? 'errorLabel' : 'hidden'}>{error}</span>
-              {maxLength && (
-                <span className="counter">
-                  {counter}/{maxLength}
-                </span>
-              )}
-            </div>
+            {error || maxLength ? (
+              <div className="counterWrapper">
+                <span className={error ? 'errorLabel' : 'hidden'}>{error}</span>
+                {maxLength && (
+                  <span className="counter">
+                    {counter}/{maxLength}
+                  </span>
+                )}
+              </div>
+            ) : null}
           </div>
         </div>
       </StyledTextArea>

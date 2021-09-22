@@ -1,8 +1,11 @@
 import { styled } from 'linaria/react';
-import { ThemeMode } from 'utils/types';
+import { PUITheme, ThemeMode } from 'utils/types';
 import { transparentize } from 'polished';
 
-export const StyledContent = styled.div`
+export const StyledContent = styled.div<{
+  mode: ThemeMode;
+  theme: PUITheme;
+}>`
   border-radius: 4px;
   width: 100%;
   max-width: max-content;

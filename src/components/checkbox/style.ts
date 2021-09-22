@@ -1,7 +1,12 @@
 import { styled } from 'linaria/react';
-import { ThemeMode } from 'utils/types';
+import { PUITheme, ThemeMode } from 'utils/types';
 
-export const StyledCheckbox = styled.div`
+export const StyledCheckbox = styled.div<{
+  theme: PUITheme;
+  mode: ThemeMode;
+  borderWidth?: string | number;
+  borderColor?: string;
+}>`
   position: relative;
 
   & .label {
@@ -29,7 +34,7 @@ export const StyledCheckbox = styled.div`
             if (props.color) {
               return props.color;
             }
-            return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover700;
+            return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover;
           }};
       }
     }
@@ -114,7 +119,7 @@ export const StyledCheckbox = styled.div`
       if (props.color) {
         return props.color;
       }
-      return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500;
+      return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent;
     }};
     border: ${(props: any): string => {
         if (props.borderWidth) {
@@ -127,7 +132,7 @@ export const StyledCheckbox = styled.div`
         if (props.color) {
           return props.color;
         }
-        return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500;
+        return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent;
       }};
   }
 
@@ -139,7 +144,7 @@ export const StyledCheckbox = styled.div`
           if (props.color) {
             return props.color;
           }
-          return props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover700;
+          return props.mode === ThemeMode.dark ? props.theme.colors.highlight : props.theme.colors.hover;
         }};
         border: ${(props: any): string => {
             if (props.borderWidth) {
@@ -152,7 +157,7 @@ export const StyledCheckbox = styled.div`
             if (props.color) {
               return props.color;
             }
-            return props.mode === ThemeMode.dark ? props.theme.colors.background50 : props.theme.colors.hover700;
+            return props.mode === ThemeMode.dark ? props.theme.colors.highlight : props.theme.colors.hover;
           }};
       }
     }

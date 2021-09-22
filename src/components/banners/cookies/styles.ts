@@ -1,8 +1,11 @@
 import { styled } from 'linaria/react';
 import { transparentize } from 'polished';
-import { ThemeMode } from '../../../utils/types';
+import { PUITheme, ThemeMode } from '../../../utils/types';
 
-export const StyledCookiesContainer = styled.div`
+export const StyledCookiesContainer = styled.div<{
+  theme: PUITheme;
+  mode: ThemeMode;
+}>`
   align-items: center;
   background-color: ${(props: any): string => {
     return transparentize(0.4, props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.dark);
@@ -43,13 +46,15 @@ export const StyledCookiesContainer = styled.div`
     padding: 0;
 
     &Text {
-      color: ${(props: any) =>
-        props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500};
+      color: ${(props: any) => (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent)};
     }
   }
 `;
 
-export const StyledCookieEntry = styled.div`
+export const StyledCookieEntry = styled.div<{
+  theme: PUITheme;
+  mode: ThemeMode;
+}>`
   margin-bottom: 24px;
 
   .cookieEntryTitle {

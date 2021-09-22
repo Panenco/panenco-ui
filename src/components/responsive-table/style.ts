@@ -1,8 +1,11 @@
 import { styled } from 'linaria/react';
 import { transparentize } from 'polished';
-import { ThemeMode } from 'utils/types';
+import { ThemeMode, PUITheme } from 'utils/types';
 
-export const Styles = styled.div`
+export const Styles = styled.div<{
+  theme: PUITheme;
+  mode: ThemeMode;
+}>`
   width: 100%;
   .table {
     border-spacing: 0;
@@ -66,7 +69,7 @@ export const Styles = styled.div`
       }
 
       &Text:hover {
-        color: ${(props: any): string => props.theme.colors.accent500};
+        color: ${(props: any): string => props.theme.colors.accent};
       }
 
       &Icon {
@@ -76,7 +79,7 @@ export const Styles = styled.div`
         width: 10px;
 
         &Active {
-          color: ${(props: any): string => props.theme.colors.accent500};
+          color: ${(props: any): string => props.theme.colors.accent};
         }
       }
     }
@@ -118,15 +121,6 @@ export const Styles = styled.div`
     }
   }
 
-  @keyframes iconOpen {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(90deg);
-    }
-  }
-
   .tableBodyRow:nth-of-type(4n + 1) {
     background-color: ${(props: any): string =>
       transparentize(0.6, props.mode === ThemeMode.light ? props.theme.colors.border : props.theme.colors.secondary)};
@@ -137,24 +131,31 @@ export const Styles = styled.div`
       transparentize(0.6, props.mode === ThemeMode.light ? props.theme.colors.border : props.theme.colors.secondary)};
   }
 
-  @keyframes iconClose {
+  @keyframes AnimationName {
     0% {
-      transform: rotate(90deg);
+      background-position: 24% 0%;
+    }
+    50% {
+      background-position: 50% 100%;
     }
     100% {
-      transform: rotate(0deg);
+      background-position: 24% 0%;
     }
   }
 
-  .animationIconOpen {
-    animation-name: iconOpen;
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
-  }
+  .fillerWrapper {
+    animation: AnimationName 1s ease infinite;
 
-  .animationIconClose {
-    animation-name: iconClose;
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
+    background: linear-gradient(
+      90deg,
+      ${(props: any): string => (props.mode === ThemeMode.light ? props.theme.colors.light : props.theme.colors.dark)},
+      ${(props: any): string =>
+        props.mode === ThemeMode.light ? props.theme.colors.border : transparentize(0.6, props.theme.colors.secondary)},
+      ${(props: any): string => (props.mode === ThemeMode.light ? props.theme.colors.light : props.theme.colors.dark)}
+    );
+    background-size: 200% 200%;
+
+    height: 20px;
+    width: 100%;
   }
 `;

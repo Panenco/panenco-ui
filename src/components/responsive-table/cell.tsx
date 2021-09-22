@@ -3,7 +3,8 @@ import { Icon, Text } from 'components';
 import cx from 'classnames';
 import { useTheme, useMode } from 'utils/hooks';
 import { ThemeMode } from 'utils/types';
-import { RowType, ExpandRowType } from './types';
+import { ButtonIcon } from 'components/button-icon';
+import { RowType, ExpandRowType, CustomCellProps } from './types';
 
 export interface CellProps {
   accessor: string;
@@ -13,7 +14,9 @@ export interface CellProps {
   rowIndex: string | number;
   expandRow: ExpandRowType;
   hiddenColumnLength: number;
-  component?: any;
+  className?: string;
+  component?: React.ComponentType<CustomCellProps>;
+  iconCreator?: (rowIsOpen: boolean) => string;
 }
 
 const Cell = ({
@@ -25,42 +28,43 @@ const Cell = ({
   expandRow,
   hiddenColumnLength,
   component,
+  iconCreator,
+  className,
 }: CellProps): JSX.Element => {
   const theme = useTheme();
   const { mode } = useMode();
   const IS_FIRST_CELL = cellIndex === 0;
   const IS_HIDDEN_COLUMNS = hiddenColumnLength !== 0;
-  const icon =
-    IS_FIRST_CELL && IS_HIDDEN_COLUMNS ? (
-      <Icon
-        className={cx(
-          'tableCellButtonIcon',
-          row.isOpen === true ? 'animationIconOpen' : null,
-          row.isOpen === false ? 'animationIconClose' : null,
-        )}
-        onClick={(): void => {
-          expandRow(rowIndex);
-        }}
-        icon={Icon.icons.chevronRight}
-      />
-    ) : null;
-  
-  const content = component ? (
-    React.createElement(component, { row, rowIndex, cellIndex, accessor })
-  ) : (
-    row.data[accessor]
-  );
+
+  const getIcon = (): string => {
+    if (typeof iconCreator === 'function') {
+      return iconCreator(!!row.isOpen);
+    }
+
+    // default is plus/minus from panenco ui
+    return row.isOpen ? 'minus' : 'plus';
+  };
+
+  const content = component
+    ? React.createElement(component, { row, rowIndex, cellIndex, accessor })
+    : row.data[accessor];
   return (
     <td
-      className="tableCell"
+      className={cx('tableCell', className)}
       style={{
         maxWidth: `${minWidth}px`,
         color: mode === ThemeMode.light ? theme.colors.dark : theme.colors.light,
       }}
     >
-      {icon ? (
+      {IS_FIRST_CELL && IS_HIDDEN_COLUMNS ? (
         <div className="tableCellWrap">
-          {icon}
+          <ButtonIcon
+            className="tableCellButtonIcon"
+            onClick={(): void => {
+              expandRow(rowIndex);
+            }}
+            icon={Icon.icons[getIcon()]}
+          />
           {typeof content === 'string' ? <Text className="tableCellWrapContent">{content}</Text> : content}
         </div>
       ) : (

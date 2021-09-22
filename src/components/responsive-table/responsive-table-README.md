@@ -17,7 +17,7 @@ const SomeComponentWithTable = ({
   someData,
   sort,
   handleSort,
-  listLoaded,
+  loadingState,
 }) => {
   const columns = [
     {
@@ -55,9 +55,13 @@ const SomeComponentWithTable = ({
   return (
     <div className={s.page}>
       ...
-      {listLoaded ? (
-        <ResponsiveTable columns={columns} rows={rows} sort={sort} handleSort={handleSort} />
-      ) : null}
+        <ResponsiveTable
+          columns={columns}
+          rows={rows}
+          sort={sort}
+          handleSort={handleSort}
+          isLoading={loadingState}
+        />
       ...
     </div>
   );
@@ -85,7 +89,7 @@ const SomeComponentWithTable = ({
   someData,
   sort,
   handleSort,
-  listLoaded,
+  loadingState,
 }) => {
   const columns = [
     {
@@ -124,9 +128,14 @@ const SomeComponentWithTable = ({
   return (
     <div className={s.page}>
       ...
-      {listLoaded ? (
-        <ResponsiveTable columns={columns} priorityLevelThreshold={2} rows={rows} sort={sort} handleSort={handleSort} />
-      ) : null}
+        <ResponsiveTable
+          isLoading={loadingState}
+          columns={columns}
+          priorityLevelThreshold={2}
+          rows={rows}
+          sort={sort}
+          handleSort={handleSort}
+        />
       ...
     </div>
   );
@@ -142,6 +151,7 @@ const SomeComponentWithTable = ({
 - `priorityLevelThreshold` - A number greater than zero, if is set, then only the columns with priorityLevel less than this value, may be displayed
 - `sort` - Says which column and in which direction is sorted right now
 - `handleSort` - A callback that triggers a request to the server for the new sorted data
+- `isLoading` - Is data loading right now. Says if we need to show animated skeleton inside of the cells.
 
 | propName               | propType | defaultValue | isRequired |
 | ---------------------- | -------- | ------------ | ---------- |
@@ -150,6 +160,7 @@ const SomeComponentWithTable = ({
 | priorityLevelThreshold | number   | null         | -          |
 | sort                   | object   | null         | -          |
 | handleSort             | func     | null         | -          |
+| isLoading              | boolean  | false        | -          |
 
 ### Column fields
 
@@ -161,3 +172,4 @@ const SomeComponentWithTable = ({
 - `isVisible` - value indicates whether the column is visible or not, you set it as true for all columns unless you want the table to be displayed as in second case
 - `sortName` - sort name of the column that is used on the server
 - `component` - you can wrap each cell in the column into your custom component, it receives an object with two props: row and accessor, so you can retrieve data for this column like this row.data[accessor]
+- `className` - you can set className to specific column

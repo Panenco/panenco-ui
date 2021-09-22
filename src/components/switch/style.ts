@@ -13,8 +13,8 @@ export const StyledSwitch = styled.label`
   }
 
   & .slider {
-    background-color: ${(props: any): string => props.theme.colors.accent500};
-    color: ${(props: any): string => props.theme.colors.accent500};
+    background-color: ${(props: any): string => props.theme.colors.error};
+    color: ${(props: any): string => props.theme.colors.error};
     border-radius: ${({ size, height }: any): number => height || `${size / 2}px`};
     bottom: 0;
     cursor: pointer;

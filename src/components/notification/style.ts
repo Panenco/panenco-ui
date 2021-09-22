@@ -1,11 +1,43 @@
 import { styled } from 'linaria/react';
-import { ThemeMode } from 'utils/types';
-import { ToastContainer } from 'react-toastify';
+// import { ReactChild } from 'react';
+// import { ToastContainer, ToastContainerProps } from 'react-toastify';
+import { ThemeMode, PUITheme } from 'utils/types';
 
-export const StyledNotificationContainer = styled(ToastContainer)`
+export const StyledNotificationContainer = styled.div<{
+  theme: PUITheme;
+  mode: ThemeMode;
+  className?: string;
+}>`
   padding: 0;
   width: 420px;
   color: ${(props: any): string => props.theme.colors.primary};
+
+  .body {
+    display: flex;
+
+    &Content {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+
+      &Undo {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid transparent;
+        cursor: pointer;
+        margin-top: 4px;
+
+        &:hover {
+          border-bottom: 1px solid ${(props: any): string => props.theme.colors.accent};
+          border-bottom-style: dashed;
+        }
+
+        &:focus {
+          outline: 2px solid ${(props: any): string => props.theme.colors.outline};
+        }
+      }
+    }
+  }
 
   .Toastify__toast {
     min-height: 74px;
@@ -19,6 +51,16 @@ export const StyledNotificationContainer = styled(ToastContainer)`
     background-color: ${(props: any): string =>
       props.mode === ThemeMode.dark ? props.theme.colors.dark : props.theme.colors.light};
 
+    &--info {
+      border-left: 4px solid ${(props: any): string => props.theme.colors.outline};
+
+      .Toastify__toast-body--icon {
+        color: ${(props: any): string => props.theme.colors.outline};
+      }
+      .Toastify__progress-bar {
+        background: ${(props: any): string => props.theme.colors.outline};
+      }
+    }
     &--warning {
       border-left: 4px solid ${(props: any): string => props.theme.colors.alert};
 
@@ -44,7 +86,7 @@ export const StyledNotificationContainer = styled(ToastContainer)`
   .Toastify__toast-body {
     display: flex;
     align-items: center;
-    padding: 12px 16px 12px 8px;
+    padding: 16px 16px 12px 16px;
     color: ${(props: any): string =>
       props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
     cursor: default;
@@ -86,7 +128,11 @@ export const StyledNotificationContainer = styled(ToastContainer)`
         height: 100%;
       }
       &:focus {
-        outline: 2px solid ${(props: any): string => props.theme.colors.outline}
+        outline: 2px solid ${(props: any): string => props.theme.colors.outline};
+      }
+
+      &:hover {
+        color: ${(props: any): string => props.theme.colors.accent};
       }
     }
   }

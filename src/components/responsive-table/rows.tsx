@@ -1,7 +1,9 @@
 import * as React from 'react';
-import Row from './row';
+
 import ExpandedRow from './expanded-row';
-import { RowType, ColumnType, ExpandRowType } from './types';
+import Row from './row';
+import TableFiller from './table-filler';
+import { ColumnType, ExpandRowType, RowType } from './types';
 
 interface RowsProps {
   rows: Array<RowType>;
@@ -10,6 +12,8 @@ interface RowsProps {
   expandRow: ExpandRowType;
   containerWidth?: number;
   itemsPerPage?: number;
+  isLoading?: boolean;
+  iconCreator?: (rowIsOpen: boolean) => string;
 }
 
 const Rows = ({
@@ -17,8 +21,10 @@ const Rows = ({
   visibleColumns,
   hiddenColumns,
   expandRow,
-  containerWidth,
-  itemsPerPage,
+  containerWidth = 0,
+  itemsPerPage = 10,
+  iconCreator,
+  isLoading,
 }: RowsProps): JSX.Element => {
   const tableRows = rows.reduce((r: Array<JSX.Element>, row) => {
     const rowComponent = (
@@ -28,6 +34,7 @@ const Rows = ({
         rowIndex={row.id}
         visibleColumns={visibleColumns}
         hiddenColumns={hiddenColumns}
+        iconCreator={iconCreator}
         expandRow={expandRow}
       />
     );
@@ -35,6 +42,7 @@ const Rows = ({
       <ExpandedRow
         key={`${row.id}-2`}
         row={row}
+        rowIndex={row.id}
         hiddenColumns={hiddenColumns}
         visibleColumns={visibleColumns}
         containerWidth={containerWidth}
@@ -44,16 +52,22 @@ const Rows = ({
     r.push(expandedRowComponent);
     return r;
   }, []);
-  let tbody = <tbody />;
-  if (tableRows.length) {
-    tbody = <tbody>{tableRows}</tbody>;
+
+  let content;
+
+  if (isLoading) {
+    content = <TableFiller columnsLength={visibleColumns.length} rowsLength={itemsPerPage} />;
+  } else if (tableRows.length) {
+    content = tableRows;
   }
-  return tbody;
+  return <tbody>{content}</tbody>;
 };
 
 Rows.defaultProps = {
-  containerWidth: null,
-  itemsPerPage: null,
+  containerWidth: 0,
+  isLoading: false,
+  itemsPerPage: 10,
+  iconCreator: null,
 };
 
 export default Rows;

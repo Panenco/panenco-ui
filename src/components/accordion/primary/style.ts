@@ -1,7 +1,10 @@
 import { styled } from 'linaria/react';
-import { ThemeMode } from 'utils/types';
+import { PUITheme, ThemeMode } from 'utils/types';
 
-export const StyledAccordionPrimary = styled.div`
+export const StyledAccordionPrimary = styled.div<{
+  theme: PUITheme;
+  mode: ThemeMode;
+}>`
   display: flex;
   flex-direction: column;
   border-radius: 4px;
@@ -16,12 +19,12 @@ export const StyledAccordionPrimary = styled.div`
 
   &:hover {
     border-color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500};
+      props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent};
     .accordionHeader,
     .accordionHeaderIcon {
       cursor: pointer;
       /* color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500}; */
+        props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent}; */
     }
   }
 
@@ -56,7 +59,7 @@ export const StyledAccordionPrimary = styled.div`
       color: ${(props: any): string => props.theme.colors.secondary};
 
       &:hover {
-        color: ${(props: any): string => props.theme.colors.accent500};
+        color: ${(props: any): string => props.theme.colors.accent};
       }
     }
 

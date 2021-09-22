@@ -1,16 +1,12 @@
+import { Button, ButtonIcon, Col, Icon, PrimaryButton, Row, SecondaryButton } from 'components';
+import ButtonIconDocs from 'components/button-icon/icon-button-DOCS.md';
+import ButtonIconReadme from 'components/button-icon/icon-button-README.md';
+import ButtonDocs from 'components/button/button-DOCS.md';
+import ButtonReadme from 'components/button/button-README.md';
+import LinkDocs from 'components/button/link-DOCS.md';
+import LinkReadme from 'components/button/link-README.md';
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-
-import ButtonReadme from 'components/button/button-README.md';
-import ButtonDocs from 'components/button/button-DOCS.md';
-
-import LinkReadme from 'components/button/link-README.md';
-import LinkDocs from 'components/button/link-DOCS.md';
-
-import ButtonIconReadme from 'components/button-icon/icon-button-README.md';
-import ButtonIconDocs from 'components/button-icon/icon-button-DOCS.md';
-
-import { PrimaryButton, SecondaryButton, Button, Row, Col, ButtonIcon, Icon } from 'components';
 
 import { decorator } from '../../utils/decorator';
 import { WrappedComponent } from '../helpers/wrapped';
@@ -29,6 +25,8 @@ export default decorator('Button', ButtonDocs, ButtonReadme).add('Button compone
           <Row style={{ justifyContent: 'center' }}>
             <Col s="2" m="8" l="6">
               <PrimaryButton>Primary Button</PrimaryButton>
+              <PrimaryButton isLoading>Primary Button</PrimaryButton>
+              <PrimaryButton isLoading>Primary Button</PrimaryButton>
               <PrimaryButton disabled>Primary disabled</PrimaryButton>
             </Col>
           </Row>
@@ -53,7 +51,7 @@ export default decorator('Button', ButtonDocs, ButtonReadme).add('Button compone
           <Row style={{ justifyContent: 'center' }}>
             <Col s="2" m="8" l="6">
               <PrimaryButton iconRight={Icon.icons.chevronRight}>Icon Right</PrimaryButton>
-              <PrimaryButton iconRight={Icon.icons.chevronRight} disabled>
+              <PrimaryButton isLoading iconRight={Icon.icons.chevronRight} disabled>
                 Icon Right
               </PrimaryButton>
             </Col>

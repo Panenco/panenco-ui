@@ -1,12 +1,18 @@
 import { styled } from 'linaria/react';
 import { Link } from 'react-router-dom';
+import { PUITheme, ThemeMode } from 'utils/types';
 
-export const StyledLink = styled(Link)`
+export const StyledLink = styled(Link)<{
+  theme: PUITheme;
+  mode: ThemeMode;
+  tabIndex?: number;
+}>`
+  color: ${(props: any): string => props.theme.colors.accent};
   padding: 3px;
-  color: ${(props: any): string => props.theme.colors.accent500};
+  white-space: nowrap;
 
   &:hover {
-    border-bottom: 1px dashed ${(props: any): string => props.theme.colors.accent500};
+    border-bottom: 1px dashed ${(props: any): string => props.theme.colors.accent};
   }
 
   &:focus {

@@ -17,7 +17,7 @@ export interface PickerProps extends DayPickerInputProps {
   iconAfter?: HTMLObjectElement | JSX.Element;
   inputRef?: React.Ref<any>;
   wrapperProps?: WrapperProps;
-  isTimePicker: Boolean;
+  isTimePicker: boolean;
   // inputProps?: InputPropsType; // will be removed in next versions
 }
 
@@ -65,9 +65,9 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
 
     const [dateTime, setDateTime] = React.useState(transformTime());
 
-    const OverlayComponent = ({ children, ...props }) => {
+    const OverlayComponent = ({ children, ...overlayComponentProps }: { children: any }) => {
       return (
-        <div className="overlay" {...props}>
+        <div className="overlay" {...overlayComponentProps}>
           {children}
           {isTimePicker ? (
             <div className="footer">
@@ -77,12 +77,12 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
                 onChange={(e) => setDateTime(e.target.value)}
                 pipe={createAutoCorrectedDatePipe('HH:MM')}
                 id="my-input-id"
-                render={(ref) => (
+                render={(maskedInputRef) => (
                   <TextInput
                     id="34254"
                     title="Time"
                     iconAfter={Icon.icons.clock}
-                    ref={(input) => ref(input)}
+                    ref={(input) => maskedInputRef(input)}
                     // {...props}
                   />
                 )}
@@ -107,7 +107,9 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
         // {...wrapperProps}
       >
         <DayPickerInput
-          ref={(ref) => (dayPickerInputRef = ref)}
+          ref={(reff) => {
+            dayPickerInputRef = reff;
+          }}
           className="wrapper"
           showOverlay
           hideOnDayClick={!isTimePicker}
@@ -119,7 +121,7 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
             firstDayOfWeek: 0,
           }}
           // selectedDay={new Date()}
-          component={(props) => <TextInput {...props} />}
+          component={(textProps) => <TextInput {...textProps} />}
           // overlayComponent={this.overlayComponent}
           // disabledDays={disabledDaysFrom}
           // onDayClick={this.handleFromDayClick}

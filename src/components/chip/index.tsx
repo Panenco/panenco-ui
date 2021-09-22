@@ -8,21 +8,9 @@ import { StyledChip } from './style';
 export interface ChipProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   checked?: boolean;
   icon?: HTMLObjectElement;
+  uncheckedIcon?: HTMLObjectElement;
   onIconClick?: any;
   iconClassName?: string;
-  iconSize?: number | string;
-  textSize?: {
-    textSize: string;
-    lineHeight: string;
-  };
-  textWeight?: string;
-  textTypography?: {
-    weight: string;
-    size: {
-      textSize: string;
-      lineHeight: string;
-    };
-  };
 }
 
 export const Chip = React.forwardRef<HTMLButtonElement, ChipProps>(
@@ -35,17 +23,14 @@ export const Chip = React.forwardRef<HTMLButtonElement, ChipProps>(
       style,
       icon = Icon.icons.success,
       onIconClick,
-      iconClassName,
-      iconSize,
-      textSize,
-      textWeight,
-      textTypography,
+      uncheckedIcon,
       ...props
     }: ChipProps,
     ref,
   ): JSX.Element => {
     const theme = useTheme();
     const { mode } = useMode();
+
     const handleIconClick = (e: React.UIEvent): void => {
       e.persist();
       e.stopPropagation();
@@ -53,6 +38,7 @@ export const Chip = React.forwardRef<HTMLButtonElement, ChipProps>(
       onIconClick(e);
     };
 
+    const iconComponent = checked ? icon : uncheckedIcon || null;
     return (
       <StyledChip
         type="button"
@@ -60,26 +46,21 @@ export const Chip = React.forwardRef<HTMLButtonElement, ChipProps>(
         aria-checked={checked}
         disabled={disabled}
         checked={checked}
-        className={cx(disabled && 'chipDisabled', className)}
+        className={cx(disabled && 'chipDisabled', checked && 'chipChecked', className)}
         style={style}
         theme={theme}
         mode={mode}
         ref={ref}
-        iconSize={iconSize}
         {...props}
       >
         <Text
-          weight={
-            textTypography?.weight || textWeight || checked
-              ? theme.typography.weights.bold
-              : theme.typography.weights.regular
-          }
-          size={textTypography?.size || textSize || theme.typography.sizes.m}
+          weight={checked ? theme.typography.weights.bold : theme.typography.weights.regular}
+          size={theme.typography.sizes.m}
           className="labelTitle"
         >
           {children}
         </Text>
-        {checked && <Icon icon={icon} onClick={onIconClick && handleIconClick} className={iconClassName} />}
+        {iconComponent && <Icon icon={iconComponent} onClick={onIconClick && handleIconClick} />}
       </StyledChip>
     );
   },

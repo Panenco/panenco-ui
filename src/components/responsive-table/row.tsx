@@ -8,10 +8,11 @@ interface RowProps {
   visibleColumns: Array<ColumnType>;
   hiddenColumns: Array<ColumnType>;
   expandRow: ExpandRowType;
+  iconCreator?: (rowIsOpen: boolean) => string;
 }
 
-const Row = ({ row, rowIndex, visibleColumns, hiddenColumns, expandRow }: RowProps): JSX.Element => {
-  const cells = visibleColumns.map(({ accessor, minWidth, component }, index) => {
+const Row = ({ row, rowIndex, visibleColumns, hiddenColumns, expandRow, iconCreator }: RowProps): JSX.Element => {
+  const cells = visibleColumns.map(({ accessor, minWidth, component, className }, index) => {
     return (
       <Cell
         key={accessor}
@@ -23,11 +24,17 @@ const Row = ({ row, rowIndex, visibleColumns, hiddenColumns, expandRow }: RowPro
         expandRow={expandRow}
         hiddenColumnLength={hiddenColumns.length}
         component={component}
+        iconCreator={iconCreator}
+        className={className}
       />
     );
   });
 
   return <tr className="tableBodyRow">{cells}</tr>;
+};
+
+Row.defaultProps = {
+  iconCreator: null,
 };
 
 export default Row;

@@ -1,22 +1,43 @@
 /* eslint-disable react/static-property-placement */
-import * as React from 'react';
 import { throttle } from 'lodash-es';
+import * as React from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
-import { useTheme, useMode } from 'utils/hooks';
+import { useMode, useTheme } from 'utils/hooks';
+import { PUITheme, ThemeMode } from 'utils/types';
+import { ColumnType } from '.';
+
 import Columns from './columns';
 import Rows from './rows';
+import { Styles } from './style';
 import { expandRow, resizeTable } from './table-actions';
 import { TableProps, TableState } from './types';
-import { Styles } from './style';
 
-class Table extends React.Component<TableProps, TableState> {
-  divRef: React.RefObject<HTMLElement>;
+class Table extends React.Component<
+  TableProps & {
+    theme: PUITheme;
+    mode: ThemeMode;
+  },
+  TableState
+> {
+  static separateColumns(cols: ColumnType[]): ColumnType[][] {
+    const visible: ColumnType[] = [];
+    const hidden: ColumnType[] = [];
+
+    cols.forEach((col) => {
+      if (col.isVisible) visible.push(col);
+      else hidden.push(col);
+    });
+
+    return [visible, hidden];
+  }
+
+  divRef: React.RefObject<HTMLTableElement>;
 
   divSizeObserver: ResizeObserver;
 
   static defaultProps = {
-    itemsPerPage: null,
-    priorityLevelThreshold: null,
+    itemsPerPage: 10,
+    shouldResize: true,
     sort: null,
     handleSort: null,
   };
@@ -39,8 +60,18 @@ class Table extends React.Component<TableProps, TableState> {
   }
 
   static getDerivedStateFromProps(newProps: TableProps, state: TableState): TableState {
-    if (newProps.rows !== state.props.rows) {
-      return { ...state, rows: newProps.rows, props: newProps };
+    if (
+      newProps.rows !== state.props.rows ||
+      newProps.columns !== state.props.columns ||
+      newProps.priorityLevelThreshold !== state.props.priorityLevelThreshold
+    ) {
+      return {
+        ...state,
+        priorityLevelThreshold: newProps.priorityLevelThreshold,
+        rows: newProps.rows,
+        columns: newProps.columns,
+        props: newProps,
+      };
     }
     return state;
   }
@@ -78,39 +109,50 @@ class Table extends React.Component<TableProps, TableState> {
   }
 
   resizeTable(width: number): void {
-    this.setState((currentState) => {
-      return resizeTable({ width, state: currentState });
-    });
+    const { shouldResize } = this.props;
+    if (shouldResize) {
+      this.setState((currentState) => {
+        return resizeTable({ width, state: currentState });
+      });
+    }
   }
 
   render(): JSX.Element {
-    const { columns, rows, containerWidth } = this.state;
+    const { containerWidth, columns, rows } = this.state;
     const {
-      columns: columnsProp,
-      rows: rowsProp,
-      priorityLevelThreshold,
       itemsPerPage,
       sort,
       handleSort,
       innerRef,
       theme,
       mode,
+      isLoading,
+      iconCreator,
+      // exclude custom props so they don't appear as a dom attributes
+      /* eslint-disable */
+      columns: cols,
+      priorityLevelThreshold,
+      shouldResize,
+      /* eslint-enable */
+
       ...tableProps
     } = this.props;
-    const visibleColumns = columns.filter((column) => column.isVisible);
-    const hiddenColumns = columns.filter((column) => !column.isVisible);
+
+    const [visibleCols, hiddenCols] = Table.separateColumns(columns);
 
     return (
       <Styles theme={theme} mode={mode} ref={this.divRef}>
         <table className="table" ref={innerRef} {...tableProps}>
-          <Columns columns={visibleColumns} sort={sort} handleSort={handleSort} />
+          <Columns columns={visibleCols} sort={sort} handleSort={handleSort} />
           <Rows
             rows={rows}
             itemsPerPage={itemsPerPage}
-            visibleColumns={visibleColumns}
-            hiddenColumns={hiddenColumns}
+            visibleColumns={visibleCols}
+            hiddenColumns={hiddenCols}
             expandRow={this.expandRow}
             containerWidth={containerWidth}
+            isLoading={isLoading}
+            iconCreator={iconCreator}
           />
         </table>
       </Styles>
@@ -118,10 +160,8 @@ class Table extends React.Component<TableProps, TableState> {
   }
 }
 
-export const ResponsiveTable = React.forwardRef(
-  (props: TableProps, ref): JSX.Element => {
-    const theme = useTheme();
-    const { mode } = useMode();
-    return <Table innerRef={ref} theme={theme} mode={mode} {...props} />;
-  },
-);
+export const ResponsiveTable = React.forwardRef((props: TableProps, ref): JSX.Element => {
+  const theme = useTheme();
+  const { mode } = useMode();
+  return <Table innerRef={ref} theme={theme} mode={mode} {...props} />;
+});

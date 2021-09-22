@@ -1,7 +1,10 @@
 import { styled } from 'linaria/react';
-import { ThemeMode } from '../../utils/types';
+import { ThemeMode, PUITheme } from '../../utils/types';
 
-export const StyledPaper = styled.div`
+export const StyledPaper = styled.div<{
+  mode: ThemeMode;
+  theme: PUITheme;
+}>`
   background-color: ${(props: any): string => {
     return props.mode === ThemeMode.dark ? props.theme.colors.dark : props.theme.colors.light;
   }};

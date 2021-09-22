@@ -10,6 +10,7 @@ export interface FileUploaderProps extends React.InputHTMLAttributes<HTMLInputEl
   title?: string;
   placeholder?: string;
   buttonText?: string;
+  disabled?: boolean;
   loading?: boolean;
   loadingText?: string;
   loader?: JSX.Element;

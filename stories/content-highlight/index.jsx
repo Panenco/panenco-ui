@@ -11,7 +11,7 @@ const Content =
 export default decorator('Content highlight', ContentHighlightDOCS, README).add('ContentHighlight component', () => {
   return (
     <WrappedComponent>
-      <Row style={{ justifyContent: 'space-around' }}>
+      <Row spacing={[3, 3]}>
         <Col s="2" m="4" l="4">
           <ContentHighlight>{Content}</ContentHighlight>
         </Col>
@@ -19,7 +19,7 @@ export default decorator('Content highlight', ContentHighlightDOCS, README).add(
           <ContentHighlight>{Content}</ContentHighlight>
         </Col>
       </Row>
-      <Row style={{ justifyContent: 'space-around' }}>
+      <Row spacing={[3, 3]}>
         <Col s="2" m="4" l="4">
           <ContentHighlight>ContentHighlight</ContentHighlight>
         </Col>

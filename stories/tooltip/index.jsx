@@ -10,9 +10,7 @@ export default decorator('Tooltip', TooltipDocs, README).add('Tooltip component'
     <WrappedComponent>
       <Row style={{ justifyContent: 'space-around' }}>
         <Col s="2" m="4" l="3">
-          <Tooltip content="Tooltip message will show up here">
-            TOP
-          </Tooltip>
+          <Tooltip content="Tooltip message will show up here">TOP</Tooltip>
         </Col>
         <Col s="2" m="4" l="3">
           <Tooltip content="Tooltip message will show up here." position="right">
@@ -32,7 +30,6 @@ export default decorator('Tooltip', TooltipDocs, README).add('Tooltip component'
           </Tooltip>
         </Col>
       </Row>
-
     </WrappedComponent>
   );
 });
