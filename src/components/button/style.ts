@@ -19,7 +19,7 @@ export const StyledButton = styled.button<{
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 14px 22px;
+  padding: 10px 22px;
   -webkit-appearance: none;
 
   min-height: 40px;
@@ -49,10 +49,10 @@ export const StyledButton = styled.button<{
     pointer-events: none !important;
   }
   &.iconLeft {
-    padding: 14px 22px 14px 16px;
+    padding: 10px 22px 10px 16px;
   }
   &.iconRight {
-    padding: 14px 16px 14px 22px;
+    padding: 10px 16px 10px 22px;
   }
 
   &:focus {

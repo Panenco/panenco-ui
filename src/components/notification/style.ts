@@ -28,7 +28,7 @@ export const StyledNotificationContainer = styled.div<{
         margin-top: 4px;
 
         &:hover {
-          border-bottom: 1px solid ${(props: any): string => props.theme.colors.accent500};
+          border-bottom: 1px solid ${(props: any): string => props.theme.colors.accent};
           border-bottom-style: dashed;
         }
 
@@ -132,7 +132,7 @@ export const StyledNotificationContainer = styled.div<{
       }
 
       &:hover {
-        color: ${(props: any): string => props.theme.colors.accent500};
+        color: ${(props: any): string => props.theme.colors.accent};
       }
     }
   }

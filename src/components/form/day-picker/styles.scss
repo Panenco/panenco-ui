@@ -1,0 +1,86 @@
+@import 'core';
+
+button {
+  align-items: flex-start;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  padding: 0;
+}
+
+.search {
+  align-items: flex-start;
+  display: flex;
+
+  &Wrapper {
+    margin-right: 32px;
+    padding-top: 2px;
+
+    &Disabled {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+  }
+
+  &Icon {
+    color: $secondary;
+    height: 16px;
+    width: 16px;
+
+    &Active {
+      color: $accent;
+    }
+  }
+
+  &Container {
+    align-items: baseline;
+    border-bottom: 2px solid $accent;
+    display: flex;
+    margin-left: 12px;
+    min-width: 160px;
+    padding-bottom: 10px;
+
+    &Input {
+      border: none;
+      margin-right: 8px;
+      width: 100%;
+
+      @include font($l, $lightWeight, $primary);
+
+      &::placeholder {
+        @include font($l, $lightWeight, $secondary);
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &Icon {
+      color: $secondary;
+      height: 12px;
+      width: 12px;
+    }
+  }
+}
+
+input[type='search']::-ms-clear {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+input[type='search']::-ms-reveal {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+/* clears the 'X' from Chrome */
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+  display: none;
+}

@@ -39,7 +39,7 @@ const NotifyBody = ({ children, status, undo, closeToast }: any): JSX.Element =>
 
         {undo ? (
           <button className="bodyContentUndo" onClick={handleUndo} type="button">
-            <Text size={sizes.m} color={colors.accent500}>
+            <Text size={sizes.m} color={colors.accent}>
               Undo
             </Text>
           </button>
