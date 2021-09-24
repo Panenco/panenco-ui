@@ -6,9 +6,26 @@ import { DayPickerInputProps } from 'react-day-picker/types/Props';
 import MaskedInput from 'react-text-mask';
 import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe';
 import { useMode, useTheme } from 'utils/hooks';
+import { DateUtils } from 'react-day-picker';
+
+import { setHours, setMinutes } from 'date-fns';
+import dateFnsFormat from 'date-fns/format';
+import dateFnsParse from 'date-fns/parse';
 
 import { WrapperProps } from '../../../utils/types';
 import { StyledDayPicker } from './style';
+
+function parseDate(str, format, locale): Date | undefined {
+  const parsed = dateFnsParse(str, format, new Date(), { locale });
+  if (DateUtils.isDate(parsed)) {
+    return parsed;
+  }
+  return undefined;
+}
+
+function formatDate(date, format, locale): string {
+  return dateFnsFormat(date, format, { locale });
+}
 
 const WEEKDAYS_SHORT = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
@@ -18,14 +35,10 @@ export interface PickerProps extends DayPickerInputProps {
   inputRef?: React.Ref<any>;
   wrapperProps?: WrapperProps;
   isTimePicker: boolean;
-  // inputProps?: InputPropsType; // will be removed in next versions
+  onChange: (value: any) => {};
+  format: string;
+  value?: Date;
 }
-
-// function OverlayComponent({ children, isTimePicker, ...props }) {
-//   return (
-
-//   );
-// }
 
 const transformTime = () => {
   const date = new Date();
@@ -34,23 +47,16 @@ const transformTime = () => {
   return `${hours}:${minutes}`;
 };
 
+const defaultFormat = 'dd/MM/yyyy';
 export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
   (
     {
-      // className,
-      // type = 'text',
-      // title,
-      // subTitle,
-      // iconBefore,
-      // iconAfter,
-      // disabled,
-      // error,
-      // wrapperProps,
+      format = defaultFormat,
+      onChange,
       isTimePicker,
-      inputProps,
-      placeholder = '',
-      // inputRef,
-      ...props
+      value,
+      placeholder = format,
+      iconAfter = Icon.icons.calendar,
     }: PickerProps,
     ref,
   ): JSX.Element => {
@@ -63,32 +69,50 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
       dayPickerInputRef.hideDayPicker();
     };
 
-    const [dateTime, setDateTime] = React.useState(transformTime());
+    const [day, setDay] = React.useState(new Date());
+
+    const handleDayChange = (selectedDay): void => {
+      setDay(selectedDay);
+    };
 
     const OverlayComponent = ({ children, ...overlayComponentProps }: { children: any }) => {
+      const [dateTime, setDateTime] = React.useState(transformTime());
+
+      const submitAndClose = () => {
+        const newTempTo = setHours(setMinutes(day, Number(dateTime.slice(-2))), Number(dateTime.slice(0, 2)));
+
+        onChange(newTempTo);
+        setDay(newTempTo);
+        hideDayPicker();
+      };
+
       return (
         <div className="overlay" {...overlayComponentProps}>
           {children}
           {isTimePicker ? (
             <div className="footer">
               <MaskedInput
-                mask={[/[0-2]/, /[0-9]/, ':', /[0-5]/, /[0-9]/]}
-                placeholder="--:--"
-                onChange={(e) => setDateTime(e.target.value)}
-                pipe={createAutoCorrectedDatePipe('HH:MM')}
                 id="my-input-id"
-                render={(maskedInputRef) => (
+                render={(customRef, restProps) => (
                   <TextInput
-                    id="34254"
+                    id="mask"
+                    name="mask"
                     title="Time"
+                    key="mask"
                     iconAfter={Icon.icons.clock}
-                    ref={(input) => maskedInputRef(input)}
-                    // {...props}
+                    inputRef={customRef}
+                    {...restProps}
                   />
                 )}
+                mask={[/[0-2]/, /[0-9]/, ':', /[0-5]/, /[0-9]/]}
+                placeholder="--:--"
+                pipe={createAutoCorrectedDatePipe('HH:MM')}
+                onChange={(e): void => {
+                  setDateTime(e.target.value);
+                }}
                 value={dateTime}
               />
-              <PrimaryButton className="submitTime" type="button" onClick={hideDayPicker}>
+              <PrimaryButton className="submitTime" type="button" onClick={submitAndClose}>
                 Save
               </PrimaryButton>
             </div>
@@ -98,37 +122,25 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
     };
 
     return (
-      <StyledDayPicker
-        className={cx('dayPickerInput')}
-        // error={error}
-        theme={theme}
-        mode={mode}
-        ref={ref}
-        // {...wrapperProps}
-      >
+      <StyledDayPicker className={cx('dayPickerInput')} theme={theme} mode={mode} ref={ref}>
         <DayPickerInput
-          ref={(reff) => {
-            dayPickerInputRef = reff;
+          ref={(curRef) => {
+            dayPickerInputRef = curRef;
           }}
+          formatDate={formatDate}
+          format={format}
+          parseDate={parseDate}
           className="wrapper"
-          showOverlay
           hideOnDayClick={!isTimePicker}
-          // showOutsideDays
-          // keepFocus
           overlayComponent={OverlayComponent}
           dayPickerProps={{
             weekdaysShort: WEEKDAYS_SHORT,
             firstDayOfWeek: 0,
           }}
-          // selectedDay={new Date()}
-          component={(textProps) => <TextInput {...textProps} />}
-          // overlayComponent={this.overlayComponent}
-          // disabledDays={disabledDaysFrom}
-          // onDayClick={this.handleFromDayClick}
-          // navbarElement={(month) => <Navbar currentMonth={month} />}
-          // selectedDays={selectedDays}
-          // modifiers={modifiers}
-          // month={from}
+          onDayChange={handleDayChange}
+          placeholder={placeholder}
+          value={value}
+          component={(inputComponentProps): JSX.Element => <TextInput iconAfter={iconAfter} {...inputComponentProps} />}
         />
       </StyledDayPicker>
     );

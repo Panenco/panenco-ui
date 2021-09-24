@@ -145,7 +145,10 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
             <div className="dateInputItem" key={`text-input-${input.type}-${currentDate}`}>
               <TextInput
                 id={`text-input-${input.type}-${currentDate}`}
-                onChange={(e): string => handleChange(input.type, e.target.value, index)}
+                key={`text-input-${input.type}-${currentDate}-input`}
+                onChange={(e): string => {
+                  return handleChange(input.type, e.target.value, index);
+                }}
                 inputRef={inputToRef[index]}
                 title={input.title}
                 style={{ width: `${inputWidth}px` }}
