@@ -38,6 +38,7 @@ export interface PickerProps extends DayPickerInputProps, InputComponent {
   format: string;
   wrapperProps?: WrapperProps;
   inputProps?: InputPropsType;
+  saveLabel?: string;
 }
 
 const transformTime = () => {
@@ -61,6 +62,7 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
       subTitle,
       wrapperProps,
       error,
+      saveLabel = 'Save',
       ...props
     }: PickerProps,
     ref,
@@ -118,7 +120,7 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
                 value={dateTime}
               />
               <PrimaryButton className="submitTime" type="button" onClick={submitAndClose}>
-                Save
+                {saveLabel}
               </PrimaryButton>
             </div>
           ) : null}
