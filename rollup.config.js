@@ -9,6 +9,9 @@ import json from '@rollup/plugin-json';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import typescript from 'rollup-plugin-typescript2';
+import postcss from 'rollup-plugin-postcss';
+import importOnce from 'node-sass-import-once';
+import autoprefixer from 'autoprefixer';
 
 import packageJson from './package.json';
 
@@ -31,6 +34,7 @@ export default {
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
     babel({
+      babelHelpers: 'bundled',
       exclude: /node_modules/,
     }),
     resolve({
@@ -51,7 +55,24 @@ export default {
     css({
       output: path.join(paths.outputPath, 'styles.css'),
     }),
-    commonjs(
+    postcss({
+      use: [
+        [
+          'sass',
+          {
+            includePaths: [paths.scss],
+            importer: importOnce,
+          },
+        ],
+      ],
+      plugins: [autoprefixer],
+      modules: true,
+      sourceMap: true,
+      minimize: true,
+      extract: path.join(paths.outputPath, 'styles.css'),
+      extensions: ['.css', '.scss'],
+    }),
+    commonjs(),
     //   {
     //   namedExports: {
     //     'node_modules/react/index.js': ['cloneElement', 'createContext', 'Component', 'createElement'],
@@ -59,7 +80,6 @@ export default {
     //     'node_modules/react-is/index.js': ['isElement', 'isValidElementType', 'ForwardRef', 'Memo'],
     //   },
     // }
-    ),
     json(),
     svgSprite({
       outputFolder: paths.outputPath,

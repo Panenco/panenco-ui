@@ -11,7 +11,6 @@ import { DateUtils } from 'react-day-picker';
 import { setHours, setMinutes } from 'date-fns';
 import dateFnsFormat from 'date-fns/format';
 import dateFnsParse from 'date-fns/parse';
-import './styles.scss';
 import { InputComponent, InputPropsType, WrapperProps } from '../../../utils/types';
 import { StyledDayPicker } from './style';
 
