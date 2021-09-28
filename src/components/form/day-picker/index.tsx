@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import { Icon, PrimaryButton, TextInput } from 'components';
+import { Icon, PrimaryButton, TextInput, Text } from 'components';
 import * as React from 'react';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import { DayPickerInputProps } from 'react-day-picker/types/Props';
@@ -11,8 +11,8 @@ import { DateUtils } from 'react-day-picker';
 import { setHours, setMinutes } from 'date-fns';
 import dateFnsFormat from 'date-fns/format';
 import dateFnsParse from 'date-fns/parse';
-
-import { WrapperProps } from '../../../utils/types';
+import './styles.scss';
+import { InputComponent, InputPropsType, WrapperProps } from '../../../utils/types';
 import { StyledDayPicker } from './style';
 
 function parseDate(str, format, locale): Date | undefined {
@@ -29,15 +29,16 @@ function formatDate(date, format, locale): string {
 
 const WEEKDAYS_SHORT = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
-export interface PickerProps extends DayPickerInputProps {
+export interface PickerProps extends DayPickerInputProps, InputComponent {
   iconBefore?: HTMLObjectElement | JSX.Element;
   iconAfter?: HTMLObjectElement | JSX.Element;
   inputRef?: React.Ref<any>;
-  wrapperProps?: WrapperProps;
   isTimePicker: boolean;
   onChange: (value: any) => {};
   format: string;
-  value?: Date;
+  wrapperProps?: WrapperProps;
+  inputProps?: InputPropsType;
+  saveLabel?: string;
 }
 
 const transformTime = () => {
@@ -55,8 +56,14 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
       onChange,
       isTimePicker,
       value,
+      title,
       placeholder = format,
       iconAfter = Icon.icons.calendar,
+      subTitle,
+      wrapperProps,
+      error,
+      saveLabel = 'Save',
+      ...props
     }: PickerProps,
     ref,
   ): JSX.Element => {
@@ -113,7 +120,7 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
                 value={dateTime}
               />
               <PrimaryButton className="submitTime" type="button" onClick={submitAndClose}>
-                Save
+                {saveLabel}
               </PrimaryButton>
             </div>
           ) : null}
@@ -122,7 +129,24 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
     };
 
     return (
-      <StyledDayPicker className={cx('dayPickerInput')} theme={theme} mode={mode} ref={ref}>
+      <StyledDayPicker
+        className={cx('dayPickerInput')}
+        theme={theme}
+        mode={mode}
+        ref={ref}
+        error={error}
+        {...wrapperProps}
+      >
+        {title && (
+          <Text weight={theme.typography.weights.bold} size={theme.typography.sizes.m} className="title">
+            {title}
+          </Text>
+        )}
+        {subTitle && (
+          <Text size={theme.typography.sizes.xs} className="subtitle">
+            {subTitle}
+          </Text>
+        )}
         <DayPickerInput
           ref={(curRef) => {
             dayPickerInputRef = curRef;
@@ -140,7 +164,9 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
           onDayChange={handleDayChange}
           placeholder={placeholder}
           value={value}
-          component={(inputComponentProps): JSX.Element => <TextInput iconAfter={iconAfter} {...inputComponentProps} />}
+          component={(inputComponentProps): JSX.Element => (
+            <TextInput iconAfter={iconAfter} {...inputComponentProps} {...props} />
+          )}
         />
       </StyledDayPicker>
     );

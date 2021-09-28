@@ -142,10 +142,10 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
           const isLastItem = index + 1 !== inputs.length;
 
           return (
-            <div className="dateInputItem" key={`text-input-${input.type}-${currentDate}`}>
+            <div className="dateInputItem" key={`text-input-${input.type}`}>
               <TextInput
-                id={`text-input-${input.type}-${currentDate}`}
-                key={`text-input-${input.type}-${currentDate}-input`}
+                id={`text-input-${input.type}`}
+                key={`text-input-${input.type}-input`}
                 onChange={(e): string => {
                   return handleChange(input.type, e.target.value, index);
                 }}
