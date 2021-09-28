@@ -5,6 +5,7 @@ import { ThemeMode, PUITheme } from 'utils/types';
 export const StyledDayPicker = styled.div<{
   theme: PUITheme;
   mode: ThemeMode;
+  error?: string;
 }>`
   position: relative;
   display: flex;
@@ -14,6 +15,10 @@ export const StyledDayPicker = styled.div<{
   .title {
     color: ${(props: any): string =>
       props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
+  }
+
+  .subtitle {
+    color: ${(props: any): string => props.theme.colors.secondary};
     margin-bottom: 4px;
   }
 

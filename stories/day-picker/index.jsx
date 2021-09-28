@@ -7,12 +7,6 @@ import React from 'react';
 import { decorator } from '../../utils/decorator';
 import { WrappedComponent } from '../helpers/wrapped';
 
-const dateFormatMapping = {
-  yy: '21',
-  yyyy: '2021',
-  M: '1',
-};
-
 export default decorator('DayPicker', DateInputDocs, README).add('DayPicker', () => {
   const [value, setValue] = React.useState(new Date());
   const handleChange = (val) => {
@@ -23,7 +17,7 @@ export default decorator('DayPicker', DateInputDocs, README).add('DayPicker', ()
     <WrappedComponent style={{ minHeight: '500px' }}>
       <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start' }}>
         <Col s="12" m="12" l="12">
-          <DayPicker value={value} onChange={handleChange} />
+          <DayPicker subTitle="Start date" value={value} onChange={handleChange} />
         </Col>
       </Row>
       <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start' }}>
@@ -93,37 +87,42 @@ const inputs3 = [
 ];
 
 export const DateInputStory = decorator('DateInput', DateInputDocs, DateInputReadme).add('DateInput', () => {
+  const [value, setValue] = React.useState(new Date());
+  const handleChange = (val) => {
+    setValue(val);
+  };
+
   return (
     <WrappedComponent>
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <Row style={{ alignItems: 'flex-start' }}>
           <Col s="2" m="4" l="6">
-            <DateInput inputs={inputs1} />
+            <DateInput inputs={inputs1} onChange={handleChange} />
           </Col>
         </Row>
         <Row style={{ alignItems: 'flex-start' }}>
           <Col s="2" m="4" l="6">
-            <DateInput inputs={inputs2} />
+            <DateInput inputs={inputs2} value={value} onChange={handleChange} />
           </Col>
         </Row>
         <Row style={{ alignItems: 'flex-start' }}>
           <Col s="2" m="4" l="6">
-            <DateInput inputs={inputs3} />
+            <DateInput inputs={inputs3} value={value} onChange={handleChange} />
           </Col>
         </Row>
         <Row style={{ alignItems: 'flex-start' }}>
           <Col s="2" m="4" l="6">
-            <DateInput inputs={inputs1} divider="/" />
+            <DateInput inputs={inputs1} divider="/" value={value} onChange={handleChange} />
           </Col>
         </Row>
         <Row style={{ alignItems: 'flex-start' }}>
           <Col s="2" m="4" l="6">
-            <DateInput inputs={inputs2} divider="/" />
+            <DateInput inputs={inputs2} divider="/" value={value} onChange={handleChange} />
           </Col>
         </Row>
         <Row style={{ alignItems: 'flex-start' }}>
           <Col s="2" m="4" l="6">
-            <DateInput inputs={inputs3} divider="/" />
+            <DateInput inputs={inputs3} divider="/" value={value} onChange={handleChange} />
           </Col>
         </Row>
       </div>
