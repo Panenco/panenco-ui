@@ -7,7 +7,6 @@ import MaskedInput from 'react-text-mask';
 import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe';
 import { useMode, useTheme } from 'utils/hooks';
 import { DateUtils } from 'react-day-picker';
-import './daypicker.scss';
 import { setHours, setMinutes } from 'date-fns';
 import dateFnsFormat from 'date-fns/format';
 import dateFnsParse from 'date-fns/parse';
