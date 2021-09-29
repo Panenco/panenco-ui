@@ -47,13 +47,6 @@ const transformTime = () => {
   return `${hours}:${minutes}`;
 };
 
-const modifiersStyles = {
-  thursdays: {
-    color: '#ffc107',
-    backgroundColor: '#fffdee',
-  },
-};
-
 const defaultFormat = 'dd/MM/yyyy';
 export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
   (
@@ -169,7 +162,6 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
           dayPickerProps={{
             weekdaysShort: WEEKDAYS_SHORT,
             firstDayOfWeek: 0,
-            modifiersStyles,
           }}
           onDayChange={handleDayChange}
           placeholder={placeholder}
