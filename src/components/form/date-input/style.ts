@@ -30,7 +30,6 @@ export const StyledDayPicker = styled.div<{
   .overlay {
     border: 1px solid ${(props: any): string => props.theme.colors.secondary};
     border-radius: 4px;
-    max-width: 286px;
     margin-top: 10px;
   }
 

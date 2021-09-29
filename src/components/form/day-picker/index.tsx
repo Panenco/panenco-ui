@@ -7,12 +7,13 @@ import MaskedInput from 'react-text-mask';
 import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe';
 import { useMode, useTheme } from 'utils/hooks';
 import { DateUtils } from 'react-day-picker';
-
+import './daypicker.scss';
 import { setHours, setMinutes } from 'date-fns';
 import dateFnsFormat from 'date-fns/format';
 import dateFnsParse from 'date-fns/parse';
 import { InputComponent, InputPropsType, WrapperProps } from '../../../utils/types';
 import { StyledDayPicker } from './style';
+import 'react-day-picker/lib/style.css';
 
 function parseDate(str, format, locale): Date | undefined {
   const parsed = dateFnsParse(str, format, new Date(), { locale });
@@ -45,6 +46,13 @@ const transformTime = () => {
   const hours = date.getHours() > 9 ? date.getHours() : `0${date.getHours()}`;
   const minutes = date.getMinutes() > 9 ? date.getMinutes() : `0${date.getMinutes()}`;
   return `${hours}:${minutes}`;
+};
+
+const modifiersStyles = {
+  thursdays: {
+    color: '#ffc107',
+    backgroundColor: '#fffdee',
+  },
 };
 
 const defaultFormat = 'dd/MM/yyyy';
@@ -81,14 +89,17 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
       setDay(selectedDay);
     };
 
+    React.useEffect(() => {
+      onChange(day);
+    }, [day]);
+
     const OverlayComponent = ({ children, ...overlayComponentProps }: { children: any }) => {
       const [dateTime, setDateTime] = React.useState(transformTime());
 
       const submitAndClose = () => {
         const newTempTo = setHours(setMinutes(day, Number(dateTime.slice(-2))), Number(dateTime.slice(0, 2)));
 
-        onChange(newTempTo);
-        setDay(newTempTo);
+        handleDayChange(newTempTo);
         hideDayPicker();
       };
 
@@ -159,6 +170,7 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
           dayPickerProps={{
             weekdaysShort: WEEKDAYS_SHORT,
             firstDayOfWeek: 0,
+            modifiersStyles,
           }}
           onDayChange={handleDayChange}
           placeholder={placeholder}
