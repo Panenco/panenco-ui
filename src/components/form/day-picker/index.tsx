@@ -7,13 +7,12 @@ import MaskedInput from 'react-text-mask';
 import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe';
 import { useMode, useTheme } from 'utils/hooks';
 import { DateUtils } from 'react-day-picker';
-
 import { setHours, setMinutes } from 'date-fns';
 import dateFnsFormat from 'date-fns/format';
 import dateFnsParse from 'date-fns/parse';
-import './styles.scss';
 import { InputComponent, InputPropsType, WrapperProps } from '../../../utils/types';
 import { StyledDayPicker } from './style';
+import 'react-day-picker/lib/style.css';
 
 function parseDate(str, format, locale): Date | undefined {
   const parsed = dateFnsParse(str, format, new Date(), { locale });
@@ -82,14 +81,17 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
       setDay(selectedDay);
     };
 
+    React.useEffect(() => {
+      onChange(day);
+    }, [day]);
+
     const OverlayComponent = ({ children, ...overlayComponentProps }: { children: any }) => {
       const [dateTime, setDateTime] = React.useState(transformTime());
 
       const submitAndClose = () => {
         const newTempTo = setHours(setMinutes(day, Number(dateTime.slice(-2))), Number(dateTime.slice(0, 2)));
 
-        onChange(newTempTo);
-        setDay(newTempTo);
+        handleDayChange(newTempTo);
         hideDayPicker();
       };
 

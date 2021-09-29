@@ -10,6 +10,8 @@ import { WrappedComponent } from '../helpers/wrapped';
 export default decorator('DayPicker', DateInputDocs, README).add('DayPicker', () => {
   const [value, setValue] = React.useState(new Date());
   const handleChange = (val) => {
+    console.log(`Selected date: ${val}`);
+
     setValue(val);
   };
 
@@ -17,7 +19,13 @@ export default decorator('DayPicker', DateInputDocs, README).add('DayPicker', ()
     <WrappedComponent style={{ minHeight: '500px' }}>
       <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start' }}>
         <Col s="12" m="12" l="12">
-          <DayPicker subTitle="Start date" value={value} onChange={handleChange} />
+          <DayPicker
+            subTitle="Start date"
+            value={value}
+            onChange={handleChange}
+            format="MM/dd/yyyy"
+            placeholder="mm/dd/yy"
+          />
         </Col>
       </Row>
       <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start' }}>
