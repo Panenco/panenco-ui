@@ -32,9 +32,9 @@ export interface PickerProps extends DayPickerInputProps, InputComponent {
   iconBefore?: HTMLObjectElement | JSX.Element;
   iconAfter?: HTMLObjectElement | JSX.Element;
   inputRef?: React.Ref<any>;
-  isTimePicker: boolean;
+  isTimePicker?: boolean;
   onChange: (value: any) => {};
-  format: string;
+  format?: string;
   wrapperProps?: WrapperProps;
   inputProps?: InputPropsType;
   saveLabel?: string;
@@ -166,6 +166,7 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
           onDayChange={handleDayChange}
           placeholder={placeholder}
           value={value}
+          keepFocus={false}
           component={(inputComponentProps): JSX.Element => (
             <TextInput iconAfter={iconAfter} {...inputComponentProps} {...props} />
           )}
