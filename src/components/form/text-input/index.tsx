@@ -8,7 +8,7 @@ import { StyledTextInput } from './style';
 export interface TextInputProps extends InputComponent, React.InputHTMLAttributes<HTMLInputElement> {
   iconBefore?: HTMLObjectElement | JSX.Element;
   iconAfter?: HTMLObjectElement | JSX.Element;
-  inputRef?: React.Ref<any>;
+  inputRef?: React.Ref<HTMLInputElement>;
   wrapperProps?: WrapperProps;
   inputProps?: InputPropsType; // will be removed in next versions
 }
