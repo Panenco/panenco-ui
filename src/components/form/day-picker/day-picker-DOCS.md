@@ -1,9 +1,9 @@
-# Search input
+# DayPicker
 
-Search component
+DayPicker
 
 ```js
-import { Search } from '@panenco/ui';
+import { DayPicker } from '@panenco/ui';
 ```
 
 <!-- STORY -->

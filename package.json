@@ -18,6 +18,8 @@
     "lint": "eslint config src stories  --ext .js --ext .jsx",
     "prettier": "prettier '{config,src,stories}/**/*.{js,jsx}' --write",
     "stylelint": "stylelint 'src/**/*.scss'",
+    "prepare": "husky install .husky",
+    "pre-commit": "lint-staged",
     "deploy-storybook": "storybook-to-ghpages --existing-output-dir=storybook-dist",
     "prepublishOnly": "npm run clean && cross-env BABEL_ENV=production rollup --config rollup.config.js",
     "pack": "yarn build && npm pack"
@@ -26,11 +28,8 @@
     "**.css"
   ],
   "lint-staged": {
-    "*.{js,jsx}": [
+    "*.{js,jsx,ts,tsx}": [
       "eslint --fix"
-    ],
-    "*.scss": [
-      "stylelint"
     ]
   },
   "peerDependencies": {
