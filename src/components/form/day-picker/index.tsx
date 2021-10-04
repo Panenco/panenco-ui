@@ -111,7 +111,7 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
         handleDayChange(newTempTo);
         hideDayPicker();
       };
-      //  resolve day-picker issue for custom Overlay (after click prev/next month doesn't disappear element)
+      //  resolve day-picker issue for custom Overlay (prev/next month onClick doesn't hide Overlay component)
       useOutsideClick(overlayCompRef, isTimePicker ? null : hideDayPicker);
 
       return (
