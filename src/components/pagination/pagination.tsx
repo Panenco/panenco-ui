@@ -39,7 +39,13 @@ export const Pagination = ({
   const renderListItem = (item: string | number): JSX.Element => {
     switch (item) {
       case 'ellipsis':
-        return <div className={cx('paginationListItem', 'paginationListItemEllipsis', disabled && 'paginationButtonDisabled')}>...</div>;
+        return (
+          <div
+            className={cx('paginationListItem', 'paginationListItemEllipsis', disabled && 'paginationButtonDisabled')}
+          >
+            ...
+          </div>
+        );
       case 'first':
         return (
           <Button className="paginationListItem" disabled={disabled} onClick={() => onButtonClick(0)}>
@@ -97,7 +103,10 @@ export const Pagination = ({
       className={cx('pagination', className)}
       {...otherProps}
     >
-      {items.map((item) => renderListItem(item))}
+      {items.map((item, i) => (
+        // eslint-disable-next-line
+        <React.Fragment key={`item-${i}`}>{renderListItem(item)}</React.Fragment>
+      ))}
     </StyledListPagination>
   );
 };
