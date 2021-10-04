@@ -25,6 +25,9 @@ jobs:
       - name: Build app
         run: yarn build
 
+      - name: Disable husky
+        run: npm ci --omit=dev --ignore-scripts
+
       - name: Automated Version Bump
         uses: phips28/gh-action-bump-version@master
         env:
