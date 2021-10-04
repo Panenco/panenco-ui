@@ -24,7 +24,7 @@ export const useOutsideClick = (
   });
 
   useEffect(() => {
-    const listener = (event: PossibleEvent) => {
+    const listener = (event: PossibleEvent): void => {
       // that need for prevent open-open behavior when click on profile btn
       if (el === event.target || el?.contains(event.target as Node)) {
         return;
@@ -41,7 +41,7 @@ export const useOutsideClick = (
       document.addEventListener(event, listener);
     });
 
-    return () => {
+    return (): void => {
       events.forEach((event) => {
         document.removeEventListener(event, listener);
       });
