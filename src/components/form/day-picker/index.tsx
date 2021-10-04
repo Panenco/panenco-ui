@@ -15,7 +15,7 @@ import { StyledDayPicker } from './style';
 import 'react-day-picker/lib/style.css';
 
 function parseDate(str, format, locale): Date | undefined {
-  const parsed = dateFnsParse(str, format, new Date(), { locale });
+  const parsed = dateFnsParse(str, format, new Date());
   if (DateUtils.isDate(parsed)) {
     return parsed;
   }
@@ -39,6 +39,7 @@ export interface PickerProps extends DayPickerInputProps, InputComponent {
   inputProps?: TextInputProps;
   saveLabel?: string;
   dayPickerProps?: DayPickerProps;
+  defaultDay?: Date;
 }
 
 const transformTime = (): string => {
@@ -65,6 +66,7 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
       saveLabel = 'Save',
       inputProps,
       dayPickerProps,
+      defaultDay,
       ...props
     }: PickerProps,
     ref,
@@ -78,7 +80,7 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
       dayPickerInputRef.hideDayPicker();
     };
 
-    const [day, setDay] = React.useState(new Date());
+    const [day, setDay] = React.useState(defaultDay || new Date());
 
     const handleDayChange = (selectedDay): void => {
       setDay(selectedDay);
@@ -186,13 +188,9 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
           placeholder={placeholder}
           value={value}
           keepFocus={false}
+          {...props}
           component={React.forwardRef<HTMLDivElement, TextInputProps>((inputComponentProps, wrapRef) => (
-            <TextInput
-              ref={wrapRef}
-              iconAfter={iconAfter}
-              {...inputComponentProps}
-              {...(props as any)} // DayPickerInputProps and TextInputProps are incompatible. TODO
-            />
+            <TextInput ref={wrapRef} iconAfter={iconAfter} error={error} {...inputComponentProps} {...inputProps} />
           ))}
         />
       </StyledDayPicker>
