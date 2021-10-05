@@ -29,4 +29,3 @@ export * from './responsive-table';
 export * from './switch';
 export * from './tooltip';
 export * from './popup';
-export * from './trap-focus';

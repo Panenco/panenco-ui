@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { useTheme } from 'utils/hooks';
 import * as ReactDOM from 'react-dom';
-import { Text, Icon, ButtonIcon, TrapFocus } from 'components';
+import { Text, Icon, ButtonIcon } from 'components';
+import FocusLock from 'react-focus-lock';
 import {
   StyledPopup,
   StyledPopupBackdrop,
@@ -11,6 +12,7 @@ import {
   StyledPopupTitle,
   StyledPopupBody,
 } from './style';
+
 export interface PopupProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string;
   description?: string;
@@ -68,50 +70,48 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
     return ReactDOM.createPortal(
       <>
         {show && (
-          <>
+          <FocusLock returnFocus>
             <StyledPopupBackdrop theme={theme} />
-            <TrapFocus active>
-              <StyledPopupContainer
-                {...props}
-                tabIndex={-1}
-                role="dialog"
-                aria-modal="true"
-                onClick={backdropClosable ? onHide : undefined}
-              >
-                <StyledPopup onClick={popupStopPropagation} className={className} ref={ref} theme={theme}>
-                  {!emptyHeader && (
-                    <StyledPopupHeader>
-                      <StyledPopupHeaderTitleRow>
-                        <StyledPopupTitle>
-                          {title && (
-                            <Text
-                              id={titleId}
-                              size={theme.typography.sizes.l}
-                              weight={theme.typography.weights.bold}
-                              color={theme.colors.dark}
-                            >
-                              {title}
-                            </Text>
-                          )}
-                        </StyledPopupTitle>
-                        {closeBtn && (
-                          <div>
-                            <ButtonIcon aria-label="Close" onClick={onHide} icon={Icon.icons.delete} />
-                          </div>
+            <StyledPopupContainer
+              {...props}
+              tabIndex={-1}
+              role="dialog"
+              aria-modal="true"
+              onClick={backdropClosable ? onHide : undefined}
+            >
+              <StyledPopup onClick={popupStopPropagation} className={className} ref={ref} theme={theme}>
+                {!emptyHeader && (
+                  <StyledPopupHeader>
+                    <StyledPopupHeaderTitleRow>
+                      <StyledPopupTitle>
+                        {title && (
+                          <Text
+                            id={titleId}
+                            size={theme.typography.sizes.l}
+                            weight={theme.typography.weights.bold}
+                            color={theme.colors.dark}
+                          >
+                            {title}
+                          </Text>
                         )}
-                      </StyledPopupHeaderTitleRow>
-                      {description && (
-                        <Text size={theme.typography.sizes.m} color={theme.colors.dark}>
-                          {description}
-                        </Text>
+                      </StyledPopupTitle>
+                      {closeBtn && (
+                        <div>
+                          <ButtonIcon aria-label="Close" onClick={onHide} icon={Icon.icons.delete} />
+                        </div>
                       )}
-                    </StyledPopupHeader>
-                  )}
-                  <StyledPopupBody emptyHeader={emptyHeader}>{children}</StyledPopupBody>
-                </StyledPopup>
-              </StyledPopupContainer>
-            </TrapFocus>
-          </>
+                    </StyledPopupHeaderTitleRow>
+                    {description && (
+                      <Text size={theme.typography.sizes.m} color={theme.colors.dark}>
+                        {description}
+                      </Text>
+                    )}
+                  </StyledPopupHeader>
+                )}
+                <StyledPopupBody emptyHeader={emptyHeader}>{children}</StyledPopupBody>
+              </StyledPopup>
+            </StyledPopupContainer>
+          </FocusLock>
         )}
       </>,
       document.body,
