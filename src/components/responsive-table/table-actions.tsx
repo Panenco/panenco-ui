@@ -101,6 +101,7 @@ export const resizeTable = ({ width, state }: { width: number; state: TableState
     if (prevWidth) return prevValue + prevWidth;
     return prevValue + minWidth;
   }, 0);
+
   const newState =
     tableWidth > width
       ? tryToRemoveColumns({ constTableWidth: tableWidth, width, state })

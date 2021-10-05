@@ -1,8 +1,13 @@
 import { styled } from 'linaria/react';
-import { ToastContainer } from 'react-toastify';
-import { ThemeMode } from 'utils/types';
+// import { ReactChild } from 'react';
+// import { ToastContainer, ToastContainerProps } from 'react-toastify';
+import { ThemeMode, PUITheme } from 'utils/types';
 
-export const StyledNotificationContainer = styled(ToastContainer)`
+export const StyledNotificationContainer = styled.div<{
+  theme: PUITheme;
+  mode: ThemeMode;
+  className?: string;
+}>`
   padding: 0;
   width: 420px;
   color: ${(props: any): string => props.theme.colors.primary};
@@ -23,7 +28,7 @@ export const StyledNotificationContainer = styled(ToastContainer)`
         margin-top: 4px;
 
         &:hover {
-          border-bottom: 1px solid ${(props: any): string => props.theme.colors.accent500};
+          border-bottom: 1px solid ${(props: any): string => props.theme.colors.accent};
           border-bottom-style: dashed;
         }
 
@@ -127,7 +132,7 @@ export const StyledNotificationContainer = styled(ToastContainer)`
       }
 
       &:hover {
-        color: ${(props: any): string => props.theme.colors.accent500};
+        color: ${(props: any): string => props.theme.colors.accent};
       }
     }
   }

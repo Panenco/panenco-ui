@@ -1,24 +1,19 @@
 import { styled } from 'linaria/react';
-import { ThemeMode } from 'utils/types';
+import { ThemeMode, PUITheme } from 'utils/types';
 import { transparentize } from 'polished';
 
-export const StyledTextInput = styled.div`
+export const StyledTextInput = styled.div<{
+  theme: PUITheme;
+  mode: ThemeMode;
+  error;
+  iconBefore?: HTMLObjectElement | JSX.Element;
+  iconAfter?: HTMLObjectElement | JSX.Element;
+}>`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   background-color: transparent;
   position: relative;
-
-  .inputTitle {
-    color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
-    margin-bottom: 4px;
-  }
-
-  .inputSubtitle {
-    color: ${(props: any): string => props.theme.colors.secondary};
-    margin-bottom: 4px;
-  }
 
   .fieldWrapper {
     display: flex;
@@ -60,7 +55,8 @@ export const StyledTextInput = styled.div`
           props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.primary};
         background-color: transparent;
         font-size: ${(props: any): string => props.theme.typography.sizes.m.textSize};
-        padding: 14px 16px;
+        margin: -1px;
+        padding: 13px 16px;
         padding-left: ${(props: any): string => {
           if (props.iconBefore) return '40px';
           return '16px';
@@ -76,12 +72,13 @@ export const StyledTextInput = styled.div`
       }
 
       &Error {
-        box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.error};
-        border-color: transparent;
+        border: 2px solid ${(props: any): string => props.theme.colors.error};
+
         color: ${(props: any): string =>
           props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
-        &:hover {
-          box-shadow: none;
+
+        .input {
+          margin: -2px;
         }
       }
 
@@ -99,6 +96,10 @@ export const StyledTextInput = styled.div`
         border: 1px solid
           ${(props: any): string =>
             props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent};
+
+        .input {
+          margin: -1px;
+        }
       }
 
       &:focus-within {
@@ -108,12 +109,38 @@ export const StyledTextInput = styled.div`
     }
   }
 
+  .inputTitle {
+    color: ${(props: any): string => props.theme.colors.primary};
+  }
+
+  .inputSubtitle {
+    color: ${(props: any): string => props.theme.colors.secondary};
+    margin-bottom: 4px;
+  }
+
   .inputErrorLabel {
-    position: absolute;
-    bottom: -20px;
     color: ${(props: any): string =>
       props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.error};
     font-size: ${(props: any): string => props.theme.typography.sizes.xs.textSize};
-    margin-top: 4px;
+    height: 16px;
+    line-height: 1.3;
+  }
+
+  .counterWrapper {
+    bottom: -16px;
+    display: flex;
+    justify-content: space-between;
+    font-size: ${(props: any): string => props.theme.typography.sizes.xs.textSize};
+    position: absolute;
+    width: 100%;
+
+    .counter {
+      color: ${(props: any): string => props.theme.colors.secondary};
+      line-height: 1.3;
+    }
+
+    .hidden {
+      visibility: hidden;
+    }
   }
 `;

@@ -23,7 +23,7 @@ export type PaginationProps = {
 export const Pagination = ({
   count = 150,
   rowsPerPage = 12,
-  onButtonClick = () => {},
+  onButtonClick = (): void => {},
   page = 0,
   disabled = false,
   className,
@@ -39,16 +39,26 @@ export const Pagination = ({
   const renderListItem = (item: string | number): JSX.Element => {
     switch (item) {
       case 'ellipsis':
-        return <div className={cx('paginationListItem', 'paginationListItemEllipsis', disabled && 'paginationButtonDisabled')}>...</div>;
+        return (
+          <div
+            className={cx('paginationListItem', 'paginationListItemEllipsis', disabled && 'paginationButtonDisabled')}
+          >
+            ...
+          </div>
+        );
       case 'first':
         return (
-          <Button className="paginationListItem" disabled={disabled} onClick={() => onButtonClick(0)}>
+          <Button className="paginationListItem" disabled={disabled} onClick={(): void => onButtonClick(0)}>
             First
           </Button>
         );
       case 'last':
         return (
-          <Button className="paginationListItem" disabled={disabled} onClick={() => onButtonClick(pagesAmount - 1)}>
+          <Button
+            className="paginationListItem"
+            disabled={disabled}
+            onClick={(): void => onButtonClick(pagesAmount - 1)}
+          >
             Last
           </Button>
         );
@@ -59,7 +69,7 @@ export const Pagination = ({
             disabled={isFirst || disabled}
             iconLeft={Icon.icons.chevronLeft}
             iconClassName={cx('paginationButtonIcon', variant !== 'text' && 'paginationButtonIconNoMargin')}
-            onClick={() => onButtonClick(page - 1)}
+            onClick={(): void => onButtonClick(page - 1)}
           >
             {variant === 'text' && <Text>Previous</Text>}
           </Button>
@@ -71,7 +81,7 @@ export const Pagination = ({
             disabled={isLast || disabled}
             iconRight={Icon.icons.chevronRight}
             iconClassName={cx('paginationButtonIcon', variant !== 'text' && 'paginationButtonIconNoMargin')}
-            onClick={() => onButtonClick(page + 1)}
+            onClick={(): void => onButtonClick(page + 1)}
           >
             {variant === 'text' && <Text>Next</Text>}
           </Button>
@@ -81,7 +91,7 @@ export const Pagination = ({
           <Button
             className={cx('paginationListItem', page === (item as number) - 1 && 'paginationListItemActive')}
             disabled={disabled}
-            onClick={() => onButtonClick((item as number) - 1)}
+            onClick={(): void => onButtonClick((item as number) - 1)}
           >
             {item}
           </Button>
@@ -97,7 +107,10 @@ export const Pagination = ({
       className={cx('pagination', className)}
       {...otherProps}
     >
-      {items.map((item) => renderListItem(item))}
+      {items.map((item, i) => (
+        // eslint-disable-next-line
+        <React.Fragment key={`item-${i}`}>{renderListItem(item)}</React.Fragment>
+      ))}
     </StyledListPagination>
   );
 };

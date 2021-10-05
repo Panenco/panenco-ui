@@ -86,7 +86,7 @@ export const Icon = React.forwardRef<any, IconProps>(
     const defaultSize = icon.viewBox?.split(' ')[3] || 16;
     return (
       <StyledSVG
-        className={cx(disabled && 'disabled', (size || width || height) && 'svg', className)}
+        className={cx(disabled && 'disabled', 'svg', className)}
         width={sizeToString(width || size || defaultSize)}
         height={sizeToString(height || size || defaultSize)}
         viewBox={icon.viewBox}

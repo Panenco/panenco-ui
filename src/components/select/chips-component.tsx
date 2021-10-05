@@ -8,31 +8,10 @@ export interface ChipsProps extends SelectProps, InputComponent {
   value?: any;
   chipIconSize?: number | string;
   chipIcon?: any;
-  chipTextWeight?: string;
-  chipTextSize?: {
-    textSize: string;
-    lineHeight: string;
-  };
-  chipTextTypography?: {
-    size: {
-      textSize: string;
-      lineHeight: string;
-    };
-    weight: string;
-  };
   onDeleteOption?: any;
 }
 
-const ChipsComponent = ({
-  value,
-  onDeleteOption,
-  chipIconSize,
-  chipTextSize,
-  chipTextWeight,
-  chipTextTypography,
-  chipIcon,
-  getOptionLabel,
-}: ChipsProps): JSX.Element => (
+const ChipsComponent = ({ value, onDeleteOption, chipIcon, getOptionLabel }: ChipsProps): JSX.Element => (
   <div className="isMultiActiveChips">
     {value?.map((option) => {
       if (!option) return null;
@@ -52,10 +31,6 @@ const ChipsComponent = ({
               onDeleteOption(option);
             }
           }}
-          iconSize={chipIconSize}
-          textSize={chipTextSize}
-          textWeight={chipTextWeight}
-          textTypography={chipTextTypography}
         >
           {chipLabel}
         </Chip>

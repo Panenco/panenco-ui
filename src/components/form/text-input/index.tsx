@@ -8,7 +8,7 @@ import { StyledTextInput } from './style';
 export interface TextInputProps extends InputComponent, React.InputHTMLAttributes<HTMLInputElement> {
   iconBefore?: HTMLObjectElement | JSX.Element;
   iconAfter?: HTMLObjectElement | JSX.Element;
-  inputRef?: React.Ref<any>;
+  inputRef?: React.Ref<HTMLInputElement>;
   wrapperProps?: WrapperProps;
   inputProps?: InputPropsType; // will be removed in next versions
 }
@@ -16,6 +16,7 @@ export interface TextInputProps extends InputComponent, React.InputHTMLAttribute
 export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
   (
     {
+      maxLength,
       className,
       type = 'text',
       title,
@@ -28,10 +29,19 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
       inputProps,
       placeholder = '',
       inputRef,
+      onChange,
       ...props
     }: TextInputProps,
     ref,
   ): JSX.Element => {
+    const [counter, setCounter] = React.useState(0);
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+      if (maxLength) setCounter(event.target.value.length);
+
+      if (onChange) onChange(event);
+    };
+
     const theme = useTheme();
     const { mode } = useMode();
 
@@ -69,7 +79,9 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
               aria-label={`${title || ''}${subTitle || ''}`}
               className="input"
               placeholder={placeholder}
+              onChange={handleChange}
               disabled={disabled}
+              maxLength={maxLength}
               ref={inputRef}
               {...inputProps}
               {...props}
@@ -79,8 +91,16 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
             )}
           </div>
         </div>
-
-        {error && <span className="inputErrorLabel">{error}</span>}
+        {error || maxLength ? (
+          <div className="counterWrapper">
+            <span className="inputErrorLabel">{error}</span>
+            {maxLength && (
+              <span className="counter">
+                {counter}/{maxLength}
+              </span>
+            )}
+          </div>
+        ) : null}
       </StyledTextInput>
     );
   },

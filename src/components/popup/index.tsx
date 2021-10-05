@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import * as React from 'react';
 import { useTheme } from 'utils/hooks';
 import * as ReactDOM from 'react-dom';
@@ -13,7 +14,7 @@ import {
   StyledPopupBody,
 } from './style';
 
-export interface PopupProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface PopupProps extends React.HTMLAttributes<HTMLElement> {
   title?: string;
   description?: string;
   className?: string;
@@ -25,7 +26,7 @@ export interface PopupProps extends React.HTMLAttributes<HTMLDivElement> {
   disableEscapeKeyDown?: boolean;
   titleId?: string;
 }
-export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
+export const Popup = React.forwardRef<HTMLElement, PopupProps>(
   (
     {
       title,
@@ -53,7 +54,7 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
       const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
       if (show) {
         document.body.style.overflow = 'hidden';
-        document.body.style.paddingRight = scrollBarWidth + 'px';
+        document.body.style.paddingRight = `${scrollBarWidth} + 'px'`;
       } else {
         document.body.style.overflow = 'visible';
         document.body.style.paddingRight = '0';
@@ -64,7 +65,8 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
           document.removeEventListener('keydown', handleEscClose);
         };
       }
-      return;
+
+      return () => {};
     }, [show, disableEscapeKeyDown]);
     const emptyHeader: boolean = !title && !description && !closeBtn;
     return ReactDOM.createPortal(

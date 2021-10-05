@@ -1,12 +1,12 @@
 import { Icon, Text } from 'index';
 import * as React from 'react';
-import { toast as toastify, ToastContainerProps } from 'react-toastify';
+import { toast as toastify, ToastContainer, ToastContainerProps } from 'react-toastify';
 import { colors, sizes } from 'styles';
 import { useMode, useTheme } from 'utils/hooks';
 
 import { StyledNotificationContainer } from './style';
 
-export type NotificationContainerProps = ToastContainerProps & { undo: any };
+export type NotificationContainerProps = ToastContainerProps & { undo?: any; className?: string };
 
 const CloseButton = ({ closeToast }: any): JSX.Element => {
   return (
@@ -39,7 +39,7 @@ const NotifyBody = ({ children, status, undo, closeToast }: any): JSX.Element =>
 
         {undo ? (
           <button className="bodyContentUndo" onClick={handleUndo} type="button">
-            <Text size={sizes.m} color={colors.accent500}>
+            <Text size={sizes.m} color={colors.accent}>
               Undo
             </Text>
           </button>
@@ -95,8 +95,12 @@ for (const t in toastify.TYPE) {
 }
 /* eslint-enable */
 
-export const NotificationContainer = ({ className, ...props }: ToastContainerProps): JSX.Element => {
+export const NotificationContainer = ({ className, ...props }: NotificationContainerProps): JSX.Element => {
   const theme = useTheme();
   const { mode } = useMode();
-  return <StyledNotificationContainer theme={theme} mode={mode} className={className} {...props} />;
+  return (
+    <StyledNotificationContainer theme={theme} mode={mode} {...props} className={className}>
+      <ToastContainer />
+    </StyledNotificationContainer>
+  );
 };

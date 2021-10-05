@@ -1,3 +1,4 @@
+import { PUITheme } from 'utils/types';
 import { styled } from 'linaria/react';
 import { breakpoints } from 'styles/breakpoints';
 
@@ -29,7 +30,9 @@ export const StyledPopupBody = styled.div<{
   }
 `;
 
-export const StyledPopup = styled.div`
+export const StyledPopup = styled.div<{
+  theme: PUITheme;
+}>`
   background-clip: padding-box;
   background-color: ${(props: any): string => props.theme.colors.light};
   border-radius: 4px;
@@ -68,7 +71,9 @@ export const StyledPopupContainer = styled.div`
     padding: 0;
   }
 `;
-export const StyledPopupBackdrop = styled.div`
+export const StyledPopupBackdrop = styled.div<{
+  theme: PUITheme;
+}>`
   background-color: ${(props: any): string => props.theme.colors.secondary};
   height: 100vh;
   left: 0;

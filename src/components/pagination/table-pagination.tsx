@@ -5,24 +5,28 @@ import { Text, Icon, SelectInput, Button } from 'components';
 import { usePagination } from './usePagination';
 import { StyledPagination } from './styles';
 
+interface PaginationOption {
+  label: string;
+  value: number;
+}
+
 export type TablePaginationProps = {
   [key: string]: any;
   count?: number;
   rowsPerPage: number;
   page: number;
   disabled?: boolean;
-  onButtonClick: (page: number) => void;
   contentBeforeSelect?: string;
   rowsPerPageOptions?: any;
-  onChangePage: any;
+  onChangePage: (page: number | PaginationOption) => void;
   onChangeRowsPerPage: any;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const defaultOptions = [
-  { label: '12', value: '12' },
-  { label: '24', value: '24' },
-  { label: '36', value: '36' },
-  { label: '48', value: '48' },
+  { label: '12', value: 12 },
+  { label: '24', value: 24 },
+  { label: '36', value: 36 },
+  { label: '48', value: 48 },
 ];
 
 const additionStyles = () => ({
@@ -48,7 +52,6 @@ export const TablePagination = ({
   contentBeforeSelect = 'Show rows:',
   count = 150,
   rowsPerPage = 12,
-  onButtonClick = () => {},
   page = 0,
   disabled = false,
   rowsPerPageOptions = defaultOptions,
@@ -64,6 +67,8 @@ export const TablePagination = ({
 
   const theme = useTheme();
   const { mode } = useMode();
+
+  const rowsPerPageHandler = (option: PaginationOption): void => onChangeRowsPerPage(option.value);
 
   return (
     <StyledPagination mode={mode} theme={theme} className={cx('pagination', className)} {...otherProps}>
@@ -84,7 +89,7 @@ export const TablePagination = ({
           isSearchable={false}
           styles={additionStyles()}
           isDisabled={disabled}
-          onChange={onChangeRowsPerPage}
+          onChange={rowsPerPageHandler}
           value={rowsPerPageOptions.find((option) => Number(option.value) === Number(rowsPerPage))}
         />
         <div className={cx('paginationDivider', 'paginationDividerLeft')} />
@@ -103,7 +108,7 @@ export const TablePagination = ({
           iconLeft={Icon.icons.chevronLeft}
           iconClassName={cx('paginationButtonIcon', 'paginationButtonIconNoMargin')}
           onClick={(): void => {
-            onButtonClick(page - 1);
+            onChangePage(page - 1);
           }}
         />
         <SelectInput
@@ -114,7 +119,7 @@ export const TablePagination = ({
           isSearchable={false}
           styles={additionStyles()}
           isDisabled={disabled}
-          onChange={onChangePage}
+          onChange={(option): void => onChangePage(option.value)}
           value={pagesOptions.find((option) => Number(option.value) === Number(page))}
         />
         <Button
@@ -123,7 +128,7 @@ export const TablePagination = ({
           iconRight={Icon.icons.chevronRight}
           iconClassName={cx('paginationButtonIcon', 'paginationButtonIconNoMargin')}
           onClick={(): void => {
-            onButtonClick(page + 1);
+            onChangePage(page + 1);
           }}
         />
       </div>

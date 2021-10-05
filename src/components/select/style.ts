@@ -238,7 +238,12 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
   // },
 });
 
-export const StyledSelectWrapper = styled.div`
+export const StyledSelectWrapper = styled.div<{
+  theme: PUITheme;
+  mode: ThemeMode;
+  error;
+  wrapperSelectSizes;
+}>`
   position: relative;
 
   .wrapperSelect {
@@ -253,7 +258,7 @@ export const StyledSelectWrapper = styled.div`
   }
 
   .multiSelectChip {
-    margin: 10px 4px 0 0;
+    margin: 0 4px 4px 0;
   }
 
   .col {
@@ -267,7 +272,6 @@ export const StyledSelectWrapper = styled.div`
       props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
 
     display: block;
-    margin-bottom: 5px;
   }
 
   .subTitle {
@@ -276,10 +280,11 @@ export const StyledSelectWrapper = styled.div`
   }
 
   .errorTitle {
+    bottom: -16px;
     color: ${(props: any): string =>
       props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.error};
     display: block;
+    height: 16px;
     position: absolute;
-    margin-top: 5px;
   }
 `;

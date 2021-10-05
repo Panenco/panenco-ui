@@ -51,7 +51,7 @@ export default {
     css({
       output: path.join(paths.outputPath, 'styles.css'),
     }),
-    commonjs(
+    commonjs(),
     //   {
     //   namedExports: {
     //     'node_modules/react/index.js': ['cloneElement', 'createContext', 'Component', 'createElement'],
@@ -59,7 +59,6 @@ export default {
     //     'node_modules/react-is/index.js': ['isElement', 'isValidElementType', 'ForwardRef', 'Memo'],
     //   },
     // }
-    ),
     json(),
     svgSprite({
       outputFolder: paths.outputPath,

@@ -63,7 +63,7 @@ const Component = ({
   return (
     <>
       {title && (
-        <Text className="title" weight={theme.typography.weights.bold}>
+        <Text className="title" weight={theme.typography.weights.bold} size={theme.typography.sizes.m}>
           {title}
         </Text>
       )}
@@ -88,11 +88,9 @@ const Component = ({
             {...props}
           />
         </div>
-        {error && (
-          <Text className="errorTitle" size={theme.typography.sizes.xs} color={theme.colors.error}>
-            {error}
-          </Text>
-        )}
+        <Text className="errorTitle" size={theme.typography.sizes.xs} color={theme.colors.error}>
+          {error}
+        </Text>
       </>
     </>
   );

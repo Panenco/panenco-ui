@@ -1,16 +1,15 @@
 import * as React from 'react';
-import * as cx_ from 'classnames';
+import cx from 'classnames';
 
-const cx = cx_;
 import s from './styles.scss';
 
 interface Props {
-  className?: string,
-  email?: string,
-  size?: string,
-  src?: string,
-  firstName?: string,
-  lastName?: string,
+  className?: string;
+  email?: string;
+  size?: string;
+  src?: string;
+  firstName?: string;
+  lastName?: string;
 }
 
 export const Avatar: React.FunctionComponent<Props> & { sizes: any } = (props: Props): any => {

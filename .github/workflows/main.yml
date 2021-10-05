@@ -3,14 +3,13 @@ name: Publishing NPM package
 on:
   push:
     branches: [master]
-  # pull_request:
-  #   branches: [master]
-  # rebuild
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GH_TOKEN }}
 
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
@@ -26,7 +25,14 @@ jobs:
       - name: Build app
         run: yarn build
 
-      # - run: npm prepublishOnly
+      - name: Automated Version Bump
+        uses: phips28/gh-action-bump-version@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          tag-prefix: 'v'
+          commit-message: 'CI: bumps version to {{version}} [skip ci]'
+
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.ACTION_PUBLISH_TOKEN }}

@@ -31,8 +31,8 @@ export const StyledStepperInput = styled.div<{
 
   .stepperInput {
     border: none;
-    border-bottom: 1px solid ${(props: any): string => props.theme.colors.border500};
-    border-top: 1px solid ${(props: any): string => props.theme.colors.border500};
+    border-bottom: 1px solid ${(props: any): string => props.theme.colors.secondary};
+    border-top: 1px solid ${(props: any): string => props.theme.colors.secondary};
     color: ${(props: any): string =>
       props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.primary};
     text-align: center;
@@ -46,7 +46,7 @@ export const StyledStepperInput = styled.div<{
   .stepperButton {
     align-items: center;
     background: transparent;
-    border: 2px solid ${(props: any): string => props.theme.colors.accent500};
+    border: 2px solid ${(props: any): string => props.theme.colors.accent};
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -63,7 +63,7 @@ export const StyledStepperInput = styled.div<{
 
     &Icon {
       color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.accent500};
+        props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.accent};
     }
 
     &.disabled {
@@ -73,7 +73,8 @@ export const StyledStepperInput = styled.div<{
 
     &:hover {
       background: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.accent500};
+        props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.hover};
+      border: 2px solid ${(props: any): string => props.theme.colors.hover};
 
       .stepperButtonIcon {
         color: ${(props: any): string =>
@@ -87,12 +88,6 @@ export const StyledStepperInput = styled.div<{
   }
 
   .inputTitle {
-    color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.light};
-    margin-bottom: 4px;
-  }
-
-  .inputSubtitle {
     color: ${(props: any): string => props.theme.colors.secondary};
     margin-bottom: 4px;
   }
@@ -123,7 +118,7 @@ export const StyledStepperInput = styled.div<{
     &:hover {
       border: 1px solid
         ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent500};
+          props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent};
     }
 
     &:focus-within {
@@ -133,7 +128,7 @@ export const StyledStepperInput = styled.div<{
   }
 
   .inputError {
-    bottom: -20px;
+    bottom: -16px;
     display: flex;
     flex-direction: column;
     position: absolute;

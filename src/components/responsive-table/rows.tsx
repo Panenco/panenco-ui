@@ -11,8 +11,9 @@ interface RowsProps {
   hiddenColumns: Array<ColumnType>;
   expandRow: ExpandRowType;
   containerWidth?: number;
-  itemsPerPage: number;
+  itemsPerPage?: number;
   isLoading?: boolean;
+  iconCreator?: (rowIsOpen: boolean) => string;
 }
 
 const Rows = ({
@@ -20,8 +21,9 @@ const Rows = ({
   visibleColumns,
   hiddenColumns,
   expandRow,
-  containerWidth,
-  itemsPerPage,
+  containerWidth = 0,
+  itemsPerPage = 10,
+  iconCreator,
   isLoading,
 }: RowsProps): JSX.Element => {
   const tableRows = rows.reduce((r: Array<JSX.Element>, row) => {
@@ -32,6 +34,7 @@ const Rows = ({
         rowIndex={row.id}
         visibleColumns={visibleColumns}
         hiddenColumns={hiddenColumns}
+        iconCreator={iconCreator}
         expandRow={expandRow}
       />
     );
@@ -61,8 +64,10 @@ const Rows = ({
 };
 
 Rows.defaultProps = {
-  containerWidth: null,
-  itemsPerPage: null,
+  containerWidth: 0,
+  isLoading: false,
+  itemsPerPage: 10,
+  iconCreator: null,
 };
 
 export default Rows;

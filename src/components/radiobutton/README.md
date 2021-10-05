@@ -26,14 +26,15 @@ This component inherits the attributes of the **input** element and extends the 
 - error - add this prop when smth went wrong;
 - wrapperProps - it's props which will be added to wrapper component;
 - inputProps - it's props which will be added to input component;
-- wrapperProps - it's props which will be added to wrapper component;
-- ref - wrapper ref
+- pointColor - customizing point color for different cases;
+- ref - wrapper ref;
 
 | propName     | propType                  | defaultValue      | isRequired |
 | ------------ | ------------------------- | ----------------- | ---------- |
 | error        | string                    | -                 | -          |
 | label        | string                    | -                 | -          |
 | id           | string or (any)           | generate uniqueID | -          |
+| pointColor   | string                    | -                 | -          |
 | inputProps   | React.InputHTMLAttributes | -                 | -          |
 | wrapperProps | React.LabelHTMLAttributes | -                 | -          |
 | ref          | React.RefObject           | -                 | -          |

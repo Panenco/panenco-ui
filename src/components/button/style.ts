@@ -1,5 +1,5 @@
 import { styled } from 'linaria/react';
-import { ThemeMode } from 'utils/types';
+import { PUITheme, ThemeMode } from 'utils/types';
 
 const getBackgroundColor = (variant: any, mode: ThemeMode, darkColor: string, lightColor: string): string => {
   if (variant === 'transparent') return 'transparent';
@@ -7,13 +7,19 @@ const getBackgroundColor = (variant: any, mode: ThemeMode, darkColor: string, li
   return lightColor;
 };
 
-export const StyledButton = styled.button`
+export const StyledButton = styled.button<{
+  theme: PUITheme;
+  mode: ThemeMode;
+  to?: string;
+  variant?: 'default' | 'transparent';
+  // as: HTMLElement;
+}>`
   position: relative;
   border: 2px solid transparent;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 14px 22px;
+  padding: 10px 22px;
   -webkit-appearance: none;
 
   min-height: 40px;
@@ -25,11 +31,13 @@ export const StyledButton = styled.button`
   color: ${(props: any): string =>
     props.color || (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent)};
   cursor: pointer;
+  overflow: hidden;
 
   .content {
     align-items: center;
     display: flex;
     justify-content: center;
+    overflow: hidden;
 
     &Invisible {
       visibility: hidden;
@@ -41,10 +49,10 @@ export const StyledButton = styled.button`
     pointer-events: none !important;
   }
   &.iconLeft {
-    padding: 14px 22px 14px 16px;
+    padding: 10px 22px 10px 16px;
   }
   &.iconRight {
-    padding: 14px 16px 14px 22px;
+    padding: 10px 16px 10px 22px;
   }
 
   &:focus {
@@ -62,6 +70,9 @@ export const StyledButton = styled.button`
 
   .buttonTitle {
     color: inherit;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .buttonIcon {

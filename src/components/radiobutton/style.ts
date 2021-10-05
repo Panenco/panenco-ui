@@ -1,7 +1,12 @@
 import { styled } from 'linaria/react';
-import { ThemeMode } from 'utils/types';
+import { ThemeMode, PUITheme } from 'utils/types';
 
-export const StyledRadio = styled.div`
+export const StyledRadio = styled.label<{
+  theme: PUITheme;
+  mode: ThemeMode;
+  error;
+  pointColor?: string;
+}>`
   .label {
     position: relative;
     display: flex;
@@ -28,6 +33,9 @@ export const StyledRadio = styled.div`
 
     & .point {
       background-color: ${(props: any): string => {
+        if (props.pointColor) {
+          return props.pointColor;
+        }
         if (props.error) {
           return props.theme.colors.error;
         }
@@ -49,6 +57,9 @@ export const StyledRadio = styled.div`
       .container {
         transition: 0.3s;
         border-color: ${(props: any): string => {
+          if (props.pointColor) {
+            return props.pointColor;
+          }
           if (props.error) {
             return props.theme.colors.error;
           }
@@ -60,7 +71,8 @@ export const StyledRadio = styled.div`
     .container {
       background-color: transparent;
       border: 2px solid
-        ${(props: any): string => (props.error ? props.theme.colors.error : props.theme.colors.secondary)};
+        ${(props: any): string =>
+          props.pointColor || (props.error ? props.theme.colors.error : props.theme.colors.secondary)};
       border-radius: 50%;
       cursor: pointer;
       display: flex;
@@ -84,6 +96,9 @@ export const StyledRadio = styled.div`
     .radiobox:checked + .container {
       border: 2px solid
         ${(props: any): string => {
+          if (props.pointColor) {
+            return props.pointColor;
+          }
           if (props.error) {
             return props.theme.colors.error;
           }
@@ -101,6 +116,9 @@ export const StyledRadio = styled.div`
         & + .container {
           border: 2px solid
             ${(props: any): string => {
+              if (props.pointColor) {
+                return props.pointColor;
+              }
               if (props.error) {
                 return props.theme.colors.error;
               }
@@ -109,6 +127,9 @@ export const StyledRadio = styled.div`
 
           & > .point {
             background-color: ${(props: any): string => {
+              if (props.pointColor) {
+                return props.pointColor;
+              }
               if (props.error) {
                 return props.theme.colors.error;
               }

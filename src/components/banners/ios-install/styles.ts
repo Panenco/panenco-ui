@@ -1,9 +1,12 @@
 import { styled } from 'linaria/react';
 // import { transparentize } from 'polished';
-import { ThemeMode } from '../../../utils/types';
+import { PUITheme, ThemeMode } from '../../../utils/types';
 import { Paper } from '../../paper';
 
-export const StyledIosInstallPaper = styled(Paper)`
+export const StyledIosInstallPaper = styled(Paper)<{
+  theme: PUITheme;
+  mode: ThemeMode;
+}>`
   left: 50%;
   max-width: 50%;
   min-width: 300px;

@@ -3,6 +3,7 @@ import { throttle } from 'lodash-es';
 import * as React from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
 import { useMode, useTheme } from 'utils/hooks';
+import { PUITheme, ThemeMode } from 'utils/types';
 import { ColumnType } from '.';
 
 import Columns from './columns';
@@ -11,7 +12,13 @@ import { Styles } from './style';
 import { expandRow, resizeTable } from './table-actions';
 import { TableProps, TableState } from './types';
 
-class Table extends React.Component<TableProps, TableState> {
+class Table extends React.Component<
+  TableProps & {
+    theme: PUITheme;
+    mode: ThemeMode;
+  },
+  TableState
+> {
   static separateColumns(cols: ColumnType[]): ColumnType[][] {
     const visible: ColumnType[] = [];
     const hidden: ColumnType[] = [];
@@ -24,12 +31,12 @@ class Table extends React.Component<TableProps, TableState> {
     return [visible, hidden];
   }
 
-  divRef: React.RefObject<HTMLElement>;
+  divRef: React.RefObject<HTMLTableElement>;
 
   divSizeObserver: ResizeObserver;
 
   static defaultProps = {
-    itemsPerPage: null,
+    itemsPerPage: 10,
     shouldResize: true,
     sort: null,
     handleSort: null,
@@ -120,11 +127,12 @@ class Table extends React.Component<TableProps, TableState> {
       theme,
       mode,
       isLoading,
-
-      // exclude columns and threshold from tableprops so it doesn't appear as a dom attribute
+      iconCreator,
+      // exclude custom props so they don't appear as a dom attributes
       /* eslint-disable */
       columns: cols,
       priorityLevelThreshold,
+      shouldResize,
       /* eslint-enable */
 
       ...tableProps
@@ -144,6 +152,7 @@ class Table extends React.Component<TableProps, TableState> {
             expandRow={this.expandRow}
             containerWidth={containerWidth}
             isLoading={isLoading}
+            iconCreator={iconCreator}
           />
         </table>
       </Styles>
@@ -151,10 +160,8 @@ class Table extends React.Component<TableProps, TableState> {
   }
 }
 
-export const ResponsiveTable = React.forwardRef(
-  (props: TableProps, ref): JSX.Element => {
-    const theme = useTheme();
-    const { mode } = useMode();
-    return <Table innerRef={ref} theme={theme} mode={mode} {...props} />;
-  },
-);
+export const ResponsiveTable = React.forwardRef((props: TableProps, ref): JSX.Element => {
+  const theme = useTheme();
+  const { mode } = useMode();
+  return <Table innerRef={ref} theme={theme} mode={mode} {...props} />;
+});

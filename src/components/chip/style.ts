@@ -1,14 +1,19 @@
 import { styled } from 'linaria/react';
-import { ThemeMode } from 'utils/types';
+import { PUITheme, ThemeMode } from 'utils/types';
 
-export const StyledChip = styled.button`
+export const StyledChip = styled.button<{
+  checked?: boolean;
+  mode: ThemeMode;
+  theme: PUITheme;
+  iconSize?: number | string;
+}>`
   align-items: center;
   cursor: pointer;
   display: flex;
   justify-content: center;
   position: relative;
   transition: 0.3s;
-  padding: 10px 15px;
+  padding: 3px 11px;
   border-radius: 4px;
   background-color: ${(props: any): string => {
     if (props.mode === ThemeMode.dark) {
@@ -47,20 +52,23 @@ export const StyledChip = styled.button`
     }
   }
 
+  &:focus {
+    box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.outline};
+  }
+
   &:focus-visible {
     box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.outline};
   }
 
   .labelTitle {
     color: inherit;
+    line-height: 16px;
   }
 
-  & > svg {
-    width: ${(props: any): string => (props.iconSize ? `${props.iconSize}px` : '16px')};
-    height: ${(props: any): string => (props.iconSize ? `${props.iconSize}px` : '16px')};
+  .svg {
+    width: 16px;
+    height: 16px;
     margin-left: 10px;
-    color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.light};
   }
 
   &.chipDisabled {

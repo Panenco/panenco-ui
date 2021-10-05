@@ -1,7 +1,10 @@
 import { styled } from 'linaria/react';
-import { ThemeMode } from 'utils/types';
+import { ThemeMode, PUITheme } from 'utils/types';
 
-export const StyledPagination = styled.div`
+export const StyledPagination = styled.div<{
+  theme: PUITheme;
+  mode: ThemeMode;
+}>`
   width: 100%;
   display: flex;
   align-items: center;
@@ -81,7 +84,11 @@ export const StyledPagination = styled.div`
   }
 `;
 
-export const StyledListPagination = styled.div`
+export const StyledListPagination = styled.div<{
+  theme: PUITheme;
+  mode: ThemeMode;
+  variant?: 'contained' | 'outlined' | 'text';
+}>`
   width: 100%;
   display: flex;
   align-items: center;
@@ -96,7 +103,8 @@ export const StyledListPagination = styled.div`
         align-items: center;
         min-width: 32px;
         height: 32px;
-        border: ${(props: any): any => (props.variant === 'contained' ? `1px solid ${props.theme.colors.secondary}` : 'none')};
+        border: ${(props: any): any =>
+          props.variant === 'contained' ? `1px solid ${props.theme.colors.secondary}` : 'none'};
         border-radius: 3px;
         margin-left: 8px;
         color: ${(props: any): any => `${props.theme.colors.primary}`};

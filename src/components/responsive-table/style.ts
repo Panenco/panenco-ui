@@ -1,8 +1,11 @@
 import { styled } from 'linaria/react';
 import { transparentize } from 'polished';
-import { ThemeMode } from 'utils/types';
+import { ThemeMode, PUITheme } from 'utils/types';
 
-export const Styles = styled.div`
+export const Styles = styled.div<{
+  theme: PUITheme;
+  mode: ThemeMode;
+}>`
   width: 100%;
   .table {
     border-spacing: 0;

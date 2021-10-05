@@ -23,15 +23,15 @@ const YourComponent = () => {
 - `weight` - font weight
 - `color` - font color
 - `children` - text content
-- `component` - paragraph or span (p or span)
+- `component` - p, span or any custom component
 
-| propName  | propType | defaultValue | isRequired |
-| --------- | -------- | ------------ | ---------- |
-| size      | string   | s            | -          |
-| weight    | string   | inherit      | -          |
-| color     | string   | inherit      | -          |
-| component | string   | -            | -          |
-| children  | node     | -            | +          |
+| propName  | propType                                     | defaultValue | isRequired |
+| --------- | -------------------------------------------- | ------------ | ---------- |
+| size      | string                                       | s            | -          |
+| weight    | string                                       | inherit      | -          |
+| color     | string                                       | inherit      | -          |
+| component | keyof React.ReactHTML or React.ComponentType | span         | -          |
+| children  | node                                         | -            | +          |
 
 ### Sizes
 

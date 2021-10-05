@@ -1,5 +1,3 @@
-import { PUITheme, ThemeMode } from 'utils/types';
-
 export interface ColumnType {
   accessor: string;
   label: any;
@@ -10,6 +8,7 @@ export interface ColumnType {
   sortName?: string;
   component?: any;
   prevWidth?: number;
+  className?: string;
 }
 
 export interface RowType<T = Record<string, any>> {
@@ -34,10 +33,9 @@ export interface TableProps extends React.HTMLAttributes<HTMLTableElement> {
   sort?: SortType;
   handleSort?: HandleSortType;
   innerRef?: any;
-  theme?: PUITheme;
-  mode?: ThemeMode;
   isLoading?: boolean;
   shouldResize?: boolean;
+  iconCreator?: (rowIsOpen: boolean) => string;
 }
 
 export interface TableState {

@@ -1,8 +1,14 @@
 import { styled } from 'linaria/react';
-import { ThemeMode } from 'utils/types';
+import { PUITheme, ThemeMode } from 'utils/types';
 import { transparentize } from 'polished';
 
-export const StyledTextArea = styled.div`
+export const StyledTextArea = styled.div<{
+  theme: PUITheme;
+  mode: ThemeMode;
+  loading?: boolean;
+  isDragActive?: boolean;
+  error?: string;
+}>`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -11,7 +17,6 @@ export const StyledTextArea = styled.div`
   .title {
     color: ${(props: any): string =>
       props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
-    margin-bottom: 4px;
   }
 
   .subtitle {
@@ -25,6 +30,8 @@ export const StyledTextArea = styled.div`
     width: 100%;
 
     &Content {
+      display: flex;
+      flex-direction: column;
       width: 100%;
     }
 
@@ -44,13 +51,17 @@ export const StyledTextArea = styled.div`
       }
 
       &Error {
-        box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.error};
-        border-color: transparent;
+        border: 2px solid ${(props: any): string => props.theme.colors.error};
+
         color: ${(props: any): string =>
           props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
 
+        .input {
+          margin: -2px;
+        }
+
         &:hover {
-          box-shadow: none;
+          padding: 7px 13px;
         }
       }
 
@@ -80,21 +91,22 @@ export const StyledTextArea = styled.div`
     }
 
     .counterWrapper {
-      margin-top: 4px;
+      bottom: -16px;
       display: flex;
       justify-content: space-between;
       font-size: ${(props: any): string => props.theme.typography.sizes.xs.textSize};
       position: absolute;
-      bottom: -15px;
       width: 100%;
 
       .counter {
         color: ${(props: any): string => props.theme.colors.secondary};
+        line-height: 1.3;
       }
 
       .errorLabel {
         color: ${(props: any): string =>
           props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.error};
+        line-height: 1.3;
       }
 
       .hidden {

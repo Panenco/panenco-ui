@@ -1,10 +1,31 @@
-import { Button, Col, ResponsiveTable, Row } from 'components';
+import { TextInput, Button, Col, ResponsiveTable, Row, SelectInput } from 'components';
 import TableDocs from 'components/responsive-table/responsive-table-DOCS.md';
 import TableReadme from 'components/responsive-table/responsive-table-README.md';
 import React from 'react';
 
+import s from './styles.scss';
 import { decorator } from '../../utils/decorator';
 import { WrappedComponent } from '../helpers/wrapped';
+
+const options = [
+  { label: 'Chip', value: 'Chip_1' },
+  { label: 'Chip', value: 'Chip_2' },
+  {
+    label: 'Group 1',
+    options: [
+      { label: 'G1-Option 1', value: 'G1-Option _1' },
+      { label: 'G1-option 2', value: 'G1-Option _2' },
+    ],
+  },
+  {
+    label: 'Group 2',
+    options: [
+      { label: 'G2-Option 1 ', value: 'G2-Option_1' },
+      { label: 'G2-Option 2', value: 'G2-Option_2' },
+      { label: 'G2-Option 3', value: 'G2-Option_3' },
+    ],
+  },
+];
 
 export default decorator('ResponsiveTable', TableDocs, TableReadme).add('ResponsiveTable', () => {
   const columns = [
@@ -32,6 +53,7 @@ export default decorator('ResponsiveTable', TableDocs, TableReadme).add('Respons
       position: 3,
       minWidth: 196,
       isVisible: true,
+      component: () => <TextInput />,
     },
     {
       accessor: 'targetAudience',
@@ -40,6 +62,8 @@ export default decorator('ResponsiveTable', TableDocs, TableReadme).add('Respons
       position: 4,
       minWidth: 196,
       isVisible: true,
+      component: () => <SelectInput options={options} />,
+      className: s.overflow,
     },
     {
       accessor: 'authors',
