@@ -1,5 +1,5 @@
 import React from 'react';
-import { SelectInput, Row, Col } from 'components';
+import { SelectInput, Row, Col, Icon } from 'components';
 import SelectInputDocs from 'components/select/DOCS.md';
 import README from 'components/select/README.md';
 import { decorator } from '../../utils/decorator';
@@ -35,52 +35,44 @@ export default decorator('Select', SelectInputDocs, README).add('Select componen
     setValue(value.filter((current) => current.value !== val.value));
   };
   return (
-    <WrappedComponent style={{ minHeight: '500px' }}>
-      <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start' }}>
-        <Col sm="2" md="3" lg="3">
+    <WrappedComponent>
+      <Row>
+        <Col xs="12" sm="6">
           <SelectInput options={options} title="Single Select" subTitle="Sub title" placeholder="Choose one option" />
         </Col>
-        <Col sm="2" md="3" lg="3">
+        <Col xs="12" sm="6">
           <SelectInput
             options={options}
             title="Multi Select"
             subTitle="Sub title"
             isMulti
-            chipIconSize={8}
+            chipIconSize={4}
+            chipIcon={Icon.icons.close}
             placeholder="Choose many options ..."
             value={value}
             onChange={handleChange}
             onDeleteOption={handleDeleteOption}
           />
         </Col>
-        <Col sm="2" md="3" lg="3">
+        <Col xs="12" sm="6">
           <SelectInput
             options={options}
-            title="Multi Select"
+            title="Creatable Select"
             subTitle="Sub title"
-            isMulti
-            chipIconSize={8}
-            placeholder="Choose many options ..."
+            placeholder="Choose or create ..."
             value={value}
             onChange={handleChange}
             onDeleteOption={handleDeleteOption}
-            error="Error options"
+            creatable
           />
         </Col>
-      </Row>
-      <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start' }}>
-        <Col sm="2" md="4" lg="4">
-          <SelectInput options={options} title="Select with Error" error="Error options" />
+        <Col xs="12" sm="6">
+          <SelectInput options={options} title="Select with Error" subTitle="Sub title" error="Error options" />
         </Col>
-        <Col sm="2" md="4" lg="4">
-          <SelectInput placeholder="Disabled" isDisabled />
+        <Col xs="12" sm="6">
+          <SelectInput title="Disabled select" subTitle="Sub title" placeholder="Disabled" isDisabled />
         </Col>
       </Row>
-      {/* <Row>
-        <Col sm="2" md="4" lg="4">
-          <TextInput error="1" />
-        </Col>
-      </Row> */}
     </WrappedComponent>
   );
 });
