@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import * as React from 'react';
 import { useTheme } from 'utils/hooks';
 import * as ReactDOM from 'react-dom';
@@ -14,7 +13,7 @@ import {
   StyledPopupBody,
 } from './style';
 
-export interface PopupProps extends React.HTMLAttributes<HTMLElement> {
+export interface PopupProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string;
   description?: string;
   className?: string;
@@ -26,7 +25,7 @@ export interface PopupProps extends React.HTMLAttributes<HTMLElement> {
   disableEscapeKeyDown?: boolean;
   titleId?: string;
 }
-export const Popup = React.forwardRef<HTMLElement, PopupProps>(
+export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
   (
     {
       title,
@@ -44,7 +43,7 @@ export const Popup = React.forwardRef<HTMLElement, PopupProps>(
     ref,
   ): JSX.Element => {
     const theme = useTheme();
-    const popupStopPropagation = (e: React.MouseEvent<HTMLElement>): void => {
+    const popupStopPropagation = (e: React.MouseEvent<HTMLDivElement>): void => {
       e.stopPropagation();
     };
     const handleEscClose = (ev: KeyboardEvent): void => {
@@ -61,62 +60,64 @@ export const Popup = React.forwardRef<HTMLElement, PopupProps>(
       }
       if (show && !disableEscapeKeyDown) {
         document.addEventListener('keydown', handleEscClose);
-        return () => {
+        return (): void => {
           document.removeEventListener('keydown', handleEscClose);
         };
       }
 
-      return () => {};
+      return (): void => {};
     }, [show, disableEscapeKeyDown]);
     const emptyHeader: boolean = !title && !description && !closeBtn;
-    return ReactDOM.createPortal(
+    return (
       <>
-        {show && (
-          <FocusLock returnFocus>
-            <StyledPopupBackdrop theme={theme} />
-            <StyledPopupContainer
-              {...props}
-              tabIndex={-1}
-              role="dialog"
-              aria-modal="true"
-              onClick={backdropClosable ? onHide : undefined}
-            >
-              <StyledPopup onClick={popupStopPropagation} className={className} ref={ref} theme={theme}>
-                {!emptyHeader && (
-                  <StyledPopupHeader>
-                    <StyledPopupHeaderTitleRow>
-                      <StyledPopupTitle>
-                        {title && (
-                          <Text
-                            id={titleId}
-                            size={theme.typography.sizes.l}
-                            weight={theme.typography.weights.bold}
-                            color={theme.colors.dark}
-                          >
-                            {title}
-                          </Text>
+        {show &&
+          ReactDOM.createPortal(
+            <FocusLock returnFocus>
+              <StyledPopupBackdrop theme={theme} />
+              <StyledPopupContainer
+                tabIndex={-1}
+                role="dialog"
+                aria-modal="true"
+                {...props}
+                onClick={backdropClosable ? onHide : undefined}
+                ref={ref}
+              >
+                <StyledPopup onClick={popupStopPropagation} className={className} theme={theme}>
+                  {!emptyHeader && (
+                    <StyledPopupHeader>
+                      <StyledPopupHeaderTitleRow>
+                        <StyledPopupTitle>
+                          {title && (
+                            <Text
+                              id={titleId}
+                              size={theme.typography.sizes.l}
+                              weight={theme.typography.weights.bold}
+                              color={theme.colors.dark}
+                            >
+                              {title}
+                            </Text>
+                          )}
+                        </StyledPopupTitle>
+                        {closeBtn && (
+                          <div>
+                            <ButtonIcon aria-label="Close" onClick={onHide} icon={Icon.icons.delete} />
+                          </div>
                         )}
-                      </StyledPopupTitle>
-                      {closeBtn && (
-                        <div>
-                          <ButtonIcon aria-label="Close" onClick={onHide} icon={Icon.icons.delete} />
-                        </div>
+                      </StyledPopupHeaderTitleRow>
+                      {description && (
+                        <Text size={theme.typography.sizes.m} color={theme.colors.dark}>
+                          {description}
+                        </Text>
                       )}
-                    </StyledPopupHeaderTitleRow>
-                    {description && (
-                      <Text size={theme.typography.sizes.m} color={theme.colors.dark}>
-                        {description}
-                      </Text>
-                    )}
-                  </StyledPopupHeader>
-                )}
-                <StyledPopupBody emptyHeader={emptyHeader}>{children}</StyledPopupBody>
-              </StyledPopup>
-            </StyledPopupContainer>
-          </FocusLock>
-        )}
-      </>,
-      document.body,
+                    </StyledPopupHeader>
+                  )}
+                  <StyledPopupBody emptyHeader={emptyHeader}>{children}</StyledPopupBody>
+                </StyledPopup>
+              </StyledPopupContainer>
+            </FocusLock>,
+            document.body,
+          )}
+      </>
     );
   },
 );
