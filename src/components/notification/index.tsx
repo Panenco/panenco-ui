@@ -1,14 +1,25 @@
 import { Icon, Text } from 'index';
 import * as React from 'react';
-import { toast as toastify, ToastContainer, ToastContainerProps } from 'react-toastify';
+import {
+  toast as toastify,
+  ToastContainer,
+  ToastOptions,
+  ToastContainerProps,
+  ToastContent,
+  ToastContentProps,
+  TypeOptions,
+} from 'react-toastify';
 import { colors, sizes } from 'styles';
 import { useMode, useTheme } from 'utils/hooks';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { StyledNotificationContainer } from './style';
 
-export type NotificationContainerProps = ToastContainerProps & { undo?: any; className?: string };
+type AdditionalOptions = { undo?: () => void; icon?: string };
 
-const CloseButton = ({ closeToast }: any): JSX.Element => {
+export type NotificationContainerProps = ToastContainerProps & { className?: string };
+
+const CloseButton = ({ closeToast }: { closeToast: () => void }): JSX.Element => {
   return (
     <button type="button" className="Toastify__close-button" onClick={closeToast}>
       <Icon icon={Icon.icons.delete} className="Toastify__close-button--icon" />
@@ -16,91 +27,107 @@ const CloseButton = ({ closeToast }: any): JSX.Element => {
   );
 };
 
-const NotifyBody = ({ children, status, undo, closeToast }: any): JSX.Element => {
-  let icon = Icon.icons.success;
-  if (status === toastify.TYPE.ERROR) {
-    icon = Icon.icons.close;
-  }
+type BodyProps = AdditionalOptions & {
+  children: React.ReactNode | string;
+  status?: TypeOptions;
+  closeToast: ToastContentProps['closeToast'];
+  icon?: string;
+};
 
-  if (status === toastify.TYPE.INFO || status === toastify.TYPE.WARNING) {
-    icon = Icon.icons.info;
-  }
+const statusToIconMap = {
+  [toastify.TYPE.ERROR]: 'exclude',
+  [toastify.TYPE.INFO]: 'info',
+  [toastify.TYPE.WARNING]: 'info',
+};
+
+const NotifyBody = ({ children, status, undo, icon: iconProp, closeToast }: BodyProps): JSX.Element => {
+  const getIcon = (): React.ReactElement => {
+    // if was passed from props - return it
+    if (iconProp) return Icon.icons[iconProp];
+
+    if (status && statusToIconMap[status]) return Icon.icons[statusToIconMap[status]];
+
+    // default - success
+    return Icon.icons.checkCircle;
+  };
 
   const handleUndo = (): void => {
-    undo();
-    closeToast();
+    if (undo) {
+      undo();
+      closeToast?.();
+    }
   };
 
   return (
     <div className="body">
-      <Icon icon={icon} className="Toastify__toast-body--icon" />
+      <Icon icon={getIcon()} className="Toastify__toast-body--icon" />
       <div className="bodyContent">
         {typeof children === 'string' ? <Text className="Toastify__toast-body--content">{children}</Text> : children}
 
-        {undo ? (
+        {undo && (
           <button className="bodyContentUndo" onClick={handleUndo} type="button">
             <Text size={sizes.m} color={colors.accent}>
               Undo
             </Text>
           </button>
-        ) : null}
+        )}
       </div>
     </div>
   );
 };
 
-const baseOptions = {
-  closeButton: <CloseButton />,
+const baseOptions: ToastOptions = {
+  closeButton: (props) => <CloseButton {...props} />,
   draggable: false,
-  closeOnClick: false,
-  onChange: (): void => {},
-  // progress: 1,
-  // autoClose: false as false,
+  closeOnClick: true,
   hideProgressBar: true,
 };
 
-export const toast = (content: string | React.ReactNode | { (): void }, options): number | string => {
-  const renderToast = toastify(<NotifyBody options={options}>{content}</NotifyBody>, {
-    ...baseOptions,
-    ...options,
-  });
-
-  return renderToast;
-};
-
-toast.isActive = toastify.isActive;
-toast.dismiss = toastify.dismiss;
-toast.onChange = toastify.onChange;
-toast.update = toastify.update; // should be check
-toast.done = toastify.done; // should be check
-toast.configure = toastify.configure;
-toast.TYPE = toastify.TYPE;
-toast.POSITION = toastify.POSITION;
-
-/* eslint-disable */
-for (const t in toastify.TYPE) {
-  const status = toastify.TYPE[t].toLowerCase();
-  if (toast.TYPE[t] !== toast.TYPE.DEFAULT) {
-    toast[status] = (content, options) =>
-      toastify[status](
-        <NotifyBody status={status} undo={options?.undo}>
+export const toast = Object.assign(
+  (content: ToastContent, options?: ToastOptions & AdditionalOptions): React.ReactText => {
+    const renderToast = toastify(
+      ({ closeToast }) => (
+        <NotifyBody icon={options?.icon} undo={options?.undo} closeToast={closeToast}>
           {content}
-        </NotifyBody>,
-        {
-          ...baseOptions,
-          ...options,
-        },
-      );
-  }
-}
-/* eslint-enable */
+        </NotifyBody>
+      ),
+      {
+        ...baseOptions,
+        ...options,
+      },
+    );
+
+    return renderToast;
+  },
+  // merge all properties from toastify
+  toastify,
+  // override toast.success(), toast.error() etc.
+  Object.values(toastify.TYPE).reduce(
+    (acc, val) => ({
+      ...acc,
+      [val]: (content, options?: ToastOptions & AdditionalOptions): React.ReactText =>
+        toastify[val](
+          ({ closeToast }: ToastContentProps) => (
+            <NotifyBody icon={options?.icon} undo={options?.undo} status={val} closeToast={closeToast}>
+              {content}
+            </NotifyBody>
+          ),
+          {
+            ...baseOptions,
+            ...options,
+          },
+        ),
+    }),
+    {},
+  ),
+);
 
 export const NotificationContainer = ({ className, ...props }: NotificationContainerProps): JSX.Element => {
   const theme = useTheme();
   const { mode } = useMode();
   return (
-    <StyledNotificationContainer theme={theme} mode={mode} {...props} className={className}>
-      <ToastContainer />
+    <StyledNotificationContainer theme={theme} mode={mode} className={className}>
+      <ToastContainer {...props} />
     </StyledNotificationContainer>
   );
 };

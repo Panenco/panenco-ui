@@ -48,7 +48,7 @@ export default decorator('Notification', NotificationDOCS, NotificationREADME).a
         <Col s="2" m="2" l="3">
           <PrimaryButton
             style={{ backgroundColor: colors.error }}
-            onClick={() => toast.error('You lost internet connection')}
+            onClick={() => toast.error('You lost internet connection', { icon: 'success' })}
           >
             Show error
           </PrimaryButton>

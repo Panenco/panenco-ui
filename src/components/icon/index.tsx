@@ -65,6 +65,7 @@ import uploadDown from './icons/static-icons/upload-down.svg';
 import x from './icons/static-icons/x.svg';
 import question from './icons/static-icons/question.svg';
 import unlink from './icons/static-icons/unlink.svg';
+import checkCircle from './icons/static-icons/check-circle.svg';
 
 // animated clock
 import animatedClock from './icons/animated-clock/animated-clock.svg';
@@ -115,6 +116,7 @@ Icon.icons = {
   duplicate,
   add,
   bell,
+  checkCircle,
   bellUnactive,
   delete: deleteIcon,
   edit,

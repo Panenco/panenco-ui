@@ -45,7 +45,6 @@ export const StyledNotificationContainer = styled.div<{
     border: 1px solid ${(props: any): string => props.theme.colors.secondary};
     border-radius: 4px;
     position: relative;
-
     padding: 0;
     border-left: 4px solid ${(props: any): string => props.theme.colors.success};
     background-color: ${(props: any): string =>
@@ -85,11 +84,11 @@ export const StyledNotificationContainer = styled.div<{
 
   .Toastify__toast-body {
     display: flex;
-    align-items: center;
     padding: 16px 16px 12px 16px;
     color: ${(props: any): string =>
       props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
-    cursor: default;
+    align-items: flex-start;
+    margin: 0;
 
     &--content {
       color: ${(props: any): string =>
@@ -118,10 +117,11 @@ export const StyledNotificationContainer = styled.div<{
       transition: 0.3s ease;
       -ms-flex-item-align: start;
       align-self: flex-start;
-      width: 16px;
-      height: 16px;
+      width: 12px;
+      height: 12px;
       margin-right: 16px;
       margin-top: 16px;
+
       color: ${(props: any): string => props.theme.colors.secondary};
       &--icon {
         width: 100%;

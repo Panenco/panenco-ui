@@ -41,6 +41,7 @@ module.exports = {
     'import/extensions': 0,
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-empty-function': 'off',
+    'react/require-default-props': 0,
   },
   settings: {
     'import/resolver': {
