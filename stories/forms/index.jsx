@@ -13,29 +13,29 @@ import { WrappedComponent } from '../helpers/wrapped';
 export default decorator('Forms', TextInputDocs, TextInputReadme).add('TextInput', () => (
   <WrappedComponent>
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <Row style={{ justifyContent: 'center' }}>
-        <Col s="2" m="4" l="6">
+      <Row spacing={3} style={{ justifyContent: 'center' }}>
+        <Col xs="2" sm="4" lg="6">
           <TextInput placeholder="Icon before" iconBefore={Icon.icons.mapPin} maxLength={10} />
         </Col>
-        <Col s="2" m="4" l="6">
+        <Col xs="2" sm="4" lg="6">
           <TextInput placeholder="Icon after" iconAfter={<Icon icon={Icon.icons.closeEye} />} />
         </Col>
       </Row>
 
-      <Row style={{ justifyContent: 'center' }}>
-        <Col s="2" m="4" l="6">
+      <Row spacing={3} style={{ justifyContent: 'center' }}>
+        <Col xs="2" sm="4" lg="6">
           <TextInput iconBefore={<ButtonIcon icon={Icon.icons.home} />} placeholder="Button icon" />
         </Col>
-        <Col s="2" m="4" l="6">
+        <Col xs="2" sm="4" lg="6">
           <TextInput disabled placeholder="Disabled" />
         </Col>
       </Row>
 
-      <Row style={{ justifyContent: 'center' }}>
-        <Col s="2" m="4" l="6">
+      <Row spacing={3} style={{ justifyContent: 'center' }}>
+        <Col xs="2" sm="4" lg="6">
           <TextInput title="Title" subTitle="Subtitle" placeholder="Error" maxLength={100} />
         </Col>
-        <Col s="2" m="4" l="6">
+        <Col xs="2" sm="4" lg="6">
           <TextInput title="Title" subTitle="Subtitle" error="Error label" placeholder="Error" maxLength={100} />
         </Col>
       </Row>
@@ -47,20 +47,20 @@ export const Textarea = decorator('Forms', TextAreaDocs, TextAreaReadme).add('Te
   return (
     <WrappedComponent>
       <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <Row style={{ alignItems: 'flex-start' }}>
-          <Col s="2" m="4" l="6">
+        <Row spacing={3} style={{ alignItems: 'flex-start' }}>
+          <Col xs="2" sm="4" lg="6">
             <TextArea title="Title" subTitle="Subtitle" placeholder="Placeholder" />
           </Col>
-          <Col s="2" m="4" l="6">
+          <Col xs="2" sm="4" lg="6">
             <TextArea title="Title" subTitle="Subtitle" placeholder="Placeholder" maxLength="10" />
           </Col>
         </Row>
 
-        <Row style={{ alignItems: 'flex-start' }}>
-          <Col s="2" m="4" l="6">
+        <Row spacing={3} style={{ alignItems: 'flex-start' }}>
+          <Col xs="2" sm="4" lg="6">
             <TextArea disabled placeholder="Disabled" maxLength="10" />
           </Col>
-          <Col s="2" m="4" l="6">
+          <Col xs="2" sm="4" lg="6">
             <TextArea placeholder="Error" error="Error label" maxLength="50" />
           </Col>
         </Row>
@@ -72,33 +72,33 @@ export const Textarea = decorator('Forms', TextAreaDocs, TextAreaReadme).add('Te
 export const StepperComponent = decorator('Forms', StepperDocs, StepperReadme).add('Stepper', () => {
   return (
     <WrappedComponent>
-      <Row style={{ justifyContent: 'center' }}>
-        <Col s="3" m="3" l="3">
+      <Row spacing={3} style={{ justifyContent: 'center' }}>
+        <Col xs="3" sm="3" lg="3">
           <StepperInput title="Stepper with error" error="Error" />
         </Col>
       </Row>
-      <Row style={{ justifyContent: 'center' }}>
-        <Col s="3" m="3" l="3">
+      <Row spacing={3} style={{ justifyContent: 'center' }}>
+        <Col xs="3" sm="3" lg="3">
           <StepperInput minValue={0} maxValue={5} title="Min and Max" />
         </Col>
       </Row>
-      <Row style={{ justifyContent: 'center' }}>
-        <Col s="3" m="3" l="3">
+      <Row spacing={3} style={{ justifyContent: 'center' }}>
+        <Col xs="3" sm="3" lg="3">
           <StepperInput minValue={0} title="Min" />
         </Col>
       </Row>
-      <Row style={{ justifyContent: 'center' }}>
-        <Col s="3" m="3" l="3">
+      <Row spacing={3} style={{ justifyContent: 'center' }}>
+        <Col xs="3" sm="3" lg="3">
           <StepperInput maxValue={5} title="Max" />
         </Col>
       </Row>
-      <Row style={{ justifyContent: 'center' }}>
-        <Col s="3" m="3" l="3">
+      <Row spacing={3} style={{ justifyContent: 'center' }}>
+        <Col xs="3" sm="3" lg="3">
           <StepperInput title="No" />
         </Col>
       </Row>
-      <Row style={{ justifyContent: 'center' }}>
-        <Col s="3" m="3" l="3">
+      <Row spacing={3} style={{ justifyContent: 'center' }}>
+        <Col xs="3" sm="3" lg="3">
           <StepperInput disabled title="No" />
         </Col>
       </Row>
