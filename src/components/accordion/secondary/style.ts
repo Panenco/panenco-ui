@@ -27,7 +27,8 @@ export const StyledAccordionSecondary = styled.div<{
 
   &:focus-within {
     border-radius: 4px;
-    box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.outline};
+    outline: ${(props: any): string => props.theme.colors.outline} solid 2px;
+    outline-offset: -2px;
   }
 
   .accordionHeader {
