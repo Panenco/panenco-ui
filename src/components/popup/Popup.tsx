@@ -7,7 +7,7 @@ import { PopupContext } from './popupContext';
 import { PopupSizesType } from './types';
 
 export interface PopupProps extends React.HTMLAttributes<HTMLDivElement> {
-  children?: React.ReactNode;
+  children: React.ReactNode;
   onHide: () => void;
   show: boolean;
   backdropClosable?: boolean;

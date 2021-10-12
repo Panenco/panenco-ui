@@ -3,7 +3,7 @@ import { useTheme } from 'utils/hooks';
 import { Text } from 'components';
 
 export interface PopupTitleProps extends React.HTMLAttributes<HTMLDivElement> {
-  children?: React.ReactNode;
+  children: React.ReactNode;
   onHide: () => void;
   closeBtn?: boolean;
 }

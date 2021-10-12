@@ -4,7 +4,7 @@ import { breakpoints } from 'styles/breakpoints';
 import { PopupSizesType } from './types';
 
 const sizeOptions = {
-  sm: '300px',
+  sm: '320px',
   md: '460px',
   lg: '798px',
 };
@@ -51,7 +51,7 @@ export const StyledPopup = styled.div<{
   border: 1px solid ${(props: any): string => props.theme.colors.border};
   display: flex;
   flex-direction: column;
-  max-width: ${(props: any): string => (sizeOptions[props.size] ? sizeOptions[props.size] : sizeOptions.md)};
+  max-width: ${(props: any): string => sizeOptions[props.size] || sizeOptions.md};
   width: 100%;
   outline: 0;
   pointer-events: auto;

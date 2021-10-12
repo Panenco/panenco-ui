@@ -1,4 +1,4 @@
-# Popup
+# Docs are outdated!!!
 
 ### How it works
 
