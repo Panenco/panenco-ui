@@ -51,7 +51,8 @@ export const StyledPopup = styled.div<{
   border: 1px solid ${(props: any): string => props.theme.colors.border};
   display: flex;
   flex-direction: column;
-  width: ${(props: any): string => (sizeOptions[props.size] ? sizeOptions[props.size] : sizeOptions.md)};
+  max-width: ${(props: any): string => (sizeOptions[props.size] ? sizeOptions[props.size] : sizeOptions.md)};
+  width: 100%;
   outline: 0;
   pointer-events: auto;
   position: relative;
