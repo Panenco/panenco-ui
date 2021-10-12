@@ -1,45 +1,23 @@
 import * as React from 'react';
 import { useTheme } from 'utils/hooks';
 import * as ReactDOM from 'react-dom';
-import { Text, Icon, ButtonIcon } from 'components';
 import FocusLock from 'react-focus-lock';
-import {
-  StyledPopup,
-  StyledPopupBackdrop,
-  StyledPopupContainer,
-  StyledPopupHeader,
-  StyledPopupHeaderTitleRow,
-  StyledPopupTitle,
-  StyledPopupBody,
-} from './style';
+import { StyledPopup, StyledPopupBackdrop, StyledPopupContainer } from './style';
+import { PopupBody } from './PopupBody';
+import { PopupHeader } from './PopupHeader';
+import { PopupFooter } from './PopupFooter';
+import { PopupTitle } from './PopupTitle';
 
 export interface PopupProps extends React.HTMLAttributes<HTMLDivElement> {
-  title?: string;
-  description?: string;
-  className?: string;
   children?: React.ReactNode;
   onHide: () => void;
   show: boolean;
   backdropClosable?: boolean;
-  closeBtn?: boolean;
   disableEscapeKeyDown?: boolean;
-  titleId?: string;
 }
-export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
+const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
   (
-    {
-      title,
-      description,
-      className,
-      children,
-      onHide,
-      show,
-      backdropClosable = true,
-      closeBtn = true,
-      disableEscapeKeyDown = false,
-      titleId,
-      ...props
-    }: PopupProps,
+    { children, onHide, show, backdropClosable = true, disableEscapeKeyDown = false, ...props }: PopupProps,
     ref,
   ): JSX.Element => {
     const theme = useTheme();
@@ -67,7 +45,6 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
 
       return (): void => {};
     }, [show, disableEscapeKeyDown]);
-    const emptyHeader: boolean = !title && !description && !closeBtn;
     return (
       <>
         {show &&
@@ -82,36 +59,8 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
                 onClick={backdropClosable ? onHide : undefined}
                 ref={ref}
               >
-                <StyledPopup onClick={popupStopPropagation} className={className} theme={theme}>
-                  {!emptyHeader && (
-                    <StyledPopupHeader>
-                      <StyledPopupHeaderTitleRow>
-                        <StyledPopupTitle>
-                          {title && (
-                            <Text
-                              id={titleId}
-                              size={theme.typography.sizes.l}
-                              weight={theme.typography.weights.bold}
-                              color={theme.colors.dark}
-                            >
-                              {title}
-                            </Text>
-                          )}
-                        </StyledPopupTitle>
-                        {closeBtn && (
-                          <div>
-                            <ButtonIcon aria-label="Close" onClick={onHide} icon={Icon.icons.delete} />
-                          </div>
-                        )}
-                      </StyledPopupHeaderTitleRow>
-                      {description && (
-                        <Text size={theme.typography.sizes.m} color={theme.colors.dark}>
-                          {description}
-                        </Text>
-                      )}
-                    </StyledPopupHeader>
-                  )}
-                  <StyledPopupBody emptyHeader={emptyHeader}>{children}</StyledPopupBody>
+                <StyledPopup onClick={popupStopPropagation} theme={theme}>
+                  {children}
                 </StyledPopup>
               </StyledPopupContainer>
             </FocusLock>,
@@ -121,3 +70,12 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
     );
   },
 );
+
+const PopupNamespace = Object.assign(Popup, {
+  Header: PopupHeader,
+  Footer: PopupFooter,
+  Body: PopupBody,
+  Title: PopupTitle,
+});
+
+export { PopupNamespace as Popup };

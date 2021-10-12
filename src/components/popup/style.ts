@@ -2,31 +2,38 @@ import { PUITheme } from 'utils/types';
 import { styled } from 'linaria/react';
 import { breakpoints } from 'styles/breakpoints';
 
-export const StyledPopupTitle = styled.div`
-  margin-right: 16px;
-`;
-
-export const StyledPopupHeaderTitleRow = styled.div`
+export const StyledPopupHeader = styled.div<{
+  theme: PUITheme;
+}>`
   display: flex;
   justify-content: space-between;
+  padding: 24px 18px;
+  border-bottom: 1px solid ${(props: any): string => props.theme.colors.border};
+  @media (max-width: ${breakpoints.sm}) {
+    padding: 18px 18px;
+  }
 `;
 
-export const StyledPopupHeader = styled.div`
-  padding: 24px 24px 8px 24px;
+export const StyledPopupFooter = styled.div<{
+  theme: PUITheme;
+}>`
+  padding: 24px 18px;
+  border-top: 1px solid ${(props: any): string => props.theme.colors.border};
   @media (max-width: ${breakpoints.sm}) {
-    padding: 16px 16px 8px 16px;
+    padding: 18px 18px;
   }
+`;
+
+export const CloseBtnContainer = styled.div`
+  margin-top: 5px;
 `;
 
 export const StyledPopupBody = styled.div<{
   emptyHeader: boolean;
 }>`
-  padding: ${(props: any): string => (props.emptyHeader ? '24px' : '8px 24px 24px 24px')};
+  padding: 24px 18px;
   @media (max-width: ${breakpoints.sm}) {
-    flex: 1;
-    overflow-x: hidden;
-    overflow-y: auto;
-    padding: ${(props: any): string => (props.emptyHeader ? '16px' : '8px 16px 16px 16px')};
+    padding: 18px 18px;
   }
 `;
 
@@ -49,7 +56,6 @@ export const StyledPopup = styled.div<{
     flex-direction: column;
     height: auto;
     margin-top: auto;
-    max-height: min(100%, 500px);
   }
 `;
 
