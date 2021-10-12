@@ -47,9 +47,24 @@ export const StyledDropzone = styled.div<{
     }
     return props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.accent;
   }};
+  outline: none;
+
+  &:focus {
+    box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.outline};
+  }
 
   &:hover {
     cursor: pointer;
+    outline: 2px solid
+      ${(props: any): string => {
+        if (props.color) {
+          return props.color;
+        }
+        if (props.mode === ThemeMode.dark) {
+          return props.theme.colors.light;
+        }
+        return props.theme.colors.accent;
+      }};
   }
 
   .icon {
