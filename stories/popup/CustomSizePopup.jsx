@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Popup, PrimaryButton, SecondaryButton, TextInput, Icon } from 'components';
+import s from './styles.scss';
 
-const SmallPopup = () => {
+const CustomSizePopup = () => {
   const [popupOpen, setPopupOpen] = useState(false);
 
   const handlePopupHide = () => {
@@ -14,9 +15,9 @@ const SmallPopup = () => {
   return (
     <>
       <div>
-        <PrimaryButton onClick={handlePopupShow}>Open small popup</PrimaryButton>
+        <PrimaryButton onClick={handlePopupShow}>Open custom popup</PrimaryButton>
       </div>
-      <Popup size="sm" aria-labelledby="examplePopup" show={popupOpen} onHide={handlePopupHide}>
+      <Popup dialogClassName={s.customSizePopup} size="sm" aria-labelledby="examplePopup" show={popupOpen} onHide={handlePopupHide}>
         <Popup.Header>
           <Popup.Title id="examplePopup">Lorem, ipsum dolor.</Popup.Title>
         </Popup.Header>
@@ -39,4 +40,4 @@ const SmallPopup = () => {
   );
 };
 
-export default SmallPopup;
+export default CustomSizePopup;

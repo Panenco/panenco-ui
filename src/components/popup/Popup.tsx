@@ -12,7 +12,8 @@ export interface PopupProps extends React.HTMLAttributes<HTMLDivElement> {
   show: boolean;
   backdropClosable?: boolean;
   disableEscapeKeyDown?: boolean;
-  size: PopupSizesType;
+  size?: PopupSizesType;
+  dialogClassName?: string;
 }
 export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
   (
@@ -23,6 +24,7 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
       backdropClosable = true,
       disableEscapeKeyDown = false,
       size = 'md',
+      dialogClassName,
       ...props
     }: PopupProps,
     ref,
@@ -67,7 +69,7 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
                 onClick={backdropClosable ? onHide : undefined}
                 ref={ref}
               >
-                <StyledPopup size={size} onClick={popupStopPropagation} theme={theme}>
+                <StyledPopup size={size} className={dialogClassName} onClick={popupStopPropagation} theme={theme}>
                   {children}
                 </StyledPopup>
               </StyledPopupContainer>
