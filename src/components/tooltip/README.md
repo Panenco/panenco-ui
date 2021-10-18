@@ -24,6 +24,7 @@ const render  = () => {
 This component inherits the attributes of the **div** element and extends the functionality with next properties.
 
 - content - content of the tooltip;
+- children - children;
 - delay - delay displaying tooltip;
 - position - position of the tooltip (top, right, left, bottom);
 - ref - ref;
