@@ -134,9 +134,6 @@ export const StyledStepperInput = styled.div<{
     position: absolute;
 
     &Label {
-      color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.error};
-      font-size: ${(props: any): string => props.theme.typography.sizes.xs.textSize};
       margin-top: 4px;
     }
   }

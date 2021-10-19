@@ -119,11 +119,7 @@ export const StyledTextInput = styled.div<{
   }
 
   .inputErrorLabel {
-    color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.error};
-    font-size: ${(props: any): string => props.theme.typography.sizes.xs.textSize};
     height: 16px;
-    line-height: 1.3;
   }
 
   .counterWrapper {
@@ -135,8 +131,6 @@ export const StyledTextInput = styled.div<{
     width: 100%;
 
     .counter {
-      color: ${(props: any): string => props.theme.colors.secondary};
-      line-height: 1.3;
     }
 
     .hidden {
