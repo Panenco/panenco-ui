@@ -2,6 +2,7 @@ import * as React from 'react';
 import cx from 'classnames';
 import { Icon, Text } from 'components';
 import { useTheme, useMode } from 'utils/hooks';
+import { idGenerator } from 'utils/helpers';
 import { InputComponent, WrapperProps, InputPropsType, ThemeMode } from '../../../utils/types';
 import { StyledTextInput } from './style';
 
@@ -16,6 +17,7 @@ export interface TextInputProps extends InputComponent, React.InputHTMLAttribute
 export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
   (
     {
+      id,
       maxLength,
       className,
       type = 'text',
@@ -35,6 +37,9 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
     ref,
   ): JSX.Element => {
     const [counter, setCounter] = React.useState(0);
+
+    const uniqueID = idGenerator();
+    const defaultId = id || uniqueID;
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
       if (maxLength) setCounter(event.target.value.length);
@@ -70,9 +75,9 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
         <div className="fieldWrapper">
           <div className={cx('inputField', error && 'inputFieldError', disabled && 'inputFieldDisabled')}>
             {iconBefore && (
-              <div className="iconBefore">
+              <label className="iconBefore" htmlFor={defaultId}>
                 {React.isValidElement(iconBefore) ? iconBefore : <Icon icon={iconBefore} />}
-              </div>
+              </label>
             )}
             <input
               type={type}
@@ -83,11 +88,14 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
               disabled={disabled}
               maxLength={maxLength}
               ref={inputRef}
+              id={defaultId}
               {...inputProps}
               {...props}
             />
             {iconAfter && (
-              <div className="iconAfter">{React.isValidElement(iconAfter) ? iconAfter : <Icon icon={iconAfter} />}</div>
+              <label className="iconAfter" htmlFor={defaultId}>
+                {React.isValidElement(iconAfter) ? iconAfter : <Icon icon={iconAfter} />}
+              </label>
             )}
           </div>
         </div>
