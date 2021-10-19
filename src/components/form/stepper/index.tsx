@@ -16,6 +16,7 @@ export interface StepperInputProps extends InputComponent, React.InputHTMLAttrib
   iconAfter?: HTMLObjectElement | JSX.Element;
   wrapperProps?: WrapperProps;
   inputProps?: InputPropsType;
+  locales?: { [key: string]: string };
 }
 
 export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
@@ -32,6 +33,7 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
       error,
       wrapperProps,
       inputProps,
+      locales = { notInRange: 'Must be in range' },
       ...props
     }: StepperInputProps,
     ref,
@@ -121,7 +123,7 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
               color={mode === ThemeMode.dark ? theme.colors.light : theme.colors.error}
               className="inputErrorLabel"
             >
-              Must be in range: {`[${min}, ${max}]`}
+              {locales.notInRange}: {`[${min}, ${max}]`}
             </Text>
           ) : null}
           {error && !notInRange && (
