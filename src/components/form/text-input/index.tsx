@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { Icon, Text } from 'components';
 import { useTheme, useMode } from 'utils/hooks';
 import { idGenerator } from 'utils/helpers';
-import { InputComponent, WrapperProps, InputPropsType } from '../../../utils/types';
+import { InputComponent, WrapperProps, InputPropsType,ThemeMode } from '../../../utils/types';
 import { StyledTextInput } from './style';
 
 export interface TextInputProps extends InputComponent, React.InputHTMLAttributes<HTMLInputElement> {
@@ -101,11 +101,23 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
         </div>
         {error || maxLength ? (
           <div className="counterWrapper">
-            <span className="inputErrorLabel">{error}</span>
+            <Text
+              component="span"
+              size={theme.typography.sizes.xs}
+              color={mode === ThemeMode.dark ? theme.colors.light : theme.colors.error}
+              className="inputErrorLabel"
+            >
+              {error}
+            </Text>
             {maxLength && (
-              <span className="counter">
+              <Text
+                component="span"
+                size={theme.typography.sizes.xs}
+                color={theme.colors.secondary}
+                className="counter"
+              >
                 {counter}/{maxLength}
-              </span>
+              </Text>
             )}
           </div>
         ) : null}
