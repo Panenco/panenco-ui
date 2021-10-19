@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { Icon, Text } from 'components';
 import { useTheme, useMode } from 'utils/hooks';
 import { idGenerator } from 'utils/helpers';
-import { InputComponent, WrapperProps, InputPropsType,ThemeMode } from '../../../utils/types';
+import { InputComponent, WrapperProps, InputPropsType, ThemeMode } from '../../../utils/types';
 import { StyledTextInput } from './style';
 
 export interface TextInputProps extends InputComponent, React.InputHTMLAttributes<HTMLInputElement> {
