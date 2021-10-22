@@ -8,7 +8,7 @@ import { PopupSizesType } from './types';
 
 export interface PopupProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
-  onHide: () => void;
+  onHide?: () => void;
   show: boolean;
   backdropClosable?: boolean;
   disableEscapeKeyDown?: boolean;
@@ -34,7 +34,7 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
       e.stopPropagation();
     };
     const handleEscClose = (ev: KeyboardEvent): void => {
-      if (ev.key === 'Escape') onHide();
+      if (ev.key === 'Escape' && onHide) onHide();
     };
     React.useEffect(() => {
       const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
@@ -45,7 +45,7 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
         document.body.style.overflow = 'visible';
         document.body.style.paddingRight = '0';
       }
-      if (show && !disableEscapeKeyDown) {
+      if (show && !disableEscapeKeyDown && onHide) {
         document.addEventListener('keydown', handleEscClose);
         return (): void => {
           document.removeEventListener('keydown', handleEscClose);
@@ -66,7 +66,7 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
                 role="dialog"
                 aria-modal="true"
                 {...props}
-                onClick={backdropClosable ? onHide : undefined}
+                onClick={backdropClosable && onHide ? onHide : undefined}
                 ref={ref}
               >
                 <StyledPopup size={size} className={dialogClassName} onClick={popupStopPropagation} theme={theme}>

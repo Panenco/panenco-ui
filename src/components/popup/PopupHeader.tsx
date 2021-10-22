@@ -11,13 +11,13 @@ export interface PopupHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
 export const PopupHeader = React.forwardRef<HTMLDivElement, PopupHeaderProps>(
   ({ children, closeButton = true }: PopupHeaderProps, ref): JSX.Element => {
     const theme = useTheme();
-    const popupContext = React.useContext(PopupContext);
+    const { onHide } = React.useContext(PopupContext);
     return (
       <StyledPopupHeader theme={theme} ref={ref}>
         <div>{children}</div>
-        {closeButton && (
+        {closeButton && onHide && (
           <div>
-            <ButtonIcon aria-label="Close" onClick={popupContext?.onHide} icon={Icon.icons.delete} />
+            <ButtonIcon aria-label="Close" onClick={onHide} icon={Icon.icons.delete} />
           </div>
         )}
       </StyledPopupHeader>

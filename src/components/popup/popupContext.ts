@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 
 interface PopupContextInterface {
-  onHide: () => void;
+  onHide: (() => void) | undefined;
 }
 
-export const PopupContext = createContext<PopupContextInterface | null>(null);
+export const PopupContext = createContext<PopupContextInterface>({ onHide: undefined });
