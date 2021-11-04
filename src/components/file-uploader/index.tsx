@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cx from 'classnames';
-import { PrimaryButton, Text, Icon, Loader, ButtonIcon } from 'components';
+import { Button, Text, Icon, Loader, ButtonIcon } from 'components';
 import { useTheme, useMode } from 'utils/hooks';
 import { idGenerator } from 'utils/helpers';
 import { ThemeMode, InputPropsType, WrapperProps } from '../../utils/types';
@@ -108,8 +108,8 @@ export const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
             {title}
           </Text>
         )}
-        <label className="uploader" htmlFor={id || defaultId}>
-          <div className={error ? 'placeholderBoxError' : 'placeholderBox'}>
+        <label className={cx('uploader', error && 'uploaderError')} htmlFor={id || defaultId}>
+          <div className="placeholderBox">
             <input
               className="uploaderInput"
               type="file"
@@ -125,9 +125,9 @@ export const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
             {renderStatusIcons}
           </div>
 
-          <PrimaryButton type="submit" className="uploaderBtn" disabled={disabled || loading}>
+          <Button type="submit" variant="contained" className="uploaderBtn" disabled={disabled || loading}>
             {buttonText}
-          </PrimaryButton>
+          </Button>
         </label>
 
         {error && (

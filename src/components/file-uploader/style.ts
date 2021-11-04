@@ -13,6 +13,7 @@ export const StyledFileUploader = styled.div<{
   width: 100%;
   display: flex;
   flex-direction: column;
+
   pointer-events: ${(props: any): string => (props.disabled ? 'none' : 'auto')};
   opacity: ${(props: any): string | number => (props.disabled ? 0.4 : 1)};
 
@@ -24,16 +25,21 @@ export const StyledFileUploader = styled.div<{
   }
 
   .uploader {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+    align-items: center;
     background-color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? transparentize(0.4, props.theme.colors.base700) : props.theme.colors.base400};
+      props.mode === ThemeMode.dark ? transparentize(0.4, props.theme.colors.base700) : props.theme.colors.base300};
     border-radius: 4px;
+    border: 1px solid #757575;
+    display: flex;
+    height: 48px;
+    justify-content: space-between;
     position: relative;
     transition: 0.3s;
-    align-items: center;
-    height: 54px;
+    width: 100%;
+
+    &Error {
+      border: 2px solid ${(props: any): string => props.error && props.theme.colors.error};
+    }
 
     &:hover {
       cursor: ${(props: any): string => (props.loading ? 'auto' : 'pointer')};
@@ -49,19 +55,7 @@ export const StyledFileUploader = styled.div<{
     }
 
     &Btn {
-      width: 100px;
-      height: calc(100% - 4px);
-      box-shadow: 0 0 0 2px
-        ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500};
-      &:hover {
-        box-shadow: 0 0 0 2px
-          ${(props: any): string =>
-            props.mode === ThemeMode.dark ? props.theme.colors.primary200 : props.theme.colors.primary700};
-      }
-      &:focus {
-        box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.base900};
-      }
+      margin-right: -1px;
     }
 
     .placeholderBox,
@@ -112,11 +106,6 @@ export const StyledFileUploader = styled.div<{
           justify-content: center;
         }
       }
-    }
-
-    .placeholderBoxError {
-      border: 2px solid ${(props: any): string => props.error && props.theme.colors.error};
-      border-right-color: transparent;
     }
   }
   .error {
