@@ -105,7 +105,7 @@ export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
                 <Text
                   component="span"
                   size={theme.typography.sizes.xs}
-                  color={mode === ThemeMode.dark ? theme.colors.light : theme.colors.error}
+                  color={mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.error}
                   className={error ? 'errorLabel' : 'hidden'}
                 >
                   {error}
@@ -114,7 +114,7 @@ export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
                   <Text
                     component="span"
                     size={theme.typography.sizes.xs}
-                    color={theme.colors.secondary}
+                    color={theme.colors.base700}
                     className="counter"
                   >
                     {counter}/{maxLength}

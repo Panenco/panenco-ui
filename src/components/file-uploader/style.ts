@@ -20,7 +20,7 @@ export const StyledFileUploader = styled.div<{
     padding-left: 2px;
     margin-bottom: 4px;
     color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
+      props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
   }
 
   .uploader {
@@ -28,7 +28,7 @@ export const StyledFileUploader = styled.div<{
     display: flex;
     justify-content: space-between;
     background-color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? transparentize(0.4, props.theme.colors.secondary) : props.theme.colors.border};
+      props.mode === ThemeMode.dark ? transparentize(0.4, props.theme.colors.base700) : props.theme.colors.base400};
     border-radius: 4px;
     position: relative;
     transition: 0.3s;
@@ -53,14 +53,14 @@ export const StyledFileUploader = styled.div<{
       height: calc(100% - 4px);
       box-shadow: 0 0 0 2px
         ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent};
+          props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500};
       &:hover {
         box-shadow: 0 0 0 2px
           ${(props: any): string =>
-            props.mode === ThemeMode.dark ? props.theme.colors.highlight : props.theme.colors.hover};
+            props.mode === ThemeMode.dark ? props.theme.colors.primary200 : props.theme.colors.primary700};
       }
       &:focus {
-        box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.outline};
+        box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.base900};
       }
     }
 
@@ -76,16 +76,16 @@ export const StyledFileUploader = styled.div<{
       border-radius: 4px 0 0 4px;
 
       &:focus-within {
-        border: 2px solid ${(props: any): string => props.theme.colors.outline};
+        border: 2px solid ${(props: any): string => props.theme.colors.base900};
         border-right-color: transparent;
       }
 
       &Title {
         color: ${(props: any): string => {
           if (props.hasContent) {
-            return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary;
+            return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900;
           }
-          return props.theme.colors.secondary;
+          return props.theme.colors.base700;
         }};
         white-space: nowrap;
         overflow: hidden;
@@ -103,7 +103,7 @@ export const StyledFileUploader = styled.div<{
           if (props.error) {
             return props.theme.colors.error;
           }
-          return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.secondary;
+          return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base700;
         }};
         margin-right: 16px;
         > div {

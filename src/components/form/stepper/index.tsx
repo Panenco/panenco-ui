@@ -120,7 +120,7 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
             <Text
               component="span"
               size={theme.typography.sizes.xs}
-              color={mode === ThemeMode.dark ? theme.colors.light : theme.colors.error}
+              color={mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.error}
               className="inputErrorLabel"
             >
               {locales.notInRange}: {`[${min}, ${max}]`}
@@ -130,7 +130,7 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
             <Text
               component="span"
               size={theme.typography.sizes.xs}
-              color={mode === ThemeMode.dark ? theme.colors.light : theme.colors.error}
+              color={mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.error}
               className="inputErrorLabel"
             >
               {error}

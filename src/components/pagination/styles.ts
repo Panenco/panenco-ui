@@ -9,7 +9,7 @@ export const StyledPagination = styled.div<{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: ${(props: any): any => `1px solid ${props.theme.colors.secondary}`};
+  border: ${(props: any): any => `1px solid ${props.theme.colors.base700}`};
   border-radius: 8px;
   padding: 16px 32px;
 
@@ -48,7 +48,7 @@ export const StyledPagination = styled.div<{
 
       &Icon {
         color: ${(props: any): any =>
-          props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.secondary};
+          props.mode === ThemeMode.dark ? props.theme.colors.base700 : props.theme.colors.base700};
         height: 16px;
         width: 16px;
 
@@ -69,7 +69,7 @@ export const StyledPagination = styled.div<{
     }
 
     &Divider {
-      background: ${(props: any): any => `${props.theme.colors.secondary}`};
+      background: ${(props: any): any => `${props.theme.colors.base700}`};
       height: 24px;
       width: 1px;
 
@@ -104,10 +104,10 @@ export const StyledListPagination = styled.div<{
         min-width: 32px;
         height: 32px;
         border: ${(props: any): any =>
-          props.variant === 'contained' ? `1px solid ${props.theme.colors.secondary}` : 'none'};
+          props.variant === 'contained' ? `1px solid ${props.theme.colors.base700}` : 'none'};
         border-radius: 3px;
         margin-left: 8px;
-        color: ${(props: any): any => `${props.theme.colors.primary}`};
+        color: ${(props: any): any => `${props.theme.colors.base900}`};
         min-height: auto;
         font-weight: 400;
         background-color: transparent;
@@ -115,15 +115,15 @@ export const StyledListPagination = styled.div<{
         cursor: pointer;
 
         &:hover {
-          background-color: ${(props: any): any => `${props.theme.colors.border}`};
+          background-color: ${(props: any): any => `${props.theme.colors.base400}`};
         }
 
         &Active {
-          background-color: ${(props: any): any => `${props.theme.colors.accent}`};
-          color: ${(props: any): any => `${props.theme.colors.light}`};
+          background-color: ${(props: any): any => `${props.theme.colors.primary500}`};
+          color: ${(props: any): any => `${props.theme.colors.base100}`};
 
           &:hover {
-            background-color: ${(props: any): any => `${props.theme.colors.accent}`};
+            background-color: ${(props: any): any => `${props.theme.colors.primary500}`};
             opacity: 0.9;
           }
         }
@@ -149,7 +149,7 @@ export const StyledListPagination = styled.div<{
 
       &Icon {
         color: ${(props: any): any =>
-          props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.secondary};
+          props.mode === ThemeMode.dark ? props.theme.colors.base700 : props.theme.colors.base700};
         height: 16px;
         width: 16px;
 

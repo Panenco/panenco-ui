@@ -31,22 +31,22 @@ export const StyledStepperInput = styled.div<{
 
   .stepperInput {
     border: none;
-    border-bottom: 1px solid ${(props: any): string => props.theme.colors.secondary};
-    border-top: 1px solid ${(props: any): string => props.theme.colors.secondary};
+    border-bottom: 1px solid ${(props: any): string => props.theme.colors.base700};
+    border-top: 1px solid ${(props: any): string => props.theme.colors.base700};
     color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.primary};
+      props.mode === ThemeMode.dark ? props.theme.colors.base700 : props.theme.colors.base900};
     text-align: center;
     width: 100%;
 
     &::placeholder {
-      color: ${(props: any): string => props.theme.colors.secondary};
+      color: ${(props: any): string => props.theme.colors.base700};
     }
   }
 
   .stepperButton {
     align-items: center;
     background: transparent;
-    border: 2px solid ${(props: any): string => props.theme.colors.accent};
+    border: 2px solid ${(props: any): string => props.theme.colors.primary500};
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -63,7 +63,7 @@ export const StyledStepperInput = styled.div<{
 
     &Icon {
       color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.accent};
+        props.mode === ThemeMode.dark ? props.theme.colors.base900 : props.theme.colors.primary500};
     }
 
     &.disabled {
@@ -73,22 +73,22 @@ export const StyledStepperInput = styled.div<{
 
     &:hover {
       background: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.hover};
-      border: 2px solid ${(props: any): string => props.theme.colors.hover};
+        props.mode === ThemeMode.dark ? props.theme.colors.base900 : props.theme.colors.primary700};
+      border: 2px solid ${(props: any): string => props.theme.colors.primary700};
 
       .stepperButtonIcon {
         color: ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.light};
+          props.mode === ThemeMode.dark ? props.theme.colors.base900 : props.theme.colors.base100};
       }
     }
 
     &:focus {
-      box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.outline};
+      box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.base900};
     }
   }
 
   .inputTitle {
-    color: ${(props: any): string => props.theme.colors.secondary};
+    color: ${(props: any): string => props.theme.colors.base700};
     margin-bottom: 4px;
   }
 
@@ -96,15 +96,15 @@ export const StyledStepperInput = styled.div<{
     width: 100%;
     display: flex;
     align-items: center;
-    color: ${(props: any): string => props.theme.colors.secondary};
-    border: 1px solid ${(props: any): string => props.theme.colors.secondary};
+    color: ${(props: any): string => props.theme.colors.base700};
+    border: 1px solid ${(props: any): string => props.theme.colors.base700};
     border-radius: 4px;
     position: relative;
 
     &Error {
       border-color: transparent;
       color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
+        props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
       &:hover {
         box-shadow: none;
       }
@@ -118,12 +118,12 @@ export const StyledStepperInput = styled.div<{
     &:hover {
       border: 1px solid
         ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent};
+          props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500};
     }
 
     &:focus-within {
       border-color: transparent;
-      box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.outline};
+      box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.base900};
     }
   }
 

@@ -1,35 +1,29 @@
 import { styled } from 'linaria/react';
-import { PUITheme, ThemeMode } from 'utils/types';
-
-const getBackgroundColor = (variant: any, mode: ThemeMode, darkColor: string, lightColor: string): string => {
-  if (variant === 'transparent') return 'transparent';
-  if (mode === ThemeMode.dark) return darkColor;
-  return lightColor;
-};
+import { ButtonVariantType, PUITheme, ThemeMode } from 'utils/types';
 
 export const StyledButton = styled.button<{
   theme: PUITheme;
   mode: ThemeMode;
   to?: string;
-  variant?: 'default' | 'transparent';
+  variant?: ButtonVariantType;
   // as: HTMLElement;
 }>`
   position: relative;
-  border: 2px solid transparent;
+  border: 2px solid ${({ variant, theme: { colors } }: any): string =>
+    variant === 'text' ? 'transparent' : colors.primary500};
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px 22px;
+  padding: 10px ${({ variant }: any): string => (variant === 'text' ? '0' : '22px')}};
   -webkit-appearance: none;
-
   min-height: 40px;
   border-radius: 4px;
   transition: 0.3s;
   font-weight: ${(props: any): any => props.theme.typography.weights.bold};
   background-color: ${({ variant, mode, theme: { colors } }: any): string =>
-    getBackgroundColor(variant, mode, colors.dark, colors.light)};
-  color: ${(props: any): string =>
-    props.color || (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent)};
+    variant === 'contained' ? colors.primary500 : 'transparent'};
+  color:  ${({ variant, mode, color, theme: { colors } }: any): string =>
+    color || (variant === 'contained' ? colors.base100 : colors.primary500)};
   cursor: pointer;
   overflow: hidden;
 
@@ -56,12 +50,17 @@ export const StyledButton = styled.button<{
   }
 
   &:focus {
-    box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.outline};
+    box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.base900};
+    z-index: 10;
   }
 
   &:hover {
-    color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.highlight : props.theme.colors.hover};
+    color: ${({ variant, theme: { colors } }: any): string =>
+      variant === 'contained' ? colors.base100 : colors.primary700};
+    background-color: ${({ variant, theme: { colors } }: any): string =>
+      variant === 'contained' ? colors.primary700 : 'transparent'};
+    border-color: ${({ variant, theme: { colors } }: any): string =>
+      variant === 'outlined' ? colors.primary700 : 'transparent'};
   }
 
   &:active {
@@ -86,48 +85,6 @@ export const StyledButton = styled.button<{
 
     &Default {
       right: 8px;
-    }
-  }
-
-  &.buttonPrimary {
-    background-color: ${({ variant, mode, theme: { colors } }: any): string =>
-      getBackgroundColor(variant, mode, colors.light, colors.accent)};
-
-    color: ${(props: any): string =>
-      props.color || (props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.light)};
-
-    &:hover {
-      background-color: ${({ variant, mode, theme: { colors } }: any): string =>
-        getBackgroundColor(variant, mode, colors.highlight, colors.hover)};
-      color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.light};
-    }
-
-    &:active {
-      background-color: ${({ variant, mode, theme: { colors } }: any): string =>
-        getBackgroundColor(variant, mode, colors.highlight, colors.hover)};
-    }
-  }
-
-  &.buttonSecondary {
-    border: 2px solid
-      ${(props: any): string => {
-        return props.color || (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent);
-      }};
-
-    &:hover {
-      border: 2px solid
-        ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.highlight : props.theme.colors.hover};
-      background-color: ${({ variant, mode, theme: { colors } }: any): string =>
-        getBackgroundColor(variant, mode, colors.dark, colors.highlight)};
-      color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover};
-    }
-
-    &:active {
-      background-color: ${({ variant, mode, theme: { colors } }: any): string =>
-        getBackgroundColor(variant, mode, colors.dark, colors.highlight)};
     }
   }
 

@@ -7,7 +7,7 @@ import LinkDocs from 'components/button/link-DOCS.md';
 import LinkReadme from 'components/button/link-README.md';
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-
+import s from './styles.scss';
 import { decorator } from '../../utils/decorator';
 import { WrappedComponent } from '../helpers/wrapped';
 
@@ -18,50 +18,9 @@ export default decorator('Button', ButtonDocs, ButtonReadme).add('Button compone
         <div style={{ width: '50%' }}>
           <Row style={{ justifyContent: 'center' }}>
             <Col m="8" l="6">
-              <Button>Button</Button>
-              <Button disabled>Button disabled</Button>
-            </Col>
-          </Row>
-          <Row style={{ justifyContent: 'center' }}>
-            <Col s="2" m="8" l="6">
-              <PrimaryButton>Primary Button</PrimaryButton>
-              <PrimaryButton isLoading>Primary Button</PrimaryButton>
-              <PrimaryButton isLoading>Primary Button</PrimaryButton>
-              <PrimaryButton disabled>Primary disabled</PrimaryButton>
-            </Col>
-          </Row>
-          <Row style={{ justifyContent: 'center' }}>
-            <Col s="2" m="8" l="6">
-              <SecondaryButton>Secondary Button</SecondaryButton>
-              <SecondaryButton disabled>Secondary Disabled</SecondaryButton>
-            </Col>
-          </Row>
-        </div>
-        <div style={{ width: '50%' }}>
-          <Row style={{ justifyContent: 'center' }}>
-            <Col s="2" m="8" l="6">
-              <Button iconRight icon={Icon.icons.chevronRight}>
-                Icon Right
-              </Button>
-              <Button iconLeft={Icon.icons.chevronLeft} disabled>
-                Icon Left
-              </Button>
-            </Col>
-          </Row>
-          <Row style={{ justifyContent: 'center' }}>
-            <Col s="2" m="8" l="6">
-              <PrimaryButton iconRight={Icon.icons.chevronRight}>Icon Right</PrimaryButton>
-              <PrimaryButton isLoading iconRight={Icon.icons.chevronRight} disabled>
-                Icon Right
-              </PrimaryButton>
-            </Col>
-          </Row>
-          <Row style={{ justifyContent: 'center' }}>
-            <Col s="2" m="8" l="6">
-              <SecondaryButton iconLeft={Icon.icons.chevronLeft}>Icon Left</SecondaryButton>
-              <SecondaryButton iconLeft={Icon.icons.chevronLeft} disabled>
-                Icon Left
-              </SecondaryButton>
+              <Button>Text</Button>
+              <Button variant="contained">Contained</Button>
+              <Button variant="outlined">Outlined</Button>
             </Col>
           </Row>
         </div>

@@ -104,18 +104,13 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
             <Text
               component="span"
               size={theme.typography.sizes.xs}
-              color={mode === ThemeMode.dark ? theme.colors.light : theme.colors.error}
+              color={mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.error}
               className="inputErrorLabel"
             >
               {error}
             </Text>
             {maxLength && (
-              <Text
-                component="span"
-                size={theme.typography.sizes.xs}
-                color={theme.colors.secondary}
-                className="counter"
-              >
+              <Text component="span" size={theme.typography.sizes.xs} color={theme.colors.base700} className="counter">
                 {counter}/{maxLength}
               </Text>
             )}

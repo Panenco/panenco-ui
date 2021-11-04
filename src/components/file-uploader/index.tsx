@@ -74,7 +74,7 @@ export const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
       renderPlaceholder = loadingText;
       renderStatusIcons = loader || (
         <Loader
-          color={mode === ThemeMode.dark ? theme.colors.light : theme.colors.secondary}
+          color={mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.base700}
           className="placeholderBoxIcon"
         />
       );
