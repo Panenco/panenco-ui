@@ -47,8 +47,7 @@ export const StyledPagination = styled.div<{
       }
 
       &Icon {
-        color: ${(props: any): any =>
-          props.mode === ThemeMode.dark ? props.theme.colors.base700 : props.theme.colors.base700};
+        color: ${(props: any): any => props.theme.colors.base700};
         height: 16px;
         width: 16px;
 
@@ -148,8 +147,7 @@ export const StyledListPagination = styled.div<{
       }
 
       &Icon {
-        color: ${(props: any): any =>
-          props.mode === ThemeMode.dark ? props.theme.colors.base700 : props.theme.colors.base700};
+        color: ${(props: any): any => props.theme.colors.base700};
         height: 16px;
         width: 16px;
 
