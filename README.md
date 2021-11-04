@@ -78,12 +78,22 @@ Colors that are defined within theme is represented with next type:
 
 ```typescript
 export type PUIColors = {
-  highlight: string;
   alert: string;
   error: string;
   success: string;
-  outline: string;
-  border: string;
+  primary200: string;
+  primary500: string;
+  primary700: string;
+  primary900: string;
+  base100: string;
+  base200: string;
+  base300: string;
+  base400: string;
+  base500: string;
+  base600: string;
+  base700: string;
+  base800: string;
+  base900: string;
 };
 ```
 
