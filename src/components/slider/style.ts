@@ -28,9 +28,9 @@ export const StyledHandle = styled.div<{
   z-index: 2;
   background-color: ${(props: any): string => {
     if (props.isActive) {
-      return props.mode === ThemeMode.dark ? props.theme.colors.highlight : props.theme.colors.hover;
+      return props.mode === ThemeMode.dark ? props.theme.colors.primary200 : props.theme.colors.primary700;
     }
-    return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent;
+    return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500;
   }};
 
   left: ${(props: any): string => {
@@ -41,13 +41,13 @@ export const StyledHandle = styled.div<{
 
   &:hover {
     background-color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.highlight : props.theme.colors.hover};
+      props.mode === ThemeMode.dark ? props.theme.colors.primary200 : props.theme.colors.primary700};
   }
 
   & .valueLabel {
     z-index: 3;
     color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.light};
+      props.mode === ThemeMode.dark ? props.theme.colors.base900 : props.theme.colors.base100};
   }
 `;
 
@@ -60,7 +60,7 @@ export const StyledInputRange = styled.div<{
 
   & .rail {
     background-color: transparent;
-    border: 1px solid ${(props: any): string => props.theme.colors.secondary};
+    border: 1px solid ${(props: any): string => props.theme.colors.base700};
     z-index: 2;
     border-radius: 4px;
     cursor: pointer;
@@ -81,5 +81,5 @@ export const StyledTrack = styled.div<{
   transform: translate(0, -99%);
   z-index: 1;
   background-color: ${(props: any): string =>
-    props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.highlight};
+    props.mode === ThemeMode.dark ? props.theme.colors.base700 : props.theme.colors.primary200};
 `;

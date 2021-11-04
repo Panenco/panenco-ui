@@ -15,7 +15,7 @@ export const StyledCheckbox = styled.div<{
 
     &:focus-within {
       & .container {
-        box-shadow: 0px 0px 0px 2px ${(props: any): string => props.theme.colors.outline};
+        box-shadow: 0px 0px 0px 2px ${(props: any): string => props.theme.colors.base900};
       }
     }
 
@@ -34,7 +34,7 @@ export const StyledCheckbox = styled.div<{
             if (props.color) {
               return props.color;
             }
-            return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover;
+            return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary700;
           }};
       }
     }
@@ -50,7 +50,7 @@ export const StyledCheckbox = styled.div<{
       margin-left: 8px;
       vertical-align: middle;
       color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
+        props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
     }
   }
 
@@ -82,7 +82,7 @@ export const StyledCheckbox = styled.div<{
         if (props.borderColor) {
           return props.borderColor;
         }
-        return props.theme.colors.secondary;
+        return props.theme.colors.base700;
       }};
     border-radius: 4px;
     box-sizing: border-box;
@@ -105,7 +105,7 @@ export const StyledCheckbox = styled.div<{
 
   .tick {
     color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.light};
+      props.mode === ThemeMode.dark ? props.theme.colors.base900 : props.theme.colors.base100};
     height: 16px;
     left: 50%;
     position: absolute;
@@ -119,7 +119,7 @@ export const StyledCheckbox = styled.div<{
       if (props.color) {
         return props.color;
       }
-      return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent;
+      return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500;
     }};
     border: ${(props: any): string => {
         if (props.borderWidth) {
@@ -132,7 +132,7 @@ export const StyledCheckbox = styled.div<{
         if (props.color) {
           return props.color;
         }
-        return props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent;
+        return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500;
       }};
   }
 
@@ -144,7 +144,7 @@ export const StyledCheckbox = styled.div<{
           if (props.color) {
             return props.color;
           }
-          return props.mode === ThemeMode.dark ? props.theme.colors.highlight : props.theme.colors.hover;
+          return props.mode === ThemeMode.dark ? props.theme.colors.primary200 : props.theme.colors.primary700;
         }};
         border: ${(props: any): string => {
             if (props.borderWidth) {
@@ -157,7 +157,7 @@ export const StyledCheckbox = styled.div<{
             if (props.color) {
               return props.color;
             }
-            return props.mode === ThemeMode.dark ? props.theme.colors.highlight : props.theme.colors.hover;
+            return props.mode === ThemeMode.dark ? props.theme.colors.primary200 : props.theme.colors.primary700;
           }};
       }
     }

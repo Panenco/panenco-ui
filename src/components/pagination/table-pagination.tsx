@@ -76,7 +76,7 @@ export const TablePagination = ({
         <Text
           size={theme.typography.sizes.m}
           weight={theme.typography.weights.light}
-          color={theme.colors.primary}
+          color={theme.colors.base900}
           className="paginationTextBeforeSelect"
         >
           {contentBeforeSelect}
@@ -93,12 +93,12 @@ export const TablePagination = ({
           value={rowsPerPageOptions.find((option) => Number(option.value) === Number(rowsPerPage))}
         />
         <div className={cx('paginationDivider', 'paginationDividerLeft')} />
-        <Text size={theme.typography.sizes.m} color={theme.colors.primary} className="paginationText">
+        <Text size={theme.typography.sizes.m} color={theme.colors.base900} className="paginationText">
           {`${count > 0 ? from : 0}-${to} of ${count} items`}
         </Text>
       </div>
       <div className="paginationSection">
-        <Text size={theme.typography.sizes.m} color={theme.colors.primary} className="paginationText">
+        <Text size={theme.typography.sizes.m} color={theme.colors.base900} className="paginationText">
           {`${page + 1} of ${pagesAmount} pages`}
         </Text>
         <div className={cx('paginationDivider', 'paginationDividerRight')} />
