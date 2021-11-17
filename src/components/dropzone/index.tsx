@@ -72,7 +72,7 @@ export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
       >
         {loading ? (
           <>
-            {loader || <Loader color={mode === ThemeMode.dark ? theme.colors.light : theme.colors.secondary} />}
+            {loader || <Loader color={mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.base700} />}
             <Text className="contentLoading">{loadingText}</Text>
           </>
         ) : (

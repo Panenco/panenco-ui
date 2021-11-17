@@ -13,5 +13,5 @@ export const StyledStamp = styled.div<{
   color: ${(props: any): string => props.color};
   border: 1px solid ${(props: any): string => props.color};
   background-color: ${(props: any): string =>
-    props.mode === ThemeMode.dark ? props.theme.colors.dark : props.theme.colors.light}};
+    props.mode === ThemeMode.dark ? props.theme.colors.base900 : props.theme.colors.base100}};
 `;

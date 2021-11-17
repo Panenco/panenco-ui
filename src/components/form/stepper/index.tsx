@@ -3,7 +3,7 @@ import { Icon, Text } from 'components';
 import * as React from 'react';
 import { useMode, useTheme } from 'utils/hooks';
 
-import { InputComponent, InputPropsType, WrapperProps } from '../../../utils/types';
+import { InputComponent, InputPropsType, ThemeMode, WrapperProps } from '../../../utils/types';
 import { StyledStepperInput } from './style';
 
 export interface StepperInputProps extends InputComponent, React.InputHTMLAttributes<HTMLInputElement> {
@@ -16,6 +16,7 @@ export interface StepperInputProps extends InputComponent, React.InputHTMLAttrib
   iconAfter?: HTMLObjectElement | JSX.Element;
   wrapperProps?: WrapperProps;
   inputProps?: InputPropsType;
+  locales?: { [key: string]: string };
 }
 
 export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
@@ -32,6 +33,7 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
       error,
       wrapperProps,
       inputProps,
+      locales = { notInRange: 'Must be in range' },
       ...props
     }: StepperInputProps,
     ref,
@@ -114,8 +116,26 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
           </button>
         </div>
         <div className="inputError">
-          {notInRange ? <span className="inputErrorLabel">Must be in range: {`[${min}, ${max}]`}</span> : null}
-          {error && !notInRange && <span className="inputErrorLabel">{error}</span>}
+          {notInRange ? (
+            <Text
+              component="span"
+              size={theme.typography.sizes.xs}
+              color={mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.error}
+              className="inputErrorLabel"
+            >
+              {locales.notInRange}: {`[${min}, ${max}]`}
+            </Text>
+          ) : null}
+          {error && !notInRange && (
+            <Text
+              component="span"
+              size={theme.typography.sizes.xs}
+              color={mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.error}
+              className="inputErrorLabel"
+            >
+              {error}
+            </Text>
+          )}
         </div>
       </StyledStepperInput>
     );

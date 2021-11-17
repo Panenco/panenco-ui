@@ -34,9 +34,9 @@ export const StyledPopup = styled.div<{
   theme: PUITheme;
 }>`
   background-clip: padding-box;
-  background-color: ${(props: any): string => props.theme.colors.light};
+  background-color: ${(props: any): string => props.theme.colors.base100};
   border-radius: 4px;
-  border: 1px solid ${(props: any): string => props.theme.colors.border};
+  border: 1px solid ${(props: any): string => props.theme.colors.base400};
   display: flex;
   flex-direction: column;
   max-width: 460px;
@@ -74,7 +74,7 @@ export const StyledPopupContainer = styled.div`
 export const StyledPopupBackdrop = styled.div<{
   theme: PUITheme;
 }>`
-  background-color: ${(props: any): string => props.theme.colors.secondary};
+  background-color: ${(props: any): string => props.theme.colors.base700};
   height: 100vh;
   left: 0;
   opacity: 0.15;

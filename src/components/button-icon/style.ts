@@ -22,23 +22,23 @@ export const StyledButtonIcon = styled.button<{
     & .iconClass,
     & .buttonIconTitle {
       color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover};
+        props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary700};
     }
   }
 
   &:focus {
-    outline: 2px solid ${(props: any): string => props.theme.colors.outline};
+    outline: 2px solid ${(props: any): string => props.theme.colors.base900};
   }
 
   & .iconClass {
-    color: ${(props: any): string => props.color || props.theme.colors.secondary};
+    color: ${(props: any): string => props.color || props.theme.colors.base700};
     display: flex;
     flex-shrink: 0;
     transition: 0.3s;
   }
 
   & .buttonIconTitle {
-    color: ${(props: any): string => props.color || props.theme.colors.secondary};
+    color: ${(props: any): string => props.color || props.theme.colors.base700};
     font-weight: ${(props: any): string => props.theme.typography.weights.regular};
     font-size: ${(props: any): string => props.theme.typography.sizes.m.textSize};
     line-height: ${(props: any): string => props.theme.typography.sizes.m.lineHeight};

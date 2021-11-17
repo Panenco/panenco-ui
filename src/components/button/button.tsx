@@ -3,6 +3,7 @@ import { Icon, Text } from 'components';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { useMode, useTheme } from 'utils/hooks';
+import { ButtonVariantType } from 'utils/types';
 
 import Spinner from './spinner';
 import { StyledButton } from './style';
@@ -16,7 +17,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   iconLeft?: any;
   iconRight?: any;
   color?: string;
-  variant?: 'default' | 'transparent';
+  variant?: ButtonVariantType;
 }
 
 export const Button = React.forwardRef<any, ButtonProps>(
@@ -33,7 +34,7 @@ export const Button = React.forwardRef<any, ButtonProps>(
       iconLeft,
       iconRight,
       tabIndex,
-      variant = 'default',
+      variant = 'text',
       color,
       isLoading,
       ...props
@@ -87,7 +88,7 @@ export const PrimaryButton = React.forwardRef(
 );
 
 export const SecondaryButton = React.forwardRef(
-  ({ className, iconClassName, ...props }: ButtonProps, ref): JSX.Element => {
-    return <Button ref={ref} className={cx('buttonSecondary', className)} iconClassName={iconClassName} {...props} />;
-  },
+  ({ className, iconClassName, ...props }: ButtonProps, ref): JSX.Element => (
+    <Button ref={ref} className={cx('buttonSecondary', className)} iconClassName={iconClassName} {...props} />
+  ),
 );

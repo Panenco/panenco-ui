@@ -24,8 +24,8 @@ export const StyledTextInput = styled.div<{
       width: 100%;
       display: flex;
       align-items: center;
-      color: ${(props: any): string => props.theme.colors.secondary};
-      border: 1px solid ${(props: any): string => props.theme.colors.secondary};
+      color: ${(props: any): string => props.theme.colors.base700};
+      border: 1px solid ${(props: any): string => props.theme.colors.base700};
       border-radius: 4px;
       position: relative;
 
@@ -35,7 +35,7 @@ export const StyledTextInput = styled.div<{
         top: calc(50% - 8px);
         width: 16px;
         height: 16px;
-        color: ${(props: any): string => props.theme.colors.secondary};
+        color: ${(props: any): string => props.theme.colors.base700};
       }
 
       & .iconAfter {
@@ -44,7 +44,7 @@ export const StyledTextInput = styled.div<{
         top: calc(50% - 8px);
         width: 16px;
         height: 16px;
-        color: ${(props: any): string => props.theme.colors.secondary};
+        color: ${(props: any): string => props.theme.colors.base700};
       }
 
       & .input {
@@ -52,7 +52,7 @@ export const StyledTextInput = styled.div<{
         border: none;
         border-radius: 4px;
         color: ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.primary};
+          props.mode === ThemeMode.dark ? props.theme.colors.base700 : props.theme.colors.base900};
         background-color: transparent;
         font-size: ${(props: any): string => props.theme.typography.sizes.m.textSize};
         padding: 13px 16px;
@@ -66,52 +66,46 @@ export const StyledTextInput = styled.div<{
         }};
 
         &::placeholder {
-          color: ${(props: any): string => props.theme.colors.secondary};
+          color: ${(props: any): string => props.theme.colors.base700};
         }
       }
 
       &Error {
         border-color: ${(props: any): string => props.theme.colors.error};
         color: ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
+          props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
       }
 
       &Disabled {
         pointer-events: none;
-        /* border-color: ${(props: any): string => props.theme.colors.border}; */
+        /* border-color: ${(props: any): string => props.theme.colors.base400}; */
         background-color: ${(props: any): string =>
-          props.mode === ThemeMode.dark
-            ? transparentize(0.4, props.theme.colors.secondary)
-            : props.theme.colors.border};
+          props.mode === ThemeMode.dark ? transparentize(0.4, props.theme.colors.base700) : props.theme.colors.base400};
         opacity: 0.4;
       }
 
       &:hover {
         border-color: ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent};
+          props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500};
       }
 
       &:focus-within {
-        box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.outline};
+        box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.base900};
       }
     }
   }
 
   .inputTitle {
-    color: ${(props: any): string => props.theme.colors.primary};
+    color: ${(props: any): string => props.theme.colors.base900};
   }
 
   .inputSubtitle {
-    color: ${(props: any): string => props.theme.colors.secondary};
+    color: ${(props: any): string => props.theme.colors.base700};
     margin-bottom: 4px;
   }
 
   .inputErrorLabel {
-    color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.error};
-    font-size: ${(props: any): string => props.theme.typography.sizes.xs.textSize};
     height: 16px;
-    line-height: 1.3;
   }
 
   .counterWrapper {
@@ -123,8 +117,6 @@ export const StyledTextInput = styled.div<{
     width: 100%;
 
     .counter {
-      color: ${(props: any): string => props.theme.colors.secondary};
-      line-height: 1.3;
     }
 
     .hidden {

@@ -88,7 +88,7 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
                           <Text
                             size={theme.typography.sizes.l}
                             weight={theme.typography.weights.bold}
-                            color={theme.colors.dark}
+                            color={theme.colors.base900}
                           >
                             {title}
                           </Text>
@@ -101,7 +101,7 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
                       )}
                     </StyledPopupHeaderTitleRow>
                     {description && (
-                      <Text size={theme.typography.sizes.m} color={theme.colors.dark}>
+                      <Text size={theme.typography.sizes.m} color={theme.colors.base900}>
                         {description}
                       </Text>
                     )}

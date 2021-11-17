@@ -20,11 +20,11 @@ export const StyledTab = styled.button<{
   }
 
   &:hover {
-    background-color: ${(props: any): string => props.theme.colors.highlight};
+    background-color: ${(props: any): string => props.theme.colors.primary200};
   }
 
   &:focus {
-    outline: 2px solid ${(props: any): string => props.theme.colors.outline};
+    outline: 2px solid ${(props: any): string => props.theme.colors.base900};
     outline-offset: 0;
     z-index: 1;
   }
@@ -35,25 +35,25 @@ export const StyledTab = styled.button<{
   }
 
   &.tab {
-    color: ${(props: any): string => props.theme.colors.secondary};
-    border-bottom: 1px solid ${(props: any): string => props.theme.colors.secondary};
+    color: ${(props: any): string => props.theme.colors.base700};
+    border-bottom: 1px solid ${(props: any): string => props.theme.colors.base700};
 
     &.selected {
-      color: ${(props: any): string => props.theme.colors.outline};
-      border-bottom: 3px solid ${(props: any): string => props.theme.colors.accent};
+      color: ${(props: any): string => props.theme.colors.base900};
+      border-bottom: 3px solid ${(props: any): string => props.theme.colors.primary500};
       padding-bottom: 10px;
     }
   }
 
   &.bookmarkTab {
-    color: ${(props: any): string => props.theme.colors.outline};
+    color: ${(props: any): string => props.theme.colors.base900};
 
     &.selected {
-      background-color: ${(props: any): string => props.theme.colors.light};
-      border-top: 3px solid ${(props: any): string => props.theme.colors.accent};
+      background-color: ${(props: any): string => props.theme.colors.base100};
+      border-top: 3px solid ${(props: any): string => props.theme.colors.primary500};
       padding-top: 9px;
       &:hover {
-        background-color: ${(props: any): string => props.theme.colors.highlight};
+        background-color: ${(props: any): string => props.theme.colors.primary200};
       }
     }
   }

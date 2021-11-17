@@ -23,9 +23,9 @@ export const StyledTooltip = styled.div<{
     z-index: 100;
     white-space: nowrap;
     background-color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
+      props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
     color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.light};
+      props.mode === ThemeMode.dark ? props.theme.colors.base900 : props.theme.colors.base100};
 
     &:before {
       content: ' ';
@@ -45,7 +45,7 @@ export const StyledTooltip = styled.div<{
       &:before {
         top: 100%;
         border-top-color: ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
+          props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
       }
     }
 
@@ -59,7 +59,7 @@ export const StyledTooltip = styled.div<{
         top: 50%;
         transform: translateX(0) translateY(-50%);
         border-right-color: ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
+          props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
       }
     }
 
@@ -69,7 +69,7 @@ export const StyledTooltip = styled.div<{
       &:before {
         bottom: 100%;
         border-bottom-color: ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
+          props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
       }
     }
 
@@ -85,7 +85,7 @@ export const StyledTooltip = styled.div<{
         top: 50%;
         transform: translateX(0) translateY(-50%);
         border-left-color: ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
+          props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
       }
     }
   }

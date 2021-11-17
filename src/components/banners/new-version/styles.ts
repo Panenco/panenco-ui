@@ -31,13 +31,15 @@ export const StyledNewVersionPaper = styled(Paper)<{
     margin-bottom: 8px;
 
     &Text {
-      color: ${(props: any) => (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary)};
+      color: ${(props: any) =>
+        props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
     }
   }
 
   .newVersionModalDescription {
     &Text {
-      color: ${(props: any) => (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary)};
+      color: ${(props: any) =>
+        props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
     }
   }
 `;
