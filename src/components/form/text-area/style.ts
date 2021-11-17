@@ -51,18 +51,10 @@ export const StyledTextArea = styled.div<{
       }
 
       &Error {
-        border: 2px solid ${(props: any): string => props.theme.colors.error};
+        border-color: ${(props: any): string => props.theme.colors.error};
 
         color: ${(props: any): string =>
           props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
-
-        .input {
-          margin: -2px;
-        }
-
-        &:hover {
-          padding: 7px 13px;
-        }
       }
 
       &Disabled {
@@ -76,16 +68,14 @@ export const StyledTextArea = styled.div<{
       }
 
       &:hover {
-        border: 1px solid
-          ${(props: any): string =>
-            props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent};
+        border-color: ${(props: any): string =>
+          props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent};
         color: ${(props: any): string =>
           props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.primary};
       }
 
       &:focus {
         outline: 0;
-        border-color: transparent;
         box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.outline};
       }
     }
