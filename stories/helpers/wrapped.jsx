@@ -14,7 +14,7 @@ export const WrappedComponent = ({ children, style }) => {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        backgroundColor: `${mode === ThemeMode.dark ? colors.dark : colors.light}`,
+        backgroundColor: `${mode === ThemeMode.dark ? colors.base900 : colors.base100}`,
         ...style,
       }}
     >

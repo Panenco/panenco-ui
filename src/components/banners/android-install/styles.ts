@@ -29,7 +29,7 @@ export const StyledAndroidInstallPaper = styled(Paper)<{
 
   .installModalIcon {
     background: ${(props: any) =>
-      props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.secondary};
+      props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base700};
     border-radius: 50%;
     flex-grow: 0;
     flex-shrink: 0;
@@ -48,13 +48,15 @@ export const StyledAndroidInstallPaper = styled(Paper)<{
     margin-bottom: 4px;
 
     &Text {
-      color: ${(props: any) => (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary)};
+      color: ${(props: any) =>
+        props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
     }
   }
 
   .installModalDescription {
     &Text {
-      color: ${(props: any) => (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary)};
+      color: ${(props: any) =>
+        props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
     }
   }
 `;

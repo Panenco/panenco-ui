@@ -8,7 +8,7 @@ export const StyledUnsupportedContainer = styled.div<{
 }>`
   align-items: center;
   background-color: ${(props: any): string => {
-    return transparentize(0.4, props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.dark);
+    return transparentize(0.4, props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900);
   }};
   display: flex;
   height: 100%;
@@ -31,13 +31,15 @@ export const StyledUnsupportedContainer = styled.div<{
     margin-bottom: 8px;
 
     &Text {
-      color: ${(props: any) => (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary)};
+      color: ${(props: any) =>
+        props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
     }
   }
 
   .unsupportedModalDescription {
     &Text {
-      color: ${(props: any) => (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary)};
+      color: ${(props: any) =>
+        props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
     }
   }
 `;

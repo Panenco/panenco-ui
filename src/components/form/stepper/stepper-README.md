@@ -34,15 +34,17 @@ This component inherits the attributes of the **input** element and extends the 
 - error - add this prop when smth went wrong;
 - wrapperProps - it's props which will be added to wrapper component;
 - inputProps - it's props which will be added to input component;
+- locales - object that can take locale for notInRange message;
 - ref - wrapper ref
 
-| propName     | propType                                | defaultValue | isRequired |
-| ------------ | --------------------------------------- | ------------ | ---------- |
-| title        | string                                  | -            | -          |
-| step         | number                                  | -            | -          |
-| minValue     | number                                  | -            | -          |
-| maxValue     | number                                  | -            | -          |
-| error        | string                                  | -            | -          |
-| inputProps   | React.HTMLAttributes (HTMLInputElement) | -            | -          |
-| wrapperProps | React.HTMLAttributes (HTMLDivElement)   | -            | -          |
-| ref          | React.RefObject                         | -            | -          |
+| propName     | propType                                | defaultValue                       | isRequired |
+| ------------ | --------------------------------------- | ---------------------------------- | ---------- |
+| title        | string                                  | -                                  | -          |
+| step         | number                                  | -                                  | -          |
+| locales      | object                                  | { notInRange: 'Must be in range' } | -          |
+| minValue     | number                                  | -                                  | -          |
+| maxValue     | number                                  | -                                  | -          |
+| error        | string                                  | -                                  | -          |
+| inputProps   | React.HTMLAttributes (HTMLInputElement) | -                                  | -          |
+| wrapperProps | React.HTMLAttributes (HTMLDivElement)   | -                                  | -          |
+| ref          | React.RefObject                         | -                                  | -          |

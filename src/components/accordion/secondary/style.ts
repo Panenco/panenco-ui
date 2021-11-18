@@ -10,24 +10,25 @@ export const StyledAccordionSecondary = styled.div<{
   flex-direction: column;
   border: none;
   background-color: ${(props: any): string =>
-    props.mode === ThemeMode.dark ? props.theme.colors.dark : props.theme.colors.light};
+    props.mode === ThemeMode.dark ? props.theme.colors.base900 : props.theme.colors.base100};
   font-size: ${(props: any): string => props.theme.typography.sizes.m.textSize};
   line-height: 1.3;
   width: 100%;
 
   &:hover {
-    border-color: ${(props: any): string => props.theme.colors.accent};
+    border-color: ${(props: any): string => props.theme.colors.primary500};
     .accordionHeader,
     .accordionHeaderIcon {
       cursor: pointer;
       color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.highlight : props.theme.colors.hover};
+        props.mode === ThemeMode.dark ? props.theme.colors.primary200 : props.theme.colors.primary700};
     }
   }
 
   &:focus-within {
     border-radius: 4px;
-    box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.outline};
+    outline: ${(props: any): string => props.theme.colors.base900} solid 2px;
+    outline-offset: -2px;
   }
 
   .accordionHeader {
@@ -41,7 +42,7 @@ export const StyledAccordionSecondary = styled.div<{
     align-items: center;
 
     color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent};
+      props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500};
 
     &Title {
       transition: 0.5s;
@@ -68,8 +69,8 @@ export const StyledAccordionSecondary = styled.div<{
     padding: 16px;
     border-radius: 4px;
     background-color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? transparentize(0.4, props.theme.colors.secondary) : props.theme.colors.border};
+      props.mode === ThemeMode.dark ? transparentize(0.4, props.theme.colors.base700) : props.theme.colors.base400};
     color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
+      props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
   }
 `;

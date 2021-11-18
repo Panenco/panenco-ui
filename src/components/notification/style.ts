@@ -10,7 +10,7 @@ export const StyledNotificationContainer = styled.div<{
 }>`
   padding: 0;
   width: 420px;
-  color: ${(props: any): string => props.theme.colors.primary};
+  color: ${(props: any): string => props.theme.colors.base900};
 
   .body {
     display: flex;
@@ -28,12 +28,12 @@ export const StyledNotificationContainer = styled.div<{
         margin-top: 4px;
 
         &:hover {
-          border-bottom: 1px solid ${(props: any): string => props.theme.colors.accent};
+          border-bottom: 1px solid ${(props: any): string => props.theme.colors.primary500};
           border-bottom-style: dashed;
         }
 
         &:focus {
-          outline: 2px solid ${(props: any): string => props.theme.colors.outline};
+          outline: 2px solid ${(props: any): string => props.theme.colors.base900};
         }
       }
     }
@@ -42,23 +42,23 @@ export const StyledNotificationContainer = styled.div<{
   .Toastify__toast {
     min-height: 74px;
     box-shadow: none;
-    border: 1px solid ${(props: any): string => props.theme.colors.secondary};
+    border: 1px solid ${(props: any): string => props.theme.colors.base700};
     border-radius: 4px;
     position: relative;
 
     padding: 0;
     border-left: 4px solid ${(props: any): string => props.theme.colors.success};
     background-color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.dark : props.theme.colors.light};
+      props.mode === ThemeMode.dark ? props.theme.colors.base900 : props.theme.colors.base100};
 
     &--info {
-      border-left: 4px solid ${(props: any): string => props.theme.colors.outline};
+      border-left: 4px solid ${(props: any): string => props.theme.colors.base900};
 
       .Toastify__toast-body--icon {
-        color: ${(props: any): string => props.theme.colors.outline};
+        color: ${(props: any): string => props.theme.colors.base900};
       }
       .Toastify__progress-bar {
-        background: ${(props: any): string => props.theme.colors.outline};
+        background: ${(props: any): string => props.theme.colors.base900};
       }
     }
     &--warning {
@@ -88,12 +88,12 @@ export const StyledNotificationContainer = styled.div<{
     align-items: center;
     padding: 16px 16px 12px 16px;
     color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
+      props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
     cursor: default;
 
     &--content {
       color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
+        props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
     }
 
     &--icon {
@@ -122,17 +122,17 @@ export const StyledNotificationContainer = styled.div<{
       height: 16px;
       margin-right: 16px;
       margin-top: 16px;
-      color: ${(props: any): string => props.theme.colors.secondary};
+      color: ${(props: any): string => props.theme.colors.base700};
       &--icon {
         width: 100%;
         height: 100%;
       }
       &:focus {
-        outline: 2px solid ${(props: any): string => props.theme.colors.outline};
+        outline: 2px solid ${(props: any): string => props.theme.colors.base900};
       }
 
       &:hover {
-        color: ${(props: any): string => props.theme.colors.accent};
+        color: ${(props: any): string => props.theme.colors.primary500};
       }
     }
   }
