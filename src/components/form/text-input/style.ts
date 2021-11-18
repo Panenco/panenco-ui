@@ -91,6 +91,7 @@ export const StyledTextInput = styled.div<{
 
       &:focus-within {
         box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.base900};
+        z-index: 10;
       }
     }
   }

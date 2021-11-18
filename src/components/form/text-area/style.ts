@@ -73,8 +73,9 @@ export const StyledTextArea = styled.div<{
       }
 
       &:focus {
-        outline: 0;
         box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.base900};
+        outline: 0;
+        z-index: 10;
       }
     }
 
