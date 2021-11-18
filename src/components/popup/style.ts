@@ -32,9 +32,7 @@ export const StyledPopupFooter = styled.div<{
   }
 `;
 
-export const StyledPopupBody = styled.div<{
-  emptyHeader: boolean;
-}>`
+export const StyledPopupBody = styled.div`
   padding: 16px 24px;
   @media (max-width: ${breakpoints.sm}) {
     padding: 16px;

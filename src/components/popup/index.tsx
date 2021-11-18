@@ -1,8 +1,8 @@
-import { Popup } from './Popup';
+import { Popup, PopupProps } from './Popup';
 import { PopupBody } from './PopupBody';
-import { PopupHeader } from './PopupHeader';
-import { PopupFooter } from './PopupFooter';
-import { PopupTitle } from './PopupTitle';
+import { PopupHeader, PopupHeaderProps } from './PopupHeader';
+import { PopupFooter, PopupFooterProps } from './PopupFooter';
+import { PopupTitle, PopupTitleProps } from './PopupTitle';
 
 const PopupNamespace = Object.assign(Popup, {
   Header: PopupHeader,
@@ -11,4 +11,4 @@ const PopupNamespace = Object.assign(Popup, {
   Title: PopupTitle,
 });
 
-export { PopupNamespace as Popup };
+export { PopupNamespace as Popup, PopupProps, PopupFooterProps, PopupHeaderProps, PopupTitleProps };

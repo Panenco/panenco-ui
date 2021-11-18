@@ -3,7 +3,7 @@
 Popup component.
 
 ```js
-import { Popup, PopupProps } from '@panenco/ui';
+import { Popup, PopupProps, PopupFooterProps, PopupHeaderProps, PopupTitleProps } from '@panenco/ui';
 ```
 
 <!-- STORY -->
