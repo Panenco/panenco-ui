@@ -55,7 +55,6 @@ export const StyledTextInput = styled.div<{
           props.mode === ThemeMode.dark ? props.theme.colors.base700 : props.theme.colors.base900};
         background-color: transparent;
         font-size: ${(props: any): string => props.theme.typography.sizes.m.textSize};
-        margin: -1px;
         padding: 13px 16px;
         padding-left: ${(props: any): string => {
           if (props.iconBefore) return '40px';
@@ -72,14 +71,9 @@ export const StyledTextInput = styled.div<{
       }
 
       &Error {
-        border: 2px solid ${(props: any): string => props.theme.colors.error};
-
+        border-color: ${(props: any): string => props.theme.colors.error};
         color: ${(props: any): string =>
           props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
-
-        .input {
-          margin: -2px;
-        }
       }
 
       &Disabled {
@@ -91,18 +85,13 @@ export const StyledTextInput = styled.div<{
       }
 
       &:hover {
-        border: 1px solid
-          ${(props: any): string =>
-            props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500};
-
-        .input {
-          margin: -1px;
-        }
+        border-color: ${(props: any): string =>
+          props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500};
       }
 
       &:focus-within {
-        border-color: transparent;
         box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.base900};
+        z-index: 10;
       }
     }
   }

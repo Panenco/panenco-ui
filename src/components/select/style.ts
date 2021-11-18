@@ -73,7 +73,7 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
         return mode === ThemeMode.dark ? theme.colors.base900 : theme.colors.base100;
       })()}`,
       boxShadow: !menuIsOpen && isFocused && `0px 0px 0px 2px ${theme.colors.base900}`,
-      border: `${error ? '2px' : '1px'} solid ${isBorderColor()}`,
+      border: `1px solid ${isBorderColor()}`,
       borderBottomColor: menuIsOpen && 'transparent',
       // borderBottomColor: menuIsOpen && 'transparent',
       borderBottomLeftRadius: menuIsOpen && 0,
@@ -93,7 +93,7 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
     } = state;
     const isBorder = (): string => {
       if (error) {
-        return `2px solid ${theme.colors.error}`;
+        return `1px solid ${theme.colors.error}`;
       }
       return `1px solid ${mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.primary500}`;
     };
@@ -103,7 +103,6 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
       backgroundColor: mode === ThemeMode.dark ? theme.colors.base900 : theme.colors.base100,
       paddingTop: '5px',
       paddingBottom: '5px',
-      marginTop: '-2px !important', // TODO
       margin: 0,
       boxShadow: menuIsOpen && 'none',
       border: `${isBorder()}`,

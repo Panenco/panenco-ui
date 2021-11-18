@@ -38,10 +38,11 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 0,
     'import/no-extraneous-dependencies': 0,
     'react/display-name': 0,
+    'react/prop-types': 0,
     'import/extensions': 0,
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-empty-function': 'off',
-    'quotes': [2, 'single', { 'avoidEscape': true }]
+    quotes: [2, 'single', { avoidEscape: true }],
   },
   settings: {
     'import/resolver': {
