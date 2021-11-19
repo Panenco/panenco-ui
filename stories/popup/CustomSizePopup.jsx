@@ -22,7 +22,7 @@ const CustomSizePopup = () => {
           <Popup.Title id="examplePopup">Lorem, ipsum dolor.</Popup.Title>
         </Popup.Header>
         <Popup.Body>
-          <div style={{marginBottom: '16px'}}>
+          <div className={s.defaultMarginBottom}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </div>
           <div>
@@ -30,8 +30,8 @@ const CustomSizePopup = () => {
           </div>
         </Popup.Body>
         <Popup.Footer>
-          <div style={{display: 'flex', justifyContent: 'flex-end', paddingBottom: '0'}}>
-            <SecondaryButton aria-label="Close" onClick={handlePopupHide} style={{marginRight: '16px'}}>Cancel</SecondaryButton>
+          <div className={s.popupFooterButtonsContainer}>
+            <SecondaryButton aria-label="Close" onClick={handlePopupHide} className={s.defaultMarginRight}>Cancel</SecondaryButton>
             <PrimaryButton>Submit</PrimaryButton>
           </div>
         </Popup.Footer>
