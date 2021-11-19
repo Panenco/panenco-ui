@@ -16,7 +16,7 @@ export const StyledPopupHeader = styled.div<{
   justify-content: space-between;
   align-items: center;
   padding: 16px 24px;
-  border-bottom: 1px solid ${(props: any): string => props.theme.colors.border};
+  border-bottom: 1px solid ${(props: any): string => props.theme.colors.base300};
   @media (max-width: ${breakpoints.sm}) {
     padding: 16px;
   }
@@ -26,7 +26,7 @@ export const StyledPopupFooter = styled.div<{
   theme: PUITheme;
 }>`
   padding: 16px 24px;
-  border-top: 1px solid ${(props: any): string => props.theme.colors.border};
+  border-top: 1px solid ${(props: any): string => props.theme.colors.base300};
   @media (max-width: ${breakpoints.sm}) {
     padding: 16px;
   }
