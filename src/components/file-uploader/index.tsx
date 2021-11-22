@@ -3,6 +3,7 @@ import cx from 'classnames';
 import { Button, Text, Icon, Loader, ButtonIcon } from 'components';
 import { useTheme, useMode } from 'utils/hooks';
 import { idGenerator } from 'utils/helpers';
+import { useCombinedRefs } from 'utils/hooks/combinedrefs';
 import { ThemeMode, InputPropsType, WrapperProps } from '../../utils/types';
 import { StyledFileUploader } from './style';
 
@@ -52,11 +53,18 @@ export const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
       key: uniqueID,
     }) as any;
 
+    const refInput = React.useRef(null);
+    const combinedRef = useCombinedRefs(refInput, inputRef);
+
     const updateFileName = (e): void => {
       setName({
         fileName: e.target.files[0].name,
         key: fileInput.key,
       });
+    };
+
+    const handleClick = (): void => {
+      combinedRef.current.click();      
     };
 
     const handleIconClick = (e: React.UIEvent): void => {
@@ -116,7 +124,7 @@ export const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
               id={id || defaultId}
               disabled={disabled || loading}
               onChange={updateFileName}
-              ref={inputRef}
+              ref={combinedRef}
               key={key}
               {...inputProps}
               {...props}
@@ -124,8 +132,7 @@ export const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
             <Text className="placeholderBoxTitle">{renderPlaceholder}</Text>
             {renderStatusIcons}
           </div>
-
-          <Button type="submit" variant="contained" className="uploaderBtn" disabled={disabled || loading}>
+          <Button type="submit" variant="contained" className="uploaderBtn" disabled={disabled || loading} onClick={handleClick}>
             {buttonText}
           </Button>
         </label>
