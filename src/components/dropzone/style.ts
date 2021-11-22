@@ -1,6 +1,6 @@
 import { styled } from 'linaria/react';
-import { PUITheme, ThemeMode } from 'utils/types';
 import { transparentize } from 'polished';
+import { PUITheme, ThemeMode } from 'utils/types';
 
 export const StyledDropzone = styled.div<{
   theme: PUITheme;
@@ -15,7 +15,6 @@ export const StyledDropzone = styled.div<{
   flex-direction: column;
   border-radius: 4px;
   width: 100%;
-  height: 100%;
   padding: 40px 56px;
   border-style: solid;
   background-color: ${(props: any): string => {
@@ -98,5 +97,9 @@ export const StyledDropzone = styled.div<{
         props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base700};
       margin-top: 20px;
     }
+  }
+
+  .additionalContent {
+    margin-top: 25px;
   }
 `;
