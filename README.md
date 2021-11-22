@@ -135,3 +135,7 @@ export type PUISizes = {
   h1: TextSize;
 };
 ```
+
+### Exported external modules
+
+- react-focus-lock: https://github.com/theKashey/react-focus-lock

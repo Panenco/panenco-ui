@@ -8,3 +8,5 @@ export * from './utils/hooks';
 export * from './utils/hocs';
 export * from './utils/types';
 export * from './utils/helpers';
+
+export * from 'react-focus-lock';
