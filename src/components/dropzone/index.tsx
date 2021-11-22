@@ -19,7 +19,7 @@ export interface DropzoneProps extends React.HTMLAttributes<HTMLDivElement> {
   wrapperProps?: WrapperProps;
   inputProps?: InputPropsType; // will be removed in next versions
   options?: DropzoneOptions;
-  chidlren?: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
