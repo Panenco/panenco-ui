@@ -22,17 +22,17 @@ const Child = ({ mode }) => {
     <>
       <Row>
         <WrappedCol>
-          <Text size={sizes.l} color={mode === 'light' ? colors.primary : colors.secondary}>
+          <Text size={sizes.l} color={mode === 'light' ? colors.base900 : colors.base700}>
             Name
           </Text>
         </WrappedCol>
         <WrappedCol>
-          <Text size={sizes.l} color={mode === 'light' ? colors.primary : colors.secondary}>
+          <Text size={sizes.l} color={mode === 'light' ? colors.base900 : colors.base700}>
             Text Size
           </Text>
         </WrappedCol>
         <WrappedCol>
-          <Text size={sizes.l} color={mode === 'light' ? colors.primary : colors.secondary}>
+          <Text size={sizes.l} color={mode === 'light' ? colors.base900 : colors.base700}>
             Line Height
           </Text>
         </WrappedCol>
@@ -42,17 +42,17 @@ const Child = ({ mode }) => {
         .map((el) => (
           <Row key={el}>
             <WrappedCol>
-              <Text size={sizes[el]} color={mode === 'light' ? colors.primary : colors.secondary}>
+              <Text size={sizes[el]} color={mode === 'light' ? colors.base900 : colors.base700}>
                 {el}
               </Text>
             </WrappedCol>
             <WrappedCol>
-              <Text size={sizes[el]} color={mode === 'light' ? colors.primary : colors.secondary}>
+              <Text size={sizes[el]} color={mode === 'light' ? colors.base900 : colors.base700}>
                 {sizes[el].textSize}
               </Text>
             </WrappedCol>
             <WrappedCol>
-              <Text size={sizes[el]} color={mode === 'light' ? colors.primary : colors.secondary}>
+              <Text size={sizes[el]} color={mode === 'light' ? colors.base900 : colors.base700}>
                 {sizes[el].lineHeight}
               </Text>
             </WrappedCol>

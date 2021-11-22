@@ -29,7 +29,7 @@ export const StyledWizard = styled.div<{
         &Line {
           display: flex;
           flex-grow: 1;
-          border-top: 4px solid ${(props: any): string => props.theme.colors.secondary};
+          border-top: 4px solid ${(props: any): string => props.theme.colors.base700};
           margin-top: 10px;
         }
 
@@ -40,8 +40,8 @@ export const StyledWizard = styled.div<{
           width: 24px;
           height: 24px;
           border-radius: 50%;
-          color: ${(props: any): string => props.theme.colors.light};
-          background-color: ${(props: any): string => props.theme.colors.secondary};
+          color: ${(props: any): string => props.theme.colors.base100};
+          background-color: ${(props: any): string => props.theme.colors.base700};
         }
       }
       &Two {
@@ -54,20 +54,20 @@ export const StyledWizard = styled.div<{
         display: flex;
         justify-content: center;
         margin-top: 10px;
-        color: ${(props: any): string => props.theme.colors.secondary};
+        color: ${(props: any): string => props.theme.colors.base700};
         transform: translate(calc(50% - 12px));
       }
     }
 
     &Active {
       .wizzardStepBoxOneCurrStep {
-        background-color: ${(props: any): string => props.theme.colors.accent};
+        background-color: ${(props: any): string => props.theme.colors.primary500};
       }
       .wizzardStepBoxCurrTitle {
-        color: ${(props: any): string => props.theme.colors.accent};
+        color: ${(props: any): string => props.theme.colors.primary500};
       }
       .wizzardStepBoxOneLine {
-        border-top: 4px solid ${(props: any): string => props.theme.colors.accent};
+        border-top: 4px solid ${(props: any): string => props.theme.colors.primary500};
       }
     }
 

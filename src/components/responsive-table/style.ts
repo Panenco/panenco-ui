@@ -13,7 +13,7 @@ export const Styles = styled.div<{
 
     &Cell {
       color: ${(props: any): string =>
-        props.mode === ThemeMode.light ? props.theme.colors.dark : props.theme.colors.light};
+        props.mode === ThemeMode.light ? props.theme.colors.base900 : props.theme.colors.base100};
       line-height: 1.3;
       min-height: 24px;
       overflow: hidden;
@@ -64,22 +64,22 @@ export const Styles = styled.div<{
 
       &Text {
         color: ${(props: any): string =>
-          props.mode === ThemeMode.light ? props.theme.colors.dark : props.theme.colors.light};
+          props.mode === ThemeMode.light ? props.theme.colors.base900 : props.theme.colors.base100};
         font-weight: ${(props: any): string => props.theme.typography.weights.bold};
       }
 
       &Text:hover {
-        color: ${(props: any): string => props.theme.colors.accent};
+        color: ${(props: any): string => props.theme.colors.primary500};
       }
 
       &Icon {
-        color: ${(props: any): string => props.theme.colors.secondary};
+        color: ${(props: any): string => props.theme.colors.base700};
         cursor: pointer;
         height: 10px;
         width: 10px;
 
         &Active {
-          color: ${(props: any): string => props.theme.colors.accent};
+          color: ${(props: any): string => props.theme.colors.primary500};
         }
       }
     }
@@ -105,14 +105,14 @@ export const Styles = styled.div<{
 
           &Label {
             color: ${(props: any): string =>
-              props.mode === ThemeMode.light ? props.theme.colors.dark : props.theme.colors.light};
+              props.mode === ThemeMode.light ? props.theme.colors.base900 : props.theme.colors.base100};
             font-weight: ${(props: any): string => props.theme.typography.weights.bold};
             line-height: 14px;
           }
 
           &Text {
             color: ${(props: any): string =>
-              props.mode === ThemeMode.light ? props.theme.colors.dark : props.theme.colors.light};
+              props.mode === ThemeMode.light ? props.theme.colors.base900 : props.theme.colors.base100};
             line-height: 20px;
             margin-top: 4px;
           }
@@ -123,12 +123,12 @@ export const Styles = styled.div<{
 
   .tableBodyRow:nth-of-type(4n + 1) {
     background-color: ${(props: any): string =>
-      transparentize(0.6, props.mode === ThemeMode.light ? props.theme.colors.border : props.theme.colors.secondary)};
+      transparentize(0.6, props.mode === ThemeMode.light ? props.theme.colors.base400 : props.theme.colors.base700)};
   }
 
   .tableBodyRow:nth-of-type(4n + 2) {
     background-color: ${(props: any): string =>
-      transparentize(0.6, props.mode === ThemeMode.light ? props.theme.colors.border : props.theme.colors.secondary)};
+      transparentize(0.6, props.mode === ThemeMode.light ? props.theme.colors.base400 : props.theme.colors.base700)};
   }
 
   @keyframes AnimationName {
@@ -148,10 +148,12 @@ export const Styles = styled.div<{
 
     background: linear-gradient(
       90deg,
-      ${(props: any): string => (props.mode === ThemeMode.light ? props.theme.colors.light : props.theme.colors.dark)},
       ${(props: any): string =>
-        props.mode === ThemeMode.light ? props.theme.colors.border : transparentize(0.6, props.theme.colors.secondary)},
-      ${(props: any): string => (props.mode === ThemeMode.light ? props.theme.colors.light : props.theme.colors.dark)}
+        props.mode === ThemeMode.light ? props.theme.colors.base100 : props.theme.colors.base900},
+      ${(props: any): string =>
+        props.mode === ThemeMode.light ? props.theme.colors.base400 : transparentize(0.6, props.theme.colors.base700)},
+      ${(props: any): string =>
+        props.mode === ThemeMode.light ? props.theme.colors.base100 : props.theme.colors.base900}
     );
     background-size: 200% 200%;
 

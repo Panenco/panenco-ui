@@ -23,7 +23,7 @@ export default decorator('Notification', NotificationDOCS, NotificationREADME).a
         </Col>
         <Col s="2" m="2" l="3">
           <PrimaryButton
-            style={{ backgroundColor: colors.outline }}
+            style={{ backgroundColor: colors.base900 }}
             onClick={() => toast.info('We will verify your application and get back to you if we have any questions.')}
           >
             Show info

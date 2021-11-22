@@ -68,7 +68,7 @@ const Component = ({
         </Text>
       )}
       {subTitle && (
-        <Text className="subTitle" size={theme.typography.sizes.xs} color={theme.colors.secondary}>
+        <Text className="subTitle" size={theme.typography.sizes.xs} color={theme.colors.base700}>
           {subTitle}
         </Text>
       )}
@@ -81,7 +81,7 @@ const Component = ({
             }
             styles={{ ...customStyles(theme, mode, error, styles) }}
             components={{ Option: CustomOption, MultiValue, ...propComponents }}
-            noOptionsMessage={noOptionsMessage || (() => `Not found`)}
+            noOptionsMessage={noOptionsMessage || (() => 'Not found')}
             error={error}
             isClearable={false}
             placeholder={placeholder}

@@ -8,7 +8,7 @@ export const StyledCookiesContainer = styled.div<{
 }>`
   align-items: center;
   background-color: ${(props: any): string => {
-    return transparentize(0.4, props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.dark);
+    return transparentize(0.4, props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900);
   }};
   display: flex;
   height: 100%;
@@ -33,7 +33,8 @@ export const StyledCookiesContainer = styled.div<{
 
   .cookiesModalShortDescription {
     &Text {
-      color: ${(props: any) => (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary)};
+      color: ${(props: any) =>
+        props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
     }
   }
 
@@ -46,7 +47,8 @@ export const StyledCookiesContainer = styled.div<{
     padding: 0;
 
     &Text {
-      color: ${(props: any) => (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent)};
+      color: ${(props: any) =>
+        props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500};
     }
   }
 `;
@@ -61,7 +63,8 @@ export const StyledCookieEntry = styled.div<{
     margin-bottom: 8px;
 
     &Text {
-      color: ${(props: any) => (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary)};
+      color: ${(props: any) =>
+        props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
     }
   }
 
@@ -69,7 +72,8 @@ export const StyledCookieEntry = styled.div<{
     margin-bottom: 12px;
 
     &Text {
-      color: ${(props: any) => (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary)};
+      color: ${(props: any) =>
+        props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
     }
   }
 

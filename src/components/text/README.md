@@ -8,7 +8,7 @@ import { Text, useTheme } from '@panenco/ui';
 const YourComponent = () => {
   const theme = useTheme();
   return (
-    <Text size={theme.typography.sizes.xl} weight={theme.typography.weights.bold} color={theme.colors.primary}>
+    <Text size={theme.typography.sizes.xl} weight={theme.typography.weights.bold} color={theme.colors.base900}>
       Hello world
     </Text>
   );

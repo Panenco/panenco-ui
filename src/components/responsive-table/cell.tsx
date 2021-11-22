@@ -53,7 +53,7 @@ const Cell = ({
       className={cx('tableCell', className)}
       style={{
         maxWidth: `${minWidth}px`,
-        color: mode === ThemeMode.light ? theme.colors.dark : theme.colors.light,
+        color: mode === ThemeMode.light ? theme.colors.base900 : theme.colors.base100,
       }}
     >
       {IS_FIRST_CELL && IS_HIDDEN_COLUMNS ? (

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cx from 'classnames';
-import { PrimaryButton, Text, Icon, Loader, ButtonIcon } from 'components';
+import { Button, Text, Icon, Loader, ButtonIcon } from 'components';
 import { useTheme, useMode } from 'utils/hooks';
 import { idGenerator } from 'utils/helpers';
 import { useCombinedRefs } from 'utils/hooks/combinedrefs';
@@ -82,7 +82,7 @@ export const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
       renderPlaceholder = loadingText;
       renderStatusIcons = loader || (
         <Loader
-          color={mode === ThemeMode.dark ? theme.colors.light : theme.colors.secondary}
+          color={mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.base700}
           className="placeholderBoxIcon"
         />
       );
@@ -116,8 +116,8 @@ export const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
             {title}
           </Text>
         )}
-        <label className="uploader" htmlFor={id || defaultId}>
-          <div className={error ? 'placeholderBoxError' : 'placeholderBox'}>
+        <label className={cx('uploader', error && 'uploaderError')} htmlFor={id || defaultId}>
+          <div className="placeholderBox">
             <input
               className="uploaderInput"
               type="file"
@@ -132,10 +132,9 @@ export const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
             <Text className="placeholderBoxTitle">{renderPlaceholder}</Text>
             {renderStatusIcons}
           </div>
-
-          <PrimaryButton type="submit" className="uploaderBtn" disabled={disabled || loading} onClick={handleClick}>
+          <Button type="submit" variant="contained" className="uploaderBtn" disabled={disabled || loading} onClick={handleClick}>
             {buttonText}
-          </PrimaryButton>
+          </Button>
         </label>
 
         {error && (
