@@ -20,12 +20,12 @@ const render  = () => {
 
 This component inherits the attributes of the **text-area** element and extends the functionality with next properties.
 
-- title - title;
-- subTitle - subTitle;
-- error - add this prop when smth went wrong;
-- wrapperProps - it's props which will be added to wrapper component;
-- inputProps - it's props which will be added to input component;
-- ref - wrapper ref
+- title - Title text content;
+- subTitle - Subtitle text content;
+- error - The text that would be displayed in case an error occurred;
+- wrapperProps - Attributes applied to the wrapper element;
+- inputProps - Attributes applied to the input element;
+- ref - The wrapper ref
 
 | propName     | propType                              | defaultValue | isRequired |
 | ------------ | ------------------------------------- | ------------ | ---------- |

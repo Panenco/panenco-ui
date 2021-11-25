@@ -27,15 +27,15 @@ const render  = () => {
 
 This component inherits the attributes of the **input** element and extends the functionality with next properties.
 
-- title - title;
-- step - step;
-- maxValue - maxValue;
-- minValue - minValue;
-- error - add this prop when smth went wrong;
-- wrapperProps - it's props which will be added to wrapper component;
-- inputProps - it's props which will be added to input component;
-- locales - object that can take locale for notInRange message;
-- ref - wrapper ref
+- title - Title text content;
+- step - The step of the addition or subtraction;
+- maxValue - The maximum value that can be displayed;
+- minValue - The minimum value that can be displayed;
+- error - The text that would be displayed in case an error occurred;
+- wrapperProps - Attributes applied to the wrapper element;
+- inputProps - Attributes applied to the input element;
+- locales - An object that can take locale for notInRange message;
+- ref - The wrapper ref
 
 | propName     | propType                                | defaultValue                       | isRequired |
 | ------------ | --------------------------------------- | ---------------------------------- | ---------- |
