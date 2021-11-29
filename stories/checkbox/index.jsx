@@ -15,7 +15,7 @@ export default decorator('Checkbox', CheckboxDocs, Readme).add('Checkbox compone
 
   return (
     <WrappedComponent>
-      <Row style={ { justifyContent: 'space-around', marginBottom: '30px' } }>
+      <Row style={ { justifyContent: 'space-around', marginBottom: '30px', marginTop: '10px' } }>
         <Col s='2' m='4' l='3'>
           <Checkbox label='Checkbox' checked={ isChecked1 }
                     onClick={ handleClick } error='Error' />
