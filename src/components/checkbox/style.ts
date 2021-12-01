@@ -35,6 +35,12 @@ export const StyledCheckbox = styled.div<{
           return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary700;
         }};
       }
+
+      .container.error {
+        border-color: ${(props: any): string => {
+          return props.theme.colors.error;
+        }};
+      }
     }
 
     &.labelDisabled {
@@ -137,6 +143,15 @@ export const StyledCheckbox = styled.div<{
     }};
   }
 
+  & .checkbox:checked + .container.error {
+    background-color: ${(props: any): string => {
+      return props.theme.colors.error;
+    }};
+    border-color: ${(props: any): string => {
+      return props.theme.colors.error;
+    }};
+  }
+
   & .checkbox:checked {
     &:hover,
     &:active {
@@ -157,6 +172,15 @@ export const StyledCheckbox = styled.div<{
             return props.color;
           }
           return props.mode === ThemeMode.dark ? props.theme.colors.primary200 : props.theme.colors.primary700;
+        }};
+      }
+
+      & + .container.error {
+        background-color: ${(props: any): string => {
+          return props.theme.colors.error;
+        }};
+        border-color: ${(props: any): string => {
+          return props.theme.colors.error;
         }};
       }
     }
