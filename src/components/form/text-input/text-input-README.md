@@ -23,7 +23,7 @@ This component inherits the attributes of the **input** element and extends the 
 - title - title;
 - subTitle - subTitle;
 - error - add this prop when smth went wrong;
-- iconBefore - it could be icon from Icon copmponent or some JSX.Eleement;
+- iconBefore - it could be icon from Icon component or some JSX.Element;
 - iconAfter - the same as with iconBefore;
 - wrapperProps - it's props which will be added to wrapper component;
 - inputProps - it's props which will be added to input component;
