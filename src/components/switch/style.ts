@@ -59,4 +59,11 @@ export const StyledSwitch = styled.label`
   & input:focus + .slider {
     box-shadow: 0px 0px 0px 2px ${(props: any): string => props.theme.colors.base900};
   }
+
+  & input:disabled + .slider {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+}
+
 `;
