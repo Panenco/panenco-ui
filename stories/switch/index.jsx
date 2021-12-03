@@ -24,6 +24,9 @@ export default decorator('Switch', StampDocs, StampReadme).add('Stamp component'
         <Col s="3" m="3" l="3">
           <Switch size={90} checked={checked2} onChange={() => setChecked2((prevState) => !prevState)} />
         </Col>
+        <Col s="3" m="3" l="3">
+          <Switch size={90} checked={checked2} onChange={() => setChecked2((prevState) => !prevState)} disabled />
+        </Col>
       </Row>
     </WrappedComponent>
   );
