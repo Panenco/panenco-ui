@@ -6,16 +6,16 @@ export const StyledTab = styled.button<{
   mode: ThemeMode;
 }>`
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   padding: 12px 22px;
-  margin: 0;
   border: 0;
+  margin: 0;
   background-color: transparent;
 
   .iconClass {
-    height: 20px;
     width: 20px;
+    height: 20px;
     margin-right: 10px;
   }
 
@@ -24,9 +24,9 @@ export const StyledTab = styled.button<{
   }
 
   &:focus {
+    z-index: 1;
     outline: 2px solid ${(props: any): string => props.theme.colors.base900};
     outline-offset: 0;
-    z-index: 1;
   }
 
   &.disabled {
