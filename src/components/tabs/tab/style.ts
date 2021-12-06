@@ -35,13 +35,17 @@ export const StyledTab = styled.button<{
   }
 
   &.tab {
-    color: ${(props: any): string => props.theme.colors.base700};
     border-bottom: 1px solid ${(props: any): string => props.theme.colors.base700};
+    color: ${(props: any): string => props.theme.colors.base700};
 
     &.selected {
-      color: ${(props: any): string => props.theme.colors.base900};
-      border-bottom: 3px solid ${(props: any): string => props.theme.colors.primary500};
       padding-bottom: 10px;
+      border-bottom: 3px solid ${(props: any): string => props.theme.colors.primary500};
+      color: ${(props: any): string => props.theme.colors.base900};
+    }
+
+    &:not(.selected) {
+      cursor: pointer;
     }
   }
 
@@ -49,12 +53,17 @@ export const StyledTab = styled.button<{
     color: ${(props: any): string => props.theme.colors.base900};
 
     &.selected {
-      background-color: ${(props: any): string => props.theme.colors.base100};
-      border-top: 3px solid ${(props: any): string => props.theme.colors.primary500};
       padding-top: 9px;
+      border-top: 3px solid ${(props: any): string => props.theme.colors.primary500};
+      background-color: ${(props: any): string => props.theme.colors.base100};
+
       &:hover {
         background-color: ${(props: any): string => props.theme.colors.primary200};
       }
+    }
+
+    &:not(.selected) {
+      cursor: pointer;
     }
   }
 `;
