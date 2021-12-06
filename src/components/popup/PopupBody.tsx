@@ -1,3 +1,8 @@
+import * as React from 'react';
 import { StyledPopupBody } from './style';
 
-export { StyledPopupBody as PopupBody };
+const PopupBody = ({ ...props }: React.HTMLAttributes<HTMLDivElement>): JSX.Element => (
+  <StyledPopupBody className="popupBody" {...props} />
+);
+
+export { PopupBody };

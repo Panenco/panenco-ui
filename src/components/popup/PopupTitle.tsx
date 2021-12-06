@@ -14,6 +14,7 @@ export const PopupTitle = React.forwardRef<HTMLDivElement, PopupTitleProps>(
         size={theme.typography.sizes.l}
         weight={theme.typography.weights.bold}
         color={theme.colors.base900}
+        className="popupTitle"
         {...props}
       >
         {children}
