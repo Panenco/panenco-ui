@@ -19,7 +19,7 @@ export const StyledTab = styled.button<{
     margin-right: 10px;
   }
 
-  &:hover {
+  &:not(.selected):hover {
     background-color: ${(props: any): string => props.theme.colors.primary200};
   }
 
@@ -56,10 +56,6 @@ export const StyledTab = styled.button<{
       padding-top: 9px;
       border-top: 3px solid ${(props: any): string => props.theme.colors.primary500};
       background-color: ${(props: any): string => props.theme.colors.base100};
-
-      &:hover {
-        background-color: ${(props: any): string => props.theme.colors.primary200};
-      }
     }
 
     &:not(.selected) {
