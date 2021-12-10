@@ -70,9 +70,7 @@ export const StyledRadio = styled.label<{
 
     .container {
       background-color: transparent;
-      border: 2px solid
-        ${(props: any): string =>
-          props.pointColor || (props.error ? props.theme.colors.error : props.theme.colors.base700)};
+      border: 2px solid ${(props: any): string => props.pointColor || props.theme.colors.base700};
       border-radius: 50%;
       cursor: pointer;
       display: flex;
@@ -81,6 +79,12 @@ export const StyledRadio = styled.label<{
       position: relative;
       width: 20px;
       transition: 0.3s;
+
+      &.error {
+        border-color: ${(props: any): string => {
+          return props.theme.colors.error;
+        }};
+      }
     }
 
     .radiobox {
