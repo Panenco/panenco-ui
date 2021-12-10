@@ -30,9 +30,14 @@ export default decorator('Button', ButtonDocs, ButtonReadme).add('Button compone
 
   return (
     <WrappedComponent>
-      <div style={ { display: 'flex', width: '100%', marginTop: '10px' } }>
-        <Row style={ { justifyContent: 'center' } }>
-          <Col xs='4' m='4' l='4' style={ buttonCellStyles }>
+      <div style={ {
+        display: 'flex',
+        width: '100%',
+        marginTop: '10px',
+        flexDirection: 'column',
+      } }>
+        <Row style={ { justifyContent: 'center', flexGrow: '1' } }>
+          <Col xs='6' m='6' l='6' style={ buttonCellStyles }>
             <div style={ {
               display: 'flex',
               justifyContent: 'center',
@@ -41,7 +46,24 @@ export default decorator('Button', ButtonDocs, ButtonReadme).add('Button compone
               <Button style={ buttonStyles } className={ s.mb1 }>Text</Button>
             </div>
           </Col>
-          <Col xs='4' m='4' l='4' style={ buttonCellStyles }>
+          <Col xs='6' m='6' l='6' style={ buttonCellStyles }>
+            <div style={ {
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            } }>
+              <Button
+                style={ buttonStyles }
+                className={ s.mb1 }
+                isLoading
+              >
+                Text
+              </Button>
+            </div>
+          </Col>
+        </Row>
+        <Row style={ { justifyContent: 'center', flexGrow: '1' } }>
+          <Col xs='6' m='6' l='6' style={ buttonCellStyles }>
             <div style={ {
               display: 'flex',
               justifyContent: 'center',
@@ -51,7 +73,25 @@ export default decorator('Button', ButtonDocs, ButtonReadme).add('Button compone
                       variant='contained'>Contained</Button>
             </div>
           </Col>
-          <Col xs='4' m='4' l='4' style={ buttonCellStyles }>
+          <Col xs='6' m='6' l='6' style={ buttonCellStyles }>
+            <div style={ {
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            } }>
+              <Button
+                style={ buttonStyles }
+                className={ s.mb1 }
+                variant='contained'
+                isLoading
+              >
+                Contained
+              </Button>
+            </div>
+          </Col>
+        </Row>
+        <Row style={ { justifyContent: 'center', flexGrow: '1' } }>
+          <Col xs='6' m='6' l='6' style={ buttonCellStyles }>
             <div style={ {
               display: 'flex',
               justifyContent: 'center',
@@ -59,6 +99,23 @@ export default decorator('Button', ButtonDocs, ButtonReadme).add('Button compone
             } }>
               <Button style={ buttonStyles } className={ s.mb1 }
                       variant='outlined'>Outlined</Button>
+            </div>
+          </Col>
+
+          <Col xs='6' m='6' l='6' style={ buttonCellStyles }>
+            <div style={ {
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            } }>
+              <Button
+                style={ buttonStyles }
+                className={ s.mb1 }
+                variant='outlined'
+                isLoading
+              >
+                Outlined
+              </Button>
             </div>
           </Col>
         </Row>
