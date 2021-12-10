@@ -119,8 +119,44 @@ export const DateInputStory = decorator('DateInput', DateInputDocs, DateInputRea
   return (
     <WrappedComponent>
       <div style={ { display: 'flex', flexDirection: 'column' } }>
+        <Row style={ {
+          alignItems: 'flex-start',
+          marginBottom: '1rem',
+          marginTop: '1rem',
+        } }>
+          <Col s='12' m='12' l='12'>
+            <DateInput
+              inputs={ inputs2 }
+              onChange={ handleChange2 }
+              value={ value2 }
+            />
+          </Col>
+        </Row>
         <Row style={ { alignItems: 'flex-start', marginBottom: '1rem' } }>
           <Col s='12' m='12' l='12'>
+            <DateInput
+              inputs={ inputs1 }
+              value={ value }
+              onChange={ handleChange } />
+          </Col>
+        </Row>
+        <Row style={ { alignItems: 'flex-start', marginBottom: '1rem' } }>
+          <Col s='12' m='12' l='12'>
+            <DateInput
+              inputs={ inputs3 }
+              value={ value3 }
+              onChange={ handleChange3 } />
+          </Col>
+        </Row>
+        <Row style={ { alignItems: 'flex-start', marginBottom: '1rem' } }>
+          <Col s='12' m='12' l='12'>
+            <p style={ {
+              fontSize: '14px',
+              lineHeight: '150%',
+              marginBottom: '.5rem',
+            } }>
+              Min Date - 01/01
+            </p>
             <DateInput
               minDate={ new Date('01/01/2021') }
               inputs={ inputs2 }
@@ -132,6 +168,16 @@ export const DateInputStory = decorator('DateInput', DateInputDocs, DateInputRea
         </Row>
         <Row style={ { alignItems: 'flex-start', marginBottom: '1rem' } }>
           <Col s='12' m='12' l='12'>
+            <p
+              style={ { fontSize: '14px', lineHeight: '150%' } }
+            >
+              Min Date - 01/01/2017
+            </p>
+            <p style={ {
+              fontSize: '14px',
+              lineHeight: '150%',
+              marginBottom: '.5rem',
+            } }>Max Date - 01/01/2022</p>
             <DateInput
               minDate={ new Date('01/01/2017') }
               maxDate={ new Date('01/01/2022') }
@@ -143,6 +189,13 @@ export const DateInputStory = decorator('DateInput', DateInputDocs, DateInputRea
         </Row>
         <Row style={ { alignItems: 'flex-start', marginBottom: '1rem' } }>
           <Col s='12' m='12' l='12'>
+            <p style={ {
+              fontSize: '14px',
+              lineHeight: '150%',
+              marginBottom: '.5rem',
+            } }>
+              Max Date - 06/2025
+            </p>
             <DateInput
               maxDate={ new Date('06/01/2025') }
               divider='/'
@@ -151,21 +204,6 @@ export const DateInputStory = decorator('DateInput', DateInputDocs, DateInputRea
               onChange={ handleChange3 } />
           </Col>
         </Row>
-        {/* <Row style={{ alignItems: 'flex-start', marginBottom: '1rem' }}> */ }
-        {/*  <Col s="6" m="6" l="6"> */ }
-        {/*    <DateInput inputs={inputs1} divider="/" value={value} onChange={handleChange} /> */ }
-        {/*  </Col> */ }
-        {/* </Row> */ }
-        {/* <Row style={{ alignItems: 'flex-start', marginBottom: '1rem' }}> */ }
-        {/*  <Col s="6" m="6" l="6"> */ }
-        {/*    <DateInput inputs={inputs2} divider="/" value={value} onChange={handleChange} /> */ }
-        {/*  </Col> */ }
-        {/* </Row> */ }
-        {/* <Row style={{ alignItems: 'flex-start', marginBottom: '1rem' }}> */ }
-        {/*  <Col s="6" m="6" l="6"> */ }
-        {/*    <DateInput inputs={inputs3} divider="/" value={value} onChange={handleChange} /> */ }
-        {/*  </Col> */ }
-        {/* </Row> */ }
       </div>
     </WrappedComponent>
   );

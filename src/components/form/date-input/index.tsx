@@ -28,7 +28,7 @@ export interface DateInputProps extends React.InputHTMLAttributes<HTMLTextAreaEl
   inputRef?: React.Ref<any>;
   inputs: InputProp[];
   value: string;
-  divider: string;
+  divider?: string;
   minDate?: Date;
   maxDate?: Date;
 
