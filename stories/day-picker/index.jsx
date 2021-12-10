@@ -1,13 +1,14 @@
 import { Col, DateInput, DayPicker, Row } from 'components';
 import DateInputDocs from 'components/form/date-input/date-input-DOCS.md';
 import DateInputReadme from 'components/form/date-input/date-input-README.md';
+import DayPickerDocs from 'components/form/day-picker/day-picker-DOCS.md'
 import README from 'components/form/day-picker/day-picker-README.md';
 import React from 'react';
 
 import { decorator } from '../../utils/decorator';
 import { WrappedComponent } from '../helpers/wrapped';
 
-export default decorator('DayPicker', DateInputDocs, README).add('DayPicker', () => {
+export default decorator('DayPicker', DayPickerDocs, README).add('DayPicker', () => {
   const [value, setValue] = React.useState(new Date());
   const handleChange = (val) => {
     setValue(val);
