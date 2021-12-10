@@ -55,7 +55,7 @@ const inputs1 = [
   {
     title: 'Month',
     type: 'month',
-    format: 'MM',
+    format: 'MMM',
     placeholder: '12',
   },
   {
@@ -100,42 +100,68 @@ const inputs3 = [
 
 export const DateInputStory = decorator('DateInput', DateInputDocs, DateInputReadme).add('DateInput', () => {
   const [value, setValue] = React.useState(new Date());
-
+  const [value2, setValue2] = React.useState(new Date());
+  const [value3, setValue3] = React.useState(new Date());
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const handleChange = ( val ) => {
     setValue(val);
   };
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  const handleChange2 = ( val ) => {
+    setValue2(val);
+  };
+
+  const handleChange3 = ( val ) => {
+    setValue3(val);
+  };
+
 
   return (
     <WrappedComponent>
       <div style={ { display: 'flex', flexDirection: 'column' } }>
-        {/* <Row style={{ alignItems: 'flex-start' }}> */ }
-        {/*  <Col s="6" m="6" l="6"> */ }
-        {/*    <DateInput inputs={inputs1} onChange={handleChange} /> */ }
-        {/*  </Col> */ }
-        {/* </Row> */ }
-        <Row style={ { alignItems: 'flex-start' } }>
-          <Col s='6' m='6' l='6'>
-            <DateInput divider='/' inputs={ inputs1 } value={ value }
-                       onChange={ handleChange } />
+        <Row style={ { alignItems: 'flex-start', marginBottom: '1rem' } }>
+          <Col s='12' m='12' l='12'>
+            <DateInput
+              minDate={ new Date('01/01/2021') }
+              inputs={ inputs2 }
+              onChange={ handleChange2 }
+              divider='/'
+              value={ value2 }
+            />
           </Col>
         </Row>
-        {/* <Row style={{ alignItems: 'flex-start' }}> */ }
-        {/*  <Col s="6" m="6" l="6"> */ }
-        {/*    <DateInput inputs={inputs3} value={value} onChange={handleChange} /> */ }
-        {/*  </Col> */ }
-        {/* </Row> */ }
-        {/* <Row style={{ alignItems: 'flex-start' }}> */ }
+        <Row style={ { alignItems: 'flex-start', marginBottom: '1rem' } }>
+          <Col s='12' m='12' l='12'>
+            <DateInput
+              minDate={ new Date('01/01/2017') }
+              maxDate={ new Date('01/01/2022') }
+              divider='/'
+              inputs={ inputs1 }
+              value={ value }
+              onChange={ handleChange } />
+          </Col>
+        </Row>
+        <Row style={ { alignItems: 'flex-start', marginBottom: '1rem' } }>
+          <Col s='12' m='12' l='12'>
+            <DateInput
+              maxDate={ new Date('06/01/2025') }
+              divider='/'
+              inputs={ inputs3 }
+              value={ value3 }
+              onChange={ handleChange3 } />
+          </Col>
+        </Row>
+        {/* <Row style={{ alignItems: 'flex-start', marginBottom: '1rem' }}> */ }
         {/*  <Col s="6" m="6" l="6"> */ }
         {/*    <DateInput inputs={inputs1} divider="/" value={value} onChange={handleChange} /> */ }
         {/*  </Col> */ }
         {/* </Row> */ }
-        {/* <Row style={{ alignItems: 'flex-start' }}> */ }
+        {/* <Row style={{ alignItems: 'flex-start', marginBottom: '1rem' }}> */ }
         {/*  <Col s="6" m="6" l="6"> */ }
         {/*    <DateInput inputs={inputs2} divider="/" value={value} onChange={handleChange} /> */ }
         {/*  </Col> */ }
         {/* </Row> */ }
-        {/* <Row style={{ alignItems: 'flex-start' }}> */ }
+        {/* <Row style={{ alignItems: 'flex-start', marginBottom: '1rem' }}> */ }
         {/*  <Col s="6" m="6" l="6"> */ }
         {/*    <DateInput inputs={inputs3} divider="/" value={value} onChange={handleChange} /> */ }
         {/*  </Col> */ }

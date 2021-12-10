@@ -21,6 +21,14 @@ export const StyledDayPicker = styled.div<{
     }
   }
 
+  &.error {
+    .inputField {
+      border-color: ${(props: any): string => {
+        return props.theme.colors.error
+      }
+    }
+  }
+
   .title {
     margin-bottom: 4px;
     color: ${(props: any): string =>

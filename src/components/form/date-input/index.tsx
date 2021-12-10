@@ -22,7 +22,8 @@ interface InputProp extends InputPropsType {
 
 export interface DateInputProps extends React.InputHTMLAttributes<HTMLTextAreaElement> {
   wrapperProps?: WrapperProps;
-  inputProps?: InputPropsType; // will be removed in next versions
+  inputProps?: InputPropsType;
+  /** inputProps will be removed in next versions */
   inputRef?: React.Ref<any>;
   inputs: InputProp[];
   value: string;
@@ -50,8 +51,23 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
       2: input3,
     };
 
+    // eslint-disable-next-line no-shadow
+    const validateValue = (value: Date | null): boolean => {
+      const isValid = utils.isValid(value);
+      if (!isValid) {
+        return false;
+      }
+
+      const isAfter = minDate && value ? utils.isAfter(value, minDate) : true;
+      const isBefore = maxDate && value ? utils.isBefore(value, maxDate) : true;
+
+      return isAfter && isBefore;
+    };
+
     const currentInputValue = utils.getDate(value, format);
+    const isCurrentValueValid = validateValue(utils.date(value));
     const [currentDate, setDateToState] = React.useState<string>(currentInputValue);
+    const [isValid, setValid] = React.useState<boolean>(isCurrentValueValid);
 
     // eslint-disable-next-line no-shadow
     const handleFocusNextInput = (value: string, index: number): void => {
@@ -69,10 +85,7 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
 
     // eslint-disable-next-line no-shadow
     const validateLength = (type: string, value: string): boolean => {
-      const isValidDay = type === 'date' && value.length <= 2;
-      const isValidMonth = type === 'month' && value.length <= 2;
-      const isValidYear = type === 'year' && value.length <= 4;
-      return isValidDay || isValidMonth || isValidYear;
+      return inputs.some(item => item.type === type && value.length <= item.format.length);
     };
 
     const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>, index: number, type: string): void => {
@@ -84,17 +97,20 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
       }
 
       let date: string | null | Date | Array<HTMLInputElement> = Object.values(inputToRef)
+        .filter(item => item.current)
         .map((item) => item?.current?.value)
         .join('/');
 
       setDateToState(date);
       date = date === null ? null : utils.parse(date, format);
+      setValid(validateValue(date));
       onChange(date);
       handleFocusNextInput(value, index);
     };
 
     return (
-      <StyledDayPicker className={cx('dateInput')} theme={theme} mode={mode} ref={ref} {...wrapperProps}>
+      <StyledDayPicker className={cx('dateInput', !isValid && 'error')} theme={theme} mode={mode}
+                       ref={ref} {...wrapperProps}>
         {inputs.map((input, index) => {
           const inputWidth = input.format.length * 10 + 40;
 

@@ -1,4 +1,4 @@
-import { format, isValid } from 'date-fns';
+import { format, isValid, isAfter as isAfterDateFns, isBefore as isBeforeDateFns } from 'date-fns';
 import dateFnsParse from 'date-fns/parse';
 
 interface DateUtilsInterface {
@@ -10,7 +10,11 @@ interface DateUtilsInterface {
 
   isValid(value: any): boolean;
 
-  getDate(value: any, format: string): string
+  isAfter(value: Date, comparing: Date): boolean;
+
+  isBefore(value: Date, comparing: Date): boolean;
+
+  getDate(value: any, format: string): string;
 }
 
 class DateUtils implements DateUtilsInterface {
@@ -42,11 +46,19 @@ class DateUtils implements DateUtilsInterface {
     return isValid(this.date(value));
   };
 
-  public getDate(value: any, inputFormat: string): string {
+  public isAfter = (value: Date, comparing: Date): boolean => {
+    return isAfterDateFns(value, comparing);
+  };
+
+  public isBefore = (value: Date, comparing: Date): boolean => {
+    return isBeforeDateFns(value, comparing);
+  };
+
+  public getDate = (value: any, inputFormat: string): string => {
     const date = this.date(value);
     const isEmpty = value === null;
 
-    if ( isEmpty ) {
+    if (isEmpty) {
       return '';
     }
 
@@ -54,7 +66,7 @@ class DateUtils implements DateUtilsInterface {
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       this.formatByString(date!, inputFormat)
       : '';
-  }
+  };
 }
 
 export default DateUtils;
