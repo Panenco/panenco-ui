@@ -1,19 +1,15 @@
 import cx from 'classnames';
 import { Text, TextInput } from 'components';
-import { set, getDate, getMonth, getYear, getDaysInMonth as getDaysInMonthDateFns } from 'date-fns';
 
 import * as React from 'react';
-import { useRef } from 'react';
+import { useMemo, useRef } from 'react';
 import { useMode, useTheme } from 'utils/hooks';
+import { WrapperProps } from 'utils/types';
+import DateUtils from './date-utils';
 
-import { WrapperProps } from '../../../utils/types';
 import { StyledDayPicker } from './style';
 
-const typeToGetMethod = {
-  date: getDate,
-  month: getMonth,
-  year: getYear,
-};
+const utils = new DateUtils();
 
 interface InputPropsType extends React.InputHTMLAttributes<HTMLTextAreaElement> {
   [key: string]: any;
@@ -29,19 +25,20 @@ export interface DateInputProps extends React.InputHTMLAttributes<HTMLTextAreaEl
   inputProps?: InputPropsType; // will be removed in next versions
   inputRef?: React.Ref<any>;
   inputs: InputProp[];
+  value: string;
   divider: string;
-}
 
-export interface DateParamsProps extends React.InputHTMLAttributes<HTMLTextAreaElement> {
-  date?: number;
-  month?: number;
-  year?: number;
+  onChange(newValue): void;
 }
 
 export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
-  ({ inputs, divider, wrapperProps }: DateInputProps, ref): JSX.Element => {
+  ({ inputs, divider, wrapperProps, value, onChange }: DateInputProps, ref): JSX.Element => {
     const theme = useTheme();
     const { mode } = useMode();
+
+    const format = useMemo(() => {
+      return inputs.map(i => i.format).join('/');
+    }, [inputs]);
 
     const input1 = useRef<HTMLInputElement>(null);
     const input2 = useRef<HTMLInputElement>(null);
@@ -53,85 +50,47 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
       2: input3,
     };
 
-    const [currentDate, setDateToState] = React.useState(new Date());
+    const currentInputValue = utils.getDate(value, format);
+    const [currentDate, setDateToState] = React.useState<string>(currentInputValue);
 
-    const handleDayInput = (
-      strValue: string,
-      dateParams: DateParamsProps,
-      daysInCurrentMonth: number,
-    ): DateParamsProps => {
-      let value = Number(strValue.slice(0, 2));
-      if (value > daysInCurrentMonth) {
-        value = daysInCurrentMonth;
-      }
-      return { ...dateParams, date: value };
-    };
-
-    const handleMonthInput = (
-      strValue: string,
-      dateParams: DateParamsProps,
-      daysInCurrentMonth: number,
-    ): DateParamsProps => {
-      let value = Number(strValue.slice(0, 2)) - 1;
-      if (value > 11) {
-        value = 11;
+    // eslint-disable-next-line no-shadow
+    const handleFocusNextInput = (value: string, index: number): void => {
+      if (value[0] === '0' && value.length > 1) {
+        inputToRef[index + 1].current.focus();
+        return;
       }
 
-      if (getDate(currentDate) > daysInCurrentMonth) {
-        return { ...dateParams, date: daysInCurrentMonth, month: value };
-      }
-      return { ...dateParams, month: value };
-    };
-
-    const handleYearInput = (strValue: string, dateParams: DateParamsProps): DateParamsProps => {
-      return { ...dateParams, year: Number(strValue.slice(0, 4)) };
-    };
-
-    const typeToHandler = {
-      date: handleDayInput,
-      month: handleMonthInput,
-      year: handleYearInput,
-    };
-
-    const handleFocusNextInput = (value: number, index: number): void => {
-      if (value > 9 && inputs[index + 1] && inputToRef[index + 1].current) {
+      if (Number(value) > 9 && inputs[index + 1] && inputToRef[index + 1].current) {
         inputToRef[index + 1].current.focus();
       } else {
         inputToRef[index].current.focus();
       }
     };
 
-    const getDaysInMonth = (type: string, value: number): number => {
-      return type === 'month'
-        ? getDaysInMonthDateFns(set(new Date(currentDate), { month: value - 1 }))
-        : getDaysInMonthDateFns(new Date(currentDate));
+    // eslint-disable-next-line no-shadow
+    const validateLength = (type: string, value: string): boolean => {
+      const isValidDay = type === 'date' && value.length <= 2;
+      const isValidMonth = type === 'month' && value.length <= 2;
+      const isValidYear = type === 'year' && value.length <= 4;
+      return isValidDay || isValidMonth || isValidYear;
     };
 
-    const handleChange = (type: string, strValue: string, index: number): string => {
-      const re = /^[0-9\b]+$/;
-      if (re.test(strValue)) {
-        const value = Number(strValue);
-        const formatValueMapping = {
-          month: value - 1,
-        };
+    const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>, index: number, type: string): void => {
+      // eslint-disable-next-line no-shadow
+      const { value } = target;
 
-        let dateParams = { [type]: value };
-
-        const daysInCurrentMonth = getDaysInMonth(type, value);
-
-        handleFocusNextInput(value, index);
-
-        dateParams = typeToHandler[type](strValue, dateParams, daysInCurrentMonth);
-
-        setDateToState(set(new Date(currentDate), dateParams));
-
-        if (formatValueMapping[type]) {
-          return formatValueMapping[type];
-        }
-
-        return value.toString();
+      if (!validateLength(type, value)) {
+        return;
       }
-      return '';
+
+      let date: string | null | Date | Array<HTMLInputElement> = Object.values(inputToRef)
+        .map((item) => item?.current?.value)
+        .join('/');
+
+      setDateToState(date);
+      date = date === null ? null : utils.parse(date, format);
+      onChange(date);
+      handleFocusNextInput(value, index);
     };
 
     return (
@@ -140,26 +99,23 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
           const inputWidth = input.format.length * 10 + 40;
 
           const isLastItem = index + 1 !== inputs.length;
-
           return (
-            <div className="dateInputItem" key={`text-input-${input.type}`}>
+            <div className='dateInputItem' key={`text-input-${input.type}`}>
               <TextInput
                 id={`text-input-${input.type}`}
                 key={`text-input-${input.type}-input`}
-                onChange={(e): string => {
-                  return handleChange(input.type, e.target.value, index);
+                onChange={(e): void => {
+                  handleChange(e, index, input.type);
                 }}
                 inputRef={inputToRef[index]}
                 title={input.title}
                 style={{ width: `${inputWidth}px` }}
                 placeholder={input.placeholder}
                 value={
-                  input.type === 'month'
-                    ? typeToGetMethod[input.type](currentDate) + 1
-                    : typeToGetMethod[input.type](currentDate)
+                  currentDate.split('/')[index]
                 }
               />
-              {isLastItem ? <Text className="dateInputItemDivider">{divider}</Text> : null}
+              {isLastItem ? <Text className='dateInputItemDivider'>{divider}</Text> : null}
             </div>
           );
         })}
