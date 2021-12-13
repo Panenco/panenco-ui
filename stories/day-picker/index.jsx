@@ -55,7 +55,7 @@ const inputs1 = [
   {
     title: 'Month',
     type: 'month',
-    format: 'MMM',
+    format: 'MM',
     placeholder: '12',
   },
   {
