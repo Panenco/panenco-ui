@@ -4,9 +4,18 @@ import { PUITheme, ThemeMode } from 'utils/types';
 export const ReferenceBox = styled.div<{
   mode: ThemeMode;
   theme: PUITheme;
+  [key: string]: any;
 }>`
   z-index: 1;
   position: relative;
+  display: inline-block;
+`;
+
+export const PopperWrapper = styled.div<{
+  mode: ThemeMode;
+  theme: PUITheme;
+  [key: string]: any;
+}>`
   display: inline-block;
 `;
 
