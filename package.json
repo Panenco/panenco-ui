@@ -132,6 +132,7 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.0",
     "date-fns": "^2.21.1",
     "focus-visible": "^5.1.0",
     "linaria": "^2.1.0",
@@ -142,6 +143,7 @@
     "react-day-picker": "^7.4.10",
     "react-dropzone": "^11.0.1",
     "react-focus-lock": "^2.5.2",
+    "react-popper": "^2.2.5",
     "react-text-mask": "^5.4.3",
     "stylelint-config-idiomatic-order": "^8.1.0",
     "text-mask-addons": "^3.8.0"
