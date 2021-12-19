@@ -68,20 +68,22 @@ export const Arrow = styled.div<{
   &[data-placement*='top'] {
     bottom: 0;
     left: 0;
-    margin-bottom: -2.9em;
+    margin-bottom: -0.8em;
 
     &::before {
-      border-width: 1em 1.5em 0 1.5em;
+      border-width: 10px 10px 4px 10px;
       border-color: #232323 transparent transparent transparent;
     }
   }
 
   &[data-placement*='right'] {
+    width: 12px;
+    height: 20px;
     left: 0;
-    margin-left: -1.9em;
+    margin-left: -1em;
 
     &::before {
-      border-width: 1.5em 1em 1.5em 0;
+      border-width: 10px 10px 10px 6px;
       border-color: transparent #232323 transparent transparent;
     }
   }
@@ -91,7 +93,7 @@ export const Arrow = styled.div<{
     margin-right: -1.9em;
 
     &::before {
-      border-width: 1.5em 0 1.5em 1em;
+      border-width: 4px 10px 10px 10px;
       border-color: transparent transparent transparent #232323;
     }
   }
