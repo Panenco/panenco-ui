@@ -1,47 +1,131 @@
 import * as React from 'react';
-import cx from 'classnames';
-import { useTheme, useMode } from 'utils/hooks';
-import { StyledTooltip } from './style';
+import { Manager, Popper, Reference } from 'react-popper';
+import * as PopperJS from '@popperjs/core';
+import { useMode, useTheme } from 'utils/hooks';
+import { PopperBox, ReferenceBox, Arrow, PopperWrapper } from './styles';
 
-export interface TooltipProps extends React.HTMLAttributes<HTMLDivElement> {
+
+interface Props {
   content: React.ReactNode | string;
-  position?: string;
-  className?: string;
-  delay?: number;
   children: React.ReactNode;
+  arrow?: boolean;
+  arrowPadding?: number;
+  arrowProps?: React.HTMLAttributes<HTMLDivElement>;
+  className?: string;
+  enterNextDelay?: number;
+  offset?: [number, number];
+  position?: PopperJS.Placement;
+  popperProps?: React.HTMLAttributes<HTMLDivElement>;
+
+  onOpen?(event): void;
+
+  onClose?(event): void;
+
+  [key: string]: any;
 }
 
-export const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
-  ({ content, position = 'top', className, delay = 400, children, ...props }: TooltipProps, ref): JSX.Element => {
-    const theme = useTheme();
-    const { mode } = useMode();
-    let timeout;
-    const [active, setActive] = React.useState(false);
+export const Tooltip: React.FC<Props> = (props): JSX.Element => {
+  const {
+    enterNextDelay = 500,
+    children,
+    position = 'top',
+    content,
+    arrow = false,
+    onOpen,
+    onClose,
+    arrowProps = {},
+    popperProps = {},
+    arrowPadding,
+    offset,
+    ...other
+  } = props;
+  const modifiers = [
+    {
+      name: 'flip',
+      enabled: false,
+    },
+    {
+      name: 'arrow',
+      enabled: arrow,
+      options: {
+        padding: arrowPadding || 6,
+      },
+    },
+    {
+      name: 'offset',
+      options: {
+        offset: offset || [0, 13],
+      },
+    },
+  ];
 
-    const showTip = () => {
-      timeout = setTimeout(() => {
-        setActive(true);
-      }, delay);
-    };
+  const theme = useTheme();
+  const { mode } = useMode();
 
-    const hideTip = () => {
-      clearInterval(timeout);
-      setActive(false);
-    };
+  const [isOpen, setOpen] = React.useState<boolean>(false);
 
-    return (
-      <StyledTooltip
-        className={cx(className)}
-        onMouseEnter={showTip}
-        onMouseLeave={hideTip}
-        ref={ref}
+  const handleMouseEnter = (event): void => {
+    setOpen(true);
+    if (typeof onOpen === 'function') {
+      onOpen(event);
+    }
+  };
+
+  const handleMouseLeave = (event): void => {
+    setTimeout(() => {
+      setOpen(false);
+      if (typeof onClose === 'function') {
+        onClose(event);
+      }
+    }, enterNextDelay);
+  };
+
+  return (
+    <Manager>
+      <PopperWrapper
+        className='tooltipWrapper'
         theme={theme}
         mode={mode}
-        {...props}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
-        {children}
-        {active && <div className={cx('tooltip', position)}>{content}</div>}
-      </StyledTooltip>
-    );
-  },
-);
+        <Reference>
+          {({ ref }): JSX.Element => (
+            <ReferenceBox className='referenceBox' theme={theme} mode={mode} ref={ref}>
+              {children}
+            </ReferenceBox>
+          )}
+        </Reference>
+        <Popper placement={position} modifiers={modifiers}>
+          {({ ref, style, placement, arrowProps: popperArrowProps }): JSX.Element => (
+            <PopperBox
+              ref={ref}
+              show={isOpen}
+              theme={theme}
+              mode={mode}
+              className='popperBox'
+              style={style}
+              {...popperProps}
+              {...other}
+            >
+              {content}
+              {
+                arrow && (
+                  <Arrow
+                    theme={theme}
+                    mode={mode}
+                    className='tooltipArrow'
+                    ref={popperArrowProps.ref}
+                    data-placement={placement}
+                    style={popperArrowProps.style}
+                    {...arrowProps}
+                  />
+                )
+              }
+            </PopperBox>
+          )}
+        </Popper>
+      </PopperWrapper>
+    </Manager>
+  );
+};
