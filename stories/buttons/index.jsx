@@ -43,7 +43,7 @@ export default decorator('Button', ButtonDocs, ButtonReadme).add('Button compone
               justifyContent: 'center',
               alignItems: 'center',
             } }>
-              <Button style={ buttonStyles } className={ s.mb1 }>Text</Button>
+              <Button style={ buttonStyles }  className='mb-1'>Text</Button>
             </div>
           </Col>
           <Col xs='6' m='6' l='6' style={ buttonCellStyles }>
@@ -54,7 +54,7 @@ export default decorator('Button', ButtonDocs, ButtonReadme).add('Button compone
             } }>
               <Button
                 style={ buttonStyles }
-                className={ s.mb1 }
+                 className='mb-1'
                 isLoading
               >
                 Text
@@ -69,7 +69,7 @@ export default decorator('Button', ButtonDocs, ButtonReadme).add('Button compone
               justifyContent: 'center',
               alignItems: 'center',
             } }>
-              <Button style={ buttonStyles } className={ s.mb1 }
+              <Button style={ buttonStyles }  className='mb-1'
                       variant='contained'>Contained</Button>
             </div>
           </Col>
@@ -81,7 +81,7 @@ export default decorator('Button', ButtonDocs, ButtonReadme).add('Button compone
             } }>
               <Button
                 style={ buttonStyles }
-                className={ s.mb1 }
+                 className='mb-1'
                 variant='contained'
                 isLoading
               >
@@ -97,7 +97,7 @@ export default decorator('Button', ButtonDocs, ButtonReadme).add('Button compone
               justifyContent: 'center',
               alignItems: 'center',
             } }>
-              <Button style={ buttonStyles } className={ s.mb1 }
+              <Button style={ buttonStyles }  className='mb-1'
                       variant='outlined'>Outlined</Button>
             </div>
           </Col>
@@ -110,7 +110,7 @@ export default decorator('Button', ButtonDocs, ButtonReadme).add('Button compone
             } }>
               <Button
                 style={ buttonStyles }
-                className={ s.mb1 }
+                 className='mb-1'
                 variant='outlined'
                 isLoading
               >
@@ -130,17 +130,17 @@ export const LinkDecorator = decorator('Button', LinkDocs, LinkReadme).add('Link
       <WrappedComponent>
         <Row style={ { justifyContent: 'center' } }>
           <Col xs='4' m='4' l='4' style={ buttonCellStyles }>
-            <Button className={ s.mb1 } component='link'>Link</Button>
+            <Button className='mb-1' component='link'>Link</Button>
           </Col>
           <Col xs='4' m='4' l='4' style={ buttonCellStyles }>
-            <Button className={ s.mb1 } component='link' disabled>
+            <Button className='mb-1' component='link' disabled>
               Link disabled
             </Button>
 
           </Col>
           <Col xs='4' m='4' l='4' style={ buttonCellStyles }>
             <Button
-              className={ s.mb1 }
+              className='mb-1'
               component='a'
               href='mailto:info@panenco.com?subject=Secret subject'>
               Link external
@@ -150,24 +150,24 @@ export const LinkDecorator = decorator('Button', LinkDocs, LinkReadme).add('Link
         </Row>
         <Row style={ { justifyContent: 'center' } }>
           <Col xs='6' m='6' l='6' style={ buttonCellStyles }>
-            <PrimaryButton className={ s.mb1 } component='link' to='/'>
+            <PrimaryButton className='mb-1' component='link' to='/'>
               Primary Link
             </PrimaryButton>
           </Col>
           <Col xs='6' m='6' l='6' style={ buttonCellStyles }>
-            <PrimaryButton className={ s.mb1 } component='link' disabled>
+            <PrimaryButton className='mb-1' component='link' disabled>
               Primary Link disabled
             </PrimaryButton>
           </Col>
         </Row>
         <Row style={ { justifyContent: 'space-around' } }>
           <Col xs='6' m='6' l='6' style={ buttonCellStyles }>
-            <SecondaryButton className={ s.mb1 } component='link'>
+            <SecondaryButton className='mb-1' component='link'>
               Link Button
             </SecondaryButton>
           </Col>
           <Col xs='6' m='6' l='6' style={ buttonCellStyles }>
-            <SecondaryButton className={ s.mb1 } component='link' disabled>
+            <SecondaryButton className='mb-1' component='link' disabled>
               Link Disabled
             </SecondaryButton>
           </Col>
@@ -181,8 +181,8 @@ export const ButtonIcons = decorator('Button', ButtonIconDocs, ButtonIconReadme)
   return (
     <BrowserRouter>
       <WrappedComponent>
-        <Row style={ { justifyContent: 'center', marginTop: '10px' } }>
-          <Col s='6' m='6' l='6' className={ s.mb1 } style={ buttonCellStyles }>
+        <Row className='mt-1 justify-center'>
+          <Col s='6' m='6' l='6' className='mb-1' style={ buttonCellStyles }>
             <div style={ {
               display: 'flex',
               justifyContent: 'center',
@@ -191,7 +191,7 @@ export const ButtonIcons = decorator('Button', ButtonIconDocs, ButtonIconReadme)
               <ButtonIcon icon={ Icon.icons.trash }>Button Icon</ButtonIcon>
             </div>
           </Col>
-          <Col s='6' m='6' l='6' className={ s.mb1 } style={ buttonCellStyles }>
+          <Col s='6' m='6' l='6' className='mb-1' style={ buttonCellStyles }>
             <div style={ {
               display: 'flex',
               justifyContent: 'center',
@@ -203,8 +203,8 @@ export const ButtonIcons = decorator('Button', ButtonIconDocs, ButtonIconReadme)
             </div>
           </Col>
         </Row>
-        <Row style={ { justifyContent: 'center' } } className={ s.mb1 }>
-          <Col s='6' m='6' l='6' className={ s.mb1 } style={ buttonCellStyles }>
+        <Row className='mb-1 justify-center'>
+          <Col s='6' m='6' l='6' className='mb-1' style={ buttonCellStyles }>
             <div style={ {
               display: 'flex',
               justifyContent: 'center',
@@ -213,7 +213,7 @@ export const ButtonIcons = decorator('Button', ButtonIconDocs, ButtonIconReadme)
               <ButtonIcon icon={ Icon.icons.lock }>Button Icon</ButtonIcon>
             </div>
           </Col>
-          <Col s='6' m='6' l='6' className={ s.mb1 } style={ buttonCellStyles }>
+          <Col s='6' m='6' l='6' className='mb-1' style={ buttonCellStyles }>
             <div style={ {
               display: 'flex',
               justifyContent: 'center',
