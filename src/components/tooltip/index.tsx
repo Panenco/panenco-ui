@@ -6,7 +6,7 @@ import cx from 'classnames';
 import { PopperBox, ReferenceBox, Arrow, PopperWrapper } from './styles';
 
 
-interface Props {
+export interface TooltipProps {
   content: React.ReactNode | string;
   children: React.ReactNode;
   arrow?: boolean;
@@ -25,7 +25,7 @@ interface Props {
   [key: string]: any;
 }
 
-export const Tooltip: React.FC<Props> = (props): JSX.Element => {
+export const Tooltip: React.FC<TooltipProps> = (props): JSX.Element => {
   const {
     enterNextDelay = 500,
     children,
