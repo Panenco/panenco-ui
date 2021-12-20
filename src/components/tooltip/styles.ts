@@ -61,7 +61,7 @@ export const Arrow = styled.div<{
 
     &::before {
       border-width: 4px 10px 10px 10px;
-      border-color: transparent transparent #232323 transparent;
+      border-color: ${(props: any): string => `transparent transparent ${props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900} transparent`}
     }
   }
 
@@ -72,7 +72,7 @@ export const Arrow = styled.div<{
 
     &::before {
       border-width: 10px 10px 4px 10px;
-      border-color: #232323 transparent transparent transparent;
+      border-color: ${(props: any): string => ` ${props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900} transparent transparent transparent`};
     }
   }
 
@@ -84,17 +84,19 @@ export const Arrow = styled.div<{
 
     &::before {
       border-width: 10px 10px 10px 6px;
-      border-color: transparent #232323 transparent transparent;
+      border-color: ${(props: any): string => ` transparent ${props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900}  transparent transparent`};
     }
   }
 
   &[data-placement*='left'] {
+    width: 12px;
+    height: 20px;
     right: 0;
-    margin-right: -1.9em;
+    margin-right: -0.7em;
 
     &::before {
-      border-width: 4px 10px 10px 10px;
-      border-color: transparent transparent transparent #232323;
+      border-width: 10px 4px 10px 10px;
+      border-color: ${(props: any): string => ` transparent  transparent transparent ${props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900}`};
     }
   }
 

@@ -6,16 +6,16 @@ import { PopperBox, ReferenceBox, Arrow, PopperWrapper } from './styles';
 
 
 interface Props {
-  arrow?: boolean;
   content: React.ReactNode | string;
-  className?: string;
   children: React.ReactNode;
-  position?: PopperJS.Placement;
-  enterNextDelay?: number;
+  arrow?: boolean;
   arrowPadding?: number;
   arrowProps?: React.HTMLAttributes<HTMLDivElement>;
-  popperProps?: React.HTMLAttributes<HTMLDivElement>;
+  className?: string;
+  enterNextDelay?: number;
   offset?: [number, number];
+  position?: PopperJS.Placement;
+  popperProps?: React.HTMLAttributes<HTMLDivElement>;
 
   onOpen?(event): void;
 
@@ -62,7 +62,7 @@ export const Tooltip: React.FC<Props> = (props): JSX.Element => {
   const theme = useTheme();
   const { mode } = useMode();
 
-  const [isOpen, setOpen] = React.useState<boolean>(true);
+  const [isOpen, setOpen] = React.useState<boolean>(false);
 
   const handleMouseEnter = (event): void => {
     setOpen(true);
@@ -72,35 +72,58 @@ export const Tooltip: React.FC<Props> = (props): JSX.Element => {
   };
 
   const handleMouseLeave = (event): void => {
-    // setTimeout(() => {
-    //   setOpen(false);
-    //   if (typeof onClose === 'function') {
-    //     onClose(event);
-    //   }
-    // }, enterNextDelay);
+    setTimeout(() => {
+      setOpen(false);
+      if (typeof onClose === 'function') {
+        onClose(event);
+      }
+    }, enterNextDelay);
   };
 
   return (
     <Manager>
-      <PopperWrapper theme={theme} mode={mode} onMouseEnter={handleMouseEnter}
-                     onMouseLeave={handleMouseLeave}>
+      <PopperWrapper
+        className='tooltipWrapper'
+        theme={theme}
+        mode={mode}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <Reference>
           {({ ref }): JSX.Element => (
-            <ReferenceBox theme={theme} mode={mode} ref={ref}>
+            <ReferenceBox className='referenceBox' theme={theme} mode={mode} ref={ref}>
               {children}
             </ReferenceBox>
           )}
         </Reference>
         <Popper placement={position} modifiers={modifiers}>
-          {({ ref, style, placement, arrowProps: popperArrowProps }): JSX.Element | null => {
-            return <PopperBox show={isOpen} {...popperProps}{...other} theme={theme} mode={mode} ref={ref}
-                              style={style}>
+          {({ ref, style, placement, arrowProps: popperArrowProps }): JSX.Element => (
+            <PopperBox
+              ref={ref}
+              show={isOpen}
+              theme={theme}
+              mode={mode}
+              className='popperBox'
+              style={style}
+              {...popperProps}
+              {...other}
+            >
               {content}
-              {arrow && <Arrow theme={theme} mode={mode}  {...arrowProps} ref={popperArrowProps.ref}
-                               data-placement={placement}
-                               style={popperArrowProps.style} />}
-            </PopperBox>;
-          }}
+              {
+                arrow && (
+                  <Arrow
+                    theme={theme}
+                    mode={mode}
+                    className='tooltipArrow'
+                    ref={popperArrowProps.ref}
+                    data-placement={placement}
+                    style={popperArrowProps.style}
+                    {...arrowProps}
+                  />
+                )
+              }
+            </PopperBox>
+          )}
         </Popper>
       </PopperWrapper>
     </Manager>

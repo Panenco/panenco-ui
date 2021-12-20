@@ -8,32 +8,36 @@ import { WrappedComponent } from '../helpers/wrapped';
 export default decorator('Tooltip', TooltipDocs, README).add('Tooltip component', () => {
   return (
     <WrappedComponent>
-      <Row style={ { justifyContent: 'space-around', marginBottom: '1.5rem', marginTop: '1rem' } }>
-        <Col s='6' m='6' l='6'>
-          <Tooltip arrow position='top'
-                   content={ <><p>Tooltip message will show up here.</p>
-                     <a
-                       href='https://staging.qit.online/sign-in'>Link</a> </> }>TOP</Tooltip>
-        </Col>
+      <Row style={ {
+        justifyContent: 'space-around',
+        marginBottom: '1.5rem',
+        marginTop: '1rem',
+      } }>
         <Col s='6' m='6' l='6'>
           <Tooltip arrow content='Tooltip message will show up here.'
                    position='right'>
             RIGHT
           </Tooltip>
         </Col>
+        <Col s='6' m='6' l='6' style={{marginLeft: '1rem'}}>
+          <Tooltip arrow position='top'
+                   content={ <><p>Tooltip message will show up here.</p>
+                     <a target='__blank'
+                        href='https://staging.qit.online/sign-in'>Link</a> </> }>TOP</Tooltip>
+        </Col>
       </Row>
       <Row style={ { justifyContent: 'space-around' } }>
         <Col s='6' m='6' l='6'>
-          {/* <Tooltip arrow content='Tooltip message will show up here' */}
-          {/*         position='bottom'> */}
-          {/*  BOTTOM */}
-          {/* </Tooltip> */}
+          <Tooltip arrow content='Tooltip message will show up here'
+                   position='bottom'>
+            BOTTOM
+          </Tooltip>
         </Col>
-        <Col s='6' m='6' l='6'>
-          {/* <Tooltip arrow content='Tooltip message will show up here' */}
-          {/*         position='left'> */}
-          {/*  LEFT */}
-          {/* </Tooltip> */}
+        <Col s='6' m='6' l='6' style={{marginLeft: '1rem'}}>
+          <Tooltip arrow content='Tooltip message will show up here'
+                   position='left'>
+            LEFT
+          </Tooltip>
         </Col>
       </Row>
     </WrappedComponent>
