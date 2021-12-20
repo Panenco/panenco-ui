@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Manager, Popper, Reference } from 'react-popper';
 import * as PopperJS from '@popperjs/core';
 import { useMode, useTheme } from 'utils/hooks';
+import cx from 'classnames';
 import { PopperBox, ReferenceBox, Arrow, PopperWrapper } from './styles';
 
 
@@ -36,6 +37,7 @@ export const Tooltip: React.FC<Props> = (props): JSX.Element => {
     arrowProps = {},
     popperProps = {},
     arrowPadding,
+    className,
     offset,
     ...other
   } = props;
@@ -83,7 +85,7 @@ export const Tooltip: React.FC<Props> = (props): JSX.Element => {
   return (
     <Manager>
       <PopperWrapper
-        className='tooltipWrapper'
+        className={cx('tooltipWrapper', className)}
         theme={theme}
         mode={mode}
         onMouseEnter={handleMouseEnter}
@@ -103,10 +105,10 @@ export const Tooltip: React.FC<Props> = (props): JSX.Element => {
               show={isOpen}
               theme={theme}
               mode={mode}
-              className='popperBox'
               style={style}
               {...popperProps}
               {...other}
+              className={cx('popperBox', popperProps.className)}
             >
               {content}
               {
@@ -114,11 +116,11 @@ export const Tooltip: React.FC<Props> = (props): JSX.Element => {
                   <Arrow
                     theme={theme}
                     mode={mode}
-                    className='tooltipArrow'
                     ref={popperArrowProps.ref}
                     data-placement={placement}
                     style={popperArrowProps.style}
                     {...arrowProps}
+                    className={cx('tooltipArrow', arrowProps.className)}
                   />
                 )
               }
