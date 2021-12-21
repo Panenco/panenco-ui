@@ -11,7 +11,7 @@ import { WrappedComponent } from '../helpers/wrapped';
 
 // eslint-disable-next-line
 const WrappedCol = ({ children }) => (
-  <Col s="1" m="2" l="4" style={{ display: 'flex', justifyContent: 'center' }}>
+  <Col xs="1" sm="2" lg="4" style={{ display: 'flex', justifyContent: 'center' }}>
     {children}
   </Col>
 );

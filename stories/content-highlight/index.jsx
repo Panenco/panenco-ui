@@ -12,18 +12,18 @@ export default decorator('Content highlight', ContentHighlightDOCS, README).add(
   return (
     <WrappedComponent>
       <Row spacing={[3, 3]}>
-        <Col s="2" m="4" l="4">
+        <Col xs="2" md="4" lg="4">
           <ContentHighlight>{Content}</ContentHighlight>
         </Col>
-        <Col s="2" m="4" l="4">
+        <Col xs="2" md="4" lg="4">
           <ContentHighlight>{Content}</ContentHighlight>
         </Col>
       </Row>
       <Row spacing={[3, 3]}>
-        <Col s="2" m="4" l="4">
+        <Col xs="2" md="4" lg="4">
           <ContentHighlight>ContentHighlight</ContentHighlight>
         </Col>
-        <Col s="2" m="4" l="4">
+        <Col xs="2" md="4" lg="4">
           <ContentHighlight>ContentHighlight</ContentHighlight>
         </Col>
       </Row>
