@@ -8,10 +8,10 @@ const LargePopup = () => {
 
   const handlePopupHide = () => {
     setPopupOpen(false);
-  }
+  };
   const handlePopupShow = () => {
     setPopupOpen(true);
-  }
+  };
 
   return (
     <>
@@ -24,7 +24,8 @@ const LargePopup = () => {
         </Popup.Header>
         <Popup.Body>
           <div className={s.defaultMarginBottom}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia soluta eligendi incidunt nam neque, architecto voluptatibus! Laborum non molestiae aut.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia soluta eligendi incidunt nam neque,
+            architecto voluptatibus! Laborum non molestiae aut.
           </div>
           <div className={s.defaultMarginBottom}>
             <TextInput placeholder="Icon before" iconBefore={Icon.icons.mapPin} />
@@ -35,7 +36,9 @@ const LargePopup = () => {
         </Popup.Body>
         <Popup.Footer>
           <div className={s.popupFooterButtonsContainer}>
-            <SecondaryButton aria-label="Close" onClick={handlePopupHide} className={s.defaultMarginRight}>Cancel</SecondaryButton>
+            <SecondaryButton aria-label="Close" onClick={handlePopupHide} className={s.defaultMarginRight}>
+              Cancel
+            </SecondaryButton>
             <PrimaryButton>Submit</PrimaryButton>
           </div>
         </Popup.Footer>
