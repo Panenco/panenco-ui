@@ -9,18 +9,18 @@ export default decorator('File Uploader', FileUploaderDocs, README).add('File up
   return (
     <WrappedComponent>
       <Row style={{ justifyContent: 'space-around', alignItems: 'flex-end' }}>
-        <Col s="2" m="4" l="5">
+        <Col xs="2" md="4" lg="5">
           <FileUploader loading />
         </Col>
-        <Col s="2" m="4" l="5">
+        <Col xs="2" md="4" lg="5">
           <FileUploader title="Title" />
         </Col>
       </Row>
       <Row style={{ justifyContent: 'space-around', alignItems: 'flex-end' }}>
-        <Col s="2" m="4" l="5">
+        <Col xs="2" md="4" lg="5">
           <FileUploader error="Error" />
         </Col>
-        <Col s="2" m="4" l="5">
+        <Col xs="2" md="4" lg="5">
           <FileUploader disabled title="Disabled" />
         </Col>
       </Row>

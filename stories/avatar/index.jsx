@@ -10,13 +10,13 @@
 // export default decorator('Avatar', AvatarDocs, AvatarReadme).add('Avatar', () => (
 //   <>
 //     <Row>
-//       <Col s="12">
+//       <Col sm="12">
 //         <Avatar size={Avatar.sizes.medium} />
 //       </Col>
-//       <Col s="12">
+//       <Col sm="12">
 //         <Avatar size={Avatar.sizes.small} />
 //       </Col>
-//       <Col s="12">
+//       <Col sm="12">
 //         <Avatar size={Avatar.sizes.medium} email="email@valcori.com" />
 //       </Col>
 //     </Row>

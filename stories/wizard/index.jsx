@@ -11,7 +11,7 @@ export default decorator('Wizard', WizardTrackReadme, WizardTrackReadme).add('Wi
   return (
     <WrappedComponent>
       <Row style={{ justifyContent: 'center', margin: '50px auto 0 auto', width: '90%' }}>
-        <Col s="4" m="8" l="12">
+        <Col xs="4" md="8" lg="12">
           <WizardTrack />
         </Col>
       </Row>
