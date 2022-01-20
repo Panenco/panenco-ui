@@ -77,6 +77,21 @@ class Table extends React.Component<
   }
 
   componentDidMount(): void {
+    this.updateTableWidth();
+  }
+
+  componentDidUpdate(_, prevState): void {
+    const { rows } = this.state;
+    if (prevState.rows !== rows) {
+      this.updateTableWidth();
+    }
+  }
+
+  componentWillUnmount(): void {
+    this.divSizeObserver.disconnect();
+  }
+
+  updateTableWidth(): void {
     this.divSizeObserver = new ResizeObserver(
       throttle((entries) => {
         // eslint-disable-next-line array-callback-return
@@ -96,10 +111,6 @@ class Table extends React.Component<
     this.setState((currentState) => {
       return { ...currentState, containerWidth: this?.divRef?.current?.offsetWidth };
     });
-  }
-
-  componentWillUnmount(): void {
-    this.divSizeObserver.disconnect();
   }
 
   expandRow(rowIndex: string | number): void {
