@@ -4,12 +4,13 @@ import * as React from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
 import { useMode, useTheme } from 'utils/hooks';
 import { PUITheme, ThemeMode } from 'utils/types';
+import deepEqual from 'deep-equal';
 import { ColumnType } from '.';
 
 import Columns from './columns';
 import Rows from './rows';
 import { Styles } from './style';
-import { expandRow, resizeTable } from './table-actions';
+import { expandRow, resizeTable as resizeTableHelper } from './table-actions';
 import { TableProps, TableState } from './types';
 
 class Table extends React.Component<
@@ -61,8 +62,8 @@ class Table extends React.Component<
 
   static getDerivedStateFromProps(newProps: TableProps, state: TableState): TableState {
     if (
-      newProps.rows !== state.props.rows ||
-      newProps.columns !== state.props.columns ||
+      !deepEqual(newProps.rows, state.props.rows) ||
+      !deepEqual(newProps.columns, state.props.columns) ||
       newProps.priorityLevelThreshold !== state.props.priorityLevelThreshold
     ) {
       return {
@@ -81,10 +82,11 @@ class Table extends React.Component<
   }
 
   componentDidUpdate(_, prevState): void {
-    const { rows } = this.state;
-    if (prevState.rows !== rows) {
-      this.updateTableWidth();
-    }
+    const { containerWidth, props, rows } = this.state;
+    if (prevState.containerWidth !== containerWidth) this.updateTableWidth();
+    if (prevState.props.isLoading !== props.isLoading) this.updateTableWidth();
+    if (prevState.props.sort?.direction !== props.sort?.direction) this.updateTableWidth();
+    if (!deepEqual(prevState.rows, rows)) this.updateTableWidth();
   }
 
   componentWillUnmount(): void {
@@ -123,7 +125,7 @@ class Table extends React.Component<
     const { shouldResize } = this.props;
     if (shouldResize) {
       this.setState((currentState) => {
-        return resizeTable({ width, state: currentState });
+        return resizeTableHelper({ width, state: currentState });
       });
     }
   }
