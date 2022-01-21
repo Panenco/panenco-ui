@@ -11,38 +11,46 @@ export const StyledDayPicker = styled.div<{
   background-color: transparent;
 
   .dateInputItem {
-    align-items: flex-end;
     display: flex;
+    align-items: flex-end;
 
     &Divider {
-      line-height: 52px;
-      margin: 0 10px;
       width: 5px;
+      margin: 0 10px;
+      line-height: 52px;
+    }
+  }
+
+  &.error {
+    .inputField {
+      border-color: ${(props: any): string => {
+        return props.theme.colors.error
+      }
     }
   }
 
   .title {
+    margin-bottom: 4px;
     color: ${(props: any): string =>
       props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
-    margin-bottom: 4px;
   }
 
   .overlay {
     border: 1px solid ${(props: any): string => props.theme.colors.base700};
-    border-radius: 4px;
     margin-top: 10px;
+    border-radius: 4px;
   }
 
   .footer {
-    align-items: flex-end;
     display: flex;
-    margin-bottom: 18px;
+    align-items: flex-end;
     padding: 0 14px;
+    margin-bottom: 18px;
   }
 
   .submitTime {
-    margin-left: 10px;
     min-width: 100px;
+    margin-left: 10px;
   }
 
   .submitTime span {
@@ -50,37 +58,38 @@ export const StyledDayPicker = styled.div<{
   }
 
   .subtitle {
-    color: ${(props: any): string => props.theme.colors.base700};
     margin-bottom: 4px;
+    color: ${(props: any): string => props.theme.colors.base700};
   }
 
   .withErrorWrapper {
     display: flex;
-    align-items: flex-start;
     width: 100%;
+    align-items: flex-start;
 
     &Content {
       width: 100%;
     }
 
     .input {
-      resize: none;
       width: inherit;
       min-height: 86px;
       padding: 6px 12px;
+      border: 1px solid ${(props: any): string => props.theme.colors.base700};
+      background-color: transparent;
+      border-radius: 4px;
       color: ${(props: any): string =>
         props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
-      border: 1px solid ${(props: any): string => props.theme.colors.base700};
-      border-radius: 4px;
       font-size: ${(props: any): string => props.theme.typography.sizes.m.textSize};
-      background-color: transparent;
+      resize: none;
+
       &::placeholder {
         color: ${(props: any): string => props.theme.colors.base700};
       }
 
       &Error {
-        box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.error};
         border-color: transparent;
+        box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.error};
         color: ${(props: any): string =>
           props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
 
@@ -90,36 +99,35 @@ export const StyledDayPicker = styled.div<{
       }
 
       &Disabled {
-        pointer-events: none;
-        /* border-color: ${(props: any): string => props.theme.colors.base400}; */
+          /* border-color: ${(props: any): string => props.theme.colors.base400}; */
         background-color: ${(props: any): string =>
           props.mode === ThemeMode.dark ? transparentize(0.4, props.theme.colors.base700) : props.theme.colors.base400};
         opacity: 0.4;
+        pointer-events: none;
       }
 
       &:hover {
-        border: 1px solid
-          ${(props: any): string =>
-            props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500};
+        border: 1px solid ${(props: any): string =>
+          props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500};
         color: ${(props: any): string =>
           props.mode === ThemeMode.dark ? props.theme.colors.base700 : props.theme.colors.base900};
       }
 
       &:focus {
-        outline: 0;
         border-color: transparent;
         box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.base900};
+        outline: 0;
       }
     }
 
     .counterWrapper {
-      margin-top: 4px;
-      display: flex;
-      justify-content: space-between;
-      font-size: ${(props: any): string => props.theme.typography.sizes.xs.textSize};
       position: absolute;
       bottom: -15px;
+      display: flex;
       width: 100%;
+      justify-content: space-between;
+      margin-top: 4px;
+      font-size: ${(props: any): string => props.theme.typography.sizes.xs.textSize};
 
       .counter {
         color: ${(props: any): string => props.theme.colors.base700};
