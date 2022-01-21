@@ -11,7 +11,7 @@ export default decorator('Notification', NotificationDOCS, NotificationREADME).a
   return (
     <WrappedComponent>
       <Row style={{ justifyContent: 'space-around', marginTop: '50px' }}>
-        <Col s="2" m="2" l="3">
+        <Col xs="2" md="2" lg="3">
           <PrimaryButton
             style={{ backgroundColor: colors.success }}
             onClick={() =>
@@ -21,7 +21,7 @@ export default decorator('Notification', NotificationDOCS, NotificationREADME).a
             Show success
           </PrimaryButton>
         </Col>
-        <Col s="2" m="2" l="3">
+        <Col xs="2" md="2" lg="3">
           <PrimaryButton
             style={{ backgroundColor: colors.base900 }}
             onClick={() => toast.info('We will verify your application and get back to you if we have any questions.')}
@@ -29,7 +29,7 @@ export default decorator('Notification', NotificationDOCS, NotificationREADME).a
             Show info
           </PrimaryButton>
         </Col>
-        <Col s="2" m="3" l="3">
+        <Col xs="2" sm="3" lg="3">
           <PrimaryButton
             style={{ backgroundColor: colors.alert }}
             onClick={() =>
@@ -45,7 +45,7 @@ export default decorator('Notification', NotificationDOCS, NotificationREADME).a
             Show warning
           </PrimaryButton>
         </Col>
-        <Col s="2" m="2" l="3">
+        <Col xs="2" md="2" lg="3">
           <PrimaryButton
             style={{ backgroundColor: colors.error }}
             onClick={() => toast.error('You lost internet connection')}

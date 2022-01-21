@@ -42,7 +42,7 @@ export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
       useCombinedrefs.current = textareaRef.current;
     });
 
-    const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>): void => {
+    const recalculateHeight = (newValue?: string): void => {
       const textareaElement = useCombinedrefs?.current;
       if (textareaElement) {
         textareaElement.style.height = 'inherit';
@@ -50,8 +50,19 @@ export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
         const height = textareaElement.scrollHeight + parseInt(computed.getPropertyValue('border-width'), 10) * 2;
 
         textareaElement.style.height = `${height}px`;
-        setCounter(event.target.value.length);
+
+        if (newValue?.length) {
+          setCounter(newValue.length);
+        }
       }
+    };
+
+    React.useEffect(() => {
+      recalculateHeight();
+    }, []);
+
+    const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>): void => {
+      recalculateHeight(event.target.value);
 
       if (onChange) onChange(event);
     };

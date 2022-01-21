@@ -31,7 +31,6 @@ import TextStory from './text';
 import TooltipStory from './tooltip';
 import WizardStory from './wizard';
 
-// import AvatarStory from './avatar';
 storiesOf('Accordion', AccordionStory);
 storiesOf('AutoComplete', AutoCompleteStory);
 storiesOf('Banners', BannersStory);
@@ -43,7 +42,6 @@ storiesOf('DayPicker', DayPickerStory);
 storiesOf('Dropzone', DropzoneStory);
 storiesOf('Grid', GridStory);
 storiesOf('FileUploader', FileUploaderStory);
-// storiesOf('Avatar', AvatarStory);
 storiesOf('Icon', IconsStory);
 storiesOf('Icon', TextStory);
 storiesOf('Forms', FormsStory);
