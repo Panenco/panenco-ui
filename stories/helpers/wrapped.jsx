@@ -19,7 +19,7 @@ export const WrappedComponent = ({ children, style }) => {
       }}
     >
       <Row style={{ justifyContent: 'flex-end', marginRight: '15px' }}>
-        <Col s="3" m="3" l="3" style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <Col xs="3" md="3" lg="3" style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <SecondaryButton
             // eslint-disable-next-line
             onClick={() => {

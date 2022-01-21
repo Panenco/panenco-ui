@@ -16,10 +16,9 @@ export default decorator('DayPicker', DayPickerDocs, README).add('DayPicker', ()
   };
 
   return (
-    <WrappedComponent style={ { minHeight: '500px' } }>
-      <Row
-        style={ { justifyContent: 'space-around', alignItems: 'flex-start' } }>
-        <Col s='12' m='12' l='12'>
+    <WrappedComponent style={{ minHeight: '500px' }}>
+      <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start' }}>
+        <Col xs="12" md="12" lg="12">
           <DayPicker
             subTitle='Start date'
             value={ value }
@@ -29,9 +28,8 @@ export default decorator('DayPicker', DayPickerDocs, README).add('DayPicker', ()
           />
         </Col>
       </Row>
-      <Row
-        style={ { justifyContent: 'space-around', alignItems: 'flex-start' } }>
-        <Col s='12' m='12' l='12'>
+      <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start' }}>
+        <Col xs="12" md="12" lg="12">
           <DayPicker
             isTimePicker
             value={ value }
@@ -124,7 +122,7 @@ export const DateInputStory = decorator('DateInput', DateInputDocs, DateInputRea
           marginBottom: '1rem',
           marginTop: '1rem',
         } }>
-          <Col s='12' m='12' l='12'>
+          <Col xs="12" md="12" lg="12">
             <DateInput
               inputs={ inputs2 }
               onChange={ handleChange2 }
@@ -133,7 +131,7 @@ export const DateInputStory = decorator('DateInput', DateInputDocs, DateInputRea
           </Col>
         </Row>
         <Row style={ { alignItems: 'flex-start', marginBottom: '1rem' } }>
-          <Col s='12' m='12' l='12'>
+          <Col xs="12" md="12" lg="12">
             <DateInput
               inputs={ inputs1 }
               value={ value }
@@ -141,7 +139,7 @@ export const DateInputStory = decorator('DateInput', DateInputDocs, DateInputRea
           </Col>
         </Row>
         <Row style={ { alignItems: 'flex-start', marginBottom: '1rem' } }>
-          <Col s='12' m='12' l='12'>
+          <Col xs="12" md="12" lg="12">
             <DateInput
               inputs={ inputs3 }
               value={ value3 }
@@ -149,7 +147,7 @@ export const DateInputStory = decorator('DateInput', DateInputDocs, DateInputRea
           </Col>
         </Row>
         <Row style={ { alignItems: 'flex-start', marginBottom: '1rem' } }>
-          <Col s='12' m='12' l='12'>
+          <Col xs="12" md="12" lg="12">
             <p style={ {
               fontSize: '14px',
               lineHeight: '150%',
@@ -167,7 +165,7 @@ export const DateInputStory = decorator('DateInput', DateInputDocs, DateInputRea
           </Col>
         </Row>
         <Row style={ { alignItems: 'flex-start', marginBottom: '1rem' } }>
-          <Col s='12' m='12' l='12'>
+          <Col xs="12" md="12" lg="12">
             <p
               style={ { fontSize: '14px', lineHeight: '150%' } }
             >

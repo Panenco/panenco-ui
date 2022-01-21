@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { Row as StyledRow } from './style';
 
 export interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
-  spacing?: number | string | null;
+  spacing?: number | string | null | [number, number];
 }
 
 export const Row: React.FunctionComponent<RowProps> = ({
@@ -24,9 +24,9 @@ export const Row: React.FunctionComponent<RowProps> = ({
     <StyledRow
       {...props}
       className={cx(
-        `spacing-xs-auto-auto`,
+        'spacing-xs-auto-auto',
         {
-          [`spacing-xs-${formattedSpacingY}-${formattedSpacingX}`]: !!spacing,
+          [`spacing-xs-${formattedSpacingX}-${formattedSpacingY}`]: !!spacing,
         },
         className,
       )}

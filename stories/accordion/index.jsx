@@ -13,14 +13,14 @@ export default decorator('Accordion', AccordionDocs, AccordionReadme).add('Accor
       <Text size={sizes.l}>Accordion group</Text>
       <AccordionGroup>
         <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start' }}>
-          <Col s="2" m="4" l="6">
+          <Col xs="2" sm="4" lg="6">
             <AccordionPrimary title="Primary" iconLeft iconRight>
               We will verify your application and get back to you if we have any questions. The verification process can
               take a couple of months. We will verify your application and get back to you if we have any questions. The
               verification process can take a couple of months.
             </AccordionPrimary>
           </Col>
-          <Col s="2" m="4" l="6">
+          <Col xs="2" sm="4" lg="6">
             <AccordionPrimary title="Primary">
               We will verify your application and get back to you if we have any questions. The verification process can
               take a couple of months. We will verify your application and get back to you if we have any questions. The
@@ -29,14 +29,14 @@ export default decorator('Accordion', AccordionDocs, AccordionReadme).add('Accor
           </Col>
         </Row>
         <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start' }}>
-          <Col s="2" m="4" l="6">
+          <Col xs="2" sm="4" lg="6">
             <AccordionSecondary title="Secondary">
               We will verify your application and get back to you if we have any questions. The verification process can
               take a couple of months. We will verify your application and get back to you if we have any questions. The
               verification process can take a couple of months.
             </AccordionSecondary>
           </Col>
-          <Col s="2" m="4" l="6">
+          <Col xs="2" sm="4" lg="6">
             <AccordionSecondary title="Secondary">
               We will verify your application and get back to you if we have any questions. The verification process can
               take a couple of months. We will verify your application and get back to you if we have any questions. The
@@ -47,14 +47,14 @@ export default decorator('Accordion', AccordionDocs, AccordionReadme).add('Accor
       </AccordionGroup>
       <Text size={sizes.l}>Accordion</Text>
       <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start' }}>
-        <Col s="2" m="4" l="6">
+        <Col xs="2" sm="4" lg="6">
           <AccordionSecondary title="Secondary">
             We will verify your application and get back to you if we have any questions. The verification process can
             take a couple of months. We will verify your application and get back to you if we have any questions. The
             verification process can take a couple of months.
           </AccordionSecondary>
         </Col>
-        <Col s="2" m="4" l="6">
+        <Col xs="2" sm="4" lg="6">
           <AccordionSecondary title="Secondary">
             We will verify your application and get back to you if we have any questions. The verification process can
             take a couple of months. We will verify your application and get back to you if we have any questions. The

@@ -20,14 +20,14 @@ const render  = () => {
 
 This component inherits the attributes of the **input** element and extends the functionality with next properties.
 
-- title - title;
-- subTitle - subTitle;
-- error - add this prop when smth went wrong;
-- iconBefore - it could be icon from Icon component or some JSX.Element;
-- iconAfter - the same as with iconBefore;
-- wrapperProps - it's props which will be added to wrapper component;
-- inputProps - it's props which will be added to input component;
-- ref - wrapper ref
+- title - Title text content;
+- subTitle - Subtitle text content;
+- error - The text that would be displayed in case an error occurred;
+- iconBefore - An icon from `<Icon/>` component or some JSX.Element that would be displayed at the beginning of the input;
+- iconAfter - The same as iconBefore. The only difference is that the element would be displayed at the end of the input;
+- wrapperProps - Attributes applied to the wrapper element;
+- inputProps - Attributes applied to the input element;
+- ref - The wrapper ref
 
 | propName     | propType                                | defaultValue | isRequired |
 | ------------ | --------------------------------------- | ------------ | ---------- |
