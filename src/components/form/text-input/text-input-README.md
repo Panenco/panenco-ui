@@ -21,7 +21,7 @@ const render  = () => {
 This component inherits the attributes of the **input** element and extends the functionality with next properties.
 
 - title - Title text content;
-- subTitle - Subtitle text content;
+- subtitle - Subtitle text content;
 - error - The text that would be displayed in case an error occurred;
 - iconBefore - An icon from `<Icon/>` component or some JSX.Element that would be displayed at the beginning of the input;
 - iconAfter - The same as iconBefore. The only difference is that the element would be displayed at the end of the input;
@@ -32,7 +32,7 @@ This component inherits the attributes of the **input** element and extends the 
 | propName     | propType                                | defaultValue | isRequired |
 | ------------ | --------------------------------------- | ------------ | ---------- |
 | title        | string                                  | -            | -          |
-| subTitle     | string                                  | -            | -          |
+| subtitle     | string                                  | -            | -          |
 | error        | string                                  | -            | -          |
 | type         | string                                  | text         | -          |
 | iconBefore   | HTMLObjectElement or JSX.Element        | -            | -          |

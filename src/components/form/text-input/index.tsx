@@ -3,10 +3,17 @@ import cx from 'classnames';
 import { Icon, Text } from 'components';
 import { useTheme, useMode } from 'utils/hooks';
 import { idGenerator } from 'utils/helpers';
-import { InputComponent, WrapperProps, InputPropsType, ThemeMode } from '../../../utils/types';
+import { InputComponent, WrapperProps, InputPropsType, ThemeMode } from 'utils/types';
 import { StyledTextInput } from './style';
 
+export interface RightSubTitleProps {
+  className: string;
+
+  [key: string]: any;
+}
+
 export interface TextInputProps extends InputComponent, React.InputHTMLAttributes<HTMLInputElement> {
+  rightSubTitle?: (props: RightSubTitleProps) => React.ReactNode;
   iconBefore?: HTMLObjectElement | JSX.Element;
   iconAfter?: HTMLObjectElement | JSX.Element;
   inputRef?: React.Ref<HTMLInputElement>;
@@ -22,7 +29,8 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
       className,
       type = 'text',
       title,
-      subTitle,
+      subTitle: subtitle,
+      rightSubTitle,
       iconBefore,
       iconAfter,
       disabled,
@@ -61,28 +69,39 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
         iconBefore={iconBefore}
         {...wrapperProps}
       >
-        {title && (
-          <Text weight={theme.typography.weights.bold} size={theme.typography.sizes.m} className="inputTitle">
-            {title}
-          </Text>
-        )}
-        {subTitle && (
-          <Text size={theme.typography.sizes.xs} className="inputSubtitle">
-            {subTitle}
-          </Text>
-        )}
+        <div className='titleContainer'>
 
-        <div className="fieldWrapper">
+          {title && (
+            <Text weight={theme.typography.weights.bold} size={theme.typography.sizes.m} className='inputTitle'>
+              {title}
+            </Text>
+          )}
+
+          {
+            subtitle && (
+              <Text size={theme.typography.sizes.xs} className='inputSubtitle inputSubtitleLeft'>
+                {subtitle}
+              </Text>
+            )
+          }
+          {
+            typeof rightSubTitle === 'function' &&
+            rightSubTitle({ className: `inputSubtitleRight inputSubtitle ${!subtitle ? 'inputSubtitleAlone' : ''}` })
+          }
+        </div>
+
+
+        <div className='fieldWrapper'>
           <div className={cx('inputField', error && 'inputFieldError', disabled && 'inputFieldDisabled')}>
             {iconBefore && (
-              <label className="iconBefore" htmlFor={defaultId}>
+              <label className='iconBefore' htmlFor={defaultId}>
                 {React.isValidElement(iconBefore) ? iconBefore : <Icon icon={iconBefore} />}
               </label>
             )}
             <input
               type={type}
-              aria-label={`${title || ''}${subTitle || ''}`}
-              className="input"
+              aria-label={`${title || ''}${subtitle || ''}`}
+              className='input'
               placeholder={placeholder}
               onChange={handleChange}
               disabled={disabled}
@@ -93,24 +112,24 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
               {...props}
             />
             {iconAfter && (
-              <label className="iconAfter" htmlFor={defaultId}>
+              <label className='iconAfter' htmlFor={defaultId}>
                 {React.isValidElement(iconAfter) ? iconAfter : <Icon icon={iconAfter} />}
               </label>
             )}
           </div>
         </div>
         {error || maxLength ? (
-          <div className="counterWrapper">
+          <div className='counterWrapper'>
             <Text
-              component="span"
+              component='span'
               size={theme.typography.sizes.xs}
               color={mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.error}
-              className="inputErrorLabel"
+              className='inputErrorLabel'
             >
               {error}
             </Text>
             {maxLength && (
-              <Text component="span" size={theme.typography.sizes.xs} color={theme.colors.base700} className="counter">
+              <Text component='span' size={theme.typography.sizes.xs} color={theme.colors.base700} className='counter'>
                 {counter}/{maxLength}
               </Text>
             )}

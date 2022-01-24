@@ -78,7 +78,7 @@ export const StyledTextInput = styled.div<{
 
       &Disabled {
         pointer-events: none;
-        /* border-color: ${(props: any): string => props.theme.colors.base400}; */
+          /* border-color: ${(props: any): string => props.theme.colors.base400}; */
         background-color: ${(props: any): string =>
           props.mode === ThemeMode.dark ? transparentize(0.4, props.theme.colors.base700) : props.theme.colors.base400};
         opacity: 0.4;
@@ -98,11 +98,29 @@ export const StyledTextInput = styled.div<{
 
   .inputTitle {
     color: ${(props: any): string => props.theme.colors.base900};
+    float: left;
   }
 
   .inputSubtitle {
     color: ${(props: any): string => props.theme.colors.base700};
     margin-bottom: 4px;
+
+  }
+
+  .inputSubtitleLeft {
+    float: left;
+    clear: both;
+  }
+
+  .inputSubtitleRight {
+    float: right;
+    font-size: ${(props: any): string => props.theme.typography.sizes.xs.textSize};
+    line-height: ${(props: any): string => props.theme.typography.sizes.xs.lineHeight};
+  }
+
+  .inputSubtitleAlone {
+    position: relative;
+    top: 5px;
   }
 
   .inputErrorLabel {
