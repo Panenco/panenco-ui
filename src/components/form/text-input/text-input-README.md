@@ -22,6 +22,7 @@ This component inherits the attributes of the **input** element and extends the 
 
 - title - Title text content;
 - subtitle - Subtitle text content;
+- rightSubtitle - React element that would be displayed in the top right corner of the input
 - error - The text that would be displayed in case an error occurred;
 - iconBefore - An icon from `<Icon/>` component or some JSX.Element that would be displayed at the beginning of the input;
 - iconAfter - The same as iconBefore. The only difference is that the element would be displayed at the end of the input;
@@ -33,6 +34,7 @@ This component inherits the attributes of the **input** element and extends the 
 | ------------ | --------------------------------------- | ------------ | ---------- |
 | title        | string                                  | -            | -          |
 | subtitle     | string                                  | -            | -          |
+| rightSubtitle| ReactElement                            | -            | -          |
 | error        | string                                  | -            | -          |
 | type         | string                                  | text         | -          |
 | iconBefore   | HTMLObjectElement or JSX.Element        | -            | -          |
