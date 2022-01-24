@@ -6,14 +6,9 @@ import { idGenerator } from 'utils/helpers';
 import { InputComponent, WrapperProps, InputPropsType, ThemeMode } from 'utils/types';
 import { StyledTextInput } from './style';
 
-export interface RightSubTitleProps {
-  className: string;
-
-  [key: string]: any;
-}
 
 export interface TextInputProps extends InputComponent, React.InputHTMLAttributes<HTMLInputElement> {
-  rightSubTitle?: (props: RightSubTitleProps) => React.ReactNode;
+  rightSubtitle?: React.ReactElement;
   iconBefore?: HTMLObjectElement | JSX.Element;
   iconAfter?: HTMLObjectElement | JSX.Element;
   inputRef?: React.Ref<HTMLInputElement>;
@@ -30,7 +25,7 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
       type = 'text',
       title,
       subTitle: subtitle,
-      rightSubTitle,
+      rightSubtitle,
       iconBefore,
       iconAfter,
       disabled,
@@ -70,24 +65,26 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
         {...wrapperProps}
       >
         <div className='titleContainer'>
-
-          {title && (
-            <Text weight={theme.typography.weights.bold} size={theme.typography.sizes.m} className='inputTitle'>
-              {title}
-            </Text>
-          )}
-
-          {
-            subtitle && (
-              <Text size={theme.typography.sizes.xs} className='inputSubtitle inputSubtitleLeft'>
-                {subtitle}
+          <div className={`${subtitle ? 'mb-4' : ''}`}>
+            {title && (
+              <Text weight={theme.typography.weights.bold} size={theme.typography.sizes.m} className='inputTitle'>
+                {title}
               </Text>
-            )
-          }
-          {
-            typeof rightSubTitle === 'function' &&
-            rightSubTitle({ className: `inputSubtitleRight inputSubtitle ${!subtitle ? 'inputSubtitleAlone' : ''}` })
-          }
+            )}
+
+            {
+              subtitle && (
+                <Text size={theme.typography.sizes.xs} className='inputSubtitle inputSubtitleLeft'>
+                  {subtitle}
+                </Text>
+              )
+            }
+          </div>
+          <div className='mb-4'>
+            {
+              rightSubtitle && rightSubtitle
+            }
+          </div>
         </div>
 
 

@@ -96,31 +96,43 @@ export const StyledTextInput = styled.div<{
     }
   }
 
+  .titleContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+
+    div {
+      flex: 1;
+    }
+
+    div:first-child {
+      display: flex;
+      flex-direction: column;
+    }
+
+    div:last-child {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+
+      & * {
+        font-size: ${(props: any): string => props.theme.typography.sizes.xs.textSize};
+        line-height: ${(props: any): string => props.theme.typography.sizes.xs.lineHeight};
+        color: ${(props: any): string => props.theme.colors.base700};
+      }
+    }
+  }
+
+  .mb-4 {
+    margin-bottom: 4px;
+  }
+
   .inputTitle {
     color: ${(props: any): string => props.theme.colors.base900};
-    float: left;
   }
 
   .inputSubtitle {
     color: ${(props: any): string => props.theme.colors.base700};
-    margin-bottom: 4px;
-
-  }
-
-  .inputSubtitleLeft {
-    float: left;
-    clear: both;
-  }
-
-  .inputSubtitleRight {
-    float: right;
-    font-size: ${(props: any): string => props.theme.typography.sizes.xs.textSize};
-    line-height: ${(props: any): string => props.theme.typography.sizes.xs.lineHeight};
-  }
-
-  .inputSubtitleAlone {
-    position: relative;
-    top: 5px;
   }
 
   .inputErrorLabel {
@@ -135,8 +147,7 @@ export const StyledTextInput = styled.div<{
     position: absolute;
     width: 100%;
 
-    .counter {
-    }
+    .counter {}
 
     .hidden {
       visibility: hidden;

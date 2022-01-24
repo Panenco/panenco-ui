@@ -17,7 +17,6 @@ import React from 'react';
 
 import { decorator } from '../../utils/decorator';
 import { WrappedComponent } from '../helpers/wrapped';
-import { Text } from '../../src';
 
 export default decorator('Forms', TextInputDocs, TextInputReadme).add('TextInput', () => (
   <WrappedComponent>
@@ -99,11 +98,9 @@ export default decorator('Forms', TextInputDocs, TextInputReadme).add('TextInput
         >
           <TextInput
             title='Title'
-            // subtitle='Subtitle'
+            subTitle='Subtitle'
+            rightSubtitle={ <a className='link' href='/'>Anchor</a> }
             error='Error label'
-            rightSubTitle={ ( props ) => (
-            <Text { ...props }>Right Sub Title</Text>
-            ) }
             placeholder='Error'
             maxLength={ 100 } />
         </Col>
