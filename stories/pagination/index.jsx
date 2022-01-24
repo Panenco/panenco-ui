@@ -31,7 +31,7 @@ export const TablePagination = decorator('Pagination', TablePaginationDocs, Tabl
       <WrappedComponent>
         <BrowserRouter>
           <Row style={{ justifyContent: 'center' }}>
-            <Col xs="3" sm="6" lg="12">
+            <Col>
               <TablePaginationSelect
                 page={page}
                 onChangePage={handleChangePage}
