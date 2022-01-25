@@ -78,7 +78,7 @@ export const StyledTextInput = styled.div<{
 
       &Disabled {
         pointer-events: none;
-        /* border-color: ${(props: any): string => props.theme.colors.base400}; */
+          /* border-color: ${(props: any): string => props.theme.colors.base400}; */
         background-color: ${(props: any): string =>
           props.mode === ThemeMode.dark ? transparentize(0.4, props.theme.colors.base700) : props.theme.colors.base400};
         opacity: 0.4;
@@ -96,13 +96,42 @@ export const StyledTextInput = styled.div<{
     }
   }
 
+  .titleContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+
+    & > div {
+      flex: 1;
+      display: flex;
+    }
+
+    .leftTitleContainer {
+      flex-direction: column;
+    }
+
+    .rightTitleContainer {
+      align-items: flex-end;
+      justify-content: flex-end;
+
+      & * {
+        font-size: ${(props: any): string => props.theme.typography.sizes.xs.textSize};
+        line-height: ${(props: any): string => props.theme.typography.sizes.xs.lineHeight};
+        color: ${(props: any): string => props.theme.colors.base700};
+      }
+    }
+  }
+
+  .mb-4 {
+    margin-bottom: 4px;
+  }
+
   .inputTitle {
     color: ${(props: any): string => props.theme.colors.base900};
   }
 
   .inputSubtitle {
     color: ${(props: any): string => props.theme.colors.base700};
-    margin-bottom: 4px;
   }
 
   .inputErrorLabel {
