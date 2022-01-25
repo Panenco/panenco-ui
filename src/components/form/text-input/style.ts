@@ -101,17 +101,16 @@ export const StyledTextInput = styled.div<{
     justify-content: space-between;
     flex-wrap: nowrap;
 
-    div {
+    & > div {
       flex: 1;
+      display: flex;
     }
 
-    div:first-child {
-      display: flex;
+    .leftTitleContainer {
       flex-direction: column;
     }
 
-    div:last-child {
-      display: flex;
+    .rightTitleContainer {
       align-items: flex-end;
       justify-content: flex-end;
 
@@ -147,7 +146,8 @@ export const StyledTextInput = styled.div<{
     position: absolute;
     width: 100%;
 
-    .counter {}
+    .counter {
+    }
 
     .hidden {
       visibility: hidden;

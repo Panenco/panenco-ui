@@ -65,7 +65,7 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
         {...wrapperProps}
       >
         <div className='titleContainer'>
-          <div className={`${subtitle ? 'mb-4' : ''}`}>
+          <div className='leftTitleContainer'>
             {title && (
               <Text weight={theme.typography.weights.bold} size={theme.typography.sizes.m} className='inputTitle'>
                 {title}
@@ -74,17 +74,18 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
 
             {
               subtitle && (
-                <Text size={theme.typography.sizes.xs} className='inputSubtitle inputSubtitleLeft'>
+                <Text size={theme.typography.sizes.xs} className=' mb-4 inputSubtitle inputSubtitleLeft'>
                   {subtitle}
                 </Text>
               )
             }
           </div>
-          <div className='mb-4'>
-            {
-              rightSubtitle && rightSubtitle
-            }
-          </div>
+          {rightSubtitle && (
+            <div className='mb-4 rightTitleContainer'>
+              {rightSubtitle}
+            </div>
+          )
+          }
         </div>
 
 
