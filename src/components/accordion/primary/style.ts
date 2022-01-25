@@ -5,6 +5,7 @@ export const StyledAccordionPrimary = styled.div<{
   theme: PUITheme;
   mode: ThemeMode;
 }>`
+  position: relative;
   display: flex;
   flex-direction: column;
   border-radius: 4px;
