@@ -6,6 +6,7 @@ export const StyledAccordionSecondary = styled.div<{
   theme: PUITheme;
   mode: ThemeMode;
 }>`
+  position: relative;
   display: flex;
   flex-direction: column;
   border: none;
