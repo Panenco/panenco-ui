@@ -74,7 +74,7 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
 
             {
               subTitle && (
-                <Text size={theme.typography.sizes.xs} className=' mb-4 inputsubTitle inputsubTitleLeft'>
+                <Text size={theme.typography.sizes.xs} className=' mb-4 inputSubTitle inputSubTitleLeft'>
                   {subTitle}
                 </Text>
               )
