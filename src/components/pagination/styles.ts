@@ -9,8 +9,6 @@ export const StyledPagination = styled.div<{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: ${(props: any): any => `1px solid ${props.theme.colors.base700}`};
-  border-radius: 8px;
   padding: 16px 32px;
 
   .pagination {
@@ -36,6 +34,11 @@ export const StyledPagination = styled.div<{
 
       &:hover {
         border-bottom: none;
+        background-color: ${(props: any): any => props.theme.colors.primary200};
+
+        .paginationButtonIcon {
+          color: ${(props: any): any => props.theme.colors.primary500};
+        }
       }
 
       &:focus {
@@ -102,9 +105,6 @@ export const StyledListPagination = styled.div<{
         align-items: center;
         min-width: 32px;
         height: 32px;
-        border: ${(props: any): any =>
-          props.variant === 'contained' ? `1px solid ${props.theme.colors.base700}` : 'none'};
-        border-radius: 3px;
         margin-left: 8px;
         color: ${(props: any): any => `${props.theme.colors.base900}`};
         min-height: auto;
@@ -113,16 +113,20 @@ export const StyledListPagination = styled.div<{
         font-size: 16px;
         cursor: pointer;
 
-        &:hover {
-          background-color: ${(props: any): any => `${props.theme.colors.base400}`};
+        &:hover:not(.paginationListItemActive, .paginationListItemEllipsis) {
+          background-color: ${(props: any): any => `${props.theme.colors.primary200}`};
+          color: ${(props: any): any => `${props.theme.colors.primary500}`};
+
+          .paginationButtonIcon {
+            color: ${(props: any): any => props.theme.colors.primary500};
+          }
         }
 
         &Active {
-          background-color: ${(props: any): any => `${props.theme.colors.primary500}`};
+          background-color: ${(props: any): any => `${props.theme.colors.base900}`};
           color: ${(props: any): any => `${props.theme.colors.base100}`};
 
           &:hover {
-            background-color: ${(props: any): any => `${props.theme.colors.primary500}`};
             opacity: 0.9;
           }
         }
