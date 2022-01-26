@@ -99,7 +99,7 @@ export default decorator('Forms', TextInputDocs, TextInputReadme).add('TextInput
           <TextInput
             title='Title'
             subTitle='Subtitle'
-            rightSubtitle={ <a className='link' href='/'>Anchor</a> }
+            rightSubTitle={ <a className='link' href='/'>Anchor</a> }
             error='Error label'
             placeholder='Error'
             maxLength={ 100 } />

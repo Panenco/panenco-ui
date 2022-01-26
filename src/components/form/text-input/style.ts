@@ -130,7 +130,7 @@ export const StyledTextInput = styled.div<{
     color: ${(props: any): string => props.theme.colors.base900};
   }
 
-  .inputSubtitle {
+  .inputSubTitle {
     color: ${(props: any): string => props.theme.colors.base700};
   }
 
