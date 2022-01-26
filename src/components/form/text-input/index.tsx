@@ -8,7 +8,7 @@ import { StyledTextInput } from './style';
 
 
 export interface TextInputProps extends InputComponent, React.InputHTMLAttributes<HTMLInputElement> {
-  rightSubtitle?: React.ReactElement;
+  rightSubTitle?: React.ReactElement;
   iconBefore?: HTMLObjectElement | JSX.Element;
   iconAfter?: HTMLObjectElement | JSX.Element;
   inputRef?: React.Ref<HTMLInputElement>;
@@ -24,8 +24,8 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
       className,
       type = 'text',
       title,
-      subTitle: subtitle,
-      rightSubtitle,
+      subTitle,
+      rightSubTitle,
       iconBefore,
       iconAfter,
       disabled,
@@ -73,16 +73,16 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
             )}
 
             {
-              subtitle && (
-                <Text size={theme.typography.sizes.xs} className=' mb-4 inputSubtitle inputSubtitleLeft'>
-                  {subtitle}
+              subTitle && (
+                <Text size={theme.typography.sizes.xs} className=' mb-4 inputsubTitle inputsubTitleLeft'>
+                  {subTitle}
                 </Text>
               )
             }
           </div>
-          {rightSubtitle && (
+          {rightSubTitle && (
             <div className='mb-4 rightTitleContainer'>
-              {rightSubtitle}
+              {rightSubTitle}
             </div>
           )
           }
@@ -98,7 +98,7 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
             )}
             <input
               type={type}
-              aria-label={`${title || ''}${subtitle || ''}`}
+              aria-label={`${title || ''}${subTitle || ''}`}
               className='input'
               placeholder={placeholder}
               onChange={handleChange}
