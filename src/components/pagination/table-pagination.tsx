@@ -35,7 +35,7 @@ const additionStyles = () => ({
     justifyContent: 'center',
   }),
   control: () => ({
-    minHeight: '28px',
+    minHeight: '48px',
     padding: '0 5px',
   }),
   dropdownIndicator: () => ({
@@ -49,7 +49,7 @@ const additionStyles = () => ({
 });
 
 export const TablePagination = ({
-  contentBeforeSelect = 'Show rows:',
+  contentBeforeSelect = 'Items per page',
   count = 150,
   rowsPerPage = 12,
   page = 0,
@@ -77,7 +77,7 @@ export const TablePagination = ({
           size={theme.typography.sizes.m}
           weight={theme.typography.weights.light}
           color={theme.colors.base900}
-          className="paginationTextBeforeSelect"
+          className="paginationText"
         >
           {contentBeforeSelect}
         </Text>
@@ -92,16 +92,14 @@ export const TablePagination = ({
           onChange={rowsPerPageHandler}
           value={rowsPerPageOptions.find((option) => Number(option.value) === Number(rowsPerPage))}
         />
-        <div className={cx('paginationDivider', 'paginationDividerLeft')} />
         <Text size={theme.typography.sizes.m} color={theme.colors.base900} className="paginationText">
-          {`${count > 0 ? from : 0}-${to} of ${count} items`}
+          {`Displaying ${count > 0 ? from : 0}-${to} of ${count} items`}
         </Text>
       </div>
       <div className="paginationSection">
         <Text size={theme.typography.sizes.m} color={theme.colors.base900} className="paginationText">
           {`${page + 1} of ${pagesAmount} pages`}
         </Text>
-        <div className={cx('paginationDivider', 'paginationDividerRight')} />
         <Button
           className="paginationButton"
           disabled={isFirst || disabled}

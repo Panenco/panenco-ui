@@ -13,9 +13,9 @@ export const StyledPagination = styled.div<{
 
   .pagination {
     &Select {
-      margin-left: 5px;
-      height: 28px;
-      width: 60px;
+      margin: 0 10px;
+      height: 48px;
+      width: 80px;
     }
 
     &Button {
@@ -23,11 +23,11 @@ export const StyledPagination = styled.div<{
       padding: 0 5px;
       border: 1px solid transparent;
       display: flex;
-      height: 28px;
-      min-height: 28px;
+      height: 32px;
+      min-height: 32px;
       justify-content: center;
       text-decoration: none;
-      width: 28px;
+      width: 32px;
       border-bottom: none;
       background-color: transparent;
       cursor: pointer;
@@ -45,10 +45,6 @@ export const StyledPagination = styled.div<{
         border-bottom: none;
       }
 
-      &:last-child {
-        margin-left: 5px;
-      }
-
       &Icon {
         color: ${(props: any): any => props.theme.colors.base700};
         height: 16px;
@@ -63,6 +59,11 @@ export const StyledPagination = styled.div<{
         opacity: 0.4;
         pointer-events: none;
       }
+    }
+
+    &Text {
+      margin: 0 10px;
+      color: ${(props: any) => props.theme.colors.base700};
     }
 
     &Section {
