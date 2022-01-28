@@ -20,6 +20,11 @@ export type TablePaginationProps = {
   rowsPerPageOptions?: any;
   onChangePage: (page: number | PaginationOption) => void;
   onChangeRowsPerPage: any;
+  locales?: { 
+    itemsPerPage: string;
+    displayingItems: (rangeStart: number, rangeEnd: number, count: number ) => string;
+    currentPage: (currentPage: number, allPages: number) => string
+  }
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const defaultOptions = [
@@ -49,7 +54,6 @@ const additionStyles = () => ({
 });
 
 export const TablePagination = ({
-  contentBeforeSelect = 'Items per page',
   count = 150,
   rowsPerPage = 12,
   page = 0,
@@ -58,12 +62,19 @@ export const TablePagination = ({
   onChangeRowsPerPage,
   onChangePage,
   className,
+  locales,
   ...otherProps
 }: TablePaginationProps): JSX.Element => {
   const [isFirst, isLast, pagesAmount] = usePagination({ page, count, rowsPerPage });
   const from = page * rowsPerPage + 1;
   const to = !isLast ? rowsPerPage * page + Number(rowsPerPage) : count;
   const pagesOptions = [...Array(pagesAmount)].map((_, index) => ({ value: index, label: index + 1 }));
+
+  const rangeStart = count > 0 ? from : 0;
+  const rangeEnd = to;
+
+  const displayingItemsLabel = `Displaying ${rangeStart}-${rangeEnd} of ${count} items`;
+  const currentPageLabel = `${page + 1} of ${pagesAmount} pages`;
 
   const theme = useTheme();
   const { mode } = useMode();
@@ -79,7 +90,7 @@ export const TablePagination = ({
           color={theme.colors.base900}
           className="paginationText"
         >
-          {contentBeforeSelect}
+          {locales?.itemsPerPage || 'Items per page'}
         </Text>
         <SelectInput
           options={rowsPerPageOptions}
@@ -93,12 +104,12 @@ export const TablePagination = ({
           value={rowsPerPageOptions.find((option) => Number(option.value) === Number(rowsPerPage))}
         />
         <Text size={theme.typography.sizes.m} color={theme.colors.base900} className="paginationText">
-          {`Displaying ${count > 0 ? from : 0}-${to} of ${count} items`}
+          {locales?.displayingItems(rangeStart, rangeEnd, count) || displayingItemsLabel}
         </Text>
       </div>
       <div className="paginationSection">
         <Text size={theme.typography.sizes.m} color={theme.colors.base900} className="paginationText">
-          {`${page + 1} of ${pagesAmount} pages`}
+          {locales?.currentPage(page + 1, pagesAmount) || currentPageLabel}
         </Text>
         <Button
           className="paginationButton"

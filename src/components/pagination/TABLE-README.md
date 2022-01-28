@@ -30,6 +30,15 @@ const handleButtonClick = (val) => {
   setPage(val);
 }
 
+// In case you use localization package
+const locales = {
+  itemsPerPage: translate('itemsPerPageKey'),
+  // parameters: rangeStart, rangeEnd, count
+  displayingItems: (start, end, count) => translate('displayingItemsKey', { start, end, count }),
+  // parameters: currentPage, allPage
+  currentPage: (curr, all) => translate('currentPageKey', { curr, all })
+}
+
 const render = () => {
   return (
     <TablePagination
@@ -39,6 +48,7 @@ const render = () => {
       onButtonClick={handleButtonClick}
       count={201}
       rowsPerPage={rowsPerPage}
+      locales={locales}
     />
 );
 }
@@ -60,7 +70,7 @@ This component inherits the attributes of the **div** element and extends the fu
 - rowsPerPageOptions - array of options that populate the per page select menu.
 - onChangePage - Callback fired when the page is changed.
 - onChangeRowsPerPage - Callback fired when the items per page is changed.
-- contentBeforeSelect - content berofe per page select.
+- locales - translations for labels used in component
 
 | propName            | propType                         | defaultValue       | isRequired |
 | ------------------- | -------------------------------- | ------------------ | ---------- |
@@ -73,4 +83,4 @@ This component inherits the attributes of the **div** element and extends the fu
 | rowsPerPageOptions  | {value: number, label: number}[] | rowsPerPageOptions | -          |
 | onChangePage        | func                             | -                  | +          |
 | onChangeRowsPerPage | func                             | -                  | +          |
-| contentBeforeSelect | string                           | 'Show rows:'       | -          |
+| locales             | object                           | -                  | -          |
