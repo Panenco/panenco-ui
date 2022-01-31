@@ -39,6 +39,18 @@ const locales = {
   currentPage: (curr, all) => translate('currentPageKey', { curr, all })
 }
 
+// override styles for Select inputs inside pagination component
+const selectStyles = () => ({
+  option: (provided, state) => ({
+    backgroundColor: state.selectProps.menuIsOpen ? 'red' : 'blue'
+  }),
+  control: () => ({
+    '&:hover': {
+      borderColor: 'cyan'
+    }
+  })
+})
+
 const render = () => {
   return (
     <TablePagination
@@ -49,6 +61,7 @@ const render = () => {
       count={201}
       rowsPerPage={rowsPerPage}
       locales={locales}
+      selectStyles={selectStyles}
     />
 );
 }
@@ -84,3 +97,4 @@ This component inherits the attributes of the **div** element and extends the fu
 | onChangePage        | func                             | -                  | +          |
 | onChangeRowsPerPage | func                             | -                  | +          |
 | locales             | object                           | -                  | -          |
+| selectStyles        | func                             | -                  | -          |

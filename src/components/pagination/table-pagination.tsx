@@ -4,6 +4,7 @@ import { useTheme, useMode } from 'utils/hooks';
 import { Text, Icon, SelectInput, Button } from 'components';
 import { usePagination } from './usePagination';
 import { StyledPagination } from './styles';
+import { additionalStyles } from '../select/style'
 
 interface PaginationOption {
   label: string;
@@ -24,7 +25,10 @@ export type TablePaginationProps = {
     itemsPerPage: string;
     displayingItems: (rangeStart: number, rangeEnd: number, count: number ) => string;
     currentPage: (currentPage: number, allPages: number) => string
-  }
+  },
+  selectStyles?: {
+    [key: string]: (...args) => { [k: string]: any }
+  } 
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const defaultOptions = [
@@ -34,22 +38,26 @@ const defaultOptions = [
   { label: '48', value: 48 },
 ];
 
-const additionStyles = () => ({
-  valueContainer: () => ({
+const customSelectStyles = (styles) => ({
+  valueContainer: (p, s) => ({
     padding: 0,
     justifyContent: 'center',
+    ...additionalStyles('valueContainer', styles, p, s)
   }),
-  control: () => ({
+  control: (p, s) => ({
     minHeight: '48px',
     padding: '0 5px',
+    ...additionalStyles('control', styles, p, s)
   }),
-  dropdownIndicator: () => ({
+  dropdownIndicator: (p, s) => ({
     padding: 0,
     width: '16px',
+    ...additionalStyles('dropdownindicator', styles, p, s)
   }),
-  option: () => ({
+  option: (p, s) => ({
     paddingTop: '5px',
     paddingBottom: '5px',
+    ...additionalStyles('option', styles, p, s)
   }),
 });
 
@@ -62,6 +70,7 @@ export const TablePagination = ({
   onChangeRowsPerPage,
   onChangePage,
   className,
+  selectStyles,
   locales,
   ...otherProps
 }: TablePaginationProps): JSX.Element => {
@@ -98,7 +107,7 @@ export const TablePagination = ({
           id="rowsPerPage"
           name="rowsPerPage"
           isSearchable={false}
-          styles={additionStyles()}
+          styles={customSelectStyles(selectStyles)}
           isDisabled={disabled}
           onChange={rowsPerPageHandler}
           value={rowsPerPageOptions.find((option) => Number(option.value) === Number(rowsPerPage))}
@@ -126,7 +135,7 @@ export const TablePagination = ({
           id="page"
           name="page"
           isSearchable={false}
-          styles={additionStyles()}
+          styles={customSelectStyles(selectStyles)}
           isDisabled={disabled}
           onChange={(option): void => onChangePage(option.value)}
           value={pagesOptions.find((option) => Number(option.value) === Number(page))}
