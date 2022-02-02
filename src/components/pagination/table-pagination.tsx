@@ -39,25 +39,25 @@ const defaultOptions = [
 ];
 
 const customSelectStyles = (styles) => ({
-  valueContainer: (p, s) => ({
+  valueContainer: (provided, state) => ({
     padding: 0,
     justifyContent: 'center',
-    ...additionalStyles('valueContainer', styles, p, s)
+    ...additionalStyles('valueContainer', styles, provided, state)
   }),
-  control: (p, s) => ({
+  control: (provided, state) => ({
     minHeight: '48px',
     padding: '0 5px',
-    ...additionalStyles('control', styles, p, s)
+    ...additionalStyles('control', styles, provided, state)
   }),
-  dropdownIndicator: (p, s) => ({
+  dropdownIndicator: (provided, state) => ({
     padding: 0,
     width: '16px',
-    ...additionalStyles('dropdownindicator', styles, p, s)
+    ...additionalStyles('dropdownindicator', styles, provided, state)
   }),
-  option: (p, s) => ({
+  option: (provided, state) => ({
     paddingTop: '5px',
     paddingBottom: '5px',
-    ...additionalStyles('option', styles, p, s)
+    ...additionalStyles('option', styles, provided, state)
   }),
 });
 
@@ -71,7 +71,11 @@ export const TablePagination = ({
   onChangePage,
   className,
   selectStyles,
-  locales,
+  locales = {
+    itemsPerPage: 'Items per page',
+    displayingItems: (rangeStart: number, rangeEnd: number, pCount: number) => `Displaying ${rangeStart}-${rangeEnd} of ${pCount} items`,
+    currentPage: (currentPage: number, pagesAmount: number) => `${currentPage + 1} of ${pagesAmount} pages`,
+  },
   ...otherProps
 }: TablePaginationProps): JSX.Element => {
   const [isFirst, isLast, pagesAmount] = usePagination({ page, count, rowsPerPage });
@@ -81,9 +85,6 @@ export const TablePagination = ({
 
   const rangeStart = count > 0 ? from : 0;
   const rangeEnd = to;
-
-  const displayingItemsLabel = `Displaying ${rangeStart}-${rangeEnd} of ${count} items`;
-  const currentPageLabel = `${page + 1} of ${pagesAmount} pages`;
 
   const theme = useTheme();
   const { mode } = useMode();
@@ -99,7 +100,7 @@ export const TablePagination = ({
           color={theme.colors.base900}
           className="paginationText"
         >
-          {locales?.itemsPerPage || 'Items per page'}
+          {locales.itemsPerPage}
         </Text>
         <SelectInput
           options={rowsPerPageOptions}
@@ -113,12 +114,12 @@ export const TablePagination = ({
           value={rowsPerPageOptions.find((option) => Number(option.value) === Number(rowsPerPage))}
         />
         <Text size={theme.typography.sizes.m} color={theme.colors.base900} className="paginationText">
-          {locales?.displayingItems(rangeStart, rangeEnd, count) || displayingItemsLabel}
+          {locales.displayingItems(rangeStart, rangeEnd, count)}
         </Text>
       </div>
       <div className="paginationSection">
         <Text size={theme.typography.sizes.m} color={theme.colors.base900} className="paginationText">
-          {locales?.currentPage(page + 1, pagesAmount) || currentPageLabel}
+          {locales.currentPage(page + 1, pagesAmount)}
         </Text>
         <Button
           className="paginationButton"

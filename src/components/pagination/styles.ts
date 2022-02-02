@@ -34,10 +34,10 @@ export const StyledPagination = styled.div<{
 
       &:hover {
         border-bottom: none;
-        background-color: ${(props: any): any => props.theme.colors.primary200};
+        background-color: ${({ theme }): any => theme.colors.primary200};
 
         .paginationButtonIcon {
-          color: ${(props: any): any => props.theme.colors.primary500};
+          color: ${({ theme }: any): any => theme.colors.primary500};
         }
       }
 
@@ -46,7 +46,7 @@ export const StyledPagination = styled.div<{
       }
 
       &Icon {
-        color: ${(props: any): any => props.theme.colors.base700};
+        color: ${({ theme }: any): any => theme.colors.base700};
         height: 16px;
         width: 16px;
 
@@ -63,7 +63,7 @@ export const StyledPagination = styled.div<{
 
     &Text {
       margin: 0 10px;
-      color: ${(props: any) => props.theme.colors.base700};
+      color: ${({ theme }: any) => theme.colors.base700};
     }
 
     &Section {
@@ -72,7 +72,7 @@ export const StyledPagination = styled.div<{
     }
 
     &Divider {
-      background: ${(props: any): any => `${props.theme.colors.base700}`};
+      background: ${({ theme }: any): any => `${theme.colors.base700}`};
       height: 24px;
       width: 1px;
 
@@ -107,7 +107,7 @@ export const StyledListPagination = styled.div<{
         min-width: 32px;
         height: 32px;
         margin-left: 8px;
-        color: ${(props: any): any => `${props.theme.colors.base900}`};
+        color: ${({ theme }: any): any => `${theme.colors.base900}`};
         min-height: auto;
         font-weight: 400;
         background-color: transparent;
@@ -115,17 +115,17 @@ export const StyledListPagination = styled.div<{
         cursor: pointer;
 
         &:hover:not(.paginationListItemActive, .paginationListItemEllipsis) {
-          background-color: ${(props: any): any => `${props.theme.colors.primary200}`};
-          color: ${(props: any): any => `${props.theme.colors.primary500}`};
+          background-color: ${({ theme }: any): any => `${theme.colors.primary200}`};
+          color: ${({ theme }: any): any => `${theme.colors.primary500}`};
 
           .paginationButtonIcon {
-            color: ${(props: any): any => props.theme.colors.primary500};
+            color: ${({ theme }: any): any => theme.colors.primary500};
           }
         }
 
         &Active {
-          background-color: ${(props: any): any => `${props.theme.colors.base900}`};
-          color: ${(props: any): any => `${props.theme.colors.base100}`};
+          background-color: ${({ theme }: any): any => `${theme.colors.base900}`};
+          color: ${({ theme }: any): any => `${theme.colors.base100}`};
 
           &:hover {
             opacity: 0.9;
@@ -152,7 +152,7 @@ export const StyledListPagination = styled.div<{
       }
 
       &Icon {
-        color: ${(props: any): any => props.theme.colors.base700};
+        color: ${({ theme }: any): any => theme.colors.base700};
         height: 16px;
         width: 16px;
 
