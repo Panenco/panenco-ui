@@ -52,7 +52,7 @@ const customSelectStyles = (styles) => ({
   dropdownIndicator: (provided, state) => ({
     padding: 0,
     width: '16px',
-    ...additionalStyles('dropdownindicator', styles, provided, state)
+    ...additionalStyles('dropdownIndicator', styles, provided, state)
   }),
   option: (provided, state) => ({
     paddingTop: '5px',
