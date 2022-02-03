@@ -4,6 +4,7 @@ import { useTheme, useMode } from 'utils/hooks';
 import { Text, Icon, SelectInput, Button } from 'components';
 import { usePagination } from './usePagination';
 import { StyledPagination } from './styles';
+import { additionalStyles } from '../select/style'
 
 interface PaginationOption {
   label: string;
@@ -20,6 +21,14 @@ export type TablePaginationProps = {
   rowsPerPageOptions?: any;
   onChangePage: (page: number | PaginationOption) => void;
   onChangeRowsPerPage: any;
+  locales?: { 
+    itemsPerPage: string;
+    displayingItems: (rangeStart: number, rangeEnd: number, count: number ) => string;
+    currentPage: (currentPage: number, allPages: number) => string
+  },
+  selectStyles?: {
+    [key: string]: (...args) => { [k: string]: any }
+  } 
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const defaultOptions = [
@@ -29,27 +38,30 @@ const defaultOptions = [
   { label: '48', value: 48 },
 ];
 
-const additionStyles = () => ({
-  valueContainer: () => ({
+const customSelectStyles = (styles) => ({
+  valueContainer: (provided, state) => ({
     padding: 0,
     justifyContent: 'center',
+    ...additionalStyles('valueContainer', styles, provided, state)
   }),
-  control: () => ({
-    minHeight: '28px',
+  control: (provided, state) => ({
+    minHeight: '48px',
     padding: '0 5px',
+    ...additionalStyles('control', styles, provided, state)
   }),
-  dropdownIndicator: () => ({
+  dropdownIndicator: (provided, state) => ({
     padding: 0,
     width: '16px',
+    ...additionalStyles('dropdownIndicator', styles, provided, state)
   }),
-  option: () => ({
+  option: (provided, state) => ({
     paddingTop: '5px',
     paddingBottom: '5px',
+    ...additionalStyles('option', styles, provided, state)
   }),
 });
 
 export const TablePagination = ({
-  contentBeforeSelect = 'Show rows:',
   count = 150,
   rowsPerPage = 12,
   page = 0,
@@ -58,12 +70,21 @@ export const TablePagination = ({
   onChangeRowsPerPage,
   onChangePage,
   className,
+  selectStyles,
+  locales = {
+    itemsPerPage: 'Items per page',
+    displayingItems: (rangeStart: number, rangeEnd: number, pCount: number) => `Displaying ${rangeStart}-${rangeEnd} of ${pCount} items`,
+    currentPage: (currentPage: number, pagesAmount: number) => `${currentPage + 1} of ${pagesAmount} pages`,
+  },
   ...otherProps
 }: TablePaginationProps): JSX.Element => {
   const [isFirst, isLast, pagesAmount] = usePagination({ page, count, rowsPerPage });
   const from = page * rowsPerPage + 1;
   const to = !isLast ? rowsPerPage * page + Number(rowsPerPage) : count;
   const pagesOptions = [...Array(pagesAmount)].map((_, index) => ({ value: index, label: index + 1 }));
+
+  const rangeStart = count > 0 ? from : 0;
+  const rangeEnd = to;
 
   const theme = useTheme();
   const { mode } = useMode();
@@ -77,9 +98,9 @@ export const TablePagination = ({
           size={theme.typography.sizes.m}
           weight={theme.typography.weights.light}
           color={theme.colors.base900}
-          className="paginationTextBeforeSelect"
+          className="paginationText"
         >
-          {contentBeforeSelect}
+          {locales.itemsPerPage}
         </Text>
         <SelectInput
           options={rowsPerPageOptions}
@@ -87,21 +108,19 @@ export const TablePagination = ({
           id="rowsPerPage"
           name="rowsPerPage"
           isSearchable={false}
-          styles={additionStyles()}
+          styles={customSelectStyles(selectStyles)}
           isDisabled={disabled}
           onChange={rowsPerPageHandler}
           value={rowsPerPageOptions.find((option) => Number(option.value) === Number(rowsPerPage))}
         />
-        <div className={cx('paginationDivider', 'paginationDividerLeft')} />
         <Text size={theme.typography.sizes.m} color={theme.colors.base900} className="paginationText">
-          {`${count > 0 ? from : 0}-${to} of ${count} items`}
+          {locales.displayingItems(rangeStart, rangeEnd, count)}
         </Text>
       </div>
       <div className="paginationSection">
         <Text size={theme.typography.sizes.m} color={theme.colors.base900} className="paginationText">
-          {`${page + 1} of ${pagesAmount} pages`}
+          {locales.currentPage(page + 1, pagesAmount)}
         </Text>
-        <div className={cx('paginationDivider', 'paginationDividerRight')} />
         <Button
           className="paginationButton"
           disabled={isFirst || disabled}
@@ -117,7 +136,7 @@ export const TablePagination = ({
           id="page"
           name="page"
           isSearchable={false}
-          styles={additionStyles()}
+          styles={customSelectStyles(selectStyles)}
           isDisabled={disabled}
           onChange={(option): void => onChangePage(option.value)}
           value={pagesOptions.find((option) => Number(option.value) === Number(page))}

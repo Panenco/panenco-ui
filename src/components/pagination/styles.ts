@@ -9,15 +9,13 @@ export const StyledPagination = styled.div<{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: ${(props: any): any => `1px solid ${props.theme.colors.base700}`};
-  border-radius: 8px;
   padding: 16px 32px;
 
   .pagination {
     &Select {
-      margin-left: 5px;
-      height: 28px;
-      width: 60px;
+      margin: 0 10px;
+      height: 48px;
+      width: 80px;
     }
 
     &Button {
@@ -25,29 +23,30 @@ export const StyledPagination = styled.div<{
       padding: 0 5px;
       border: 1px solid transparent;
       display: flex;
-      height: 28px;
-      min-height: 28px;
+      height: 32px;
+      min-height: 32px;
       justify-content: center;
       text-decoration: none;
-      width: 28px;
+      width: 32px;
       border-bottom: none;
       background-color: transparent;
       cursor: pointer;
 
       &:hover {
         border-bottom: none;
+        background-color: ${({ theme }): any => theme.colors.primary200};
+
+        .paginationButtonIcon {
+          color: ${({ theme }: any): any => theme.colors.primary500};
+        }
       }
 
       &:focus {
         border-bottom: none;
       }
 
-      &:last-child {
-        margin-left: 5px;
-      }
-
       &Icon {
-        color: ${(props: any): any => props.theme.colors.base700};
+        color: ${({ theme }: any): any => theme.colors.base700};
         height: 16px;
         width: 16px;
 
@@ -62,13 +61,18 @@ export const StyledPagination = styled.div<{
       }
     }
 
+    &Text {
+      margin: 0 10px;
+      color: ${({ theme }: any) => theme.colors.base700};
+    }
+
     &Section {
       align-items: center;
       display: flex;
     }
 
     &Divider {
-      background: ${(props: any): any => `${props.theme.colors.base700}`};
+      background: ${({ theme }: any): any => `${theme.colors.base700}`};
       height: 24px;
       width: 1px;
 
@@ -102,27 +106,28 @@ export const StyledListPagination = styled.div<{
         align-items: center;
         min-width: 32px;
         height: 32px;
-        border: ${(props: any): any =>
-          props.variant === 'contained' ? `1px solid ${props.theme.colors.base700}` : 'none'};
-        border-radius: 3px;
         margin-left: 8px;
-        color: ${(props: any): any => `${props.theme.colors.base900}`};
+        color: ${({ theme }: any): any => `${theme.colors.base900}`};
         min-height: auto;
         font-weight: 400;
         background-color: transparent;
         font-size: 16px;
         cursor: pointer;
 
-        &:hover {
-          background-color: ${(props: any): any => `${props.theme.colors.base400}`};
+        &:hover:not(.paginationListItemActive, .paginationListItemEllipsis) {
+          background-color: ${({ theme }: any): any => `${theme.colors.primary200}`};
+          color: ${({ theme }: any): any => `${theme.colors.primary500}`};
+
+          .paginationButtonIcon {
+            color: ${({ theme }: any): any => theme.colors.primary500};
+          }
         }
 
         &Active {
-          background-color: ${(props: any): any => `${props.theme.colors.primary500}`};
-          color: ${(props: any): any => `${props.theme.colors.base100}`};
+          background-color: ${({ theme }: any): any => `${theme.colors.base900}`};
+          color: ${({ theme }: any): any => `${theme.colors.base100}`};
 
           &:hover {
-            background-color: ${(props: any): any => `${props.theme.colors.primary500}`};
             opacity: 0.9;
           }
         }
@@ -147,7 +152,7 @@ export const StyledListPagination = styled.div<{
       }
 
       &Icon {
-        color: ${(props: any): any => props.theme.colors.base700};
+        color: ${({ theme }: any): any => theme.colors.base700};
         height: 16px;
         width: 16px;
 
