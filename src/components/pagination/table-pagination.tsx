@@ -83,7 +83,7 @@ export const TablePagination = ({
   locales = {
     itemsPerPage: 'Items per page',
     displayingItems: (rangeStart: number, rangeEnd: number, pCount: number) => `Displaying ${rangeStart}-${rangeEnd} of ${pCount} items`,
-    currentPage: (currentPage: number, pagesAmount: number) => `${currentPage + 1} of ${pagesAmount} pages`,
+    currentPage: (currentPage: number, pagesAmount: number) => `${currentPage} of ${pagesAmount} pages`,
   },
   ...otherProps
 }: TablePaginationProps): JSX.Element => {
