@@ -38,28 +38,37 @@ const defaultOptions = [
   { label: '48', value: 48 },
 ];
 
-const customSelectStyles = (styles) => ({
-  valueContainer: (provided, state) => ({
-    padding: 0,
-    justifyContent: 'center',
-    ...additionalStyles('valueContainer', styles, provided, state)
-  }),
-  control: (provided, state) => ({
-    minHeight: '48px',
-    padding: '0 5px',
-    ...additionalStyles('control', styles, provided, state)
-  }),
-  dropdownIndicator: (provided, state) => ({
-    padding: 0,
-    width: '16px',
-    ...additionalStyles('dropdownIndicator', styles, provided, state)
-  }),
-  option: (provided, state) => ({
-    paddingTop: '5px',
-    paddingBottom: '5px',
-    ...additionalStyles('option', styles, provided, state)
-  }),
-});
+const customSelectStyles = (styles) => {
+  const defaultStyles = {
+    valueContainer: (provided, state) => ({
+      padding: 0,
+      justifyContent: 'center',
+      ...additionalStyles('valueContainer', styles, provided, state)
+    }),
+    control: (provided, state) => ({
+      minHeight: '48px',
+      padding: '0 5px',
+      ...additionalStyles('control', styles, provided, state)
+    }),
+    dropdownIndicator: (provided, state) => ({
+      padding: 0,
+      width: '16px',
+      ...additionalStyles('dropdownIndicator', styles, provided, state)
+    }),
+    option: (provided, state) => ({
+      paddingTop: '5px',
+      paddingBottom: '5px',
+      ...additionalStyles('option', styles, provided, state)
+    }),
+  }
+  return Object.keys(styles).filter(key => !Object.keys(defaultStyles).includes(key)).reduce((res, key) => {
+    return {
+      ...res,
+      [key]: styles[key]
+    }
+  },
+  defaultStyles)
+};
 
 export const TablePagination = ({
   count = 150,
@@ -70,11 +79,11 @@ export const TablePagination = ({
   onChangeRowsPerPage,
   onChangePage,
   className,
-  selectStyles,
+  selectStyles = {},
   locales = {
     itemsPerPage: 'Items per page',
     displayingItems: (rangeStart: number, rangeEnd: number, pCount: number) => `Displaying ${rangeStart}-${rangeEnd} of ${pCount} items`,
-    currentPage: (currentPage: number, pagesAmount: number) => `${currentPage + 1} of ${pagesAmount} pages`,
+    currentPage: (currentPage: number, pagesAmount: number) => `${currentPage} of ${pagesAmount} pages`,
   },
   ...otherProps
 }: TablePaginationProps): JSX.Element => {
