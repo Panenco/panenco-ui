@@ -3,10 +3,11 @@ import { Icon, Text } from 'components';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { useMode, useTheme } from 'utils/hooks';
-import { ButtonVariantType } from 'utils/types';
 
 import Spinner from './spinner';
 import { StyledButton } from './style';
+
+export type ButtonVariantType = 'text' | 'contained' | 'outlined';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   component?: React.ElementType;
@@ -16,8 +17,8 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   iconLeft?: any;
   iconRight?: any;
   color?: string;
-  variant?: ButtonVariantType;
   isLoading?: boolean;
+  variant?: ButtonVariantType;
 }
 
 export const Button = React.forwardRef<any, ButtonProps>(

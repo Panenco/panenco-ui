@@ -5,7 +5,7 @@ import { useMode } from 'utils/hooks';
 import { ThemeMode } from 'utils/types';
 
 // eslint-disable-next-line
-export const WrappedComponent = ({ children, style }) => {
+export const WrappedComponent = ({ children, style = {} }) => {
   const { mode, setMode } = useMode();
   const nextTheme = mode === ThemeMode.dark ? ThemeMode.light : ThemeMode.dark;
 
@@ -21,7 +21,6 @@ export const WrappedComponent = ({ children, style }) => {
       <Row style={{ justifyContent: 'flex-end', marginRight: '15px' }}>
         <Col xs="3" md="3" lg="3" style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <SecondaryButton
-            // eslint-disable-next-line
             onClick={() => {
               setMode(mode === ThemeMode.dark ? ThemeMode.light : ThemeMode.dark);
             }}
