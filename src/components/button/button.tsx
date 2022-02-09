@@ -17,6 +17,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   iconRight?: any;
   color?: string;
   variant?: ButtonVariantType;
+  isLoading?: boolean;
 }
 
 export const Button = React.forwardRef<any, ButtonProps>(
