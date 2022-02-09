@@ -9,7 +9,6 @@ import Spinner from './spinner';
 import { StyledButton } from './style';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  [key: string]: any;
   component?: React.ElementType;
   to?: string;
   iconClassName?: string;
