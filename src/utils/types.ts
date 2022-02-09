@@ -52,8 +52,6 @@ export type PUIWeights = {
 
 export type TextSize = { textSize: string; lineHeight: string | number };
 
-export type ButtonVariantType = 'text' | 'contained' | 'outlined';
-
 export type PUISizes = {
   xs: TextSize;
   s: TextSize;

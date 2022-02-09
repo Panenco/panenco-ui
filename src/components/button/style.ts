@@ -1,5 +1,6 @@
 import { styled } from 'linaria/react';
-import { ButtonVariantType, PUITheme, ThemeMode } from 'utils/types';
+import { PUITheme, ThemeMode } from 'utils/types';
+import { ButtonVariantType } from './button';
 
 const getBackgroundColor = (variant: any, mode: ThemeMode, darkColor: string, lightColor: string): string => {
   if (variant === 'transparent') return 'transparent';
