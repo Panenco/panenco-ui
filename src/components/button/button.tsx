@@ -3,11 +3,10 @@ import { Icon, Text } from 'components';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { useMode, useTheme } from 'utils/hooks';
+import { ButtonVariantType } from 'utils/types';
 
 import Spinner from './spinner';
 import { StyledButton } from './style';
-
-export type ButtonVariantType = 'text' | 'contained' | 'outlined';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   component?: React.ElementType;
@@ -21,7 +20,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   variant?: ButtonVariantType;
 }
 
-export const Button = React.forwardRef<any, ButtonProps>(
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       children,
@@ -82,13 +81,13 @@ export const Button = React.forwardRef<any, ButtonProps>(
   },
 );
 
-export const PrimaryButton = React.forwardRef(
+export const PrimaryButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, iconClassName, ...props }: ButtonProps, ref): JSX.Element => (
     <Button ref={ref} className={cx('buttonPrimary', className)} iconClassName={iconClassName} {...props} />
   ),
 );
 
-export const SecondaryButton = React.forwardRef(
+export const SecondaryButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, iconClassName, ...props }: ButtonProps, ref): JSX.Element => (
     <Button ref={ref} className={cx('buttonSecondary', className)} iconClassName={iconClassName} {...props} />
   ),
