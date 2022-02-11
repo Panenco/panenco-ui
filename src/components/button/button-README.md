@@ -23,7 +23,7 @@ const render = () => {
 
 This component inherits the attributes of the **button** element and extends the functionality with next properties.
 
-- component - component to be rendered it could be **button** or **Link** from 'react-router-dom';
+- component - component to be rendered, it could be **button** or **Link** from 'react-router-dom';
 - isLoading - render spinner and disable button;
 - to - path to redirect (prop for **Link** component);
 - icon - icon which will be rendered (default position right);

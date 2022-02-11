@@ -220,6 +220,19 @@ export const ButtonIcons = decorator('Button', ButtonIconDocs, ButtonIconReadme)
               <ButtonIcon iconLeft={Icon.icons.lock}>Button Icon Left</ButtonIcon>
             </div>
           </Col>
+          <Col xs="6" md="6" lg="6" className="mb-1" style={buttonCellStyles}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <ButtonIcon icon={Icon.icons.logOut} component="a" href="https://panenco.com/" target="_blank">
+                Button Icon Link
+              </ButtonIcon>
+            </div>
+          </Col>
         </Row>
       </WrappedComponent>
     </BrowserRouter>

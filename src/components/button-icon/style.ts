@@ -4,6 +4,7 @@ import { PUITheme, ThemeMode } from 'utils/types';
 export const StyledButtonIcon = styled.button<{
   theme: PUITheme;
   mode: ThemeMode;
+  to?: string;
 }>`
   align-items: center;
   background-color: transparent;
