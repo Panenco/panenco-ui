@@ -228,7 +228,7 @@ export const ButtonIcons = decorator('Button', ButtonIconDocs, ButtonIconReadme)
                 alignItems: 'center',
               }}
             >
-              <ButtonIcon icon={Icon.icons.logOut} component="a" href="https://panenco.com/">
+              <ButtonIcon icon={Icon.icons.logOut} component="a" href="https://panenco.com/" target="_blank">
                 Button Icon Link
               </ButtonIcon>
             </div>
