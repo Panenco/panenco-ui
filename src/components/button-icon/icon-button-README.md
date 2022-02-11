@@ -26,8 +26,8 @@ This component inherits the attributes of the **button** element and extends the
 - iconClassName - override styles for icon;
 - iconLeft - set icon position;
 - ref - ref;
-- component-component to be rendered it could be button or Link from 'react-router-dom';
-- to-path to redirect (prop for Link component);
+- component - component to be rendered it could be button or Link from 'react-router-dom';
+- to - path to redirect (prop for Link component);
 
 | propName      | propType          | defaultValue      | isRequired |
 | ------------- | ----------------- | ----------------- | ---------- |
