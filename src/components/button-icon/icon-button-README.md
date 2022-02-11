@@ -11,7 +11,7 @@ const render = () => {
     <>
       <ButtonIcon icon={Icon.icons.trash}>Button Icon</ButtonIcon>
       <ButtonIcon iconLeft icon={Icon.icons.lock}>Button Icon Left</ButtonIcon>
-      <ButtonIcon icon={Icon.icons.signOut} component='link' to="" >Button Icon Left</ButtonIcon>
+      <ButtonIcon icon={Icon.icons.signOut} component='link' to="">Button Icon Left</ButtonIcon>
     </>
   )
 }
@@ -26,7 +26,7 @@ This component inherits the attributes of the **button** element and extends the
 - iconClassName - override styles for icon;
 - iconLeft - set icon position;
 - ref - ref;
-- component - component to be rendered it could be **button** or **Link** from 'react-router-dom';
+- component - component to be rendered, it could be **button** or **Link** from 'react-router-dom';
 - to - path to redirect (prop for **Link** component);
 
 | propName      | propType          | defaultValue      | isRequired |
