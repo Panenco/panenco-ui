@@ -52,4 +52,8 @@ export const StyledButtonIcon = styled.button<{
       margin-right: 5px;
     }
   }
+  &.buttonDisabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
 `;

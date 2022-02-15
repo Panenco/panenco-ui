@@ -38,7 +38,7 @@ export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
       <StyledButtonIcon
         as={component === 'link' ? Link : component}
         type={type}
-        className={cx(iconLeft && 'buttonIconLeft', className)}
+        className={cx(iconLeft && 'buttonIconLeft', disabled && 'buttonDisabled', className)}
         disabled={disabled}
         theme={theme}
         mode={mode}
