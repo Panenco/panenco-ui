@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "declaration": true,
     "declarationDir": "lib",
     "jsx": "react",
@@ -18,9 +18,12 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noUnusedLocals": true,
-    "paths": {
-      "*": ["node_modules/*", "src/*"]
-    }
+    "plugins": [
+      {
+        "transform": "@zerollup/ts-transform-paths",
+        "exclude": ["*"]
+      }
+    ]
   },
   "include": ["src", "./declaration.d.ts"],
   "exclude": ["node_modules", "lib"]
