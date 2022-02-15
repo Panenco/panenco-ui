@@ -9,6 +9,7 @@ export interface ColumnType {
   component?: any;
   prevWidth?: number;
   className?: string;
+  thProps: React.TableHTMLAttributes<HTMLTableCellElement>;
 }
 
 export interface RowType<T = Record<string, any>> {

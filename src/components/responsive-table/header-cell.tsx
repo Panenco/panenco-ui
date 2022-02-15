@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { Icon, Text } from 'components';
 import { SortType, HandleSortType } from './types';
 
-interface HeaderCellProps {
+interface HeaderCellProps extends React.TableHTMLAttributes<HTMLTableCellElement> {
   label: any;
   minWidth: number;
   sortName?: string;
@@ -11,7 +11,7 @@ interface HeaderCellProps {
   handleSort?: HandleSortType;
 }
 
-const HeaderCell = ({ label, minWidth, sortName, sort, handleSort }: HeaderCellProps): JSX.Element => {
+const HeaderCell = ({ label, minWidth, sortName, sort, handleSort, ...props }: HeaderCellProps): JSX.Element => {
   const asc = sort && sort.direction === 'asc' && sort.sort === sortName && 'asc';
   const desc = sort && sort.direction === 'desc' && sort.sort === sortName && 'desc';
   const [direction, setDirection] = React.useState(asc || desc) as ['asc' | 'desc', any];
@@ -23,7 +23,11 @@ const HeaderCell = ({ label, minWidth, sortName, sort, handleSort }: HeaderCellP
     setDirection((d) => (d === 'desc' ? 'asc' : 'desc'));
   };
   return (
-    <th className="tableCell" style={{ maxWidth: `${minWidth}px`, width: `${minWidth}px`, minWidth: `${minWidth}px` }}>
+    <th
+      className="tableCell"
+      style={{ maxWidth: `${minWidth}px`, width: `${minWidth}px`, minWidth: `${minWidth}px` }}
+      {...props}
+    >
       <button
         type="button"
         className={cx('tableHeaderButton', !sortName && 'tableHeaderButtonDisabled')}
