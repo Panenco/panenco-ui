@@ -1,8 +1,8 @@
 /* eslint-disable react/require-default-props */
 import * as React from 'react';
-import { PUIThemeContext } from 'utils/context';
 import defaultTheme from 'themes/default';
-import { PUITheme, ThemeMode } from '../../utils/types';
+import { PUIThemeContext } from 'utils/context';
+import { PUITheme, ThemeMode } from 'utils/types';
 
 interface ThemeProviderProps {
   children: React.ReactNode;
@@ -20,7 +20,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   const theme = {
     ...themeToUse,
     colors: new Proxy(themeToUse.colors, {
-      get(target, prop, receiver): string {
+      get(target, prop: string, receiver): string {
         if (target[`${mode}Mode`][prop]) {
           return target[`${mode}Mode`][prop];
         }
