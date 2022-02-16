@@ -37,6 +37,9 @@ export default decorator('ResponsiveTable', TableDocs, TableReadme).add('Respons
       minWidth: 165,
       isVisible: true,
       sortName: 'abbreviation',
+      thProps: {
+        'data-cy': 'dataCyAttr',
+      },
     },
     {
       accessor: 'name',
