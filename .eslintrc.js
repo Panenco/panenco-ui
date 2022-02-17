@@ -42,7 +42,11 @@ module.exports = {
     'import/extensions': 0,
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-empty-function': 'off',
+    'no-use-before-define': 'off',
+    '@typescript-eslint/no-use-before-define': ['error'],
+    'react/require-default-props': 'off', // Since we do not use prop-types
     quotes: [2, 'single', { avoidEscape: true }],
+    
   },
   settings: {
     'import/resolver': {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cx from 'classnames';
 import { Icon, Text } from 'components';
-import { SortType, HandleSortType } from './types';
+import { SortType, HandleSortType, DataAttributeKey } from './types';
 
 interface HeaderCellProps extends React.TableHTMLAttributes<HTMLTableCellElement> {
   label: any;
@@ -9,6 +9,9 @@ interface HeaderCellProps extends React.TableHTMLAttributes<HTMLTableCellElement
   sortName?: string;
   sort?: SortType;
   handleSort?: HandleSortType;
+  thProps?: React.TableHTMLAttributes<HTMLTableCellElement> & {
+    [dataAttribute: DataAttributeKey]: any;
+  };
 }
 
 const HeaderCell = ({ label, minWidth, sortName, sort, handleSort, ...props }: HeaderCellProps): JSX.Element => {
