@@ -1,3 +1,5 @@
+export type DataAttributeKey = `data-${string}`;
+
 export interface ColumnType {
   accessor: string;
   label: any;
@@ -9,7 +11,9 @@ export interface ColumnType {
   component?: any;
   prevWidth?: number;
   className?: string;
-  thProps: React.TableHTMLAttributes<HTMLTableCellElement>;
+  thProps?: React.TableHTMLAttributes<HTMLTableCellElement> & {
+    [dataAttribute: DataAttributeKey]: any;
+  };
 }
 
 export interface RowType<T = Record<string, any>> {

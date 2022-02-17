@@ -73,8 +73,8 @@ export type PUITypography = {
 
 export type PUITheme = {
   colors: PUIColors & {
-    darkMode?: PUIModeColors;
-    lightMode?: PUIModeColors;
+    darkMode: PUIModeColors;
+    lightMode: PUIModeColors;
   };
   typography: {
     sizes: PUISizes;
