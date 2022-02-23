@@ -21,6 +21,7 @@ export interface FileUploaderProps extends React.InputHTMLAttributes<HTMLInputEl
   iconClassName?: string;
   wrapperProps?: WrapperProps;
   inputRef?: React.Ref<any>;
+  ariaLabelForXButton?: string;
 }
 
 export const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
@@ -40,6 +41,7 @@ export const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
       icon,
       iconClassName,
       inputRef,
+      ariaLabelForXButton,
       ...props
     }: FileUploaderProps,
     ref,
@@ -97,7 +99,13 @@ export const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
         />
       );
     } else if (error) {
-      renderStatusIcons = <Icon icon={icon || Icon.icons.close} className={cx('placeholderBoxIcon', iconClassName)} />;
+      renderStatusIcons = (
+          <Icon 
+            icon={icon || Icon.icons.close} 
+            className={cx('placeholderBoxIcon', iconClassName)} 
+            aria-label={ariaLabelForXButton}  
+          />
+        );
     }
 
     return (
