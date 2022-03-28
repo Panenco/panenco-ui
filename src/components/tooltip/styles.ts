@@ -34,8 +34,10 @@ export const PopperBox = styled.div<{
   font-family: sans-serif;
   line-height: 1;
   z-index: 100;
-  background-color: ${(props: any): string =>
-    props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
+  background-color: ${(props: any): string => {
+    if (props.backgoundColor) return props.backgoundColor
+    return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900
+  }};
   color: ${(props: any): string =>
     props.mode === ThemeMode.dark ? props.theme.colors.base900 : props.theme.colors.base100};
   transition: all .3s ease-out;
@@ -55,24 +57,24 @@ export const Arrow = styled.div<{
   height: 12px;
 
   &[data-placement*='bottom'] {
-    top: 0;
+    top: 1px;
     left: 0;
     margin-top: -0.9em;
 
     &::before {
       border-width: 4px 10px 10px 10px;
-      border-color: ${(props: any): string => `transparent transparent ${props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900} transparent`}
+      border-color: transparent transparent ${(props: any): string => {if (props.backgoundColor) return props.backgoundColor; return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900}} transparent;
     }
   }
 
   &[data-placement*='top'] {
-    bottom: 0;
+    bottom: 1px;
     left: 0;
     margin-bottom: -0.8em;
 
     &::before {
       border-width: 10px 10px 4px 10px;
-      border-color: ${(props: any): string => ` ${props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900} transparent transparent transparent`};
+      border-color: ${(props: any): string => {if (props.backgoundColor) return props.backgoundColor; return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900}} transparent transparent transparent;
     }
   }
 
@@ -84,7 +86,7 @@ export const Arrow = styled.div<{
 
     &::before {
       border-width: 10px 10px 10px 6px;
-      border-color: ${(props: any): string => ` transparent ${props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900}  transparent transparent`};
+      border-color: transparent ${(props: any): string => {if (props.backgoundColor) return props.backgoundColor; return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900}} transparent transparent;
     }
   }
 
@@ -96,7 +98,7 @@ export const Arrow = styled.div<{
 
     &::before {
       border-width: 10px 4px 10px 10px;
-      border-color: ${(props: any): string => ` transparent  transparent transparent ${props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900}`};
+      border-color: transparent transparent transparent ${(props: any): string => {if (props.backgoundColor) return props.backgoundColor; return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900}};
     }
   }
 
