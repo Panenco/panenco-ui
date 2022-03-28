@@ -5,6 +5,7 @@ export const StyledButtonIcon = styled.button<{
   theme: PUITheme;
   mode: ThemeMode;
   to?: string;
+  size?: number;
 }>`
   align-items: center;
   background-color: transparent;
@@ -36,6 +37,8 @@ export const StyledButtonIcon = styled.button<{
     display: flex;
     flex-shrink: 0;
     transition: 0.3s;
+    height: ${(props: any): string => props.size}px;
+    width: ${(props: any): string => props.size}px;
   }
 
   & .buttonIconTitle {
