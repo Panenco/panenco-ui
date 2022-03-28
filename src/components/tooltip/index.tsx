@@ -18,6 +18,8 @@ export interface TooltipProps {
   position?: PopperJS.Placement;
   popperProps?: React.HTMLAttributes<HTMLDivElement>;
   backgoundColor?: string;
+  height?: string | number;
+  width?: string | number;
 
   onOpen?(event): void;
 
@@ -41,6 +43,8 @@ export const Tooltip: React.FC<TooltipProps> = (props): JSX.Element => {
     className,
     offset,
     backgoundColor,
+    height,
+    width,
     ...other
   } = props;
   const modifiers = [
@@ -108,7 +112,7 @@ export const Tooltip: React.FC<TooltipProps> = (props): JSX.Element => {
               theme={theme}
               mode={mode}
               backgoundColor={backgoundColor}
-              style={style}
+              style={{ height, width, ...style }}
               {...popperProps}
               {...other}
               className={cx('popperBox', popperProps.className)}

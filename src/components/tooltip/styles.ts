@@ -24,6 +24,7 @@ export const PopperBox = styled.div<{
   mode: ThemeMode;
   theme: PUITheme;
   show: boolean;
+  backgoundColor?: string;
   [key: string]: any;
 }>`
   visibility: ${(props: any): string => props.show ? 'visible' : 'hidden'};
@@ -50,6 +51,7 @@ export const PopperBox = styled.div<{
 `;
 
 export const Arrow = styled.div<{
+  backgoundColor?: string;
   [key: string]: any;
 }>`
   position: absolute;
