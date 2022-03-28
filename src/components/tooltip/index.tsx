@@ -20,6 +20,8 @@ export interface TooltipProps {
   backgoundColor?: string;
   height?: string | number;
   width?: string | number;
+  textColor?: string;
+  linkColor?: string;
 
   onOpen?(event): void;
 
@@ -45,6 +47,8 @@ export const Tooltip: React.FC<TooltipProps> = (props): JSX.Element => {
     backgoundColor,
     height,
     width,
+    textColor,
+    linkColor,
     ...other
   } = props;
   const modifiers = [
@@ -111,7 +115,9 @@ export const Tooltip: React.FC<TooltipProps> = (props): JSX.Element => {
               show={isOpen}
               theme={theme}
               mode={mode}
+              textColor={textColor}
               backgoundColor={backgoundColor}
+              linkColor={linkColor}
               style={{ height, width, ...style }}
               {...popperProps}
               {...other}

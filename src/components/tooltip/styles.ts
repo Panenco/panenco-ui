@@ -25,6 +25,8 @@ export const PopperBox = styled.div<{
   theme: PUITheme;
   show: boolean;
   backgoundColor?: string;
+  textColor?: string;
+  linkColor?: string;
   [key: string]: any;
 }>`
   visibility: ${(props: any): string => props.show ? 'visible' : 'hidden'};
@@ -39,13 +41,17 @@ export const PopperBox = styled.div<{
     if (props.backgoundColor) return props.backgoundColor
     return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900
   }};
-  color: ${(props: any): string =>
-    props.mode === ThemeMode.dark ? props.theme.colors.base900 : props.theme.colors.base100};
+  color: ${(props: any): string => {
+    if (props.textColor) return props.textColor
+    return props.mode === ThemeMode.dark ? props.theme.colors.base900 : props.theme.colors.base100
+  }};
   transition: all .3s ease-out;
 
   a {
-    color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.base900 : props.theme.colors.base100};
+    color: ${(props: any): string => {
+      if (props.linkColor) return props.linkColor
+      return props.mode === ThemeMode.dark ? props.theme.colors.base900 : props.theme.colors.base100
+    }};
     text-decoration: none;
   }
 `;
