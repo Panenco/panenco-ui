@@ -249,7 +249,20 @@ export default decorator('ResponsiveTable', TableDocs, TableReadme).add('Respons
         handleSort={handleSort}
         headerColor="pink"
         rowsColor="black"
+        striped
       />
+
+      {/* <ResponsiveTable        // 'base' table
+        isLoading={loading}
+        itemsPerPage={5}
+        columns={columns}
+        rows={rows}
+        sort={sort}
+        handleSort={handleSort}
+        headerColor="pink"
+        rowsColor="pink"
+        striped={false}
+      /> */}
     </WrappedComponent>
   );
 });

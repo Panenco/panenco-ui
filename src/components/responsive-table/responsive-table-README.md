@@ -151,7 +151,10 @@ const SomeComponentWithTable = ({
 - `priorityLevelThreshold` - A number greater than zero, if is set, then only the columns with priorityLevel less than this value, may be displayed
 - `sort` - Says which column and in which direction is sorted right now
 - `handleSort` - A callback that triggers a request to the server for the new sorted data
-- `isLoading` - Is data loading right now. Says if we need to show animated skeleton inside of the cells.
+- `isLoading` - Is data loading right now. Says if we need to show animated skeleton inside of the cells
+- `rowsColor` - color of table rows in case, when table is monochrome (in 'striped' case, rows colors are base)
+- `headerColor` - color of table head
+- `striped` - is table monochrome, or has two row colors .
 
 | propName               | propType | defaultValue | isRequired |
 | ---------------------- | -------- | ------------ | ---------- |
@@ -160,7 +163,9 @@ const SomeComponentWithTable = ({
 | priorityLevelThreshold | number   | null         | -          |
 | sort                   | object   | null         | -          |
 | handleSort             | func     | null         | -          |
-| isLoading              | boolean  | false        | -          |
+| rowsColor              | string   | null         | -          |
+| headerColor            | string   | null         | -          |
+| striped                | boolean  | true         | -          |
 
 ### Column fields
 
