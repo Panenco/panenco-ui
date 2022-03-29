@@ -9,7 +9,6 @@ export interface StampProps extends React.HTMLAttributes<HTMLDivElement> {
   backgroundColor?: string;
   borderRadius?: number;
   variant?: StampVariantType;
-  weigth?: number;
 }
 
 export const Stamp = React.forwardRef<HTMLDivElement, StampProps>(
