@@ -14,6 +14,7 @@ interface RowsProps {
   itemsPerPage?: number;
   isLoading?: boolean;
   iconCreator?: (rowIsOpen: boolean) => string;
+  striped?: boolean;
 }
 
 const Rows = ({
@@ -25,6 +26,7 @@ const Rows = ({
   itemsPerPage = 10,
   iconCreator,
   isLoading,
+  striped
 }: RowsProps): JSX.Element => {
   const tableRows = rows.reduce((r: Array<JSX.Element>, row) => {
     const rowComponent = (
@@ -36,6 +38,7 @@ const Rows = ({
         hiddenColumns={hiddenColumns}
         iconCreator={iconCreator}
         expandRow={expandRow}
+        striped={striped}
       />
     );
     const expandedRowComponent = (

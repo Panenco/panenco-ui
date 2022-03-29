@@ -42,6 +42,8 @@ export interface TableProps extends React.HTMLAttributes<HTMLTableElement> {
   shouldResize?: boolean;
   iconCreator?: (rowIsOpen: boolean) => string;
   headerColor?: string;
+  rowsColor?: string;
+  striped?: boolean;
 }
 
 export interface TableState {

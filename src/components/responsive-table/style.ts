@@ -12,8 +12,7 @@ export const Styles = styled.div<{
   theme: PUITheme;
   mode: ThemeMode;
   headerColor?: string;
-  paintedRows?: string;
-
+  rowsColor?: string;
 }>`
   width: 100%;
   .table {
@@ -135,15 +134,23 @@ export const Styles = styled.div<{
     }
   }
 
-  .tableBodyRow:nth-of-type(4n + 1) {
+
+
+  .tableBodyRowStriped:nth-of-type(4n + 1) {
     background-color: ${(props: any): string =>
       transparentize(0.6, props.mode === ThemeMode.light ? props.theme.colors.base400 : props.theme.colors.base700)};
   }
 
-  .tableBodyRow:nth-of-type(4n + 2) {
+  .tableBodyRowStriped:nth-of-type(4n + 2) {
     background-color: ${(props: any): string =>
       transparentize(0.6, props.mode === ThemeMode.light ? props.theme.colors.base400 : props.theme.colors.base700)};
   }
+
+    .tableBodyRowBase {
+    background-color: ${(props: any): string =>
+      transparentize(0.6, props.rowsColor)};
+  }
+
 
   @keyframes AnimationName {
     0% {

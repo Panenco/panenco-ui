@@ -247,7 +247,8 @@ export default decorator('ResponsiveTable', TableDocs, TableReadme).add('Respons
         rows={rows}
         sort={sort}
         handleSort={handleSort}
-        headerColor="red"
+        headerColor="pink"
+        rowsColor="black"
       />
     </WrappedComponent>
   );
