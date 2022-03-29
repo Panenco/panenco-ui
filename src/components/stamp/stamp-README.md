@@ -20,10 +20,12 @@ const render = () => {
 
 This component inherits the attributes of the **div** element and extends the functionality with next properties.
 
-- color - color text-content and border;
+- color - color background-color border-radius text-content and border;
 - ref - ref;
 
-| propName | propType        | defaultValue   | isRequired |
-| -------- | --------------- | -------------- | ---------- |
-| color    | string          | colors.success | -          |
-| ref      | React.RefObject | -              | -          |
+| propName        | propType        | defaultValue   | isRequired |
+| --------------- | --------------- | -------------- | ---------- |
+| color           | string          | colors.success | -          |
+| backgroundColor | string          | -              | -          |
+| borderRadius    | number          | 21             | -          |
+| ref             | React.RefObject | -              | -          |
