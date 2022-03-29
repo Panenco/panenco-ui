@@ -106,7 +106,7 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
       const [dateTime, setDateTime] = React.useState(transformTime(new Date(day)));
 
       const submitAndClose = (): void => {
-        const newTempTo = setHours(setMinutes(Number(day), Number(dateTime.slice(-2))), Number(dateTime.slice(0, 2)));
+        const newTempTo = setHours(setMinutes(new Date(day), Number(dateTime.slice(-2))), Number(dateTime.slice(0, 2)));
 
         handleDayChange(newTempTo);
         hideDayPicker();
