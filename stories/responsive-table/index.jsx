@@ -242,11 +242,12 @@ export default decorator('ResponsiveTable', TableDocs, TableReadme).add('Respons
 
       <ResponsiveTable
         isLoading={loading}
-        itemsPerPage={10}
+        itemsPerPage={5}
         columns={columns}
         rows={rows}
         sort={sort}
         handleSort={handleSort}
+        headerColor="red"
       />
     </WrappedComponent>
   );

@@ -41,6 +41,7 @@ export interface TableProps extends React.HTMLAttributes<HTMLTableElement> {
   isLoading?: boolean;
   shouldResize?: boolean;
   iconCreator?: (rowIsOpen: boolean) => string;
+  headerColor?: string;
 }
 
 export interface TableState {

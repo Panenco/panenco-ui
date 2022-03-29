@@ -27,7 +27,7 @@ const HeaderCell = ({ label, minWidth, sortName, sort, handleSort, ...props }: H
   };
   return (
     <th
-      className="tableCell"
+      className={cx('tableCell', 'tableHeaderCell')}
       style={{ maxWidth: `${minWidth}px`, width: `${minWidth}px`, minWidth: `${minWidth}px` }}
       {...props}
     >

@@ -2,9 +2,18 @@ import { styled } from 'linaria/react';
 import { transparentize } from 'polished';
 import { ThemeMode, PUITheme } from 'utils/types';
 
+const getBackgroundColor = (mode: ThemeMode, darkColor: string, lightColor: string, backgroundColor?: string ): string => {
+  if (backgroundColor) return backgroundColor;
+  if (mode === ThemeMode.dark) return darkColor;
+  return lightColor;
+};
+
 export const Styles = styled.div<{
   theme: PUITheme;
   mode: ThemeMode;
+  headerColor?: string;
+  paintedRows?: string;
+
 }>`
   width: 100%;
   .table {
@@ -13,7 +22,7 @@ export const Styles = styled.div<{
 
     &Cell {
       color: ${(props: any): string =>
-        props.mode === ThemeMode.light ? props.theme.colors.base900 : props.theme.colors.base100};
+    props.mode === ThemeMode.light ? props.theme.colors.base900 : props.theme.colors.base100};
       line-height: 1.3;
       min-height: 24px;
       overflow: hidden;
@@ -21,7 +30,8 @@ export const Styles = styled.div<{
       text-align: left;
       text-overflow: ellipsis;
       white-space: nowrap;
-
+      
+      
       &:not(:first-child) {
         padding-left: 0;
       }
@@ -45,6 +55,10 @@ export const Styles = styled.div<{
     }
 
     &Header {
+      &Cell {
+       background-color: ${({ mode, theme: { colors }, headerColor }: any): string => getBackgroundColor(mode, colors.base900, colors.base100, headerColor)}
+    }
+
       &Button {
         background: transparent;
         border: none;

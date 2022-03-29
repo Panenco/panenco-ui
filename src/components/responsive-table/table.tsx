@@ -40,6 +40,7 @@ class Table extends React.Component<
     shouldResize: true,
     sort: null,
     handleSort: null,
+    headerColor: null
   };
 
   constructor(props) {
@@ -126,6 +127,7 @@ class Table extends React.Component<
       innerRef,
       theme,
       mode,
+      headerColor,
       isLoading,
       iconCreator,
       // exclude custom props so they don't appear as a dom attributes
@@ -137,11 +139,10 @@ class Table extends React.Component<
 
       ...tableProps
     } = this.props;
-
     const [visibleCols, hiddenCols] = Table.separateColumns(columns);
 
     return (
-      <Styles theme={theme} mode={mode} ref={this.divRef}>
+      <Styles theme={theme} mode={mode} headerColor={headerColor} ref={this.divRef}>
         <table className="table" ref={innerRef} {...tableProps}>
           <Columns columns={visibleCols} sort={sort} handleSort={handleSort} />
           <Rows
@@ -163,5 +164,5 @@ class Table extends React.Component<
 export const ResponsiveTable = React.forwardRef((props: TableProps, ref): JSX.Element => {
   const theme = useTheme();
   const { mode } = useMode();
-  return <Table innerRef={ref} theme={theme} mode={mode} {...props} />;
+  return <Table innerRef={ref} theme={theme} headerColor={props.headerColor} mode={mode} {...props} />;
 });
