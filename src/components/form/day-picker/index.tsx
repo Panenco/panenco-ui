@@ -8,7 +8,7 @@ import MaskedInput from 'react-text-mask';
 import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe';
 import { useMode, useTheme } from 'utils/hooks';
 import { DateUtils } from 'react-day-picker';
-import { setHours, setMinutes, format as dateFnsFormat, parse as dateFnsParse } from 'date-fns';
+import { setHours, setMinutes, getHours, format as dateFnsFormat, parse as dateFnsParse, getMinutes } from 'date-fns';
 import { TextInputProps } from '../text-input';
 import { InputComponent, WrapperProps } from '../../../utils/types';
 import { StyledDayPicker } from './style';
@@ -42,8 +42,7 @@ export interface PickerProps extends DayPickerInputProps, InputComponent {
   defaultDay?: Date;
 }
 
-const transformTime = (): string => {
-  const date = new Date();
+const transformTime = (date = new Date()): string => {
   const hours = date.getHours() > 9 ? date.getHours() : `0${date.getHours()}`;
   const minutes = date.getMinutes() > 9 ? date.getMinutes() : `0${date.getMinutes()}`;
   return `${hours}:${minutes}`;
@@ -80,10 +79,11 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
       dayPickerInputRef.hideDayPicker();
     };
 
-    const [day, setDay] = React.useState(defaultDay || new Date());
+    const [day, setDay] = React.useState(value || defaultDay || new Date());
 
     const handleDayChange = (selectedDay): void => {
-      setDay(selectedDay);
+      const transformedDate = setHours(setMinutes(selectedDay, getMinutes(Number(day))), getHours(Number(day)));
+      setDay(transformedDate);
     };
 
     React.useEffect(() => {
@@ -103,10 +103,10 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
       [key: string]: any;
     }): React.ReactElement => {
       const overlayCompRef = React.useRef<HTMLDivElement>(null);
-      const [dateTime, setDateTime] = React.useState(transformTime());
+      const [dateTime, setDateTime] = React.useState(transformTime(new Date(day)));
 
       const submitAndClose = (): void => {
-        const newTempTo = setHours(setMinutes(day, Number(dateTime.slice(-2))), Number(dateTime.slice(0, 2)));
+        const newTempTo = setHours(setMinutes(Number(day), Number(dateTime.slice(-2))), Number(dateTime.slice(0, 2)));
 
         handleDayChange(newTempTo);
         hideDayPicker();
@@ -136,7 +136,12 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
                 placeholder="--:--"
                 pipe={createAutoCorrectedDatePipe('HH:MM')}
                 onChange={(e): void => {
-                  setDateTime(e.target.value);
+                  const hours = Number(e.target.value.slice(0, 2));
+                  const minutes = Number(e.target.value.slice(-2));
+                  if (hours && minutes) {
+                    setDateTime(e.target.value);
+                    setDay(setHours(setMinutes(Number(day), minutes), hours));
+                  }
                 }}
                 value={dateTime}
               />
@@ -186,7 +191,7 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
           }}
           onDayChange={handleDayChange}
           placeholder={placeholder}
-          value={value}
+          value={day}
           keepFocus={false}
           {...props}
           component={React.forwardRef<HTMLDivElement, TextInputProps>((inputComponentProps, wrapRef) => (

@@ -9,7 +9,7 @@ import { decorator } from '../../utils/decorator';
 import { WrappedComponent } from '../helpers/wrapped';
 
 export default decorator('DayPicker', DayPickerDocs, README).add('DayPicker', () => {
-  const [value, setValue] = React.useState(new Date());
+  const [value, setValue] = React.useState(new Date('Tue Jan 1 2020 07:10'));
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const handleChange = ( val ) => {
     setValue(val);
@@ -21,7 +21,7 @@ export default decorator('DayPicker', DayPickerDocs, README).add('DayPicker', ()
         <Col xs="12" md="12" lg="12">
           <DayPicker
             subTitle='Start date'
-            value={ value }
+            defaultDay={ value }
             onChange={ handleChange }
             format='MM/dd/yyyy'
             placeholder='mm/dd/yy'
