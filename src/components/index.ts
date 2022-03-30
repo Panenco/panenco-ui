@@ -29,3 +29,4 @@ export * from './switch';
 export * from './tooltip';
 export * from './popup';
 export * from './tabs';
+export * from './avatar';

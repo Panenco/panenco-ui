@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { storiesOf } from '@storybook/react';
 
 import AccordionStory from './accordion';
+import AvatarStory from './avatar';
 import AutoCompleteStory from './autocomplete';
 import BannersStory from './banners';
 import ButtonsStory from './buttons';
@@ -33,6 +34,7 @@ import WizardStory from './wizard';
 
 storiesOf('Accordion', AccordionStory);
 storiesOf('AutoComplete', AutoCompleteStory);
+storiesOf('Avatar', AvatarStory);
 storiesOf('Banners', BannersStory);
 storiesOf('Button', ButtonsStory);
 storiesOf('Chip', ChipStory);
