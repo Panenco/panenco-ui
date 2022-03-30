@@ -1,4 +1,4 @@
-import { Button, ButtonIcon, Col, Icon, PrimaryButton, Row, SecondaryButton } from 'components';
+import { Button, ButtonIcon, Col, Icon, PrimaryButton, Row, SecondaryButton, WarningButton, AlertButton, SucessButton } from 'components';
 import ButtonIconDocs from 'components/button-icon/icon-button-DOCS.md';
 import ButtonIconReadme from 'components/button-icon/icon-button-README.md';
 import ButtonDocs from 'components/button/button-DOCS.md';
@@ -111,6 +111,93 @@ export default decorator('Button', ButtonDocs, ButtonReadme).add('Button compone
               <Button style={buttonStyles} className="mb-1" variant="outlined" isLoading>
                 Outlined
               </Button>
+            </div>
+          </Col>
+        </Row>
+        <Row style={{ justifyContent: 'center', flexGrow: '1' }}>
+          <Col xs="6" md="6" lg="6" style={buttonCellStyles}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <WarningButton style={buttonStyles} className="mb-1" variant="outlined">
+                Warning
+              </WarningButton>
+            </div>
+          </Col>
+
+          <Col xs="6" md="6" lg="6" style={buttonCellStyles}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <WarningButton style={buttonStyles} className="mb-1" variant="outlined" isLoading>
+                Warning
+              </WarningButton>
+            </div>
+          </Col>
+        </Row>
+        <Row style={{ justifyContent: 'center', flexGrow: '1' }}>
+          <Col xs="6" md="6" lg="6" style={buttonCellStyles}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <AlertButton style={buttonStyles} className="mb-1">
+                Alert
+              </AlertButton>
+            </div>
+          </Col>
+
+          <Col xs="6" md="6" lg="6" style={buttonCellStyles}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <AlertButton style={buttonStyles} className="mb-1" variant="outlined" isLoading>
+                Alert
+              </AlertButton>
+            </div>
+          </Col>
+        </Row>
+        <Row style={{ justifyContent: 'center', flexGrow: '1' }}>
+          <Col xs="6" md="6" lg="6" style={buttonCellStyles}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <SucessButton style={buttonStyles} className="mb-1" variant="text">
+                Sucess
+              </SucessButton>
+            </div>
+          </Col>
+
+          <Col xs="6" md="6" lg="6" style={buttonCellStyles}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <SucessButton style={buttonStyles} className="mb-1" variant="outlined" isLoading>
+                Sucess
+              </SucessButton>
             </div>
           </Col>
         </Row>

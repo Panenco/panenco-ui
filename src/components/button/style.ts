@@ -133,6 +133,75 @@ export const StyledButton = styled.button<{
     }
   }
 
+  &.buttonWarning {
+    border: 2px solid
+    ${(props: any): string => {
+      return props.color || (props.mode === ThemeMode.dark ? 'transparent' : props.theme.colors.error);
+    }};
+    background-color: ${({ variant, mode, theme: { colors } }: any): string =>
+      getBackgroundColor(variant, mode, colors.error, colors.error)};
+    color: ${(props: any): string =>
+      props.color || (props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.base100)};
+    padding: 10px 22px;
+    &:hover {
+      background-color: ${({ variant, mode, theme: { colors } }: any): string =>
+        getBackgroundColor(variant, mode, colors.error, colors.error)};
+      color: ${(props: any): string =>
+        props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.base100};
+      opacity: 0.7;
+    }
+    &:active {
+      background-color: ${({ variant, mode, theme: { colors } }: any): string =>
+        getBackgroundColor(variant, mode, colors.error, colors.error)};
+    }
+  }
+
+  &.buttonAlert {
+    border: 2px solid
+    ${(props: any): string => {
+      return props.color || (props.mode === ThemeMode.dark ? 'transparent' : props.theme.colors.alert);
+    }};
+    background-color: ${({ variant, mode, theme: { colors } }: any): string =>
+      getBackgroundColor(variant, mode, colors.alert, colors.alert)};
+    color: ${(props: any): string =>
+      props.color || (props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.base100)};
+    padding: 10px 22px;
+    &:hover {
+      background-color: ${({ variant, mode, theme: { colors } }: any): string =>
+        getBackgroundColor(variant, mode, colors.alert, colors.alert)};
+      color: ${(props: any): string =>
+        props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.base100};
+      opacity: 0.7;
+    }
+    &:active {
+      background-color: ${({ variant, mode, theme: { colors } }: any): string =>
+        getBackgroundColor(variant, mode, colors.alert, colors.alert)};
+    }
+  }
+
+  &.buttonSucess {
+    border: 2px solid
+    ${(props: any): string => {
+      return props.color || (props.mode === ThemeMode.dark ? 'transparent' : props.theme.colors.success);
+    }};
+    background-color: ${({ variant, mode, theme: { colors } }: any): string =>
+      getBackgroundColor(variant, mode, colors.success, colors.success)};
+    color: ${(props: any): string =>
+      props.color || (props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.base100)};
+    padding: 10px 22px;
+    &:hover {
+      background-color: ${({ variant, mode, theme: { colors } }: any): string =>
+        getBackgroundColor(variant, mode, colors.success, colors.success)};
+      color: ${(props: any): string =>
+        props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.base100};
+      opacity: 0.7;
+    }
+    &:active {
+      background-color: ${({ variant, mode, theme: { colors } }: any): string =>
+        getBackgroundColor(variant, mode, colors.success, colors.success)};
+    }
+  }
+
   @keyframes load-animation {
     0% {
       -webkit-transform: rotate(0deg);
