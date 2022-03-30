@@ -37,8 +37,8 @@ export const StyledButtonIcon = styled.button<{
     display: flex;
     flex-shrink: 0;
     transition: 0.3s;
-    height: ${(props: any): string => props.size}px;
-    width: ${(props: any): string => props.size}px;
+    height: ${(props: any): string => !props.size ? props.theme.typography.sizes.m.textSize : props.size}px;
+    width: ${(props: any): string => !props.size ? props.theme.typography.sizes.m.textSize : props.size}px;
   }
 
   & .buttonIconTitle {
