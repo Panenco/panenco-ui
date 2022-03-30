@@ -1,6 +1,8 @@
 import { styled } from 'linaria/react';
 import { PUITheme, ThemeMode } from 'utils/types';
 
+const convertToPixels = (size) => size && size.toString().concat('px');
+
 export const StyledButtonIcon = styled.button<{
   theme: PUITheme;
   mode: ThemeMode;
@@ -37,8 +39,8 @@ export const StyledButtonIcon = styled.button<{
     display: flex;
     flex-shrink: 0;
     transition: 0.3s;
-    height: ${(props: any): string => !props.size ? props.theme.typography.sizes.m.textSize : props.size}px;
-    width: ${(props: any): string => !props.size ? props.theme.typography.sizes.m.textSize : props.size}px;
+    height: ${(props: any): string => convertToPixels(props.size) || props.theme.typography.sizes.m.textSize};
+    width: ${(props: any): string => convertToPixels(props.size) || props.theme.typography.sizes.m.textSize};
   }
 
   & .buttonIconTitle {
