@@ -17,7 +17,7 @@ export interface TooltipProps {
   offset?: [number, number];
   position?: PopperJS.Placement;
   popperProps?: React.HTMLAttributes<HTMLDivElement>;
-  backgoundColor?: string;
+  backgroundColor?: string;
   height?: string | number;
   width?: string | number;
   textColor?: string;
@@ -44,7 +44,7 @@ export const Tooltip: React.FC<TooltipProps> = (props): JSX.Element => {
     arrowPadding,
     className,
     offset,
-    backgoundColor,
+    backgroundColor,
     height,
     width,
     textColor,
@@ -116,7 +116,7 @@ export const Tooltip: React.FC<TooltipProps> = (props): JSX.Element => {
               theme={theme}
               mode={mode}
               textColor={textColor}
-              backgoundColor={backgoundColor}
+              backgroundColor={backgroundColor}
               linkColor={linkColor}
               style={{ height, width, ...style }}
               {...popperProps}
@@ -129,7 +129,7 @@ export const Tooltip: React.FC<TooltipProps> = (props): JSX.Element => {
                   <Arrow
                     theme={theme}
                     mode={mode}
-                    backgoundColor={backgoundColor}
+                    backgroundColor={backgroundColor}
                     ref={popperArrowProps.ref}
                     data-placement={placement}
                     style={popperArrowProps.style}

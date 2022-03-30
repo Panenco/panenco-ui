@@ -24,7 +24,7 @@ export const PopperBox = styled.div<{
   mode: ThemeMode;
   theme: PUITheme;
   show: boolean;
-  backgoundColor?: string;
+  backgroundColor?: string;
   textColor?: string;
   linkColor?: string;
   [key: string]: any;
@@ -38,7 +38,7 @@ export const PopperBox = styled.div<{
   line-height: 1;
   z-index: 100;
   background-color: ${(props: any): string => {
-    if (props.backgoundColor) return props.backgoundColor
+    if (props.backgroundColor) return props.backgroundColor
     return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900
   }};
   color: ${(props: any): string => {
@@ -57,7 +57,7 @@ export const PopperBox = styled.div<{
 `;
 
 export const Arrow = styled.div<{
-  backgoundColor?: string;
+  backgroundColor?: string;
   [key: string]: any;
 }>`
   position: absolute;
@@ -71,7 +71,7 @@ export const Arrow = styled.div<{
 
     &::before {
       border-width: 4px 10px 10px 10px;
-      border-color: transparent transparent ${(props: any): string => {if (props.backgoundColor) return props.backgoundColor; return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900}} transparent;
+      border-color: transparent transparent ${(props: any): string => {if (props.backgroundColor) return props.backgroundColor; return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900}} transparent;
     }
   }
 
@@ -82,7 +82,7 @@ export const Arrow = styled.div<{
 
     &::before {
       border-width: 10px 10px 4px 10px;
-      border-color: ${(props: any): string => {if (props.backgoundColor) return props.backgoundColor; return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900}} transparent transparent transparent;
+      border-color: ${(props: any): string => {if (props.backgroundColor) return props.backgroundColor; return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900}} transparent transparent transparent;
     }
   }
 
@@ -94,7 +94,7 @@ export const Arrow = styled.div<{
 
     &::before {
       border-width: 10px 10px 10px 6px;
-      border-color: transparent ${(props: any): string => {if (props.backgoundColor) return props.backgoundColor; return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900}} transparent transparent;
+      border-color: transparent ${(props: any): string => {if (props.backgroundColor) return props.backgroundColor; return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900}} transparent transparent;
     }
   }
 
@@ -106,7 +106,7 @@ export const Arrow = styled.div<{
 
     &::before {
       border-width: 10px 4px 10px 10px;
-      border-color: transparent transparent transparent ${(props: any): string => {if (props.backgoundColor) return props.backgoundColor; return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900}};
+      border-color: transparent transparent transparent ${(props: any): string => {if (props.backgroundColor) return props.backgroundColor; return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900}};
     }
   }
 
