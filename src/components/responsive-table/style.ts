@@ -2,8 +2,8 @@ import { styled } from 'linaria/react';
 import { transparentize } from 'polished';
 import { ThemeMode, PUITheme } from 'utils/types';
 
-const getBackgroundColor = (mode: ThemeMode, darkColor: string, lightColor: string, backgroundColor?: string ): string => {
-  if (backgroundColor) return backgroundColor;
+const getBackgroundColor = (mode: ThemeMode, darkColor: string, lightColor: string, backgroundColor: string): string => {
+  if (backgroundColor !== 'transparent') return backgroundColor;
   if (mode === ThemeMode.dark) return darkColor;
   return lightColor;
 };

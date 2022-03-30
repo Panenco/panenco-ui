@@ -248,8 +248,6 @@ export default decorator('ResponsiveTable', TableDocs, TableReadme).add('Respons
         sort={sort}
         handleSort={handleSort}
         headerColor="pink"
-        rowsColor="black"
-        striped
       />
 
       {/* <ResponsiveTable        // 'base' table

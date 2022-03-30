@@ -40,8 +40,8 @@ class Table extends React.Component<
     shouldResize: true,
     sort: null,
     handleSort: null,
-    headerColor: null,
-    rowsColor: null,
+    headerColor: 'transparent',
+    rowsColor: 'transparent',
     striped: true
   };
 

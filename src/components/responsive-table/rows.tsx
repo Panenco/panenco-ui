@@ -49,6 +49,8 @@ const Rows = ({
         hiddenColumns={hiddenColumns}
         visibleColumns={visibleColumns}
         containerWidth={containerWidth}
+        striped={striped}
+
       />
     );
     r.push(rowComponent);

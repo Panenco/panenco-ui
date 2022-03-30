@@ -1,6 +1,7 @@
 import * as React from 'react';
 import AnimatedHeight from 'react-animate-height';
 import { Text } from 'components';
+import cx from 'classnames';
 import { RowType, ColumnType } from './types';
 
 interface ExpandedRowProps {
@@ -9,6 +10,7 @@ interface ExpandedRowProps {
   rowIndex: string | number;
   visibleColumns: Array<ColumnType>;
   containerWidth?: number;
+  striped?: boolean;
 }
 
 const ExpandedRow = ({
@@ -17,6 +19,7 @@ const ExpandedRow = ({
   rowIndex,
   visibleColumns,
   containerWidth,
+  striped
 }: ExpandedRowProps): JSX.Element => {
   const expandedRows = hiddenColumns.map((column, cellIndex) => {
     return (
@@ -36,7 +39,7 @@ const ExpandedRow = ({
   }, 0);
   const expandedRowWidth = visibleColumns.length === 1 ? containerWidth : tableWidth;
   return (
-    <tr className="tableBodyRow tableBodyRowExpandable">
+    <tr className={cx('tableBodyRow', 'tableBodyRowExpandable', striped ? 'tableBodyRowStriped' : 'tableBodyRowBase')}>
       <td colSpan={visibleColumns.length}>
         <AnimatedHeight duration={500} height={row.isOpen ? 'auto' : 0}>
           <div

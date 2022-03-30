@@ -163,8 +163,8 @@ const SomeComponentWithTable = ({
 | priorityLevelThreshold | number   | null         | -          |
 | sort                   | object   | null         | -          |
 | handleSort             | func     | null         | -          |
-| rowsColor              | string   | null         | -          |
-| headerColor            | string   | null         | -          |
+| rowsColor              | string   | transparent  | -          |
+| headerColor            | string   | transparent  | -          |
 | striped                | boolean  | true         | -          |
 
 ### Column fields
