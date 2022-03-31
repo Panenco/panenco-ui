@@ -23,6 +23,27 @@ const render = () => {
         format="MM/dd/yyyy"
         placeholder="mm/dd/yy"
     />
+
+    //Formik usage
+    <Formik
+      initialValues={ {date: new Date()} }
+      onSubmit={(values) => console.log(values)}
+    >
+      {(props) => (
+        <Form>
+          <Field
+            component={DayPicker}
+            isTimePicker
+            name="date"
+            onChange={e => props.setFieldValue(‘date’, e)}
+            value={props.values.date}
+            format="MM/dd/yyyy HH:mm"
+            placeholder="mm/dd/yy 00:00"
+          />
+          <button type="submit">Submit</button>
+        </Form>
+      )}
+    </Formik>
 );
 }
 ...
