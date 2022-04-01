@@ -9,7 +9,6 @@ import { DayPicker } from '@panenco/ui';
 const render = () => {
   const [value, setValue] = React.useState(new Date());
   const handleChange = (val) => {
-
     setValue(val);
   };
 
@@ -48,3 +47,5 @@ const render = () => {
 }
 ...
 ```
+Also DayPicker is fully available on the keyboard. AAfter opening the calendar we can
+move forward with **tab-button**, back with **shift+tab-button**, **enter** to select the day, and to move by days **← → ↑ ↓ buttons**

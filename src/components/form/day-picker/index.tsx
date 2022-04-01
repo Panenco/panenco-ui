@@ -72,6 +72,7 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
   ): JSX.Element => {
     const theme = useTheme();
     const { mode } = useMode();
+    const [isCalendarVisible, setIsCalendarVisible] = React.useState(false);
 
     let dayPickerInputRef;
 
@@ -102,8 +103,13 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
       selectedDay: Date;
       [key: string]: any;
     }): React.ReactElement => {
-      const overlayCompRef = React.useRef<HTMLDivElement>(null);
       const [dateTime, setDateTime] = React.useState(transformTime(new Date(day)));
+      const overlayCompRef = React.useRef<HTMLDivElement>(null);
+
+      React.useEffect(() => {
+        setIsCalendarVisible(true);
+        return () => setIsCalendarVisible(false);
+      }, [])
 
       const submitAndClose = (): void => {
         const newTempTo = setHours(setMinutes(new Date(day), Number(dateTime.slice(-2))), Number(dateTime.slice(0, 2)));
@@ -156,7 +162,7 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
 
     return (
       <StyledDayPicker
-        className={cx('dayPickerInput')}
+        className={cx('dayPickerInput', isCalendarVisible && 'inputDisabled')}
         theme={theme}
         mode={mode}
         ref={ref}
@@ -164,12 +170,19 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
         {...wrapperProps}
       >
         {title && (
-          <Text weight={theme.typography.weights.bold} size={theme.typography.sizes.m} className="title">
+          <Text
+            weight={theme.typography.weights.bold} 
+            size={theme.typography.sizes.m} 
+            className="title"
+          >
             {title}
           </Text>
         )}
         {subTitle && (
-          <Text size={theme.typography.sizes.xs} className="subtitle">
+          <Text 
+            size={theme.typography.sizes.xs} 
+            className="subtitle"
+          >
             {subTitle}
           </Text>
         )}
@@ -195,7 +208,14 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
           keepFocus={false}
           {...props}
           component={React.forwardRef<HTMLDivElement, TextInputProps>((inputComponentProps, wrapRef) => (
-            <TextInput ref={wrapRef} iconAfter={iconAfter} error={error} {...inputComponentProps} {...inputProps} />
+            <TextInput
+              ref={wrapRef}
+              disabled={isCalendarVisible}
+              iconAfter={iconAfter}
+              error={error}
+              {...inputComponentProps}
+              {...inputProps}
+            />
           ))}
         />
       </StyledDayPicker>
