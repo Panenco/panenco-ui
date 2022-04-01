@@ -10,9 +10,11 @@ export const StyledAvatar = styled.div<{
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 `;
 
 export const StyledAvatarImg = styled.img`
   border-radius: 50%;
   object-fit: cover;
+  cursor: pointer;
 `

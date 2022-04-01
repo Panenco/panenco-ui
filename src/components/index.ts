@@ -1,4 +1,6 @@
 export * from './accordion';
+export * from './avatar';
+export * from './avatar-group';
 export * from './button';
 export * from './grid';
 export * from './icon';
@@ -29,4 +31,3 @@ export * from './switch';
 export * from './tooltip';
 export * from './popup';
 export * from './tabs';
-export * from './avatar';

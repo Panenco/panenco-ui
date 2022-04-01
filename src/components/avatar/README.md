@@ -40,7 +40,7 @@ const YourComponent = () => {
 | ----------------- | ------------------------------- | ------------------------------ | ---------- |
 | avatar            | string                          | -                              | -          |
 | avatarAlt         | string                          | 'avatar alt'                   | -          |
-| size              | string or number                | 54                             | -          |
+| size              | number                          | 54                             | -          |
 | className         | string                          | -                              | -          |
 | firstName         | string                          | -                              | -          |
 | lastName          | string                          | -                              | -          |

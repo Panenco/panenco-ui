@@ -14,7 +14,6 @@ export default decorator('Avatar', AvatarDocs, AvatarReadme).add('Avatar compone
       <Row style={{ justifyContent: 'center', margin: '50px auto 0 auto', width: '90%' }}>
         <Col xs="4" lg="4">
           <Avatar 
-            size={80}
             email='hello@panenco.com'
             avatar='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJmD-ID1Gcf4RD0YWdMtgcjjpMqS89ldAE6w&usqp=CAU'
             tooltip
@@ -26,7 +25,6 @@ export default decorator('Avatar', AvatarDocs, AvatarReadme).add('Avatar compone
         </Col>
         <Col xs="4" lg="4">
           <Avatar
-            size={40}
             firstName='Panenco' 
             lastName='UI'
             avatar='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJmD-ID1Gcf4RD0YWdMtgcjjpMqS89ldAE6w&usqp=CAU'
