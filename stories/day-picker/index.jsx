@@ -20,6 +20,16 @@ export default decorator('DayPicker', DayPickerDocs, README).add('DayPicker', ()
       <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start' }}>
         <Col xs="12" md="12" lg="12">
           <DayPicker
+            value={ value }
+            onChange={ handleChange }
+            format='MM/dd/yyyy'
+            placeholder='mm/dd/yy'
+          />
+        </Col>
+      </Row>
+      <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start' }}>
+        <Col xs="12" md="12" lg="12">
+          <DayPicker
             isTimePicker
             value={ value }
             onChange={ handleChange }
