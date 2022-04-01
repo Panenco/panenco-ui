@@ -47,5 +47,5 @@ const render = () => {
 }
 ...
 ```
-Also DayPicker is fully available on the keyboard. AAfter opening the calendar we can
+Also DayPicker is fully available on the keyboard. After opening the calendar we can
 move forward with **tab-button**, back with **shift+tab-button**, **enter** to select the day, and to move by days **← → ↑ ↓ buttons**
