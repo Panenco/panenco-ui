@@ -105,8 +105,8 @@ export const AlertButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ),
 );
 
-export const SucessButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
+export const SuccessButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, iconClassName, ...props }: ButtonProps, ref): JSX.Element => (
-    <Button ref={ref} className={cx('buttonSucess', className)} iconClassName={iconClassName} {...props} />
+    <Button ref={ref} className={cx('buttonSuccess', className)} iconClassName={iconClassName} {...props} />
   ),
 );

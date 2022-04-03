@@ -1,4 +1,4 @@
-import { Button, ButtonIcon, Col, Icon, PrimaryButton, Row, SecondaryButton, WarningButton, AlertButton, SucessButton } from 'components';
+import { Button, ButtonIcon, Col, Icon, PrimaryButton, Row, SecondaryButton, WarningButton, AlertButton, SuccessButton } from 'components';
 import ButtonIconDocs from 'components/button-icon/icon-button-DOCS.md';
 import ButtonIconReadme from 'components/button-icon/icon-button-README.md';
 import ButtonDocs from 'components/button/button-DOCS.md';
@@ -181,9 +181,9 @@ export default decorator('Button', ButtonDocs, ButtonReadme).add('Button compone
                 alignItems: 'center',
               }}
             >
-              <SucessButton style={buttonStyles} className="mb-1" variant="text">
-                Sucess
-              </SucessButton>
+              <SuccessButton style={buttonStyles} className="mb-1" variant="text">
+                Success
+              </SuccessButton>
             </div>
           </Col>
 
@@ -195,9 +195,9 @@ export default decorator('Button', ButtonDocs, ButtonReadme).add('Button compone
                 alignItems: 'center',
               }}
             >
-              <SucessButton style={buttonStyles} className="mb-1" variant="outlined" isLoading>
-                Sucess
-              </SucessButton>
+              <SuccessButton style={buttonStyles} className="mb-1" variant="outlined" isLoading>
+                Success
+              </SuccessButton>
             </div>
           </Col>
         </Row>

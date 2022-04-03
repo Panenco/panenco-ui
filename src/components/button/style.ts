@@ -179,7 +179,7 @@ export const StyledButton = styled.button<{
     }
   }
 
-  &.buttonSucess {
+  &.buttonSuccess {
     border: 2px solid
     ${(props: any): string => {
       return props.color || (props.mode === ThemeMode.dark ? 'transparent' : props.theme.colors.success);
