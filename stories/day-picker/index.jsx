@@ -35,6 +35,19 @@ export default decorator('DayPicker', DayPickerDocs, README).add('DayPicker', ()
             onChange={ handleChange }
             format='MM/dd/yyyy HH:mm'
             placeholder='mm/dd/yy 00:00'
+            position="bottom-end"
+          />
+        </Col>
+      </Row>
+      <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start' }}>
+        <Col xs="12" md="12" lg="12">
+          <DayPicker
+            isTimePicker
+            value={ value }
+            onChange={ handleChange }
+            format='MM/dd/yyyy HH:mm'
+            placeholder='mm/dd/yy 00:00'
+            isMobile
           />
         </Col>
       </Row>

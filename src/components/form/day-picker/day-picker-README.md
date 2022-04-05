@@ -38,6 +38,8 @@ const render = () => {
             value={props.values.date}
             format="MM/dd/yyyy HH:mm"
             placeholder="mm/dd/yy 00:00"
+            isMobile
+            position="bottom-end"
           />
           <button type="submit">Submit</button>
         </Form>
@@ -49,3 +51,5 @@ const render = () => {
 ```
 Also DayPicker is fully available on the keyboard. After opening the calendar we can
 move forward with **tab-button**, back with **shift+tab-button**, **enter** to select the day, and to move by days **← → ↑ ↓ buttons**
+- isMobile - allow to show mobile view of the component;
+- position - allow to position calendar, can be: bottom-end, bottom-start, by default is bottom-start;

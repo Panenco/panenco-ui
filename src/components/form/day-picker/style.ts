@@ -32,11 +32,41 @@ export const StyledDayPicker = styled.div<{
     z-index: 10;
   }
 
+  .bottom-end {
+    right: 0;
+  }
+
+  .mobile {
+    max-width: 100vw;
+    width: 100vw;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+
+    .input {
+      width: 100%;
+    }
+
+    .textInput, .DayPicker {
+      width: 100%;
+
+      .DayPicker-Month {
+        width: 100%;
+      }
+    }
+  }
+
   .footer {
     align-items: flex-end;
     display: flex;
     margin-bottom: 18px;
     padding: 0 14px;
+    width: 100%;
   }
 
   .submitTime {
@@ -342,9 +372,9 @@ export const StyledDayPicker = styled.div<{
       background: white;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
     }
-  }
 
-  .input {
-    cursor: pointer;
+    .input {
+      cursor: pointer;
+    }
   }
 `;

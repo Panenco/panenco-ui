@@ -10,7 +10,7 @@ import { useMode, useTheme } from 'utils/hooks';
 import { DateUtils } from 'react-day-picker';
 import { setHours, setMinutes, getHours, format as dateFnsFormat, parse as dateFnsParse, getMinutes } from 'date-fns';
 import { TextInputProps } from '../text-input';
-import { InputComponent, WrapperProps } from '../../../utils/types';
+import { InputComponent, WrapperProps, DayPickerPosition } from '../../../utils/types';
 import { StyledDayPicker } from './style';
 import 'react-day-picker/lib/style.css';
 
@@ -40,6 +40,8 @@ export interface PickerProps extends DayPickerInputProps, InputComponent {
   saveLabel?: string;
   dayPickerProps?: DayPickerProps;
   defaultDay?: Date;
+  isMobile?: false;
+  position?: DayPickerPosition;
 }
 
 const transformTime = (date = new Date()): string => {
@@ -66,6 +68,8 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
       inputProps,
       dayPickerProps,
       defaultDay,
+      isMobile = false,
+      position = 'bottom-start',
       ...props
     }: PickerProps,
     ref,
@@ -121,7 +125,10 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
       useOutsideClick(overlayCompRef, hideDayPicker);
 
       return (
-        <div className="overlay" {...overlayComponentProps} ref={overlayCompRef}>
+        <div 
+          className={cx('overlay', position === 'bottom-end' ? 'bottom-end' : 'bottom-start', isMobile && 'mobile')} 
+          {...overlayComponentProps} ref={overlayCompRef}
+        >
           {children}
           {isTimePicker ? (
             <div className="footer">
