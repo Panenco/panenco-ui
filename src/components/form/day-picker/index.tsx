@@ -127,7 +127,8 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
       return (
         <div 
           className={cx('overlay', position === 'bottom-end' ? 'bottom-end' : 'bottom-start', isMobile && 'mobile')} 
-          {...overlayComponentProps} ref={overlayCompRef}
+          {...overlayComponentProps} 
+          ref={overlayCompRef}
         >
           {children}
           {isTimePicker ? (
