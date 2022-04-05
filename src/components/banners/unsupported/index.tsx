@@ -18,8 +18,8 @@ export type UnsupportedBannerProps = {
 
 const UnsupportedBanner = ({
   className,
-  title = `Your browser isn't fully supported by our application`,
-  description = `Please reffer to FAQ to obtain more informaiton and update your software`,
+  title = "Your browser isn't fully supported by our application",
+  description = 'Please reffer to FAQ to obtain more informaiton and update your software',
   ignoreButtonText = 'Ignore',
   onIgnore,
   portalContainer,

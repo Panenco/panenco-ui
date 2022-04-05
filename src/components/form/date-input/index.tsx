@@ -41,7 +41,7 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
     const { mode } = useMode();
 
     const format = useMemo(() => {
-      return inputs.map(i => i.format).join('/');
+      return inputs.map((i) => i.format).join('/');
     }, [inputs]);
 
     const input1 = useRef<HTMLInputElement>(null);
@@ -88,7 +88,7 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
 
     // eslint-disable-next-line no-shadow
     const validateLength = (type: string, value: string): boolean => {
-      return inputs.some(item => item.type === type && value.length <= item.format.length);
+      return inputs.some((item) => item.type === type && value.length <= item.format.length);
     };
 
     const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>, index: number, type: string): void => {
@@ -100,7 +100,7 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
       }
 
       let date: string | null | Date | Array<HTMLInputElement> = Object.values(inputToRef)
-        .filter(item => item.current)
+        .filter((item) => item.current)
         .map((item) => item?.current?.value)
         .join('/');
 
@@ -112,14 +112,19 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
     };
 
     return (
-      <StyledDayPicker className={cx('dateInput', !isValid && 'error')} theme={theme} mode={mode}
-                       ref={ref} {...wrapperProps}>
+      <StyledDayPicker
+        className={cx('dateInput', !isValid && 'error')}
+        theme={theme}
+        mode={mode}
+        ref={ref}
+        {...wrapperProps}
+      >
         {inputs.map((input, index) => {
           const inputWidth = input.format.length * 10 + 40;
 
           const isLastItem = index + 1 !== inputs.length;
           return (
-            <div className='dateInputItem' key={`text-input-${input.type}`}>
+            <div className="dateInputItem" key={`text-input-${input.type}`}>
               <TextInput
                 id={`text-input-${input.type}`}
                 key={`text-input-${input.type}-input`}
@@ -130,11 +135,9 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
                 title={input.title}
                 style={{ width: `${inputWidth}px` }}
                 placeholder={input.placeholder}
-                value={
-                  currentDate.split('/')[index]
-                }
+                value={currentDate.split('/')[index]}
               />
-              {isLastItem ? <Text className='dateInputItemDivider'>{divider}</Text> : null}
+              {isLastItem ? <Text className="dateInputItemDivider">{divider}</Text> : null}
             </div>
           );
         })}

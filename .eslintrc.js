@@ -7,8 +7,10 @@ module.exports = {
     es6: true,
   },
   extends: [
-    'airbnb',
     'eslint:recommended',
+    'airbnb-base',
+    'plugin:json/recommended',
+    'plugin:prettier/recommended',
     'plugin:import/recommended',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/eslint-recommended',
@@ -46,7 +48,6 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': ['error'],
     'react/require-default-props': 'off', // Since we do not use prop-types
     quotes: [2, 'single', { avoidEscape: true }],
-    
   },
   settings: {
     'import/resolver': {

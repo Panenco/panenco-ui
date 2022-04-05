@@ -52,7 +52,7 @@ export type PUIWeights = {
 
 export type ButtonVariantType = 'text' | 'contained' | 'outlined';
 
-export type StampVariantType =  'fulfilled' | 'outlined';
+export type StampVariantType = 'fulfilled' | 'outlined';
 
 export type TextSize = { textSize: string; lineHeight: string | number };
 

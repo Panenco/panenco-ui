@@ -136,7 +136,7 @@ const spacingForRow = () => {
       const breakpoint = `@media (min-width: ${max})`;
       if (max) {
         const content = {
-          [`&.spacing-xs-auto-auto`]: {
+          '&.spacing-xs-auto-auto': {
             margin: `-${gridLayout[key].gutter} -${gridLayout[key].gutter}`,
             width: `calc(100% + ${gridLayout[key].gutter} * 2)`,
             '& > div': {

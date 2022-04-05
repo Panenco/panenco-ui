@@ -64,7 +64,7 @@ export const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
     };
 
     const handleClick = (): void => {
-      combinedRef.current.click();      
+      combinedRef.current.click();
     };
 
     const handleIconClick = (e: React.UIEvent): void => {
@@ -132,7 +132,13 @@ export const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
             <Text className="placeholderBoxTitle">{renderPlaceholder}</Text>
             {renderStatusIcons}
           </div>
-          <Button type="submit" variant="contained" className="uploaderBtn" disabled={disabled || loading} onClick={handleClick}>
+          <Button
+            type="submit"
+            variant="contained"
+            className="uploaderBtn"
+            disabled={disabled || loading}
+            onClick={handleClick}
+          >
             {buttonText}
           </Button>
         </label>

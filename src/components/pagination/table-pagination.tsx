@@ -4,7 +4,7 @@ import { useTheme, useMode } from 'utils/hooks';
 import { Text, Icon, SelectInput, Button } from 'components';
 import { usePagination } from './usePagination';
 import { StyledPagination } from './styles';
-import { additionalStyles } from '../select/style'
+import { additionalStyles } from '../select/style';
 
 interface PaginationOption {
   label: string;
@@ -21,14 +21,14 @@ export type TablePaginationProps = {
   rowsPerPageOptions?: any;
   onChangePage: (page: number | PaginationOption) => void;
   onChangeRowsPerPage: any;
-  locales?: { 
+  locales?: {
     itemsPerPage: string;
-    displayingItems: (rangeStart: number, rangeEnd: number, count: number ) => string;
-    currentPage: (currentPage: number, allPages: number) => string
-  },
+    displayingItems: (rangeStart: number, rangeEnd: number, count: number) => string;
+    currentPage: (currentPage: number, allPages: number) => string;
+  };
   selectStyles?: {
-    [key: string]: (...args) => { [k: string]: any }
-  } 
+    [key: string]: (...args) => { [k: string]: any };
+  };
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const defaultOptions = [
@@ -43,31 +43,32 @@ const customSelectStyles = (styles) => {
     valueContainer: (provided, state) => ({
       padding: 0,
       justifyContent: 'center',
-      ...additionalStyles('valueContainer', styles, provided, state)
+      ...additionalStyles('valueContainer', styles, provided, state),
     }),
     control: (provided, state) => ({
       minHeight: '48px',
       padding: '0 5px',
-      ...additionalStyles('control', styles, provided, state)
+      ...additionalStyles('control', styles, provided, state),
     }),
     dropdownIndicator: (provided, state) => ({
       padding: 0,
       width: '16px',
-      ...additionalStyles('dropdownIndicator', styles, provided, state)
+      ...additionalStyles('dropdownIndicator', styles, provided, state),
     }),
     option: (provided, state) => ({
       paddingTop: '5px',
       paddingBottom: '5px',
-      ...additionalStyles('option', styles, provided, state)
+      ...additionalStyles('option', styles, provided, state),
     }),
-  }
-  return Object.keys(styles).filter(key => !Object.keys(defaultStyles).includes(key)).reduce((res, key) => {
-    return {
-      ...res,
-      [key]: styles[key]
-    }
-  },
-  defaultStyles)
+  };
+  return Object.keys(styles)
+    .filter((key) => !Object.keys(defaultStyles).includes(key))
+    .reduce((res, key) => {
+      return {
+        ...res,
+        [key]: styles[key],
+      };
+    }, defaultStyles);
 };
 
 export const TablePagination = ({
@@ -82,7 +83,8 @@ export const TablePagination = ({
   selectStyles = {},
   locales = {
     itemsPerPage: 'Items per page',
-    displayingItems: (rangeStart: number, rangeEnd: number, pCount: number) => `Displaying ${rangeStart}-${rangeEnd} of ${pCount} items`,
+    displayingItems: (rangeStart: number, rangeEnd: number, pCount: number) =>
+      `Displaying ${rangeStart}-${rangeEnd} of ${pCount} items`,
     currentPage: (currentPage: number, pagesAmount: number) => `${currentPage} of ${pagesAmount} pages`,
   },
   ...otherProps

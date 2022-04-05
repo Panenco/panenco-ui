@@ -12,7 +12,18 @@ export interface StampProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Stamp = React.forwardRef<HTMLDivElement, StampProps>(
-  ({ className, color: colorProp, backgroundColor, borderRadius: borderRadiusProp, variant, children, ...props }: StampProps, ref): JSX.Element => {
+  (
+    {
+      className,
+      color: colorProp,
+      backgroundColor,
+      borderRadius: borderRadiusProp,
+      variant,
+      children,
+      ...props
+    }: StampProps,
+    ref,
+  ): JSX.Element => {
     const theme = useTheme();
     const { mode } = useMode();
     const color = colorProp || theme.colors.success;
@@ -28,7 +39,8 @@ export const Stamp = React.forwardRef<HTMLDivElement, StampProps>(
         theme={theme}
         mode={mode}
         ref={ref}
-        {...props}>
+        {...props}
+      >
         {children}
       </StyledStamp>
     );

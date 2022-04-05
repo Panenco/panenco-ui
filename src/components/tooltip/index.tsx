@@ -5,7 +5,6 @@ import { useMode, useTheme } from 'utils/hooks';
 import cx from 'classnames';
 import { PopperBox, ReferenceBox, Arrow, PopperWrapper } from './styles';
 
-
 export interface TooltipProps {
   content: React.ReactNode | string;
   children: React.ReactNode;
@@ -103,7 +102,7 @@ export const Tooltip: React.FC<TooltipProps> = (props): JSX.Element => {
       >
         <Reference>
           {({ ref }): JSX.Element => (
-            <ReferenceBox className='referenceBox' theme={theme} mode={mode} ref={ref}>
+            <ReferenceBox className="referenceBox" theme={theme} mode={mode} ref={ref}>
               {children}
             </ReferenceBox>
           )}
@@ -124,20 +123,18 @@ export const Tooltip: React.FC<TooltipProps> = (props): JSX.Element => {
               className={cx('popperBox', popperProps.className)}
             >
               {content}
-              {
-                arrow && (
-                  <Arrow
-                    theme={theme}
-                    mode={mode}
-                    backgroundColor={backgroundColor}
-                    ref={popperArrowProps.ref}
-                    data-placement={placement}
-                    style={popperArrowProps.style}
-                    {...arrowProps}
-                    className={cx('tooltipArrow', arrowProps.className)}
-                  />
-                )
-              }
+              {arrow && (
+                <Arrow
+                  theme={theme}
+                  mode={mode}
+                  backgroundColor={backgroundColor}
+                  ref={popperArrowProps.ref}
+                  data-placement={placement}
+                  style={popperArrowProps.style}
+                  {...arrowProps}
+                  className={cx('tooltipArrow', arrowProps.className)}
+                />
+              )}
             </PopperBox>
           )}
         </Popper>

@@ -3,7 +3,8 @@ import { styled } from 'linaria/react';
 import { transparentize } from 'polished';
 import { weights } from 'styles';
 
-export const additionalStyles = (element: string, styles, ...arg): any => (styles?.[element] ? styles[element](...arg) : {});
+export const additionalStyles = (element: string, styles, ...arg): any =>
+  styles?.[element] ? styles[element](...arg) : {};
 
 export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles?: any): any => ({
   indicatorSeparator: (provided, state): any => ({

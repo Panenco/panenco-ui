@@ -78,7 +78,7 @@ export const StyledTextInput = styled.div<{
 
       &Disabled {
         pointer-events: none;
-          /* border-color: ${(props: any): string => props.theme.colors.base400}; */
+        /* border-color: ${(props: any): string => props.theme.colors.base400}; */
         background-color: ${(props: any): string =>
           props.mode === ThemeMode.dark ? transparentize(0.4, props.theme.colors.base700) : props.theme.colors.base400};
         opacity: 0.4;
