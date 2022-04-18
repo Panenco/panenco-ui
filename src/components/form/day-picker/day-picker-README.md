@@ -30,7 +30,7 @@ const render = () => {
         defaultDay={new Date()}
         iconAfter={Icon.icons.calendar}
         dayPickerProps={{
-          disabledDays: {
+          disabled: {
             before: new Date()
           },
         }}

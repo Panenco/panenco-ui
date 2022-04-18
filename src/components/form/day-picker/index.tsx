@@ -1,22 +1,23 @@
 import cx from 'classnames';
 import { Icon, PrimaryButton, TextInput, Text } from 'components';
 import * as React from 'react';
+// TODO replace DayPickerInput with useInput hook
+// eslint-disable-next-line import/no-unresolved
 import DayPickerInput from 'react-day-picker/DayPickerInput';
-import { DayPickerInputProps, DayPickerProps } from 'react-day-picker/types/Props';
+import { InputDayPickerProps, DayPickerProps, } from 'react-day-picker';
 import { useOutsideClick } from 'utils/hooks/outside-click';
 import MaskedInput from 'react-text-mask';
 import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe';
 import { useMode, useTheme } from 'utils/hooks';
-import { DateUtils } from 'react-day-picker';
-import { setHours, setMinutes, getHours, format as dateFnsFormat, parse as dateFnsParse, getMinutes } from 'date-fns';
+import { setHours, setMinutes, getHours, format as dateFnsFormat, parse as dateFnsParse, getMinutes, isDate } from 'date-fns';
 import { TextInputProps } from '../text-input';
 import { InputComponent, WrapperProps, DayPickerPosition } from '../../../utils/types';
 import { StyledDayPicker } from './style';
-import 'react-day-picker/lib/style.css';
+import 'react-day-picker/dist/style.css';
 
 function parseDate(str, format, locale): Date | undefined {
   const parsed = dateFnsParse(str, format, new Date());
-  if (DateUtils.isDate(parsed)) {
+  if (isDate(parsed)) {
     return parsed;
   }
   return undefined;
@@ -28,7 +29,7 @@ function formatDate(date, format: string, locale): string {
 
 const WEEKDAYS_SHORT_DEFAULT = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
-export interface PickerProps extends DayPickerInputProps, InputComponent {
+export interface PickerProps extends InputDayPickerProps, InputComponent {
   iconBefore?: HTMLObjectElement | JSX.Element;
   iconAfter?: HTMLObjectElement | JSX.Element;
   inputRef?: React.Ref<any>;
@@ -205,8 +206,9 @@ export const DayPicker = React.forwardRef<HTMLDivElement, PickerProps>(
           hideOnDayClick={!isTimePicker}
           overlayComponent={OverlayComponent}
           dayPickerProps={{
-            weekdaysShort: dayPickerProps?.weekdaysShort || WEEKDAYS_SHORT_DEFAULT,
-            firstDayOfWeek: dayPickerProps?.firstDayOfWeek || 1, // Monday as default value
+            // TODO cant find this props in v8
+            weekDays: dayPickerProps?.weekDays || WEEKDAYS_SHORT_DEFAULT,
+            weekStartsOn: dayPickerProps?.weekStartsOn || 1, // Monday as default value
             locale: dayPickerProps?.locale || 'en',
             ...dayPickerProps,
           }}

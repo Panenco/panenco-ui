@@ -26,7 +26,7 @@ export default decorator('DayPicker', DayPickerDocs, README).add('DayPicker', ()
             format='MM/dd/yyyy'
             placeholder='mm/dd/yy'
             dayPickerProps={{
-              disabledDays: {
+              disabled: {
                 before: new Date()
              },
             }}
@@ -45,7 +45,7 @@ export default decorator('DayPicker', DayPickerDocs, README).add('DayPicker', ()
             placeholder='mm/dd/yy 00:00'
             position="bottom-end"
             dayPickerProps={{
-              disabledDays: {
+              disabled: {
                 before: new Date()
              },
             }}
@@ -63,7 +63,7 @@ export default decorator('DayPicker', DayPickerDocs, README).add('DayPicker', ()
             placeholder='mm/dd/yy 00:00'
             isMobile
             dayPickerProps={{
-              disabledDays: {
+              disabled: {
                 before: new Date()
              },
             }}
@@ -81,7 +81,7 @@ export default decorator('DayPicker', DayPickerDocs, README).add('DayPicker', ()
             format='MM/dd/yyyy HH:mm:ss'
             placeholder='mm/dd/yy 00:00'
             dayPickerProps={{
-              disabledDays: {
+              disabled: {
                 before: new Date()
              },
             }}
