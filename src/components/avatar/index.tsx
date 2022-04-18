@@ -47,32 +47,27 @@ export const Avatar: React.FC<AvatarProps> = ({
   const theme = useTheme();
   const fontSize = getFontSize(theme, size);
 
+  const renderAvatar = () => (
+    avatar ? (
+      <StyledAvatarImg src={avatar} alt={avatarAlt} style={{ height: size, width: size }} className={className} />
+    ) : (
+      <StyledAvatar theme={theme} style={{ height: size, width: size }} className={className}>
+      {(firstName || lastName) &&
+        <Text size={fontSize} weight={theme.typography.weights.bold} color={theme.colors.base500}>
+          {`${firstName?.charAt(0)?.toUpperCase() || ''}${lastName?.charAt(0)?.toUpperCase() || ''}`}
+        </Text>
+      }
+      </StyledAvatar>
+    )
+  );
+
   if (tooltip) {
     return (
       <Tooltip content={email || `${firstName || ''} ${lastName || ''}`} {...tooltipProps}>
-        {avatar ? (
-          <StyledAvatarImg src={avatar} alt={avatarAlt} style={{ height: size, width: size }} className={className} />
-        ) : (
-          <StyledAvatar theme={theme} style={{ height: size, width: size }} className={className}>
-            {(firstName || lastName) &&
-              <Text size={fontSize} weight={theme.typography.weights.bold} color={theme.colors.base500}>
-                {`${firstName?.charAt(0)?.toUpperCase() || ''}${lastName?.charAt(0)?.toUpperCase() || ''}`}
-              </Text>
-            }
-          </StyledAvatar>
-        )}
+        {renderAvatar()}
       </Tooltip>
-    )} return (
-        avatar ? (
-          <StyledAvatarImg src={avatar} alt={avatarAlt} style={{ height: size, width: size }} className={className} />
-        ) : (
-          <StyledAvatar theme={theme} style={{ height: size, width: size }} className={className}>
-          {(firstName || lastName) &&
-            <Text size={fontSize} weight={theme.typography.weights.bold} color={theme.colors.base500}>
-              {`${firstName?.charAt(0)?.toUpperCase() || ''}${lastName?.charAt(0)?.toUpperCase() || ''}`}
-            </Text>
-          }
-          </StyledAvatar>
-        )
-    );
+    )
+  } 
+  
+  return renderAvatar();
 };
