@@ -51,10 +51,10 @@ export default decorator('Avatar', AvatarDocs, AvatarReadme).add('AvatarGroup co
     <WrappedComponent>
       <Row style={{ justifyContent: 'center', margin: '50px auto 0 auto', width: '90%' }}>
         <Col xs="12" lg="12">
-          <AvatarGroup avatars={avatars} avatarProps={{ className: 'hhhhh', size: 60, tooltipProps: { position: 'bottom' } }} />
+          <AvatarGroup avatars={avatars} avatarProps={{ size: 60, tooltipProps: { position: 'bottom' } }} />
         </Col>
         <Col xs="12" lg="12">
-          <AvatarGroup avatars={avatars} max={3} avatarProps={{ className: 'hhhhh', size: 60, tooltipProps: { position: 'bottom' } }} />
+          <AvatarGroup avatars={avatars} max={3} avatarProps={{ size: 60, tooltipProps: { position: 'bottom' } }} />
         </Col>
       </Row>
     </WrappedComponent>
