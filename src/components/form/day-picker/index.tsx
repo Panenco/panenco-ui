@@ -14,7 +14,7 @@ import { InputComponent, WrapperProps } from '../../../utils/types';
 import { StyledDayPicker } from './style';
 import 'react-day-picker/lib/style.css';
 
-function parseDate(str, format, locale): Date | undefined {
+export function parseDate(str, format, locale): Date | undefined {
   const parsed = dateFnsParse(str, format, new Date());
   if (DateUtils.isDate(parsed)) {
     return parsed;
@@ -22,7 +22,7 @@ function parseDate(str, format, locale): Date | undefined {
   return undefined;
 }
 
-function formatDate(date, format: string, locale): string {
+export function formatDate(date, format: string, locale): string {
   return dateFnsFormat(date, format);
 }
 
