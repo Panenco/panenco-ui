@@ -16,7 +16,6 @@ export default decorator('DayPicker', DayPickerDocs, README).add('DayPicker', ()
   const handleChange = ( val ) => {
     setValue(val);
   };
-  
 
   return (
     <WrappedComponent style={{ minHeight: '500px' }}>
