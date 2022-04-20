@@ -67,8 +67,10 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
                 tabIndex={-1}
                 role="dialog"
                 aria-modal="true"
-                onClick={backdropClosable && onHide ? onHide : undefined}
                 ref={ref}
+                onMouseDown={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
+                  backdropClosable && e.target === e.currentTarget && onHide ? onHide() : undefined
+                }
               >
                 <StyledPopup
                   size={size}
