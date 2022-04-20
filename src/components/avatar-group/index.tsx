@@ -26,6 +26,11 @@ export const AvatarGroup: React.FC<AvatarGroupProps> = ({
           key={`avatar${idx}key`}
           {...avatarProps}
           {...avatar}
+          tooltipProps={{
+            enterNextDelay: 0,
+            ...avatarProps?.tooltipProps,
+            ...avatar?.tooltipProps,
+          }}
           className={cx('avatarGroupItem', avatarProps?.className)}
         />
       )}
