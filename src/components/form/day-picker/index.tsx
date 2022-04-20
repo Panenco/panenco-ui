@@ -10,6 +10,8 @@ import { InputComponent } from 'utils/types';
 import { Placement } from '@popperjs/core';
 import { useOutsideClick } from 'utils/hooks/outside-click';
 import { useTheme, useMode } from 'utils/hooks';
+// eslint-disable-next-line import/no-duplicates
+import en from 'date-fns/locale/en-GB';
 import { StyledDayPicker } from './style';
 
 const transformTime = (date = new Date()): string => {
