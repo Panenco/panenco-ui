@@ -4,6 +4,8 @@ import DateInputReadme from 'components/form/date-input/date-input-README.md';
 import DayPickerDocs from 'components/form/day-picker/day-picker-DOCS.md';
 import README from 'components/form/day-picker/day-picker-README.md';
 import React from 'react';
+import ua from 'date-fns/locale/uk';
+import ara from 'date-fns/locale/ar';
 
 import { decorator } from '../../utils/decorator';
 import { WrappedComponent } from '../helpers/wrapped';
@@ -17,25 +19,118 @@ export default decorator('DayPicker', DayPickerDocs, README).add('DayPicker', ()
 
   return (
     <WrappedComponent style={{ minHeight: '500px' }}>
-      <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start' }}>
+      <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start', marginBottom: '10px', }}>
         <Col xs="12" md="12" lg="12">
           <DayPicker
-            subTitle='Start date'
+            title="standard"
             value={ value }
             onChange={ handleChange }
             format='MM/dd/yyyy'
             placeholder='mm/dd/yy'
+            dayPickerProps={{
+              disabled: {
+                before: new Date()
+             },
+            }}
           />
         </Col>
       </Row>
-      <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start' }}>
+      <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start', marginBottom: '10px', }}>
         <Col xs="12" md="12" lg="12">
           <DayPicker
+            title="bottom-end position"
+            subTitle="With time picker"
             isTimePicker
             value={ value }
             onChange={ handleChange }
             format='MM/dd/yyyy HH:mm'
             placeholder='mm/dd/yy 00:00'
+            position="bottom-end"
+            dayPickerProps={{
+              disabled: {
+                before: new Date()
+             },
+            }}
+          />
+        </Col>
+      </Row>
+      <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start', marginBottom: '10px', }}>
+        <Col xs="12" md="12" lg="12">
+          <DayPicker
+            title="mobile view"
+            isTimePicker
+            value={ value }
+            onChange={ handleChange }
+            format='MM/dd/yyyy HH:mm'
+            placeholder='mm/dd/yy 00:00'
+            isMobile
+            dayPickerProps={{
+              disabled: {
+                before: new Date()
+             },
+            }}
+          />
+        </Col>
+      </Row>
+      <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start', marginBottom: '10px', }}>
+        <Col xs="12" md="12" lg="12">
+          <DayPicker
+            title="error"
+            error="error"
+            isTimePicker
+            value={ value }
+            onChange={ handleChange }
+            format='MM/dd/yyyy HH:mm:ss'
+            placeholder='mm/dd/yy 00:00'
+            dayPickerProps={{
+              disabled: {
+                before: new Date()
+             },
+            }}
+          />
+        </Col>
+      </Row>
+      <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start', marginBottom: '10px', }}>
+        <Col xs="12" md="12" lg="12">
+          <DayPicker
+            title="localization"
+            subTitle="UA"
+            isTimePicker
+            value={ value }
+            onChange={ handleChange }
+            format='MM/dd/yyyy HH:mm'
+            placeholder='mm/dd/yy 00:00'
+            timeTitle="Час"
+            saveLabel="Зберегти"
+            dayPickerProps={{
+              disabled: {
+                before: new Date()
+             },
+             locale: ua,
+             dir: 'rtl',
+            }}
+          />
+        </Col>
+      </Row>
+      <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start', marginBottom: '10px', }}>
+        <Col xs="12" md="12" lg="12">
+          <DayPicker
+            title="عربى"
+            subTitle="ara"
+            isTimePicker
+            value={ value }
+            onChange={ handleChange }
+            format='MM/dd/yyyy HH:mm'
+            placeholder='mm/dd/yy 00:00'
+            timeTitle="الوقت"
+            saveLabel="حفظ"
+            dayPickerProps={{
+              disabled: {
+                before: new Date()
+             },
+             locale: ara,
+             dir: 'rtl',
+            }}
           />
         </Col>
       </Row>
