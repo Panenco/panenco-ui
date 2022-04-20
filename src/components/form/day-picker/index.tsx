@@ -3,7 +3,8 @@ import cx from 'classnames';
 import 'react-day-picker/dist/style.css';
 import { Icon, PrimaryButton, TextInput } from 'components';
 import MaskedInput from 'react-text-mask';
-import en, { format as dateFnsFormat, parse as dateFnsParse, getHours, getMinutes, setHours, setMinutes, isDate } from 'date-fns';
+// eslint-disable-next-line import/no-duplicates
+import { format as dateFnsFormat, parse as dateFnsParse, getHours, getMinutes, setHours, setMinutes, isDate } from 'date-fns';
 import { DayPicker as ReactDayPicker, DayPickerSingleProps } from 'react-day-picker';
 import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe';
 import { InputComponent } from 'utils/types';
