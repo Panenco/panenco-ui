@@ -60,7 +60,7 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
       <PopupContext.Provider value={{ onHide }}>
         {show &&
           ReactDOM.createPortal(
-            <FocusLock {...props} returnFocus>
+            <FocusLock returnFocus autoFocus={false} {...props}>
               <StyledPopupBackdrop className="popupBackdrop" theme={theme} />
               <StyledPopupContainer
                 className="popupContainer"
