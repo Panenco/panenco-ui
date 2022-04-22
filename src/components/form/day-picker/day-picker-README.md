@@ -30,6 +30,8 @@ const render = () => {
         defaultDay={new Date()}
         iconAfter={Icon.icons.calendar}
         timeTitle = "Time"
+        dir="ltr"
+        timeInputErrorText="Please, enter valid time"
         dayPickerProps={{
           disabled: {
             before: new Date()
@@ -62,3 +64,5 @@ move forward with **tab-button**, back with **shift+tab-button**, **enter** to s
 - timeInputProps - props for time input
 - overlayComponentProps - allow to pass props to whole Calendar;
 - timeTitle - title for time input;
+- dir - direction, default is **ltr**, can be **rtl**
+- timeInputErrorText - error label for time input error, default is 'Please, enter valid time'

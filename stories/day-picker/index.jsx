@@ -16,7 +16,6 @@ export default decorator('DayPicker', DayPickerDocs, README).add('DayPicker', ()
   const handleChange = ( val ) => {
     setValue(val);
   };
-  
 
   return (
     <WrappedComponent style={{ minHeight: '500px' }}>
@@ -108,7 +107,6 @@ export default decorator('DayPicker', DayPickerDocs, README).add('DayPicker', ()
                 before: new Date()
              },
              locale: ua,
-             dir: 'rtl',
             }}
           />
         </Col>
@@ -125,6 +123,7 @@ export default decorator('DayPicker', DayPickerDocs, README).add('DayPicker', ()
             placeholder='mm/dd/yy 00:00'
             timeTitle="الوقت"
             saveLabel="حفظ"
+            position="bottom-end"
             dayPickerProps={{
               disabled: {
                 before: new Date()

@@ -116,8 +116,11 @@ export const StyledDayPicker = styled.div<{
     justify-content: center;
 
     .submitTime {
-      min-width: 100px;
+      min-width: fit-content;
       border: 3px solid transparent;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
 
     .timeInput {

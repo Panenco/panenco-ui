@@ -21,7 +21,7 @@ const transformTime = (date = new Date()): string => {
   return `${hours}:${minutes}`;
 };
 
-function parseDate(str, format, locale?): Date | undefined {
+export function parseDate(str, format, locale?): Date | undefined {
   const parsed = dateFnsParse(str, format, new Date());
   if (isDate(parsed)) {
     return parsed;
@@ -29,7 +29,7 @@ function parseDate(str, format, locale?): Date | undefined {
   return undefined;
 }
 
-function formatDate(date, format: string, locale?): string {
+export function formatDate(date, format: string, locale?): string {
   return dateFnsFormat(date, format);
 }
 
@@ -52,6 +52,7 @@ export interface DayPickerProps extends InputComponent, DayPickerSingleProps {
   iconAfter?: HTMLObjectElement | JSX.Element;
   placeholder?: string;
   timeTitle?: string;
+  timeInputErrorText?: string;
 }
 
 
@@ -74,6 +75,8 @@ export const DayPicker = ({
   error,
   placeholder = 'type date here',
   timeTitle = 'time',
+  dir = 'ltr',
+  timeInputErrorText = 'Please, enter valid time',
 }: DayPickerProps): React.ReactElement => {
   const theme = useTheme();
   const { mode} = useMode();
@@ -81,6 +84,7 @@ export const DayPicker = ({
   const [isCalendarOpen, setIsCalendarOpen] = React.useState(false);
   const [date, setDate] = React.useState<Date>(value || defaultDay || new Date());
   const [dateTime, setDateTime] = React.useState(transformTime(new Date(date)));
+  const [isTimeValid, setIsTimeValid] = React.useState<boolean>(true);
 
   React.useEffect(() => {
     if (onChange) onChange(date);
@@ -89,7 +93,7 @@ export const DayPicker = ({
   const calendarRef = React.useRef<HTMLDivElement>(null);
 
   const closeCalendar = () => {
-    setIsCalendarOpen(false);
+    if (isTimeValid) setIsCalendarOpen(false);
   };
 
   const showCalendar = () => {
@@ -101,10 +105,70 @@ export const DayPicker = ({
     if (selectedDate) {
       const transformedDate = setHours(setMinutes(selectedDate, getMinutes(Number(date))), getHours(Number(date)));
       setDate(transformedDate);
-    }
+      if (isTimeValid) {
+        closeCalendar();
+      }
+    } else if (!selectedDate && isTimeValid) closeCalendar();
   };
 
+  React.useEffect(() => {
+    const close = (e) => {
+      if(e.keyCode === 27 || e.keyCode === 13){
+        closeCalendar();
+      }
+    }
+    window.addEventListener('keydown', close);
+  return () => window.removeEventListener('keydown', close);
+  }, [isTimeValid]);
+
   useOutsideClick(calendarRef, closeCalendar);
+
+  const handleTimeChange = (e): void => {
+    const hours = Number(e.target.value.slice(0, 2));
+    const minutes = Number(e.target.value.slice(-2));
+    if (Number.isInteger(hours) && Number.isInteger(minutes) && e.target.value.trim().length !== 0) {
+      if (!isTimeValid) setIsTimeValid(true);
+      setDateTime(e.target.value);
+      setDate(setHours(setMinutes(Number(date), minutes), hours));
+    } else {
+      setDateTime(e.target.value.replace(/[_:]/g, ''));
+      setIsTimeValid(false);
+    }
+  }
+
+  const CalendarComponent = () => (
+    <div className='footer'>
+      <MaskedInput
+        id="my-input-id"
+        key="my-input-id"
+        render={(customRef, restProps): JSX.Element => (
+            <TextInput
+              id="mask"
+              name="mask"
+              title={timeTitle}
+              key="mask"
+              className='timeInput'
+              iconAfter={Icon.icons.clock}
+              inputRef={customRef}
+              dir={dayPickerProps?.dir || dir}
+              autoFocus
+              error={!isTimeValid && timeInputErrorText}
+              {...timeInputProps}
+              {...restProps}
+            />
+          )
+        }
+        mask={[/[0-2]/, /[0-9]/, ':', /[0-5]/, /[0-9]/]}
+        placeholder="--:--"
+        pipe={createAutoCorrectedDatePipe('HH:MM')}
+        onChange={handleTimeChange}
+        value={dateTime}
+      />
+      <PrimaryButton className="submitTime" type="button" onClick={closeCalendar}>
+        {saveLabel}
+      </PrimaryButton>
+    </div>
+  )
 
   return (
     <StyledDayPicker          
@@ -124,6 +188,7 @@ export const DayPicker = ({
         iconAfter={iconAfter}
         value={formatDate(date, format)}
         error={error}
+        dir={dayPickerProps?.dir || dir}
       />
       <div className='calendar-wrapper'>
         {isCalendarOpen && (
@@ -142,42 +207,8 @@ export const DayPicker = ({
               formatDate={formatDate}
               weekStartsOn={dayPickerProps?.weekStartsOn || 1} // Monday as default value
               locale={dayPickerProps?.locale || en}
-              footer={isTimePicker && (
-                <div className='footer'>
-                  <MaskedInput
-                    id="my-input-id"
-                    render={(customRef, restProps): JSX.Element => (
-                      <TextInput
-                        id="mask"
-                        name="mask"
-                        title={timeTitle}
-                        key="mask"
-                        className='timeInput'
-                        iconAfter={Icon.icons.clock}
-                        inputRef={customRef}
-                        {...timeInputProps}
-                        {...restProps}
-                      />
-                    )}
-                    mask={[/[0-2]/, /[0-9]/, ':', /[0-5]/, /[0-9]/]}
-                    placeholder="--:--"
-                    pipe={createAutoCorrectedDatePipe('HH:MM')}
-                    onChange={(e): void => {
-                      const hours = Number(e.target.value.slice(0, 2));
-                      const minutes = Number(e.target.value.slice(-2));
-                      if (Number.isInteger(hours) && Number.isInteger(minutes)) {
-                        setDateTime(e.target.value);
-                        setDate(setHours(setMinutes(Number(date), minutes), hours));
-                      }
-                    }}
-                    value={dateTime}
-                  />
-                  <PrimaryButton className="submitTime" type="button" onClick={closeCalendar}>
-                    {saveLabel}
-                  </PrimaryButton>
-                </div>
-                )
-              }
+              footer={isTimePicker && <CalendarComponent />}
+              dir={dayPickerProps?.dir || dir}
               {...dayPickerProps}
             />
           </div>
