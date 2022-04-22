@@ -17,6 +17,11 @@ export interface TooltipProps {
   offset?: [number, number];
   position?: PopperJS.Placement;
   popperProps?: React.HTMLAttributes<HTMLDivElement>;
+  backgroundColor?: string;
+  height?: string | number;
+  width?: string | number;
+  textColor?: string;
+  linkColor?: string;
 
   onOpen?(event): void;
 
@@ -39,6 +44,11 @@ export const Tooltip: React.FC<TooltipProps> = (props): JSX.Element => {
     arrowPadding,
     className,
     offset,
+    backgroundColor,
+    height,
+    width,
+    textColor,
+    linkColor,
     ...other
   } = props;
   const modifiers = [
@@ -105,7 +115,10 @@ export const Tooltip: React.FC<TooltipProps> = (props): JSX.Element => {
               show={isOpen}
               theme={theme}
               mode={mode}
-              style={style}
+              textColor={textColor}
+              backgroundColor={backgroundColor}
+              linkColor={linkColor}
+              style={{ height, width, ...style }}
               {...popperProps}
               {...other}
               className={cx('popperBox', popperProps.className)}
@@ -116,6 +129,7 @@ export const Tooltip: React.FC<TooltipProps> = (props): JSX.Element => {
                   <Arrow
                     theme={theme}
                     mode={mode}
+                    backgroundColor={backgroundColor}
                     ref={popperArrowProps.ref}
                     data-placement={placement}
                     style={popperArrowProps.style}

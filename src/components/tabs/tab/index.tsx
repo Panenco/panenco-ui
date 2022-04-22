@@ -31,7 +31,7 @@ const BaseTab = React.forwardRef<any, TabProps>(
 
     React.useEffect(() => {
       if (selected) setIndexSelected(index);
-    }, []);
+    }, [selected]);
 
     const isSelected = indexSelected === index;
 
