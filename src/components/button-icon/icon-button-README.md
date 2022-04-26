@@ -28,6 +28,7 @@ This component inherits the attributes of the **button** element and extends the
 - ref - ref;
 - component - component to be rendered, it could be **button** or **Link** from 'react-router-dom';
 - to - path to redirect (prop for **Link** component);
+- size - icon size
 
 | propName      | propType          | defaultValue      | isRequired |
 | ------------- | ----------------- | ----------------- | ---------- |
@@ -37,3 +38,4 @@ This component inherits the attributes of the **button** element and extends the
 | ref           | React.RefObject   | -                 | -          |
 | component     | string            | -                 | -          |
 | to            | string            | -                 | -          |
+| size          | number            | -                 | -          |

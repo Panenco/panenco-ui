@@ -13,6 +13,7 @@ export interface ButtonIconProps extends React.ButtonHTMLAttributes<HTMLButtonEl
   color?: string;
   component?: React.ElementType;
   to?: string;
+  size?: number;
 }
 
 export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
@@ -29,6 +30,7 @@ export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
       color,
       to,
       component,
+      size,
       ...rest
     } = props;
     const theme = useTheme();
@@ -45,6 +47,7 @@ export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
         ref={ref}
         style={style}
         color={color}
+        size={size}
         {...rest}
         to={component === 'link' ? to : undefined}
       >
