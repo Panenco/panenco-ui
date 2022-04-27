@@ -31,12 +31,12 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
     ref,
   ): JSX.Element => {
     const theme = useTheme();
-    const popupStopPropagation = (e: React.MouseEvent<HTMLDivElement>): void => {
-      e.stopPropagation();
-    };
+    const popupRef = React.useRef<HTMLDivElement>(null);
+
     const handleEscClose = (ev: KeyboardEvent): void => {
       if (ev.key === 'Escape' && onHide) onHide();
     };
+
     React.useEffect(() => {
       const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
       if (show) {
@@ -56,26 +56,26 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
       return (): void => {};
     }, [show, disableEscapeKeyDown]);
 
+    React.useEffect(() => {
+      const handleClickOutside = (event) => {
+        if (popupRef.current && !popupRef?.current?.contains(event.target) && backdropClosable && onHide && show) {
+          onHide();
+        }
+      };
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }, [popupRef, backdropClosable, onHide, show]);
+
     return (
       <PopupContext.Provider value={{ onHide }}>
         {show &&
           ReactDOM.createPortal(
             <FocusLock {...props} returnFocus>
               <StyledPopupBackdrop className="popupBackdrop" theme={theme} />
-              <StyledPopupContainer
-                className="popupContainer"
-                tabIndex={-1}
-                role="dialog"
-                aria-modal="true"
-                onClick={backdropClosable && onHide ? onHide : undefined}
-                ref={ref}
-              >
-                <StyledPopup
-                  size={size}
-                  className={cx('popupDialog', dialogClassName)}
-                  onClick={popupStopPropagation}
-                  theme={theme}
-                >
+              <StyledPopupContainer className="popupContainer" tabIndex={-1} role="dialog" aria-modal="true" ref={ref}>
+                <StyledPopup size={size} className={cx('popupDialog', dialogClassName)} theme={theme} ref={popupRef}>
                   {children}
                 </StyledPopup>
               </StyledPopupContainer>
