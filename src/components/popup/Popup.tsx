@@ -15,6 +15,7 @@ export interface PopupProps extends React.HTMLAttributes<HTMLDivElement> {
   disableEscapeKeyDown?: boolean;
   size?: PopupSizesType;
   dialogClassName?: string;
+  autoFocus?: boolean;
 }
 export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
   (
@@ -26,6 +27,7 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
       disableEscapeKeyDown = false,
       size = 'md',
       dialogClassName,
+      autoFocus = true,
       ...props
     }: PopupProps,
     ref,
@@ -60,7 +62,7 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
       <PopupContext.Provider value={{ onHide }}>
         {show &&
           ReactDOM.createPortal(
-            <FocusLock returnFocus autoFocus={false} {...props}>
+            <FocusLock returnFocus autoFocus={autoFocus} {...props}>
               <StyledPopupBackdrop className="popupBackdrop" theme={theme} />
               <StyledPopupContainer
                 className="popupContainer"
