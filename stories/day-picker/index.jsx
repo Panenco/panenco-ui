@@ -124,7 +124,7 @@ export const DateInputStory = decorator('DateInput', DateInputDocs, DateInputRea
           }}
         >
           <Col xs='12' md='12' lg='12'>
-            <DateInput inputs={inputs2} onChange={handleChange2} value={value2} />
+            <DateInput disabled inputs={inputs2} onChange={handleChange2} value={value2} />
           </Col>
         </Row>
         <Row style={{ alignItems: 'flex-start', marginBottom: '1rem' }}>
