@@ -1,5 +1,4 @@
-import { format, isValid, isAfter as isAfterDateFns, isBefore as isBeforeDateFns } from 'date-fns';
-import dateFnsParse from 'date-fns/parse';
+import dateFnsParse, { format, isValid, isAfter as isAfterDateFns, isBefore as isBeforeDateFns } from 'date-fns';
 
 interface DateUtilsInterface {
   date(value?: any): Date | null;
@@ -14,15 +13,11 @@ interface DateUtilsInterface {
 
   isBefore(value: Date, comparing: Date): boolean;
 
-  getDate(value: any, format: string): string;
+  getDate(value: any, dateFormat: string): string;
 }
 
 class DateUtils implements DateUtilsInterface {
   public date = (value?: any): Date | null => {
-    if (typeof value === 'undefined') {
-      return new Date();
-    }
-
     if (value === null) {
       return null;
     }
@@ -62,9 +57,9 @@ class DateUtils implements DateUtilsInterface {
       return '';
     }
 
-    return this.isValid(date) ?
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      this.formatByString(date!, inputFormat)
+    return this.isValid(date)
+      ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        this.formatByString(date!, inputFormat)
       : '';
   };
 }
