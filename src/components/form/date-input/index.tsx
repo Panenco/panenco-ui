@@ -37,7 +37,7 @@ export interface DateInputProps extends React.InputHTMLAttributes<HTMLTextAreaEl
 
 export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
   (
-    { inputs, divider, wrapperProps, value, onChange, minDate, maxDate, className }: DateInputProps,
+    { inputs, disabled, divider, wrapperProps, value, onChange, minDate, maxDate, className }: DateInputProps,
     ref,
   ): JSX.Element => {
     const theme = useTheme();
@@ -134,6 +134,7 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
                 onChange={(e): void => {
                   handleChange(e, index, input.type);
                 }}
+                disabled={disabled}
                 inputRef={inputToRef[index]}
                 title={input.title}
                 style={{ width: `${inputWidth}px` }}
