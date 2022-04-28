@@ -36,7 +36,10 @@ export interface DateInputProps extends React.InputHTMLAttributes<HTMLTextAreaEl
 }
 
 export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
-  ({ inputs, divider, wrapperProps, value, onChange, minDate, maxDate }: DateInputProps, ref): JSX.Element => {
+  (
+    { inputs, divider, wrapperProps, value, onChange, minDate, maxDate, className }: DateInputProps,
+    ref,
+  ): JSX.Element => {
     const theme = useTheme();
     const { mode } = useMode();
 
@@ -113,7 +116,7 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
 
     return (
       <StyledDayPicker
-        className={cx('dateInput', !isValid && 'error')}
+        className={cx('dateInput', !isValid && 'error', className)}
         theme={theme}
         mode={mode}
         ref={ref}
