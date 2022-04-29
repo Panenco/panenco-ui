@@ -41,8 +41,8 @@ export default decorator('DayPicker', DayPickerDocs, README).add('DayPicker', ()
             title="bottom-end position"
             subTitle="With time picker"
             isTimePicker
-            value={ value }
-            onChange={ handleChange }
+            value={value}
+            onChange={handleChange}
             format='MM/dd/yyyy HH:mm'
             placeholder='mm/dd/yy 00:00'
             position="bottom-end"
