@@ -42,6 +42,7 @@ export default decorator('Wizard', WizardTrackDocs, README).add('Wizard componen
         <Col xs="12">
           <p style={{ marginBottom: 6 }}><Text>{`currentStepIndex={3}`}</Text></p>
           <WizardTrack stepsMeta={steps} currentStepIndex={3} />
+        </Col>
         <Col xs="4" md="8" lg="12">
           <WizardTrack />
         </Col>
