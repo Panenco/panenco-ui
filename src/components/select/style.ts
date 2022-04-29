@@ -3,7 +3,7 @@ import { styled } from 'linaria/react';
 import { transparentize } from 'polished';
 import { weights } from 'styles';
 
-const additionalStyles = (element: string, styles, ...arg): any => (styles?.[element] ? styles[element](...arg) : {});
+export const additionalStyles = (element: string, styles, ...arg): any => (styles?.[element] ? styles[element](...arg) : {});
 
 export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles?: any): any => ({
   indicatorSeparator: (provided, state): any => ({
@@ -18,7 +18,7 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
   placeholder: (provided, state): any => {
     return {
       ...provided,
-      color: mode === ThemeMode.dark ? theme.colors.light : theme.colors.secondary,
+      color: mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.base700,
       fontWeight: weights.regular,
       whiteSpace: 'nowrap',
       overflow: 'hidden',
@@ -53,27 +53,27 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
         return theme.colors.error;
       }
       if (mode === ThemeMode.dark) {
-        return menuIsOpen ? theme.colors.light : theme.colors.secondary;
+        return menuIsOpen ? theme.colors.base100 : theme.colors.base700;
       }
-      return menuIsOpen ? theme.colors.accent : theme.colors.secondary;
+      return menuIsOpen ? theme.colors.primary500 : theme.colors.base700;
     };
     const isHoverBorderColor = (): string => {
       if (error) {
         return theme.colors.error;
       }
-      return mode === ThemeMode.dark ? theme.colors.light : theme.colors.accent;
+      return mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.primary500;
     };
 
     return {
       ...provided,
       backgroundColor: `${((): string => {
         if (state.isDisabled) {
-          return mode === ThemeMode.dark ? transparentize(0.4, theme.colors.secondary) : theme.colors.border;
+          return mode === ThemeMode.dark ? transparentize(0.4, theme.colors.base700) : theme.colors.base400;
         }
-        return mode === ThemeMode.dark ? theme.colors.dark : theme.colors.light;
+        return mode === ThemeMode.dark ? theme.colors.base900 : theme.colors.base100;
       })()}`,
-      boxShadow: !menuIsOpen && isFocused && `0px 0px 0px 2px ${theme.colors.outline}`,
-      border: `${error ? '2px' : '1px'} solid ${isBorderColor()}`,
+      boxShadow: !menuIsOpen && isFocused && `0px 0px 0px 2px ${theme.colors.base900}`,
+      border: `1px solid ${isBorderColor()}`,
       borderBottomColor: menuIsOpen && 'transparent',
       // borderBottomColor: menuIsOpen && 'transparent',
       borderBottomLeftRadius: menuIsOpen && 0,
@@ -93,17 +93,16 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
     } = state;
     const isBorder = (): string => {
       if (error) {
-        return `2px solid ${theme.colors.error}`;
+        return `1px solid ${theme.colors.error}`;
       }
-      return `1px solid ${mode === ThemeMode.dark ? theme.colors.light : theme.colors.accent}`;
+      return `1px solid ${mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.primary500}`;
     };
 
     return {
       ...provided,
-      backgroundColor: mode === ThemeMode.dark ? theme.colors.dark : theme.colors.light,
+      backgroundColor: mode === ThemeMode.dark ? theme.colors.base900 : theme.colors.base100,
       paddingTop: '5px',
       paddingBottom: '5px',
-      marginTop: '-2px !important', // TODO
       margin: 0,
       boxShadow: menuIsOpen && 'none',
       border: `${isBorder()}`,
@@ -135,26 +134,26 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
 
     const isOptionColor = (): string => {
       if (state.isDisabled) {
-        return theme.colors.secondary;
+        return theme.colors.base700;
       }
       if (mode === ThemeMode.light) {
-        return isChoosedOption ? theme.colors.accent : theme.colors.primary;
+        return isChoosedOption ? theme.colors.primary500 : theme.colors.base900;
       }
-      return isFocused ? theme.colors.primary : theme.colors.light;
+      return isFocused ? theme.colors.base900 : theme.colors.base100;
     };
     const isHoverColor = (): string => {
       if (mode === ThemeMode.light) {
-        return isChoosedOption ? theme.colors.hover : theme.colors.primary;
+        return isChoosedOption ? theme.colors.primary700 : theme.colors.base900;
       }
-      return theme.colors.primary;
+      return theme.colors.base900;
     };
 
     const isBackgroundColor = (): string => {
       if (state.isDisabled) {
-        return theme.colors.border;
+        return theme.colors.base400;
       }
       if (isFocused) {
-        return mode === ThemeMode.dark ? theme.colors.border : theme.colors.highlight;
+        return mode === ThemeMode.dark ? theme.colors.base400 : theme.colors.primary200;
       }
       return 'inherit';
     };
@@ -169,11 +168,11 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
       position: 'relative',
       pointerEvents: state.isDisabled ? 'none' : 'auto',
       '&:hover': {
-        backgroundColor: mode === ThemeMode.dark ? theme.colors.border : theme.colors.highlight,
+        backgroundColor: mode === ThemeMode.dark ? theme.colors.base400 : theme.colors.primary200,
         color: `${isHoverColor()}`,
         cursor: 'pointer',
         '& .addNewOption': {
-          color: mode === ThemeMode.dark ? theme.colors.primary : theme.colors.accent,
+          color: mode === ThemeMode.dark ? theme.colors.base900 : theme.colors.primary500,
         },
       },
       '& .icon': {
@@ -185,7 +184,7 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
       },
       '& .addNewOption': {
         paddingLeft: '5px',
-        color: mode === ThemeMode.dark ? theme.colors.light : theme.colors.accent,
+        color: mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.primary500,
       },
       ...additionalStyles('option', styles, provided, state),
     };
@@ -194,10 +193,10 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
     const { selectProps } = state;
     return {
       ...provided,
-      color: theme.colors.secondary,
+      color: theme.colors.base700,
       transform: selectProps.menuIsOpen && 'rotate(180deg)',
       '&:hover': {
-        color: theme.colors.secondary,
+        color: theme.colors.base700,
         cursor: 'pointer',
       },
       ...additionalStyles('dropdownIndicator', styles, provided, state),
@@ -216,12 +215,12 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
   }),
   singleValue: (provided: any, state: any): any => ({
     ...provided,
-    color: mode === ThemeMode.dark ? theme.colors.light : theme.colors.primary,
+    color: mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.base900,
     ...additionalStyles('singleValue', styles, provided, state),
   }),
   input: (provided: any, state): any => ({
     ...provided,
-    color: mode === ThemeMode.dark ? theme.colors.light : theme.colors.primary,
+    color: mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.base900,
     ...additionalStyles('input', styles, provided, state),
   }),
   valueContainer: (provided: any, state: any) => {
@@ -269,7 +268,7 @@ export const StyledSelectWrapper = styled.div<{
 
   .title {
     color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
+      props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
 
     display: block;
   }
@@ -282,7 +281,7 @@ export const StyledSelectWrapper = styled.div<{
   .errorTitle {
     bottom: -16px;
     color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.error};
+      props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.error};
     display: block;
     height: 16px;
     position: absolute;

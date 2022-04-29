@@ -1,4 +1,12 @@
-import { ButtonIcon, Col, Icon, Row, StepperInput, TextArea, TextInput } from 'components';
+import {
+  ButtonIcon,
+  Col,
+  Icon,
+  Row,
+  StepperInput,
+  TextArea,
+  TextInput,
+} from 'components';
 import StepperDocs from 'components/form/stepper/stepper-DOCS.md';
 import StepperReadme from 'components/form/stepper/stepper-README.md';
 import TextAreaDocs from 'components/form/text-area/text-area-DOCS.md';
@@ -12,31 +20,89 @@ import { WrappedComponent } from '../helpers/wrapped';
 
 export default decorator('Forms', TextInputDocs, TextInputReadme).add('TextInput', () => (
   <WrappedComponent>
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <Row style={{ justifyContent: 'center' }}>
-        <Col s="2" m="4" l="6">
-          <TextInput placeholder="Icon before" iconBefore={Icon.icons.mapPin} maxLength={10} />
+    <div
+      style={ { display: 'flex', flexDirection: 'column', marginTop: '1rem' } }>
+      <Row spacing='3,2'
+           style={ { justifyContent: 'center', marginBottom: '1rem' } }>
+        <Col
+          xs='6'
+          sm='6'
+          lg='6'
+          style={ {
+            minWidth: '200px',
+          } }
+        >
+          <TextInput placeholder='Icon before' iconBefore={ Icon.icons.mapPin }
+                     maxLength={ 10 } />
         </Col>
-        <Col s="2" m="4" l="6">
-          <TextInput placeholder="Icon after" iconAfter={<Icon icon={Icon.icons.closeEye} />} />
+        <Col
+          xs='6'
+          sm='6'
+          lg='6'
+          style={ {
+            minWidth: '200px',
+          } }
+        >
+          <TextInput placeholder='Icon after'
+                     iconAfter={ <Icon icon={ Icon.icons.closeEye } /> } />
         </Col>
       </Row>
 
-      <Row style={{ justifyContent: 'center' }}>
-        <Col s="2" m="4" l="6">
-          <TextInput iconBefore={<ButtonIcon icon={Icon.icons.home} />} placeholder="Button icon" />
+      <Row spacing='3,2'
+           style={ { justifyContent: 'center', marginBottom: '1rem' } }>
+        <Col
+          xs='6'
+          sm='6'
+          lg='6'
+          style={ {
+            minWidth: '200px',
+          } }
+        >
+          <TextInput iconBefore={ <ButtonIcon icon={ Icon.icons.home } /> }
+                     placeholder='Button icon' />
         </Col>
-        <Col s="2" m="4" l="6">
-          <TextInput disabled placeholder="Disabled" />
+        <Col
+          xs='6'
+          sm='6'
+          lg='6'
+          style={ {
+            minWidth: '200px',
+          } }
+        >
+          <TextInput disabled placeholder='Disabled' />
         </Col>
       </Row>
 
-      <Row style={{ justifyContent: 'center' }}>
-        <Col s="2" m="4" l="6">
-          <TextInput title="Title" subTitle="Subtitle" placeholder="Error" maxLength={100} />
+      <Row spacing='3,2'
+           style={ { justifyContent: 'center', marginBottom: '1rem' } }>
+        <Col
+          xs='6'
+          sm='6'
+          lg='6'
+          style={ {
+            minWidth: '200px',
+          } }
+        >
+          <TextInput
+            title='Title'
+            subtitle='Subtitle'
+            placeholder='Error' maxLength={ 100 } />
         </Col>
-        <Col s="2" m="4" l="6">
-          <TextInput title="Title" subTitle="Subtitle" error="Error label" placeholder="Error" maxLength={100} />
+        <Col
+          xs='6'
+          sm='6'
+          lg='6'
+          style={ {
+            minWidth: '200px',
+          } }
+        >
+          <TextInput
+            title='Title'
+            subTitle='Subtitle'
+            rightSubTitle={ <a className='link' href='/'>Anchor</a> }
+            error='Error label'
+            placeholder='Error'
+            maxLength={ 100 } />
         </Col>
       </Row>
     </div>
@@ -46,22 +112,60 @@ export default decorator('Forms', TextInputDocs, TextInputReadme).add('TextInput
 export const Textarea = decorator('Forms', TextAreaDocs, TextAreaReadme).add('TextArea', () => {
   return (
     <WrappedComponent>
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <Row style={{ alignItems: 'flex-start' }}>
-          <Col s="2" m="4" l="6">
-            <TextArea title="Title" subTitle="Subtitle" placeholder="Placeholder" />
+      <div
+        style={ {
+          display: 'flex',
+          flexDirection: 'column',
+          marginTop: '1.5rem',
+        } }
+      >
+        <Row spacing='3,2'
+             style={ { alignItems: 'flex-start', marginBottom: '1rem' } }>
+          <Col
+            xs='12'
+            sm='6'
+            lg='6'
+            style={ {
+              minWidth: '200px',
+            } }
+          >
+            <TextArea title='Title' subTitle='Subtitle'
+                      placeholder='Placeholder' />
           </Col>
-          <Col s="2" m="4" l="6">
-            <TextArea title="Title" subTitle="Subtitle" placeholder="Placeholder" maxLength="10" />
+          <Col
+            xs='12'
+            sm='6'
+            lg='6'
+            style={ {
+              minWidth: '200px',
+            } }
+          >
+            <TextArea title='Title' subTitle='Subtitle'
+                      placeholder='Placeholder' maxLength='10' />
           </Col>
         </Row>
 
-        <Row style={{ alignItems: 'flex-start' }}>
-          <Col s="2" m="4" l="6">
-            <TextArea disabled placeholder="Disabled" maxLength="10" />
+        <Row spacing='3,2'
+             style={ { alignItems: 'flex-start', marginBottom: '1rem' } }>
+          <Col
+            xs='12'
+            sm='6'
+            lg='6'
+            style={ {
+              minWidth: '200px',
+            } }
+          >
+            <TextArea disabled placeholder='Disabled' maxLength='10' />
           </Col>
-          <Col s="2" m="4" l="6">
-            <TextArea placeholder="Error" error="Error label" maxLength="50" />
+          <Col
+            xs='12'
+            sm='6'
+            lg='6'
+            style={ {
+              minWidth: '200px',
+            } }
+          >
+            <TextArea placeholder='Error' error='Error label' maxLength='50' />
           </Col>
         </Row>
       </div>
@@ -72,36 +176,92 @@ export const Textarea = decorator('Forms', TextAreaDocs, TextAreaReadme).add('Te
 export const StepperComponent = decorator('Forms', StepperDocs, StepperReadme).add('Stepper', () => {
   return (
     <WrappedComponent>
-      <Row style={{ justifyContent: 'center' }}>
-        <Col s="3" m="3" l="3">
-          <StepperInput title="Stepper with error" error="Error" />
-        </Col>
-      </Row>
-      <Row style={{ justifyContent: 'center' }}>
-        <Col s="3" m="3" l="3">
-          <StepperInput minValue={0} maxValue={5} title="Min and Max" />
-        </Col>
-      </Row>
-      <Row style={{ justifyContent: 'center' }}>
-        <Col s="3" m="3" l="3">
-          <StepperInput minValue={0} title="Min" />
-        </Col>
-      </Row>
-      <Row style={{ justifyContent: 'center' }}>
-        <Col s="3" m="3" l="3">
-          <StepperInput maxValue={5} title="Max" />
-        </Col>
-      </Row>
-      <Row style={{ justifyContent: 'center' }}>
-        <Col s="3" m="3" l="3">
-          <StepperInput title="No" />
-        </Col>
-      </Row>
-      <Row style={{ justifyContent: 'center' }}>
-        <Col s="3" m="3" l="3">
-          <StepperInput disabled title="No" />
-        </Col>
-      </Row>
+      <div
+        style={ {
+          display: 'flex',
+          flexDirection: 'column',
+          marginTop: '1.5rem',
+        } }
+      >
+        <Row spacing='3,2' style={ { marginBottom: '1rem' } }>
+          <Col style={ { display: 'flex', justifyContent: 'center' } }>
+            <StepperInput
+              inputProps={ {
+                style: {
+                  minWidth: '63px',
+                },
+              } }
+              title='Stepper with error'
+              error='Error'
+            />
+          </Col>
+        </Row>
+        <Row spacing='3,2' style={ { marginBottom: '1rem' } }>
+          <Col style={ { display: 'flex', justifyContent: 'center' } }>
+            <StepperInput
+              inputProps={ {
+                style: {
+                  minWidth: '63px',
+                },
+              } }
+              minValue={ 0 }
+              maxValue={ 5 }
+              title='Min and Max'
+            />
+          </Col>
+        </Row>
+        <Row spacing='3,2' style={ { marginBottom: '1rem' } }>
+          <Col style={ { display: 'flex', justifyContent: 'center' } }>
+            <StepperInput
+              minValue={ 0 }
+              title='Min'
+              inputProps={ {
+                style: {
+                  minWidth: '63px',
+                },
+              } }
+            />
+          </Col>
+        </Row>
+        <Row spacing='3,2' style={ { marginBottom: '1rem' } }>
+          <Col style={ { display: 'flex', justifyContent: 'center' } }>
+            <StepperInput
+              maxValue={ 5 }
+              title='Max'
+              inputProps={ {
+                style: {
+                  minWidth: '63px',
+                },
+              } }
+            />
+          </Col>
+        </Row>
+        <Row spacing='3,2' style={ { marginBottom: '1rem' } }>
+          <Col style={ { display: 'flex', justifyContent: 'center' } }>
+            <StepperInput
+              title='No'
+              inputProps={ {
+                style: {
+                  minWidth: '63px',
+                },
+              } }
+            />
+          </Col>
+        </Row>
+        <Row spacing='3,2' style={ { marginBottom: '1rem' } }>
+          <Col style={ { display: 'flex', justifyContent: 'center' } }>
+            <StepperInput
+              disabled
+              title='No'
+              inputProps={ {
+                style: {
+                  minWidth: '63px',
+                },
+              } }
+            />
+          </Col>
+        </Row>
+      </div>
     </WrappedComponent>
   );
 });

@@ -1,8 +1,9 @@
-import * as React from 'react';
 import cx from 'classnames';
 import { Text } from 'components';
-import { useTheme, useMode } from 'utils/hooks';
+import * as React from 'react';
 import { idGenerator } from 'utils/helpers';
+import { useMode, useTheme } from 'utils/hooks';
+
 import { InputPropsType } from '../../utils/types';
 import { StyledRadio } from './style';
 
@@ -27,7 +28,7 @@ export const Radio = React.forwardRef<HTMLLabelElement, RadioButtonProps>(
       className,
       checked,
       value,
-      inputProps,
+      inputProps = {},
       wrapperProps,
       disabled,
       error,
@@ -40,21 +41,22 @@ export const Radio = React.forwardRef<HTMLLabelElement, RadioButtonProps>(
     const { mode } = useMode();
     const uniqueID = idGenerator();
     const defaultId = id || uniqueID;
+    const { className: inputClassName, ...otherInputProps } = inputProps;
 
     return (
       <StyledRadio theme={theme} mode={mode} ref={ref} error={error} pointColor={pointColor} {...wrapperProps}>
         <label className={cx('label', disabled && 'labelDisabled', className)} htmlFor={id || defaultId}>
           <input
             type="radio"
-            className={cx('radiobox', className)}
+            className={cx('radiobox', inputClassName)}
             id={id || defaultId}
             disabled={disabled}
             checked={checked || value === id}
             value={id || value || defaultId}
-            {...inputProps}
+            {...otherInputProps}
             {...props}
           />
-          <div className="container">
+          <div className={cx('container', error && 'error')}>
             <div className="point" />
           </div>
           <Text weight={theme.typography.weights.regular} size={theme.typography.sizes.m} className="labelTitle">

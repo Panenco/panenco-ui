@@ -16,11 +16,11 @@ export const StyledTextArea = styled.div<{
 
   .title {
     color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
+      props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
   }
 
   .subtitle {
-    color: ${(props: any): string => props.theme.colors.secondary};
+    color: ${(props: any): string => props.theme.colors.base700};
     margin-bottom: 4px;
   }
 
@@ -41,52 +41,41 @@ export const StyledTextArea = styled.div<{
       min-height: 86px;
       padding: 6px 12px;
       color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
-      border: 1px solid ${(props: any): string => props.theme.colors.secondary};
+        props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
+      border: 1px solid ${(props: any): string => props.theme.colors.base700};
       border-radius: 4px;
       font-size: ${(props: any): string => props.theme.typography.sizes.m.textSize};
       background-color: transparent;
       &::placeholder {
-        color: ${(props: any): string => props.theme.colors.secondary};
+        color: ${(props: any): string => props.theme.colors.base700};
       }
 
       &Error {
-        border: 2px solid ${(props: any): string => props.theme.colors.error};
+        border-color: ${(props: any): string => props.theme.colors.error};
 
         color: ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.primary};
-
-        .input {
-          margin: -2px;
-        }
-
-        &:hover {
-          padding: 7px 13px;
-        }
+          props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
       }
 
       &Disabled {
         pointer-events: none;
-        /* border-color: ${(props: any): string => props.theme.colors.border}; */
+        /* border-color: ${(props: any): string => props.theme.colors.base400}; */
         background-color: ${(props: any): string =>
-          props.mode === ThemeMode.dark
-            ? transparentize(0.4, props.theme.colors.secondary)
-            : props.theme.colors.border};
+          props.mode === ThemeMode.dark ? transparentize(0.4, props.theme.colors.base700) : props.theme.colors.base400};
         opacity: 0.4;
       }
 
       &:hover {
-        border: 1px solid
-          ${(props: any): string =>
-            props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent};
+        border-color: ${(props: any): string =>
+          props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500};
         color: ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.secondary : props.theme.colors.primary};
+          props.mode === ThemeMode.dark ? props.theme.colors.base700 : props.theme.colors.base900};
       }
 
       &:focus {
+        box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.base900};
         outline: 0;
-        border-color: transparent;
-        box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.outline};
+        z-index: 10;
       }
     }
 
@@ -99,14 +88,9 @@ export const StyledTextArea = styled.div<{
       width: 100%;
 
       .counter {
-        color: ${(props: any): string => props.theme.colors.secondary};
-        line-height: 1.3;
       }
 
       .errorLabel {
-        color: ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.error};
-        line-height: 1.3;
       }
 
       .hidden {

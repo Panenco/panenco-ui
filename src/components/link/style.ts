@@ -7,16 +7,16 @@ export const StyledLink = styled(Link)<{
   mode: ThemeMode;
   tabIndex?: number;
 }>`
-  color: ${(props: any): string => props.theme.colors.accent};
+  color: ${(props: any): string => props.theme.colors.primary500};
   padding: 3px;
   white-space: nowrap;
 
   &:hover {
-    border-bottom: 1px dashed ${(props: any): string => props.theme.colors.accent};
+    border-bottom: 1px dashed ${(props: any): string => props.theme.colors.primary500};
   }
 
   &:focus {
-    outline: 2px solid ${(props: any): string => props.theme.colors.outline};
+    outline: 2px solid ${(props: any): string => props.theme.colors.base900};
     border-bottom: 1px dashed transparent;
   }
 

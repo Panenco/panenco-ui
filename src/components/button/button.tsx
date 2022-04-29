@@ -3,12 +3,12 @@ import { Icon, Text } from 'components';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { useMode, useTheme } from 'utils/hooks';
+import { ButtonVariantType } from 'utils/types';
 
 import Spinner from './spinner';
 import { StyledButton } from './style';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  [key: string]: any;
   component?: React.ElementType;
   to?: string;
   iconClassName?: string;
@@ -16,10 +16,11 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   iconLeft?: any;
   iconRight?: any;
   color?: string;
-  variant?: 'default' | 'transparent';
+  isLoading?: boolean;
+  variant?: ButtonVariantType;
 }
 
-export const Button = React.forwardRef<any, ButtonProps>(
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       children,
@@ -33,7 +34,7 @@ export const Button = React.forwardRef<any, ButtonProps>(
       iconLeft,
       iconRight,
       tabIndex,
-      variant = 'default',
+      variant = 'text',
       color,
       isLoading,
       ...props
@@ -50,7 +51,7 @@ export const Button = React.forwardRef<any, ButtonProps>(
         as={component === 'link' ? Link : component}
         type={type}
         disabled={isDisabled}
-        className={cx(iconLeft && 'iconLeft', iconRight && 'iconRight', className)}
+        className={cx(iconLeft && 'iconLeft', iconRight && 'iconRight', isDisabled && 'isDisabled', className)}
         theme={theme}
         mode={mode}
         ref={ref}
@@ -64,7 +65,7 @@ export const Button = React.forwardRef<any, ButtonProps>(
           {((icon && iconLeft) || iconLeft) && (
             <Icon icon={icon || iconLeft} className={cx('buttonIcon', iconLeft && 'buttonIconLeft', iconClassName)} />
           )}
-          <Text className="buttonTitle" size={theme.typography.sizes.m}>
+          <Text className='buttonTitle' size={theme.typography.sizes.m}>
             {children}
           </Text>
           {((icon && !iconLeft) || iconRight) && (
@@ -80,14 +81,14 @@ export const Button = React.forwardRef<any, ButtonProps>(
   },
 );
 
-export const PrimaryButton = React.forwardRef(
+export const PrimaryButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, iconClassName, ...props }: ButtonProps, ref): JSX.Element => (
     <Button ref={ref} className={cx('buttonPrimary', className)} iconClassName={iconClassName} {...props} />
   ),
 );
 
-export const SecondaryButton = React.forwardRef(
-  ({ className, iconClassName, ...props }: ButtonProps, ref): JSX.Element => {
-    return <Button ref={ref} className={cx('buttonSecondary', className)} iconClassName={iconClassName} {...props} />;
-  },
+export const SecondaryButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, iconClassName, ...props }: ButtonProps, ref): JSX.Element => (
+    <Button ref={ref} className={cx('buttonSecondary', className)} iconClassName={iconClassName} {...props} />
+  ),
 );

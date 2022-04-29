@@ -17,47 +17,48 @@ export const StyledChip = styled.button<{
   border-radius: 4px;
   background-color: ${(props: any): string => {
     if (props.mode === ThemeMode.dark) {
-      return props.checked ? props.theme.colors.light : props.theme.colors.dark;
+      return props.checked ? props.theme.colors.base100 : props.theme.colors.base900;
     }
 
-    return props.checked ? props.theme.colors.accent : props.theme.colors.light;
+    return props.checked ? props.theme.colors.primary500 : props.theme.colors.base100;
   }};
   border: 1px solid
-    ${(props: any): string => (props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.accent)};
+    ${(props: any): string =>
+      props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500};
   color: ${(props: any): string => {
     if (props.mode === ThemeMode.dark) {
-      return props.checked ? props.theme.colors.primary : props.theme.colors.light;
+      return props.checked ? props.theme.colors.base900 : props.theme.colors.base100;
     }
-    return props.checked ? props.theme.colors.light : props.theme.colors.accent;
+    return props.checked ? props.theme.colors.base100 : props.theme.colors.primary500;
   }};
 
   &:hover,
   &:active {
     background-color: ${(props: any): string => {
       if (props.mode === ThemeMode.dark) {
-        return props.checked ? props.theme.colors.highlight : props.theme.colors.dark;
+        return props.checked ? props.theme.colors.primary200 : props.theme.colors.base900;
       }
-      return props.checked ? props.theme.colors.hover : props.theme.colors.highlight;
+      return props.checked ? props.theme.colors.primary700 : props.theme.colors.primary200;
     }};
     border: 1px solid
       ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.highlight : props.theme.colors.hover};
+        props.mode === ThemeMode.dark ? props.theme.colors.primary200 : props.theme.colors.primary700};
     .labelTitle {
       color: ${(props: any): string => {
         if (props.mode === ThemeMode.dark) {
-          return props.checked ? props.theme.colors.primary : props.theme.colors.light;
+          return props.checked ? props.theme.colors.base900 : props.theme.colors.base100;
         }
-        return props.checked ? props.theme.colors.light : props.theme.colors.hover;
+        return props.checked ? props.theme.colors.base100 : props.theme.colors.primary700;
       }};
     }
   }
 
   &:focus {
-    box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.outline};
+    box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.base900};
   }
 
   &:focus-visible {
-    box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.outline};
+    box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.base900};
   }
 
   .labelTitle {

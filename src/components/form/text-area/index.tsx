@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { Text } from 'components';
 import { useTheme, useMode } from 'utils/hooks';
 import { useCombinedRefs } from 'utils/hooks/combinedrefs';
-import { InputComponent, WrapperProps } from '../../../utils/types';
+import { InputComponent, ThemeMode, WrapperProps } from '../../../utils/types';
 import { StyledTextArea } from './style';
 
 interface InputPropsType extends React.InputHTMLAttributes<HTMLTextAreaElement> {
@@ -42,7 +42,7 @@ export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
       useCombinedrefs.current = textareaRef.current;
     });
 
-    const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>): void => {
+    const recalculateHeight = (newValue?: string): void => {
       const textareaElement = useCombinedrefs?.current;
       if (textareaElement) {
         textareaElement.style.height = 'inherit';
@@ -50,8 +50,19 @@ export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
         const height = textareaElement.scrollHeight + parseInt(computed.getPropertyValue('border-width'), 10) * 2;
 
         textareaElement.style.height = `${height}px`;
-        setCounter(event.target.value.length);
+
+        if (newValue?.length) {
+          setCounter(newValue.length);
+        }
       }
+    };
+
+    React.useEffect(() => {
+      recalculateHeight();
+    }, []);
+
+    const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>): void => {
+      recalculateHeight(event.target.value);
 
       if (onChange) onChange(event);
     };
@@ -102,11 +113,23 @@ export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
 
             {error || maxLength ? (
               <div className="counterWrapper">
-                <span className={error ? 'errorLabel' : 'hidden'}>{error}</span>
+                <Text
+                  component="span"
+                  size={theme.typography.sizes.xs}
+                  color={mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.error}
+                  className={error ? 'errorLabel' : 'hidden'}
+                >
+                  {error}
+                </Text>
                 {maxLength && (
-                  <span className="counter">
+                  <Text
+                    component="span"
+                    size={theme.typography.sizes.xs}
+                    color={theme.colors.base700}
+                    className="counter"
+                  >
                     {counter}/{maxLength}
-                  </span>
+                  </Text>
                 )}
               </div>
             ) : null}

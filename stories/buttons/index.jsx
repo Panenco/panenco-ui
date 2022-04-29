@@ -7,64 +7,113 @@ import LinkDocs from 'components/button/link-DOCS.md';
 import LinkReadme from 'components/button/link-README.md';
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-
+import s from './styles.scss';
 import { decorator } from '../../utils/decorator';
 import { WrappedComponent } from '../helpers/wrapped';
 
+const buttonCellStyles = {
+  minWidth: '200px',
+};
+
+const buttonStyles = {
+  minWidth: '150px',
+};
 export default decorator('Button', ButtonDocs, ButtonReadme).add('Button component', () => {
   return (
     <WrappedComponent>
-      <div style={{ display: 'flex', width: '100%' }}>
-        <div style={{ width: '50%' }}>
-          <Row style={{ justifyContent: 'center' }}>
-            <Col m="8" l="6">
-              <Button>Button</Button>
-              <Button disabled>Button disabled</Button>
-            </Col>
-          </Row>
-          <Row style={{ justifyContent: 'center' }}>
-            <Col s="2" m="8" l="6">
-              <PrimaryButton>Primary Button</PrimaryButton>
-              <PrimaryButton isLoading>Primary Button</PrimaryButton>
-              <PrimaryButton isLoading>Primary Button</PrimaryButton>
-              <PrimaryButton disabled>Primary disabled</PrimaryButton>
-            </Col>
-          </Row>
-          <Row style={{ justifyContent: 'center' }}>
-            <Col s="2" m="8" l="6">
-              <SecondaryButton>Secondary Button</SecondaryButton>
-              <SecondaryButton disabled>Secondary Disabled</SecondaryButton>
-            </Col>
-          </Row>
-        </div>
-        <div style={{ width: '50%' }}>
-          <Row style={{ justifyContent: 'center' }}>
-            <Col s="2" m="8" l="6">
-              <Button iconRight icon={Icon.icons.chevronRight}>
-                Icon Right
+      <div
+        style={{
+          display: 'flex',
+          width: '100%',
+          marginTop: '10px',
+          flexDirection: 'column',
+        }}
+      >
+        <Row style={{ justifyContent: 'center', flexGrow: '1' }}>
+          <Col xs="6" md="6" lg="6" style={buttonCellStyles}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Button style={buttonStyles} className="mb-1">
+                Text
               </Button>
-              <Button iconLeft={Icon.icons.chevronLeft} disabled>
-                Icon Left
+            </div>
+          </Col>
+          <Col xs="6" md="6" lg="6" style={buttonCellStyles}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Button style={buttonStyles} className="mb-1" isLoading>
+                Text
               </Button>
-            </Col>
-          </Row>
-          <Row style={{ justifyContent: 'center' }}>
-            <Col s="2" m="8" l="6">
-              <PrimaryButton iconRight={Icon.icons.chevronRight}>Icon Right</PrimaryButton>
-              <PrimaryButton isLoading iconRight={Icon.icons.chevronRight} disabled>
-                Icon Right
-              </PrimaryButton>
-            </Col>
-          </Row>
-          <Row style={{ justifyContent: 'center' }}>
-            <Col s="2" m="8" l="6">
-              <SecondaryButton iconLeft={Icon.icons.chevronLeft}>Icon Left</SecondaryButton>
-              <SecondaryButton iconLeft={Icon.icons.chevronLeft} disabled>
-                Icon Left
-              </SecondaryButton>
-            </Col>
-          </Row>
-        </div>
+            </div>
+          </Col>
+        </Row>
+        <Row style={{ justifyContent: 'center', flexGrow: '1' }}>
+          <Col xs="6" md="6" lg="6" style={buttonCellStyles}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Button style={buttonStyles} className="mb-1" variant="contained">
+                Contained
+              </Button>
+            </div>
+          </Col>
+          <Col xs="6" md="6" lg="6" style={buttonCellStyles}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Button style={buttonStyles} className="mb-1" variant="contained" isLoading>
+                Contained
+              </Button>
+            </div>
+          </Col>
+        </Row>
+        <Row style={{ justifyContent: 'center', flexGrow: '1' }}>
+          <Col xs="6" md="6" lg="6" style={buttonCellStyles}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Button style={buttonStyles} className="mb-1" variant="outlined">
+                Outlined
+              </Button>
+            </div>
+          </Col>
+
+          <Col xs="6" md="6" lg="6" style={buttonCellStyles}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Button style={buttonStyles} className="mb-1" variant="outlined" isLoading>
+                Outlined
+              </Button>
+            </div>
+          </Col>
+        </Row>
       </div>
     </WrappedComponent>
   );
@@ -75,30 +124,42 @@ export const LinkDecorator = decorator('Button', LinkDocs, LinkReadme).add('Link
     <BrowserRouter>
       <WrappedComponent>
         <Row style={{ justifyContent: 'center' }}>
-          <Col m="3" l="3">
-            <Button component="link">Link</Button>
-            <Button component="link" disabled>
+          <Col xs="4" md="4" lg="4" style={buttonCellStyles}>
+            <Button className="mb-1" component="link">
+              Link
+            </Button>
+          </Col>
+          <Col xs="4" md="4" lg="4" style={buttonCellStyles}>
+            <Button className="mb-1" component="link" disabled>
               Link disabled
             </Button>
-            <Button component="a" href="mailto:info@panenco.com?subject=Secret subject">
+          </Col>
+          <Col xs="4" md="4" lg="4" style={buttonCellStyles}>
+            <Button className="mb-1" component="a" href="mailto:info@panenco.com?subject=Secret subject">
               Link external
             </Button>
           </Col>
         </Row>
         <Row style={{ justifyContent: 'center' }}>
-          <Col m="3" l="3">
-            <PrimaryButton component="link" to="/">
+          <Col xs="6" md="6" lg="6" style={buttonCellStyles}>
+            <PrimaryButton className="mb-1" component="link" to="/">
               Primary Link
             </PrimaryButton>
-            <PrimaryButton component="link" disabled>
+          </Col>
+          <Col xs="6" md="6" lg="6" style={buttonCellStyles}>
+            <PrimaryButton className="mb-1" component="link" disabled>
               Primary Link disabled
             </PrimaryButton>
           </Col>
         </Row>
         <Row style={{ justifyContent: 'space-around' }}>
-          <Col m="3" l="3">
-            <SecondaryButton component="link">Link Button</SecondaryButton>
-            <SecondaryButton component="link" disabled>
+          <Col xs="6" md="6" lg="6" style={buttonCellStyles}>
+            <SecondaryButton className="mb-1" component="link">
+              Link Button
+            </SecondaryButton>
+          </Col>
+          <Col xs="6" md="6" lg="6" style={buttonCellStyles}>
+            <SecondaryButton className="mb-1" component="link" disabled>
               Link Disabled
             </SecondaryButton>
           </Col>
@@ -112,20 +173,65 @@ export const ButtonIcons = decorator('Button', ButtonIconDocs, ButtonIconReadme)
   return (
     <BrowserRouter>
       <WrappedComponent>
-        <Row style={{ justifyContent: 'center' }}>
-          <Col s="2" m="2" l="3">
-            <ButtonIcon icon={Icon.icons.trash}>Button Icon</ButtonIcon>
+        <Row className="mt-1 justify-center">
+          <Col xs="6" md="6" lg="6" className="mb-1" style={buttonCellStyles}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <ButtonIcon icon={Icon.icons.trash}>Button Icon</ButtonIcon>
+            </div>
           </Col>
-          <Col s="2" m="2" l="3">
-            <ButtonIcon iconLeft={Icon.icons.trash}>Button Icon Left</ButtonIcon>
+          <Col xs="6" md="6" lg="6" className="mb-1" style={buttonCellStyles}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <ButtonIcon iconLeft={Icon.icons.trash}>Button Icon Left</ButtonIcon>
+            </div>
           </Col>
         </Row>
-        <Row style={{ justifyContent: 'center' }}>
-          <Col s="2" m="2" l="3">
-            <ButtonIcon icon={Icon.icons.lock}>Button Icon</ButtonIcon>
+        <Row className="mb-1 justify-center">
+          <Col xs="6" md="6" lg="6" className="mb-1" style={buttonCellStyles}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <ButtonIcon icon={Icon.icons.lock}>Button Icon</ButtonIcon>
+            </div>
           </Col>
-          <Col s="2" m="2" l="3">
-            <ButtonIcon iconLeft={Icon.icons.lock}>Button Icon Left</ButtonIcon>
+          <Col xs="6" md="6" lg="6" className="mb-1" style={buttonCellStyles}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <ButtonIcon iconLeft={Icon.icons.lock}>Button Icon Left</ButtonIcon>
+            </div>
+          </Col>
+          <Col xs="6" md="6" lg="6" className="mb-1" style={buttonCellStyles}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <ButtonIcon icon={Icon.icons.logOut} component="a" href="https://panenco.com/" target="_blank">
+                Button Icon Link
+              </ButtonIcon>
+            </div>
           </Col>
         </Row>
       </WrappedComponent>

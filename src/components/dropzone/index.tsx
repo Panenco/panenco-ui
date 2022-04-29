@@ -1,9 +1,10 @@
-import * as React from 'react';
 import cx from 'classnames';
-import { useDropzone, DropzoneOptions } from 'react-dropzone';
-import { useTheme, useMode } from 'utils/hooks';
-import { Text, Icon, Loader } from 'components';
-import { ThemeMode, WrapperProps, InputPropsType } from '../../utils/types';
+import { Icon, Loader, Text } from 'components';
+import * as React from 'react';
+import { DropzoneOptions, useDropzone } from 'react-dropzone';
+import { useMode, useTheme } from 'utils/hooks';
+
+import { InputPropsType, ThemeMode, WrapperProps } from '../../utils/types';
 import { StyledDropzone } from './style';
 
 export interface DropzoneProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -18,6 +19,7 @@ export interface DropzoneProps extends React.HTMLAttributes<HTMLDivElement> {
   wrapperProps?: WrapperProps;
   inputProps?: InputPropsType; // will be removed in next versions
   options?: DropzoneOptions;
+  children?: React.ReactNode;
 }
 
 export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
@@ -36,6 +38,7 @@ export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
       error,
       loader,
       options = {},
+      children,
       ...props
     }: DropzoneProps,
     ref,
@@ -72,7 +75,7 @@ export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
       >
         {loading ? (
           <>
-            {loader || <Loader color={mode === ThemeMode.dark ? theme.colors.light : theme.colors.secondary} />}
+            {loader || <Loader color={mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.base700} />}
             <Text className="contentLoading">{loadingText}</Text>
           </>
         ) : (
@@ -82,6 +85,7 @@ export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
             <Text className="content">{textContentInBlock}</Text>
           </>
         )}
+        {children && <div className="additionalContent">{children}</div>}
       </StyledDropzone>
     );
   },

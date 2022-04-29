@@ -9,7 +9,7 @@ interface ColumnsProps {
 }
 
 const Columns = ({ columns, sort, handleSort }: ColumnsProps): JSX.Element => {
-  const tableColumns = columns.map(({ accessor, label, minWidth, sortName }) => {
+  const tableColumns = columns.map(({ accessor, label, minWidth, sortName, thProps }) => {
     return (
       <HeaderCell
         key={accessor}
@@ -18,6 +18,7 @@ const Columns = ({ columns, sort, handleSort }: ColumnsProps): JSX.Element => {
         sortName={sortName}
         sort={sort}
         handleSort={handleSort}
+        {...thProps}
       />
     );
   });

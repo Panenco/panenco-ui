@@ -13,21 +13,21 @@ export default decorator('Link', LinkDocs, LinkReadme).add('Link component', () 
     <WrappedComponent>
       <BrowserRouter>
         <Row style={{ justifyContent: 'space-around' }}>
-          <Col s="2" m="4" l="3">
+          <Col xs="2" sm="4" lg="3">
             <Link to="">Link Component</Link>
           </Col>
-          <Col s="2" m="4" l="3">
+          <Col xs="2" sm="4" lg="3">
             <Link disabled to="">
               Link Component
             </Link>
           </Col>
-          <Col s="2" m="4" l="3">
+          <Col xs="2" sm="4" lg="3">
             <Link to="">Link Component</Link>
           </Col>
-          <Col s="2" m="4" l="3">
+          <Col xs="2" sm="4" lg="3">
             <Link to="">Link Component</Link>
           </Col>
-          <Col s="2" m="4" l="3">
+          <Col xs="2" sm="4" lg="3">
             <Link component="a" href="https://google.com" target="_blank">
               External Link
             </Link>

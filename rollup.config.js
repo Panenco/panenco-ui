@@ -9,6 +9,7 @@ import json from '@rollup/plugin-json';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import typescript from 'rollup-plugin-typescript2';
+import ttypescript from 'ttypescript';
 
 import packageJson from './package.json';
 
@@ -40,10 +41,8 @@ export default {
     }),
     typescript({
       clean: true,
-      tsconfigDefaults: {
-        declaration: true,
-        jsx: 'react',
-      },
+      // tsconfig: './tsconfig.json',
+      typescript: ttypescript,
     }),
     linaria({
       sourceMap: process.env.NODE_ENV !== 'production',

@@ -1,9 +1,13 @@
 import { styled } from 'linaria/react';
 import { PUITheme, ThemeMode } from 'utils/types';
 
+const convertToPixels = (size) => size && size.toString().concat('px');
+
 export const StyledButtonIcon = styled.button<{
   theme: PUITheme;
   mode: ThemeMode;
+  to?: string;
+  size?: number;
 }>`
   align-items: center;
   background-color: transparent;
@@ -22,23 +26,25 @@ export const StyledButtonIcon = styled.button<{
     & .iconClass,
     & .buttonIconTitle {
       color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.light : props.theme.colors.hover};
+        props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary700};
     }
   }
 
   &:focus {
-    outline: 2px solid ${(props: any): string => props.theme.colors.outline};
+    outline: 2px solid ${(props: any): string => props.theme.colors.base900};
   }
 
   & .iconClass {
-    color: ${(props: any): string => props.color || props.theme.colors.secondary};
+    color: ${(props: any): string => props.color || props.theme.colors.base700};
     display: flex;
     flex-shrink: 0;
     transition: 0.3s;
+    height: ${(props: any): string => convertToPixels(props.size) || props.theme.typography.sizes.m.textSize};
+    width: ${(props: any): string => convertToPixels(props.size) || props.theme.typography.sizes.m.textSize};
   }
 
   & .buttonIconTitle {
-    color: ${(props: any): string => props.color || props.theme.colors.secondary};
+    color: ${(props: any): string => props.color || props.theme.colors.base700};
     font-weight: ${(props: any): string => props.theme.typography.weights.regular};
     font-size: ${(props: any): string => props.theme.typography.sizes.m.textSize};
     line-height: ${(props: any): string => props.theme.typography.sizes.m.lineHeight};
@@ -50,5 +56,9 @@ export const StyledButtonIcon = styled.button<{
     & .iconClass {
       margin-right: 5px;
     }
+  }
+  &.buttonDisabled {
+    opacity: 0.4;
+    pointer-events: none;
   }
 `;

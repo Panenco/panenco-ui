@@ -41,3 +41,22 @@ This component inherits the attributes of the **svg** element and extends the fu
 | size    | px  |
 | ------- | --- |
 | default | 18  | -->
+
+### Custom icons
+
+Create separate component and re-export **Icon** component which extends your own icons pack.
+
+```js
+...
+import { Icon } from '@panenco/ui';
+
+import customIcon from './icons/customIcon.svg';
+
+Icon.icons = {
+  ...Icon.icons,
+  customIcon,
+};
+
+export { Icon };
+...
+```

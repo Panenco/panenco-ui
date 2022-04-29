@@ -31,7 +31,7 @@ export const TablePagination = decorator('Pagination', TablePaginationDocs, Tabl
       <WrappedComponent>
         <BrowserRouter>
           <Row style={{ justifyContent: 'center' }}>
-            <Col s="3" m="6" l="12">
+            <Col>
               <TablePaginationSelect
                 page={page}
                 onChangePage={handleChangePage}
@@ -59,7 +59,7 @@ export default decorator('Pagination', PaginationDocs, PaginationReadme).add('Pa
     <WrappedComponent>
       <BrowserRouter>
         <Row style={{ justifyContent: 'center', marginTop: '20px' }}>
-          <Col s="3" m="6" l="6">
+          <Col xs="3" sm="6" lg="6">
             <Pagination
               variant="contained"
               count={201}
@@ -70,7 +70,7 @@ export default decorator('Pagination', PaginationDocs, PaginationReadme).add('Pa
           </Col>
         </Row>
         <Row style={{ justifyContent: 'center', marginTop: '20px' }}>
-          <Col s="3" m="6" l="6">
+          <Col xs="3" sm="6" lg="6">
             <Pagination
               variant="outlined"
               count={201}
@@ -81,7 +81,7 @@ export default decorator('Pagination', PaginationDocs, PaginationReadme).add('Pa
           </Col>
         </Row>
         <Row style={{ justifyContent: 'center', marginTop: '20px' }}>
-          <Col s="3" m="6" l="6">
+          <Col xs="3" sm="6" lg="6">
             <Pagination
               variant="text"
               count={201}
@@ -92,7 +92,7 @@ export default decorator('Pagination', PaginationDocs, PaginationReadme).add('Pa
           </Col>
         </Row>
         <Row style={{ justifyContent: 'center', marginTop: '20px' }}>
-          <Col s="3" m="6" l="8">
+          <Col xs="3" md="6" lg="8">
             <Pagination
               variant="text"
               onButtonClick={handleButtonClick}

@@ -27,17 +27,19 @@ This component inherits the attributes of the **input** element and extends the 
 
 - id - component id (generate unique id by default);
 - label - component label;
-- inputProps - it's props which will be added to input component;
-- wrapperProps - it's props which will be added to wrapper component;
+- error - an error message that would be displayed under the checkbox
+- inputProps - props which will be added to input component;
+- wrapperProps - props which will be added to wrapper component;
 - color - background color;
-- borderWidth - border width input element (px);
-- labelClassName - class which be added to label content;
+- borderWidth - input element border width in px;
+- labelClassName - class which will be added to label content;
 - ref - ref;
 
 | propName       | propType                  | defaultValue      | isRequired |
 | -------------- | ------------------------- | ----------------- | ---------- |
 | id             | string or (any)           | generate uniqueID | -          |
 | label          | string                    | -                 | -          |
+| error          | string                    | -                 | -          |
 | color          | string                    | -                 | -          |
 | borderWidth    | string (number)           | -                 | -          |
 | inputProps     | React.InputHTMLAttributes | -                 | -          |

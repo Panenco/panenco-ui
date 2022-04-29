@@ -6,27 +6,27 @@ export const StyledTab = styled.button<{
   mode: ThemeMode;
 }>`
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   padding: 12px 22px;
-  margin: 0;
   border: 0;
+  margin: 0;
   background-color: transparent;
 
   .iconClass {
-    height: 20px;
     width: 20px;
+    height: 20px;
     margin-right: 10px;
   }
 
-  &:hover {
-    background-color: ${(props: any): string => props.theme.colors.highlight};
+  &:not(.selected):hover {
+    background-color: ${(props: any): string => props.theme.colors.primary200};
   }
 
   &:focus {
-    outline: 2px solid ${(props: any): string => props.theme.colors.outline};
-    outline-offset: 0;
     z-index: 1;
+    outline: 2px solid ${(props: any): string => props.theme.colors.base900};
+    outline-offset: 0;
   }
 
   &.disabled {
@@ -35,26 +35,31 @@ export const StyledTab = styled.button<{
   }
 
   &.tab {
-    color: ${(props: any): string => props.theme.colors.secondary};
-    border-bottom: 1px solid ${(props: any): string => props.theme.colors.secondary};
+    border-bottom: 1px solid ${(props: any): string => props.theme.colors.base700};
+    color: ${(props: any): string => props.theme.colors.base700};
 
     &.selected {
-      color: ${(props: any): string => props.theme.colors.outline};
-      border-bottom: 3px solid ${(props: any): string => props.theme.colors.accent};
       padding-bottom: 10px;
+      border-bottom: 3px solid ${(props: any): string => props.theme.colors.primary500};
+      color: ${(props: any): string => props.theme.colors.base900};
+    }
+
+    &:not(.selected) {
+      cursor: pointer;
     }
   }
 
   &.bookmarkTab {
-    color: ${(props: any): string => props.theme.colors.outline};
+    color: ${(props: any): string => props.theme.colors.base900};
 
     &.selected {
-      background-color: ${(props: any): string => props.theme.colors.light};
-      border-top: 3px solid ${(props: any): string => props.theme.colors.accent};
       padding-top: 9px;
-      &:hover {
-        background-color: ${(props: any): string => props.theme.colors.highlight};
-      }
+      border-top: 3px solid ${(props: any): string => props.theme.colors.primary500};
+      background-color: ${(props: any): string => props.theme.colors.base100};
+    }
+
+    &:not(.selected) {
+      cursor: pointer;
     }
   }
 `;
