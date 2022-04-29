@@ -13,41 +13,40 @@ export default decorator('Avatar', AvatarDocs, AvatarReadme).add('Avatar compone
     <WrappedComponent>
       <Row style={{ justifyContent: 'center', margin: '50px auto 0 auto', width: '90%' }}>
         <Col xs="4" lg="4">
-          <Avatar 
-            email='hello@panenco.com'
-            avatar='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJmD-ID1Gcf4RD0YWdMtgcjjpMqS89ldAE6w&usqp=CAU'
+          <Avatar
+            src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJmD-ID1Gcf4RD0YWdMtgcjjpMqS89ldAE6w&usqp=CAU'
             tooltip
-            tooltipProps={{arrow: true, position: 'top-start' }}
+            tooltipProps={{ content: 'hello@panenco.com', arrow: true, position: 'top-start' }}
+            size={35}
           />
         </Col>
         <Col xs="4" lg="4">
-          <Avatar avatar='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJmD-ID1Gcf4RD0YWdMtgcjjpMqS89ldAE6w&usqp=CAU' />
+          <Avatar src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJmD-ID1Gcf4RD0YWdMtgcjjpMqS89ldAE6w&usqp=CAU' />
         </Col>
         <Col xs="4" lg="4">
           <Avatar
-            firstName='Panenco' 
-            lastName='UI'
-            avatar='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJmD-ID1Gcf4RD0YWdMtgcjjpMqS89ldAE6w&usqp=CAU'
+            src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJmD-ID1Gcf4RD0YWdMtgcjjpMqS89ldAE6w&usqp=CAU'
             tooltip
-            tooltipProps={{arrow: true, position: 'left-start' }}
+            tooltipProps={{ content: 'hello@panenco.com', arrow: true, position: 'left-start' }}
+            size={70}
           />
         </Col>
       </Row>
       <Row style={{ justifyContent: 'center', margin: '50px auto 0 auto', width: '90%' }}>
         <Col xs="4" md="8" lg="12">
-          <Avatar firstName='Panenco' classname='xx' tooltip tooltipProps={{arrow: true, position: 'right' }} />
+          <Avatar size={35} tooltip tooltipProps={{ content: 'Panenco UI', arrow: true, position: 'right' }}>
+            PU
+          </Avatar>
         </Col>
         <Col xs="4" md="8" lg="12">
-          <Avatar firstName='Panenco' lastName='UI' />
+          <Avatar>P</Avatar>
         </Col>
         <Col xs="4" md="8" lg="12">
           <Avatar
-            firstName='Panenco' 
-            lastName='UI'
-            email='hello@panenco.com'
-            tooltip
-            tooltipProps={{arrow: true, position: 'bottom-end' }} 
-        />
+            tooltip 
+            size={70}
+            tooltipProps={{ content: 'hello@panenco.com', arrow: true, position: 'bottom-end' }} 
+          >PU</Avatar>
         </Col>
       </Row>
     </WrappedComponent>

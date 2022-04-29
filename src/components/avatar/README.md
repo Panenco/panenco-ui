@@ -9,15 +9,14 @@ const YourComponent = () => {
   const theme = useTheme();
   return (
     <Avatar
-      avatar="https://images/img.png"
-      avatarAlt="Alt text"
-      firstName="First Name"
-      lastName="Last Name"
-      email="example@support.com"
+      src="https://images/img.png"
+      alt="Alt text"
       size={54}
       tooltip
-      tooltipProps={{ position: 'top' }}
-    />
+      tooltipProps={{ content: 'tooltip content', position: 'top' }}
+    >
+      PU
+    </Avatar>
   );
 };
 ```
@@ -26,24 +25,29 @@ const YourComponent = () => {
 
 ### Properties
 
-- avatar - link to image;
-- avatarAlt - alt text for avatar;
+- src - link to image;
+- alt - alt text for avatar;
 - size - avatar size;
-- className - avatar classname;
-- firstName - avatar first name;
-- lastName - avatar last name;
-- email - avatar email;
+- className - avatar classname, allow to override styles;
+- children - content of the Avatar
 - tooltip - show tooltip;
 - tooltipProps - props for tooltip component;
+- imgProps - props for Avatar image
+
+If there is an error loading the avatar image, the component 
+falls back to an alternative in the following order:
+
+- the provided children
+- the first letter of the alt text
+- a generic avatar icon
 
 | propName          | propType                        | defaultValue                   | isRequired |
 | ----------------- | ------------------------------- | ------------------------------ | ---------- |
-| avatar            | string                          | -                              | -          |
-| avatarAlt         | string                          | 'avatar alt'                   | -          |
+| src               | string                          | -                              | -          |
+| alt               | string                          |                                | -          |
 | size              | number                          | 54                             | -          |
 | className         | string                          | -                              | -          |
-| firstName         | string                          | -                              | -          |
-| lastName          | string                          | -                              | -          |
-| email             | string                          | -                              | -          |
+| children          | ReactNode | string              | -                              | -          |
 | tooltip           | boolean                         | -                              | -          |
 | tooltipProps      | TooltipProps                    | -                              | -          |
+| imgProps          | ImgHTMLAttributes               | -                              | -          |

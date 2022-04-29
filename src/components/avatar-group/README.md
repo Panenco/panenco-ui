@@ -8,37 +8,13 @@ import { AvatarGroup, AvatarProps } from '@panenco/ui';
 const avatars= [
   {
     className: 'className',
-    avatar: 'https://images/img.png',
-    avatarAlt: 'alt',
-    firstName: 'Panenco',
-    lastName: 'UI',
-    email: 'hello@panenco.com',
+    src: 'https://images/img.png',
+    alt: 'alt',
+    children: 'PU',
     size: 45,
     tooltip: true,
-    tooltipProps: { arrow: true, position: 'bottom-end' }
-  },
-  {
-    email: 'hello@panenco.com',
-    avatar: 'https://images/img.png',
-    tooltip: true,
-    tooltipProps: {arrow: true, position: 'left'},
-  },
-  {
-    firstName: 'Panenco',
-    lastName: 'UI',
-    email: 'email',
-    tooltip: true,
-  },
-  {
-    lastName: 'Panenco',
-    email: 'hello@panenco.com',
-    tooltip: true,
-    tooltipProps: { arrow: true, position: 'top-start' },
-  },
-  {
-    lastName: 'name',
-    email: 'email',
-  },
+    tooltipProps: { content: 'tooltip content', position: 'top' }
+  }
 ]
 
 const YourComponent = () => {
@@ -69,15 +45,14 @@ AvatarGroup component allows to show a list of avatars.
 - className - classname of the list;
 
 **avatars and avatarProps** can have this properties:
-  - avatar - link to image;
-  - avatarAlt - alt text for avatar;
+  - src - link to image;
+  - alt - alt text for avatar;
   - size - avatar size;
   - className - avatar classname;
-  - firstName - avatar first name;
-  - lastName - avatar last name;
-  - email - avatar email;
+  - children - content of the Avatar;
   - tooltip - show tooltip;
   - tooltipProps - props for tooltip component;
+  - imgProps - props for Avatar image;
 
 | propName          | propType                        | defaultValue                   | isRequired |
 | ----------------- | ------------------------------- | ------------------------------ | ---------- |

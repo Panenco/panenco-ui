@@ -36,11 +36,9 @@ export const AvatarGroup: React.FC<AvatarGroupProps> = ({
       )}
       {!!(avatars.length - modifiedAvatars.length) && (
         <Avatar
-          firstName='+'
           {...avatarProps}
-          lastName={`${avatars.length - modifiedAvatars.length}`}
           className='avatarGroupItemCount'
-        />
+        >{`+${avatars.length - modifiedAvatars.length}`}</Avatar>
       )}
     </StyledAvatarGroup>
   )

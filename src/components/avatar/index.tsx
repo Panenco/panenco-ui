@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useTheme } from 'utils/hooks';
-import { Text } from '../../index';
+import { Icon, Text } from '../../index';
 import { Tooltip, TooltipProps } from '../tooltip';
 import { StyledAvatar, StyledAvatarImg } from './style';
 
@@ -23,47 +23,61 @@ const getFontSize = (theme, size) => {
 
 export interface AvatarProps {
   className?: string;
-  avatar?: string;
-  avatarAlt?: string;
-  firstName?: string;
-  lastName?: string;
-  email?: string;
+  src?: string;
+  alt?: string;
   size?: number;
   tooltip?: boolean;
   tooltipProps?: TooltipProps;
+  children?: React.ReactNode | string;
+  imgProps?: React.ImgHTMLAttributes<HTMLImageElement>;
 }
 
 export const Avatar: React.FC<AvatarProps> = ({
   className,
-  firstName,
-  lastName,
-  avatar,
-  email,
+  src,
   tooltipProps,
   size = 54,
   tooltip,
-  avatarAlt = 'avatar alt',
+  alt,
+  children,
+  imgProps,
 }: AvatarProps) => {
   const theme = useTheme();
   const fontSize = getFontSize(theme, size);
+  const [isImageLoadedError, setImageLoadedError] = React.useState(false);
 
   const renderAvatar = () => (
-    avatar ? (
-      <StyledAvatarImg src={avatar} alt={avatarAlt} style={{ height: size, width: size }} className={className} />
+    src ? (
+      <>
+        {!isImageLoadedError ? (
+           <StyledAvatarImg 
+            src={src} 
+            alt={alt} 
+            style={{ height: size, width: size }} 
+            className={className} 
+            onError={() => setImageLoadedError(true)}
+            {...imgProps} 
+          />
+        ) : (
+          <StyledAvatar theme={theme} style={{ height: size, width: size }} className={className}>
+            <Text size={fontSize} weight={theme.typography.weights.bold} color={theme.colors.base500}>
+              {children || alt?.charAt(0) || <Icon icon={Icon.icons.profile} size={size / 2} style={{ display: 'flex' }} />} 
+            </Text>
+          </StyledAvatar>
+        )}
+      </>
     ) : (
       <StyledAvatar theme={theme} style={{ height: size, width: size }} className={className}>
-      {(firstName || lastName) &&
         <Text size={fontSize} weight={theme.typography.weights.bold} color={theme.colors.base500}>
-          {`${firstName?.charAt(0)?.toUpperCase() || ''}${lastName?.charAt(0)?.toUpperCase() || ''}`}
+          {children} 
         </Text>
-      }
       </StyledAvatar>
     )
   );
 
   if (tooltip) {
     return (
-      <Tooltip content={email || `${firstName || ''} ${lastName || ''}`} {...tooltipProps}>
+      <Tooltip content={tooltipProps?.content} {...tooltipProps}>
         {renderAvatar()}
       </Tooltip>
     )
