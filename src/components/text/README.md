@@ -24,6 +24,7 @@ const YourComponent = () => {
 - `color` - font color
 - `children` - text content
 - `component` - p, span or any custom component
+- `ref` - reference to this component
 
 | propName  | propType                                     | defaultValue | isRequired |
 | --------- | -------------------------------------------- | ------------ | ---------- |
@@ -37,14 +38,15 @@ const YourComponent = () => {
 
 | size | textSize | lineHeight |
 | ---- | -------- | ---------- |
-| xs   | 12       | 16         |
-| s    | 16       | 20         |
-| m    | 20       | 26         |
-| l    | 26       | 32         |
-| xl   | 32       | 41         |
-| h3   | 41       | 52         |
-| h2   | 52       | 66         |
-| h1   | 66       | 85         |
+| xs   | 12       | 130 %      |
+| s    | 14       | 130 %      |
+| m    | 16       | 150 %      |
+| l    | 20       | 140 %      |
+| xl   | 32       | 125 %      |
+| xxl  | 72       | 122 %      |
+| h3   | 41       | 52 px      |
+| h2   | 52       | 66 px      |
+| h1   | 66       | 85 px      |
 
 ### Weights
 
@@ -57,4 +59,5 @@ const YourComponent = () => {
 | medium     | 500   |
 | semiBold   | 600   |
 | bold       | 700   |
+| extrabold  | 800   |
 | black      | 900   |
