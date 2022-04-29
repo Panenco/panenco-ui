@@ -36,12 +36,15 @@ export interface DateInputProps extends React.InputHTMLAttributes<HTMLTextAreaEl
 }
 
 export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
-  ({ inputs, divider, wrapperProps, value, onChange, minDate, maxDate }: DateInputProps, ref): JSX.Element => {
+  (
+    { inputs, disabled, divider, wrapperProps, value, onChange, minDate, maxDate, className }: DateInputProps,
+    ref,
+  ): JSX.Element => {
     const theme = useTheme();
     const { mode } = useMode();
 
     const format = useMemo(() => {
-      return inputs.map(i => i.format).join('/');
+      return inputs.map((i) => i.format).join('/');
     }, [inputs]);
 
     const input1 = useRef<HTMLInputElement>(null);
@@ -68,7 +71,7 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
     };
 
     const currentInputValue = utils.getDate(value, format);
-    const isCurrentValueValid = validateValue(utils.date(value));
+    const isCurrentValueValid = currentInputValue.length ? validateValue(utils.date(value)) : true;
     const [currentDate, setDateToState] = React.useState<string>(currentInputValue);
     const [isValid, setValid] = React.useState<boolean>(isCurrentValueValid);
 
@@ -88,7 +91,7 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
 
     // eslint-disable-next-line no-shadow
     const validateLength = (type: string, value: string): boolean => {
-      return inputs.some(item => item.type === type && value.length <= item.format.length);
+      return inputs.some((item) => item.type === type && value.length <= item.format.length);
     };
 
     const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>, index: number, type: string): void => {
@@ -100,7 +103,7 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
       }
 
       let date: string | null | Date | Array<HTMLInputElement> = Object.values(inputToRef)
-        .filter(item => item.current)
+        .filter((item) => item.current)
         .map((item) => item?.current?.value)
         .join('/');
 
@@ -112,8 +115,13 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
     };
 
     return (
-      <StyledDayPicker className={cx('dateInput', !isValid && 'error')} theme={theme} mode={mode}
-                       ref={ref} {...wrapperProps}>
+      <StyledDayPicker
+        className={cx('dateInput', !isValid && 'error', className)}
+        theme={theme}
+        mode={mode}
+        ref={ref}
+        {...wrapperProps}
+      >
         {inputs.map((input, index) => {
           const inputWidth = input.format.length * 10 + 40;
 
@@ -126,13 +134,12 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
                 onChange={(e): void => {
                   handleChange(e, index, input.type);
                 }}
+                disabled={disabled}
                 inputRef={inputToRef[index]}
                 title={input.title}
                 style={{ width: `${inputWidth}px` }}
                 placeholder={input.placeholder}
-                value={
-                  currentDate.split('/')[index]
-                }
+                value={currentDate.split('/')[index]}
               />
               {isLastItem ? <Text className='dateInputItemDivider'>{divider}</Text> : null}
             </div>
