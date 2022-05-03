@@ -14,7 +14,9 @@ export default decorator('Stamp', StampDocs, StampReadme).add('Stamp component',
     <WrappedComponent>
       <Row style={{ justifyContent: 'center' }}>
         <Col xs="3" sm="3" lg="3">
-          <Stamp color={colors.success}>Status</Stamp>
+          <Stamp color={colors.primary700} variant="fulfilled" backgroundColor={colors.primary200} borderRadius="10">
+            Status
+          </Stamp>
         </Col>
         <Col xs="3" sm="3" lg="3">
           <Stamp color={colors.error}>Status</Stamp>

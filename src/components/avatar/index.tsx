@@ -61,7 +61,7 @@ export const Avatar: React.FC<AvatarProps> = ({
         ) : (
           <StyledAvatar theme={theme} style={{ height: size, width: size }} className={className}>
             <Text size={fontSize} weight={theme.typography.weights.bold} color={theme.colors.base500}>
-              {children || alt?.charAt(0) || <Icon icon={Icon.icons.profile} size={size / 2} style={{ display: 'flex' }} />} 
+              {children || alt?.charAt(0) || <Icon icon={Icon.icons.user} size={size / 2} style={{ display: 'flex' }} />} 
             </Text>
           </StyledAvatar>
         )}
