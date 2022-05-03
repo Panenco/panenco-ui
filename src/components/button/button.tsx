@@ -51,7 +51,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         as={component === 'link' ? Link : component}
         type={type}
         disabled={isDisabled}
-        className={cx(iconLeft && 'iconLeft', iconRight && 'iconRight', className)}
+        className={cx(iconLeft && 'iconLeft', iconRight && 'iconRight', isDisabled && 'isDisabled', className)}
         theme={theme}
         mode={mode}
         ref={ref}
@@ -65,7 +65,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           {((icon && iconLeft) || iconLeft) && (
             <Icon icon={icon || iconLeft} className={cx('buttonIcon', iconLeft && 'buttonIconLeft', iconClassName)} />
           )}
-          <Text className="buttonTitle" size={theme.typography.sizes.m}>
+          <Text className='buttonTitle' size={theme.typography.sizes.m}>
             {children}
           </Text>
           {((icon && !iconLeft) || iconRight) && (

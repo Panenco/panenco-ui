@@ -25,6 +25,7 @@ This component inherits the attributes of the **div** element and extends the fu
 
 - content - content of the tooltip;
 - enterNextDelay - delay displaying tooltip;
+- children - children;
 - position - position of the tooltip (top, right, left, bottom, top-start, top-end, bottom-start, bottom-end, right-start, right-end, left-start, left-end, auto, auto-start, auto-end);
 - ref - ref;
 - backgroundColor - background color of the tooltip;
