@@ -50,11 +50,11 @@ const HeaderCell = ({
         {sortName ? (
           <div className='tableHeaderContent'>
             <Icon
-              icon={sortIcons ? sortIcons.up : Icon.icons.chevronUp}
+              icon={sortIcons?.up ? sortIcons.up : Icon.icons.chevronUp}
               className={cx('tableHeaderIcon', asc && 'tableHeaderIconActive')}
             />
             <Icon
-              icon={sortIcons ? sortIcons.down : Icon.icons.chevronDown}
+              icon={sortIcons?.down ? sortIcons.down : Icon.icons.chevronDown}
               className={cx('tableHeaderIcon', desc && 'tableHeaderIconActive')}
             />
           </div>
