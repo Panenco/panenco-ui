@@ -21,7 +21,10 @@ const HeaderCell = ({
   sortName,
   sort,
   handleSort,
-  sortIcons,
+  sortIcons = {
+    up: Icon.icons.chevronUp,
+    down: Icon.icons.chevronDown,
+  },
   ...props
 }: HeaderCellProps): JSX.Element => {
   const asc = sort && sort.direction === 'asc' && sort.sort === sortName && 'asc';
@@ -49,14 +52,8 @@ const HeaderCell = ({
         <Text className='tableHeaderText'>{label}</Text>
         {sortName ? (
           <div className='tableHeaderContent'>
-            <Icon
-              icon={sortIcons?.up ? sortIcons.up : Icon.icons.chevronUp}
-              className={cx('tableHeaderIcon', asc && 'tableHeaderIconActive')}
-            />
-            <Icon
-              icon={sortIcons?.down ? sortIcons.down : Icon.icons.chevronDown}
-              className={cx('tableHeaderIcon', desc && 'tableHeaderIconActive')}
-            />
+            <Icon icon={sortIcons.up} className={cx('tableHeaderIcon', asc && 'tableHeaderIconActive')} />
+            <Icon icon={sortIcons.down} className={cx('tableHeaderIcon', desc && 'tableHeaderIconActive')} />
           </div>
         ) : null}
       </button>

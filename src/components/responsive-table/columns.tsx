@@ -27,7 +27,7 @@ const Columns = ({ columns, sort, handleSort, sortIcons }: ColumnsProps): JSX.El
 
   return (
     <thead>
-    <tr>{tableColumns}</tr>
+      <tr>{tableColumns}</tr>
     </thead>
   );
 };
