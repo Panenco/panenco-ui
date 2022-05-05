@@ -18,7 +18,7 @@ export type PaginationProps = {
   showLastButton?: boolean;
   showFirstButton?: boolean;
   variant?: 'contained' | 'outlined' | 'text';
-  locales: {
+  locales?: {
     first: string;
     last: string;
     previous: string;
