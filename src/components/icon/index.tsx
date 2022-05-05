@@ -61,6 +61,7 @@ import sun from './icons/static-icons/sun.svg';
 import trash from './icons/static-icons/trash.svg';
 import unseen from './icons/static-icons/unseen.svg';
 import upload from './icons/static-icons/upload.svg';
+import user from './icons/static-icons/user.svg';
 import uploadDown from './icons/static-icons/upload-down.svg';
 import x from './icons/static-icons/x.svg';
 import question from './icons/static-icons/question.svg';
@@ -129,6 +130,7 @@ Icon.icons = {
   search,
   trash,
   upload,
+  user,
   uploadDown,
   success,
   circle,
