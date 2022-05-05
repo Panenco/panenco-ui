@@ -1,14 +1,15 @@
 import * as React from 'react';
 import HeaderCell from './header-cell';
-import { ColumnType, SortType, HandleSortType } from './types';
+import { ColumnType, SortType, HandleSortType, SortIconsType } from './types';
 
 interface ColumnsProps {
   columns: Array<ColumnType>;
   sort?: SortType;
   handleSort?: HandleSortType;
+  sortIcons?: SortIconsType;
 }
 
-const Columns = ({ columns, sort, handleSort }: ColumnsProps): JSX.Element => {
+const Columns = ({ columns, sort, handleSort, sortIcons }: ColumnsProps): JSX.Element => {
   const tableColumns = columns.map(({ accessor, label, minWidth, sortName, thProps }) => {
     return (
       <HeaderCell
@@ -17,6 +18,7 @@ const Columns = ({ columns, sort, handleSort }: ColumnsProps): JSX.Element => {
         minWidth={minWidth}
         sortName={sortName}
         sort={sort}
+        sortIcons={sortIcons}
         handleSort={handleSort}
         {...thProps}
       />

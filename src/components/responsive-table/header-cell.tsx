@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cx from 'classnames';
 import { Icon, Text } from 'components';
-import { SortType, HandleSortType, DataAttributeKey } from './types';
+import { SortType, HandleSortType, DataAttributeKey, SortIconsType } from './types';
 
 interface HeaderCellProps extends React.TableHTMLAttributes<HTMLTableCellElement> {
   label: any;
@@ -12,9 +12,21 @@ interface HeaderCellProps extends React.TableHTMLAttributes<HTMLTableCellElement
   thProps?: React.TableHTMLAttributes<HTMLTableCellElement> & {
     [dataAttribute: DataAttributeKey]: any;
   };
+  sortIcons?: SortIconsType;
 }
 
-const HeaderCell = ({ label, minWidth, sortName, sort, handleSort, ...props }: HeaderCellProps): JSX.Element => {
+const HeaderCell = ({
+  label,
+  minWidth,
+  sortName,
+  sort,
+  handleSort,
+  sortIcons = {
+    up: Icon.icons.chevronUp,
+    down: Icon.icons.chevronDown,
+  },
+  ...props
+}: HeaderCellProps): JSX.Element => {
   const asc = sort && sort.direction === 'asc' && sort.sort === sortName && 'asc';
   const desc = sort && sort.direction === 'desc' && sort.sort === sortName && 'desc';
   const [direction, setDirection] = React.useState(asc || desc) as ['asc' | 'desc', any];
@@ -27,21 +39,21 @@ const HeaderCell = ({ label, minWidth, sortName, sort, handleSort, ...props }: H
   };
   return (
     <th
-      className="tableCell"
+      className='tableCell'
       style={{ maxWidth: `${minWidth}px`, width: `${minWidth}px`, minWidth: `${minWidth}px` }}
       {...props}
     >
       <button
-        type="button"
+        type='button'
         className={cx('tableHeaderButton', !sortName && 'tableHeaderButtonDisabled')}
         onClick={handleSortClick}
         disabled={!sortName}
       >
-        <Text className="tableHeaderText">{label}</Text>
+        <Text className='tableHeaderText'>{label}</Text>
         {sortName ? (
-          <div className="tableHeaderContent">
-            <Icon icon={Icon.icons.chevronUp} className={cx('tableHeaderIcon', asc && 'tableHeaderIconActive')} />
-            <Icon icon={Icon.icons.chevronDown} className={cx('tableHeaderIcon', desc && 'tableHeaderIconActive')} />
+          <div className='tableHeaderContent'>
+            <Icon icon={sortIcons.up} className={cx('tableHeaderIcon', asc && 'tableHeaderIconActive')} />
+            <Icon icon={sortIcons.down} className={cx('tableHeaderIcon', desc && 'tableHeaderIconActive')} />
           </div>
         ) : null}
       </button>

@@ -128,6 +128,7 @@ class Table extends React.Component<
       mode,
       isLoading,
       iconCreator,
+      sortIcons,
       // exclude custom props so they don't appear as a dom attributes
       /* eslint-disable */
       columns: cols,
@@ -143,7 +144,7 @@ class Table extends React.Component<
     return (
       <Styles theme={theme} mode={mode} ref={this.divRef}>
         <table className="table" ref={innerRef} {...tableProps}>
-          <Columns columns={visibleCols} sort={sort} handleSort={handleSort} />
+          <Columns columns={visibleCols} sort={sort} handleSort={handleSort} sortIcons={sortIcons} />
           <Rows
             rows={rows}
             itemsPerPage={itemsPerPage}
