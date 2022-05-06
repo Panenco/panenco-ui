@@ -40,6 +40,7 @@ export const StyledDayPicker = styled.div<{
     align-items: center;
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
+    margin-bottom: calc(-50vw + 50%);
 
     .rdp {
       width: 100%;
