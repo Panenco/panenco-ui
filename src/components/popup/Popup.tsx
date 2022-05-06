@@ -41,6 +41,12 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
       if (ev.key === 'Escape' && onHide) onHide();
     };
 
+    const handleBackdropClose = (e: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
+      if (backdropClosable && e.target === e.currentTarget && onHide) {
+        onHide();
+      }
+    };
+
     React.useEffect(() => {
       const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
       if (show) {
@@ -72,9 +78,7 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
                 role='dialog'
                 aria-modal='true'
                 ref={ref}
-                onMouseDown={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
-                  backdropClosable && e.target === e.currentTarget && onHide ? onHide() : undefined
-                }
+                onMouseDown={handleBackdropClose}
               >
                 <StyledPopup
                   size={size}
