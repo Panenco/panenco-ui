@@ -98,8 +98,37 @@ class Table extends React.Component<
     });
   }
 
+  componentDidUpdate(_, prevState): void {
+    const { containerWidth, props } = this.state;
+    if (prevState.props.sort?.direction !== props.sort?.direction || prevState.containerWidth !== containerWidth) {
+      this.updateTableSize();
+    }
+  }
+
   componentWillUnmount(): void {
     this.divSizeObserver.disconnect();
+  }
+
+  updateTableSize(): void {
+    this.divSizeObserver = new ResizeObserver(
+      throttle((entries) => {
+        // eslint-disable-next-line array-callback-return
+        entries.forEach((entry) => {
+          // eslint-disable-next-line react/destructuring-assignment
+          if (this.state.containerWidth !== entry.contentRect.width) {
+            this.resizeTable(entry.contentRect.width);
+            this.setState((currentState) => {
+              return { ...currentState, containerWidth: this?.divRef?.current?.offsetWidth };
+            });
+          }
+        });
+      }, 150),
+    );
+    this.divSizeObserver.observe(this?.divRef?.current as Element);
+    this.resizeTable(this?.divRef?.current?.offsetWidth as number);
+    this.setState((currentState) => {
+      return { ...currentState, containerWidth: this?.divRef?.current?.offsetWidth };
+    });
   }
 
   expandRow(rowIndex: string | number): void {
@@ -142,7 +171,7 @@ class Table extends React.Component<
 
     return (
       <Styles theme={theme} mode={mode} ref={this.divRef}>
-        <table className="table" ref={innerRef} {...tableProps}>
+        <table className='table' ref={innerRef} {...tableProps}>
           <Columns columns={visibleCols} sort={sort} handleSort={handleSort} />
           <Rows
             rows={rows}
