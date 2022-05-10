@@ -8,6 +8,8 @@ import ChipsComponent from './chips-component';
 import SelectComponent from './select-component';
 
 export interface SelectInputProps extends SelectProps, InputComponent {
+  async?: boolean;
+  creatable?: boolean;
   value?: any;
   selectWrapperProps?: React.HTMLAttributes<HTMLDivElement>;
   clearChips?: boolean;
@@ -22,6 +24,8 @@ export interface SelectInputProps extends SelectProps, InputComponent {
 export const SelectInput = React.forwardRef<HTMLDivElement, SelectInputProps>(
   (
     {
+      async,
+      creatable,
       value,
       error,
       isMulti,
@@ -50,9 +54,16 @@ export const SelectInput = React.forwardRef<HTMLDivElement, SelectInputProps>(
       >
         {wrapperSelectSizes ? (
           <>
-            <Row className="row">
-              <Col lg={wrapperSelectSizes.lg} md={wrapperSelectSizes.md} sm={wrapperSelectSizes.sm} className="col">
-                <SelectComponent error={error} isMulti={isMulti} value={value} {...props} />
+            <Row className='row'>
+              <Col lg={wrapperSelectSizes.lg} md={wrapperSelectSizes.md} sm={wrapperSelectSizes.sm} className='col'>
+                <SelectComponent
+                  async={async}
+                  creatable={creatable}
+                  error={error}
+                  isMulti={isMulti}
+                  value={value}
+                  {...props}
+                />
               </Col>
             </Row>
             {!hideChips && isMulti && (value?.length > 0 || value?.size > 0) && (
