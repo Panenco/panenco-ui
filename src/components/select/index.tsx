@@ -1,23 +1,12 @@
 import * as React from 'react';
-import { Props as SelectProps } from 'react-select';
 import { useTheme, useMode } from 'utils/hooks';
 import { Row, Col } from 'components';
-import { InputComponent } from '../../utils/types';
 import { StyledSelectWrapper } from './style';
 import ChipsComponent from './chips-component';
-import SelectComponent from './select-component';
+import SelectComponent, { ComponentProps } from './select-component';
 
-export interface SelectInputProps extends SelectProps, InputComponent {
-  async?: boolean;
-  creatable?: boolean;
-  value?: any;
-  selectWrapperProps?: React.HTMLAttributes<HTMLDivElement>;
+export interface SelectInputProps extends ComponentProps {
   clearChips?: boolean;
-  wrapperSelectSizes?: {
-    lg?: number | string;
-    md?: number | string;
-    sm?: number | string;
-  };
   hideChips?: boolean;
 }
 
