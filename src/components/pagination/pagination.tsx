@@ -18,6 +18,12 @@ export type PaginationProps = {
   showLastButton?: boolean;
   showFirstButton?: boolean;
   variant?: 'contained' | 'outlined' | 'text';
+  locales?: {
+    first: string;
+    last: string;
+    previous: string;
+    next: string;
+  };
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export const Pagination = ({
@@ -28,6 +34,12 @@ export const Pagination = ({
   disabled = false,
   className,
   variant = 'contained',
+  locales = {
+    first: 'First',
+    last: 'Last',
+    previous: 'Previous',
+    next: 'Next',
+  },
   ...otherProps
 }: PaginationProps): JSX.Element => {
   const [isFirst, isLast, pagesAmount] = usePagination({ page, count, rowsPerPage });
@@ -49,7 +61,7 @@ export const Pagination = ({
       case 'first':
         return (
           <Button className="paginationListItem" disabled={disabled} onClick={(): void => onButtonClick(0)}>
-            First
+            {locales.first}
           </Button>
         );
       case 'last':
@@ -59,7 +71,7 @@ export const Pagination = ({
             disabled={disabled}
             onClick={(): void => onButtonClick(pagesAmount - 1)}
           >
-            Last
+            {locales.last}
           </Button>
         );
       case 'previous':
@@ -71,7 +83,7 @@ export const Pagination = ({
             iconClassName={cx('paginationButtonIcon', variant !== 'text' && 'paginationButtonIconNoMargin')}
             onClick={(): void => onButtonClick(page - 1)}
           >
-            {variant === 'text' && <Text>Previous</Text>}
+            {variant === 'text' && <Text>{locales.previous}</Text>}
           </Button>
         );
       case 'next':
@@ -83,7 +95,7 @@ export const Pagination = ({
             iconClassName={cx('paginationButtonIcon', variant !== 'text' && 'paginationButtonIconNoMargin')}
             onClick={(): void => onButtonClick(page + 1)}
           >
-            {variant === 'text' && <Text>Next</Text>}
+            {variant === 'text' && <Text>{locales.next}</Text>}
           </Button>
         );
       default:

@@ -44,7 +44,7 @@ export const StyledButton = styled.button<{
     }
   }
 
-  &:disabled {
+  &:disabled, &.isDisabled {
     opacity: 0.4;
     pointer-events: none !important;
   }

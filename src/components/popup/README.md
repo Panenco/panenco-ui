@@ -67,6 +67,18 @@ Be sure to add `aria-labelledby="..."`, referencing the popup title to the Popup
 Additionally, you may give a description of your popup dialog with `aria-describedby` on the Popup component.
 You don't need to add `role="dialog"` since it's already added via JavaScript.
 
+### Autofocus
+
+The Popup component is wrapped with the [FocusLock](https://github.com/theKashey/react-focus-lock) component. Popup prop `autoFocus=true` enables or disables focusing into on Lock activation. If disabled Lock will blur an active focus.
+
+To autofocus once the Trap has been activated you can use:
+
+- prop `data-autofocus` on the element.
+- prop `data-autofocus-inside` on the element to focus on something inside.
+- `AutoFocusInside` component, as named export of [react-focus-lock](https://github.com/theKashey/react-focus-lock) library.
+
+By default, `data-autofocus-inside` is applied to `Popup.Body`. To disable it pass `autofocusInside=false` as a Body prop.
+
 ### Popup properties
 
 This component inherits the attributes of the **div** element and extends the functionality with next properties.
@@ -77,6 +89,7 @@ This component inherits the attributes of the **div** element and extends the fu
 - disableEscapeKeyDown - disable hiding modal on Escape Key click;
 - size - size of a popup;
 - dialogClassName - custom css to the popup dialog div;
+- autoFocus - autofocus once the Trap has been activated;
 - ref - ref;
 
 | propName             | propType                    | defaultValue | isRequired |
@@ -89,6 +102,7 @@ This component inherits the attributes of the **div** element and extends the fu
 | disableEscapeKeyDown | boolean                     | false        | -          |
 | size                 | string ('sm' / 'md' / 'lg') | 'md'         | -          |
 | dialogClassName      | string                      | -            | -          |
+| autoFocus            | boolean                     | true         | -          |
 
 ### PopupHeader properties
 
@@ -116,7 +130,14 @@ This component inherits the attributes of the **div** element and extends the fu
 
 ### PopupBody properties
 
-This component inherits the attributes of the **div** element.
+This component inherits the attributes of the **div** element and extends the functionality with next properties.
+
+- autofocusInside - autofocus on something inside once the Trap has been activated (works only if autoFocus prop in Popup components is **true**);
+
+| propName        | propType        | defaultValue | isRequired |
+| --------------- | --------------- | ------------ | ---------- |
+| children        | React.ReactNode | -            | +          |
+| autofocusInside | boolean         | true         | -          |
 
 ### PopupFooter properties
 

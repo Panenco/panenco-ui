@@ -15,6 +15,7 @@ export interface PopupProps extends React.HTMLAttributes<HTMLDivElement> {
   disableEscapeKeyDown?: boolean;
   size?: PopupSizesType;
   dialogClassName?: string;
+  autoFocus?: boolean;
 }
 export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
   (
@@ -26,6 +27,7 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
       disableEscapeKeyDown = false,
       size = 'md',
       dialogClassName,
+      autoFocus = true,
       ...props
     }: PopupProps,
     ref,
@@ -34,9 +36,17 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
     const popupStopPropagation = (e: React.MouseEvent<HTMLDivElement>): void => {
       e.stopPropagation();
     };
+
     const handleEscClose = (ev: KeyboardEvent): void => {
       if (ev.key === 'Escape' && onHide) onHide();
     };
+
+    const handleBackdropClose = (e: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
+      if (backdropClosable && e.target === e.currentTarget && onHide) {
+        onHide();
+      }
+    };
+
     React.useEffect(() => {
       const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
       if (show) {
@@ -60,15 +70,15 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
       <PopupContext.Provider value={{ onHide }}>
         {show &&
           ReactDOM.createPortal(
-            <FocusLock {...props} returnFocus>
-              <StyledPopupBackdrop className="popupBackdrop" theme={theme} />
+            <FocusLock returnFocus autoFocus={autoFocus} {...props}>
+              <StyledPopupBackdrop className='popupBackdrop' theme={theme} />
               <StyledPopupContainer
-                className="popupContainer"
+                className='popupContainer'
                 tabIndex={-1}
-                role="dialog"
-                aria-modal="true"
-                onClick={backdropClosable && onHide ? onHide : undefined}
+                role='dialog'
+                aria-modal='true'
                 ref={ref}
+                onMouseDown={handleBackdropClose}
               >
                 <StyledPopup
                   size={size}

@@ -13,16 +13,11 @@ interface DateUtilsInterface {
 
   isBefore(value: Date, comparing: Date): boolean;
 
-  // eslint-disable-next-line no-shadow
-  getDate(value: any, format: string): string;
+  getDate(value: any, dateFormat: string): string;
 }
 
 class DateUtils implements DateUtilsInterface {
   public date = (value?: any): Date | null => {
-    if (typeof value === 'undefined') {
-      return new Date();
-    }
-
     if (value === null) {
       return null;
     }
