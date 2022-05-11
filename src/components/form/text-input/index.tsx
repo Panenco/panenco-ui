@@ -63,34 +63,34 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
         iconBefore={iconBefore}
         {...wrapperProps}
       >
-        <div className="titleContainer">
-          <div className="leftTitleContainer">
+        <div className='titleContainer'>
+          <div className='leftTitleContainer'>
             {title && (
-              <Text weight={theme.typography.weights.bold} size={theme.typography.sizes.m} className="inputTitle">
+              <Text weight={theme.typography.weights.bold} size={theme.typography.sizes.m} className='inputTitle'>
                 {title}
               </Text>
             )}
 
             {subTitle && (
-              <Text size={theme.typography.sizes.xs} className=" mb-4 inputSubTitle inputSubTitleLeft">
+              <Text size={theme.typography.sizes.xs} className=' mb-4 inputSubTitle inputSubTitleLeft'>
                 {subTitle}
               </Text>
             )}
           </div>
-          {rightSubTitle && <div className="mb-4 rightTitleContainer">{rightSubTitle}</div>}
+          {rightSubTitle && <div className='mb-4 rightTitleContainer'>{rightSubTitle}</div>}
         </div>
 
-        <div className="fieldWrapper">
+        <div className='fieldWrapper'>
           <div className={cx('inputField', error && 'inputFieldError', disabled && 'inputFieldDisabled')}>
             {iconBefore && (
-              <label className="iconBefore" htmlFor={defaultId}>
+              <label className='iconBefore' htmlFor={defaultId}>
                 {React.isValidElement(iconBefore) ? iconBefore : <Icon icon={iconBefore} />}
               </label>
             )}
             <input
               type={type}
               aria-label={`${title || ''}${subTitle || ''}`}
-              className="input"
+              className='input'
               placeholder={placeholder}
               onChange={handleChange}
               disabled={disabled}
@@ -101,24 +101,24 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
               {...props}
             />
             {iconAfter && (
-              <label className="iconAfter" htmlFor={defaultId}>
+              <label className='iconAfter' htmlFor={defaultId}>
                 {React.isValidElement(iconAfter) ? iconAfter : <Icon icon={iconAfter} />}
               </label>
             )}
           </div>
         </div>
         {error || maxLength ? (
-          <div className="counterWrapper">
+          <div className='counterWrapper'>
             <Text
-              component="span"
+              component='span'
               size={theme.typography.sizes.xs}
               color={mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.error}
-              className="inputErrorLabel"
+              className='inputErrorLabel'
             >
               {error}
             </Text>
             {maxLength && (
-              <Text component="span" size={theme.typography.sizes.xs} color={theme.colors.base700} className="counter">
+              <Text component='span' size={theme.typography.sizes.xs} color={theme.colors.base700} className='counter'>
                 {counter}/{maxLength}
               </Text>
             )}

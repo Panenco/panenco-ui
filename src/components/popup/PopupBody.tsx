@@ -7,7 +7,7 @@ export interface PopupBodyProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const PopupBody = ({ autofocusInside = true, ...props }: PopupBodyProps): JSX.Element => (
-  <StyledPopupBody data-autofocus-inside={autofocusInside || undefined} className="popupBody" {...props} />
+  <StyledPopupBody data-autofocus-inside={autofocusInside || undefined} className='popupBody' {...props} />
 );
 
 export { PopupBody };

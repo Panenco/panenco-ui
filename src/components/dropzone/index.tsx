@@ -76,16 +76,16 @@ export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
         {loading ? (
           <>
             {loader || <Loader color={mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.base700} />}
-            <Text className="contentLoading">{loadingText}</Text>
+            <Text className='contentLoading'>{loadingText}</Text>
           </>
         ) : (
           <>
             <input {...getInputProps()} {...inputProps} {...props} />
             <Icon icon={iconImage} className={cx('icon', iconClassName)} />
-            <Text className="content">{textContentInBlock}</Text>
+            <Text className='content'>{textContentInBlock}</Text>
           </>
         )}
-        {children && <div className="additionalContent">{children}</div>}
+        {children && <div className='additionalContent'>{children}</div>}
       </StyledDropzone>
     );
   },

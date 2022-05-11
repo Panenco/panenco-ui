@@ -45,7 +45,7 @@ export const Tablist = React.forwardRef(
 
     return (
       <StyledTablist
-        role="tablist"
+        role='tablist'
         ref={combinedRef}
         className={cx('tablist', className)}
         onKeyDown={handleKeydown}

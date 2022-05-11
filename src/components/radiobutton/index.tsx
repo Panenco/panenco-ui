@@ -47,7 +47,7 @@ export const Radio = React.forwardRef<HTMLLabelElement, RadioButtonProps>(
       <StyledRadio theme={theme} mode={mode} ref={ref} error={error} pointColor={pointColor} {...wrapperProps}>
         <label className={cx('label', disabled && 'labelDisabled', className)} htmlFor={id || defaultId}>
           <input
-            type="radio"
+            type='radio'
             className={cx('radiobox', inputClassName)}
             id={id || defaultId}
             disabled={disabled}
@@ -57,14 +57,14 @@ export const Radio = React.forwardRef<HTMLLabelElement, RadioButtonProps>(
             {...props}
           />
           <div className={cx('container', error && 'error')}>
-            <div className="point" />
+            <div className='point' />
           </div>
-          <Text weight={theme.typography.weights.regular} size={theme.typography.sizes.m} className="labelTitle">
+          <Text weight={theme.typography.weights.regular} size={theme.typography.sizes.m} className='labelTitle'>
             {label}
           </Text>
         </label>
         {error && (
-          <Text className="errorTitle" size={theme.typography.sizes.xs} color={theme.colors.error}>
+          <Text className='errorTitle' size={theme.typography.sizes.xs} color={theme.colors.error}>
             {error}
           </Text>
         )}

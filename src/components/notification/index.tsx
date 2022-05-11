@@ -10,8 +10,8 @@ export type NotificationContainerProps = ToastContainerProps & { undo?: any; cla
 
 const CloseButton = ({ closeToast }: any): JSX.Element => {
   return (
-    <button type="button" className="Toastify__close-button" onClick={closeToast}>
-      <Icon icon={Icon.icons.delete} className="Toastify__close-button--icon" />
+    <button type='button' className='Toastify__close-button' onClick={closeToast}>
+      <Icon icon={Icon.icons.delete} className='Toastify__close-button--icon' />
     </button>
   );
 };
@@ -32,13 +32,13 @@ const NotifyBody = ({ children, status, undo, closeToast }: any): JSX.Element =>
   };
 
   return (
-    <div className="body">
-      <Icon icon={icon} className="Toastify__toast-body--icon" />
-      <div className="bodyContent">
-        {typeof children === 'string' ? <Text className="Toastify__toast-body--content">{children}</Text> : children}
+    <div className='body'>
+      <Icon icon={icon} className='Toastify__toast-body--icon' />
+      <div className='bodyContent'>
+        {typeof children === 'string' ? <Text className='Toastify__toast-body--content'>{children}</Text> : children}
 
         {undo ? (
-          <button className="bodyContentUndo" onClick={handleUndo} type="button">
+          <button className='bodyContentUndo' onClick={handleUndo} type='button'>
             <Text size={sizes.m} color={colors.primary500}>
               Undo
             </Text>

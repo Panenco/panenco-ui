@@ -57,15 +57,15 @@ const Cell = ({
       }}
     >
       {IS_FIRST_CELL && IS_HIDDEN_COLUMNS ? (
-        <div className="tableCellWrap">
+        <div className='tableCellWrap'>
           <ButtonIcon
-            className="tableCellButtonIcon"
+            className='tableCellButtonIcon'
             onClick={(): void => {
               expandRow(rowIndex);
             }}
             icon={Icon.icons[getIcon()]}
           />
-          {typeof content === 'string' ? <Text className="tableCellWrapContent">{content}</Text> : content}
+          {typeof content === 'string' ? <Text className='tableCellWrapContent'>{content}</Text> : content}
         </div>
       ) : (
         content

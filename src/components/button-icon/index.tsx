@@ -52,7 +52,7 @@ export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
         to={component === 'link' ? to : undefined}
       >
         <Icon icon={icon} className={cx('iconClass', iconClassName)} />
-        {children && <Text className="buttonIconTitle">{children}</Text>}
+        {children && <Text className='buttonIconTitle'>{children}</Text>}
       </StyledButtonIcon>
     );
   },

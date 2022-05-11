@@ -25,21 +25,21 @@ const IosInstall = ({
 
   return ReactDOM.createPortal(
     <StyledIosInstallPaper className={className} mode={mode} theme={theme}>
-      <div className="installModalContent">
-        <div className="installModalIcon">
-          {iconSrc && <img className="installModalIconImg" src={iconSrc} alt={title} />}
+      <div className='installModalContent'>
+        <div className='installModalIcon'>
+          {iconSrc && <img className='installModalIconImg' src={iconSrc} alt={title} />}
         </div>
-        <div className="installModalTitle">
+        <div className='installModalTitle'>
           <Text
             size={theme.typography.sizes.l}
             weight={theme.typography.weights.black}
-            className="installModalTitleText"
+            className='installModalTitleText'
           >
             {title}
           </Text>
         </div>
-        <div className="installModalDescription">
-          <Text size={theme.typography.sizes.m} className="installModalDescriptionText">
+        <div className='installModalDescription'>
+          <Text size={theme.typography.sizes.m} className='installModalDescriptionText'>
             {description}
           </Text>
         </div>

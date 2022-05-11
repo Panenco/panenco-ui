@@ -20,9 +20,9 @@ const ExpandedRow = ({
 }: ExpandedRowProps): JSX.Element => {
   const expandedRows = hiddenColumns.map((column, cellIndex) => {
     return (
-      <div key={column.accessor} className="tableHiddenCellContent">
-        <Text className="tableHiddenCellContentLabel">{column.label}</Text>
-        <div className="tableHiddenCellContentText">
+      <div key={column.accessor} className='tableHiddenCellContent'>
+        <Text className='tableHiddenCellContentLabel'>{column.label}</Text>
+        <div className='tableHiddenCellContentText'>
           {column.component
             ? React.createElement(column.component, { row, rowIndex, cellIndex, accessor: column.accessor })
             : row.data[column.accessor]}
@@ -36,11 +36,11 @@ const ExpandedRow = ({
   }, 0);
   const expandedRowWidth = visibleColumns.length === 1 ? containerWidth : tableWidth;
   return (
-    <tr className="tableBodyRow tableBodyRowExpandable">
+    <tr className='tableBodyRow tableBodyRowExpandable'>
       <td colSpan={visibleColumns.length}>
         <AnimatedHeight duration={500} height={row.isOpen ? 'auto' : 0}>
           <div
-            className="tableHiddenCell"
+            className='tableHiddenCell'
             style={{
               maxWidth: `${expandedRowWidth}px`,
               width: `${expandedRowWidth}px`,

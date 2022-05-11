@@ -41,7 +41,7 @@ export const Handle = ({
       mode={mode}
       {...getHandleProps(id)}
     >
-      <span className="valueLabel">{vLabel}</span>
+      <span className='valueLabel'>{vLabel}</span>
     </StyledHandle>
   );
 };

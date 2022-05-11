@@ -10,7 +10,7 @@ export const ContentHighlight = React.forwardRef<HTMLDivElement, React.HTMLAttri
 
     return (
       <StyledContent theme={theme} mode={mode} ref={ref} style={style} className={className} {...props}>
-        <Text className="content">{children}</Text>
+        <Text className='content'>{children}</Text>
       </StyledContent>
     );
   },

@@ -46,16 +46,16 @@ export const WizardTrack = ({ stepsMeta = steps, currentStepIndex = 0, ...props 
               idx === currentStepIndex && 'wizzardStepActive',
             )}
           >
-            <div className="wizzardStepBox">
-              <div className="wizzardStepBoxOne">
-                {idx > 0 && <div className="wizzardStepBoxOneLine" />}
-                <Text size={theme.typography.sizes.xs} className="wizzardStepBoxOneCurrStep">
+            <div className='wizzardStepBox'>
+              <div className='wizzardStepBoxOne'>
+                {idx > 0 && <div className='wizzardStepBoxOneLine' />}
+                <Text size={theme.typography.sizes.xs} className='wizzardStepBoxOneCurrStep'>
                   {idx < currentStepIndex ? <Icon icon={Icon.icons.check} width={10} height={10} /> : idx + 1}
                 </Text>
               </div>
-              <div className="wizzardStepBoxTwo">
+              <div className='wizzardStepBoxTwo'>
                 <Text
-                  className="wizzardStepBoxCurrTitle"
+                  className='wizzardStepBoxCurrTitle'
                   size={theme.typography.sizes.xs}
                   weight={theme.typography.weights.bold}
                 >

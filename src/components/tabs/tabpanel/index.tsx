@@ -18,7 +18,7 @@ export const Tabpanel = React.forwardRef(
       <StyledTabpanel
         id={id}
         ref={ref}
-        role="tabpanel"
+        role='tabpanel'
         className={cx('tabpanel', className)}
         hidden={indexSelected !== index}
         {...props}

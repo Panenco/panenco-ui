@@ -67,7 +67,7 @@ export const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
         >
           <input
             className={cx('checkbox', className)}
-            type="checkbox"
+            type='checkbox'
             id={id || defaultId}
             disabled={disabled}
             checked={checked}
@@ -75,16 +75,16 @@ export const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
             {...props}
           />
           <div className={cx('container', error && 'error')}>
-            {checked && <Icon icon={Icon.icons.check} className="tick" />}
+            {checked && <Icon icon={Icon.icons.check} className='tick' />}
           </div>
           {label && (
-            <Text component="p" className={cx('labelTitle', labelClassName)}>
+            <Text component='p' className={cx('labelTitle', labelClassName)}>
               {label}
             </Text>
           )}
         </label>
         {error && (
-          <Text size={theme.typography.sizes.xs} className="error">
+          <Text size={theme.typography.sizes.xs} className='error'>
             {error}
           </Text>
         )}

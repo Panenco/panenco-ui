@@ -17,4 +17,4 @@ export const StyledAvatarImg = styled.img`
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
-`
+`;

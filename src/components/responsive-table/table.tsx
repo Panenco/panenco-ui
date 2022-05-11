@@ -143,7 +143,7 @@ class Table extends React.Component<
 
     return (
       <Styles theme={theme} mode={mode} ref={this.divRef}>
-        <table className="table" ref={innerRef} {...tableProps}>
+        <table className='table' ref={innerRef} {...tableProps}>
           <Columns columns={visibleCols} sort={sort} handleSort={handleSort} sortIcons={sortIcons} />
           <Rows
             rows={rows}

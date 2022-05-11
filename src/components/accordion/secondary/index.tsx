@@ -43,7 +43,7 @@ export const AccordionSecondary = React.forwardRef((props: AccordionProps, ref: 
       mode={mode}
       className={cx(className, 'accordion')}
     >
-      <button type="button" className="accordionHeader" onClick={handleClick} aria-expanded={isOpen || 'false'}>
+      <button type='button' className='accordionHeader' onClick={handleClick} aria-expanded={isOpen || 'false'}>
         {iconLeft && (
           <Icon
             className={cx(
@@ -54,7 +54,7 @@ export const AccordionSecondary = React.forwardRef((props: AccordionProps, ref: 
           />
         )}
         {typeof title === 'string' ? (
-          <Text weight={theme.typography.weights.bold} className="accordionHeaderTitle">
+          <Text weight={theme.typography.weights.bold} className='accordionHeaderTitle'>
             {title}
           </Text>
         ) : (
@@ -66,20 +66,20 @@ export const AccordionSecondary = React.forwardRef((props: AccordionProps, ref: 
             <Icon
               key={idGenerator()}
               onClick={onIconClick && handleIconClick}
-              className="accordionHeaderIconsIcon"
+              className='accordionHeaderIconsIcon'
               icon={item}
             />
           ))}
         {iconRight && (
           <Icon
             key={idGenerator()}
-            className="accordionHeaderIcon"
+            className='accordionHeaderIcon'
             icon={checkTypeIconRight ? (isOpen ? Icon.icons.minus : Icon.icons.plus) : iconRight} // eslint-disable-line
           />
         )}
       </button>
       <AnimatedHeight duration={500} height={isOpen ? 'auto' : 0}>
-        <div className="accordionContent">{children}</div>
+        <div className='accordionContent'>{children}</div>
       </AnimatedHeight>
     </StyledAccordionSecondary>
   );

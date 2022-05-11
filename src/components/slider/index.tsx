@@ -132,7 +132,7 @@ class MainSlider extends React.Component<SliderProps, SliderState> {
               this.activeId = activeHandleID;
 
               return (
-                <div className="slider-handles">
+                <div className='slider-handles'>
                   {handles.map((handle) => (
                     <Handle
                       key={handle.id}
@@ -152,7 +152,7 @@ class MainSlider extends React.Component<SliderProps, SliderState> {
           <Tracks left={values.length < 2} right={false}>
             {({ tracks, getTrackProps }): JSX.Element => {
               return (
-                <div className="slider-tracks">
+                <div className='slider-tracks'>
                   {tracks.map(({ id, source, target }) => (
                     <Track
                       key={id}

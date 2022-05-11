@@ -50,8 +50,8 @@ export const SelectInput = React.forwardRef<HTMLDivElement, SelectInputProps>(
       >
         {wrapperSelectSizes ? (
           <>
-            <Row className="row">
-              <Col lg={wrapperSelectSizes.lg} md={wrapperSelectSizes.md} sm={wrapperSelectSizes.sm} className="col">
+            <Row className='row'>
+              <Col lg={wrapperSelectSizes.lg} md={wrapperSelectSizes.md} sm={wrapperSelectSizes.sm} className='col'>
                 <SelectComponent error={error} isMulti={isMulti} value={value} {...props} />
               </Col>
             </Row>

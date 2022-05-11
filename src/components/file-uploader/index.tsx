@@ -83,7 +83,7 @@ export const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
       renderStatusIcons = loader || (
         <Loader
           color={mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.base700}
-          className="placeholderBoxIcon"
+          className='placeholderBoxIcon'
         />
       );
     } else if (fileName) {
@@ -91,7 +91,7 @@ export const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
       renderStatusIcons = (
         <ButtonIcon
           icon={icon || Icon.icons.x}
-          type="reset"
+          type='reset'
           className={cx('placeholderBoxIcon', iconClassName)}
           onClick={handleIconClick}
         />
@@ -112,15 +112,15 @@ export const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
         {...wrapperProps}
       >
         {title && (
-          <Text weight={theme.typography.weights.bold} className="title">
+          <Text weight={theme.typography.weights.bold} className='title'>
             {title}
           </Text>
         )}
         <label className={cx('uploader', error && 'uploaderError')} htmlFor={id || defaultId}>
-          <div className="placeholderBox">
+          <div className='placeholderBox'>
             <input
-              className="uploaderInput"
-              type="file"
+              className='uploaderInput'
+              type='file'
               id={id || defaultId}
               disabled={disabled || loading}
               onChange={updateFileName}
@@ -129,13 +129,13 @@ export const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
               {...inputProps}
               {...props}
             />
-            <Text className="placeholderBoxTitle">{renderPlaceholder}</Text>
+            <Text className='placeholderBoxTitle'>{renderPlaceholder}</Text>
             {renderStatusIcons}
           </div>
           <Button
-            type="submit"
-            variant="contained"
-            className="uploaderBtn"
+            type='submit'
+            variant='contained'
+            className='uploaderBtn'
             disabled={disabled || loading}
             onClick={handleClick}
           >
@@ -144,7 +144,7 @@ export const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
         </label>
 
         {error && (
-          <Text className="error" color={theme.colors.error} size={theme.typography.sizes.xs}>
+          <Text className='error' color={theme.colors.error} size={theme.typography.sizes.xs}>
             {error}
           </Text>
         )}

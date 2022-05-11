@@ -30,21 +30,21 @@ const UnsupportedBanner = ({
   return ReactDOM.createPortal(
     <StyledUnsupportedContainer theme={theme} mode={mode}>
       <Paper className={cx('unsupportedModalPaper', className)}>
-        <div className="unsupportedModalTitle">
+        <div className='unsupportedModalTitle'>
           <Text
             size={theme.typography.sizes.m}
             weight={theme.typography.weights.black}
-            className="unsupportedModalTitleText"
+            className='unsupportedModalTitleText'
           >
             {title}
           </Text>
         </div>
-        <div className="unsupportedModalDescription">
-          <Text size={theme.typography.sizes.m} className="unsupportedModalDescriptionText">
+        <div className='unsupportedModalDescription'>
+          <Text size={theme.typography.sizes.m} className='unsupportedModalDescriptionText'>
             {description}
           </Text>
         </div>
-        <div className="unsupportedModalActions">
+        <div className='unsupportedModalActions'>
           <SecondaryButton onClick={onIgnore}>{ignoreButtonText}</SecondaryButton>
         </div>
       </Paper>

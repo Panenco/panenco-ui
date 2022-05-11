@@ -104,36 +104,36 @@ export const TablePagination = ({
 
   return (
     <StyledPagination mode={mode} theme={theme} className={cx('pagination', className)} {...otherProps}>
-      <div className="paginationSection">
+      <div className='paginationSection'>
         <Text
           size={theme.typography.sizes.m}
           weight={theme.typography.weights.light}
           color={theme.colors.base900}
-          className="paginationText"
+          className='paginationText'
         >
           {locales.itemsPerPage}
         </Text>
         <SelectInput
           options={rowsPerPageOptions}
-          className="paginationSelect"
-          id="rowsPerPage"
-          name="rowsPerPage"
+          className='paginationSelect'
+          id='rowsPerPage'
+          name='rowsPerPage'
           isSearchable={false}
           styles={customSelectStyles(selectStyles)}
           isDisabled={disabled}
           onChange={rowsPerPageHandler}
           value={rowsPerPageOptions.find((option) => Number(option.value) === Number(rowsPerPage))}
         />
-        <Text size={theme.typography.sizes.m} color={theme.colors.base900} className="paginationText">
+        <Text size={theme.typography.sizes.m} color={theme.colors.base900} className='paginationText'>
           {locales.displayingItems(rangeStart, rangeEnd, count)}
         </Text>
       </div>
-      <div className="paginationSection">
-        <Text size={theme.typography.sizes.m} color={theme.colors.base900} className="paginationText">
+      <div className='paginationSection'>
+        <Text size={theme.typography.sizes.m} color={theme.colors.base900} className='paginationText'>
           {locales.currentPage(page + 1, pagesAmount)}
         </Text>
         <Button
-          className="paginationButton"
+          className='paginationButton'
           disabled={isFirst || disabled}
           iconLeft={Icon.icons.chevronLeft}
           iconClassName={cx('paginationButtonIcon', 'paginationButtonIconNoMargin')}
@@ -143,9 +143,9 @@ export const TablePagination = ({
         />
         <SelectInput
           options={pagesOptions}
-          className="paginationSelect"
-          id="page"
-          name="page"
+          className='paginationSelect'
+          id='page'
+          name='page'
           isSearchable={false}
           styles={customSelectStyles(selectStyles)}
           isDisabled={disabled}
@@ -153,7 +153,7 @@ export const TablePagination = ({
           value={pagesOptions.find((option) => Number(option.value) === Number(page))}
         />
         <Button
-          className="paginationButton"
+          className='paginationButton'
           disabled={isLast || disabled}
           iconRight={Icon.icons.chevronRight}
           iconClassName={cx('paginationButtonIcon', 'paginationButtonIconNoMargin')}

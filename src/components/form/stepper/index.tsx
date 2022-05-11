@@ -75,7 +75,7 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
     return (
       <StyledStepperInput className={cx('stepper', className)} theme={theme} mode={mode} ref={ref} {...wrapperProps}>
         {title && (
-          <Text size={theme.typography.sizes.xs} className="inputTitle">
+          <Text size={theme.typography.sizes.xs} className='inputTitle'>
             {title}
           </Text>
         )}
@@ -88,13 +88,13 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
               'stepperButton',
               'stepperButtonDecrement',
             )}
-            type="button"
+            type='button'
             disabled={currentValue === minValue || disabled}
           >
-            <Icon className="stepperButtonIcon" icon={Icon.icons.minus} />
+            <Icon className='stepperButtonIcon' icon={Icon.icons.minus} />
           </button>
           <input
-            type="number"
+            type='number'
             onChange={handleChange}
             className={cx('stepperInput', disabled && 'inputFieldDisabled')}
             value={Number(currentValue)}
@@ -110,28 +110,28 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
               'stepperButton',
               'stepperButtonIncrement',
             )}
-            type="button"
+            type='button'
           >
-            <Icon className="stepperButtonIcon" icon={Icon.icons.plus} />
+            <Icon className='stepperButtonIcon' icon={Icon.icons.plus} />
           </button>
         </div>
-        <div className="inputError">
+        <div className='inputError'>
           {notInRange ? (
             <Text
-              component="span"
+              component='span'
               size={theme.typography.sizes.xs}
               color={mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.error}
-              className="inputErrorLabel"
+              className='inputErrorLabel'
             >
               {locales.notInRange}: {`[${min}, ${max}]`}
             </Text>
           ) : null}
           {error && !notInRange && (
             <Text
-              component="span"
+              component='span'
               size={theme.typography.sizes.xs}
               color={mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.error}
-              className="inputErrorLabel"
+              className='inputErrorLabel'
             >
               {error}
             </Text>

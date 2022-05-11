@@ -12,7 +12,7 @@ export interface ChipsProps extends SelectProps, InputComponent {
 }
 
 const ChipsComponent = ({ value, onDeleteOption, chipIcon, getOptionLabel }: ChipsProps): JSX.Element => (
-  <div className="isMultiActiveChips">
+  <div className='isMultiActiveChips'>
     {value?.map((option) => {
       if (!option) return null;
       let chipLabel = option.label;
@@ -22,7 +22,7 @@ const ChipsComponent = ({ value, onDeleteOption, chipIcon, getOptionLabel }: Chi
 
       return (
         <Chip
-          className="multiSelectChip"
+          className='multiSelectChip'
           key={idGenerator()}
           icon={chipIcon || Icon.icons.x}
           checked

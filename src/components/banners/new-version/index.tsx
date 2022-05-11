@@ -31,21 +31,21 @@ const NewVersion = ({
 
   return ReactDOM.createPortal(
     <StyledNewVersionPaper className={className} mode={mode} theme={theme}>
-      <div className="newVersionModalTitle">
+      <div className='newVersionModalTitle'>
         <Text
           size={theme.typography.sizes.m}
           weight={theme.typography.weights.black}
-          className="newVersionModalTitleText"
+          className='newVersionModalTitleText'
         >
           {title}
         </Text>
       </div>
-      <div className="newVersionModalDescription">
-        <Text size={theme.typography.sizes.m} className="newVersionModalDescriptionText">
+      <div className='newVersionModalDescription'>
+        <Text size={theme.typography.sizes.m} className='newVersionModalDescriptionText'>
           {description}
         </Text>
       </div>
-      <div className="newVersionModalActions">
+      <div className='newVersionModalActions'>
         <SecondaryButton onClick={onCancel}>{cancelButtonText}</SecondaryButton>
         <PrimaryButton onClick={onUpdate}>{updateButtonText}</PrimaryButton>
       </div>

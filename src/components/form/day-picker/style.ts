@@ -13,7 +13,7 @@ export const StyledDayPicker = styled.div<{
   }
 
   .calendar-wrapper {
-    position: relative
+    position: relative;
   }
 
   .calendar {
@@ -58,7 +58,6 @@ export const StyledDayPicker = styled.div<{
       }
     }
 
-
     .rdp-caption {
       padding: 0 15px;
     }
@@ -80,11 +79,13 @@ export const StyledDayPicker = styled.div<{
     }
   }
 
-  .rdp-nav_button_next:hover, .rdp-nav_button_previous:hover {
+  .rdp-nav_button_next:hover,
+  .rdp-nav_button_previous:hover {
     background: none;
   }
 
-  .rdp-button:focus:not([disabled]), .rdp-button:active:not([disabled]) {
+  .rdp-button:focus:not([disabled]),
+  .rdp-button:active:not([disabled]) {
     border-radius: 4px;
     border: none;
     background: ${(props: any): string => props.theme.colors.primary200};
@@ -102,7 +103,10 @@ export const StyledDayPicker = styled.div<{
     border: none;
   }
 
-  .rdp-day_selected:not([disabled]), .rdp-day_selected:focus:not([disabled]), .rdp-day_selected:active:not([disabled]), .rdp-day_selected:hover:not([disabled]){
+  .rdp-day_selected:not([disabled]),
+  .rdp-day_selected:focus:not([disabled]),
+  .rdp-day_selected:active:not([disabled]),
+  .rdp-day_selected:hover:not([disabled]) {
     background: ${(props: any): string => props.theme.colors.primary500};
     border-radius: 4px;
     border: none;

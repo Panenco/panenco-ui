@@ -33,10 +33,10 @@ export const Switch: React.FC<SwitchProps> = React.forwardRef<HTMLElement, Switc
         value={value}
         {...wrapperProps}
       >
-        <input ref={inputRef} id={id} type="checkbox" checked={value} {...props} />
+        <input ref={inputRef} id={id} type='checkbox' checked={value} {...props} />
         <div className={cx('slider')}>
-          <span className="round">
-            <Icon className="icon" icon={Icon.icons[value ? 'check' : 'minus']} />
+          <span className='round'>
+            <Icon className='icon' icon={Icon.icons[value ? 'check' : 'minus']} />
           </span>
         </div>
       </StyledSwitch>

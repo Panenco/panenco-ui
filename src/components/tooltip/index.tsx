@@ -102,7 +102,7 @@ export const Tooltip: React.FC<TooltipProps> = (props): JSX.Element => {
       >
         <Reference>
           {({ ref }): JSX.Element => (
-            <ReferenceBox className="referenceBox" theme={theme} mode={mode} ref={ref}>
+            <ReferenceBox className='referenceBox' theme={theme} mode={mode} ref={ref}>
               {children}
             </ReferenceBox>
           )}

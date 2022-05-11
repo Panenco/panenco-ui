@@ -4,7 +4,7 @@ import { Avatar, AvatarProps } from '../../index';
 import { StyledAvatarGroup } from './style';
 
 export interface AvatarGroupProps {
-  max?: number
+  max?: number;
   className?: string;
   avatars: any[];
   avatarProps?: AvatarProps;
@@ -20,7 +20,7 @@ export const AvatarGroup: React.FC<AvatarGroupProps> = ({
 
   return (
     <StyledAvatarGroup className={className}>
-      {modifiedAvatars.map((avatar, idx) => 
+      {modifiedAvatars.map((avatar, idx) => (
         <Avatar
           // eslint-disable-next-line react/no-array-index-key
           key={`avatar${idx}key`}
@@ -33,13 +33,12 @@ export const AvatarGroup: React.FC<AvatarGroupProps> = ({
           }}
           className={cx('avatarGroupItem', avatarProps?.className)}
         />
-      )}
+      ))}
       {!!(avatars.length - modifiedAvatars.length) && (
-        <Avatar
-          {...avatarProps}
-          className='avatarGroupItemCount'
-        >{`+${avatars.length - modifiedAvatars.length}`}</Avatar>
+        <Avatar {...avatarProps} className='avatarGroupItemCount'>{`+${
+          avatars.length - modifiedAvatars.length
+        }`}</Avatar>
       )}
     </StyledAvatarGroup>
-  )
+  );
 };

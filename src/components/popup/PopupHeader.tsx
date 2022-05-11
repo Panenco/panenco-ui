@@ -13,11 +13,11 @@ export const PopupHeader = React.forwardRef<HTMLDivElement, PopupHeaderProps>(
     const theme = useTheme();
     const { onHide } = React.useContext(PopupContext);
     return (
-      <StyledPopupHeader className="popupHeader" {...props} theme={theme} ref={ref}>
+      <StyledPopupHeader className='popupHeader' {...props} theme={theme} ref={ref}>
         <div>{children}</div>
         {closeButton && onHide && (
           <div>
-            <ButtonIcon aria-label="Close" onClick={onHide} icon={Icon.icons.delete} />
+            <ButtonIcon aria-label='Close' onClick={onHide} icon={Icon.icons.delete} />
           </div>
         )}
       </StyledPopupHeader>

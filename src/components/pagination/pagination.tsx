@@ -60,14 +60,14 @@ export const Pagination = ({
         );
       case 'first':
         return (
-          <Button className="paginationListItem" disabled={disabled} onClick={(): void => onButtonClick(0)}>
+          <Button className='paginationListItem' disabled={disabled} onClick={(): void => onButtonClick(0)}>
             {locales.first}
           </Button>
         );
       case 'last':
         return (
           <Button
-            className="paginationListItem"
+            className='paginationListItem'
             disabled={disabled}
             onClick={(): void => onButtonClick(pagesAmount - 1)}
           >
@@ -77,7 +77,7 @@ export const Pagination = ({
       case 'previous':
         return (
           <Button
-            className="paginationListItem"
+            className='paginationListItem'
             disabled={isFirst || disabled}
             iconLeft={Icon.icons.chevronLeft}
             iconClassName={cx('paginationButtonIcon', variant !== 'text' && 'paginationButtonIconNoMargin')}
@@ -89,7 +89,7 @@ export const Pagination = ({
       case 'next':
         return (
           <Button
-            className="paginationListItem"
+            className='paginationListItem'
             disabled={isLast || disabled}
             iconRight={Icon.icons.chevronRight}
             iconClassName={cx('paginationButtonIcon', variant !== 'text' && 'paginationButtonIconNoMargin')}

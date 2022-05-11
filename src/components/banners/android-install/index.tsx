@@ -29,29 +29,29 @@ const AndroidInstall = ({
 
   return ReactDOM.createPortal(
     <StyledAndroidInstallPaper className={className} theme={theme} mode={mode}>
-      <div className="installModalGroup">
-        <div className="installModalIcon">
-          {iconSrc && <img className="installModalIconImg" src={iconSrc} alt={title} />}
+      <div className='installModalGroup'>
+        <div className='installModalIcon'>
+          {iconSrc && <img className='installModalIconImg' src={iconSrc} alt={title} />}
         </div>
-        <div className="installModalText">
-          <div className="installModalTitle">
+        <div className='installModalText'>
+          <div className='installModalTitle'>
             <Text
               size={theme.typography.sizes.l}
               weight={theme.typography.weights.black}
-              className="installModalTitleText"
+              className='installModalTitleText'
             >
               {title}
             </Text>
           </div>
-          <div className="installModalDescription">
-            <Text size={theme.typography.sizes.xs} className="installModalDescriptionText">
+          <div className='installModalDescription'>
+            <Text size={theme.typography.sizes.xs} className='installModalDescriptionText'>
               {subtitle}
             </Text>
           </div>
         </div>
       </div>
 
-      <div className="installModalActions">
+      <div className='installModalActions'>
         <PrimaryButton onClick={onInstall}>{installButtonText}</PrimaryButton>
       </div>
     </StyledAndroidInstallPaper>,

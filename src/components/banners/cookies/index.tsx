@@ -80,34 +80,34 @@ const CookiesBanner = ({
           const onCookieChange = handleCookieChange(cookieEntry.cookieId);
           return (
             <StyledCookieEntry theme={theme} mode={mode} key={cookieEntry.cookieId}>
-              <div className="cookieEntryTitle">
+              <div className='cookieEntryTitle'>
                 <Text
                   weight={theme.typography.weights.black}
                   size={theme.typography.sizes.m}
-                  className="cookieEntryTitleText"
+                  className='cookieEntryTitleText'
                 >
                   {cookieEntry.cookieTitle}
                 </Text>
               </div>
-              <div className="cookieEntryDescription">
-                <Text size={theme.typography.sizes.m} className="cookieEntryDescriptionText">
+              <div className='cookieEntryDescription'>
+                <Text size={theme.typography.sizes.m} className='cookieEntryDescriptionText'>
                   {cookieEntry.cookieDescription}
                 </Text>
               </div>
-              <div className="cookieEntryRadio">
+              <div className='cookieEntryRadio'>
                 <Radio
-                  label="On"
+                  label='On'
                   name={cookieEntry.cookieId}
-                  value="on"
+                  value='on'
                   checked={cookiesAccepted[cookieEntry.cookieId]}
                   inputProps={{
                     onChange: onCookieChange,
                   }}
                 />
                 <Radio
-                  label="Off"
+                  label='Off'
                   name={cookieEntry.cookieId}
-                  value="off"
+                  value='off'
                   checked={!cookiesAccepted[cookieEntry.cookieId]}
                   inputProps={{
                     onChange: onCookieChange,
@@ -117,10 +117,10 @@ const CookiesBanner = ({
             </StyledCookieEntry>
           );
         })}
-        <div className="cookiesModalActions">
+        <div className='cookiesModalActions'>
           <PrimaryButton onClick={handleSave}>{saveButtonText}</PrimaryButton>
-          <button type="button" onClick={toggleDetailsShow} className="cookiesModalDetailedViewButton">
-            <Text weight={theme.typography.weights.black} className="cookiesModalDetailedViewButtonText">
+          <button type='button' onClick={toggleDetailsShow} className='cookiesModalDetailedViewButton'>
+            <Text weight={theme.typography.weights.black} className='cookiesModalDetailedViewButtonText'>
               {hideDetailsText}
             </Text>
           </button>
@@ -130,16 +130,16 @@ const CookiesBanner = ({
   } else {
     modalContent = (
       <>
-        <div className="cookiesModalShortDescription">
-          <Text size={theme.typography.sizes.m} className="cookiesModalShortDescriptionText">
+        <div className='cookiesModalShortDescription'>
+          <Text size={theme.typography.sizes.m} className='cookiesModalShortDescriptionText'>
             {shortContent}
           </Text>
         </div>
-        <div className="cookiesModalActions">
+        <div className='cookiesModalActions'>
           <PrimaryButton onClick={handleSave}>{okButtonText}</PrimaryButton>
           {onCancel && <SecondaryButton onClick={onCancel}>{cancelButtonText}</SecondaryButton>}
-          <button type="button" onClick={toggleDetailsShow} className="cookiesModalDetailedViewButton">
-            <Text weight={theme.typography.weights.black} className="cookiesModalDetailedViewButtonText">
+          <button type='button' onClick={toggleDetailsShow} className='cookiesModalDetailedViewButton'>
+            <Text weight={theme.typography.weights.black} className='cookiesModalDetailedViewButtonText'>
               {showDetailsText}
             </Text>
           </button>

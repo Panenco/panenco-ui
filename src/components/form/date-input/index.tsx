@@ -127,7 +127,7 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
 
           const isLastItem = index + 1 !== inputs.length;
           return (
-            <div className="dateInputItem" key={`text-input-${input.type}`}>
+            <div className='dateInputItem' key={`text-input-${input.type}`}>
               <TextInput
                 id={`text-input-${input.type}`}
                 key={`text-input-${input.type}-input`}
@@ -141,7 +141,7 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
                 placeholder={input.placeholder}
                 value={currentDate.split('/')[index]}
               />
-              {isLastItem ? <Text className="dateInputItemDivider">{divider}</Text> : null}
+              {isLastItem ? <Text className='dateInputItemDivider'>{divider}</Text> : null}
             </div>
           );
         })}

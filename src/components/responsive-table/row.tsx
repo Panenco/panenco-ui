@@ -30,7 +30,7 @@ const Row = ({ row, rowIndex, visibleColumns, hiddenColumns, expandRow, iconCrea
     );
   });
 
-  return <tr className="tableBodyRow">{cells}</tr>;
+  return <tr className='tableBodyRow'>{cells}</tr>;
 };
 
 Row.defaultProps = {

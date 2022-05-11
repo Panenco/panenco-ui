@@ -13,7 +13,7 @@ const CustomOption = (props: any): JSX.Element => {
 
   return (
     <components.Option {...props}>
-      {isSelected && <Icon icon={Icon.icons.check} className="icon" />}
+      {isSelected && <Icon icon={Icon.icons.check} className='icon' />}
       {children}
     </components.Option>
   );
@@ -63,17 +63,17 @@ const Component = ({
   return (
     <>
       {title && (
-        <Text className="title" weight={theme.typography.weights.bold} size={theme.typography.sizes.m}>
+        <Text className='title' weight={theme.typography.weights.bold} size={theme.typography.sizes.m}>
           {title}
         </Text>
       )}
       {subTitle && (
-        <Text className="subTitle" size={theme.typography.sizes.xs} color={theme.colors.base700}>
+        <Text className='subTitle' size={theme.typography.sizes.xs} color={theme.colors.base700}>
           {subTitle}
         </Text>
       )}
       <>
-        <div className="wrapperSelect">
+        <div className='wrapperSelect'>
           <SelectComponent
             options={options}
             loadingMessage={
@@ -88,7 +88,7 @@ const Component = ({
             {...props}
           />
         </div>
-        <Text className="errorTitle" size={theme.typography.sizes.xs} color={theme.colors.error}>
+        <Text className='errorTitle' size={theme.typography.sizes.xs} color={theme.colors.error}>
           {error}
         </Text>
       </>

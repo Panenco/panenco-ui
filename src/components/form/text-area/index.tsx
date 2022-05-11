@@ -87,18 +87,18 @@ export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
         {...wrapperProps}
       >
         {title && (
-          <Text weight={theme.typography.weights.bold} size={theme.typography.sizes.m} className="title">
+          <Text weight={theme.typography.weights.bold} size={theme.typography.sizes.m} className='title'>
             {title}
           </Text>
         )}
         {subTitle && (
-          <Text size={theme.typography.sizes.xs} className="subtitle">
+          <Text size={theme.typography.sizes.xs} className='subtitle'>
             {subTitle}
           </Text>
         )}
 
-        <div className="withErrorWrapper">
-          <div className="withErrorWrapperContent">
+        <div className='withErrorWrapper'>
+          <div className='withErrorWrapperContent'>
             <textarea
               aria-label={createAriaLabel()}
               className={cx('input', error && 'inputError', disabled && 'inputDisabled')}
@@ -112,9 +112,9 @@ export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
             />
 
             {error || maxLength ? (
-              <div className="counterWrapper">
+              <div className='counterWrapper'>
                 <Text
-                  component="span"
+                  component='span'
                   size={theme.typography.sizes.xs}
                   color={mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.error}
                   className={error ? 'errorLabel' : 'hidden'}
@@ -123,10 +123,10 @@ export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
                 </Text>
                 {maxLength && (
                   <Text
-                    component="span"
+                    component='span'
                     size={theme.typography.sizes.xs}
                     color={theme.colors.base700}
-                    className="counter"
+                    className='counter'
                   >
                     {counter}/{maxLength}
                   </Text>
