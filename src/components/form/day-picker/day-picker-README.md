@@ -33,9 +33,7 @@ const render = () => {
         dir="ltr"
         timeInputErrorText="Please, enter valid time"
         dayPickerProps={{
-          disabled: {
-            before: new Date()
-          },
+          disabled: [{ before: new Date()}, { after: new Date()}],
           locale: es,
         }}
     />
