@@ -5,7 +5,7 @@ import README from 'components/select/README.md';
 import { decorator } from '../../utils/decorator';
 import { WrappedComponent } from '../helpers/wrapped';
 
-const options = [
+const defaultOptions = [
   { label: 'Chip', value: 'Chip_1' },
   { label: 'Chip', value: 'Chip_2' },
   {
@@ -26,7 +26,9 @@ const options = [
 ];
 
 export default decorator('Select', SelectInputDocs, README).add('Select component', () => {
+  const [options, setOptions] = React.useState(defaultOptions);
   const [value, setValue] = React.useState([]);
+
   const handleChange = (val) => {
     setValue(val);
   };
@@ -34,43 +36,49 @@ export default decorator('Select', SelectInputDocs, README).add('Select componen
   const handleDeleteOption = (val, e) => {
     setValue(value.filter((current) => current.value !== val.value));
   };
+
+  const handleNewOption = (val) => {
+    setOptions((prevOptions) => [...prevOptions, { label: val, value: val }]);
+  };
+
   return (
     <WrappedComponent>
       <Row>
-        <Col xs="12" sm="6">
-          <SelectInput options={options} title="Single Select" subTitle="Sub title" placeholder="Choose one option" />
+        <Col xs='12' sm='6'>
+          <SelectInput options={options} title='Single Select' subTitle='Sub title' placeholder='Choose one option' />
         </Col>
-        <Col xs="12" sm="6">
+        <Col xs='12' sm='6'>
           <SelectInput
             options={options}
-            title="Multi Select"
-            subTitle="Sub title"
+            title='Multi Select'
+            subTitle='Sub title'
             isMulti
             chipIconSize={4}
             chipIcon={Icon.icons.close}
-            placeholder="Choose many options ..."
+            placeholder='Choose many options ...'
             value={value}
             onChange={handleChange}
             onDeleteOption={handleDeleteOption}
           />
         </Col>
-        <Col xs="12" sm="6">
+        <Col xs='12' sm='6'>
           <SelectInput
             options={options}
-            title="Creatable Select"
-            subTitle="Sub title"
-            placeholder="Choose or create ..."
+            title='Creatable Select'
+            subTitle='Sub title'
+            placeholder='Choose or create ...'
             value={value}
             onChange={handleChange}
             onDeleteOption={handleDeleteOption}
+            onCreateOption={handleNewOption}
             creatable
           />
         </Col>
-        <Col xs="12" sm="6">
-          <SelectInput options={options} title="Select with Error" subTitle="Sub title" error="Error options" />
+        <Col xs='12' sm='6'>
+          <SelectInput options={options} title='Select with Error' subTitle='Sub title' error='Error options' />
         </Col>
-        <Col xs="12" sm="6">
-          <SelectInput title="Disabled select" subTitle="Sub title" placeholder="Disabled" isDisabled />
+        <Col xs='12' sm='6'>
+          <SelectInput title='Disabled select' subTitle='Sub title' placeholder='Disabled' isDisabled />
         </Col>
       </Row>
     </WrappedComponent>
