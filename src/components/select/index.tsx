@@ -13,8 +13,6 @@ export interface SelectInputProps extends ComponentProps {
 export const SelectInput = React.forwardRef<HTMLDivElement, SelectInputProps>(
   (
     {
-      async,
-      creatable,
       value,
       error,
       isMulti,
@@ -45,14 +43,7 @@ export const SelectInput = React.forwardRef<HTMLDivElement, SelectInputProps>(
           <>
             <Row className='row'>
               <Col lg={wrapperSelectSizes.lg} md={wrapperSelectSizes.md} sm={wrapperSelectSizes.sm} className='col'>
-                <SelectComponent
-                  async={async}
-                  creatable={creatable}
-                  error={error}
-                  isMulti={isMulti}
-                  value={value}
-                  {...props}
-                />
+                <SelectComponent error={error} isMulti={isMulti} value={value} {...props} />
               </Col>
             </Row>
             {!hideChips && isMulti && (value?.length > 0 || value?.size > 0) && (
