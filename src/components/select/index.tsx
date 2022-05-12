@@ -1,21 +1,12 @@
 import * as React from 'react';
-import { Props as SelectProps } from 'react-select';
 import { useTheme, useMode } from 'utils/hooks';
 import { Row, Col } from 'components';
-import { InputComponent } from '../../utils/types';
 import { StyledSelectWrapper } from './style';
 import ChipsComponent from './chips-component';
-import SelectComponent from './select-component';
+import SelectComponent, { ComponentProps } from './select-component';
 
-export interface SelectInputProps extends SelectProps, InputComponent {
-  value?: any;
-  selectWrapperProps?: React.HTMLAttributes<HTMLDivElement>;
+export interface SelectInputProps extends ComponentProps {
   clearChips?: boolean;
-  wrapperSelectSizes?: {
-    lg?: number | string;
-    md?: number | string;
-    sm?: number | string;
-  };
   hideChips?: boolean;
 }
 
@@ -50,8 +41,8 @@ export const SelectInput = React.forwardRef<HTMLDivElement, SelectInputProps>(
       >
         {wrapperSelectSizes ? (
           <>
-            <Row className="row">
-              <Col lg={wrapperSelectSizes.lg} md={wrapperSelectSizes.md} sm={wrapperSelectSizes.sm} className="col">
+            <Row className='row'>
+              <Col lg={wrapperSelectSizes.lg} md={wrapperSelectSizes.md} sm={wrapperSelectSizes.sm} className='col'>
                 <SelectComponent error={error} isMulti={isMulti} value={value} {...props} />
               </Col>
             </Row>
