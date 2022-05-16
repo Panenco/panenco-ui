@@ -19,7 +19,7 @@ const CustomOption = (props: any): JSX.Element => {
   );
 };
 
-const CustomCreatableOption = ({ onDeleteCreatable, ...props }: any): JSX.Element => {
+const CustomCreatableOption = ({ creatableDeleteIcon, onDeleteCreatable, ...props }: any): JSX.Element => {
   const { children, isSelected, data } = props;
 
   return (
@@ -27,7 +27,7 @@ const CustomCreatableOption = ({ onDeleteCreatable, ...props }: any): JSX.Elemen
       {isSelected && <Icon icon={Icon.icons.check} className='icon' />}
       {children}
       <Icon
-        icon={Icon.icons.trash}
+        icon={creatableDeleteIcon || Icon.icons.trash}
         className='deleteItemIcon'
         onClick={(e) => {
           e.stopPropagation();
@@ -50,6 +50,7 @@ export interface ComponentProps extends SelectProps, InputComponent {
     md?: number | string;
     sm?: number | string;
   };
+  creatableDeleteIcon?: any;
   onDeleteCreatable?: (data: any) => void;
 }
 
