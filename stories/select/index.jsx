@@ -41,6 +41,10 @@ export default decorator('Select', SelectInputDocs, README).add('Select componen
     setOptions((prevOptions) => [...prevOptions, { label: val, value: val }]);
   };
 
+  const handleDeleteCreatable = (data) => {
+    setOptions((prevOptions) => prevOptions.filter((i) => i.value !== data.value));
+  };
+
   return (
     <WrappedComponent>
       <Row>
@@ -71,6 +75,7 @@ export default decorator('Select', SelectInputDocs, README).add('Select componen
             onChange={handleChange}
             onDeleteOption={handleDeleteOption}
             onCreateOption={handleNewOption}
+            onDeleteCreatable={handleDeleteCreatable}
             creatable
           />
         </Col>
