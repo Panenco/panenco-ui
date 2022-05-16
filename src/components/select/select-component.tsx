@@ -13,8 +13,27 @@ const CustomOption = (props: any): JSX.Element => {
 
   return (
     <components.Option {...props}>
-      {isSelected && <Icon icon={Icon.icons.check} className="icon" />}
+      {isSelected && <Icon icon={Icon.icons.check} className='icon' />}
       {children}
+    </components.Option>
+  );
+};
+
+const CustomCreatableOption = ({ onDeleteCreatable, ...props }: any): JSX.Element => {
+  const { children, isSelected, data } = props;
+
+  return (
+    <components.Option {...props}>
+      {isSelected && <Icon icon={Icon.icons.check} className='icon' />}
+      {children}
+      <Icon
+        icon={Icon.icons.trash}
+        className='deleteItemIcon'
+        onClick={(e) => {
+          e.stopPropagation();
+          onDeleteCreatable(data);
+        }}
+      />
     </components.Option>
   );
 };
@@ -31,6 +50,7 @@ export interface ComponentProps extends SelectProps, InputComponent {
     md?: number | string;
     sm?: number | string;
   };
+  onDeleteCreatable?: (data: any) => void;
 }
 
 const Component = ({
@@ -45,6 +65,7 @@ const Component = ({
   loadingMessage,
   noOptionsMessage,
   placeholder = '',
+  onDeleteCreatable,
   ...props
 }: ComponentProps): JSX.Element => {
   let SelectComponent: any = Select;
@@ -60,27 +81,35 @@ const Component = ({
     SelectComponent = AsyncCreatableSelect;
   }
 
+  const SelectOption = onDeleteCreatable
+    ? (optionProps) => <CustomCreatableOption onDeleteCreatable={onDeleteCreatable} {...optionProps} />
+    : CustomOption;
+
   return (
     <>
       {title && (
-        <Text className="title" weight={theme.typography.weights.bold} size={theme.typography.sizes.m}>
+        <Text className='title' weight={theme.typography.weights.bold} size={theme.typography.sizes.m}>
           {title}
         </Text>
       )}
       {subTitle && (
-        <Text className="subTitle" size={theme.typography.sizes.xs} color={theme.colors.base700}>
+        <Text className='subTitle' size={theme.typography.sizes.xs} color={theme.colors.base700}>
           {subTitle}
         </Text>
       )}
       <>
-        <div className="wrapperSelect">
+        <div className='wrapperSelect'>
           <SelectComponent
             options={options}
             loadingMessage={
               loadingMessage || (({ inputValue }): string => (inputValue ? `Loading ${inputValue}` : 'Loading...'))
             }
             styles={{ ...customStyles(theme, mode, error, styles) }}
-            components={{ Option: CustomOption, MultiValue, ...propComponents }}
+            components={{
+              Option: SelectOption,
+              MultiValue,
+              ...propComponents,
+            }}
             noOptionsMessage={noOptionsMessage || (() => 'Not found')}
             error={error}
             isClearable={false}
@@ -88,7 +117,7 @@ const Component = ({
             {...props}
           />
         </div>
-        <Text className="errorTitle" size={theme.typography.sizes.xs} color={theme.colors.error}>
+        <Text className='errorTitle' size={theme.typography.sizes.xs} color={theme.colors.error}>
           {error}
         </Text>
       </>

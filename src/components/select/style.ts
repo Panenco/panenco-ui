@@ -3,7 +3,8 @@ import { styled } from 'linaria/react';
 import { transparentize } from 'polished';
 import { weights } from 'styles';
 
-export const additionalStyles = (element: string, styles, ...arg): any => (styles?.[element] ? styles[element](...arg) : {});
+export const additionalStyles = (element: string, styles, ...arg): any =>
+  styles?.[element] ? styles[element](...arg) : {};
 
 export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles?: any): any => ({
   indicatorSeparator: (provided, state): any => ({
@@ -181,6 +182,18 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
         top: 'calc(50% - 6px)',
         width: '12px',
         height: '12px',
+      },
+      '& .deleteItemIcon': {
+        position: 'absolute',
+        right: '25px',
+        top: 'calc(50% - 12px)',
+        padding: '6px',
+        width: '24px',
+        height: '24px',
+        borderRadius: '4px',
+        '&:hover': {
+          backgroundColor: mode === ThemeMode.dark ? theme.colors.base600 : theme.colors.primary500,
+        },
       },
       '& .addNewOption': {
         paddingLeft: '5px',
