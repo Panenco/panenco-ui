@@ -66,6 +66,7 @@ const Component = ({
   loadingMessage,
   noOptionsMessage,
   placeholder = '',
+  creatableDeleteIcon,
   onDeleteCreatable,
   ...props
 }: ComponentProps): JSX.Element => {
@@ -83,7 +84,13 @@ const Component = ({
   }
 
   const SelectOption = onDeleteCreatable
-    ? (optionProps) => <CustomCreatableOption onDeleteCreatable={onDeleteCreatable} {...optionProps} />
+    ? (optionProps) => (
+        <CustomCreatableOption
+          creatableDeleteIcon={creatableDeleteIcon}
+          onDeleteCreatable={onDeleteCreatable}
+          {...optionProps}
+        />
+      )
     : CustomOption;
 
   return (
