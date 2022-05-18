@@ -29,6 +29,11 @@ export const StyledDayPicker = styled.div<{
     right: 0;
   }
 
+  .rdp-head_cell {
+    background-color: ${(props: any): string => props.theme.colors.base100};
+    border: 1px solid ${(props: any): string => props.theme.colors.base100};
+  }
+
   .mobile {
     max-width: 100vw;
     width: 100vw;

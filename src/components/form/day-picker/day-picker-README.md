@@ -36,6 +36,9 @@ const render = () => {
           disabled: [{ before: new Date()}, { after: new Date()}],
           locale: es,
         }}
+        dateInputProps={{
+          disabled: true,
+        }}
     />
 );
 }
@@ -58,6 +61,7 @@ move forward with **tab-button**, back with **shift+tab-button**, **enter** to s
 - defaultDay - will be default date if **value** not passed;
 - iconAfter - icon of the DayPicker input;
 - dayPickerProps - allow to pass props to DayPicker component from 'react-day-picker' library;
+- dateInputProps - props for date input; 
 - wrapperProps - props of the whole DayPicker;
 - timeInputProps - props for time input
 - overlayComponentProps - allow to pass props to whole Calendar;
