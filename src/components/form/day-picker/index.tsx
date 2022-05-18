@@ -45,6 +45,7 @@ export interface DayPickerProps extends InputComponent, DayPickerSingleProps {
   saveLabel?: string;
   wrapperProps?: any;
   dayPickerProps?: any;
+  dateInputProps?: any;
   timeInputProps?: any;
   overlayComponentProps?: any;
   isTimePicker?: boolean;
@@ -69,6 +70,7 @@ export const DayPicker = ({
   timeInputProps,
   dayPickerProps,
   overlayComponentProps,
+  dateInputProps,
   isTimePicker,
   defaultDay,
   iconAfter = Icon.icons.calendar,
@@ -189,6 +191,7 @@ export const DayPicker = ({
         value={formatDate(date, format)}
         error={error}
         dir={dayPickerProps?.dir || dir}
+        {...dateInputProps}
       />
       <div className='calendar-wrapper'>
         {isCalendarOpen && (
