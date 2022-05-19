@@ -11,12 +11,14 @@ import { customStyles } from './style';
 const CustomOption = ({ deleteItemIcon, onDeleteItem, ...props }: any): JSX.Element => {
   const { children, isSelected, data } = props;
 
+  /* eslint-disable-next-line no-underscore-dangle */
+  const deleteButtonIsShown = onDeleteItem && !data.__isNew__;
+
   return (
     <components.Option {...props}>
       {isSelected && <Icon icon={Icon.icons.check} className='icon' />}
       {children}
-      {/* eslint-disable-next-line no-underscore-dangle */}
-      {onDeleteItem && !data.__isNew__ && (
+      {deleteButtonIsShown && (
         <Icon
           icon={deleteItemIcon || Icon.icons.trash}
           className='deleteItemIcon'
