@@ -42,7 +42,7 @@ export default decorator('Select', SelectInputDocs, README).add('Select componen
     setValue(val);
   };
 
-  const handleDeleteOption = (val) => {
+  const handleDeleteMultiOption = (val) => {
     setValue(value.filter((current) => current.value !== val.value));
   };
 
@@ -71,7 +71,7 @@ export default decorator('Select', SelectInputDocs, README).add('Select componen
             placeholder='Choose many options ...'
             value={value}
             onChange={handleChange}
-            onDeleteOption={handleDeleteOption}
+            onDeleteOption={handleDeleteMultiOption}
           />
         </Col>
         <Col xs='12' sm='6'>
