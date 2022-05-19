@@ -5,14 +5,14 @@ import README from 'components/select/README.md';
 import { decorator } from '../../utils/decorator';
 import { WrappedComponent } from '../helpers/wrapped';
 
-const defaultOptions = [
+const options = [
   { label: 'Chip', value: 'Chip_1' },
   { label: 'Chip', value: 'Chip_2' },
   {
     label: 'Group 1',
     options: [
-      { label: 'G1-Option 1', value: 'G1-Option _1' },
-      { label: 'G1-option 2', value: 'G1-Option _2' },
+      { label: 'G1-Option 1', value: 'G1-Option_1' },
+      { label: 'G1-option 2', value: 'G1-Option_2' },
     ],
   },
   {
@@ -25,20 +25,33 @@ const defaultOptions = [
   },
 ];
 
+const defaultDeletableOptions = [
+  { label: 'Chip 1', value: 'Chip_1' },
+  { label: 'Chip 2', value: 'Chip_2' },
+  { label: 'Chip 3', value: 'Chip_3' },
+  { label: 'Chip 4', value: 'Chip_4' },
+  { label: 'Chip 5', value: 'Chip_5' },
+];
+
 export default decorator('Select', SelectInputDocs, README).add('Select component', () => {
-  const [options, setOptions] = React.useState(defaultOptions);
+  const [deletableOptions, setDeletableOptions] = React.useState(defaultDeletableOptions);
+
   const [value, setValue] = React.useState([]);
 
   const handleChange = (val) => {
     setValue(val);
   };
 
-  const handleDeleteOption = (val, e) => {
+  const handleDeleteMultiOption = (val) => {
     setValue(value.filter((current) => current.value !== val.value));
   };
 
   const handleNewOption = (val) => {
-    setOptions((prevOptions) => [...prevOptions, { label: val, value: val }]);
+    setDeletableOptions((prevOptions) => [...prevOptions, { label: val, value: val }]);
+  };
+
+  const handleDeleteItem = (data) => {
+    setDeletableOptions((prevOptions) => prevOptions.filter((i) => i.value !== data.value));
   };
 
   return (
@@ -58,19 +71,19 @@ export default decorator('Select', SelectInputDocs, README).add('Select componen
             placeholder='Choose many options ...'
             value={value}
             onChange={handleChange}
-            onDeleteOption={handleDeleteOption}
+            onDeleteOption={handleDeleteMultiOption}
           />
         </Col>
         <Col xs='12' sm='6'>
           <SelectInput
-            options={options}
+            options={deletableOptions}
             title='Creatable Select'
             subTitle='Sub title'
             placeholder='Choose or create ...'
             value={value}
             onChange={handleChange}
-            onDeleteOption={handleDeleteOption}
             onCreateOption={handleNewOption}
+            onDeleteItem={handleDeleteItem}
             creatable
           />
         </Col>
