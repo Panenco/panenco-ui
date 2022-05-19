@@ -8,32 +8,24 @@ import { Icon, Text } from 'components';
 import { InputComponent } from '../../utils/types';
 import { customStyles } from './style';
 
-const CustomOption = (props: any): JSX.Element => {
-  const { children, isSelected } = props;
-
-  return (
-    <components.Option {...props}>
-      {isSelected && <Icon icon={Icon.icons.check} className='icon' />}
-      {children}
-    </components.Option>
-  );
-};
-
-const CustomCreatableOption = ({ creatableDeleteIcon, onDeleteCreatable, ...props }: any): JSX.Element => {
+const CustomOption = ({ deleteItemIcon, onDeleteItem, ...props }: any): JSX.Element => {
   const { children, isSelected, data } = props;
 
   return (
     <components.Option {...props}>
       {isSelected && <Icon icon={Icon.icons.check} className='icon' />}
       {children}
-      <Icon
-        icon={creatableDeleteIcon || Icon.icons.trash}
-        className='deleteItemIcon'
-        onClick={(e) => {
-          e.stopPropagation();
-          onDeleteCreatable(data);
-        }}
-      />
+      {/* eslint-disable-next-line no-underscore-dangle */}
+      {onDeleteItem && !data.__isNew__ && (
+        <Icon
+          icon={deleteItemIcon || Icon.icons.trash}
+          className='deleteItemIcon'
+          onClick={(e) => {
+            e.stopPropagation();
+            onDeleteItem(data);
+          }}
+        />
+      )}
     </components.Option>
   );
 };
@@ -50,8 +42,8 @@ export interface ComponentProps extends SelectProps, InputComponent {
     md?: number | string;
     sm?: number | string;
   };
-  creatableDeleteIcon?: any;
-  onDeleteCreatable?: (data: any) => void;
+  deleteItemIcon?: any;
+  onDeleteItem?: (data: any) => any;
 }
 
 const Component = ({
@@ -66,8 +58,8 @@ const Component = ({
   loadingMessage,
   noOptionsMessage,
   placeholder = '',
-  creatableDeleteIcon,
-  onDeleteCreatable,
+  deleteItemIcon,
+  onDeleteItem,
   ...props
 }: ComponentProps): JSX.Element => {
   let SelectComponent: any = Select;
@@ -83,15 +75,9 @@ const Component = ({
     SelectComponent = AsyncCreatableSelect;
   }
 
-  const SelectOption = onDeleteCreatable
-    ? (optionProps) => (
-        <CustomCreatableOption
-          creatableDeleteIcon={creatableDeleteIcon}
-          onDeleteCreatable={onDeleteCreatable}
-          {...optionProps}
-        />
-      )
-    : CustomOption;
+  const SelectOption = (optionProps) => (
+    <CustomOption deleteItemIcon={deleteItemIcon} onDeleteItem={onDeleteItem} {...optionProps} />
+  );
 
   return (
     <>
