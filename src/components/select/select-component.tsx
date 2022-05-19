@@ -11,6 +11,11 @@ import { customStyles } from './style';
 const CustomOption = ({ deleteItemIcon, onDeleteItem, ...props }: any): JSX.Element => {
   const { children, isSelected, data } = props;
 
+  const handleDelete = (e) => {
+    e.stopPropagation();
+    onDeleteItem(data);
+  };
+
   /* eslint-disable-next-line no-underscore-dangle */
   const deleteButtonIsShown = onDeleteItem && !data.__isNew__;
 
@@ -19,14 +24,7 @@ const CustomOption = ({ deleteItemIcon, onDeleteItem, ...props }: any): JSX.Elem
       {isSelected && <Icon icon={Icon.icons.check} className='icon' />}
       {children}
       {deleteButtonIsShown && (
-        <Icon
-          icon={deleteItemIcon || Icon.icons.trash}
-          className='deleteItemIcon'
-          onClick={(e) => {
-            e.stopPropagation();
-            onDeleteItem(data);
-          }}
-        />
+        <Icon icon={deleteItemIcon || Icon.icons.trash} className='deleteItemIcon' onClick={handleDelete} />
       )}
     </components.Option>
   );
