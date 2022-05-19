@@ -8,7 +8,7 @@ import { Icon, Text } from 'components';
 import { InputComponent } from '../../utils/types';
 import { customStyles } from './style';
 
-const CustomOption = ({ deleteItemIcon, onDeleteItem, ...props }: any): JSX.Element => {
+const CustomOption = ({ deleteItemIcon = Icon.icons.trash, onDeleteItem, ...props }: any): JSX.Element => {
   const { children, isSelected, data } = props;
 
   const handleDelete = (e) => {
@@ -23,9 +23,7 @@ const CustomOption = ({ deleteItemIcon, onDeleteItem, ...props }: any): JSX.Elem
     <components.Option {...props}>
       {isSelected && <Icon icon={Icon.icons.check} className='icon' />}
       {children}
-      {deleteButtonIsShown && (
-        <Icon icon={deleteItemIcon || Icon.icons.trash} className='deleteItemIcon' onClick={handleDelete} />
-      )}
+      {deleteButtonIsShown && <Icon icon={deleteItemIcon} className='deleteItemIcon' onClick={handleDelete} />}
     </components.Option>
   );
 };
