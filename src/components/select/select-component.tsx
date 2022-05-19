@@ -17,7 +17,7 @@ const CustomOption = ({ deleteItemIcon, onDeleteItem, ...props }: any): JSX.Elem
   };
 
   /* eslint-disable-next-line no-underscore-dangle */
-  const deleteButtonIsShown = onDeleteItem && !data.__isNew__;
+  const deleteButtonIsShown = onDeleteItem && !data.__isNew__ && !isSelected;
 
   return (
     <components.Option {...props}>
