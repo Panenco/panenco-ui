@@ -41,6 +41,7 @@ export interface ComponentProps extends SelectProps, InputComponent {
     sm?: number | string;
   };
   deleteItemIcon?: any;
+  isDeleting?: boolean;
   onDeleteItem?: (data: any) => any;
 }
 

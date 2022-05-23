@@ -120,10 +120,12 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
   option: (provided, state): any => {
     const {
       value,
-      selectProps: { activeOptions, getOptionValue },
+      selectProps: { activeOptions, getOptionValue, isDeleting },
       isSelected,
       isFocused,
+      isDisabled,
     } = state;
+
     const isChoosedOption =
       !!activeOptions?.some((option) => {
         if (getOptionValue) {
@@ -134,7 +136,7 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
     // const notFoundLabel = 'No results found. Add new object';
 
     const isOptionColor = (): string => {
-      if (state.isDisabled) {
+      if (isDisabled || isDeleting) {
         return theme.colors.base700;
       }
       if (mode === ThemeMode.light) {
@@ -150,7 +152,7 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
     };
 
     const isBackgroundColor = (): string => {
-      if (state.isDisabled) {
+      if (isDisabled || isDeleting) {
         return theme.colors.base400;
       }
       if (isFocused) {
@@ -167,7 +169,7 @@ export const customStyles = (theme: PUITheme, mode?: string, error?: any, styles
       paddingBottom: '18px',
       paddingTop: '18px',
       position: 'relative',
-      pointerEvents: state.isDisabled ? 'none' : 'auto',
+      pointerEvents: isDisabled || isDeleting ? 'none' : 'auto',
       '&:hover': {
         backgroundColor: mode === ThemeMode.dark ? theme.colors.base400 : theme.colors.primary200,
         color: `${isHoverColor()}`,
