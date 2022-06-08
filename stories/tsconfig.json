@@ -1,0 +1,20 @@
+{
+  // the goal of this file is to resolve paths issue in run-time (stories and utils folders)
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "",
+    "jsx": "react",
+    "moduleResolution": "node",
+    "target": "es2019",
+    "module": "esnext",
+    "sourceMap": true,
+    "allowJs": true,
+    "paths": {
+      "components": ["../src/components"],
+      "components/*": ["../src/components/*"],
+      "styles": ["../src/styles"],
+      "utils": ["../src/utils"]
+    }
+  },
+  "include": ["**/*", "../declaration.d.ts", "../utils"]
+}

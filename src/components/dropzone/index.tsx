@@ -8,16 +8,19 @@ import { InputPropsType, ThemeMode, WrapperProps } from '../../utils/types';
 import { StyledDropzone } from './style';
 
 export interface DropzoneProps extends React.HTMLAttributes<HTMLDivElement> {
+  // these props not deleted cause save compatibility with projects where it uses
+  icon?: React.SVGProps<SVGSVGElement>;
   iconClassName?: string;
-  loading?: boolean;
   loadingText?: string;
   textContent?: string;
   textContentOnDrag?: string;
+  inputProps?: InputPropsType; // will be removed in next versions
+  mode?: 'default' | 'custom';
+  //
   error?: string;
-  icon?: HTMLObjectElement;
+  loading?: boolean;
   loader?: JSX.Element;
   wrapperProps?: WrapperProps;
-  inputProps?: InputPropsType; // will be removed in next versions
   options?: DropzoneOptions;
   children?: React.ReactNode;
 }
@@ -29,8 +32,6 @@ export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
       loadingText = 'Uploading',
       textContent = 'Drop your file here or click to this zone',
       textContentOnDrag = 'Drop your file here',
-      // getInputProps: getOutsideInputProps,
-      // getRootProps: getOutsideRootProps,
       iconClassName,
       icon,
       wrapperProps,
@@ -39,20 +40,21 @@ export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
       loader,
       options = {},
       children,
+      mode: componentMode = 'default',
       ...props
     }: DropzoneProps,
     ref,
   ): JSX.Element => {
     const theme = useTheme();
     const { mode } = useMode();
-    const { getRootProps, getInputProps, isDragActive } = useDropzone(options);
+    const { getRootProps, getInputProps, ...rest } = useDropzone(options);
 
     let textContentInBlock = '';
     let iconImage = Icon.icons.upload;
     if (error) {
       textContentInBlock = error;
       iconImage = Icon.icons.close;
-    } else if (isDragActive) {
+    } else if (rest.isDragActive) {
       textContentInBlock = textContentOnDrag;
     } else {
       textContentInBlock = textContent;
@@ -61,6 +63,8 @@ export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
     if (icon) {
       iconImage = icon;
     }
+    // possibility to have access for events out of the component
+    const childrenEl = typeof children === 'function' ? children(rest) : children;
 
     return (
       <StyledDropzone
@@ -70,22 +74,29 @@ export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
         theme={theme}
         mode={mode}
         loading={loading}
-        isDragActive={isDragActive}
+        isDragActive={rest.isDragActive}
         error={error}
       >
         {loading ? (
           <>
             {loader || <Loader color={mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.base700} />}
-            <Text className="contentLoading">{loadingText}</Text>
+            {componentMode === 'default' && <Text className='contentLoading'>{loadingText}</Text>}
+            {/* make possible to add extra things if needed for particular case */}
+            {childrenEl}
           </>
         ) : (
           <>
             <input {...getInputProps()} {...inputProps} {...props} />
-            <Icon icon={iconImage} className={cx('icon', iconClassName)} />
-            <Text className="content">{textContentInBlock}</Text>
+            {componentMode === 'default' && (
+              <>
+                <Icon icon={iconImage} className={cx('icon', iconClassName)} />
+                <Text className='content'>{textContentInBlock}</Text>
+              </>
+            )}
+
+            {childrenEl}
           </>
         )}
-        {children && <div className="additionalContent">{children}</div>}
       </StyledDropzone>
     );
   },

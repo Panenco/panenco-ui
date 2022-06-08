@@ -9,6 +9,7 @@ export const StyledDropzone = styled.div<{
   isDragActive?: boolean;
   error?: string;
 }>`
+  cursor: ${(props) => (props.loading ? 'default' : 'pointer')};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,8 +17,17 @@ export const StyledDropzone = styled.div<{
   border-radius: 4px;
   width: 100%;
   padding: 40px 56px;
-  border-style: solid;
-  background-color: ${(props: any): string => {
+  outline: none;
+  border: 2px solid transparent;
+
+  border-style: ${(props): string => {
+    if (props.isDragActive) {
+      return 'dashed';
+    }
+    return 'solid';
+  }};
+
+  background-color: ${(props): string => {
     if (props.loading) {
       return props.mode === ThemeMode.dark
         ? transparentize(0.4, props.theme.colors.base700)
@@ -25,13 +35,15 @@ export const StyledDropzone = styled.div<{
     }
     return props.mode === ThemeMode.dark ? props.theme.colors.base900 : props.theme.colors.primary200;
   }};
-  border-width: ${(props: any): string => {
+
+  border-width: ${(props): string => {
     if (props.error) {
       return '2px';
     }
     return props.isDragActive ? '2px' : '1px';
   }};
-  border-color: ${(props: any): string => {
+
+  border-color: ${(props): string => {
     if (props.error) {
       return props.theme.colors.error;
     }
@@ -40,30 +52,28 @@ export const StyledDropzone = styled.div<{
     }
     return props.mode === ThemeMode.dark ? props.theme.colors.base700 : props.theme.colors.primary200;
   }};
-  color: ${(props: any): string => {
+
+  color: ${(props): string => {
     if (props.loading) {
       return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary700;
     }
     return props.mode === ThemeMode.dark ? props.theme.colors.base700 : props.theme.colors.primary500;
   }};
-  outline: none;
 
-  &:focus {
-    box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.base900};
+  &:focus-visible {
+    box-shadow: 0 0 0 2px ${(props): string => props.theme.colors.base900};
   }
 
   &:hover {
-    cursor: pointer;
-    outline: 2px solid
-      ${(props: any): string => {
-        if (props.color) {
-          return props.color;
-        }
-        if (props.mode === ThemeMode.dark) {
-          return props.theme.colors.base100;
-        }
-        return props.theme.colors.primary500;
-      }};
+    border-color: ${(props): string => {
+      if (props.color) {
+        return props.color;
+      }
+      if (props.mode === ThemeMode.dark) {
+        return props.theme.colors.base100;
+      }
+      return props.theme.colors.primary500;
+    }};
   }
 
   .icon {
@@ -72,7 +82,7 @@ export const StyledDropzone = styled.div<{
     width: 16px;
     height: 16px;
     margin-bottom: 20px;
-    color: ${(props: any): string => {
+    color: ${(props): string => {
       if (props.error) {
         return props.theme.colors.error;
       }
@@ -84,7 +94,7 @@ export const StyledDropzone = styled.div<{
   }
 
   .content {
-    color: ${(props: any): string => {
+    color: ${(props): string => {
       if (props.isDragActive) {
         return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary700;
       }
@@ -93,13 +103,9 @@ export const StyledDropzone = styled.div<{
     text-align: center;
 
     &Loading {
-      color: ${(props: any): string =>
+      color: ${(props): string =>
         props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base700};
       margin-top: 20px;
     }
-  }
-
-  .additionalContent {
-    margin-top: 25px;
   }
 `;
