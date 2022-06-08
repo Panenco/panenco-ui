@@ -39,7 +39,7 @@ export default decorator('Dropzone', DropzoneDOCS, DropzoneREADME).add('Dropzone
 
   return (
     <WrappedComponent>
-      <Row style={{ justifyContent: 'space-around', marginBottom: '20px' }}>
+      <Row style={{ justifyContent: 'space-around', margin: '10px auto' }}>
         <Col xs='2' sm='4' lg='4'>
           <Dropzone
             options={{
@@ -101,7 +101,7 @@ export default decorator('Dropzone', DropzoneDOCS, DropzoneREADME).add('Dropzone
           <Dropzone loading />
         </Col>
       </Row>
-      <Row style={{ justifyContent: 'space-around' }}>
+      <Row style={{ justifyContent: 'space-around', margin: '10px auto' }}>
         <Col xs='2' sm='4' lg='4'>
           <Dropzone>
             <Text style={{ marginTop: '25px' }}>

@@ -25,6 +25,17 @@ export interface DropzoneProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
 }
 
+const mergeRefs = (...refs) => {
+  return (node) => {
+    // eslint-disable-next-line no-restricted-syntax
+    for (const ref of refs) {
+      if (ref) {
+        ref.current = node;
+      }
+    }
+  };
+};
+
 export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
   (
     {
@@ -70,12 +81,13 @@ export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
       <StyledDropzone
         {...getRootProps()}
         {...wrapperProps}
-        ref={ref}
         theme={theme}
         mode={mode}
         loading={loading}
         isDragActive={rest.isDragActive}
         error={error}
+        // we have to merge refs to avoid inconsistency between refs (from hook and props)
+        ref={mergeRefs(ref, rest.rootRef)}
       >
         {loading ? (
           <>
