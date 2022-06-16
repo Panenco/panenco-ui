@@ -52,7 +52,7 @@ export type PUIWeights = {
 
 export type ButtonVariantType = 'text' | 'contained' | 'outlined';
 
-export type StampVariantType =  'fulfilled' | 'outlined';
+export type StampVariantType = 'fulfilled' | 'outlined';
 
 export type TextSize = { textSize: string; lineHeight: string | number };
 
@@ -115,3 +115,5 @@ export interface AccordionProps extends React.HTMLAttributes<HTMLDivElement> {
   icons?: Array<SVGElement>;
   shouldRotateIcon?: boolean;
 }
+
+export type IconVariantSize = 'sm' | 'md' | 'lg';

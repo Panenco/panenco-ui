@@ -6,7 +6,6 @@ import { idGenerator } from 'utils/helpers';
 import { InputComponent, WrapperProps, InputPropsType, ThemeMode } from 'utils/types';
 import { StyledTextInput } from './style';
 
-
 export interface TextInputProps extends InputComponent, React.InputHTMLAttributes<HTMLInputElement> {
   rightSubTitle?: React.ReactElement;
   iconBefore?: HTMLObjectElement | JSX.Element;
@@ -72,30 +71,24 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
               </Text>
             )}
 
-            {
-              subTitle && (
-                <Text size={theme.typography.sizes.xs} className=' mb-4 inputSubTitle inputSubTitleLeft'>
-                  {subTitle}
-                </Text>
-              )
-            }
+            {subTitle && (
+              <Text size={theme.typography.sizes.xs} className=' mb-4 inputSubTitle inputSubTitleLeft'>
+                {subTitle}
+              </Text>
+            )}
           </div>
-          {rightSubTitle && (
-            <div className='mb-4 rightTitleContainer'>
-              {rightSubTitle}
-            </div>
-          )
-          }
+          {rightSubTitle && <div className='mb-4 rightTitleContainer'>{rightSubTitle}</div>}
         </div>
-
 
         <div className='fieldWrapper'>
           <div className={cx('inputField', error && 'inputFieldError', disabled && 'inputFieldDisabled')}>
-            {iconBefore && (
-              <label className='iconBefore' htmlFor={defaultId}>
-                {React.isValidElement(iconBefore) ? iconBefore : <Icon icon={iconBefore} />}
-              </label>
-            )}
+            {
+              // iconBefore && (
+              //   <label className='iconBefore' htmlFor={defaultId}>
+              //     {React.isValidElement(iconBefore) ? iconBefore : <Icon icon={iconBefore} />}
+              //   </label>
+              // )
+            }
             <input
               type={type}
               aria-label={`${title || ''}${subTitle || ''}`}
@@ -109,11 +102,13 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
               {...inputProps}
               {...props}
             />
-            {iconAfter && (
-              <label className='iconAfter' htmlFor={defaultId}>
-                {React.isValidElement(iconAfter) ? iconAfter : <Icon icon={iconAfter} />}
-              </label>
-            )}
+            {
+              // iconAfter && (
+              //   <label className='iconAfter' htmlFor={defaultId}>
+              //     {React.isValidElement(iconAfter) ? iconAfter : <Icon icon={iconAfter} />}
+              //   </label>
+              // )
+            }
           </div>
         </div>
         {error || maxLength ? (

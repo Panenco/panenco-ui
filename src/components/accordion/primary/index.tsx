@@ -32,8 +32,8 @@ export const AccordionPrimary = React.forwardRef((props: AccordionProps, ref: an
     onIconClick(e);
   };
 
-  const checkTypeIconRight = typeof iconRight === 'boolean';
-  const checkTypeIconLeft = typeof iconLeft === 'boolean';
+  // const checkTypeIconRight = typeof iconRight === 'boolean';
+  // const checkTypeIconLeft = typeof iconLeft === 'boolean';
 
   return (
     <StyledAccordionPrimary
@@ -43,38 +43,44 @@ export const AccordionPrimary = React.forwardRef((props: AccordionProps, ref: an
       className={cx(className, 'accordion')}
       {...otherProps}
     >
-      <button type="button" className="accordionHeader" onClick={handleClick} aria-expanded={isOpen || 'false'}>
-        {iconLeft && (
-          <Icon
-            className={cx(
-              'accordionHeaderIconLeft',
-              shouldRotateIcon && isOpen ? 'accordionHeaderIconLeftOpen' : 'accordionHeaderIconLeftClosed',
-            )}
-            icon={checkTypeIconLeft ? Icon.icons.chevronRight : iconLeft}
-          />
-        )}
-        <Text weight={theme.typography.weights.bold} className="accordionHeaderTitle">
+      <button type='button' className='accordionHeader' onClick={handleClick} aria-expanded={isOpen || 'false'}>
+        {
+          // iconLeft && (
+          //   <Icon
+          //     className={cx(
+          //       'accordionHeaderIconLeft',
+          //       shouldRotateIcon && isOpen ? 'accordionHeaderIconLeftOpen' : 'accordionHeaderIconLeftClosed',
+          //     )}
+          //     icon={checkTypeIconLeft ? Icon.icons.chevronRight : iconLeft}
+          //   />
+          // )
+        }
+        <Text weight={theme.typography.weights.bold} className='accordionHeaderTitle'>
           {title}
         </Text>
-        {iconsProp &&
-          iconsProp.map((item) => (
-            <Icon
-              key={idGenerator()}
-              onClick={onIconClick && handleIconClick}
-              className="accordionHeaderIconsIcon"
-              icon={item}
-            />
-          ))}
-        {iconRight && (
-          <Icon
-            key={idGenerator()}
-            className="accordionHeaderIcon"
-            icon={checkTypeIconRight ? (isOpen ? Icon.icons.minus : Icon.icons.plus) : iconRight} // eslint-disable-line
-          />
-        )}
+        {
+          // iconsProp &&
+          //   iconsProp.map((item) => (
+          //     <Icon
+          //       key={idGenerator()}
+          //       onClick={onIconClick && handleIconClick}
+          //       className='accordionHeaderIconsIcon'
+          //       icon={item}
+          //     />
+          //   ))
+        }
+        {
+          // iconRight && (
+          //   <Icon
+          //     key={idGenerator()}
+          //     className='accordionHeaderIcon'
+          //     icon={checkTypeIconRight ? (isOpen ? Icon.icons.minus : Icon.icons.plus) : iconRight} // eslint-disable-line
+          //   />
+          // )
+        }
       </button>
       <AnimatedHeight duration={500} height={isOpen ? 'auto' : 0}>
-        <div className="accordionContent">{children}</div>
+        <div className='accordionContent'>{children}</div>
       </AnimatedHeight>
     </StyledAccordionPrimary>
   );

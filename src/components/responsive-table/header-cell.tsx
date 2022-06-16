@@ -52,8 +52,10 @@ const HeaderCell = ({
         <Text className='tableHeaderText'>{label}</Text>
         {sortName ? (
           <div className='tableHeaderContent'>
-            <Icon icon={sortIcons.up} className={cx('tableHeaderIcon', asc && 'tableHeaderIconActive')} />
-            <Icon icon={sortIcons.down} className={cx('tableHeaderIcon', desc && 'tableHeaderIconActive')} />
+            {
+              // <Icon icon={sortIcons.up} className={cx('tableHeaderIcon', asc && 'tableHeaderIconActive')} />
+              // <Icon icon={sortIcons.down} className={cx('tableHeaderIcon', desc && 'tableHeaderIconActive')} />
+            }
           </div>
         ) : null}
       </button>

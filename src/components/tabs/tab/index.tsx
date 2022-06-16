@@ -45,7 +45,7 @@ const BaseTab = React.forwardRef<any, TabProps>(
         theme={theme}
         mode={mode}
         style={style}
-        role="tab"
+        role='tab'
         disabled={disabled}
         aria-selected={isSelected}
         aria-controls={getTabPanelId(context, index)}
@@ -55,7 +55,9 @@ const BaseTab = React.forwardRef<any, TabProps>(
         ref={combinedRef}
         {...props}
       >
-        {icon && <Icon icon={icon} className={cx('iconClass', iconClassName)} />}
+        {
+          // icon && <Icon icon={icon} className={cx('iconClass', iconClassName)} />
+        }
         {children}
       </StyledTab>
     );

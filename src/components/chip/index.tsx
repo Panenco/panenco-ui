@@ -31,18 +31,18 @@ export const Chip = React.forwardRef<HTMLButtonElement, ChipProps>(
     const theme = useTheme();
     const { mode } = useMode();
 
-    const handleIconClick = (e: React.UIEvent): void => {
-      e.persist();
-      e.stopPropagation();
+    // const handleIconClick = (e: React.UIEvent): void => {
+    //   e.persist();
+    //   e.stopPropagation();
 
-      onIconClick(e);
-    };
+    //   onIconClick(e);
+    // };
 
-    const iconComponent = checked ? icon : uncheckedIcon || null;
+    // const iconComponent = checked ? icon : uncheckedIcon || null;
     return (
       <StyledChip
-        type="button"
-        role="switch"
+        type='button'
+        role='switch'
         aria-checked={checked}
         disabled={disabled}
         checked={checked}
@@ -56,11 +56,13 @@ export const Chip = React.forwardRef<HTMLButtonElement, ChipProps>(
         <Text
           weight={checked ? theme.typography.weights.bold : theme.typography.weights.regular}
           size={theme.typography.sizes.m}
-          className="labelTitle"
+          className='labelTitle'
         >
           {children}
         </Text>
-        {iconComponent && <Icon icon={iconComponent} onClick={onIconClick && handleIconClick} />}
+        {
+          // iconComponent && <Icon icon={iconComponent} onClick={onIconClick && handleIconClick} />
+        }
       </StyledChip>
     );
   },
