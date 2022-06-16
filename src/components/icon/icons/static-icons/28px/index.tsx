@@ -208,7 +208,7 @@ export { default as question } from './question.svg';
 export { default as radio } from './radio.svg';
 export { default as refreshCcw } from './refresh-ccw.svg';
 export { default as refreshCw } from './refresh-cw.svg';
-// export { default as remove} from './remove.svg';
+export { default as remove } from './remove.svg';
 export { default as repeat } from './repeat.svg';
 export { default as rewind } from './rewind.svg';
 export { default as rotateCcw } from './rotate-ccw.svg';
