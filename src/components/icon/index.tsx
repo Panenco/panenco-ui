@@ -22,8 +22,9 @@ export interface IconProps extends React.SVGAttributes<SVGElement> {
   height?: number | string;
 }
 
+type BaseIcons<T extends string | number | symbol> = Record<IconVariantSize, Record<T, any>>;
 interface CompoundedComponent<T extends string | number | symbol> extends React.ForwardRefExoticComponent<IconProps> {
-  icons: Record<IconVariantSize, Record<T, any>>;
+  icons: BaseIcons<T>;
 }
 
 // interface CompoundedComponent extends React.ForwardRefExoticComponent<IconProps> {
@@ -47,21 +48,24 @@ export const Icon = React.forwardRef<any, IconProps>(
       </StyledSVG>
     );
   },
-) as CompoundedComponent<keyof typeof icons>;
+) as CompoundedComponent<keyof typeof icons.sm>;
 
 Icon.icons = icons;
 
-/* <Icon icon='big' size='sm' />;
+//  <Icon icon='big' size='sm' />;
 
-const withExtraIcons = <T extends keyof typeof Icon.icons>(newIcons: Record<T, any>): CompoundedComponent<T> => {
+const withExtraIcons = <T extends string | number | symbol>(
+  newIcons: Record<IconVariantSize, Record<T, any>>,
+): CompoundedComponent<T | keyof typeof Icon.icons.sm> => {
   // const component: typeof Icon extends React.ForwardRefExoticComponent<IconProps extends {icon: keyof typeof iconsList[number] extends keyof typeof newIcons}> = Object.assign(Icon);
   const component: typeof Icon = Object.assign(Icon);
-  component.icons = { ...component.icons, ...newIcons };
+  component.icons = {
+    sm: { ...component.icons.sm, ...newIcons.sm },
+    lg: { ...component.icons.lg, ...newIcons.lg },
+    md: { ...component.icons.md, ...newIcons.md },
+  };
 
-  return component;
+  return component as CompoundedComponent<T | keyof typeof Icon.icons.sm>;
 };
-const newIcons = { sm: { animatedClock }, md: { animatedClock } }
 
-const CustomIcon = withExtraIcons(newIcons);
-
-<CustomIcon icon= size='sm' />; */
+const newIcons = { sm: { animatedClock }, md: { animatedClock }, lg: { animatedClock } };
