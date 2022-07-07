@@ -27,7 +27,7 @@ export interface AvatarProps {
   alt?: string;
   size?: number;
   tooltip?: boolean;
-  tooltipProps?: TooltipProps;
+  tooltipProps?: Omit<TooltipProps, 'children'>;
   children?: React.ReactNode | string;
   imgProps?: React.ImgHTMLAttributes<HTMLImageElement>;
 }
