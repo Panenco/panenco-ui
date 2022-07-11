@@ -12,8 +12,6 @@ const avatars= [
     alt: 'alt',
     children: 'PU',
     size: 45,
-    tooltip: true,
-    tooltipProps: { content: 'tooltip content', position: 'top' }
   }
 ]
 
@@ -24,10 +22,7 @@ const YourComponent = () => {
       max={3}
       avatarProps={{ 
         className: 'avatarClassName', 
-        size: 60, 
-        tooltipProps: { 
-          position: 'bottom' 
-        } 
+        size: 60,
       }} 
     />
   );
@@ -50,8 +45,6 @@ AvatarGroup component allows to show a list of avatars.
   - size - avatar size;
   - className - avatar classname;
   - children - content of the Avatar;
-  - tooltip - show tooltip;
-  - tooltipProps - props for tooltip component;
   - imgProps - props for Avatar image;
 
 | propName          | propType                        | defaultValue                   | isRequired |
