@@ -1,4 +1,4 @@
-import { styled } from 'linaria/react';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { PUITheme, ThemeMode } from 'utils/types';
 

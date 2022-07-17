@@ -1,4 +1,4 @@
-import { styled } from 'linaria/react';
+import styled from 'styled-components';
 import { PUITheme } from 'utils/types';
 
 export const StyledFirstDisableOption = styled.div<{

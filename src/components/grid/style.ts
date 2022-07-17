@@ -1,5 +1,4 @@
-import { css } from 'linaria';
-import { styled } from 'linaria/react';
+import styled, { css } from 'styled-components';
 import { breakpoints, gridLayout } from 'styles/breakpoints';
 
 const breakPointPrev = (
@@ -99,7 +98,7 @@ const mediaQueriesForContainer = () => {
   };
 };
 
-const spacingForRow = () => {
+const spacingForRow = (): any => {
   let spacingQueries = {
     '&.spacing-xs-auto-auto': {
       boxSizing: 'border-box',
@@ -136,7 +135,7 @@ const spacingForRow = () => {
       const breakpoint = `@media (min-width: ${max})`;
       if (max) {
         const content = {
-          [`&.spacing-xs-auto-auto`]: {
+          '&.spacing-xs-auto-auto': {
             margin: `-${gridLayout[key].gutter} -${gridLayout[key].gutter}`,
             width: `calc(100% + ${gridLayout[key].gutter} * 2)`,
             '& > div': {

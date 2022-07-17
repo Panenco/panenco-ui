@@ -1,4 +1,4 @@
-import { styled } from 'linaria/react';
+import styled from 'styled-components';
 // import { ReactChild } from 'react';
 // import { ToastContainer, ToastContainerProps } from 'react-toastify';
 import { ThemeMode, PUITheme } from 'utils/types';

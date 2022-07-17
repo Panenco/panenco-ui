@@ -5,6 +5,5 @@
 node_modules
 lib
 storybook-dist
-.linaria-cache
 package-lock.json
 *.log
