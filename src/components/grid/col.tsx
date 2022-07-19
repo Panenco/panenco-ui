@@ -17,7 +17,7 @@ export const Col = ({ className, xs, sm, md, lg, children, ...props }: ColProps)
     <StyledCol
       {...props}
       className={cx(
-        `col-auto`,
+        'col-auto',
         {
           [`col-lg-${lg}`]: !!lg,
           [`col-md-${md}`]: !!md,
