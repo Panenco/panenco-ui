@@ -122,7 +122,7 @@ export const DayPicker = ({
 
   React.useEffect(() => {
     const close = (e) => {
-      if (e.keyCode === 27 || e.keyCode === 13) {
+      if (e.keyCode === 27) {
         closeCalendar();
       }
     };
@@ -180,22 +180,28 @@ export const DayPicker = ({
 
   return (
     <StyledDayPicker mode={mode} theme={theme} error={error} className='dayPickerWrapper' {...wrapperProps}>
-      <TextInput
-        title={title}
-        subTitle={subTitle}
-        onFocus={showCalendar}
-        disabled={isCalendarOpen}
-        type='text'
-        placeholder={placeholder}
-        iconAfter={iconAfter}
-        value={formatDate(date, format)}
-        error={error}
-        dir={dayPickerProps?.dir || dir}
-        {...dateInputProps}
-      />
-      <div className='calendar-wrapper'>
-        {isCalendarOpen && (
-          <FocusLock returnFocus autoFocus>
+      <FocusLock returnFocus autoFocus disabled={!isCalendarOpen}>
+        <TextInput
+          title={title}
+          subTitle={subTitle}
+          onClick={showCalendar}
+          onChange={showCalendar}
+          onKeyUp={(event) => {
+            if (event.key === 'Enter') {
+              showCalendar();
+            }
+          }}
+          disabled={isCalendarOpen}
+          type='text'
+          placeholder={placeholder}
+          iconAfter={iconAfter}
+          value={formatDate(date, format)}
+          error={error}
+          dir={dayPickerProps?.dir || dir}
+          {...dateInputProps}
+        />
+        <div className='calendar-wrapper'>
+          {isCalendarOpen && (
             <div
               className={cx(
                 'calendar',
@@ -220,9 +226,9 @@ export const DayPicker = ({
                 {...dayPickerProps}
               />
             </div>
-          </FocusLock>
-        )}
-      </div>
+          )}
+        </div>
+      </FocusLock>
     </StyledDayPicker>
   );
 };
