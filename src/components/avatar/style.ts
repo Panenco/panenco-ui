@@ -1,4 +1,4 @@
-import { styled } from 'linaria/react';
+import styled from 'styled-components';
 import { PUITheme } from 'utils/types';
 
 export const StyledAvatar = styled.div<{
@@ -17,4 +17,4 @@ export const StyledAvatarImg = styled.img`
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
-`
+`;

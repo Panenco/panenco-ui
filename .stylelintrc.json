@@ -1,5 +1,5 @@
 {
-  "extends": ["stylelint-config-standard", "linaria/stylelint-config"],
+  "extends": ["stylelint-config-standard"],
   "plugins": ["stylelint-order"],
   "ignoreFiles": ["**/*.ts", "**/*.tsx"],
   "syntax": "scss",

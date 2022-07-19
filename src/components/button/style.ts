@@ -1,4 +1,4 @@
-import { styled } from 'linaria/react';
+import styled from 'styled-components';
 import { ButtonVariantType, PUITheme, ThemeMode } from 'utils/types';
 
 const getBackgroundColor = (variant: any, mode: ThemeMode, darkColor: string, lightColor: string): string => {
