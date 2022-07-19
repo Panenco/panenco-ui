@@ -16,9 +16,9 @@ const GridSize = () => {
     md: '#F4C7AB',
     lg: '#B2B8A3',
   };
-  if (size.width > 1320) label = 'lg';
-  else if (size.width > 840) label = 'md';
-  else if (size.width > 600) label = 'sm';
+  if (size.width >= 1332) label = 'lg';
+  else if (size.width >= 840) label = 'md';
+  else if (size.width >= 600) label = 'sm';
   else label = 'xs';
   return (
     <div
@@ -65,22 +65,22 @@ export default decorator('Grid', GridDocs, GridReadme).add('Grid component', ({ 
     <GridContainer>
       <GridSize />
       <Row spacing={[3, 3]}>
-        <Col md="6" lg="3">
+        <Col md='6' lg='3'>
           <ColumnContent>md=&quot;6&quot; lg=&quot;3&quot;</ColumnContent>
         </Col>
 
-        <Col md="6" lg="3">
+        <Col md='6' lg='3'>
           <ColumnContent>md=&quot;6&quot; lg=&quot;3&quot;</ColumnContent>
         </Col>
-        <Col md="6" lg="3">
+        <Col md='6' lg='3'>
           <ColumnContent>md=&quot;6&quot; lg=&quot;3&quot;</ColumnContent>
         </Col>
 
-        <Col md="6" lg="3">
+        <Col md='6' lg='3'>
           <ColumnContent>md=&quot;6&quot; lg=&quot;3&quot;</ColumnContent>
         </Col>
       </Row>
-      <Row spacing="3, 3">
+      <Row spacing='3, 3'>
         <Col>
           <ColumnContent>default</ColumnContent>
         </Col>
@@ -91,7 +91,7 @@ export default decorator('Grid', GridDocs, GridReadme).add('Grid component', ({ 
           <ColumnContent>default</ColumnContent>
         </Col>
       </Row>
-      <Row spacing="3">
+      <Row spacing='3'>
         <Col>
           <ColumnContent>default</ColumnContent>
         </Col>
@@ -103,13 +103,13 @@ export default decorator('Grid', GridDocs, GridReadme).add('Grid component', ({ 
         </Col>
       </Row>
       <Row spacing={3}>
-        <Col xs="3">
+        <Col xs='3'>
           <ColumnContent>xs=&quot;3&quot;</ColumnContent>
         </Col>
-        <Col xs="6">
+        <Col xs='6'>
           <ColumnContent>xs=&quot;6&quot;</ColumnContent>
         </Col>
-        <Col xs="3">
+        <Col xs='3'>
           <ColumnContent>xs=&quot;3&quot;</ColumnContent>
         </Col>
       </Row>
@@ -125,50 +125,5 @@ export default decorator('Grid', GridDocs, GridReadme).add('Grid component', ({ 
         </Col>
       </Row>
     </GridContainer>
-
-    {/* <Row>
-      <Col xs="5">
-        <ColumnContent />
-      </Col>
-      <Col xs="2">
-        <ColumnContent />
-      </Col>
-      <Col xs="5">
-        <ColumnContent />
-      </Col>
-    </Row>
-    <Row>
-      <Col xs="4">
-        <ColumnContent />
-      </Col>
-      <Col xs="4">
-        <ColumnContent />
-      </Col>
-      <Col xs="4">
-        <ColumnContent />
-      </Col>
-    </Row>
-    <Row>
-      <Col xs="3">
-        <ColumnContent />
-      </Col>
-      <Col xs="6">
-        <ColumnContent />
-      </Col>
-      <Col xs="3">
-        <ColumnContent />
-      </Col>
-    </Row>
-    <Row>
-      <Col xs="2">
-        <ColumnContent />
-      </Col>
-      <Col xs="8">
-        <ColumnContent />
-      </Col>
-      <Col xs="2">
-        <ColumnContent />
-      </Col>
-    </Row> */}
   </>
 ));
