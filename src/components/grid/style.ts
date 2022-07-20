@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { breakpoints, gridLayout } from 'styles/breakpoints';
 
 const breakPointPrev = (
@@ -157,7 +157,7 @@ const spacingForRow = (): any => {
   return { ...mediaQueries, ...spacingQueries };
 };
 
-export const container = css`
+export const Container = styled.div`
   width: ${breakpoints.lg};
   max-width: 100%;
   margin: 0 auto;
