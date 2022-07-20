@@ -96,23 +96,16 @@ export const StyledDayPicker = styled.div<{
     background: ${(props: any): string => props.theme.colors.primary200};
   }
 
-  .rdp-day:hover {
-    background: ${(props: any): string => props.theme.colors.primary700};
-    color: ${(props: any): string => props.theme.colors.base100};
+  .rdp-day:hover:not([disabled]) {
+    background: ${(props: any): string => props.theme.colors.primary200};
     border-radius: 4px;
-  }
-
-  .rdp-day_selected {
-    background: ${(props: any): string => props.theme.colors.primary500};
-    border-radius: 4px;
-    border: none;
   }
 
   .rdp-day_selected:not([disabled]),
   .rdp-day_selected:focus:not([disabled]),
   .rdp-day_selected:active:not([disabled]),
   .rdp-day_selected:hover:not([disabled]) {
-    background: ${(props: any): string => props.theme.colors.primary500};
+    background: ${(props: any): string => props.theme.colors.primary700};
     border-radius: 4px;
     border: none;
   }
