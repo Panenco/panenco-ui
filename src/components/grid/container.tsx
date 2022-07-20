@@ -1,14 +1,13 @@
 import * as React from 'react';
-import cx from 'classnames';
 
-import { container } from './style';
+import { Container } from './style';
 
 type Props = React.HTMLAttributes<HTMLDivElement>;
 
 export const GridContainer: React.FC<Props> = ({ className, children, ...props }: Props): JSX.Element => {
   return (
-    <div {...props} className={cx(container, className)}>
+    <Container {...props} className={className}>
       {children}
-    </div>
+    </Container>
   );
 };
