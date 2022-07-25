@@ -41,9 +41,9 @@ spacing css class (example: `spacing-auto-3-3`) consist of starting breakpoint, 
 
 Col component inherits the attributes of the **div** element and extends the functionality with next properties.
 
-- `xs` - size of columns to 600px;
-- `sm` - size of columns to 840px;
-- `md` - size of columns to 1332px;
+- `xs` - size of columns to 599px included;
+- `sm` - size of columns to 839px included;
+- `md` - size of columns to 1331px included;
 - `lg` - size of columns over 1332px;
 
 | propName | propType         | defaultValue             | isRequired |

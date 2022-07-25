@@ -1,5 +1,5 @@
 import { PUITheme, ThemeMode } from 'utils/types';
-import { styled } from 'linaria/react';
+import styled from 'styled-components';
 import { transparentize } from 'polished';
 
 export const StyledFileUploader = styled.div<{

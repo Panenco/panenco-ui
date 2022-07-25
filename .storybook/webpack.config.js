@@ -23,13 +23,6 @@ module.exports = {
         include: path.resolve(paths.src),
         use: [
           'babel-loader',
-
-          {
-            loader: 'linaria/loader',
-            options: {
-              sourceMap: process.env.NODE_ENV !== 'production',
-            },
-          },
           'ts-loader',
         ],
       },

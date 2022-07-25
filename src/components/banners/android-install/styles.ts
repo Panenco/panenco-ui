@@ -1,4 +1,4 @@
-import { styled } from 'linaria/react';
+import styled from 'styled-components';
 // import { transparentize } from 'polished';
 import { PUITheme, ThemeMode } from 'utils/types';
 import { Paper } from '../../paper';

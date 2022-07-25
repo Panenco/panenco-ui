@@ -1,4 +1,4 @@
-import { styled } from 'linaria/react';
+import styled from 'styled-components';
 import { ThemeMode, PUITheme } from 'utils/types';
 
 export const StyledDayPicker = styled.div<{
@@ -13,7 +13,7 @@ export const StyledDayPicker = styled.div<{
   }
 
   .calendar-wrapper {
-    position: relative
+    position: relative;
   }
 
   .calendar {
@@ -63,7 +63,6 @@ export const StyledDayPicker = styled.div<{
       }
     }
 
-
     .rdp-caption {
       padding: 0 15px;
     }
@@ -85,30 +84,28 @@ export const StyledDayPicker = styled.div<{
     }
   }
 
-  .rdp-nav_button_next:hover, .rdp-nav_button_previous:hover {
+  .rdp-nav_button_next:hover,
+  .rdp-nav_button_previous:hover {
     background: none;
   }
 
-  .rdp-button:focus:not([disabled]), .rdp-button:active:not([disabled]) {
+  .rdp-button:focus:not([disabled]),
+  .rdp-button:active:not([disabled]) {
     border-radius: 4px;
     border: none;
     background: ${(props: any): string => props.theme.colors.primary200};
   }
 
-  .rdp-day:hover {
+  .rdp-day:hover:not([disabled]) {
+    background: ${(props: any): string => props.theme.colors.primary200};
+    border-radius: 4px;
+  }
+
+  .rdp-day_selected:not([disabled]),
+  .rdp-day_selected:focus:not([disabled]),
+  .rdp-day_selected:active:not([disabled]),
+  .rdp-day_selected:hover:not([disabled]) {
     background: ${(props: any): string => props.theme.colors.primary700};
-    color: ${(props: any): string => props.theme.colors.base100};
-    border-radius: 4px;
-  }
-
-  .rdp-day_selected {
-    background: ${(props: any): string => props.theme.colors.primary500};
-    border-radius: 4px;
-    border: none;
-  }
-
-  .rdp-day_selected:not([disabled]), .rdp-day_selected:focus:not([disabled]), .rdp-day_selected:active:not([disabled]), .rdp-day_selected:hover:not([disabled]){
-    background: ${(props: any): string => props.theme.colors.primary500};
     border-radius: 4px;
     border: none;
   }
