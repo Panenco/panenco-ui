@@ -12,41 +12,31 @@ export default decorator('Avatar', AvatarDocs, AvatarReadme).add('Avatar compone
   return (
     <WrappedComponent>
       <Row style={{ justifyContent: 'center', margin: '50px auto 0 auto', width: '90%' }}>
-        <Col xs="4" lg="4">
+        <Col xs='4' lg='4'>
           <Avatar
             src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJmD-ID1Gcf4RD0YWdMtgcjjpMqS89ldAE6w&usqp=CAU'
-            tooltip
-            tooltipProps={{ content: 'hello@panenco.com', arrow: true, position: 'top-start' }}
             size={35}
           />
         </Col>
-        <Col xs="4" lg="4">
+        <Col xs='4' lg='4'>
           <Avatar src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJmD-ID1Gcf4RD0YWdMtgcjjpMqS89ldAE6w&usqp=CAU' />
         </Col>
-        <Col xs="4" lg="4">
+        <Col xs='4' lg='4'>
           <Avatar
             src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJmD-ID1Gcf4RD0YWdMtgcjjpMqS89ldAE6w&usqp=CAU'
-            tooltip
-            tooltipProps={{ content: 'hello@panenco.com', arrow: true, position: 'left-start' }}
             size={70}
           />
         </Col>
       </Row>
       <Row style={{ justifyContent: 'center', margin: '50px auto 0 auto', width: '90%' }}>
-        <Col xs="4" md="8" lg="12">
-          <Avatar size={35} tooltip tooltipProps={{ content: 'Panenco UI', arrow: true, position: 'right' }}>
-            PU
-          </Avatar>
+        <Col xs='4' md='8' lg='12'>
+          <Avatar size={35}>PU</Avatar>
         </Col>
-        <Col xs="4" md="8" lg="12">
+        <Col xs='4' md='8' lg='12'>
           <Avatar>P</Avatar>
         </Col>
-        <Col xs="4" md="8" lg="12">
-          <Avatar
-            tooltip 
-            size={70}
-            tooltipProps={{ content: 'hello@panenco.com', arrow: true, position: 'bottom-end' }} 
-          >PU</Avatar>
+        <Col xs='4' md='8' lg='12'>
+          <Avatar size={70}>PU</Avatar>
         </Col>
       </Row>
     </WrappedComponent>

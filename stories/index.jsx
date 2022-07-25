@@ -30,7 +30,6 @@ import StampStory from './stamp';
 import SwitchStory from './switch';
 import TabStory from './tabs';
 import TextStory from './text';
-import TooltipStory from './tooltip';
 import WizardStory from './wizard';
 
 storiesOf('Accordion', AccordionStory);
@@ -59,6 +58,5 @@ storiesOf('Select', SelectStory);
 storiesOf('Slider', SliderStory);
 storiesOf('Stamp', StampStory);
 storiesOf('Switcher', SwitchStory);
-storiesOf('Tooltip', TooltipStory);
 storiesOf('Tab', TabStory);
 storiesOf('Wizard', WizardStory);
