@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import { ThemeMode, PUITheme } from 'utils/types';
+import { PUITheme } from 'utils/types';
 
 export const StyledPagination = styled.div<{
   theme: PUITheme;
-  mode: ThemeMode;
 }>`
   width: 100%;
   display: flex;
@@ -89,7 +88,6 @@ export const StyledPagination = styled.div<{
 
 export const StyledListPagination = styled.div<{
   theme: PUITheme;
-  mode: ThemeMode;
   variant?: 'contained' | 'outlined' | 'text';
 }>`
   width: 100%;

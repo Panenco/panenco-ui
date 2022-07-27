@@ -2,17 +2,13 @@
 
 Panenco UI is our own design system that is created to unify the way we create user interfaces.
 
-It provides you a way for it's customization via Theming and Modes.
+It provides you a way for it's customization via Theming.
 
 # Principles
 
 ### Theme
 
 Theme - is a color pallete used for determination of whole project styling. While Panenco UI has it's crosstheme styles, that styles are project dependent. Choose or define Theme according to your project's branding colors, etc.
-
-### Mode (Dark/Light appearence)
-
-Each theme has two different appearences. So interfaces built on top of **Panenco UI** are ready to be used with `Light` or `Dark` modes.
 
 # Installation and usage
 
@@ -30,7 +26,7 @@ To start importing and using components in your project, you need:
 
 - Import css of **Panenco UI** from `@panenco/ui/lib/styles.css`. It could be any way of global import of styles into your project. For instance, using `import` in js with propper loader or using `@import` in your `css`.
 - Include Panenco UI icons by importing `@panenco/ui/lib/spritesheet.svg` as file (to obtain it's URL and be able to inject it to DOM asyncronously) and pass it to `injectIcons` function as shown below.
-- Wrap your application with `ThemeProvider` component from `@panenco/ui` and pass theme and mode to it (optionally).
+- Wrap your application with `ThemeProvider` component from `@panenco/ui` and pass theme to it.
 
 ```javascript
 import React from 'react';
@@ -59,10 +55,7 @@ Theme is just a nested object with properties defining appearence of your UI.
 
 ```typescript
 type PUITheme = {
-  colors: PUIColors & {
-    darkMode?: PUIModeColors;
-    lightMode?: PUIModeColors;
-  };
+  colors: PUIColors;
   typography: {
     sizes: PUISizes;
     weights: PUIWeights;
@@ -97,16 +90,11 @@ export type PUIColors = {
 };
 ```
 
-Also you have an option to override theme colors dependending on current **mode**.
+Also you have an option to override theme colors.
 
 ```typescript
-colors: PUIColors & {
-    darkMode?: PUIModeColors;
-    lightMode?: PUIModeColors;
-};
+colors: PUIColors;
 ```
-
-Each mode is represented by similar to `PUIColors` type with all colors optional. This behaviour makes possible changing colors of your components depending on mode.
 
 #### `typograpty` definition
 

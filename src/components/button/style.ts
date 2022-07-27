@@ -1,15 +1,13 @@
 import styled from 'styled-components';
-import { ButtonVariantType, PUITheme, ThemeMode } from 'utils/types';
+import { ButtonVariantType, PUITheme } from 'utils/types';
 
-const getBackgroundColor = (variant: any, mode: ThemeMode, darkColor: string, lightColor: string): string => {
+const getBackgroundColor = (variant: any, lightColor: string): string => {
   if (variant === 'transparent') return 'transparent';
-  if (mode === ThemeMode.dark) return darkColor;
   return lightColor;
 };
 
 export const StyledButton = styled.button<{
   theme: PUITheme;
-  mode: ThemeMode;
   to?: string;
   variant?: ButtonVariantType;
   // as: HTMLElement;
@@ -95,41 +93,34 @@ export const StyledButton = styled.button<{
   }
 
   &.buttonPrimary {
-    background-color: ${({ variant, mode, theme: { colors } }: any): string =>
-      getBackgroundColor(variant, mode, colors.base100, colors.primary500)};
-    color: ${(props: any): string =>
-      props.color || (props.mode === ThemeMode.dark ? props.theme.colors.primary700 : props.theme.colors.base100)};
+    background-color: ${({ variant, theme: { colors } }: any): string => getBackgroundColor(variant, colors.base100)};
+    color: ${(props: any): string => props.color || props.theme.colors.base100};
     padding: 10px 22px;
     &:hover {
-      background-color: ${({ variant, mode, theme: { colors } }: any): string =>
-        getBackgroundColor(variant, mode, colors.primary200, colors.primary700)};
-      color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.primary : props.theme.colors.base100};
+      background-color: ${({ variant, theme: { colors } }: any): string =>
+        getBackgroundColor(variant, colors.primary200)};
+      color: ${(props: any): string => props.theme.colors.base100};
     }
     &:active {
-      background-color: ${({ variant, mode, theme: { colors } }: any): string =>
-        getBackgroundColor(variant, mode, colors.primary200, colors.primary700)};
+      background-color: ${({ variant, theme: { colors } }: any): string =>
+        getBackgroundColor(variant, colors.primary200)};
     }
   }
 
   &.buttonSecondary {
     border: 2px solid
       ${(props: any): string => {
-        return props.color || (props.mode === ThemeMode.dark ? 'transparent' : props.theme.colors.primary700);
+        return props.color || props.theme.colors.primary700;
       }};
     padding: 10px 22px;
     &:hover {
       border: 2px solid
-        ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.primary200 : props.theme.colors.primary700};
-      background-color: ${({ variant, mode, theme: { colors } }: any): string =>
-        getBackgroundColor(variant, mode, colors.base900, colors.primary200)};
-      color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary700};
+        ${(props: any): string => props.theme.colors.primary700};
+      background-color: ${({ variant, theme: { colors } }: any): string => getBackgroundColor(variant, colors.base900)};
+      color: ${(props: any): string => props.theme.colors.primary700};
     }
     &:active {
-      background-color: ${({ variant, mode, theme: { colors } }: any): string =>
-        getBackgroundColor(variant, mode, colors.base900, colors.primary200)};
+      background-color: ${({ variant, theme: { colors } }: any): string => getBackgroundColor(variant, colors.base900)};
     }
   }
 

@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 import { transparentize } from 'polished';
-import { ThemeMode, PUITheme } from 'utils/types';
+import { PUITheme } from 'utils/types';
 
 export const Styles = styled.div<{
   theme: PUITheme;
-  mode: ThemeMode;
 }>`
   width: 100%;
   .table {
@@ -12,8 +11,7 @@ export const Styles = styled.div<{
     width: 100%;
 
     &Cell {
-      color: ${(props: any): string =>
-        props.mode === ThemeMode.light ? props.theme.colors.base900 : props.theme.colors.base100};
+      color: ${(props: any): string => props.theme.colors.base900};
       line-height: 1.3;
       min-height: 24px;
       overflow: hidden;
@@ -63,8 +61,7 @@ export const Styles = styled.div<{
       }
 
       &Text {
-        color: ${(props: any): string =>
-          props.mode === ThemeMode.light ? props.theme.colors.base900 : props.theme.colors.base100};
+        color: ${(props: any): string => props.theme.colors.base900};
         font-weight: ${(props: any): string => props.theme.typography.weights.bold};
       }
 
@@ -104,15 +101,13 @@ export const Styles = styled.div<{
           }
 
           &Label {
-            color: ${(props: any): string =>
-              props.mode === ThemeMode.light ? props.theme.colors.base900 : props.theme.colors.base100};
+            color: ${(props: any): string => props.theme.colors.base900};
             font-weight: ${(props: any): string => props.theme.typography.weights.bold};
             line-height: 14px;
           }
 
           &Text {
-            color: ${(props: any): string =>
-              props.mode === ThemeMode.light ? props.theme.colors.base900 : props.theme.colors.base100};
+            color: ${(props: any): string => props.theme.colors.base900};
             line-height: 20px;
             margin-top: 4px;
           }
@@ -122,13 +117,11 @@ export const Styles = styled.div<{
   }
 
   .tableBodyRow:nth-of-type(4n + 1) {
-    background-color: ${(props: any): string =>
-      transparentize(0.6, props.mode === ThemeMode.light ? props.theme.colors.base400 : props.theme.colors.base700)};
+    background-color: ${(props: any): string => transparentize(0.6, props.theme.colors.base400)};
   }
 
   .tableBodyRow:nth-of-type(4n + 2) {
-    background-color: ${(props: any): string =>
-      transparentize(0.6, props.mode === ThemeMode.light ? props.theme.colors.base400 : props.theme.colors.base700)};
+    background-color: ${(props: any): string => transparentize(0.6, props.theme.colors.base400)};
   }
 
   @keyframes AnimationName {
@@ -148,12 +141,9 @@ export const Styles = styled.div<{
 
     background: linear-gradient(
       90deg,
-      ${(props: any): string =>
-        props.mode === ThemeMode.light ? props.theme.colors.base100 : props.theme.colors.base900},
-      ${(props: any): string =>
-        props.mode === ThemeMode.light ? props.theme.colors.base400 : transparentize(0.6, props.theme.colors.base700)},
-      ${(props: any): string =>
-        props.mode === ThemeMode.light ? props.theme.colors.base100 : props.theme.colors.base900}
+      ${(props: any): string => props.theme.colors.base100},
+      ${(props: any): string => props.theme.colors.base400},
+      ${(props: any): string => props.theme.colors.base100}
     );
     background-size: 200% 200%;
 

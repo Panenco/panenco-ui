@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import { ThemeMode, PUITheme } from 'utils/types';
+import { PUITheme } from 'utils/types';
 
 export const StyledDayPicker = styled.div<{
   theme: PUITheme;
-  mode: ThemeMode;
   error?: string;
 }>`
   .dayPickerWrapper {

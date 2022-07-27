@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Select, { components, Props as SelectProps } from 'react-select';
-import { useTheme, useMode } from 'utils/hooks';
+import { useTheme } from 'utils/hooks';
 import CreatableSelect from 'react-select/creatable';
 import AsyncSelect from 'react-select/async';
 import AsyncCreatableSelect from 'react-select/async-creatable';
@@ -62,7 +62,6 @@ const Component = ({
 }: ComponentProps): JSX.Element => {
   let SelectComponent: any = Select;
   const theme = useTheme();
-  const { mode } = useMode();
 
   if (async) {
     SelectComponent = AsyncSelect;
@@ -96,7 +95,7 @@ const Component = ({
             loadingMessage={
               loadingMessage || (({ inputValue }): string => (inputValue ? `Loading ${inputValue}` : 'Loading...'))
             }
-            styles={{ ...customStyles(theme, mode, error, styles) }}
+            styles={{ ...customStyles(theme, error, styles) }}
             components={{
               Option: SelectOption,
               MultiValue,

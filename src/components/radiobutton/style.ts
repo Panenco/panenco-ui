@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import { ThemeMode, PUITheme } from 'utils/types';
+import { PUITheme } from 'utils/types';
 
 export const StyledRadio = styled.label<{
   theme: PUITheme;
-  mode: ThemeMode;
   error;
   pointColor?: string;
 }>`
@@ -21,8 +20,7 @@ export const StyledRadio = styled.label<{
     &Title {
       cursor: pointer;
       padding-left: 8px;
-      color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
+      color: ${(props: any): string => props.theme.colors.base900};
     }
 
     &:focus-within {
@@ -39,7 +37,7 @@ export const StyledRadio = styled.label<{
         if (props.error) {
           return props.theme.colors.error;
         }
-        return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500;
+        return props.theme.colors.primary500;
       }};
       border-radius: 50%;
       height: 10px;
@@ -63,7 +61,7 @@ export const StyledRadio = styled.label<{
           if (props.error) {
             return props.theme.colors.error;
           }
-          return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500;
+          return props.theme.colors.primary500;
         }};
       }
     }
@@ -106,7 +104,7 @@ export const StyledRadio = styled.label<{
           if (props.error) {
             return props.theme.colors.error;
           }
-          return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500;
+          return props.theme.colors.primary500;
         }};
     }
 
@@ -126,7 +124,7 @@ export const StyledRadio = styled.label<{
               if (props.error) {
                 return props.theme.colors.error;
               }
-              return props.mode === ThemeMode.dark ? props.theme.colors.primary200 : props.theme.colors.primary700;
+              return props.theme.colors.primary700;
             }};
 
           & > .point {
@@ -137,7 +135,7 @@ export const StyledRadio = styled.label<{
               if (props.error) {
                 return props.theme.colors.error;
               }
-              return props.mode === ThemeMode.dark ? props.theme.colors.primary200 : props.theme.colors.primary700;
+              return props.theme.colors.primary700;
             }};
           }
         }
@@ -146,8 +144,7 @@ export const StyledRadio = styled.label<{
   }
 
   .errorTitle {
-    color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.error};
+    color: ${(props: any): string => props.theme.colors.error};
     margin-left: 28px;
     margin-top: 5px;
   }
