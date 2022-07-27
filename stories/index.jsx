@@ -5,7 +5,6 @@ import { storiesOf } from '@storybook/react';
 import AccordionStory from './accordion';
 import AvatarStory from './avatar';
 import AvatarGroupStory from './avatar-group';
-import AutoCompleteStory from './autocomplete';
 import ButtonsStory from './buttons';
 import CheckboxStory from './checkbox';
 import ChipStory from './chip';
@@ -26,7 +25,6 @@ import TabStory from './tabs';
 import TextStory from './text';
 
 storiesOf('Accordion', AccordionStory);
-storiesOf('AutoComplete', AutoCompleteStory);
 storiesOf('Avatar', AvatarStory);
 storiesOf('AvatarGroup', AvatarGroupStory);
 storiesOf('Button', ButtonsStory);

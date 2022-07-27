@@ -15,7 +15,6 @@ export * from './theme-provider';
 export * from './radiobutton';
 export * from './select';
 export * from './dropzone';
-export * from './autocomplete';
 export * from './loader';
 export * from './pagination';
 export * from './paper';
