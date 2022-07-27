@@ -18,7 +18,6 @@ export * from './content-highlight';
 export * from './select';
 export * from './dropzone';
 export * from './autocomplete';
-export * from './file-uploader';
 export * from './loader';
 export * from './pagination';
 export * from './paper';
