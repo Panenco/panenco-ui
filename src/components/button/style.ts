@@ -93,17 +93,18 @@ export const StyledButton = styled.button<{
   }
 
   &.buttonPrimary {
-    background-color: ${({ variant, theme: { colors } }: any): string => getBackgroundColor(variant, colors.base100)};
+    background-color: ${({ variant, theme: { colors } }: any): string =>
+      getBackgroundColor(variant, colors.primary500)};
     color: ${(props: any): string => props.color || props.theme.colors.base100};
     padding: 10px 22px;
     &:hover {
       background-color: ${({ variant, theme: { colors } }: any): string =>
-        getBackgroundColor(variant, colors.primary200)};
+        getBackgroundColor(variant, colors.primary700)};
       color: ${(props: any): string => props.theme.colors.base100};
     }
     &:active {
       background-color: ${({ variant, theme: { colors } }: any): string =>
-        getBackgroundColor(variant, colors.primary200)};
+        getBackgroundColor(variant, colors.primary700)};
     }
   }
 
@@ -116,11 +117,13 @@ export const StyledButton = styled.button<{
     &:hover {
       border: 2px solid
         ${(props: any): string => props.theme.colors.primary700};
-      background-color: ${({ variant, theme: { colors } }: any): string => getBackgroundColor(variant, colors.base900)};
+      background-color: ${({ variant, theme: { colors } }: any): string =>
+        getBackgroundColor(variant, colors.primary200)};
       color: ${(props: any): string => props.theme.colors.primary700};
     }
     &:active {
-      background-color: ${({ variant, theme: { colors } }: any): string => getBackgroundColor(variant, colors.base900)};
+      background-color: ${({ variant, theme: { colors } }: any): string =>
+        getBackgroundColor(variant, colors.primary200)};
     }
   }
 
