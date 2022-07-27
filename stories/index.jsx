@@ -1,5 +1,4 @@
 import './styles.scss';
-import 'react-toastify/dist/ReactToastify.css';
 
 import { storiesOf } from '@storybook/react';
 
@@ -18,7 +17,6 @@ import FileUploaderStory from './file-uploader';
 import FormsStory from './forms';
 import GridStory from './grid';
 import IconsStory from './icons';
-import LinkStory from './link';
 import NotificationStory from './notification';
 import PaginationStory from './pagination';
 import PopupStory from './popup';
@@ -48,7 +46,6 @@ storiesOf('FileUploader', FileUploaderStory);
 storiesOf('Icon', IconsStory);
 storiesOf('Icon', TextStory);
 storiesOf('Forms', FormsStory);
-storiesOf('Link', LinkStory);
 storiesOf('Notification', NotificationStory);
 storiesOf('Pagination', PaginationStory);
 storiesOf('Popup', PopupStory);
