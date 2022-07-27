@@ -15,7 +15,6 @@ export * from './slider';
 export * from './stamp';
 export * from './theme-provider';
 export * from './radiobutton';
-export * from './content-highlight';
 export * from './select';
 export * from './dropzone';
 export * from './autocomplete';

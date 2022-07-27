@@ -1,5 +1,4 @@
 import './styles.scss';
-import 'react-toastify/dist/ReactToastify.css';
 
 import { storiesOf } from '@storybook/react';
 
@@ -11,7 +10,6 @@ import BannersStory from './banners';
 import ButtonsStory from './buttons';
 import CheckboxStory from './checkbox';
 import ChipStory from './chip';
-import ContentHighlightStory from './content-highlight';
 import DayPickerStory from './day-picker';
 import DropzoneStory from './dropzone';
 import FileUploaderStory from './file-uploader';
@@ -40,7 +38,6 @@ storiesOf('Banners', BannersStory);
 storiesOf('Button', ButtonsStory);
 storiesOf('Chip', ChipStory);
 storiesOf('CheckBox', CheckboxStory);
-storiesOf('ContentHighlight', ContentHighlightStory);
 storiesOf('DayPicker', DayPickerStory);
 storiesOf('Dropzone', DropzoneStory);
 storiesOf('Grid', GridStory);
