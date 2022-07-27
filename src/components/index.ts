@@ -21,7 +21,6 @@ export * from './dropzone';
 export * from './autocomplete';
 export * from './file-uploader';
 export * from './loader';
-export * from './notification';
 export * from './pagination';
 export * from './wizard';
 export * from './paper';
