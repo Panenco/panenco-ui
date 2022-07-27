@@ -7,10 +7,5 @@ export const StyledAvatarGroup = styled.div`
 
   .avatarGroupItem {
     margin-right: -8px;
-    z-index: 99;
-
-    &Count {
-      z-index: 1;
-    }
   }
 `;
