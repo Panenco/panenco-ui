@@ -6,7 +6,6 @@ export * from './grid';
 export * from './icon';
 export * from './text';
 export * from './form';
-export * from './link';
 export * from './button-icon';
 export * from './chip';
 export * from './checkbox';
