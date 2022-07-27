@@ -23,7 +23,6 @@ export * from './loader';
 export * from './notification';
 export * from './pagination';
 export * from './paper';
-export * from './banners';
 export * from './responsive-table';
 export * from './switch';
 export * from './popup';
