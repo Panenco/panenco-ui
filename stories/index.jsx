@@ -30,7 +30,6 @@ import StampStory from './stamp';
 import SwitchStory from './switch';
 import TabStory from './tabs';
 import TextStory from './text';
-import WizardStory from './wizard';
 
 storiesOf('Accordion', AccordionStory);
 storiesOf('AutoComplete', AutoCompleteStory);
@@ -59,4 +58,3 @@ storiesOf('Slider', SliderStory);
 storiesOf('Stamp', StampStory);
 storiesOf('Switcher', SwitchStory);
 storiesOf('Tab', TabStory);
-storiesOf('Wizard', WizardStory);
