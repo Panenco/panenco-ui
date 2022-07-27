@@ -1,10 +1,8 @@
 import styled from 'styled-components';
-import { transparentize } from 'polished';
-import { PUITheme, ThemeMode } from 'utils/types';
+import { PUITheme } from 'utils/types';
 
 export const StyledDropzone = styled.div<{
   theme: PUITheme;
-  mode: ThemeMode;
   loading?: boolean;
   isDragActive?: boolean;
   error?: string;
@@ -19,11 +17,9 @@ export const StyledDropzone = styled.div<{
   border-style: solid;
   background-color: ${(props: any): string => {
     if (props.loading) {
-      return props.mode === ThemeMode.dark
-        ? transparentize(0.4, props.theme.colors.base700)
-        : props.theme.colors.base400;
+      return props.theme.colors.base400;
     }
-    return props.mode === ThemeMode.dark ? props.theme.colors.base900 : props.theme.colors.primary200;
+    return props.theme.colors.primary200;
   }};
   border-width: ${(props: any): string => {
     if (props.error) {
@@ -36,15 +32,15 @@ export const StyledDropzone = styled.div<{
       return props.theme.colors.error;
     }
     if (props.isDragActive) {
-      return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500;
+      return props.theme.colors.primary500;
     }
-    return props.mode === ThemeMode.dark ? props.theme.colors.base700 : props.theme.colors.primary200;
+    return props.theme.colors.primary200;
   }};
   color: ${(props: any): string => {
     if (props.loading) {
-      return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary700;
+      return props.theme.colors.primary700;
     }
-    return props.mode === ThemeMode.dark ? props.theme.colors.base700 : props.theme.colors.primary500;
+    return props.theme.colors.primary500;
   }};
   outline: none;
 
@@ -58,9 +54,6 @@ export const StyledDropzone = styled.div<{
       ${(props: any): string => {
         if (props.color) {
           return props.color;
-        }
-        if (props.mode === ThemeMode.dark) {
-          return props.theme.colors.base100;
         }
         return props.theme.colors.primary500;
       }};
@@ -77,24 +70,23 @@ export const StyledDropzone = styled.div<{
         return props.theme.colors.error;
       }
       if (props.isDragActive) {
-        return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary700;
+        return props.theme.colors.primary700;
       }
-      return props.mode === ThemeMode.dark ? props.theme.colors.base700 : props.theme.colors.primary500;
+      return props.theme.colors.primary500;
     }};
   }
 
   .content {
     color: ${(props: any): string => {
       if (props.isDragActive) {
-        return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary700;
+        return props.theme.colors.primary700;
       }
-      return props.mode === ThemeMode.dark ? props.theme.colors.base700 : props.theme.colors.primary500;
+      return props.theme.colors.primary500;
     }};
     text-align: center;
 
     &Loading {
-      color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base700};
+      color: ${(props: any): string => props.theme.colors.base700};
       margin-top: 20px;
     }
   }

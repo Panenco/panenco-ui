@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ThemeMode, PUITheme } from 'utils/types';
+import { PUITheme } from 'utils/types';
 
 export const StyledRootSlider = styled.div`
   position: relative;
@@ -14,7 +14,6 @@ export const StyledRootSlider = styled.div`
 
 export const StyledHandle = styled.div<{
   theme: PUITheme;
-  mode: ThemeMode;
 }>`
   align-items: center;
   border-radius: 4px;
@@ -28,9 +27,9 @@ export const StyledHandle = styled.div<{
   z-index: 2;
   background-color: ${(props: any): string => {
     if (props.isActive) {
-      return props.mode === ThemeMode.dark ? props.theme.colors.primary200 : props.theme.colors.primary700;
+      return props.theme.colors.primary700;
     }
-    return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500;
+    return props.theme.colors.primary500;
   }};
 
   left: ${(props: any): string => {
@@ -40,14 +39,12 @@ export const StyledHandle = styled.div<{
   top: ${(props: any): string => (props.isActive ? '-3px' : 'auto')};
 
   &:hover {
-    background-color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.primary200 : props.theme.colors.primary700};
+    background-color: ${(props: any): string => props.theme.colors.primary700};
   }
 
   & .valueLabel {
     z-index: 3;
-    color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.base900 : props.theme.colors.base100};
+    color: ${(props: any): string => props.theme.colors.base100};
   }
 `;
 
@@ -72,7 +69,6 @@ export const StyledInputRange = styled.div<{
 
 export const StyledTrack = styled.div<{
   theme: PUITheme;
-  mode: ThemeMode;
 }>`
   border-radius: 4px;
   cursor: pointer;
@@ -80,6 +76,5 @@ export const StyledTrack = styled.div<{
   position: absolute;
   transform: translate(0, -99%);
   z-index: 1;
-  background-color: ${(props: any): string =>
-    props.mode === ThemeMode.dark ? props.theme.colors.base700 : props.theme.colors.primary200};
+  background-color: ${(props: any): string => props.theme.colors.primary200};
 `;

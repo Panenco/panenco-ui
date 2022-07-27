@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Icon, Text } from 'components';
 import cx from 'classnames';
-import { useTheme, useMode } from 'utils/hooks';
-import { ThemeMode } from 'utils/types';
+import { useTheme } from 'utils/hooks';
 import { ButtonIcon } from 'components/button-icon';
 import { RowType, ExpandRowType, CustomCellProps } from './types';
 
@@ -32,7 +31,6 @@ const Cell = ({
   className,
 }: CellProps): JSX.Element => {
   const theme = useTheme();
-  const { mode } = useMode();
   const IS_FIRST_CELL = cellIndex === 0;
   const IS_HIDDEN_COLUMNS = hiddenColumnLength !== 0;
 
@@ -53,19 +51,19 @@ const Cell = ({
       className={cx('tableCell', className)}
       style={{
         maxWidth: `${minWidth}px`,
-        color: mode === ThemeMode.light ? theme.colors.base900 : theme.colors.base100,
+        color: theme.colors.base900,
       }}
     >
       {IS_FIRST_CELL && IS_HIDDEN_COLUMNS ? (
-        <div className="tableCellWrap">
+        <div className='tableCellWrap'>
           <ButtonIcon
-            className="tableCellButtonIcon"
+            className='tableCellButtonIcon'
             onClick={(): void => {
               expandRow(rowIndex);
             }}
             icon={Icon.icons[getIcon()]}
           />
-          {typeof content === 'string' ? <Text className="tableCellWrapContent">{content}</Text> : content}
+          {typeof content === 'string' ? <Text className='tableCellWrapContent'>{content}</Text> : content}
         </div>
       ) : (
         content

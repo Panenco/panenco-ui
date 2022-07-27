@@ -2,8 +2,8 @@
 import { throttle } from 'lodash-es';
 import * as React from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
-import { useMode, useTheme } from 'utils/hooks';
-import { PUITheme, ThemeMode } from 'utils/types';
+import { useTheme } from 'utils/hooks';
+import { PUITheme } from 'utils/types';
 import { ColumnType } from '.';
 
 import Columns from './columns';
@@ -15,7 +15,6 @@ import { TableProps, TableState } from './types';
 class Table extends React.Component<
   TableProps & {
     theme: PUITheme;
-    mode: ThemeMode;
   },
   TableState
 > {
@@ -125,7 +124,6 @@ class Table extends React.Component<
       handleSort,
       innerRef,
       theme,
-      mode,
       isLoading,
       iconCreator,
       sortIcons,
@@ -142,8 +140,8 @@ class Table extends React.Component<
     const [visibleCols, hiddenCols] = Table.separateColumns(columns);
 
     return (
-      <Styles theme={theme} mode={mode} ref={this.divRef}>
-        <table className="table" ref={innerRef} {...tableProps}>
+      <Styles theme={theme} ref={this.divRef}>
+        <table className='table' ref={innerRef} {...tableProps}>
           <Columns columns={visibleCols} sort={sort} handleSort={handleSort} sortIcons={sortIcons} />
           <Rows
             rows={rows}
@@ -163,6 +161,5 @@ class Table extends React.Component<
 
 export const ResponsiveTable = React.forwardRef((props: TableProps, ref): JSX.Element => {
   const theme = useTheme();
-  const { mode } = useMode();
-  return <Table innerRef={ref} theme={theme} mode={mode} {...props} />;
+  return <Table innerRef={ref} theme={theme} {...props} />;
 });

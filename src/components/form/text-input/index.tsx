@@ -1,11 +1,10 @@
 import * as React from 'react';
 import cx from 'classnames';
 import { Icon, Text } from 'components';
-import { useTheme, useMode } from 'utils/hooks';
+import { useTheme } from 'utils/hooks';
 import { idGenerator } from 'utils/helpers';
-import { InputComponent, WrapperProps, InputPropsType, ThemeMode } from 'utils/types';
+import { InputComponent, WrapperProps, InputPropsType } from 'utils/types';
 import { StyledTextInput } from './style';
-
 
 export interface TextInputProps extends InputComponent, React.InputHTMLAttributes<HTMLInputElement> {
   rightSubTitle?: React.ReactElement;
@@ -51,14 +50,12 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
     };
 
     const theme = useTheme();
-    const { mode } = useMode();
 
     return (
       <StyledTextInput
         className={cx('textInput', className)}
         error={error}
         theme={theme}
-        mode={mode}
         ref={ref}
         iconAfter={iconAfter}
         iconBefore={iconBefore}
@@ -72,22 +69,14 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
               </Text>
             )}
 
-            {
-              subTitle && (
-                <Text size={theme.typography.sizes.xs} className=' mb-4 inputSubTitle inputSubTitleLeft'>
-                  {subTitle}
-                </Text>
-              )
-            }
+            {subTitle && (
+              <Text size={theme.typography.sizes.xs} className=' mb-4 inputSubTitle inputSubTitleLeft'>
+                {subTitle}
+              </Text>
+            )}
           </div>
-          {rightSubTitle && (
-            <div className='mb-4 rightTitleContainer'>
-              {rightSubTitle}
-            </div>
-          )
-          }
+          {rightSubTitle && <div className='mb-4 rightTitleContainer'>{rightSubTitle}</div>}
         </div>
-
 
         <div className='fieldWrapper'>
           <div className={cx('inputField', error && 'inputFieldError', disabled && 'inputFieldDisabled')}>
@@ -121,7 +110,7 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
             <Text
               component='span'
               size={theme.typography.sizes.xs}
-              color={mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.error}
+              color={theme.colors.error}
               className='inputErrorLabel'
             >
               {error}

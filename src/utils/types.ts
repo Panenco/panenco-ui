@@ -52,7 +52,7 @@ export type PUIWeights = {
 
 export type ButtonVariantType = 'text' | 'contained' | 'outlined';
 
-export type StampVariantType =  'fulfilled' | 'outlined';
+export type StampVariantType = 'fulfilled' | 'outlined';
 
 export type TextSize = { textSize: string; lineHeight: string | number };
 
@@ -74,21 +74,12 @@ export type PUITypography = {
 };
 
 export type PUITheme = {
-  colors: PUIColors & {
-    darkMode: PUIModeColors;
-    lightMode: PUIModeColors;
-  };
+  colors: PUIColors;
   typography: {
     sizes: PUISizes;
     weights: PUIWeights;
   };
 };
-
-// eslint-disable-next-line no-shadow
-export enum ThemeMode {
-  light = 'light',
-  dark = 'dark',
-}
 
 export interface InputComponent {
   title?: string;

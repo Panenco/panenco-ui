@@ -1,31 +1,26 @@
 import styled from 'styled-components';
-import { PUITheme, ThemeMode } from 'utils/types';
+import { PUITheme } from 'utils/types';
 
 export const StyledAccordionPrimary = styled.div<{
   theme: PUITheme;
-  mode: ThemeMode;
 }>`
   position: relative;
   display: flex;
   flex-direction: column;
   border-radius: 4px;
   border: 1px solid ${(props: any): string => props.theme.colors.base700};
-  background-color: ${(props: any): string =>
-    props.mode === ThemeMode.dark ? props.theme.colors.base900 : props.theme.colors.base100};
+  background-color: ${(props: any): string => props.theme.colors.base100};
   font-size: ${(props: any): string => props.theme.typography.sizes.m.textSize};
-  color: ${(props: any): string =>
-    props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
+  color: ${(props: any): string => props.theme.colors.base900};
   line-height: 1.3;
   width: 100%;
 
   &:hover {
-    border-color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500};
+    border-color: ${(props: any): string => props.theme.colors.primary500};
     .accordionHeader,
     .accordionHeaderIcon {
       cursor: pointer;
-      /* color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500}; */
+      /* color: ${(props: any): string => props.theme.colors.primary500}; */
     }
   }
 

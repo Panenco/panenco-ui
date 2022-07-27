@@ -12,7 +12,6 @@ export interface SliderProps extends React.HTMLAttributes<HTMLDivElement> {
   formatValue: (value: any) => any;
   disabled?: boolean;
   theme: PUITheme;
-  mode: string;
   step?: number;
   sliderProps?: RSliderProps;
   innerRef?: any;
@@ -102,18 +101,7 @@ class MainSlider extends React.Component<SliderProps, SliderState> {
   render(): JSX.Element {
     const {
       state: { domain, values },
-      props: {
-        formatValue,
-        disabled,
-        className,
-        onChange,
-        theme,
-        step,
-        mode: ThemeMode,
-        style,
-        sliderProps,
-        ...otherProps
-      },
+      props: { formatValue, disabled, className, onChange, theme, step, style, sliderProps, ...otherProps },
     } = this;
     return (
       <StyledRootSlider ref={this.refSLider} className={className} style={style} {...otherProps}>
@@ -132,7 +120,7 @@ class MainSlider extends React.Component<SliderProps, SliderState> {
               this.activeId = activeHandleID;
 
               return (
-                <div className="slider-handles">
+                <div className='slider-handles'>
                   {handles.map((handle) => (
                     <Handle
                       key={handle.id}
@@ -142,7 +130,6 @@ class MainSlider extends React.Component<SliderProps, SliderState> {
                       formatValue={formatValue}
                       onChange={onChange}
                       theme={theme}
-                      mode={ThemeMode}
                     />
                   ))}
                 </div>
@@ -152,16 +139,9 @@ class MainSlider extends React.Component<SliderProps, SliderState> {
           <Tracks left={values.length < 2} right={false}>
             {({ tracks, getTrackProps }): JSX.Element => {
               return (
-                <div className="slider-tracks">
+                <div className='slider-tracks'>
                   {tracks.map(({ id, source, target }) => (
-                    <Track
-                      key={id}
-                      source={source}
-                      target={target}
-                      getTrackProps={getTrackProps}
-                      theme={theme}
-                      mode={ThemeMode}
-                    />
+                    <Track key={id} source={source} target={target} getTrackProps={getTrackProps} theme={theme} />
                   ))}
                 </div>
               );

@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-import { PUITheme, ThemeMode } from 'utils/types';
+import { PUITheme } from 'utils/types';
 
 const convertToPixels = (size) => size && size.toString().concat('px');
 
 export const StyledButtonIcon = styled.button<{
   theme: PUITheme;
-  mode: ThemeMode;
   to?: string;
   size?: number;
 }>`
@@ -25,8 +24,7 @@ export const StyledButtonIcon = styled.button<{
   &:active {
     & .iconClass,
     & .buttonIconTitle {
-      color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary700};
+      color: ${(props: any): string => props.theme.colors.primary700};
     }
   }
 

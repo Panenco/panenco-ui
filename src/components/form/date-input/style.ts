@@ -1,10 +1,8 @@
 import styled from 'styled-components';
-import { transparentize } from 'polished';
-import { ThemeMode, PUITheme } from 'utils/types';
+import { PUITheme } from 'utils/types';
 
 export const StyledDayPicker = styled.div<{
   theme: PUITheme;
-  mode: ThemeMode;
 }>`
   position: relative;
   display: flex;
@@ -30,8 +28,7 @@ export const StyledDayPicker = styled.div<{
 
   .title {
     margin-bottom: 4px;
-    color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
+    color: ${(props: any): string => props.theme.colors.base900};
   }
 
   .overlay {
@@ -77,8 +74,7 @@ export const StyledDayPicker = styled.div<{
       border: 1px solid ${(props: any): string => props.theme.colors.base700};
       background-color: transparent;
       border-radius: 4px;
-      color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
+      color: ${(props: any): string => props.theme.colors.base900};
       font-size: ${(props: any): string => props.theme.typography.sizes.m.textSize};
       resize: none;
 
@@ -89,8 +85,7 @@ export const StyledDayPicker = styled.div<{
       &Error {
         border-color: transparent;
         box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.error};
-        color: ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
+        color: ${(props: any): string => props.theme.colors.base900};
 
         &:hover {
           box-shadow: none;
@@ -99,17 +94,14 @@ export const StyledDayPicker = styled.div<{
 
       &Disabled {
           /* border-color: ${(props: any): string => props.theme.colors.base400}; */
-        background-color: ${(props: any): string =>
-          props.mode === ThemeMode.dark ? transparentize(0.4, props.theme.colors.base700) : props.theme.colors.base400};
+        background-color: ${(props: any): string => props.theme.colors.base400};
         opacity: 0.4;
         pointer-events: none;
       }
 
       &:hover {
-        border: 1px solid ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500};
-        color: ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.base700 : props.theme.colors.base900};
+        border: 1px solid ${(props: any): string => props.theme.colors.primary500};
+        color: ${(props: any): string => props.theme.colors.base900};
       }
 
       &:focus {
@@ -133,8 +125,7 @@ export const StyledDayPicker = styled.div<{
       }
 
       .errorLabel {
-        color: ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.error};
+        color: ${(props: any): string => props.theme.colors.error};
       }
 
       .hidden {
