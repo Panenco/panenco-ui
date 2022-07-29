@@ -9,6 +9,7 @@ export interface TextProps extends React.HTMLAttributes<HTMLElement> {
   weight?: string | number;
   size?: string | TextSize;
   component?: keyof React.ReactHTML | React.ComponentType;
+  className?: string;
 }
 
 const StyledComponent = styled.span<{
@@ -54,13 +55,30 @@ const StyledComponent = styled.span<{
 
 export const Text = React.forwardRef<HTMLElement, TextProps>(
   (
-    { color = 'inherit', size = 'inherit', weight = 'inherit', children, component = 'span', ...props }: TextProps,
+    {
+      color = 'inherit',
+      size = 'inherit',
+      weight = 'inherit',
+      children,
+      component = 'span',
+      className,
+      ...props
+    }: TextProps,
     ref,
   ): JSX.Element => {
     const theme = useTheme();
 
     return (
-      <StyledComponent as={component} theme={theme} color={color} size={size} weight={weight} ref={ref} {...props}>
+      <StyledComponent
+        as={component}
+        theme={theme}
+        color={color}
+        size={size}
+        weight={weight}
+        ref={ref}
+        className={className}
+        {...props}
+      >
         {children}
       </StyledComponent>
     );
