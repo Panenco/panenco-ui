@@ -138,7 +138,7 @@ export const customStyles = (theme: PUITheme, error?: any, styles?: any): any =>
         return theme.colors.primary500;
       }
 
-      return isFocused ? theme.colors.base900 : theme.colors.base100;
+      return theme.colors.base900;
     };
     const isHoverColor = (): string => {
       return isChoosedOption ? theme.colors.primary700 : theme.colors.base900;
