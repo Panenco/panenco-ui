@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Select, { components, Props as SelectProps } from 'react-select';
-import { useTheme, useMode } from 'utils/hooks';
+import { useTheme } from 'utils/hooks';
 import CreatableSelect from 'react-select/creatable';
 import AsyncSelect from 'react-select/async';
 import AsyncCreatableSelect from 'react-select/async-creatable';
@@ -8,13 +8,22 @@ import { Icon, Text } from 'components';
 import { InputComponent } from '../../utils/types';
 import { customStyles } from './style';
 
-const CustomOption = (props: any): JSX.Element => {
-  const { children, isSelected } = props;
+const CustomOption = ({ deleteItemIcon = 'trash', onDeleteItem, ...props }: any): JSX.Element => {
+  const { children, isSelected, data } = props;
+
+  // const handleDelete = (e) => {
+  //   e.stopPropagation();
+  //   onDeleteItem(data);
+  // };
+
+  /* eslint-disable-next-line no-underscore-dangle */
+  // const deleteButtonIsShown = onDeleteItem && !data.__isNew__ && !isSelected;
 
   return (
     <components.Option {...props}>
-      {isSelected && <Icon icon={Icon.icons.check} className="icon" />}
+      {/* {isSelected && <Icon icon='check' className='icon' />} */}
       {children}
+      {/* {deleteButtonIsShown && <Icon icon={deleteItemIcon} className='deleteItemIcon' onClick={handleDelete} />} */}
     </components.Option>
   );
 };
@@ -31,6 +40,8 @@ export interface ComponentProps extends SelectProps, InputComponent {
     md?: number | string;
     sm?: number | string;
   };
+  deleteItemIcon?: any;
+  onDeleteItem?: (data: any) => any;
 }
 
 const Component = ({
@@ -45,11 +56,12 @@ const Component = ({
   loadingMessage,
   noOptionsMessage,
   placeholder = '',
+  deleteItemIcon,
+  onDeleteItem,
   ...props
 }: ComponentProps): JSX.Element => {
   let SelectComponent: any = Select;
   const theme = useTheme();
-  const { mode } = useMode();
 
   if (async) {
     SelectComponent = AsyncSelect;
@@ -60,27 +72,35 @@ const Component = ({
     SelectComponent = AsyncCreatableSelect;
   }
 
+  const SelectOption = (optionProps) => (
+    <CustomOption deleteItemIcon={deleteItemIcon} onDeleteItem={onDeleteItem} {...optionProps} />
+  );
+
   return (
     <>
       {title && (
-        <Text className="title" weight={theme.typography.weights.bold} size={theme.typography.sizes.m}>
+        <Text className='title' weight={theme.typography.weights.bold} size={theme.typography.sizes.m}>
           {title}
         </Text>
       )}
       {subTitle && (
-        <Text className="subTitle" size={theme.typography.sizes.xs} color={theme.colors.base700}>
+        <Text className='subTitle' size={theme.typography.sizes.xs} color={theme.colors.base700}>
           {subTitle}
         </Text>
       )}
       <>
-        <div className="wrapperSelect">
+        <div className='wrapperSelect'>
           <SelectComponent
             options={options}
             loadingMessage={
               loadingMessage || (({ inputValue }): string => (inputValue ? `Loading ${inputValue}` : 'Loading...'))
             }
-            styles={{ ...customStyles(theme, mode, error, styles) }}
-            components={{ Option: CustomOption, MultiValue, ...propComponents }}
+            styles={{ ...customStyles(theme, error, styles) }}
+            components={{
+              Option: SelectOption,
+              MultiValue,
+              ...propComponents,
+            }}
             noOptionsMessage={noOptionsMessage || (() => 'Not found')}
             error={error}
             isClearable={false}
@@ -88,7 +108,7 @@ const Component = ({
             {...props}
           />
         </div>
-        <Text className="errorTitle" size={theme.typography.sizes.xs} color={theme.colors.error}>
+        <Text className='errorTitle' size={theme.typography.sizes.xs} color={theme.colors.error}>
           {error}
         </Text>
       </>

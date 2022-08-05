@@ -2,7 +2,7 @@ import * as React from 'react';
 import cx from 'classnames';
 import { Icon } from 'components/icon';
 import { Text } from 'components/text';
-import { useTheme, useMode } from 'utils/hooks';
+import { useTheme } from 'utils/hooks';
 import { idGenerator } from 'utils/helpers';
 import { InputPropsType } from '../../utils/types';
 import { StyledCheckbox } from './style';
@@ -49,17 +49,9 @@ export const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
     const uniqueID = idGenerator();
     const defaultId = id || uniqueID;
     const theme = useTheme();
-    const { mode } = useMode();
 
     return (
-      <StyledCheckbox
-        theme={theme}
-        mode={mode}
-        color={color}
-        borderWidth={borderWidth}
-        borderColor={borderColor}
-        {...wrapperProps}
-      >
+      <StyledCheckbox theme={theme} color={color} borderWidth={borderWidth} borderColor={borderColor} {...wrapperProps}>
         <label
           className={cx('label', disabled && 'labelDisabled', wrapperProps?.className)}
           htmlFor={id || defaultId}
@@ -74,8 +66,9 @@ export const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
             {...inputProps}
             {...props}
           />
-          <div className={cx('container', error && 'error')}>{checked &&
-          <Icon icon={Icon.icons.check} className='tick' />}</div>
+          <div className={cx('container', error && 'error')}>
+            {/* {checked && <Icon icon={Icon.icons.check} className='tick' />} */}
+          </div>
           {label && (
             <Text component='p' className={cx('labelTitle', labelClassName)}>
               {label}

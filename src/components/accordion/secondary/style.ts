@@ -1,17 +1,14 @@
-import { styled } from 'linaria/react';
-import { ThemeMode, PUITheme } from 'utils/types';
-import { transparentize } from 'polished';
+import styled from 'styled-components';
+import { PUITheme } from 'utils/types';
 
 export const StyledAccordionSecondary = styled.div<{
   theme: PUITheme;
-  mode: ThemeMode;
 }>`
   position: relative;
   display: flex;
   flex-direction: column;
   border: none;
-  background-color: ${(props: any): string =>
-    props.mode === ThemeMode.dark ? props.theme.colors.base900 : props.theme.colors.base100};
+  background-color: ${(props: any): string => props.theme.colors.base100};
   font-size: ${(props: any): string => props.theme.typography.sizes.m.textSize};
   line-height: 1.3;
   width: 100%;
@@ -21,8 +18,7 @@ export const StyledAccordionSecondary = styled.div<{
     .accordionHeader,
     .accordionHeaderIcon {
       cursor: pointer;
-      color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.primary200 : props.theme.colors.primary700};
+      color: ${(props: any): string => props.theme.colors.primary700};
     }
   }
 
@@ -42,8 +38,7 @@ export const StyledAccordionSecondary = styled.div<{
     font-size: inherit;
     align-items: center;
 
-    color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500};
+    color: ${(props: any): string => props.theme.colors.primary500};
 
     &Title {
       transition: 0.5s;
@@ -69,9 +64,7 @@ export const StyledAccordionSecondary = styled.div<{
   .accordionContent {
     padding: 16px;
     border-radius: 4px;
-    background-color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? transparentize(0.4, props.theme.colors.base700) : props.theme.colors.base400};
-    color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
+    background-color: ${(props: any): string => props.theme.colors.base400};
+    color: ${(props: any): string => props.theme.colors.base900};
   }
 `;

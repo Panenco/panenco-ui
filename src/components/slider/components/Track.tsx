@@ -16,10 +16,9 @@ type TrackProps = {
   };
   getTrackProps: GetTrackProps;
   theme: PUITheme;
-  mode: string;
 };
 
-export const Track = ({ source, target, getTrackProps, theme, mode }: TrackProps): JSX.Element => {
+export const Track = ({ source, target, getTrackProps, theme }: TrackProps): JSX.Element => {
   return (
     <StyledTrack
       style={{
@@ -27,7 +26,6 @@ export const Track = ({ source, target, getTrackProps, theme, mode }: TrackProps
         width: `calc(${target.percent - source.percent}%)`,
       }}
       theme={theme}
-      mode={mode}
       {...getTrackProps()}
     />
   );

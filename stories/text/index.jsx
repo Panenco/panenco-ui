@@ -11,28 +11,28 @@ import { WrappedComponent } from '../helpers/wrapped';
 
 // eslint-disable-next-line
 const WrappedCol = ({ children }) => (
-  <Col xs="1" sm="2" lg="4" style={{ display: 'flex', justifyContent: 'center' }}>
+  <Col xs='1' sm='2' lg='4' style={{ display: 'flex', justifyContent: 'center' }}>
     {children}
   </Col>
 );
 
 // eslint-disable-next-line
-const Child = ({ mode }) => {
+const Child = () => {
   return (
     <>
       <Row>
         <WrappedCol>
-          <Text size={sizes.l} color={mode === 'light' ? colors.base900 : colors.base700}>
+          <Text size={sizes.l} color={colors.base900}>
             Name
           </Text>
         </WrappedCol>
         <WrappedCol>
-          <Text size={sizes.l} color={mode === 'light' ? colors.base900 : colors.base700}>
+          <Text size={sizes.l} color={colors.base900}>
             Text Size
           </Text>
         </WrappedCol>
         <WrappedCol>
-          <Text size={sizes.l} color={mode === 'light' ? colors.base900 : colors.base700}>
+          <Text size={sizes.l} color={colors.base900}>
             Line Height
           </Text>
         </WrappedCol>
@@ -42,17 +42,17 @@ const Child = ({ mode }) => {
         .map((el) => (
           <Row key={el}>
             <WrappedCol>
-              <Text size={sizes[el]} color={mode === 'light' ? colors.base900 : colors.base700}>
+              <Text size={sizes[el]} color={colors.base900}>
                 {el}
               </Text>
             </WrappedCol>
             <WrappedCol>
-              <Text size={sizes[el]} color={mode === 'light' ? colors.base900 : colors.base700}>
+              <Text size={sizes[el]} color={colors.base900}>
                 {sizes[el].textSize}
               </Text>
             </WrappedCol>
             <WrappedCol>
-              <Text size={sizes[el]} color={mode === 'light' ? colors.base900 : colors.base700}>
+              <Text size={sizes[el]} color={colors.base900}>
                 {sizes[el].lineHeight}
               </Text>
             </WrappedCol>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { idGenerator } from 'utils/helpers';
-import { Icon, Chip } from 'components';
+import { Chip } from 'components';
 import { Props as SelectProps } from 'react-select';
 import { InputComponent } from '../../utils/types';
 
@@ -12,7 +12,7 @@ export interface ChipsProps extends SelectProps, InputComponent {
 }
 
 const ChipsComponent = ({ value, onDeleteOption, chipIcon, getOptionLabel }: ChipsProps): JSX.Element => (
-  <div className="isMultiActiveChips">
+  <div className='isMultiActiveChips'>
     {value?.map((option) => {
       if (!option) return null;
       let chipLabel = option.label;
@@ -22,9 +22,9 @@ const ChipsComponent = ({ value, onDeleteOption, chipIcon, getOptionLabel }: Chi
 
       return (
         <Chip
-          className="multiSelectChip"
+          className='multiSelectChip'
           key={idGenerator()}
-          icon={chipIcon || Icon.icons.x}
+          icon={chipIcon || 'x'}
           checked
           onIconClick={(): void => {
             if (onDeleteOption) {

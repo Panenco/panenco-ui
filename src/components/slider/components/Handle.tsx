@@ -15,7 +15,6 @@ interface HandleProps {
   onChange?: any;
   isActive?: boolean;
   theme: PUITheme;
-  mode: string;
 }
 
 export const Handle = ({
@@ -25,7 +24,6 @@ export const Handle = ({
   onChange,
   isActive,
   theme,
-  mode,
 }: HandleProps): JSX.Element => {
   const { id, value, percent } = handle;
 
@@ -33,15 +31,8 @@ export const Handle = ({
 
   const vLabel = formatValue(value);
   return (
-    <StyledHandle
-      percent={percent}
-      isActive={isActive}
-      data-id={`${id}`}
-      theme={theme}
-      mode={mode}
-      {...getHandleProps(id)}
-    >
-      <span className="valueLabel">{vLabel}</span>
+    <StyledHandle percent={percent} isActive={isActive} data-id={`${id}`} theme={theme} {...getHandleProps(id)}>
+      <span className='valueLabel'>{vLabel}</span>
     </StyledHandle>
   );
 };

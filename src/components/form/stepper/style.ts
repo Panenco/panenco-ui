@@ -1,8 +1,7 @@
-import { styled } from 'linaria/react';
-import { PUITheme, ThemeMode } from 'utils/types';
+import styled from 'styled-components';
+import { PUITheme } from 'utils/types';
 
 export const StyledStepperInput = styled.div<{
-  mode: ThemeMode;
   theme: PUITheme;
 }>`
   box-sizing: border-box;
@@ -33,8 +32,7 @@ export const StyledStepperInput = styled.div<{
     border: none;
     border-bottom: 1px solid ${(props: any): string => props.theme.colors.base700};
     border-top: 1px solid ${(props: any): string => props.theme.colors.base700};
-    color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.base700 : props.theme.colors.base900};
+    color: ${(props: any): string => props.theme.colors.base900};
     text-align: center;
     width: 100%;
 
@@ -62,8 +60,7 @@ export const StyledStepperInput = styled.div<{
     }
 
     &Icon {
-      color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.base900 : props.theme.colors.primary500};
+      color: ${(props: any): string => props.theme.colors.primary500};
     }
 
     &.disabled {
@@ -72,13 +69,11 @@ export const StyledStepperInput = styled.div<{
     }
 
     &:hover {
-      background: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.base900 : props.theme.colors.primary700};
+      background: ${(props: any): string => props.theme.colors.primary700};
       border: 2px solid ${(props: any): string => props.theme.colors.primary700};
 
       .stepperButtonIcon {
-        color: ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.base900 : props.theme.colors.base100};
+        color: ${(props: any): string => props.theme.colors.base100};
       }
     }
 
@@ -103,8 +98,7 @@ export const StyledStepperInput = styled.div<{
 
     &Error {
       border-color: transparent;
-      color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
+      color: ${(props: any): string => props.theme.colors.base900};
       &:hover {
         box-shadow: none;
       }
@@ -116,9 +110,7 @@ export const StyledStepperInput = styled.div<{
     }
 
     &:hover {
-      border: 1px solid
-        ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500};
+      border: 1px solid ${(props: any): string => props.theme.colors.primary500};
     }
 
     &:focus-within {

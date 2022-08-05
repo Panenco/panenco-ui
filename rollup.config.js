@@ -1,6 +1,5 @@
 /* eslint-disable global-require */
 import svgSprite from '@panenco/rollup-plugin-svg-sprite';
-import linaria from 'linaria/rollup';
 import path from 'path';
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
@@ -43,9 +42,6 @@ export default {
       clean: true,
       // tsconfig: './tsconfig.json',
       typescript: ttypescript,
-    }),
-    linaria({
-      sourceMap: process.env.NODE_ENV !== 'production',
     }),
     css({
       output: path.join(paths.outputPath, 'styles.css'),

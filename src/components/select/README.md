@@ -65,6 +65,8 @@ This component base on [**react-select**](https://react-select.com/home) library
 - wrapperSelectSizes - object which contain 3 property l, m and s (independ from grid layout) and set size for input element;
 - hideChips - don't render the chips
 - ref - ref;
+- onDeleteItem - a callback which is triggered when you delete an item, if passed adds a bin icon in the right side of option component;
+- deleteItemIcon - custom delete icon (works only if onDeleteItem prop is defined);
 
 Else you can using Async, Creatable and AsyncCreatable Select with next props
 
@@ -92,5 +94,7 @@ Else you can using Async, Creatable and AsyncCreatable Select with next props
 | onDeleteOption     | (option) => void                                              | -            | -          |
 | hideChips          | boolean                                                       | -            | -          |
 | ref                | React.RefObject                                               | -            | -          |
+| onDeleteItem       | (data) => any                                                 | -            | -          |
+| deleteItemIcon     | any                                                           | -            | -          |
 
 It's a basic props what we using, you can look more complete documentation [**here**](https://react-select.com/home)

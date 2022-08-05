@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useCombinedRefs } from 'utils/hooks/combinedrefs';
-import { PUITheme, ThemeMode } from '../../utils/types';
+import { PUITheme } from '../../utils/types';
 import { useAccordionContext } from './group';
 
 export interface UseAccordionProps {
@@ -8,19 +8,17 @@ export interface UseAccordionProps {
   onClick?: (e?: MouseEvent) => void;
   isOpen?: boolean;
   theme: PUITheme;
-  mode: ThemeMode;
 }
 
 export interface UseAccordinReturn {
   combinedRef: React.RefObject<HTMLDivElement>;
   theme: PUITheme;
-  mode: ThemeMode;
   isOpen?: boolean;
   handleClick: (event?: React.UIEvent) => void | undefined;
 }
 
 export const useAccordion = (props: UseAccordionProps): UseAccordinReturn => {
-  const { isOpen: isOpened, onClick, ref, mode, theme } = props;
+  const { isOpen: isOpened, onClick, ref, theme } = props;
   const [isOpen, setOpen] = React.useState(isOpened);
   const innerRef = React.useRef();
   const combinedRef = useCombinedRefs(innerRef, ref);
@@ -64,7 +62,6 @@ export const useAccordion = (props: UseAccordionProps): UseAccordinReturn => {
   return {
     combinedRef,
     theme,
-    mode,
     isOpen,
     handleClick,
   };

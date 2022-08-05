@@ -1,9 +1,9 @@
 import * as React from 'react';
 import cx from 'classnames';
 import { Text } from 'components';
-import { useTheme, useMode } from 'utils/hooks';
+import { useTheme } from 'utils/hooks';
 import { useCombinedRefs } from 'utils/hooks/combinedrefs';
-import { InputComponent, ThemeMode, WrapperProps } from '../../../utils/types';
+import { InputComponent, WrapperProps } from '../../../utils/types';
 import { StyledTextArea } from './style';
 
 interface InputPropsType extends React.InputHTMLAttributes<HTMLTextAreaElement> {
@@ -68,7 +68,6 @@ export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
     };
 
     const theme = useTheme();
-    const { mode } = useMode();
 
     const createAriaLabel = () => {
       let label = '';
@@ -78,27 +77,20 @@ export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
     };
 
     return (
-      <StyledTextArea
-        className={cx('textArea', className)}
-        error={error}
-        theme={theme}
-        mode={mode}
-        ref={ref}
-        {...wrapperProps}
-      >
+      <StyledTextArea className={cx('textArea', className)} error={error} theme={theme} ref={ref} {...wrapperProps}>
         {title && (
-          <Text weight={theme.typography.weights.bold} size={theme.typography.sizes.m} className="title">
+          <Text weight={theme.typography.weights.bold} size={theme.typography.sizes.m} className='title'>
             {title}
           </Text>
         )}
         {subTitle && (
-          <Text size={theme.typography.sizes.xs} className="subtitle">
+          <Text size={theme.typography.sizes.xs} className='subtitle'>
             {subTitle}
           </Text>
         )}
 
-        <div className="withErrorWrapper">
-          <div className="withErrorWrapperContent">
+        <div className='withErrorWrapper'>
+          <div className='withErrorWrapperContent'>
             <textarea
               aria-label={createAriaLabel()}
               className={cx('input', error && 'inputError', disabled && 'inputDisabled')}
@@ -112,21 +104,21 @@ export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
             />
 
             {error || maxLength ? (
-              <div className="counterWrapper">
+              <div className='counterWrapper'>
                 <Text
-                  component="span"
+                  component='span'
                   size={theme.typography.sizes.xs}
-                  color={mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.error}
+                  color={theme.colors.error}
                   className={error ? 'errorLabel' : 'hidden'}
                 >
                   {error}
                 </Text>
                 {maxLength && (
                   <Text
-                    component="span"
+                    component='span'
                     size={theme.typography.sizes.xs}
                     color={theme.colors.base700}
-                    className="counter"
+                    className='counter'
                   >
                     {counter}/{maxLength}
                   </Text>

@@ -2,12 +2,12 @@ import * as React from 'react';
 import cx from 'classnames';
 import { Text } from 'components/text';
 import { Icon } from 'components/icon';
-import { useTheme, useMode } from 'utils/hooks';
+import { useTheme } from 'utils/hooks';
 import { StyledChip } from './style';
 
 export interface ChipProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   checked?: boolean;
-  icon?: HTMLObjectElement;
+  icon?: string;
   uncheckedIcon?: HTMLObjectElement;
   onIconClick?: any;
   iconClassName?: string;
@@ -21,15 +21,14 @@ export const Chip = React.forwardRef<HTMLButtonElement, ChipProps>(
       disabled,
       className,
       style,
-      icon = Icon.icons.success,
-      onIconClick,
-      uncheckedIcon,
+      // icon = 'success',
+      // onIconClick,
+      // uncheckedIcon,
       ...props
     }: ChipProps,
     ref,
   ): JSX.Element => {
     const theme = useTheme();
-    const { mode } = useMode();
 
     // const handleIconClick = (e: React.UIEvent): void => {
     //   e.persist();
@@ -49,7 +48,6 @@ export const Chip = React.forwardRef<HTMLButtonElement, ChipProps>(
         className={cx(disabled && 'chipDisabled', checked && 'chipChecked', className)}
         style={style}
         theme={theme}
-        mode={mode}
         ref={ref}
         {...props}
       >

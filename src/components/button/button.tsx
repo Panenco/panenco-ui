@@ -2,7 +2,7 @@ import cx from 'classnames';
 import { Icon, Text } from 'components';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { useMode, useTheme } from 'utils/hooks';
+import { useTheme } from 'utils/hooks';
 import { ButtonVariantType } from 'utils/types';
 
 import Spinner from './spinner';
@@ -42,7 +42,6 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref,
   ) => {
     const theme = useTheme();
-    const { mode } = useMode();
 
     const isDisabled = disabled || isLoading;
 
@@ -53,7 +52,6 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={isDisabled}
         className={cx(iconLeft && 'iconLeft', iconRight && 'iconRight', isDisabled && 'isDisabled', className)}
         theme={theme}
-        mode={mode}
         ref={ref}
         color={color}
         variant={variant}

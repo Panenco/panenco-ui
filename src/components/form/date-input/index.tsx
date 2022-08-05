@@ -3,7 +3,7 @@ import { Text, TextInput } from 'components';
 
 import * as React from 'react';
 import { useMemo, useRef } from 'react';
-import { useMode, useTheme } from 'utils/hooks';
+import { useTheme } from 'utils/hooks';
 import { WrapperProps } from 'utils/types';
 import DateUtils from './date-utils';
 
@@ -41,7 +41,6 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
     ref,
   ): JSX.Element => {
     const theme = useTheme();
-    const { mode } = useMode();
 
     const format = useMemo(() => {
       return inputs.map((i) => i.format).join('/');
@@ -118,7 +117,6 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
       <StyledDayPicker
         className={cx('dateInput', !isValid && 'error', className)}
         theme={theme}
-        mode={mode}
         ref={ref}
         {...wrapperProps}
       >

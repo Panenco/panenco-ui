@@ -41,12 +41,12 @@ export interface TableProps extends React.HTMLAttributes<HTMLTableElement> {
   isLoading?: boolean;
   shouldResize?: boolean;
   iconCreator?: (rowIsOpen: boolean) => string;
-  sortIcons?: SortIconsType,
+  sortIcons?: SortIconsType;
 }
 
 export interface SortIconsType {
-  up: SVGElement,
-  down: SVGElement
+  up: string;
+  down: string;
 }
 
 export interface TableState {

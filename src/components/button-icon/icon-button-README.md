@@ -30,12 +30,12 @@ This component inherits the attributes of the **button** element and extends the
 - to - path to redirect (prop for **Link** component);
 - size - icon size
 
-| propName      | propType          | defaultValue      | isRequired |
-| ------------- | ----------------- | ----------------- | ---------- |
-| icon          | HTMLObjectElement | Icon.icons.filter | +          |
-| iconClassName | string            | -                 | -          |
-| iconLeft      | string            | -                 | -          |
-| ref           | React.RefObject   | -                 | -          |
-| component     | string            | -                 | -          |
-| to            | string            | -                 | -          |
-| size          | number            | -                 | -          |
+| propName      | propType          | defaultValue | isRequired |
+| ------------- | ----------------- | ------------ | ---------- |
+| icon          | HTMLObjectElement | filter       | +          |
+| iconClassName | string            | -            | -          |
+| iconLeft      | string            | -            | -          |
+| ref           | React.RefObject   | -            | -          |
+| component     | string            | -            | -          |
+| to            | string            | -            | -          |
+| size          | number            | -            | -          |

@@ -2,9 +2,9 @@ import cx from 'classnames';
 import { Icon, Loader, Text } from 'components';
 import * as React from 'react';
 import { DropzoneOptions, useDropzone } from 'react-dropzone';
-import { useMode, useTheme } from 'utils/hooks';
+import { useTheme } from 'utils/hooks';
 
-import { InputPropsType, ThemeMode, WrapperProps } from '../../utils/types';
+import { InputPropsType, WrapperProps } from '../../utils/types';
 import { StyledDropzone } from './style';
 
 export interface DropzoneProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -14,7 +14,7 @@ export interface DropzoneProps extends React.HTMLAttributes<HTMLDivElement> {
   textContent?: string;
   textContentOnDrag?: string;
   error?: string;
-  icon?: HTMLObjectElement;
+  icon?: string;
   loader?: JSX.Element;
   wrapperProps?: WrapperProps;
   inputProps?: InputPropsType; // will be removed in next versions
@@ -31,7 +31,7 @@ export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
       textContentOnDrag = 'Drop your file here',
       // getInputProps: getOutsideInputProps,
       // getRootProps: getOutsideRootProps,
-      iconClassName,
+      // iconClassName,
       icon,
       wrapperProps,
       inputProps,
@@ -44,14 +44,13 @@ export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
     ref,
   ): JSX.Element => {
     const theme = useTheme();
-    const { mode } = useMode();
     const { getRootProps, getInputProps, isDragActive } = useDropzone(options);
 
     let textContentInBlock = '';
-    let iconImage = Icon.icons.upload;
+    let iconImage = 'upload';
     if (error) {
       textContentInBlock = error;
-      iconImage = Icon.icons.close;
+      iconImage = 'close';
     } else if (isDragActive) {
       textContentInBlock = textContentOnDrag;
     } else {
@@ -68,24 +67,25 @@ export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
         {...wrapperProps}
         ref={ref}
         theme={theme}
-        mode={mode}
         loading={loading}
         isDragActive={isDragActive}
         error={error}
       >
         {loading ? (
           <>
-            {loader || <Loader color={mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.base700} />}
-            <Text className="contentLoading">{loadingText}</Text>
+            {loader || <Loader color={theme.colors.base700} />}
+            <Text className='contentLoading'>{loadingText}</Text>
           </>
         ) : (
           <>
             <input {...getInputProps()} {...inputProps} {...props} />
-            <Icon icon={iconImage} className={cx('icon', iconClassName)} />
-            <Text className="content">{textContentInBlock}</Text>
+            {
+              // <Icon icon={iconImage} className={cx('icon', iconClassName)} />
+            }
+            <Text className='content'>{textContentInBlock}</Text>
           </>
         )}
-        {children && <div className="additionalContent">{children}</div>}
+        {children && <div className='additionalContent'>{children}</div>}
       </StyledDropzone>
     );
   },

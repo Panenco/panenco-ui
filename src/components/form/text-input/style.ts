@@ -1,10 +1,8 @@
-import { styled } from 'linaria/react';
-import { ThemeMode, PUITheme } from 'utils/types';
-import { transparentize } from 'polished';
+import styled from 'styled-components';
+import { PUITheme } from 'utils/types';
 
 export const StyledTextInput = styled.div<{
   theme: PUITheme;
-  mode: ThemeMode;
   error;
   iconBefore?: HTMLObjectElement | JSX.Element;
   iconAfter?: HTMLObjectElement | JSX.Element;
@@ -51,8 +49,7 @@ export const StyledTextInput = styled.div<{
         width: 100%;
         border: none;
         border-radius: 4px;
-        color: ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.base700 : props.theme.colors.base900};
+        color: ${(props: any): string => props.theme.colors.base900};
         background-color: transparent;
         font-size: ${(props: any): string => props.theme.typography.sizes.m.textSize};
         padding: 13px 16px;
@@ -72,21 +69,18 @@ export const StyledTextInput = styled.div<{
 
       &Error {
         border-color: ${(props: any): string => props.theme.colors.error};
-        color: ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
+        color: ${(props: any): string => props.theme.colors.base900};
       }
 
       &Disabled {
         pointer-events: none;
-          /* border-color: ${(props: any): string => props.theme.colors.base400}; */
-        background-color: ${(props: any): string =>
-          props.mode === ThemeMode.dark ? transparentize(0.4, props.theme.colors.base700) : props.theme.colors.base400};
+        /* border-color: ${(props: any): string => props.theme.colors.base400}; */
+        background-color: ${(props: any): string => props.theme.colors.base400};
         opacity: 0.4;
       }
 
       &:hover {
-        border-color: ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500};
+        border-color: ${(props: any): string => props.theme.colors.primary500};
       }
 
       &:focus-within {

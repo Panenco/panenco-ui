@@ -1,4 +1,4 @@
-import { styled } from 'linaria/react';
+import styled from 'styled-components';
 
 export const StyledTablist = styled.div`
   display: flex;

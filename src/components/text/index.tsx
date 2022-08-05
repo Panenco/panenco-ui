@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from 'linaria/react';
+import styled from 'styled-components';
 import { useTheme } from 'utils/hooks';
 import { TextSize, PUIColors, PUITheme } from 'utils/types';
 

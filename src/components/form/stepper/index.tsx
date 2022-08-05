@@ -1,9 +1,9 @@
 import cx from 'classnames';
 import { Icon, Text } from 'components';
 import * as React from 'react';
-import { useMode, useTheme } from 'utils/hooks';
+import { useTheme } from 'utils/hooks';
 
-import { InputComponent, InputPropsType, ThemeMode, WrapperProps } from '../../../utils/types';
+import { InputComponent, InputPropsType, WrapperProps } from '../../../utils/types';
 import { StyledStepperInput } from './style';
 
 export interface StepperInputProps extends InputComponent, React.InputHTMLAttributes<HTMLInputElement> {
@@ -39,7 +39,6 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
     ref,
   ): JSX.Element => {
     const theme = useTheme();
-    const { mode } = useMode();
 
     const [currentValue, setValue] = React.useState(value);
 
@@ -73,9 +72,9 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
     const notInRange = (isMinValue || isMaxValue) && (moreThenAllowed || lessThanAllowed);
 
     return (
-      <StyledStepperInput className={cx('stepper', className)} theme={theme} mode={mode} ref={ref} {...wrapperProps}>
+      <StyledStepperInput className={cx('stepper', className)} theme={theme} ref={ref} {...wrapperProps}>
         {title && (
-          <Text size={theme.typography.sizes.xs} className="inputTitle">
+          <Text size={theme.typography.sizes.xs} className='inputTitle'>
             {title}
           </Text>
         )}
@@ -88,13 +87,13 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
               'stepperButton',
               'stepperButtonDecrement',
             )}
-            type="button"
+            type='button'
             disabled={currentValue === minValue || disabled}
           >
-            <Icon className="stepperButtonIcon" icon={Icon.icons.minus} />
+            {/* <Icon className='stepperButtonIcon' icon='minus' /> */}
           </button>
           <input
-            type="number"
+            type='number'
             onChange={handleChange}
             className={cx('stepperInput', disabled && 'inputFieldDisabled')}
             value={Number(currentValue)}
@@ -110,28 +109,28 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
               'stepperButton',
               'stepperButtonIncrement',
             )}
-            type="button"
+            type='button'
           >
-            <Icon className="stepperButtonIcon" icon={Icon.icons.plus} />
+            {/* <Icon className='stepperButtonIcon' icon='plus' /> */}
           </button>
         </div>
-        <div className="inputError">
+        <div className='inputError'>
           {notInRange ? (
             <Text
-              component="span"
+              component='span'
               size={theme.typography.sizes.xs}
-              color={mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.error}
-              className="inputErrorLabel"
+              color={theme.colors.error}
+              className='inputErrorLabel'
             >
               {locales.notInRange}: {`[${min}, ${max}]`}
             </Text>
           ) : null}
           {error && !notInRange && (
             <Text
-              component="span"
+              component='span'
               size={theme.typography.sizes.xs}
-              color={mode === ThemeMode.dark ? theme.colors.base100 : theme.colors.error}
-              className="inputErrorLabel"
+              color={theme.colors.error}
+              className='inputErrorLabel'
             >
               {error}
             </Text>

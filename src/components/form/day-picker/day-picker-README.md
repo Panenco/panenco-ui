@@ -28,21 +28,23 @@ const render = () => {
         error="error text"
         saveLabel="Save"
         defaultDay={new Date()}
-        iconAfter={Icon.icons.calendar}
+        iconAfter="calendar"
         timeTitle = "Time"
         dir="ltr"
         timeInputErrorText="Please, enter valid time"
         dayPickerProps={{
-          disabled: {
-            before: new Date()
-          },
+          disabled: [{ before: new Date()}, { after: new Date()}],
           locale: es,
+        }}
+        dateInputProps={{
+          disabled: true,
         }}
     />
 );
 }
 ...
 ```
+
 Also DayPicker is fully available on the keyboard. After opening the calendar we can
 move forward with **tab-button**, back with **shift+tab-button**, **enter** to select the day, and to move by days **← → ↑ ↓ buttons**
 
@@ -55,11 +57,12 @@ move forward with **tab-button**, back with **shift+tab-button**, **enter** to s
 - isTimePicker - allow to show input for changing time;
 - isMobile - allow to show mobile view of the component;
 - position - allow to position calendar, can be: bottom-end, bottom-start, by default is bottom-start;
-- error - text  of error;
+- error - text of error;
 - saveLabel - label for change time button;
 - defaultDay - will be default date if **value** not passed;
 - iconAfter - icon of the DayPicker input;
 - dayPickerProps - allow to pass props to DayPicker component from 'react-day-picker' library;
+- dateInputProps - props for date input;
 - wrapperProps - props of the whole DayPicker;
 - timeInputProps - props for time input
 - overlayComponentProps - allow to pass props to whole Calendar;

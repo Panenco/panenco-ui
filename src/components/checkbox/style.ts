@@ -1,9 +1,8 @@
-import { styled } from 'linaria/react';
-import { PUITheme, ThemeMode } from 'utils/types';
+import styled from 'styled-components';
+import { PUITheme } from 'utils/types';
 
 export const StyledCheckbox = styled.div<{
   theme: PUITheme;
-  mode: ThemeMode;
   borderWidth?: string | number;
   borderColor?: string;
 }>`
@@ -24,16 +23,18 @@ export const StyledCheckbox = styled.div<{
 
       .container {
         border: ${(props: any): string => {
-          if (props.borderWidth) {
-            return `${props.borderWidth}px`;
-          }
-          return '2px';
-        }} solid ${(props: any): string => {
-          if (props.color) {
-            return props.color;
-          }
-          return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary700;
-        }};
+            if (props.borderWidth) {
+              return `${props.borderWidth}px`;
+            }
+            return '2px';
+          }}
+          solid
+          ${(props: any): string => {
+            if (props.color) {
+              return props.color;
+            }
+            return props.theme.colors.primary700;
+          }};
       }
 
       .container.error {
@@ -53,8 +54,7 @@ export const StyledCheckbox = styled.div<{
       display: flex;
       margin-left: 8px;
       vertical-align: middle;
-      color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
+      color: ${(props: any): string => props.theme.colors.base900};
     }
   }
 
@@ -83,16 +83,18 @@ export const StyledCheckbox = styled.div<{
   .container {
     background-color: transparent;
     border: ${(props: any): string => {
-      if (props.borderWidth) {
-        return `${props.borderWidth}px`;
-      }
-      return '2px';
-    }} solid ${(props: any): string => {
-      if (props.borderColor) {
-        return props.borderColor;
-      }
-      return props.theme.colors.base700;
-    }};
+        if (props.borderWidth) {
+          return `${props.borderWidth}px`;
+        }
+        return '2px';
+      }}
+      solid
+      ${(props: any): string => {
+        if (props.borderColor) {
+          return props.borderColor;
+        }
+        return props.theme.colors.base700;
+      }};
     border-radius: 4px;
     box-sizing: border-box;
     position: relative;
@@ -113,8 +115,7 @@ export const StyledCheckbox = styled.div<{
   }
 
   .tick {
-    color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.base900 : props.theme.colors.base100};
+    color: ${(props: any): string => props.theme.colors.base100};
     height: 16px;
     left: 50%;
     position: absolute;
@@ -128,19 +129,21 @@ export const StyledCheckbox = styled.div<{
       if (props.color) {
         return props.color;
       }
-      return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500;
+      return props.theme.colors.primary500;
     }};
     border: ${(props: any): string => {
-      if (props.borderWidth) {
-        return `${props.borderWidth}px`;
-      }
-      return '2px';
-    }} solid ${(props: any): string => {
-      if (props.color) {
-        return props.color;
-      }
-      return props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500;
-    }};
+        if (props.borderWidth) {
+          return `${props.borderWidth}px`;
+        }
+        return '2px';
+      }}
+      solid
+      ${(props: any): string => {
+        if (props.color) {
+          return props.color;
+        }
+        return props.theme.colors.primary500;
+      }};
   }
 
   & .checkbox:checked + .container.error {
@@ -160,19 +163,21 @@ export const StyledCheckbox = styled.div<{
           if (props.color) {
             return props.color;
           }
-          return props.mode === ThemeMode.dark ? props.theme.colors.primary200 : props.theme.colors.primary700;
+          return props.theme.colors.primary700;
         }};
         border: ${(props: any): string => {
-          if (props.borderWidth) {
-            return `${props.borderWidth}px`;
-          }
-          return '2px';
-        }} solid ${(props: any): string => {
-          if (props.color) {
-            return props.color;
-          }
-          return props.mode === ThemeMode.dark ? props.theme.colors.primary200 : props.theme.colors.primary700;
-        }};
+            if (props.borderWidth) {
+              return `${props.borderWidth}px`;
+            }
+            return '2px';
+          }}
+          solid
+          ${(props: any): string => {
+            if (props.color) {
+              return props.color;
+            }
+            return props.theme.colors.primary700;
+          }};
       }
 
       & + .container.error {

@@ -15,7 +15,8 @@ const sizeToPx = {
 };
 
 export interface IconProps extends React.SVGAttributes<SVGElement> {
-  icon: keyof typeof iconsList[number];
+  // icon: typeof iconsList[number];
+  icon: keyof typeof icons.sm;
   disabled?: boolean;
   size?: IconVariantSize;
   width?: number | string;
@@ -23,6 +24,7 @@ export interface IconProps extends React.SVGAttributes<SVGElement> {
 }
 
 type BaseIcons<T extends string | number | symbol> = Record<IconVariantSize, Record<T, any>>;
+
 interface CompoundedComponent<T extends string | number | symbol> extends React.ForwardRefExoticComponent<IconProps> {
   icons: BaseIcons<T>;
 }
@@ -33,7 +35,8 @@ interface CompoundedComponent<T extends string | number | symbol> extends React.
 
 export const Icon = React.forwardRef<any, IconProps>(
   ({ icon = 'eye', className, onClick, size = 'sm', disabled, width, height, ...props }, ref): JSX.Element => {
-    const iconToRender = Icon.icons[size][icon] || icons.lg[icon] || icons.md[icon] || icons.sm[icon];
+    const iconToRender = Icon.icons[size][icon] || icons.lg[icon] || icons.md[icon] || icons.sm[icon] || 'eye';
+    // const kel = typeof icon;
     return (
       <StyledSVG
         className={cx(disabled && 'disabled', 'svg', className)}
@@ -52,12 +55,10 @@ export const Icon = React.forwardRef<any, IconProps>(
 
 Icon.icons = icons;
 
-//  <Icon icon='big' size='sm' />;
-
-const withExtraIcons = <T extends string | number | symbol>(
+export const withExtraIcons = <T extends string | number | symbol>(
   newIcons: Record<IconVariantSize, Record<T, any>>,
 ): CompoundedComponent<T | keyof typeof Icon.icons.sm> => {
-  // const component: typeof Icon extends React.ForwardRefExoticComponent<IconProps extends {icon: keyof typeof iconsList[number] extends keyof typeof newIcons}> = Object.assign(Icon);
+  // const component: typeof Icon extends React.ForwardRefExoticComponent<IconProps extends {icon: keyof typeof icons.sm extends keyof typeof newIcons.sm}> = Object.assign(Icon);
   const component: typeof Icon = Object.assign(Icon);
   component.icons = {
     sm: { ...component.icons.sm, ...newIcons.sm },
@@ -69,3 +70,5 @@ const withExtraIcons = <T extends string | number | symbol>(
 };
 
 const newIcons = { sm: { animatedClock }, md: { animatedClock }, lg: { animatedClock } };
+
+const NewIcon = withExtraIcons(newIcons);

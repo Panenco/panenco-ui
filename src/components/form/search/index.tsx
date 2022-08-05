@@ -29,30 +29,36 @@ class Search extends React.Component<Props, { isOpen: boolean }> {
       <div className={cx(s.searchWrapper, disabled && s.searchWrapperDisabled)}>
         {isOpen ? (
           <div className={cx(s.search, className)}>
-            <button type="button" onClick={this.handleSearchOpen}>
-              <Icon className={cx(s.searchIcon, s.searchIconActive)} icon={Icon.icons.search} />
+            <button type='button' onClick={this.handleSearchOpen}>
+              {
+                // <Icon className={cx(s.searchIcon, s.searchIconActive)} icon='search' />
+              }
             </button>
             <div className={s.searchContainer}>
               <input
-                type="search"
+                type='search'
                 className={s.searchContainerInput}
                 placeholder={placeholder}
                 onChange={(e) => onChange(e.target.value)}
               />
               <button
-                type="button"
+                type='button'
                 onClick={() => {
                   this.handleSearchOpen();
                   return onChange(null);
                 }}
               >
-                <Icon className={s.searchContainerIcon} icon={Icon.icons.close} />
+                {
+                  // <Icon className={s.searchContainerIcon} icon='close' />
+                }
               </button>
             </div>
           </div>
         ) : (
-          <button type="button" onClick={this.handleSearchOpen}>
-            <Icon className={s.searchIcon} icon={Icon.icons.search} />
+          <button type='button' onClick={this.handleSearchOpen}>
+            {
+              // <Icon className={s.searchIcon} icon='search' />
+            }
           </button>
         )}
       </div>

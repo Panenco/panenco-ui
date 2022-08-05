@@ -1,5 +1,5 @@
 import { PUITheme } from 'utils/types';
-import { styled } from 'linaria/react';
+import styled from 'styled-components';
 import { breakpoints } from 'styles/breakpoints';
 import { PopupSizesType } from './types';
 

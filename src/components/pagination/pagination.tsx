@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cx from 'classnames';
-import { useTheme, useMode } from 'utils/hooks';
+import { useTheme } from 'utils/hooks';
 import { Text, Icon, Button } from 'components';
 import { generateItems } from './generateItems';
 import { StyledListPagination } from './styles';
@@ -18,7 +18,7 @@ export type PaginationProps = {
   showLastButton?: boolean;
   showFirstButton?: boolean;
   variant?: 'contained' | 'outlined' | 'text';
-  locales: {
+  locales?: {
     first: string;
     last: string;
     previous: string;
@@ -45,7 +45,6 @@ export const Pagination = ({
   const [isFirst, isLast, pagesAmount] = usePagination({ page, count, rowsPerPage });
 
   const theme = useTheme();
-  const { mode } = useMode();
   const items = generateItems({ pagesAmount, currentPage: page + 1, ...otherProps });
 
   const renderListItem = (item: string | number): JSX.Element => {
@@ -60,14 +59,14 @@ export const Pagination = ({
         );
       case 'first':
         return (
-          <Button className="paginationListItem" disabled={disabled} onClick={(): void => onButtonClick(0)}>
+          <Button className='paginationListItem' disabled={disabled} onClick={(): void => onButtonClick(0)}>
             {locales.first}
           </Button>
         );
       case 'last':
         return (
           <Button
-            className="paginationListItem"
+            className='paginationListItem'
             disabled={disabled}
             onClick={(): void => onButtonClick(pagesAmount - 1)}
           >
@@ -77,9 +76,9 @@ export const Pagination = ({
       case 'previous':
         return (
           <Button
-            className="paginationListItem"
+            className='paginationListItem'
             disabled={isFirst || disabled}
-            iconLeft={Icon.icons.chevronLeft}
+            iconLeft='chevronLeft'
             iconClassName={cx('paginationButtonIcon', variant !== 'text' && 'paginationButtonIconNoMargin')}
             onClick={(): void => onButtonClick(page - 1)}
           >
@@ -89,9 +88,9 @@ export const Pagination = ({
       case 'next':
         return (
           <Button
-            className="paginationListItem"
+            className='paginationListItem'
             disabled={isLast || disabled}
-            iconRight={Icon.icons.chevronRight}
+            iconRight='chevronRight'
             iconClassName={cx('paginationButtonIcon', variant !== 'text' && 'paginationButtonIconNoMargin')}
             onClick={(): void => onButtonClick(page + 1)}
           >
@@ -112,13 +111,7 @@ export const Pagination = ({
   };
 
   return (
-    <StyledListPagination
-      mode={mode}
-      theme={theme}
-      variant={variant}
-      className={cx('pagination', className)}
-      {...otherProps}
-    >
+    <StyledListPagination theme={theme} variant={variant} className={cx('pagination', className)} {...otherProps}>
       {items.map((item, i) => (
         // eslint-disable-next-line
         <React.Fragment key={`item-${i}`}>{renderListItem(item)}</React.Fragment>

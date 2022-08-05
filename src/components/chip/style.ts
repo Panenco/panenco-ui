@@ -1,9 +1,8 @@
-import { styled } from 'linaria/react';
-import { PUITheme, ThemeMode } from 'utils/types';
+import styled from 'styled-components';
+import { PUITheme } from 'utils/types';
 
 export const StyledChip = styled.button<{
   checked?: boolean;
-  mode: ThemeMode;
   theme: PUITheme;
   iconSize?: number | string;
 }>`
@@ -16,38 +15,21 @@ export const StyledChip = styled.button<{
   padding: 3px 11px;
   border-radius: 4px;
   background-color: ${(props: any): string => {
-    if (props.mode === ThemeMode.dark) {
-      return props.checked ? props.theme.colors.base100 : props.theme.colors.base900;
-    }
-
     return props.checked ? props.theme.colors.primary500 : props.theme.colors.base100;
   }};
-  border: 1px solid
-    ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500};
+  border: 1px solid ${(props: any): string => props.theme.colors.primary500};
   color: ${(props: any): string => {
-    if (props.mode === ThemeMode.dark) {
-      return props.checked ? props.theme.colors.base900 : props.theme.colors.base100;
-    }
     return props.checked ? props.theme.colors.base100 : props.theme.colors.primary500;
   }};
 
   &:hover,
   &:active {
     background-color: ${(props: any): string => {
-      if (props.mode === ThemeMode.dark) {
-        return props.checked ? props.theme.colors.primary200 : props.theme.colors.base900;
-      }
       return props.checked ? props.theme.colors.primary700 : props.theme.colors.primary200;
     }};
-    border: 1px solid
-      ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.primary200 : props.theme.colors.primary700};
+    border: 1px solid ${(props: any): string => props.theme.colors.primary700};
     .labelTitle {
       color: ${(props: any): string => {
-        if (props.mode === ThemeMode.dark) {
-          return props.checked ? props.theme.colors.base900 : props.theme.colors.base100;
-        }
         return props.checked ? props.theme.colors.base100 : props.theme.colors.primary700;
       }};
     }

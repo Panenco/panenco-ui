@@ -1,10 +1,8 @@
-import { styled } from 'linaria/react';
-import { PUITheme, ThemeMode } from 'utils/types';
-import { transparentize } from 'polished';
+import styled from 'styled-components';
+import { PUITheme } from 'utils/types';
 
 export const StyledTextArea = styled.div<{
   theme: PUITheme;
-  mode: ThemeMode;
   loading?: boolean;
   isDragActive?: boolean;
   error?: string;
@@ -15,8 +13,7 @@ export const StyledTextArea = styled.div<{
   background-color: transparent;
 
   .title {
-    color: ${(props: any): string =>
-      props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
+    color: ${(props: any): string => props.theme.colors.base900};
   }
 
   .subtitle {
@@ -40,8 +37,7 @@ export const StyledTextArea = styled.div<{
       width: inherit;
       min-height: 86px;
       padding: 6px 12px;
-      color: ${(props: any): string =>
-        props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
+      color: ${(props: any): string => props.theme.colors.base900};
       border: 1px solid ${(props: any): string => props.theme.colors.base700};
       border-radius: 4px;
       font-size: ${(props: any): string => props.theme.typography.sizes.m.textSize};
@@ -53,23 +49,19 @@ export const StyledTextArea = styled.div<{
       &Error {
         border-color: ${(props: any): string => props.theme.colors.error};
 
-        color: ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.base900};
+        color: ${(props: any): string => props.theme.colors.base900};
       }
 
       &Disabled {
         pointer-events: none;
         /* border-color: ${(props: any): string => props.theme.colors.base400}; */
-        background-color: ${(props: any): string =>
-          props.mode === ThemeMode.dark ? transparentize(0.4, props.theme.colors.base700) : props.theme.colors.base400};
+        background-color: ${(props: any): string => props.theme.colors.base400};
         opacity: 0.4;
       }
 
       &:hover {
-        border-color: ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.base100 : props.theme.colors.primary500};
-        color: ${(props: any): string =>
-          props.mode === ThemeMode.dark ? props.theme.colors.base700 : props.theme.colors.base900};
+        border-color: ${(props: any): string => props.theme.colors.primary500};
+        color: ${(props: any): string => props.theme.colors.base900};
       }
 
       &:focus {
