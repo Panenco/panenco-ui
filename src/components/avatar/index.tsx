@@ -34,6 +34,10 @@ export const Avatar: React.FC<AvatarProps> = ({ className, src, size = 54, alt, 
   const fontSize = getFontSize(theme, size);
   const [isImageLoadedError, setImageLoadedError] = React.useState(false);
 
+  React.useEffect(() => {
+    setImageLoadedError(false);
+  }, [src]);
+
   if (src)
     return (
       <>
