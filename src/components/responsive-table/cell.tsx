@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Icon, Text } from 'components';
+import { Text } from 'components';
 import cx from 'classnames';
 import { useTheme } from 'utils/hooks';
 import { ButtonIcon } from 'components/button-icon';
@@ -61,7 +61,7 @@ const Cell = ({
             onClick={(): void => {
               expandRow(rowIndex);
             }}
-            icon={Icon.icons[getIcon()]}
+            icon={getIcon()}
           />
           {typeof content === 'string' ? <Text className='tableCellWrapContent'>{content}</Text> : content}
         </div>
