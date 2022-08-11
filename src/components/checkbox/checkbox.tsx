@@ -67,7 +67,7 @@ export const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
             {...props}
           />
           <div className={cx('container', error && 'error')}>
-            {/* {checked && <Icon icon={Icon.icons.check} className='tick' />} */}
+            {checked && <Icon icon='check' size='sm' className='tick' />}
           </div>
           {label && (
             <Text component='p' className={cx('labelTitle', labelClassName)}>

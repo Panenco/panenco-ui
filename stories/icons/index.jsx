@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, Text, icons, NewIcon } from 'components';
+import { Icon, Text, icons } from 'components';
 import IconDocs from 'components/icon/DOCS.md';
 import IconReadme from 'components/icon/README.md';
 
@@ -7,10 +7,6 @@ import { decorator } from '../../utils/decorator';
 
 export default decorator('Icon', IconDocs, IconReadme).add('Icon component', () => (
   <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-    <div style={{ margin: '0 0 20px 0' }}>
-      <NewIcon icon='aaaa' size='lg' />
-    </div>
-
     <div style={{ margin: '0 0 20px 0' }}>
       {Object.keys(icons.sm).map((el) => (
         <div

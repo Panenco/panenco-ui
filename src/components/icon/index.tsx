@@ -6,8 +6,6 @@ import { StyledSVG } from './style';
 
 import { defaultIcons } from './icons';
 
-import animatedClock from './icons/animated-clock/animated-clock.svg';
-
 const sizeToPx = {
   sm: '16px',
   md: '24px',
@@ -57,6 +55,3 @@ export const withIcons =
 
 export const Icon = withIcons<typeof defaultIcons>();
 export const icons = defaultIcons;
-
-const newIcons = { sm: { aaaa: animatedClock }, md: { aaaa: animatedClock }, lg: { aaaa: animatedClock } } as const;
-export const NewIcon = withIcons<typeof newIcons>(newIcons);

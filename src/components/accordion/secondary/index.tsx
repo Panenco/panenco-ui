@@ -3,9 +3,9 @@ import { Icon, Text } from 'components';
 import AnimatedHeight from 'react-animate-height';
 import cx from 'classnames';
 import { useAccordion } from 'components/accordion/useAccordion';
-import { AccordionProps } from 'utils/types';
 import { useTheme } from 'utils/hooks';
-// import { idGenerator } from 'utils/helpers';
+import { idGenerator } from 'utils/helpers';
+import { AccordionProps } from '../types';
 import { StyledAccordionSecondary } from './style';
 
 export const AccordionSecondary = React.forwardRef((props: AccordionProps, ref: any): JSX.Element => {
@@ -13,11 +13,11 @@ export const AccordionSecondary = React.forwardRef((props: AccordionProps, ref: 
     className,
     title = 'Title',
     children,
-    // icons: iconsProp,
-    // iconRight,
-    // iconLeft = true,
+    icons: iconsProp,
+    iconRight,
+    iconLeft = true,
     onIconClick,
-    // shouldRotateIcon = true,
+    shouldRotateIcon = true,
     ...otherProps
   } = props;
   const theme = useTheme();
@@ -29,25 +29,24 @@ export const AccordionSecondary = React.forwardRef((props: AccordionProps, ref: 
     onIconClick(e);
   };
 
-  // const checkTypeIconRight = typeof iconRight === 'boolean';
-  // const checkTypeIconLeft = typeof iconLeft === 'boolean';
+  const checkTypeIconRight = typeof iconRight === 'boolean';
+  const checkTypeIconLeft = typeof iconLeft === 'boolean';
 
-  // const formRef = React.useRef<HTMLButtonElement | null>(null);
+  const formRef = React.useRef<HTMLButtonElement | null>(null);
 
   return (
     <StyledAccordionSecondary {...otherProps} ref={combinedRef} theme={theme} className={cx(className, 'accordion')}>
       <button type='button' className='accordionHeader' onClick={handleClick} aria-expanded={isOpen || 'false'}>
-        {
-          // iconLeft && (
-          //   <Icon
-          //     className={cx(
-          //       'accordionHeaderIcon',
-          //       shouldRotateIcon && isOpen ? 'accordionHeaderIconOpen' : 'accordionHeaderIconClosed',
-          //     )}
-          //     icon={checkTypeIconLeft ? 'chevronRight' : iconLeft}
-          //   />
-          // )
-        }
+        {iconLeft && (
+          <Icon
+            className={cx(
+              'accordionHeaderIcon',
+              shouldRotateIcon && isOpen ? 'accordionHeaderIconOpen' : 'accordionHeaderIconClosed',
+            )}
+            size='sm'
+            icon={checkTypeIconLeft ? 'chevronRight' : iconLeft}
+          />
+        )}
         {typeof title === 'string' ? (
           <Text weight={theme.typography.weights.bold} className='accordionHeaderTitle'>
             {title}
@@ -56,26 +55,22 @@ export const AccordionSecondary = React.forwardRef((props: AccordionProps, ref: 
           title
         )}
 
-        {
-          // iconsProp &&
-          //   iconsProp.map((item) => (
-          //     <Icon
-          //       key={idGenerator()}
-          //       onClick={onIconClick && handleIconClick}
-          //       className='accordionHeaderIconsIcon'
-          //       icon={item}
-          //     />
-          //   ))
-        }
-        {
-          // iconRight && (
-          //   <Icon
-          //     key={idGenerator()}
-          //     className='accordionHeaderIcon'
-          //     icon={checkTypeIconRight ? (isOpen ? 'minus' : 'plus') : iconRight} // eslint-disable-line
-          //   />
-          // )
-        }
+        {iconsProp &&
+          iconsProp.map((item) => (
+            <Icon
+              key={idGenerator()}
+              onClick={onIconClick && handleIconClick}
+              className='accordionHeaderIconsIcon'
+              icon={item}
+            />
+          ))}
+        {iconRight && (
+          <Icon
+            key={idGenerator()}
+            className='accordionHeaderIcon'
+            icon={checkTypeIconRight ? (isOpen ? 'minus' : 'plus') : iconRight} // eslint-disable-line
+          />
+        )}
       </button>
       <AnimatedHeight duration={500} height={isOpen ? 'auto' : 0}>
         <div className='accordionContent'>{children}</div>

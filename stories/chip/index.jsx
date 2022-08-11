@@ -14,24 +14,24 @@ export default decorator('Chip', ChipDocs, README).add('Chip component', () => {
   return (
     <WrappedComponent>
       <Row style={{ justifyContent: 'space-around' }}>
-        <Col xs="2" md="4" lg="3">
-          <Chip checked={isChecked1} uncheckedIcon={Icon.icons.close} onClick={() => setChecked1(!isChecked1)}>
+        <Col xs='2' md='4' lg='3'>
+          <Chip checked={isChecked1} uncheckedIcon='close' onClick={() => setChecked1(!isChecked1)}>
             Chip
           </Chip>
         </Col>
-        <Col xs="2" md="4" lg="3">
+        <Col xs='2' md='4' lg='3'>
           <Chip checked={isChecked2} onClick={() => setChecked2(!isChecked2)}>
             Chip
           </Chip>
         </Col>
       </Row>
       <Row style={{ justifyContent: 'space-around' }}>
-        <Col xs="2" md="4" lg="3">
+        <Col xs='2' md='4' lg='3'>
           <Chip disabled checked>
             Chip
           </Chip>
         </Col>
-        <Col xs="2" md="4" lg="3">
+        <Col xs='2' md='4' lg='3'>
           <Chip checked={isChecked3} onClick={() => setChecked3(!isChecked3)}>
             Chip
           </Chip>

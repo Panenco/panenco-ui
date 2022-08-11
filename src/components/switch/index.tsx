@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cx from 'classnames';
-// import { Icon } from 'components';
+import { Icon } from 'components';
 import { idGenerator, sizeToString } from 'utils/helpers';
 import { useTheme } from 'utils/hooks';
 import { StyledSwitch } from './style';
@@ -36,9 +36,7 @@ export const Switch: React.FC<SwitchProps> = React.forwardRef<HTMLElement, Switc
         <input ref={inputRef} id={id} type='checkbox' checked={value} {...props} />
         <div className={cx('slider')}>
           <span className='round'>
-            {
-              // <Icon className="icon" icon={Icon.icons[value ? 'check' : 'minus']} />
-            }
+            <Icon className='icon' size='sm' icon={value ? 'check' : 'minus'} />
           </span>
         </div>
       </StyledSwitch>

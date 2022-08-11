@@ -101,9 +101,9 @@ export interface AccordionProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string;
   onClick?: any;
   onIconClick?: any;
-  iconLeft?: boolean | SVGElement;
-  iconRight?: boolean | SVGElement;
-  icons?: Array<SVGElement>;
+  iconLeft?: boolean | string;
+  iconRight?: boolean | string;
+  icons?: Array<string>;
   shouldRotateIcon?: boolean;
 }
 

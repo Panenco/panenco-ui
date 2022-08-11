@@ -36,13 +36,13 @@ This component inherits the attributes of the **svg** element and extends the fu
 | size     | string          | 'md'         | -          |
 | ref      | React.RefObject | -            | -          |
 
-<!-- ### Sizes
+### Sizes
 
-| size    | px  |
-| ------- | --- |
-| sm      | 18  |
-| md      | 18  |
-| lg      | 18  | -->
+| size | px  |
+| ---- | --- |
+| sm   | 16  |
+| md   | 24  |
+| lg   | 28  |
 
 ### Custom icons
 
