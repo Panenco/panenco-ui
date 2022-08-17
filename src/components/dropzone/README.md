@@ -48,7 +48,7 @@ Component extends the functionality with next properties.
 | textContent       | string                                  | Drop your file here or click to this zone | -          |
 | textContentOnDrag | string                                  | Drop your file here                       | -          |
 | error             | string                                  | -                                         | -          |
-| icon              | HTMLObjectElement                       | -                                         | -          |
+| icon              | oneOf(icons.sm)                         | "upload"                                  | -          |
 | loader            | JSX.Element                             | -                                         | -          |
 | ref               | React.RefObject                         | -                                         | -          |
 | wrapperProps      | React.HTMLAttributes (HTMLDivElement)   | -                                         | -          |

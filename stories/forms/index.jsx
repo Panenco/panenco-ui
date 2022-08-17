@@ -32,7 +32,7 @@ export default decorator('Forms', TextInputDocs, TextInputReadme).add('TextInput
             minWidth: '200px',
           }}
         >
-          <TextInput placeholder='Icon after' iconAfter={<Icon icon='closeEye' />} />
+          <TextInput placeholder='Icon after' iconAfter={<Icon icon='eyeOff' />} />
         </Col>
       </Row>
 

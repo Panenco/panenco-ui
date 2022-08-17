@@ -12,8 +12,6 @@ export interface StepperInputProps extends InputComponent, React.InputHTMLAttrib
   minValue: number;
   maxValue: number;
   step: number;
-  iconBefore?: HTMLObjectElement | JSX.Element;
-  iconAfter?: HTMLObjectElement | JSX.Element;
   wrapperProps?: WrapperProps;
   inputProps?: InputPropsType;
   locales?: { [key: string]: string };
@@ -90,7 +88,7 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
             type='button'
             disabled={currentValue === minValue || disabled}
           >
-            {/* <Icon className='stepperButtonIcon' icon='minus' /> */}
+            <Icon className='stepperButtonIcon' icon='minus' />
           </button>
           <input
             type='number'
@@ -111,7 +109,7 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
             )}
             type='button'
           >
-            {/* <Icon className='stepperButtonIcon' icon='plus' /> */}
+            <Icon className='stepperButtonIcon' icon='plus' />
           </button>
         </div>
         <div className='inputError'>

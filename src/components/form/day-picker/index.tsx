@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cx from 'classnames';
 import 'react-day-picker/dist/style.css';
-import { Icon, PrimaryButton, TextInput } from 'components';
+import { PrimaryButton, TextInput } from 'components';
 import MaskedInput from 'react-text-mask';
 // eslint-disable-next-line import/no-duplicates
 import {

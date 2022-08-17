@@ -10,8 +10,8 @@ const render = () => {
   return (
    <TabContext>
     <Tablist autoActivation>
-      <Tab index={0} icon={Icon.icons.settings} selected>Tab 1</Tab>
-      <Tab index={1} icon={Icon.icons.settings} disabled>Tab 2</Tab>
+      <Tab index={0} icon="settings" selected>Tab 1</Tab>
+      <Tab index={1} icon="settings" disabled>Tab 2</Tab>
     </Tablist>
     <Tabpanel index={0}>Tab panel 1</Tabpanel>
     <Tabpanel index={1}>Tab panel 2</Tabpanel>
@@ -32,12 +32,12 @@ const render = () => {
 - icon - icon to be rendered to the left from the tab label;
 - iconClassName - override styles for icon;
 
-| propName      | propType          | defaultValue | isRequired |
-| ------------- | ----------------- | ------------ | ---------- |
-| index         | number            | -            | true       |
-| ref           | React.RefObject   | -            | -          |
-| icon          | HTMLObjectElement | -            | -          |
-| iconClassName | string            | -            | -          |
+| propName      | propType              | defaultValue | isRequired |
+| ------------- | --------------------- | ------------ | ---------- |
+| index         | number                | -            | true       |
+| ref           | React.RefObject       | -            | -          |
+| icon          | keyof typeof icons.sm | -            | -          |
+| iconClassName | string                | -            | -          |
 
 **Tablist** component is a wrapper for Tabs. It nherits the attributes of the **div** element and adds the properties as follows:
 

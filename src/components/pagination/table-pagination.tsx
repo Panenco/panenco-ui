@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cx from 'classnames';
 import { useTheme } from 'utils/hooks';
-import { Text, Icon, SelectInput, Button } from 'components';
+import { Text, SelectInput, Button } from 'components';
 import { usePagination } from './usePagination';
 import { StyledPagination } from './styles';
 import { additionalStyles } from '../select/style';

@@ -182,9 +182,7 @@ export const ButtonIcons = decorator('Button', ButtonIconDocs, ButtonIconReadme)
                 alignItems: 'center',
               }}
             >
-              {
-                // <ButtonIcon icon={Icon.icons.trash}>Button Icon</ButtonIcon>
-              }
+              <ButtonIcon icon='trash'>Button Icon</ButtonIcon>
             </div>
           </Col>
           <Col xs='6' md='6' lg='6' className='mb-1' style={buttonCellStyles}>
@@ -195,9 +193,7 @@ export const ButtonIcons = decorator('Button', ButtonIconDocs, ButtonIconReadme)
                 alignItems: 'center',
               }}
             >
-              {
-                // <ButtonIcon iconLeft={Icon.icons.trash}>Button Icon Left</ButtonIcon>
-              }
+              <ButtonIcon iconLeft='trash'>Button Icon Left</ButtonIcon>
             </div>
           </Col>
         </Row>
@@ -210,9 +206,7 @@ export const ButtonIcons = decorator('Button', ButtonIconDocs, ButtonIconReadme)
                 alignItems: 'center',
               }}
             >
-              {
-                // <ButtonIcon icon={Icon.icons.lock}>Button Icon</ButtonIcon>
-              }
+              <ButtonIcon icon='lock'>Button Icon</ButtonIcon>
             </div>
           </Col>
           <Col xs='6' md='6' lg='6' className='mb-1' style={buttonCellStyles}>
@@ -223,9 +217,7 @@ export const ButtonIcons = decorator('Button', ButtonIconDocs, ButtonIconReadme)
                 alignItems: 'center',
               }}
             >
-              {
-                // <ButtonIcon iconLeft={Icon.icons.lock}>Button Icon Left</ButtonIcon>
-              }
+              <ButtonIcon iconLeft='lock'>Button Icon Left</ButtonIcon>
             </div>
           </Col>
           <Col xs='6' md='6' lg='6' className='mb-1' style={buttonCellStyles}>
@@ -236,11 +228,9 @@ export const ButtonIcons = decorator('Button', ButtonIconDocs, ButtonIconReadme)
                 alignItems: 'center',
               }}
             >
-              {
-                // <ButtonIcon icon={Icon.icons.logOut} component='a' href='https://panenco.com/' target='_blank'>
-                //   Button Icon Link
-                // </ButtonIcon>
-              }
+              <ButtonIcon icon='logOut' component='a' href='https://panenco.com/' target='_blank'>
+                Button Icon Link
+              </ButtonIcon>
             </div>
           </Col>
         </Row>

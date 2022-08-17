@@ -30,15 +30,15 @@ This component inherits the attributes of the **input** element and extends the 
 - inputProps - Attributes applied to the input element;
 - ref - The wrapper ref
 
-| propName     | propType                                | defaultValue | isRequired |
-| ------------ | --------------------------------------- | ------------ | ---------- |
-| title        | string                                  | -            | -          |
-| subtitle     | string                                  | -            | -          |
-| rightSubtitle| ReactElement                            | -            | -          |
-| error        | string                                  | -            | -          |
-| type         | string                                  | text         | -          |
-| iconBefore   | HTMLObjectElement or JSX.Element        | -            | -          |
-| iconAfter    | HTMLObjectElement or JSX.Element        | -            | -          |
-| inputProps   | React.HTMLAttributes (HTMLInputElement) | -            | -          |
-| wrapperProps | React.HTMLAttributes (HTMLDivElement)   | -            | -          |
-| ref          | React.RefObject                         | -            | -          |
+| propName      | propType                                | defaultValue | isRequired |
+| ------------- | --------------------------------------- | ------------ | ---------- |
+| title         | string                                  | -            | -          |
+| subtitle      | string                                  | -            | -          |
+| rightSubtitle | ReactElement                            | -            | -          |
+| error         | string                                  | -            | -          |
+| type          | string                                  | text         | -          |
+| iconBefore    | HTMLObjectElement or JSX.Element        | -            | -          |
+| iconAfter     | HTMLObjectElement or JSX.Element        | -            | -          |
+| inputProps    | React.HTMLAttributes (HTMLInputElement) | -            | -          |
+| wrapperProps  | React.HTMLAttributes (HTMLDivElement)   | -            | -          |
+| ref           | React.RefObject                         | -            | -          |

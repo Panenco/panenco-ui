@@ -38,6 +38,6 @@ This component inherits the attributes of the **button** element and extends the
 | ------------- | ------------------------ | ------------ | ---------- |
 | checked       | boolean                  | -            | -          |
 | onIconClick   | React.MouseEvent => void | -            | -          |
-| icon          | string                   | checked      | -          |
-| uncheckedIcon | HTMLObjectElement        | -            | -          |
+| icon          | oneOf(icons.sm)          | checkCircle  | -          |
+| uncheckedIcon | oneOf(icons.sm)          | -            | -          |
 | ref           | React.RefObject          | -            | -          |

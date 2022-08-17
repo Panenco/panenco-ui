@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { idGenerator } from 'utils/helpers';
-import { Chip } from 'components';
+import { Chip, icons } from 'components';
 import { Props as SelectProps } from 'react-select';
 import { InputComponent } from '../../utils/types';
 
 export interface ChipsProps extends SelectProps, InputComponent {
   value?: any;
   chipIconSize?: number | string;
-  chipIcon?: any;
+  chipIcon?: keyof typeof icons.sm;
   onDeleteOption?: any;
 }
 
@@ -24,7 +24,7 @@ const ChipsComponent = ({ value, onDeleteOption, chipIcon, getOptionLabel }: Chi
         <Chip
           className='multiSelectChip'
           key={idGenerator()}
-          icon={chipIcon || 'x'}
+          icon={chipIcon || 'xCircle'}
           checked
           onIconClick={(): void => {
             if (onDeleteOption) {

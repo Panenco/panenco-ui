@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import { Icon, Loader, Text } from 'components';
+import { Icon, Loader, Text, icons } from 'components';
 import * as React from 'react';
 import { DropzoneOptions, useDropzone } from 'react-dropzone';
 import { useTheme } from 'utils/hooks';
@@ -14,7 +14,7 @@ export interface DropzoneProps extends React.HTMLAttributes<HTMLDivElement> {
   textContent?: string;
   textContentOnDrag?: string;
   error?: string;
-  icon?: string;
+  icon?: keyof typeof icons.sm;
   loader?: JSX.Element;
   wrapperProps?: WrapperProps;
   inputProps?: InputPropsType; // will be removed in next versions
@@ -31,7 +31,7 @@ export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
       textContentOnDrag = 'Drop your file here',
       // getInputProps: getOutsideInputProps,
       // getRootProps: getOutsideRootProps,
-      // iconClassName,
+      iconClassName,
       icon,
       wrapperProps,
       inputProps,
@@ -47,10 +47,10 @@ export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
     const { getRootProps, getInputProps, isDragActive } = useDropzone(options);
 
     let textContentInBlock = '';
-    let iconImage = 'upload';
+    let iconImage: typeof icon = 'upload';
     if (error) {
       textContentInBlock = error;
-      iconImage = 'close';
+      iconImage = 'xCircle';
     } else if (isDragActive) {
       textContentInBlock = textContentOnDrag;
     } else {
@@ -79,9 +79,9 @@ export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
         ) : (
           <>
             <input {...getInputProps()} {...inputProps} {...props} />
-            {
-              // <Icon icon={iconImage} className={cx('icon', iconClassName)} />
-            }
+
+            <Icon icon={iconImage} size='sm' className={cx('icon', iconClassName)} />
+
             <Text className='content'>{textContentInBlock}</Text>
           </>
         )}

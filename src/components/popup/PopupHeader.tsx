@@ -17,7 +17,7 @@ export const PopupHeader = React.forwardRef<HTMLDivElement, PopupHeaderProps>(
         <div>{children}</div>
         {closeButton && onHide && (
           <div>
-            <ButtonIcon aria-label='Close' onClick={onHide} icon='delete' />
+            <ButtonIcon aria-label='Close' onClick={onHide} icon='remove' />
           </div>
         )}
       </StyledPopupHeader>

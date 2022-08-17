@@ -27,14 +27,14 @@ This component inherits the attributes of the **svg** element and extends the fu
 - size - 'sm' | 'md' | 'lg' (size has less priority then width and height)
 - ref - ref
 
-| propName | propType        | defaultValue | isRequired |
-| -------- | --------------- | ------------ | ---------- |
-| icon     | string          | -            | +          |
-| disabled | boolean         | -            | -          |
-| width    | number(string)  | -            | -          |
-| height   | number(string)  | -            | -          |
-| size     | string          | 'md'         | -          |
-| ref      | React.RefObject | -            | -          |
+| propName | propType              | defaultValue | isRequired |
+| -------- | --------------------- | ------------ | ---------- |
+| icon     | keyof typeof icons.sm | 'eye'        | +          |
+| disabled | boolean               | -            | -          |
+| width    | number(string)        | -            | -          |
+| height   | number(string)        | -            | -          |
+| size     | string                | 'md'         | -          |
+| ref      | React.RefObject       | -            | -          |
 
 ### Sizes
 
