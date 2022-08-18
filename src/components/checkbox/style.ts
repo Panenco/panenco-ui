@@ -116,12 +116,10 @@ export const StyledCheckbox = styled.div<{
 
   .tick {
     color: ${(props: any): string => props.theme.colors.base100};
-    height: 16px;
     left: 50%;
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 12px;
   }
 
   & .checkbox:checked + .container {

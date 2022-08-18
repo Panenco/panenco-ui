@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { icons } from 'components';
 import Cell from './cell';
 import { RowType, ColumnType, ExpandRowType } from './types';
 
@@ -8,7 +9,7 @@ interface RowProps {
   visibleColumns: Array<ColumnType>;
   hiddenColumns: Array<ColumnType>;
   expandRow: ExpandRowType;
-  iconCreator?: (rowIsOpen: boolean) => string;
+  iconCreator?: (rowIsOpen: boolean) => keyof typeof icons.sm;
 }
 
 const Row = ({ row, rowIndex, visibleColumns, hiddenColumns, expandRow, iconCreator }: RowProps): JSX.Element => {
@@ -30,7 +31,7 @@ const Row = ({ row, rowIndex, visibleColumns, hiddenColumns, expandRow, iconCrea
     );
   });
 
-  return <tr className="tableBodyRow">{cells}</tr>;
+  return <tr className='tableBodyRow'>{cells}</tr>;
 };
 
 Row.defaultProps = {

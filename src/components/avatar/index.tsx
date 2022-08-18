@@ -49,9 +49,7 @@ export const Avatar: React.FC<AvatarProps> = ({ className, src, size = 54, alt, 
         ) : (
           <StyledAvatar theme={theme} style={{ height: size, width: size }} className={className}>
             <Text size={fontSize} weight={theme.typography.weights.bold} color={theme.colors.base500}>
-              {children || alt?.charAt(0) || (
-                <Icon icon={Icon.icons.user} size={size / 2} style={{ display: 'flex' }} />
-              )}
+              {/* {children || alt?.charAt(0) || <Icon icon='user' size='sm' style={{ display: 'flex' }} />} */}
             </Text>
           </StyledAvatar>
         )}

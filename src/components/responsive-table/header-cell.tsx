@@ -22,8 +22,8 @@ const HeaderCell = ({
   sort,
   handleSort,
   sortIcons = {
-    up: Icon.icons.chevronUp,
-    down: Icon.icons.chevronDown,
+    up: 'chevronUp',
+    down: 'chevronDown',
   },
   ...props
 }: HeaderCellProps): JSX.Element => {

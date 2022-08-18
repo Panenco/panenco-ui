@@ -4,11 +4,11 @@ import { useTheme } from 'utils/hooks';
 import CreatableSelect from 'react-select/creatable';
 import AsyncSelect from 'react-select/async';
 import AsyncCreatableSelect from 'react-select/async-creatable';
-import { Icon, Text } from 'components';
+import { Icon, icons, Text } from 'components';
 import { InputComponent } from '../../utils/types';
 import { customStyles } from './style';
 
-const CustomOption = ({ deleteItemIcon = Icon.icons.trash, onDeleteItem, ...props }: any): JSX.Element => {
+const CustomOption = ({ deleteItemIcon = 'trash', onDeleteItem, ...props }: any): JSX.Element => {
   const { children, isSelected, data } = props;
 
   const handleDelete = (e) => {
@@ -21,7 +21,7 @@ const CustomOption = ({ deleteItemIcon = Icon.icons.trash, onDeleteItem, ...prop
 
   return (
     <components.Option {...props}>
-      {isSelected && <Icon icon={Icon.icons.check} className='icon' />}
+      {isSelected && <Icon icon='check' className='icon' />}
       {children}
       {deleteButtonIsShown && <Icon icon={deleteItemIcon} className='deleteItemIcon' onClick={handleDelete} />}
     </components.Option>
@@ -40,7 +40,7 @@ export interface ComponentProps extends SelectProps, InputComponent {
     md?: number | string;
     sm?: number | string;
   };
-  deleteItemIcon?: any;
+  deleteItemIcon?: keyof typeof icons.sm;
   onDeleteItem?: (data: any) => any;
 }
 

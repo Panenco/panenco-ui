@@ -62,8 +62,6 @@ export const StyledDropzone = styled.div<{
   .icon {
     display: flex;
     flex-shrink: 0;
-    width: 16px;
-    height: 16px;
     margin-bottom: 20px;
     color: ${(props: any): string => {
       if (props.error) {

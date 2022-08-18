@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cx from 'classnames';
 import 'react-day-picker/dist/style.css';
-import { Icon, PrimaryButton, TextInput } from 'components';
+import { PrimaryButton, TextInput } from 'components';
 import MaskedInput from 'react-text-mask';
 // eslint-disable-next-line import/no-duplicates
 import {
@@ -58,7 +58,7 @@ export interface DayPickerProps extends InputComponent, DayPickerSingleProps {
   overlayComponentProps?: any;
   isTimePicker?: boolean;
   defaultDay?: Date;
-  iconAfter?: HTMLObjectElement | JSX.Element;
+  iconAfter?: HTMLObjectElement | JSX.Element | string;
   placeholder?: string;
   timeTitle?: string;
   timeInputErrorText?: string;
@@ -80,7 +80,7 @@ export const DayPicker = ({
   dateInputProps,
   isTimePicker,
   defaultDay,
-  iconAfter = Icon.icons.calendar,
+  iconAfter = 'calendar',
   error,
   placeholder = 'type date here',
   timeTitle = 'time',
@@ -156,7 +156,7 @@ export const DayPicker = ({
             title={timeTitle}
             key='mask'
             className='timeInput'
-            iconAfter={Icon.icons.clock}
+            iconAfter='clock'
             inputRef={customRef}
             dir={dayPickerProps?.dir || dir}
             autoFocus

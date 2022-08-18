@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cx from 'classnames';
 import { useTheme } from 'utils/hooks';
-import { Icon } from 'components';
+import { Icon, icons } from 'components';
 import { useCombinedRefs } from 'utils/hooks/combinedrefs';
 import { useTabContext, getTabPanelId } from '../tabContext';
 import { StyledTab } from './style';
@@ -10,7 +10,7 @@ export interface TabProps extends React.ButtonHTMLAttributes<HTMLButtonElement> 
   index: number;
   className?: string;
   iconClassName?: string;
-  icon?: HTMLObjectElement;
+  icon?: keyof typeof icons.sm;
   disabled?: boolean;
   selected?: boolean;
   children: React.ReactNode;

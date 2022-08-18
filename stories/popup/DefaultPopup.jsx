@@ -18,9 +18,9 @@ const DefaultPopup = () => {
       <div>
         <PrimaryButton onClick={handlePopupShow}>Open popup</PrimaryButton>
       </div>
-      <Popup size="md" aria-labelledby="examplePopup" show={popupOpen} onHide={handlePopupHide}>
+      <Popup size='md' aria-labelledby='examplePopup' show={popupOpen} onHide={handlePopupHide}>
         <Popup.Header>
-          <Popup.Title id="examplePopup">Lorem, ipsum dolor.</Popup.Title>
+          <Popup.Title id='examplePopup'>Lorem, ipsum dolor.</Popup.Title>
         </Popup.Header>
         <Popup.Body>
           <div className={s.defaultMarginBottom}>
@@ -28,15 +28,15 @@ const DefaultPopup = () => {
             architecto voluptatibus! Laborum non molestiae aut.
           </div>
           <div className={s.defaultMarginBottom}>
-            <TextInput placeholder="Icon before" iconBefore={Icon.icons.mapPin} />
+            <TextInput placeholder='Icon before' iconBefore='mapPin' />
           </div>
           <div>
-            <TextArea subTitle="Subtitle" placeholder="Placeholder" />
+            <TextArea subTitle='Subtitle' placeholder='Placeholder' />
           </div>
         </Popup.Body>
         <Popup.Footer>
           <div className={s.popupFooterButtonsContainer}>
-            <SecondaryButton aria-label="Close" onClick={handlePopupHide} className={s.defaultMarginRight}>
+            <SecondaryButton aria-label='Close' onClick={handlePopupHide} className={s.defaultMarginRight}>
               Cancel
             </SecondaryButton>
             <PrimaryButton>Submit</PrimaryButton>

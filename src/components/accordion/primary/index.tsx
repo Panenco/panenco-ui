@@ -3,9 +3,9 @@ import { Icon, Text } from 'components';
 import AnimatedHeight from 'react-animate-height';
 import cx from 'classnames';
 import { useAccordion } from 'components/accordion/useAccordion';
-import { AccordionProps } from 'utils/types';
 import { useTheme } from 'utils/hooks';
 import { idGenerator } from 'utils/helpers';
+import { AccordionProps } from '../types';
 import { StyledAccordionPrimary } from './style';
 
 export const AccordionPrimary = React.forwardRef((props: AccordionProps, ref: any): JSX.Element => {
@@ -43,9 +43,11 @@ export const AccordionPrimary = React.forwardRef((props: AccordionProps, ref: an
               'accordionHeaderIconLeft',
               shouldRotateIcon && isOpen ? 'accordionHeaderIconLeftOpen' : 'accordionHeaderIconLeftClosed',
             )}
-            icon={checkTypeIconLeft ? Icon.icons.chevronRight : iconLeft}
+            size='sm'
+            icon={checkTypeIconLeft ? 'chevronRight' : iconLeft}
           />
         )}
+
         <Text weight={theme.typography.weights.bold} className='accordionHeaderTitle'>
           {title}
         </Text>
@@ -62,7 +64,7 @@ export const AccordionPrimary = React.forwardRef((props: AccordionProps, ref: an
           <Icon
             key={idGenerator()}
             className='accordionHeaderIcon'
-            icon={checkTypeIconRight ? (isOpen ? Icon.icons.minus : Icon.icons.plus) : iconRight} // eslint-disable-line
+            icon={checkTypeIconRight ? (isOpen ? 'minus' : 'plus') : iconRight} // eslint-disable-line
           />
         )}
       </button>

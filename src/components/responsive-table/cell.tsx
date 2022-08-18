@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Icon, Text } from 'components';
+import { Text, icons } from 'components';
 import cx from 'classnames';
 import { useTheme } from 'utils/hooks';
 import { ButtonIcon } from 'components/button-icon';
@@ -15,7 +15,7 @@ export interface CellProps {
   hiddenColumnLength: number;
   className?: string;
   component?: React.ComponentType<CustomCellProps>;
-  iconCreator?: (rowIsOpen: boolean) => string;
+  iconCreator?: (rowIsOpen: boolean) => keyof typeof icons.sm;
 }
 
 const Cell = ({
@@ -34,7 +34,7 @@ const Cell = ({
   const IS_FIRST_CELL = cellIndex === 0;
   const IS_HIDDEN_COLUMNS = hiddenColumnLength !== 0;
 
-  const getIcon = (): string => {
+  const getIcon = (): keyof typeof icons.sm => {
     if (typeof iconCreator === 'function') {
       return iconCreator(!!row.isOpen);
     }
@@ -61,7 +61,7 @@ const Cell = ({
             onClick={(): void => {
               expandRow(rowIndex);
             }}
-            icon={Icon.icons[getIcon()]}
+            icon={getIcon()}
           />
           {typeof content === 'string' ? <Text className='tableCellWrapContent'>{content}</Text> : content}
         </div>

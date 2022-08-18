@@ -78,7 +78,7 @@ export const Pagination = ({
           <Button
             className='paginationListItem'
             disabled={isFirst || disabled}
-            iconLeft={Icon.icons.chevronLeft}
+            iconLeft='chevronLeft'
             iconClassName={cx('paginationButtonIcon', variant !== 'text' && 'paginationButtonIconNoMargin')}
             onClick={(): void => onButtonClick(page - 1)}
           >
@@ -90,7 +90,7 @@ export const Pagination = ({
           <Button
             className='paginationListItem'
             disabled={isLast || disabled}
-            iconRight={Icon.icons.chevronRight}
+            iconRight='chevronRight'
             iconClassName={cx('paginationButtonIcon', variant !== 'text' && 'paginationButtonIconNoMargin')}
             onClick={(): void => onButtonClick(page + 1)}
           >

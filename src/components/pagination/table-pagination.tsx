@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cx from 'classnames';
 import { useTheme } from 'utils/hooks';
-import { Text, Icon, SelectInput, Button } from 'components';
+import { Text, SelectInput, Button } from 'components';
 import { usePagination } from './usePagination';
 import { StyledPagination } from './styles';
 import { additionalStyles } from '../select/style';
@@ -134,7 +134,7 @@ export const TablePagination = ({
         <Button
           className='paginationButton'
           disabled={isFirst || disabled}
-          iconLeft={Icon.icons.chevronLeft}
+          iconLeft='chevronLeft'
           iconClassName={cx('paginationButtonIcon', 'paginationButtonIconNoMargin')}
           onClick={(): void => {
             onChangePage(page - 1);
@@ -154,7 +154,7 @@ export const TablePagination = ({
         <Button
           className='paginationButton'
           disabled={isLast || disabled}
-          iconRight={Icon.icons.chevronRight}
+          iconRight='chevronRight'
           iconClassName={cx('paginationButtonIcon', 'paginationButtonIconNoMargin')}
           onClick={(): void => {
             onChangePage(page + 1);

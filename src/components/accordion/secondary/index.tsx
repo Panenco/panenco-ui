@@ -3,9 +3,9 @@ import { Icon, Text } from 'components';
 import AnimatedHeight from 'react-animate-height';
 import cx from 'classnames';
 import { useAccordion } from 'components/accordion/useAccordion';
-import { AccordionProps } from 'utils/types';
 import { useTheme } from 'utils/hooks';
 import { idGenerator } from 'utils/helpers';
+import { AccordionProps } from '../types';
 import { StyledAccordionSecondary } from './style';
 
 export const AccordionSecondary = React.forwardRef((props: AccordionProps, ref: any): JSX.Element => {
@@ -32,7 +32,7 @@ export const AccordionSecondary = React.forwardRef((props: AccordionProps, ref: 
   const checkTypeIconRight = typeof iconRight === 'boolean';
   const checkTypeIconLeft = typeof iconLeft === 'boolean';
 
-  // const formRef = React.useRef<HTMLButtonElement | null>(null);
+  const formRef = React.useRef<HTMLButtonElement | null>(null);
 
   return (
     <StyledAccordionSecondary {...otherProps} ref={combinedRef} theme={theme} className={cx(className, 'accordion')}>
@@ -43,7 +43,8 @@ export const AccordionSecondary = React.forwardRef((props: AccordionProps, ref: 
               'accordionHeaderIcon',
               shouldRotateIcon && isOpen ? 'accordionHeaderIconOpen' : 'accordionHeaderIconClosed',
             )}
-            icon={checkTypeIconLeft ? Icon.icons.chevronRight : iconLeft}
+            size='sm'
+            icon={checkTypeIconLeft ? 'chevronRight' : iconLeft}
           />
         )}
         {typeof title === 'string' ? (
@@ -67,7 +68,7 @@ export const AccordionSecondary = React.forwardRef((props: AccordionProps, ref: 
           <Icon
             key={idGenerator()}
             className='accordionHeaderIcon'
-            icon={checkTypeIconRight ? (isOpen ? Icon.icons.minus : Icon.icons.plus) : iconRight} // eslint-disable-line
+            icon={checkTypeIconRight ? (isOpen ? 'minus' : 'plus') : iconRight} // eslint-disable-line
           />
         )}
       </button>

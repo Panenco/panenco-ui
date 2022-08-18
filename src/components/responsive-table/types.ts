@@ -1,3 +1,5 @@
+import { icons } from 'components';
+
 export type DataAttributeKey = `data-${string}`;
 
 export interface ColumnType {
@@ -40,13 +42,13 @@ export interface TableProps extends React.HTMLAttributes<HTMLTableElement> {
   innerRef?: any;
   isLoading?: boolean;
   shouldResize?: boolean;
-  iconCreator?: (rowIsOpen: boolean) => string;
-  sortIcons?: SortIconsType,
+  iconCreator?: (rowIsOpen: boolean) => keyof typeof icons.sm;
+  sortIcons?: SortIconsType;
 }
 
 export interface SortIconsType {
-  up: SVGElement,
-  down: SVGElement
+  up: keyof typeof icons.sm;
+  down: keyof typeof icons.sm;
 }
 
 export interface TableState {

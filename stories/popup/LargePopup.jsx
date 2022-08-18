@@ -18,9 +18,9 @@ const LargePopup = () => {
       <div>
         <PrimaryButton onClick={handlePopupShow}>Open large popup</PrimaryButton>
       </div>
-      <Popup size="lg" aria-labelledby="examplePopup" show={popupOpen} onHide={handlePopupHide}>
+      <Popup size='lg' aria-labelledby='examplePopup' show={popupOpen} onHide={handlePopupHide}>
         <Popup.Header>
-          <Popup.Title id="examplePopup">Lorem, ipsum dolor.</Popup.Title>
+          <Popup.Title id='examplePopup'>Lorem, ipsum dolor.</Popup.Title>
         </Popup.Header>
         <Popup.Body>
           <div className={s.defaultMarginBottom}>
@@ -28,15 +28,15 @@ const LargePopup = () => {
             architecto voluptatibus! Laborum non molestiae aut.
           </div>
           <div className={s.defaultMarginBottom}>
-            <TextInput placeholder="Icon before" iconBefore={Icon.icons.mapPin} />
+            <TextInput placeholder='Icon before' iconBefore='mapPin' />
           </div>
           <div>
-            <TextArea subTitle="Subtitle" placeholder="Placeholder" />
+            <TextArea subTitle='Subtitle' placeholder='Placeholder' />
           </div>
         </Popup.Body>
         <Popup.Footer>
           <div className={s.popupFooterButtonsContainer}>
-            <SecondaryButton aria-label="Close" onClick={handlePopupHide} className={s.defaultMarginRight}>
+            <SecondaryButton aria-label='Close' onClick={handlePopupHide} className={s.defaultMarginRight}>
               Cancel
             </SecondaryButton>
             <PrimaryButton>Submit</PrimaryButton>

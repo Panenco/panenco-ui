@@ -89,7 +89,7 @@ Else you can using Async, Creatable and AsyncCreatable Select with next props
 | chipTextWeight     | string                                                        | -            | -          |
 | chipTextSize       | {textSize: string, lineHeight: size}                          | -            | -          |
 | chipTextTypography | {size: {textSize: string, lineHeight: size} , weight: string} | -            | -          |
-| chipIcon           | any                                                           | -            | -          |
+| chipIcon           | keyof typeof icons.sm                                         | xCircle      | -          |
 | chipIconSize       | string                                                        | -            | -          |
 | onDeleteOption     | (option) => void                                              | -            | -          |
 | hideChips          | boolean                                                       | -            | -          |

@@ -30,7 +30,7 @@ export default decorator('Button', ButtonDocs, ButtonReadme).add('Button compone
         }}
       >
         <Row style={{ justifyContent: 'center', flexGrow: '1' }}>
-          <Col xs="6" md="6" lg="6" style={buttonCellStyles}>
+          <Col xs='6' md='6' lg='6' style={buttonCellStyles}>
             <div
               style={{
                 display: 'flex',
@@ -38,12 +38,12 @@ export default decorator('Button', ButtonDocs, ButtonReadme).add('Button compone
                 alignItems: 'center',
               }}
             >
-              <Button style={buttonStyles} className="mb-1">
+              <Button style={buttonStyles} className='mb-1'>
                 Text
               </Button>
             </div>
           </Col>
-          <Col xs="6" md="6" lg="6" style={buttonCellStyles}>
+          <Col xs='6' md='6' lg='6' style={buttonCellStyles}>
             <div
               style={{
                 display: 'flex',
@@ -51,14 +51,14 @@ export default decorator('Button', ButtonDocs, ButtonReadme).add('Button compone
                 alignItems: 'center',
               }}
             >
-              <Button style={buttonStyles} className="mb-1" isLoading>
+              <Button style={buttonStyles} className='mb-1' isLoading>
                 Text
               </Button>
             </div>
           </Col>
         </Row>
         <Row style={{ justifyContent: 'center', flexGrow: '1' }}>
-          <Col xs="6" md="6" lg="6" style={buttonCellStyles}>
+          <Col xs='6' md='6' lg='6' style={buttonCellStyles}>
             <div
               style={{
                 display: 'flex',
@@ -66,12 +66,12 @@ export default decorator('Button', ButtonDocs, ButtonReadme).add('Button compone
                 alignItems: 'center',
               }}
             >
-              <Button style={buttonStyles} className="mb-1" variant="contained">
+              <Button style={buttonStyles} className='mb-1' variant='contained'>
                 Contained
               </Button>
             </div>
           </Col>
-          <Col xs="6" md="6" lg="6" style={buttonCellStyles}>
+          <Col xs='6' md='6' lg='6' style={buttonCellStyles}>
             <div
               style={{
                 display: 'flex',
@@ -79,14 +79,14 @@ export default decorator('Button', ButtonDocs, ButtonReadme).add('Button compone
                 alignItems: 'center',
               }}
             >
-              <Button style={buttonStyles} className="mb-1" variant="contained" isLoading>
+              <Button style={buttonStyles} className='mb-1' variant='contained' isLoading>
                 Contained
               </Button>
             </div>
           </Col>
         </Row>
         <Row style={{ justifyContent: 'center', flexGrow: '1' }}>
-          <Col xs="6" md="6" lg="6" style={buttonCellStyles}>
+          <Col xs='6' md='6' lg='6' style={buttonCellStyles}>
             <div
               style={{
                 display: 'flex',
@@ -94,13 +94,13 @@ export default decorator('Button', ButtonDocs, ButtonReadme).add('Button compone
                 alignItems: 'center',
               }}
             >
-              <Button style={buttonStyles} className="mb-1" variant="outlined">
+              <Button style={buttonStyles} className='mb-1' variant='outlined'>
                 Outlined
               </Button>
             </div>
           </Col>
 
-          <Col xs="6" md="6" lg="6" style={buttonCellStyles}>
+          <Col xs='6' md='6' lg='6' style={buttonCellStyles}>
             <div
               style={{
                 display: 'flex',
@@ -108,7 +108,7 @@ export default decorator('Button', ButtonDocs, ButtonReadme).add('Button compone
                 alignItems: 'center',
               }}
             >
-              <Button style={buttonStyles} className="mb-1" variant="outlined" isLoading>
+              <Button style={buttonStyles} className='mb-1' variant='outlined' isLoading>
                 Outlined
               </Button>
             </div>
@@ -124,42 +124,42 @@ export const LinkDecorator = decorator('Button', LinkDocs, LinkReadme).add('Link
     <BrowserRouter>
       <WrappedComponent>
         <Row style={{ justifyContent: 'center' }}>
-          <Col xs="4" md="4" lg="4" style={buttonCellStyles}>
-            <Button className="mb-1" component="link">
+          <Col xs='4' md='4' lg='4' style={buttonCellStyles}>
+            <Button className='mb-1' component='link'>
               Link
             </Button>
           </Col>
-          <Col xs="4" md="4" lg="4" style={buttonCellStyles}>
-            <Button className="mb-1" component="link" disabled>
+          <Col xs='4' md='4' lg='4' style={buttonCellStyles}>
+            <Button className='mb-1' component='link' disabled>
               Link disabled
             </Button>
           </Col>
-          <Col xs="4" md="4" lg="4" style={buttonCellStyles}>
-            <Button className="mb-1" component="a" href="mailto:info@panenco.com?subject=Secret subject">
+          <Col xs='4' md='4' lg='4' style={buttonCellStyles}>
+            <Button className='mb-1' component='a' href='mailto:info@panenco.com?subject=Secret subject'>
               Link external
             </Button>
           </Col>
         </Row>
         <Row style={{ justifyContent: 'center' }}>
-          <Col xs="6" md="6" lg="6" style={buttonCellStyles}>
-            <PrimaryButton className="mb-1" component="link" to="/">
+          <Col xs='6' md='6' lg='6' style={buttonCellStyles}>
+            <PrimaryButton className='mb-1' component='link' to='/'>
               Primary Link
             </PrimaryButton>
           </Col>
-          <Col xs="6" md="6" lg="6" style={buttonCellStyles}>
-            <PrimaryButton className="mb-1" component="link" disabled>
+          <Col xs='6' md='6' lg='6' style={buttonCellStyles}>
+            <PrimaryButton className='mb-1' component='link' disabled>
               Primary Link disabled
             </PrimaryButton>
           </Col>
         </Row>
         <Row style={{ justifyContent: 'space-around' }}>
-          <Col xs="6" md="6" lg="6" style={buttonCellStyles}>
-            <SecondaryButton className="mb-1" component="link">
+          <Col xs='6' md='6' lg='6' style={buttonCellStyles}>
+            <SecondaryButton className='mb-1' component='link'>
               Link Button
             </SecondaryButton>
           </Col>
-          <Col xs="6" md="6" lg="6" style={buttonCellStyles}>
-            <SecondaryButton className="mb-1" component="link" disabled>
+          <Col xs='6' md='6' lg='6' style={buttonCellStyles}>
+            <SecondaryButton className='mb-1' component='link' disabled>
               Link Disabled
             </SecondaryButton>
           </Col>
@@ -173,8 +173,8 @@ export const ButtonIcons = decorator('Button', ButtonIconDocs, ButtonIconReadme)
   return (
     <BrowserRouter>
       <WrappedComponent>
-        <Row className="mt-1 justify-center">
-          <Col xs="6" md="6" lg="6" className="mb-1" style={buttonCellStyles}>
+        <Row className='mt-1 justify-center'>
+          <Col xs='6' md='6' lg='6' className='mb-1' style={buttonCellStyles}>
             <div
               style={{
                 display: 'flex',
@@ -182,10 +182,10 @@ export const ButtonIcons = decorator('Button', ButtonIconDocs, ButtonIconReadme)
                 alignItems: 'center',
               }}
             >
-              <ButtonIcon icon={Icon.icons.trash}>Button Icon</ButtonIcon>
+              <ButtonIcon icon='trash'>Button Icon</ButtonIcon>
             </div>
           </Col>
-          <Col xs="6" md="6" lg="6" className="mb-1" style={buttonCellStyles}>
+          <Col xs='6' md='6' lg='6' className='mb-1' style={buttonCellStyles}>
             <div
               style={{
                 display: 'flex',
@@ -193,12 +193,12 @@ export const ButtonIcons = decorator('Button', ButtonIconDocs, ButtonIconReadme)
                 alignItems: 'center',
               }}
             >
-              <ButtonIcon iconLeft={Icon.icons.trash}>Button Icon Left</ButtonIcon>
+              <ButtonIcon iconLeft='trash'>Button Icon Left</ButtonIcon>
             </div>
           </Col>
         </Row>
-        <Row className="mb-1 justify-center">
-          <Col xs="6" md="6" lg="6" className="mb-1" style={buttonCellStyles}>
+        <Row className='mb-1 justify-center'>
+          <Col xs='6' md='6' lg='6' className='mb-1' style={buttonCellStyles}>
             <div
               style={{
                 display: 'flex',
@@ -206,10 +206,10 @@ export const ButtonIcons = decorator('Button', ButtonIconDocs, ButtonIconReadme)
                 alignItems: 'center',
               }}
             >
-              <ButtonIcon icon={Icon.icons.lock}>Button Icon</ButtonIcon>
+              <ButtonIcon icon='lock'>Button Icon</ButtonIcon>
             </div>
           </Col>
-          <Col xs="6" md="6" lg="6" className="mb-1" style={buttonCellStyles}>
+          <Col xs='6' md='6' lg='6' className='mb-1' style={buttonCellStyles}>
             <div
               style={{
                 display: 'flex',
@@ -217,10 +217,10 @@ export const ButtonIcons = decorator('Button', ButtonIconDocs, ButtonIconReadme)
                 alignItems: 'center',
               }}
             >
-              <ButtonIcon iconLeft={Icon.icons.lock}>Button Icon Left</ButtonIcon>
+              <ButtonIcon iconLeft='lock'>Button Icon Left</ButtonIcon>
             </div>
           </Col>
-          <Col xs="6" md="6" lg="6" className="mb-1" style={buttonCellStyles}>
+          <Col xs='6' md='6' lg='6' className='mb-1' style={buttonCellStyles}>
             <div
               style={{
                 display: 'flex',
@@ -228,7 +228,7 @@ export const ButtonIcons = decorator('Button', ButtonIconDocs, ButtonIconReadme)
                 alignItems: 'center',
               }}
             >
-              <ButtonIcon icon={Icon.icons.logOut} component="a" href="https://panenco.com/" target="_blank">
+              <ButtonIcon icon='logOut' component='a' href='https://panenco.com/' target='_blank'>
                 Button Icon Link
               </ButtonIcon>
             </div>

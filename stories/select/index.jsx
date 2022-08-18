@@ -67,7 +67,7 @@ export default decorator('Select', SelectInputDocs, README).add('Select componen
             subTitle='Sub title'
             isMulti
             chipIconSize={4}
-            chipIcon={Icon.icons.close}
+            chipIcon='close'
             placeholder='Choose many options ...'
             value={value}
             onChange={handleChange}
