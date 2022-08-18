@@ -12,7 +12,7 @@ interface HeaderCellProps extends React.TableHTMLAttributes<HTMLTableCellElement
   thProps?: React.TableHTMLAttributes<HTMLTableCellElement> & {
     [dataAttribute: DataAttributeKey]: any;
   };
-  // sortIcons?: SortIconsType;
+  sortIcons?: SortIconsType;
 }
 
 const HeaderCell = ({
@@ -21,10 +21,10 @@ const HeaderCell = ({
   sortName,
   sort,
   handleSort,
-  // sortIcons = {
-  //   up: 'chevronUp',
-  //   down: 'chevronDown',
-  // },
+  sortIcons = {
+    up: 'chevronUp',
+    down: 'chevronDown',
+  },
   ...props
 }: HeaderCellProps): JSX.Element => {
   const asc = sort && sort.direction === 'asc' && sort.sort === sortName && 'asc';
@@ -52,10 +52,8 @@ const HeaderCell = ({
         <Text className='tableHeaderText'>{label}</Text>
         {sortName ? (
           <div className='tableHeaderContent'>
-            {
-              // <Icon icon={sortIcons.up} className={cx('tableHeaderIcon', asc && 'tableHeaderIconActive')} />
-              // <Icon icon={sortIcons.down} className={cx('tableHeaderIcon', desc && 'tableHeaderIconActive')} />
-            }
+            <Icon icon={sortIcons.up} className={cx('tableHeaderIcon', asc && 'tableHeaderIconActive')} />
+            <Icon icon={sortIcons.down} className={cx('tableHeaderIcon', desc && 'tableHeaderIconActive')} />
           </div>
         ) : null}
       </button>

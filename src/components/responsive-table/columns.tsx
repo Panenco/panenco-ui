@@ -18,7 +18,7 @@ const Columns = ({ columns, sort, handleSort, sortIcons }: ColumnsProps): JSX.El
         minWidth={minWidth}
         sortName={sortName}
         sort={sort}
-        // sortIcons={sortIcons}
+        sortIcons={sortIcons}
         handleSort={handleSort}
         {...thProps}
       />

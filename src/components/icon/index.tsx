@@ -19,7 +19,7 @@ type IconProps<T extends { sm: any; md: any; lg: any }> = {
   width?: number | string;
   height?: number | string;
   className?: string;
-  onClick?: () => void;
+  onClick?: (e) => void;
 };
 
 export const withIcons =
