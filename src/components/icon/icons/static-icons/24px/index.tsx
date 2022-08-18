@@ -1,7 +1,3 @@
-// missed icons
-// add, attachment, bellUnactive, burger, burger4Lines, close, closedEye, doneReport, dotsVertical, duplicate, editPen, excluse,
-// filledStar, filledPlus, openEye, product, profile, report, reports, success, unseen, x, uploadDown, unlink
-
 export { default as activity } from './activity.svg';
 export { default as airplay } from './airplay.svg';
 export { default as alertCircle } from './alert-circle.svg';
