@@ -8,7 +8,7 @@ import { Icon, icons } from '@panenco/ui';
 
 const render = () => {
   return (
-   <Icon icon="iconName" size="sm"/>
+   <Icon icon="iconName" size="sm" />
   );
 }
 ...
@@ -53,17 +53,17 @@ Create separate component and re-export **Icon** component which extends your ow
 
 /* ./icons/sm */
 import myCustomIconName from './myCustomIconName.svg';
-export const smCustomIcons = {myCustomIconName};
+export const smCustomIcons = { iconName: myCustomIconName };
 /*  */
 
 
-import { withIcon} from '@panenco/ui';
+import { withIcon } from '@panenco/ui';
 
 import smCustomIcons from './icons/sm';
 import mdCustomIcons from './icons/md';
 import lgCustomIcons from './icons/lg';
 
-const newIcons={sm: smCustomIcons, md: mdCustomIcons, lg: lgCustomIcons};
+const newIcons = { sm: smCustomIcons, md: mdCustomIcons, lg: lgCustomIcons };
 
 const Icon = withIcon<typeof newIcons>(newIcons)
 
