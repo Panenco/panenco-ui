@@ -190,7 +190,7 @@ export const DayPicker = ({
               showCalendar();
             }
           }}
-          disabled={isCalendarOpen}
+          disabled={isCalendarOpen || dateInputProps?.disable}
           type='text'
           placeholder={placeholder}
           iconAfter={iconAfter}
