@@ -34,10 +34,10 @@ This component inherits the attributes of the **button** element and extends the
 - disabled - is disabled
 - ref - ref;
 
-| propName      | propType                 | defaultValue | isRequired |
-| ------------- | ------------------------ | ------------ | ---------- |
-| checked       | boolean                  | -            | -          |
-| onIconClick   | React.MouseEvent => void | -            | -          |
-| icon          | oneOf(icons.sm)          | checkCircle  | -          |
-| uncheckedIcon | oneOf(icons.sm)          | -            | -          |
-| ref           | React.RefObject          | -            | -          |
+| propName      | propType                                                                | defaultValue | isRequired |
+| ------------- | ----------------------------------------------------------------------- | ------------ | ---------- |
+| checked       | boolean                                                                 | -            | -          |
+| onIconClick   | React.MouseEvent => void                                                | -            | -          |
+| icon          | [IconType](/?path=/story/icon--icon-component) \| keyof typeof icons.sm | checkCircle  | -          |
+| uncheckedIcon | [IconType](/?path=/story/icon--icon-component) \| keyof typeof icons.sm | -            | -          |
+| ref           | React.RefObject                                                         | -            | -          |

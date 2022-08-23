@@ -74,27 +74,27 @@ Else you can using Async, Creatable and AsyncCreatable Select with next props
 - creatable - use Creatable Select;
 - async + creatable - use AsyncCreatable Select;
 
-| propName           | propType                                                      | defaultValue | isRequired |
-| ------------------ | ------------------------------------------------------------- | ------------ | ---------- |
-| placeholder        | string                                                        | Select...    | -          |
-| error              | string                                                        | -            | -          |
-| title              | string                                                        | -            | -          |
-| subTitle           | string                                                        | -            | -          |
-| isDisabled         | boolean                                                       | -            | -          |
-| isMulti            | boolean                                                       | -            | -          |
-| async              | boolean                                                       | -            | -          |
-| creatable          | boolean                                                       | -            | -          |
-| selectWrapperProps | React.HTMLAttributes (HTMLDivElement)                         | -            | -          |
-| filterOption       | ({data, label, value}, string) => boolean or null             | -            | -          |
-| chipTextWeight     | string                                                        | -            | -          |
-| chipTextSize       | {textSize: string, lineHeight: size}                          | -            | -          |
-| chipTextTypography | {size: {textSize: string, lineHeight: size} , weight: string} | -            | -          |
-| chipIcon           | keyof typeof icons.sm                                         | xCircle      | -          |
-| chipIconSize       | string                                                        | -            | -          |
-| onDeleteOption     | (option) => void                                              | -            | -          |
-| hideChips          | boolean                                                       | -            | -          |
-| ref                | React.RefObject                                               | -            | -          |
-| onDeleteItem       | (data) => any                                                 | -            | -          |
-| deleteItemIcon     | any                                                           | -            | -          |
+| propName           | propType                                                                | defaultValue | isRequired |
+| ------------------ | ----------------------------------------------------------------------- | ------------ | ---------- |
+| placeholder        | string                                                                  | Select...    | -          |
+| error              | string                                                                  | -            | -          |
+| title              | string                                                                  | -            | -          |
+| subTitle           | string                                                                  | -            | -          |
+| isDisabled         | boolean                                                                 | -            | -          |
+| isMulti            | boolean                                                                 | -            | -          |
+| async              | boolean                                                                 | -            | -          |
+| creatable          | boolean                                                                 | -            | -          |
+| selectWrapperProps | React.HTMLAttributes (HTMLDivElement)                                   | -            | -          |
+| filterOption       | ({data, label, value}, string) => boolean or null                       | -            | -          |
+| chipTextWeight     | string                                                                  | -            | -          |
+| chipTextSize       | {textSize: string, lineHeight: size}                                    | -            | -          |
+| chipTextTypography | {size: {textSize: string, lineHeight: size} , weight: string}           | -            | -          |
+| chipIcon           | [IconType](/?path=/story/icon--icon-component) \| keyof typeof icons.sm | xCircle      | -          |
+| chipIconSize       | string                                                                  | -            | -          |
+| onDeleteOption     | (option) => void                                                        | -            | -          |
+| hideChips          | boolean                                                                 | -            | -          |
+| ref                | React.RefObject                                                         | -            | -          |
+| onDeleteItem       | (data) => any                                                           | -            | -          |
+| deleteItemIcon     | any                                                                     | -            | -          |
 
 It's a basic props what we using, you can look more complete documentation [**here**](https://react-select.com/home)

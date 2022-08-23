@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cx from 'classnames';
-import { Icon, icons, Text } from 'components';
+import { Icon, icons, Text, IconType } from 'components';
 import { useTheme } from 'utils/hooks';
 import { idGenerator } from 'utils/helpers';
 import { InputComponent, WrapperProps, InputPropsType } from 'utils/types';
@@ -8,8 +8,8 @@ import { StyledTextInput } from './style';
 
 export interface TextInputProps extends InputComponent, React.InputHTMLAttributes<HTMLInputElement> {
   rightSubTitle?: React.ReactElement;
-  iconBefore?: React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | keyof typeof icons.sm;
-  iconAfter?: React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | keyof typeof icons.sm;
+  iconBefore?: IconType | keyof typeof icons.sm;
+  iconAfter?: IconType | keyof typeof icons.sm;
   inputRef?: React.Ref<HTMLInputElement>;
   wrapperProps?: WrapperProps;
   inputProps?: InputPropsType; // will be removed in next versions
