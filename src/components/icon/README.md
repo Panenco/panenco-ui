@@ -57,7 +57,7 @@ export const smCustomIcons = { iconName: myCustomIconName };
 /*  */
 
 
-import { withIcon } from '@panenco/ui';
+import { withIcons } from '@panenco/ui';
 
 import smCustomIcons from './icons/sm';
 import mdCustomIcons from './icons/md';
@@ -65,7 +65,7 @@ import lgCustomIcons from './icons/lg';
 
 const newIcons = { sm: smCustomIcons, md: mdCustomIcons, lg: lgCustomIcons };
 
-const Icon = withIcon<typeof newIcons>(newIcons)
+const Icon = withIcons<typeof newIcons>(newIcons)
 
 // This way, your Icon will include all the PanencoUI defaultIcons and your own icons
 
