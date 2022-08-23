@@ -22,7 +22,7 @@ const render = () => {
 
 This component inherits the attributes of the **button** element and extends the functionality with next properties.
 
-- icon - oneOf(icons.sm);
+- icon - icon to be rendered;
 - iconClassName - override styles for icon;
 - iconLeft - set icon position;
 - ref - ref;
@@ -30,12 +30,12 @@ This component inherits the attributes of the **button** element and extends the
 - to - path to redirect (prop for **Link** component);
 - size - icon size
 
-| propName      | propType              | defaultValue | isRequired |
-| ------------- | --------------------- | ------------ | ---------- |
-| icon          | keyof typeof icons.sm | eye          | +          |
-| iconClassName | string                | -            | -          |
-| iconLeft      | string                | -            | -          |
-| ref           | React.RefObject       | -            | -          |
-| component     | string                | -            | -          |
-| to            | string                | -            | -          |
-| size          | number                | -            | -          |
+| propName      | propType                                                                | defaultValue | isRequired |
+| ------------- | ----------------------------------------------------------------------- | ------------ | ---------- |
+| icon          | [IconType](/?path=/story/icon--icon-component) \| keyof typeof icons.sm | eye          | +          |
+| iconClassName | string                                                                  | -            | -          |
+| iconLeft      | string                                                                  | -            | -          |
+| ref           | React.RefObject                                                         | -            | -          |
+| component     | string                                                                  | -            | -          |
+| to            | string                                                                  | -            | -          |
+| size          | number                                                                  | -            | -          |

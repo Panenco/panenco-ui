@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { idGenerator } from 'utils/helpers';
-import { Chip, icons } from 'components';
+import { Chip, icons, IconType } from 'components';
 import { Props as SelectProps } from 'react-select';
 import { InputComponent } from '../../utils/types';
 
 export interface ChipsProps extends SelectProps, InputComponent {
   value?: any;
   chipIconSize?: number | string;
-  chipIcon?: keyof typeof icons.sm;
+  chipIcon?: IconType | keyof typeof icons.sm;
   onDeleteOption?: any;
 }
 

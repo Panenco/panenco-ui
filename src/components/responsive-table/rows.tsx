@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { icons } from 'components';
+import { icons, IconType } from 'components';
 import ExpandedRow from './expanded-row';
 import Row from './row';
 import TableFiller from './table-filler';
@@ -14,7 +14,7 @@ interface RowsProps {
   containerWidth?: number;
   itemsPerPage?: number;
   isLoading?: boolean;
-  iconCreator?: (rowIsOpen: boolean) => keyof typeof icons.sm;
+  iconCreator?: (rowIsOpen: boolean) => IconType | keyof typeof icons.sm;
 }
 
 const Rows = ({

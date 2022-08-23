@@ -44,6 +44,12 @@ This component inherits the attributes of the **svg** element and extends the fu
 | md   | 24  |
 | lg   | 28  |
 
+### Icon type
+
+```js
+export type IconType = React.ReactElement<unknown, string | React.JSXElementConstructor<any>>;
+```
+
 ### Custom icons
 
 Create separate component and re-export **Icon** component which extends your own icons pack.

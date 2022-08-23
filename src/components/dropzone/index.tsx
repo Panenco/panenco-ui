@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import { Icon, Loader, Text, icons } from 'components';
+import { Icon, Loader, Text, icons, IconType } from 'components';
 import * as React from 'react';
 import { DropzoneOptions, useDropzone } from 'react-dropzone';
 import { useTheme } from 'utils/hooks';
@@ -14,7 +14,7 @@ export interface DropzoneProps extends React.HTMLAttributes<HTMLDivElement> {
   textContent?: string;
   textContentOnDrag?: string;
   error?: string;
-  icon?: keyof typeof icons.sm;
+  icon?: IconType | keyof typeof icons.sm;
   loader?: JSX.Element;
   wrapperProps?: WrapperProps;
   inputProps?: InputPropsType; // will be removed in next versions
@@ -80,7 +80,11 @@ export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
           <>
             <input {...getInputProps()} {...inputProps} {...props} />
 
-            <Icon icon={iconImage} size='sm' className={cx('icon', iconClassName)} />
+            {React.isValidElement(iconImage) ? (
+              iconImage
+            ) : (
+              <Icon icon={iconImage} size='sm' className={cx('icon', iconClassName)} />
+            )}
 
             <Text className='content'>{textContentInBlock}</Text>
           </>

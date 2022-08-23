@@ -32,12 +32,12 @@ const render = () => {
 - icon - icon to be rendered to the left from the tab label;
 - iconClassName - override styles for icon;
 
-| propName      | propType              | defaultValue | isRequired |
-| ------------- | --------------------- | ------------ | ---------- |
-| index         | number                | -            | true       |
-| ref           | React.RefObject       | -            | -          |
-| icon          | keyof typeof icons.sm | -            | -          |
-| iconClassName | string                | -            | -          |
+| propName      | propType                                                               | defaultValue | isRequired |
+| ------------- | ---------------------------------------------------------------------- | ------------ | ---------- |
+| index         | number                                                                 | -            | true       |
+| ref           | React.RefObject                                                        | -            | -          |
+| icon          | [IconType](?path=/story/icon--icon-component) \| keyof typeof icons.sm | -            | -          |
+| iconClassName | string                                                                 | -            | -          |
 
 **Tablist** component is a wrapper for Tabs. It nherits the attributes of the **div** element and adds the properties as follows:
 

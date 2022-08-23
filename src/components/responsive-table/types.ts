@@ -1,4 +1,4 @@
-import { icons } from 'components';
+import { icons, IconType } from 'components';
 
 export type DataAttributeKey = `data-${string}`;
 
@@ -42,7 +42,7 @@ export interface TableProps extends React.HTMLAttributes<HTMLTableElement> {
   innerRef?: any;
   isLoading?: boolean;
   shouldResize?: boolean;
-  iconCreator?: (rowIsOpen: boolean) => keyof typeof icons.sm;
+  iconCreator?: (rowIsOpen: boolean) => IconType | keyof typeof icons.sm;
   sortIcons?: SortIconsType;
 }
 

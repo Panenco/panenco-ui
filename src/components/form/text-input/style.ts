@@ -1,12 +1,12 @@
-import { icons } from 'components/icon';
+import { icons, IconType } from 'components/icon';
 import styled from 'styled-components';
 import { PUITheme } from 'utils/types';
 
 export const StyledTextInput = styled.div<{
   theme: PUITheme;
   error;
-  iconBefore?: React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | keyof typeof icons.sm;
-  iconAfter?: React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | keyof typeof icons.sm;
+  iconBefore?: IconType | keyof typeof icons.sm;
+  iconAfter?: IconType | keyof typeof icons.sm;
 }>`
   display: flex;
   flex-direction: column;

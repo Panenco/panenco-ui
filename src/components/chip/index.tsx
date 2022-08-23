@@ -1,14 +1,14 @@
 import * as React from 'react';
 import cx from 'classnames';
 import { Text } from 'components/text';
-import { Icon, icons } from 'components/icon';
+import { Icon, icons, IconType } from 'components/icon';
 import { useTheme } from 'utils/hooks';
 import { StyledChip } from './style';
 
 export interface ChipProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   checked?: boolean;
-  icon?: keyof typeof icons.sm;
-  uncheckedIcon?: keyof typeof icons.sm;
+  icon?: IconType | keyof typeof icons.sm;
+  uncheckedIcon?: IconType | keyof typeof icons.sm;
   onIconClick?: any;
   iconClassName?: string;
 }
@@ -58,7 +58,12 @@ export const Chip = React.forwardRef<HTMLButtonElement, ChipProps>(
         >
           {children}
         </Text>
-        {iconComponent && <Icon icon={iconComponent} onClick={onIconClick && handleIconClick} />}
+        {iconComponent &&
+          (React.isValidElement(iconComponent) ? (
+            iconComponent
+          ) : (
+            <Icon icon={iconComponent} onClick={onIconClick && handleIconClick} />
+          ))}
       </StyledChip>
     );
   },
