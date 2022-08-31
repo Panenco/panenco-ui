@@ -59,4 +59,4 @@ export const withIcons =
 
 export const Icon = withIcons<typeof defaultIcons>();
 export const icons = defaultIcons;
-export type IconType = React.ReactElement<unknown, string | React.JSXElementConstructor<any>>;
+export type IconType = React.ReactElement<{ className?: string }, string | React.JSXElementConstructor<any>>;
