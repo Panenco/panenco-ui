@@ -47,8 +47,8 @@ export interface TableProps extends React.HTMLAttributes<HTMLTableElement> {
 }
 
 export interface SortIconsType {
-  up: keyof typeof icons.sm;
-  down: keyof typeof icons.sm;
+  up: IconType | keyof typeof icons.sm;
+  down: IconType | keyof typeof icons.sm;
 }
 
 export interface TableState {
