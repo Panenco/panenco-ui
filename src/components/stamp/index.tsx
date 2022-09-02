@@ -5,28 +5,35 @@ import { StampVariantType } from 'index';
 import { StyledStamp } from './style';
 
 export interface StampProps extends React.HTMLAttributes<HTMLDivElement> {
-  backgroundColor?: string;
-  borderRadius?: number;
+  /**
+   * Color text-content and border;
+   */
   color?: string;
+  /**
+   * Color background and border (when variant === 'fulfilled')
+   */
+  backgroundColor?: string;
+  /**
+   * Border radius
+   */
+  borderRadius?: number;
+  /**
+   * The variant to use
+   */
   variant?: StampVariantType;
+  /**
+   * content of the Stamp
+   */
+  children?: React.ReactNode;
 }
 
 export const Stamp = React.forwardRef<HTMLDivElement, StampProps>(
   (
-    {
-      className,
-      color: colorProp,
-      backgroundColor,
-      borderRadius: borderRadiusProp,
-      variant,
-      children,
-      ...props
-    }: StampProps,
+    { className, color: colorProp, backgroundColor, borderRadius = 21, variant, children, ...props }: StampProps,
     ref,
   ): JSX.Element => {
     const theme = useTheme();
     const color = colorProp || theme.colors.success;
-    const borderRadius = borderRadiusProp || 21;
 
     return (
       <StyledStamp
