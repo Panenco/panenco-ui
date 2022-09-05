@@ -4,6 +4,7 @@ export const StyledSVG = styled.svg`
   &.svg {
     width: ${({ width }: any): string => width};
     height: ${({ height }: any): string => height};
+    stroke-width: ${({ strokeWidth }: any): string => strokeWidth};
   }
 
   [fill]:not([fill='none']):not([fill^='url(']) {

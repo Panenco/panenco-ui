@@ -12,9 +12,10 @@ const sizeToPx = {
   lg: '28px',
 };
 
-type IconProps<T extends { sm: any; md: any; lg: any }> = {
+export type IconProps<T extends { sm: any; md: any; lg: any }> = {
   icon: keyof typeof defaultIcons.sm | keyof T['sm'];
   size?: IconVariantSize;
+  strokeWidth?: number | string;
   disabled?: boolean;
   width?: number | string;
   height?: number | string;
@@ -33,7 +34,7 @@ export const withIcons =
 
     const Icon = React.forwardRef<any, IconProps<T>>(
       (
-        { icon = 'eye', className, onClick, size = 'md', disabled, width, height, ...iconProps },
+        { icon = 'eye', className, strokeWidth = 1.33, onClick, size = 'md', disabled, width, height, ...iconProps },
         ref,
       ): React.ReactElement<unknown, string | React.JSXElementConstructor<any>> => {
         const iconToRender = icons[size][icon] || icons.sm[icon] || icons.md[icon] || icons.lg[icon];
@@ -44,6 +45,7 @@ export const withIcons =
             viewBox={iconToRender.viewBox}
             width={width || sizeToPx[size]}
             height={height || sizeToPx[size]}
+            strokeWidth={strokeWidth}
             onClick={onClick}
             ref={ref}
             {...iconProps}
