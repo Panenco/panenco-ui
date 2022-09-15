@@ -1,12 +1,19 @@
 import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { colors } from 'styles';
-
 import { Stamp } from 'components/stamp';
+import docs from './readme.md';
 
 export default {
   title: 'Example/Stamp',
   component: Stamp,
+  parameters: {
+    docs: {
+      description: {
+        component: docs,
+      },
+    },
+  },
   argTypes: {
     backgroundColor: { control: 'color' },
   },

@@ -8,7 +8,7 @@
     "moduleResolution": "node",
     "target": "es2019",
     "module": "esnext",
-    "rootDir": "./src",
+    "rootDir": ".",
     "outDir": "./lib",
     "sourceMap": true,
     "checkJs": false,
@@ -25,6 +25,6 @@
       }
     ]
   },
-  "include": ["src", "./declaration.d.ts", "stories/*.stories.@(ts|tsx)"],
+  "include": ["src", "./declaration.d.ts", "stories"],
   "exclude": ["node_modules", "lib"]
 }
