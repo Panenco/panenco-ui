@@ -4,7 +4,7 @@ module.exports = {
   root: true,
   env: {
     browser: true,
-    es6: true,
+    es6: true
   },
   extends: [
     'airbnb-base',
@@ -19,18 +19,19 @@ module.exports = {
     'prettier',
     'prettier/react',
     'prettier/@typescript-eslint',
+    'plugin:storybook/recommended',
   ],
   globals: {
     Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
+    SharedArrayBuffer: 'readonly'
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
-      jsx: true,
+      jsx: true
     },
     ecmaVersion: 2018,
-    sourceType: 'module',
+    sourceType: 'module'
   },
   plugins: ['react', 'prettier', '@typescript-eslint', 'react-hooks', 'typescript-sort-keys'],
   rules: {
@@ -55,16 +56,14 @@ module.exports = {
       typescript: {},
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
-        moduleDirectory: [path.resolve(__dirname, './node_modules'), path.resolve(__dirname, 'src')],
-      },
-    },
+        moduleDirectory: [path.resolve(__dirname, './node_modules'), path.resolve(__dirname, 'src')]
+      }
+    }
   },
-  overrides: [
-    {
-      files: ['*.js', '*.jsx'],
-      rules: {
-        '@typescript-eslint/explicit-function-return-type': 'off',
-      },
-    },
-  ],
+  overrides: [{
+    files: ['*.js', '*.jsx'],
+    rules: {
+      '@typescript-eslint/explicit-function-return-type': 'off'
+    }
+  }]
 };
