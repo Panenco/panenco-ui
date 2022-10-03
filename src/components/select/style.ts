@@ -5,7 +5,13 @@ import { weights } from 'styles';
 export const additionalStyles = (element: string, styles, ...arg): any =>
   styles?.[element] ? styles[element](...arg) : {};
 
-export const customStyles = (theme: PUITheme, error?: any, styles?: any): any => ({
+export const customStyles = (
+  theme: PUITheme,
+  getPlacement: (placement: string) => void,
+  placementState: string,
+  error?: any,
+  styles?: any,
+): any => ({
   indicatorSeparator: (provided, state): any => ({
     ...provided,
     display: 'none',
@@ -71,14 +77,18 @@ export const customStyles = (theme: PUITheme, error?: any, styles?: any): any =>
       })()}`,
       boxShadow: !menuIsOpen && isFocused && `0px 0px 0px 2px ${theme.colors.base900}`,
       border: `1px solid ${isBorderColor()}`,
-      borderBottomColor: menuIsOpen && 'transparent',
+      borderBottomColor: placementState === 'top' ? null : menuIsOpen && 'transparent',
+      borderTopColor: placementState === 'top' ? menuIsOpen && 'transparent' : null,
       // borderBottomColor: menuIsOpen && 'transparent',
-      borderBottomLeftRadius: menuIsOpen && 0,
-      borderBottomRightRadius: menuIsOpen && 0,
+      borderBottomLeftRadius: placementState === 'top' ? null : menuIsOpen && 0,
+      borderTopLeftRadius: placementState === 'top' ? menuIsOpen && 0 : null,
+      borderBottomRightRadius: placementState === 'top' ? null : menuIsOpen && 0,
+      borderTopRightRadius: placementState === 'top' ? menuIsOpen && 0 : null,
       padding: '5px',
       '&:hover': {
         borderColor: `${isHoverBorderColor()}`,
-        borderBottomColor: menuIsOpen && 'transparent',
+        borderBottomColor: placementState === 'top' ? null : menuIsOpen && 'transparent',
+        borderTopColor: placementState === 'top' ? menuIsOpen && 'transparent' : null,
         cursor: 'pointer',
       },
       ...additionalStyles('control', styles, provided, state),
@@ -95,6 +105,8 @@ export const customStyles = (theme: PUITheme, error?: any, styles?: any): any =>
       return `1px solid ${theme.colors.primary500}`;
     };
 
+    getPlacement(state.placement);
+
     return {
       ...provided,
       backgroundColor: theme.colors.base100,
@@ -103,9 +115,12 @@ export const customStyles = (theme: PUITheme, error?: any, styles?: any): any =>
       margin: 0,
       boxShadow: menuIsOpen && 'none',
       border: `${isBorder()}`,
-      borderTop: menuIsOpen && 'none',
-      borderTopLeftRadius: menuIsOpen && 0,
-      borderTopRightRadius: menuIsOpen && 0,
+      borderTop: placementState === 'top' ? null : menuIsOpen && 'none',
+      borderBottom: placementState === 'top' ? menuIsOpen && 'none' : null,
+      borderTopLeftRadius: placementState === 'top' ? null : menuIsOpen && 0,
+      borderTopRightRadius: placementState === 'top' ? null : menuIsOpen && 0,
+      borderBottomLeftRadius: placementState === 'top' ? menuIsOpen && 0 : null,
+      borderBottomRightRadius: placementState === 'top' ? menuIsOpen && 0 : null,
       ...additionalStyles('menu', styles, provided, state),
     };
   },
