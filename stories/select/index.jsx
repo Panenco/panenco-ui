@@ -72,7 +72,6 @@ export default decorator('Select', SelectInputDocs, README).add('Select componen
             value={value}
             onChange={handleChange}
             onDeleteOption={handleDeleteMultiOption}
-            // menuIsOpen='true'
           />
         </Col>
         <Col xs='12' sm='6'>
@@ -93,24 +92,6 @@ export default decorator('Select', SelectInputDocs, README).add('Select componen
         </Col>
         <Col xs='12' sm='6'>
           <SelectInput title='Disabled select' subTitle='Sub title' placeholder='Disabled' isDisabled />
-        </Col>
-        <Col xs='12' sm='6'>
-          <SelectInput options={options} title='Single Select' subTitle='Sub title' placeholder='Choose one option' />
-        </Col>
-        <Col xs='12' sm='6'>
-          <SelectInput options={options} title='Single Select' subTitle='Sub title' placeholder='Choose one option' />
-        </Col>
-        <Col xs='12' sm='6'>
-          <SelectInput options={options} title='Single Select' subTitle='Sub title' placeholder='Choose one option' />
-        </Col>
-        <Col xs='12' sm='6'>
-          <SelectInput
-            options={options}
-            title='Single Select'
-            subTitle='Sub title'
-            placeholder='Choose one option'
-            // menuIsOpen='true'
-          />
         </Col>
       </Row>
     </WrappedComponent>
