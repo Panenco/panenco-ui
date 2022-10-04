@@ -66,6 +66,29 @@ export const customStyles = (
       }
       return theme.colors.primary500;
     };
+    const createPlacementStyles = (placement: string) => {
+      if (placement === 'top')
+        return {
+          borderTopColor: menuIsOpen && 'transparent',
+          borderTopLeftRadius: menuIsOpen && 0,
+          borderTopRightRadius: menuIsOpen && 0,
+          '&:hover': {
+            borderColor: `${isHoverBorderColor()}`,
+            borderTopColor: menuIsOpen && 'transparent',
+            cursor: 'pointer',
+          },
+        };
+      return {
+        borderBottomColor: menuIsOpen && 'transparent',
+        borderBottomLeftRadius: menuIsOpen && 0,
+        borderBottomRightRadius: menuIsOpen && 0,
+        '&:hover': {
+          borderColor: `${isHoverBorderColor()}`,
+          borderBottomColor: menuIsOpen && 'transparent',
+          cursor: 'pointer',
+        },
+      };
+    };
 
     return {
       ...provided,
@@ -77,20 +100,8 @@ export const customStyles = (
       })()}`,
       boxShadow: !menuIsOpen && isFocused && `0px 0px 0px 2px ${theme.colors.base900}`,
       border: `1px solid ${isBorderColor()}`,
-      borderBottomColor: placementState === 'top' ? null : menuIsOpen && 'transparent',
-      borderTopColor: placementState === 'top' ? menuIsOpen && 'transparent' : null,
-      // borderBottomColor: menuIsOpen && 'transparent',
-      borderBottomLeftRadius: placementState === 'top' ? null : menuIsOpen && 0,
-      borderTopLeftRadius: placementState === 'top' ? menuIsOpen && 0 : null,
-      borderBottomRightRadius: placementState === 'top' ? null : menuIsOpen && 0,
-      borderTopRightRadius: placementState === 'top' ? menuIsOpen && 0 : null,
       padding: '5px',
-      '&:hover': {
-        borderColor: `${isHoverBorderColor()}`,
-        borderBottomColor: placementState === 'top' ? null : menuIsOpen && 'transparent',
-        borderTopColor: placementState === 'top' ? menuIsOpen && 'transparent' : null,
-        cursor: 'pointer',
-      },
+      ...createPlacementStyles(placementState),
       ...additionalStyles('control', styles, provided, state),
     };
   },
@@ -107,6 +118,20 @@ export const customStyles = (
 
     getPlacement(state.placement);
 
+    const createPlacementStyles = (placement: string) => {
+      if (placement === 'top')
+        return {
+          borderBottom: menuIsOpen && 'none',
+          borderBottomLeftRadius: menuIsOpen && 0,
+          borderBottomRightRadius: menuIsOpen && 0,
+        };
+      return {
+        borderTop: menuIsOpen && 'none',
+        borderTopLeftRadius: menuIsOpen && 0,
+        borderTopRightRadius: menuIsOpen && 0,
+      };
+    };
+
     return {
       ...provided,
       backgroundColor: theme.colors.base100,
@@ -115,12 +140,7 @@ export const customStyles = (
       margin: 0,
       boxShadow: menuIsOpen && 'none',
       border: `${isBorder()}`,
-      borderTop: placementState === 'top' ? null : menuIsOpen && 'none',
-      borderBottom: placementState === 'top' ? menuIsOpen && 'none' : null,
-      borderTopLeftRadius: placementState === 'top' ? null : menuIsOpen && 0,
-      borderTopRightRadius: placementState === 'top' ? null : menuIsOpen && 0,
-      borderBottomLeftRadius: placementState === 'top' ? menuIsOpen && 0 : null,
-      borderBottomRightRadius: placementState === 'top' ? menuIsOpen && 0 : null,
+      ...createPlacementStyles(placementState),
       ...additionalStyles('menu', styles, provided, state),
     };
   },

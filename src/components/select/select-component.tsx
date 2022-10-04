@@ -79,7 +79,7 @@ const Component = ({
   const [placementState, setPlacementState] = React.useState<string>('');
 
   const getPlacement = (placement: string): void => {
-    setPlacementState(placement);
+    if (placement !== placementState) setPlacementState(placement);
   };
 
   return (
