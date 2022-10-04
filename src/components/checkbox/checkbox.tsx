@@ -12,14 +12,15 @@ interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  label?: string | React.ReactNode;
+  borderColor?: string;
+  borderWidth?: string | number;
   color?: string;
   error?: string;
-  borderWidth?: string | number;
-  borderColor?: string;
-  inputProps?: InputPropsType; // will be removed in next version
-  wrapperProps?: WrapperProps;
+  inputProps?: InputPropsType;
+  label?: string | React.ReactNode;
   labelClassName?: string;
+  // will be removed in next version
+  wrapperProps?: WrapperProps;
 }
 
 // interface CompoundedComponent

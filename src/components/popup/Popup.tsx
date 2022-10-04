@@ -7,14 +7,14 @@ import { PopupContext } from './popupContext';
 import { PopupSizesType } from './types';
 
 export interface PopupProps extends React.HTMLAttributes<HTMLDivElement> {
+  autoFocus?: boolean;
+  backdropClosable?: boolean;
   children: React.ReactNode;
+  dialogClassName?: string;
+  disableEscapeKeyDown?: boolean;
   onHide?: () => void;
   show?: boolean;
-  backdropClosable?: boolean;
-  disableEscapeKeyDown?: boolean;
   size?: PopupSizesType;
-  dialogClassName?: string;
-  autoFocus?: boolean;
 }
 export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
   (

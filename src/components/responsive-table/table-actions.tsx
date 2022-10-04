@@ -15,8 +15,8 @@ const tryToRemoveColumns = ({
   state,
 }: {
   constTableWidth: number;
-  width: number;
   state: TableState;
+  width: number;
 }): TableState => {
   const { columns } = state;
   let tableWidth = constTableWidth;
@@ -48,8 +48,8 @@ const tryToAddColumns = ({
   state,
 }: {
   constTableWidth: number;
-  width: number;
   state: TableState;
+  width: number;
 }): TableState => {
   const { columns, rows } = state;
   let tableWidth = constTableWidth;
@@ -94,7 +94,7 @@ const tryToAddColumns = ({
   return { ...state, columns: newColumns, rows: newRows };
 };
 
-export const resizeTable = ({ width, state }: { width: number; state: TableState }): TableState => {
+export const resizeTable = ({ width, state }: { state: TableState; width: number }): TableState => {
   const { columns } = state;
   const visibleColumns = columns.filter((column) => column.isVisible);
   const tableWidth = visibleColumns.reduce((prevValue, { minWidth, prevWidth }) => {

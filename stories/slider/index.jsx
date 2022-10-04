@@ -10,18 +10,18 @@ export default decorator('Slider', SliderDocs, SliderReadme).add('Slider compone
   return (
     <WrappedComponent>
       <Row style={{ justifyContent: 'space-around', marginTop: '20px' }}>
-        <Col xs="12" sm="6">
+        <Col xs='12' sm='6'>
           <Slider startValues={[0]} domain={[0, 5]} />
         </Col>
-        <Col xs="12" sm="6">
+        <Col xs='12' sm='6'>
           <Slider startValues={[0, 20]} domain={[0, 100]} step={5} />
         </Col>
       </Row>
       <Row style={{ justifyContent: 'space-around', marginTop: '20px' }}>
-        <Col xs="12" sm="6">
+        <Col xs='12' sm='6'>
           <Slider startValues={[0, 50]} disabled />
         </Col>
-        <Col xs="12" sm="6">
+        <Col xs='12' sm='6'>
           <Slider startValues={[0, 500]} domain={[0, 1000]} formatValue={(val) => `$${val}`} />
         </Col>
       </Row>

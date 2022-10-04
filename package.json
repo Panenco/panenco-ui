@@ -15,8 +15,8 @@
     "build:storybook": "build-storybook -s .storybook -c .storybook -o storybook-dist",
     "watch": "npm run clean && rollup --config rollup.config.js",
     "clean": "rimraf lib",
-    "lint": "eslint config src stories  --ext .js --ext .jsx",
-    "prettier": "prettier '{config,src,stories}/**/*.{js,jsx}' --write",
+    "lint": "eslint config src stories  --ext .js,.jsx,.ts,.tsx",
+    "prettier": "prettier '{config,src,stories}/**/*.{js,jsx,ts,tsx}' --write",
     "stylelint": "stylelint 'src/**/*.scss'",
     "prepare": "husky install .husky",
     "pre-commit": "lint-staged",
@@ -24,13 +24,9 @@
     "prepublishOnly": "npm run clean && cross-env BABEL_ENV=production rollup --config rollup.config.js",
     "pack": "yarn build && npm pack"
   },
-  "sideEffects": [
-    "**.css"
-  ],
+  "sideEffects": ["**.css"],
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix"
-    ]
+    "*.{js,jsx,ts,tsx}": ["eslint --fix"]
   },
   "peerDependencies": {
     "classnames": "^2.2.6",
@@ -87,10 +83,12 @@
     "eslint-import-resolver-ts": "^0.4.2",
     "eslint-import-resolver-typescript": "^2.2.0",
     "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-json": "^3.1.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^4.0.2",
+    "eslint-plugin-typescript-sort-keys": "^2.1.0",
     "file-loader": "^6.0.0",
     "html-loader": "^1.1.0",
     "husky": "^7.0.1",

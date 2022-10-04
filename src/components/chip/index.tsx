@@ -8,9 +8,9 @@ import { StyledChip } from './style';
 export interface ChipProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   checked?: boolean;
   icon?: IconType | keyof typeof icons.sm;
-  uncheckedIcon?: IconType | keyof typeof icons.sm;
-  onIconClick?: any;
   iconClassName?: string;
+  onIconClick?: any;
+  uncheckedIcon?: IconType | keyof typeof icons.sm;
 }
 
 export const Chip = React.forwardRef<HTMLButtonElement, ChipProps>(

@@ -7,13 +7,13 @@ import { useTabContext, getTabPanelId } from '../tabContext';
 import { StyledTab } from './style';
 
 export interface TabProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  index: number;
-  className?: string;
-  iconClassName?: string;
-  icon?: IconType | keyof typeof icons.sm;
-  disabled?: boolean;
-  selected?: boolean;
   children: React.ReactNode;
+  className?: string;
+  disabled?: boolean;
+  icon?: IconType | keyof typeof icons.sm;
+  iconClassName?: string;
+  index: number;
+  selected?: boolean;
 }
 
 const BaseTab = React.forwardRef<any, TabProps>(

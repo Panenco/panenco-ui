@@ -16,23 +16,23 @@ interface InputPropsType extends React.InputHTMLAttributes<HTMLTextAreaElement> 
 }
 
 interface InputProp extends InputPropsType {
-  type: string;
   format: string;
   title: string;
+  type: string;
 }
 
 export interface DateInputProps extends React.InputHTMLAttributes<HTMLTextAreaElement> {
-  wrapperProps?: WrapperProps;
+  divider?: string;
   inputProps?: InputPropsType;
   /** inputProps will be removed in next versions */
   inputRef?: React.Ref<any>;
   inputs: InputProp[];
-  value: string;
-  divider?: string;
-  minDate?: Date;
   maxDate?: Date;
-
+  minDate?: Date;
   onChange(newValue): void;
+  value: string;
+
+  wrapperProps?: WrapperProps;
 }
 
 export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(

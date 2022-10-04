@@ -11,9 +11,10 @@ interface InputPropsType extends React.InputHTMLAttributes<HTMLTextAreaElement> 
 }
 
 export interface TextAreaProps extends InputComponent, React.InputHTMLAttributes<HTMLTextAreaElement> {
-  wrapperProps?: WrapperProps;
-  inputProps?: InputPropsType; // will be removed in next versions
+  inputProps?: InputPropsType;
+  // will be removed in next versions
   inputRef?: React.Ref<any>;
+  wrapperProps?: WrapperProps;
 }
 
 export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(

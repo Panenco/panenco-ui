@@ -12,19 +12,19 @@ const sizeToPx = {
   lg: '28px',
 };
 
-export type IconProps<T extends { sm: any; md: any; lg: any }> = {
+export type IconProps<T extends { lg: any; md: any; sm: any }> = {
+  className?: string;
+  disabled?: boolean;
+  height?: number | string;
   icon: keyof typeof defaultIcons.sm | keyof T['sm'];
+  onClick?: (e) => void;
   size?: IconVariantSize;
   strokeWidth?: number | string;
-  disabled?: boolean;
   width?: number | string;
-  height?: number | string;
-  className?: string;
-  onClick?: (e) => void;
 };
 
 export const withIcons =
-  <T extends { sm: any; md: any; lg: any }>(extendIcons?: T) =>
+  <T extends { lg: any; md: any; sm: any }>(extendIcons?: T) =>
   (props: IconProps<T>) => {
     const icons = {
       sm: { ...defaultIcons.sm, ...extendIcons?.sm },

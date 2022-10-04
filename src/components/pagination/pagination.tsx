@@ -9,21 +9,21 @@ import { usePagination } from './usePagination';
 export type PaginationProps = {
   [key: string]: any;
   count?: number;
-  rowsPerPage: number;
-  page: number;
   disabled?: boolean;
-  onButtonClick: (page: number) => void;
-  hidePrevButton?: boolean;
   hideNextButton?: boolean;
-  showLastButton?: boolean;
-  showFirstButton?: boolean;
-  variant?: 'contained' | 'outlined' | 'text';
+  hidePrevButton?: boolean;
   locales?: {
     first: string;
     last: string;
-    previous: string;
     next: string;
+    previous: string;
   };
+  onButtonClick: (page: number) => void;
+  page: number;
+  rowsPerPage: number;
+  showFirstButton?: boolean;
+  showLastButton?: boolean;
+  variant?: 'contained' | 'outlined' | 'text';
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export const Pagination = ({

@@ -4,12 +4,12 @@ import Cell from './cell';
 import { RowType, ColumnType, ExpandRowType } from './types';
 
 interface RowProps {
+  expandRow: ExpandRowType;
+  hiddenColumns: Array<ColumnType>;
+  iconCreator?: (rowIsOpen: boolean) => IconType | keyof typeof icons.sm;
   row: RowType;
   rowIndex: string | number;
   visibleColumns: Array<ColumnType>;
-  hiddenColumns: Array<ColumnType>;
-  expandRow: ExpandRowType;
-  iconCreator?: (rowIsOpen: boolean) => IconType | keyof typeof icons.sm;
 }
 
 const Row = ({ row, rowIndex, visibleColumns, hiddenColumns, expandRow, iconCreator }: RowProps): JSX.Element => {

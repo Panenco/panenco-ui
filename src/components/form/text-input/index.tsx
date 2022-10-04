@@ -7,12 +7,12 @@ import { InputComponent, WrapperProps, InputPropsType } from 'utils/types';
 import { StyledTextInput } from './style';
 
 export interface TextInputProps extends InputComponent, React.InputHTMLAttributes<HTMLInputElement> {
-  rightSubTitle?: React.ReactElement;
-  iconBefore?: IconType | keyof typeof icons.sm;
   iconAfter?: IconType | keyof typeof icons.sm;
+  iconBefore?: IconType | keyof typeof icons.sm;
+  inputProps?: InputPropsType;
   inputRef?: React.Ref<HTMLInputElement>;
-  wrapperProps?: WrapperProps;
-  inputProps?: InputPropsType; // will be removed in next versions
+  rightSubTitle?: React.ReactElement;
+  wrapperProps?: WrapperProps; // will be removed in next versions
 }
 
 export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(

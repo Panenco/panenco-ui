@@ -59,9 +59,9 @@ export default decorator('Pagination', PaginationDocs, PaginationReadme).add('Pa
     <WrappedComponent>
       <BrowserRouter>
         <Row style={{ justifyContent: 'center', marginTop: '20px' }}>
-          <Col xs="3" sm="6" lg="6">
+          <Col xs='3' sm='6' lg='6'>
             <Pagination
-              variant="contained"
+              variant='contained'
               count={201}
               rowsPerPage={rowsPerPage}
               page={page}
@@ -70,9 +70,9 @@ export default decorator('Pagination', PaginationDocs, PaginationReadme).add('Pa
           </Col>
         </Row>
         <Row style={{ justifyContent: 'center', marginTop: '20px' }}>
-          <Col xs="3" sm="6" lg="6">
+          <Col xs='3' sm='6' lg='6'>
             <Pagination
-              variant="outlined"
+              variant='outlined'
               count={201}
               rowsPerPage={rowsPerPage}
               page={page}
@@ -81,9 +81,9 @@ export default decorator('Pagination', PaginationDocs, PaginationReadme).add('Pa
           </Col>
         </Row>
         <Row style={{ justifyContent: 'center', marginTop: '20px' }}>
-          <Col xs="3" sm="6" lg="6">
+          <Col xs='3' sm='6' lg='6'>
             <Pagination
-              variant="text"
+              variant='text'
               count={201}
               rowsPerPage={rowsPerPage}
               page={page}
@@ -92,9 +92,9 @@ export default decorator('Pagination', PaginationDocs, PaginationReadme).add('Pa
           </Col>
         </Row>
         <Row style={{ justifyContent: 'center', marginTop: '20px' }}>
-          <Col xs="3" md="6" lg="8">
+          <Col xs='3' md='6' lg='8'>
             <Pagination
-              variant="text"
+              variant='text'
               onButtonClick={handleButtonClick}
               showFirstButton
               showLastButton
