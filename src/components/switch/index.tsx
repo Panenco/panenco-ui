@@ -6,12 +6,12 @@ import { useTheme } from 'utils/hooks';
 import { StyledSwitch } from './style';
 
 export interface SwitchProps extends React.HTMLAttributes<HTMLElement> {
-  value: boolean;
-  wrapperProps?: any;
   height?: string | number;
-  width?: string | number;
-  size?: number;
   inputRef?: React.Ref<HTMLInputElement>;
+  size?: number;
+  value: boolean;
+  width?: string | number;
+  wrapperProps?: any;
 }
 
 export const Switch: React.FC<SwitchProps> = React.forwardRef<HTMLElement, SwitchProps>(

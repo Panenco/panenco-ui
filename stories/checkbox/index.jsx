@@ -16,19 +16,19 @@ export default decorator('Checkbox', CheckboxDocs, Readme).add('Checkbox compone
   return (
     <WrappedComponent>
       <Row style={{ justifyContent: 'space-around', marginBottom: '30px', marginTop: '10px' }}>
-        <Col xs="2" md="4" lg="3">
-          <Checkbox label="Checkbox" checked={isChecked1} onClick={handleClick} error="Error" />
+        <Col xs='2' md='4' lg='3'>
+          <Checkbox label='Checkbox' checked={isChecked1} onClick={handleClick} error='Error' />
         </Col>
-        <Col xs="2" md="4" lg="3">
-          <Checkbox label="Checkbox" checked={isChecked2} onClick={() => setChecked2(!isChecked2)} />
+        <Col xs='2' md='4' lg='3'>
+          <Checkbox label='Checkbox' checked={isChecked2} onClick={() => setChecked2(!isChecked2)} />
         </Col>
       </Row>
       <Row style={{ justifyContent: 'space-around' }}>
-        <Col xs="2" md="4" lg="3">
-          <Checkbox label="Checkbox" checked disabled />
+        <Col xs='2' md='4' lg='3'>
+          <Checkbox label='Checkbox' checked disabled />
         </Col>
-        <Col xs="2" md="4" lg="3">
-          <Checkbox label="Label example" checked={isChecked3} onClick={() => setChecked3(!isChecked3)} />
+        <Col xs='2' md='4' lg='3'>
+          <Checkbox label='Label example' checked={isChecked3} onClick={() => setChecked3(!isChecked3)} />
         </Col>
       </Row>
     </WrappedComponent>

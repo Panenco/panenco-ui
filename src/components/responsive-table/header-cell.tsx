@@ -4,15 +4,15 @@ import { Icon, Text } from 'components';
 import { SortType, HandleSortType, DataAttributeKey, SortIconsType } from './types';
 
 interface HeaderCellProps extends React.TableHTMLAttributes<HTMLTableCellElement> {
+  handleSort?: HandleSortType;
   label: any;
   minWidth: number;
-  sortName?: string;
   sort?: SortType;
-  handleSort?: HandleSortType;
+  sortIcons?: SortIconsType;
+  sortName?: string;
   thProps?: React.TableHTMLAttributes<HTMLTableCellElement> & {
     [dataAttribute: DataAttributeKey]: any;
   };
-  sortIcons?: SortIconsType;
 }
 
 const HeaderCell = ({

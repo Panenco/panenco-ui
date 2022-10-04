@@ -1,11 +1,6 @@
 export type PUIModeColors = {
+  [key: string]: any;
   alert?: string;
-  error?: string;
-  success?: string;
-  primary200?: string;
-  primary500?: string;
-  primary700?: string;
-  primary900?: string;
   base100?: string;
   base200?: string;
   base300?: string;
@@ -15,17 +10,16 @@ export type PUIModeColors = {
   base700?: string;
   base800?: string;
   base900?: string;
-  [key: string]: any;
+  error?: string;
+  primary200?: string;
+  primary500?: string;
+  primary700?: string;
+  primary900?: string;
+  success?: string;
 };
 
 export type PUIColors = {
   alert: string;
-  error: string;
-  success: string;
-  primary200: string;
-  primary500: string;
-  primary700: string;
-  primary900: string;
   base100: string;
   base200: string;
   base300: string;
@@ -35,42 +29,48 @@ export type PUIColors = {
   base700: string;
   base800: string;
   base900: string;
+  error: string;
+  primary200: string;
+  primary500: string;
+  primary700: string;
+  primary900: string;
+  success: string;
 };
 
 export type PUIWeights = {
-  thin?: number;
-  extraLight?: number;
-  light?: number;
-  regular?: number;
-  medium?: number;
-  semiBold?: number;
-  bold?: number;
-  extrabold?: number;
-  black?: number;
   [key: string]: any;
+  black?: number;
+  bold?: number;
+  extraLight?: number;
+  extrabold?: number;
+  light?: number;
+  medium?: number;
+  regular?: number;
+  semiBold?: number;
+  thin?: number;
 };
 
 export type ButtonVariantType = 'text' | 'contained' | 'outlined';
 
 export type StampVariantType = 'fulfilled' | 'outlined';
 
-export type TextSize = { textSize: string; lineHeight: string | number };
+export type TextSize = { lineHeight: string | number; textSize: string };
 
 export type PUISizes = {
-  xs: TextSize;
-  s: TextSize;
-  m: TextSize;
-  l: TextSize;
-  xl: TextSize;
-  h3: TextSize;
-  h2: TextSize;
-  h1: TextSize;
   [key: string]: any;
+  h1: TextSize;
+  h2: TextSize;
+  h3: TextSize;
+  l: TextSize;
+  m: TextSize;
+  s: TextSize;
+  xl: TextSize;
+  xs: TextSize;
 };
 
 export type PUITypography = {
-  weights: PUIWeights;
   sizes: PUISizes;
+  weights: PUIWeights;
 };
 
 export type PUITheme = {
@@ -82,9 +82,9 @@ export type PUITheme = {
 };
 
 export interface InputComponent {
-  title?: string;
-  subTitle?: string;
   error?: string;
+  subTitle?: string;
+  title?: string;
 }
 export interface InputPropsType extends React.InputHTMLAttributes<HTMLInputElement> {
   [key: string]: any;
@@ -97,14 +97,14 @@ export interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export interface AccordionProps extends React.HTMLAttributes<HTMLDivElement> {
-  isOpen?: boolean;
-  title?: string;
-  onClick?: any;
-  onIconClick?: any;
   iconLeft?: boolean | string;
   iconRight?: boolean | string;
   icons?: Array<string>;
+  isOpen?: boolean;
+  onClick?: any;
+  onIconClick?: any;
   shouldRotateIcon?: boolean;
+  title?: string;
 }
 
 export type IconVariantSize = 'sm' | 'md' | 'lg';

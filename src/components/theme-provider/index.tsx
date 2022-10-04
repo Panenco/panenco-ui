@@ -6,13 +6,13 @@ import { PUITheme } from 'utils/types';
 
 interface ThemeProviderProps {
   children: React.ReactNode;
-  theme?: PUITheme;
   /**
    * By default, the styles are injected last in the <head> element of the page.
    * As a result, they gain more specificity than any other style sheet.
    * If you don't want to override PUI's styles, set this prop to false.
    */
   injectStylesFirst?: boolean;
+  theme?: PUITheme;
 }
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({

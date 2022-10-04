@@ -4,17 +4,17 @@ import { PUITheme } from 'utils/types';
 import { StyledTrack } from '../style';
 
 type TrackProps = {
+  getTrackProps: GetTrackProps;
   source: {
     id: string;
-    value: number;
     percent: number;
+    value: number;
   };
   target: {
     id: string;
-    value: number;
     percent: number;
+    value: number;
   };
-  getTrackProps: GetTrackProps;
   theme: PUITheme;
 };
 

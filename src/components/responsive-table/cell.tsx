@@ -7,15 +7,15 @@ import { RowType, ExpandRowType, CustomCellProps } from './types';
 
 export interface CellProps {
   accessor: string;
-  minWidth: number;
   cellIndex: number;
-  row: RowType;
-  rowIndex: string | number;
-  expandRow: ExpandRowType;
-  hiddenColumnLength: number;
   className?: string;
   component?: React.ComponentType<CustomCellProps>;
+  expandRow: ExpandRowType;
+  hiddenColumnLength: number;
   iconCreator?: (rowIsOpen: boolean) => IconType | keyof typeof icons.sm;
+  minWidth: number;
+  row: RowType;
+  rowIndex: string | number;
 }
 
 const Cell = ({

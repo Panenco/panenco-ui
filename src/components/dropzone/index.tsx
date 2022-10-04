@@ -8,18 +8,19 @@ import { InputPropsType, WrapperProps } from '../../utils/types';
 import { StyledDropzone } from './style';
 
 export interface DropzoneProps extends React.HTMLAttributes<HTMLDivElement> {
-  iconClassName?: string;
-  loading?: boolean;
-  loadingText?: string;
-  textContent?: string;
-  textContentOnDrag?: string;
+  children?: React.ReactNode;
   error?: string;
   icon?: IconType | keyof typeof icons.sm;
+  iconClassName?: string;
+  inputProps?: InputPropsType;
   loader?: JSX.Element;
-  wrapperProps?: WrapperProps;
-  inputProps?: InputPropsType; // will be removed in next versions
+  loading?: boolean;
+  loadingText?: string;
+  // will be removed in next versions
   options?: DropzoneOptions;
-  children?: React.ReactNode;
+  textContent?: string;
+  textContentOnDrag?: string;
+  wrapperProps?: WrapperProps;
 }
 
 export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(

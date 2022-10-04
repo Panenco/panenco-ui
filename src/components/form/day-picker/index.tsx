@@ -43,25 +43,25 @@ export function formatDate(date, format: string, locale?): string {
 }
 
 export interface DayPickerProps extends InputComponent, DayPickerSingleProps {
-  title?: string;
-  subTitle?: string;
-  value?: Date;
-  onChange?: (value: any) => void;
-  position?: Placement;
-  format?: string;
-  isMobile?: boolean;
-  saveLabel?: string;
-  wrapperProps?: any;
-  dayPickerProps?: any;
   dateInputProps?: any;
-  timeInputProps?: any;
-  overlayComponentProps?: any;
-  isTimePicker?: boolean;
+  dayPickerProps?: any;
   defaultDay?: Date;
+  format?: string;
   iconAfter?: HTMLObjectElement | JSX.Element | string;
+  isMobile?: boolean;
+  isTimePicker?: boolean;
+  onChange?: (value: any) => void;
+  overlayComponentProps?: any;
   placeholder?: string;
-  timeTitle?: string;
+  position?: Placement;
+  saveLabel?: string;
+  subTitle?: string;
   timeInputErrorText?: string;
+  timeInputProps?: any;
+  timeTitle?: string;
+  title?: string;
+  value?: Date;
+  wrapperProps?: any;
 }
 
 export const DayPicker = ({

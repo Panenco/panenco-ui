@@ -13,18 +13,18 @@ export default decorator('Stamp', StampDocs, StampReadme).add('Stamp component',
   return (
     <WrappedComponent>
       <Row style={{ justifyContent: 'center' }}>
-        <Col xs="3" sm="3" lg="3">
-          <Stamp color={colors.primary700} variant="fulfilled" backgroundColor={colors.primary200} borderRadius="10">
+        <Col xs='3' sm='3' lg='3'>
+          <Stamp color={colors.primary700} variant='fulfilled' backgroundColor={colors.primary200} borderRadius='10'>
             Status
           </Stamp>
         </Col>
-        <Col xs="3" sm="3" lg="3">
+        <Col xs='3' sm='3' lg='3'>
           <Stamp color={colors.error}>Status</Stamp>
         </Col>
-        <Col xs="3" sm="3" lg="3">
+        <Col xs='3' sm='3' lg='3'>
           <Stamp color={colors.alert}>Status</Stamp>
         </Col>
-        <Col xs="3" sm="3" lg="3">
+        <Col xs='3' sm='3' lg='3'>
           <Stamp color={colors.base900}>Status</Stamp>
         </Col>
       </Row>

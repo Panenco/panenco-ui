@@ -5,15 +5,15 @@ import { StyledHandle } from '../style';
 
 interface HandleProps {
   domain?: number[];
+  formatValue: (value: any) => any;
+  getHandleProps: GetHandleProps;
   handle: {
     id: string;
-    value: number;
     percent: number;
+    value: number;
   };
-  getHandleProps: GetHandleProps;
-  formatValue: (value: any) => any;
-  onChange?: any;
   isActive?: boolean;
+  onChange?: any;
   theme: PUITheme;
 }
 

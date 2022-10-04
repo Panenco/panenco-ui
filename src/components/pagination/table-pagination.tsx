@@ -13,19 +13,19 @@ interface PaginationOption {
 
 export type TablePaginationProps = {
   [key: string]: any;
-  count?: number;
-  rowsPerPage: number;
-  page: number;
-  disabled?: boolean;
   contentBeforeSelect?: string;
-  rowsPerPageOptions?: any;
+  count?: number;
+  disabled?: boolean;
+  locales?: {
+    currentPage: (currentPage: number, allPages: number) => string;
+    displayingItems: (rangeStart: number, rangeEnd: number, count: number) => string;
+    itemsPerPage: string;
+  };
   onChangePage: (page: number | PaginationOption) => void;
   onChangeRowsPerPage: any;
-  locales?: {
-    itemsPerPage: string;
-    displayingItems: (rangeStart: number, rangeEnd: number, count: number) => string;
-    currentPage: (currentPage: number, allPages: number) => string;
-  };
+  page: number;
+  rowsPerPage: number;
+  rowsPerPageOptions?: any;
   selectStyles?: {
     [key: string]: (...args) => { [k: string]: any };
   };

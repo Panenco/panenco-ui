@@ -6,7 +6,7 @@ export interface CellFillerProps {
 }
 const CellFiller = ({ width, ...props }: CellFillerProps): JSX.Element => (
   <td {...props} className={cx('tableCell', 'tableCellFiller')} style={{ maxWidth: `${width}px`, width: `${width}px` }}>
-    <div className="fillerWrapper">
+    <div className='fillerWrapper'>
       <div />
     </div>
   </td>

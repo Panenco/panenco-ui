@@ -7,7 +7,10 @@ module.exports = {
     es6: true,
   },
   extends: [
-    'airbnb',
+    'airbnb-base',
+    'plugin:json/recommended',
+    'plugin:prettier/recommended',
+    'plugin:typescript-sort-keys/recommended',
     'eslint:recommended',
     'plugin:import/recommended',
     'plugin:react/recommended',
@@ -29,7 +32,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  plugins: ['react', 'prettier', '@typescript-eslint', 'react-hooks'],
+  plugins: ['react', 'prettier', '@typescript-eslint', 'react-hooks', 'typescript-sort-keys'],
   rules: {
     'jsx-a11y/anchor-is-valid': 0,
     'react/jsx-filename-extension': 0,
@@ -46,7 +49,6 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': ['error'],
     'react/require-default-props': 'off', // Since we do not use prop-types
     quotes: [2, 'single', { avoidEscape: true }],
-    
   },
   settings: {
     'import/resolver': {

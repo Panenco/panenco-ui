@@ -6,10 +6,10 @@ import { Col as StyledCol } from './style';
 type ColSize = number | string | null;
 
 export interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
-  xs?: ColSize;
-  sm?: ColSize;
-  md?: ColSize;
   lg?: ColSize;
+  md?: ColSize;
+  sm?: ColSize;
+  xs?: ColSize;
 }
 
 export const Col = ({ className, xs, sm, md, lg, children, ...props }: ColProps): JSX.Element => {

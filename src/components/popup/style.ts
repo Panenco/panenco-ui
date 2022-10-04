@@ -52,8 +52,8 @@ export const StyledPopupBody = styled.div`
 `;
 
 export const StyledPopup = styled.div<{
-  theme: PUITheme;
   size: PopupSizesType;
+  theme: PUITheme;
 }>`
   background-clip: padding-box;
   background-color: ${(props: any): string => props.theme.colors.base100};
