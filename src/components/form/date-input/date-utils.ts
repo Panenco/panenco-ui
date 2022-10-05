@@ -1,4 +1,10 @@
-import dateFnsParse, { format, isValid, isAfter as isAfterDateFns, isBefore as isBeforeDateFns } from 'date-fns';
+import {
+  format,
+  isValid,
+  isAfter as isAfterDateFns,
+  isBefore as isBeforeDateFns,
+  parse as dateFnsParse,
+} from 'date-fns';
 
 interface DateUtilsInterface {
   date(value?: any): Date | null;

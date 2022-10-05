@@ -24,9 +24,13 @@
     "prepublishOnly": "npm run clean && cross-env BABEL_ENV=production rollup --config rollup.config.js",
     "pack": "yarn build && npm pack"
   },
-  "sideEffects": ["**.css"],
+  "sideEffects": [
+    "**.css"
+  ],
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": ["eslint --fix"]
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ]
   },
   "peerDependencies": {
     "classnames": "^2.2.6",
@@ -36,6 +40,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
+    "@babel/helper-string-parser": "^7.18.10",
     "@babel/plugin-proposal-class-properties": "7.14.5",
     "@babel/plugin-proposal-json-strings": "7.14.5",
     "@babel/plugin-syntax-dynamic-import": "7.8.3",
@@ -134,7 +139,7 @@
   "dependencies": {
     "@popperjs/core": "^2.11.0",
     "@types/styled-components": "^5.1.25",
-    "date-fns": "^2.21.1",
+    "date-fns": "^2.29.3",
     "focus-visible": "^5.1.0",
     "lodash-es": "^4.17.21",
     "postcss-focus-visible": "^5.0.0",
