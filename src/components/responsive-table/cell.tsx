@@ -3,7 +3,7 @@ import { Text, icons, IconType } from 'components';
 import cx from 'classnames';
 import { useTheme } from 'utils/hooks';
 import { ButtonIcon } from 'components/button-icon';
-import { RowType, ExpandRowType, CustomCellProps } from './types';
+import { RowType, ExpandRowType, CustomCellProps, ColumnType } from './types';
 
 export interface CellProps {
   accessor: string;
@@ -16,6 +16,8 @@ export interface CellProps {
   className?: string;
   component?: React.ComponentType<CustomCellProps>;
   iconCreator?: (rowIsOpen: boolean) => IconType | keyof typeof icons.sm;
+  visibleColumns: Array<ColumnType>;
+  containerWidth: number;
 }
 
 const Cell = ({
@@ -29,6 +31,8 @@ const Cell = ({
   component,
   iconCreator,
   className,
+  visibleColumns,
+  containerWidth,
 }: CellProps): JSX.Element => {
   const theme = useTheme();
   const IS_FIRST_CELL = cellIndex === 0;
@@ -51,6 +55,9 @@ const Cell = ({
       className={cx('tableCell', className)}
       style={{
         maxWidth: `${minWidth}px`,
+        width: `${
+          accessor === visibleColumns[visibleColumns.length - 1]?.accessor ? 0 : (minWidth / containerWidth) * 100
+        }%`,
         color: theme.colors.base900,
       }}
     >

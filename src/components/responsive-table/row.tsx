@@ -10,9 +10,18 @@ interface RowProps {
   hiddenColumns: Array<ColumnType>;
   expandRow: ExpandRowType;
   iconCreator?: (rowIsOpen: boolean) => IconType | keyof typeof icons.sm;
+  containerWidth: number;
 }
 
-const Row = ({ row, rowIndex, visibleColumns, hiddenColumns, expandRow, iconCreator }: RowProps): JSX.Element => {
+const Row = ({
+  row,
+  rowIndex,
+  visibleColumns,
+  hiddenColumns,
+  expandRow,
+  iconCreator,
+  containerWidth,
+}: RowProps): JSX.Element => {
   const cells = visibleColumns.map(({ accessor, minWidth, component, className }, index) => {
     return (
       <Cell
@@ -27,6 +36,8 @@ const Row = ({ row, rowIndex, visibleColumns, hiddenColumns, expandRow, iconCrea
         component={component}
         iconCreator={iconCreator}
         className={className}
+        visibleColumns={visibleColumns}
+        containerWidth={containerWidth}
       />
     );
   });

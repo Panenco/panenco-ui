@@ -37,6 +37,7 @@ const Rows = ({
         hiddenColumns={hiddenColumns}
         iconCreator={iconCreator}
         expandRow={expandRow}
+        containerWidth={containerWidth}
       />
     );
     const expandedRowComponent = (
