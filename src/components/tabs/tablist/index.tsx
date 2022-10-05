@@ -4,9 +4,9 @@ import { useCombinedRefs } from 'utils/hooks/combinedrefs';
 import { StyledTablist } from './style';
 
 export interface TablistProps {
-  className?: string;
   autoActivation?: boolean;
   children: React.ReactNode;
+  className?: string;
 }
 
 export const Tablist = React.forwardRef(
@@ -45,7 +45,7 @@ export const Tablist = React.forwardRef(
 
     return (
       <StyledTablist
-        role="tablist"
+        role='tablist'
         ref={combinedRef}
         className={cx('tablist', className)}
         onKeyDown={handleKeydown}

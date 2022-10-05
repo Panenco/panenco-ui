@@ -7,13 +7,13 @@ import cx from 'classnames';
 import { StyledButtonIcon } from './style';
 
 export interface ButtonIconProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  color?: string;
+  component?: React.ElementType;
   icon: IconType | keyof typeof icons.sm;
   iconClassName?: string;
   iconLeft?: boolean;
-  color?: string;
-  component?: React.ElementType;
-  to?: string;
   size?: number;
+  to?: string;
 }
 
 export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(

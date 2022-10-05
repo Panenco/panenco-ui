@@ -4,8 +4,8 @@ import { idGenerator } from 'utils/helpers';
 import CellFiller from './cell-filler';
 
 export interface TableFillerProps {
-  rowsLength: number;
   columnsLength: number;
+  rowsLength: number;
 }
 
 const TableFiller = ({ rowsLength, columnsLength }: TableFillerProps): JSX.Element => {

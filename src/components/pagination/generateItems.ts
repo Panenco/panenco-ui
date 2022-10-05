@@ -1,9 +1,9 @@
 interface GenerateItemsProps {
   boundaryCount?: number;
-  pagesAmount?: number;
+  currentPage?: number;
   hideNextButton?: boolean;
   hidePrevButton?: boolean;
-  currentPage?: number;
+  pagesAmount?: number;
   showFirstButton?: boolean;
   showLastButton?: boolean;
   siblingCount?: number;

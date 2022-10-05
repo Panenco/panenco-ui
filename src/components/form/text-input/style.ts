@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import { PUITheme } from 'utils/types';
 
 export const StyledTextInput = styled.div<{
-  theme: PUITheme;
   error;
-  iconBefore?: IconType | keyof typeof icons.sm;
   iconAfter?: IconType | keyof typeof icons.sm;
+  iconBefore?: IconType | keyof typeof icons.sm;
+  theme: PUITheme;
 }>`
   display: flex;
   flex-direction: column;

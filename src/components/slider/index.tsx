@@ -7,14 +7,14 @@ import { SliderRail, Handle, Track } from './components';
 import { StyledRootSlider } from './style';
 
 export interface SliderProps extends React.HTMLAttributes<HTMLDivElement> {
-  domain: number[];
-  startValues: number[];
-  formatValue: (value: any) => any;
   disabled?: boolean;
-  theme: PUITheme;
-  step?: number;
-  sliderProps?: RSliderProps;
+  domain: number[];
+  formatValue: (value: any) => any;
   innerRef?: any;
+  sliderProps?: RSliderProps;
+  startValues: number[];
+  step?: number;
+  theme: PUITheme;
 }
 
 interface SliderState {

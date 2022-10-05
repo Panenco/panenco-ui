@@ -5,10 +5,10 @@ import { Props as SelectProps } from 'react-select';
 import { InputComponent } from '../../utils/types';
 
 export interface ChipsProps extends SelectProps, InputComponent {
-  value?: any;
-  chipIconSize?: number | string;
   chipIcon?: IconType | keyof typeof icons.sm;
+  chipIconSize?: number | string;
   onDeleteOption?: any;
+  value?: any;
 }
 
 const ChipsComponent = ({ value, onDeleteOption, chipIcon, getOptionLabel }: ChipsProps): JSX.Element => (

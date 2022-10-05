@@ -5,9 +5,9 @@ import { StampVariantType } from 'index';
 import { StyledStamp } from './style';
 
 export interface StampProps extends React.HTMLAttributes<HTMLDivElement> {
-  color?: string;
   backgroundColor?: string;
   borderRadius?: number;
+  color?: string;
   variant?: StampVariantType;
 }
 

@@ -33,15 +33,15 @@ const MultiValue = () => null;
 export interface ComponentProps extends SelectProps, InputComponent {
   async?: boolean;
   creatable?: boolean;
-  value?: any;
+  deleteItemIcon?: keyof typeof icons.sm;
+  onDeleteItem?: (data: any) => any;
   selectWrapperProps?: React.HTMLAttributes<HTMLDivElement>;
+  value?: any;
   wrapperSelectSizes?: {
     lg?: number | string;
     md?: number | string;
     sm?: number | string;
   };
-  deleteItemIcon?: keyof typeof icons.sm;
-  onDeleteItem?: (data: any) => any;
 }
 
 const Component = ({

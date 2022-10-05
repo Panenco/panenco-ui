@@ -21,12 +21,12 @@ const getFontSize = (theme, size) => {
 };
 
 export interface AvatarProps {
-  className?: string;
-  src?: string;
   alt?: string;
-  size?: number;
   children?: React.ReactNode | string;
+  className?: string;
   imgProps?: React.ImgHTMLAttributes<HTMLImageElement>;
+  size?: number;
+  src?: string;
 }
 
 export const Avatar: React.FC<AvatarProps> = ({ className, src, size = 54, alt, children, imgProps }: AvatarProps) => {

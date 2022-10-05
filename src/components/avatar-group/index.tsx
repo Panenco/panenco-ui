@@ -4,10 +4,10 @@ import { Avatar, AvatarProps } from '../../index';
 import { StyledAvatarGroup } from './style';
 
 export interface AvatarGroupProps {
-  max?: number;
-  className?: string;
-  avatars: any[];
   avatarProps?: AvatarProps;
+  avatars: any[];
+  className?: string;
+  max?: number;
 }
 
 export const AvatarGroup: React.FC<AvatarGroupProps> = ({
