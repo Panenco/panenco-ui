@@ -76,6 +76,12 @@ const Component = ({
     <CustomOption deleteItemIcon={deleteItemIcon} onDeleteItem={onDeleteItem} {...optionProps} />
   );
 
+  const [placementState, setPlacementState] = React.useState<string>('');
+
+  const getPlacement = (placement: string): void => {
+    if (placement !== placementState) setPlacementState(placement);
+  };
+
   return (
     <>
       {title && (
@@ -95,7 +101,7 @@ const Component = ({
             loadingMessage={
               loadingMessage || (({ inputValue }): string => (inputValue ? `Loading ${inputValue}` : 'Loading...'))
             }
-            styles={{ ...customStyles(theme, error, styles) }}
+            styles={{ ...customStyles(theme, getPlacement, placementState, error, styles) }}
             components={{
               Option: SelectOption,
               MultiValue,
@@ -105,6 +111,7 @@ const Component = ({
             error={error}
             isClearable={false}
             placeholder={placeholder}
+            menuPlacement='auto'
             {...props}
           />
         </div>
