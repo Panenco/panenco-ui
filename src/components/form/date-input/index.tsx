@@ -120,29 +120,41 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
         ref={ref}
         {...wrapperProps}
       >
-        {inputs.map((input, index) => {
-          const inputWidth = input.format.length * 10 + 40;
+        <div className='dateInputWrapper'>
+          {inputs.map((input, index) => {
+            const inputWidth = input.format.length * 10 + 40;
 
-          const isLastItem = index + 1 !== inputs.length;
-          return (
-            <div className='dateInputItem' key={`text-input-${input.type}`}>
-              <TextInput
-                id={`text-input-${input.type}`}
-                key={`text-input-${input.type}-input`}
-                onChange={(e): void => {
-                  handleChange(e, index, input.type);
-                }}
-                disabled={disabled}
-                inputRef={inputToRef[index]}
-                title={input.title}
-                style={{ width: `${inputWidth}px` }}
-                placeholder={input.placeholder}
-                value={currentDate.split('/')[index]}
-              />
-              {isLastItem ? <Text className='dateInputItemDivider'>{divider}</Text> : null}
-            </div>
-          );
-        })}
+            const isLastItem = index + 1 !== inputs.length;
+            return (
+              <div className='dateInputItem' key={`text-input-${input.type}`}>
+                <TextInput
+                  id={`text-input-${input.type}`}
+                  key={`text-input-${input.type}-input`}
+                  onChange={(e): void => {
+                    handleChange(e, index, input.type);
+                  }}
+                  disabled={disabled}
+                  inputRef={inputToRef[index]}
+                  title={input.title}
+                  style={{ width: `${inputWidth}px` }}
+                  placeholder={input.placeholder}
+                  value={currentDate.split('/')[index]}
+                />
+                {isLastItem ? <Text className='dateInputItemDivider'>{divider}</Text> : null}
+              </div>
+            );
+          })}
+        </div>
+        {error ? (
+          <Text
+            component='span'
+            size={theme.typography.sizes.xs}
+            color={theme.colors.error}
+            className='inputErrorLabel'
+          >
+            {error}
+          </Text>
+        ) : null}
       </StyledDayPicker>
     );
   },
