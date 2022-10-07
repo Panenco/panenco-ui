@@ -4,7 +4,7 @@ import { Text, TextInput } from 'components';
 import * as React from 'react';
 import { useMemo, useRef } from 'react';
 import { useTheme } from 'utils/hooks';
-import { WrapperProps } from 'utils/types';
+import { InputComponent, WrapperProps } from 'utils/types';
 import DateUtils from './date-utils';
 
 import { StyledDayPicker } from './style';
@@ -21,7 +21,7 @@ interface InputProp extends InputPropsType {
   type: string;
 }
 
-export interface DateInputProps extends React.InputHTMLAttributes<HTMLTextAreaElement> {
+export interface DateInputProps extends React.InputHTMLAttributes<HTMLTextAreaElement>, Pick<InputComponent, 'error'> {
   divider?: string;
   inputProps?: InputPropsType;
   /** inputProps will be removed in next versions */
@@ -37,7 +37,7 @@ export interface DateInputProps extends React.InputHTMLAttributes<HTMLTextAreaEl
 
 export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
   (
-    { inputs, disabled, divider, wrapperProps, value, onChange, minDate, maxDate, className }: DateInputProps,
+    { inputs, disabled, divider, wrapperProps, value, onChange, minDate, maxDate, className, error }: DateInputProps,
     ref,
   ): JSX.Element => {
     const theme = useTheme();
@@ -115,7 +115,7 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
 
     return (
       <StyledDayPicker
-        className={cx('dateInput', !isValid && 'error', className)}
+        className={cx('dateInput', (!isValid || error) && 'error', className)}
         theme={theme}
         ref={ref}
         {...wrapperProps}
