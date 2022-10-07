@@ -21,11 +21,29 @@ const getFontSize = (theme, size) => {
 };
 
 export interface AvatarProps {
+  /**
+   * Avatar class name, allow to override styles
+   */
   className?: string;
+  /**
+   * link to image
+   */
   src?: string;
+  /**
+   * alt text for avatar
+   */
   alt?: string;
+  /**
+   * avatar size
+   */
   size?: number;
+  /**
+   * content of the Avatar
+   */
   children?: React.ReactNode | string;
+  /**
+   * props for Avatar image
+   */
   imgProps?: React.ImgHTMLAttributes<HTMLImageElement>;
 }
 
