@@ -1,0 +1,10 @@
+{
+  "timezone": "Europe/Brussels",
+  "dependencyDashboard": true,
+  "labels": ["dependencies"],
+  "baseBranches": ["master"],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": "every month"
+  }
+}
