@@ -12,13 +12,37 @@ interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  /**
+   * Checkbox label;
+   */
   label?: string | React.ReactNode;
+  /**
+   * Color text-content;
+   */
   color?: string;
+  /**
+   * Error text;
+   */
   error?: string;
+  /**
+   * Border width;
+   */
   borderWidth?: string | number;
+  /**
+   * Border color;
+   */
   borderColor?: string;
+  /**
+   * Child html input component props. Will be removed in next version;
+   */
   inputProps?: InputPropsType; // will be removed in next version
+  /**
+   * Wrapper props;
+   */
   wrapperProps?: WrapperProps;
+  /**
+   * Child label classname;
+   */
   labelClassName?: string;
 }
 
@@ -80,6 +104,7 @@ export const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
             {error}
           </Text>
         )}
+        <Icon icon={Icon.icons.check} className='tick' />
       </StyledCheckbox>
     );
   },
