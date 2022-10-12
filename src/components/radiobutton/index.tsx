@@ -13,10 +13,25 @@ interface WrapperProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
 }
 
 export interface RadioButtonProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  /**
+   * RadioButton label;
+   */
   label?: string;
+  /**
+   * Error text;
+   */
   error?: string;
+  /**
+   * Point color;
+   */
   pointColor?: string;
+  /**
+   * Child html input component props. Will be removed in next version;
+   */
   inputProps?: InputPropsType; // will be removed in next version
+  /**
+   * Wrapper props;
+   */
   wrapperProps?: WrapperProps;
 }
 
@@ -50,7 +65,7 @@ export const Radio = React.forwardRef<HTMLLabelElement, RadioButtonProps>(
             className={cx('radiobox', inputClassName)}
             id={id || defaultId}
             disabled={disabled}
-            checked={checked || value === id}
+            checked={checked || defaultId === id}
             value={id || value || defaultId}
             {...otherInputProps}
             {...props}
