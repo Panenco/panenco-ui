@@ -1,5 +1,5 @@
 import * as React from 'react';
-import cx from 'classnames';
+import * as cx from 'classnames';
 
 import { IconVariantSize } from 'utils/types';
 import { StyledSVG } from './style';

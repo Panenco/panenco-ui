@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { useTheme } from 'utils/hooks';
 import * as ReactDOM from 'react-dom';
-import cx from 'classnames';
+import * as cx from 'classnames';
+
 import { StyledPopup, StyledPopupBackdrop, StyledPopupContainer, StyledFocusLock } from './style';
 import { PopupContext } from './popupContext';
 import { PopupSizesType } from './types';

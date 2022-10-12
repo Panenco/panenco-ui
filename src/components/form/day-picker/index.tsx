@@ -1,5 +1,6 @@
 import * as React from 'react';
-import cx from 'classnames';
+import * as cx from 'classnames';
+
 import 'react-day-picker/dist/style.css';
 import { PrimaryButton, TextInput } from 'components';
 import MaskedInput from 'react-text-mask';

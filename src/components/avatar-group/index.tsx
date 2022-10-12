@@ -1,5 +1,6 @@
 import * as React from 'react';
-import cx from 'classnames';
+import * as cx from 'classnames';
+
 import { Avatar, AvatarProps } from '../../index';
 import { StyledAvatarGroup } from './style';
 
