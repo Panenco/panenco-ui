@@ -62,6 +62,8 @@ export interface DayPickerProps extends InputComponent, DayPickerSingleProps {
   title?: string;
   value?: Date;
   wrapperProps?: any;
+  // eslint-disable-next-line typescript-sort-keys/interface
+  preventClosingOnDaySelect?: boolean;
 }
 
 export const DayPicker = ({
@@ -86,6 +88,7 @@ export const DayPicker = ({
   timeTitle = 'time',
   dir = 'ltr',
   timeInputErrorText = 'Please, enter valid time',
+  preventClosingOnDaySelect,
 }: DayPickerProps): React.ReactElement => {
   const theme = useTheme();
 
@@ -113,7 +116,7 @@ export const DayPicker = ({
     if (selectedDate) {
       const transformedDate = setHours(setMinutes(selectedDate, getMinutes(Number(date))), getHours(Number(date)));
       setDate(transformedDate);
-      if (isTimeValid) {
+      if (isTimeValid && !preventClosingOnDaySelect) {
         closeCalendar();
       }
     } else if (!selectedDate && isTimeValid) closeCalendar();
