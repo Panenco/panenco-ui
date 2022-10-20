@@ -54,6 +54,7 @@ export interface DayPickerProps extends InputComponent, DayPickerSingleProps {
   overlayComponentProps?: any;
   placeholder?: string;
   position?: Placement;
+  preventClosingOnDaySelect?: boolean;
   saveLabel?: string;
   subTitle?: string;
   timeInputErrorText?: string;
@@ -62,8 +63,6 @@ export interface DayPickerProps extends InputComponent, DayPickerSingleProps {
   title?: string;
   value?: Date;
   wrapperProps?: any;
-  // eslint-disable-next-line typescript-sort-keys/interface
-  preventClosingOnDaySelect?: boolean;
 }
 
 export const DayPicker = ({
