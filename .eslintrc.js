@@ -19,6 +19,7 @@ module.exports = {
     'prettier',
     'prettier/react',
     'prettier/@typescript-eslint',
+    'plugin:storybook/recommended',
   ],
   globals: {
     Atomics: 'readonly',
