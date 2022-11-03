@@ -74,6 +74,10 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
     const [currentDate, setDateToState] = React.useState<string>(currentInputValue);
     const [isValid, setValid] = React.useState<boolean>(isCurrentValueValid);
 
+    React.useEffect(() => {
+      if (!currentDate && currentInputValue !== currentDate) setDateToState(currentInputValue);
+    }, [currentInputValue]);
+
     // eslint-disable-next-line no-shadow
     const handleFocusNextInput = (value: string, index: number): void => {
       if (value[0] === '0' && value.length > 1) {
