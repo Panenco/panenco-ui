@@ -10,6 +10,21 @@ module.exports = {
   ],
   webpackFinal: async (config, { configType }) => {
     config.resolve.plugins = [new TsconfigPathsPlugin()];
+
+    config.module.rules = config.module.rules.map((rule) => {
+      if (rule.test && rule.test.toString().includes('svg')) {
+        const test = rule.test.toString().replace('svg|', '').replace(/\//g, '');
+        return { ...rule, test: new RegExp(test) };
+      } else {
+        return rule;
+      }
+    });
+
+    config.module.rules.push({
+      test: /\.svg$/,
+      loader: require.resolve('svg-sprite-loader'),
+    });
+
     return config;
   },
   framework: '@storybook/react',
