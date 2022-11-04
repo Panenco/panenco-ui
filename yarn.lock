@@ -3774,7 +3774,7 @@ __metadata:
     stylelint-config-idiomatic-order: ^8.1.0
     stylelint-config-standard: ^20.0.0
     stylelint-order: ^4.0.0
-    svg-sprite-loader: ^5.0.0
+    svg-sprite-loader: ^6.0.11
     svgo: ^1.3.0
     svgo-loader: ^2.2.1
     terser-webpack-plugin: ^3.0.1
@@ -20805,9 +20805,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svg-sprite-loader@npm:^5.0.0":
-  version: 5.2.1
-  resolution: "svg-sprite-loader@npm:5.2.1"
+"svg-sprite-loader@npm:^6.0.11":
+  version: 6.0.11
+  resolution: "svg-sprite-loader@npm:6.0.11"
   dependencies:
     bluebird: ^3.5.0
     deepmerge: 1.3.2
@@ -20817,7 +20817,7 @@ __metadata:
     svg-baker: ^1.5.0
     svg-baker-runtime: ^1.4.7
     url-slug: 2.0.0
-  checksum: 758a43af01e198b339c4d9c9ade2ee7494a21c262f92bdf29ab781d5a3b2ab5891dc0a3039daf0029105cc56172b43e7d551d49298c0f7ca4c82ff7167c0e3cc
+  checksum: 8ef822902d62bee35c4aeb9c26f3e31b45a4aee9652f93e750a597518cd43194e4b84ca64c4e45df21d96d6b6832a27fc6b196517e65e8ff82f9afdd8403c5b2
   languageName: node
   linkType: hard
 
