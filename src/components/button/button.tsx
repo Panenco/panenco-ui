@@ -1,5 +1,5 @@
-import cx from 'classnames';
-import { Icon, Text } from 'components';
+import * as cx from 'classnames';
+import { Icon, IconType, Text, IconProps, icons } from 'components';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { useTheme } from 'utils/hooks';
@@ -9,14 +9,41 @@ import Spinner from './spinner';
 import { StyledButton } from './style';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  /**
+   * Button text color;
+   */
   color?: string;
+  /**
+   * Type of button component;
+   */
   component?: React.ElementType;
-  icon?: any;
+  /**
+   * Button icon;
+   */
+  icon?: Partial<keyof typeof icons.sm>;
+  /**
+   * Icon class name;
+   */
   iconClassName?: string;
-  iconLeft?: any;
-  iconRight?: any;
+  /**
+   * Button left icon;
+   */
+  iconLeft?: Partial<keyof typeof icons.sm>;
+  /**
+   * Button right icon;
+   */
+  iconRight?: Partial<keyof typeof icons.sm>;
+  /**
+   * Prop to show button loading state;
+   */
   isLoading?: boolean;
+  /**
+   * Prop for navigation (when using button as component='link');
+   */
   to?: string;
+  /**
+   * The variant to use
+   */
   variant?: ButtonVariantType;
 }
 
@@ -61,7 +88,13 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       >
         <div className={cx('content', isLoading && 'contentInvisible')}>
           {((icon && iconLeft) || iconLeft) && (
-            <Icon icon={icon || iconLeft} className={cx('buttonIcon', iconLeft && 'buttonIconLeft', iconClassName)} />
+            <Icon
+              icon={icon || iconLeft}
+              className={cx('buttonIcon', iconLeft && 'buttonIconLeft', iconClassName)}
+              // color={color}
+              color='#000000'
+              size='sm'
+            />
           )}
           <Text className='buttonTitle' size={theme.typography.sizes.m}>
             {children}

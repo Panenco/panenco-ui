@@ -14,6 +14,7 @@ const sizeToPx = {
 
 export type IconProps<T extends { lg: any; md: any; sm: any }> = {
   className?: string;
+  color?: string;
   disabled?: boolean;
   height?: number | string;
   icon: keyof typeof defaultIcons.sm | keyof T['sm'];
@@ -34,7 +35,18 @@ export const withIcons =
 
     const Icon = React.forwardRef<any, IconProps<T>>(
       (
-        { icon = 'eye', className, strokeWidth = 1.33, onClick, size = 'md', disabled, width, height, ...iconProps },
+        {
+          icon = 'eye',
+          className,
+          strokeWidth = 1.33,
+          onClick,
+          size = 'md',
+          disabled,
+          width,
+          height,
+          color,
+          ...iconProps
+        },
         ref,
       ): React.ReactElement<unknown, string | React.JSXElementConstructor<any>> => {
         const iconToRender = icons[size][icon] || icons.sm[icon] || icons.md[icon] || icons.lg[icon];
@@ -47,6 +59,7 @@ export const withIcons =
             height={height || sizeToPx[size]}
             strokeWidth={strokeWidth}
             onClick={onClick}
+            color={color}
             ref={ref}
             {...iconProps}
           >

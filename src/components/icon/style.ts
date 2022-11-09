@@ -1,18 +1,21 @@
 import styled from 'styled-components';
 
 export const StyledSVG = styled.svg`
+  color: red;
   &.svg {
+    fill: red;
+
     width: ${({ width }: any): string => width};
     height: ${({ height }: any): string => height};
     stroke-width: ${({ strokeWidth }: any): string => strokeWidth};
   }
 
   [fill]:not([fill='none']):not([fill^='url(']) {
-    fill: currentColor !important;
+    fill: red;
   }
 
   [stroke]:not([stroke='none']):not([stroke^='url(']) {
-    stroke: currentColor !important;
+    stroke: red;
   }
 
   &.disabled {
