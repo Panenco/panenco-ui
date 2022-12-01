@@ -9,7 +9,7 @@ import { StyledButtonIcon } from './style';
 export interface ButtonIconProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   color?: string;
   component?: React.ElementType;
-  icon: IconType | keyof typeof icons.sm;
+  icon: Partial<keyof typeof icons.sm>;
   iconClassName?: string;
   iconLeft?: boolean;
   size?: number;
