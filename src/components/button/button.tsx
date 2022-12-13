@@ -16,7 +16,6 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   iconLeft?: any;
   iconRight?: any;
   isLoading?: boolean;
-  focusDisabled?: boolean;
   to?: string;
   variant?: ButtonVariantType;
 }
@@ -38,7 +37,6 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       variant = 'text',
       color,
       isLoading,
-      focusDisabled,
       ...props
     }: ButtonProps,
     ref,
@@ -52,13 +50,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         as={component === 'link' ? Link : component}
         type={type}
         disabled={isDisabled}
-        className={cx(
-          iconLeft && 'iconLeft',
-          iconRight && 'iconRight',
-          isDisabled && 'isDisabled',
-          focusDisabled && 'focusDisabled',
-          className,
-        )}
+        className={cx(iconLeft && 'iconLeft', iconRight && 'iconRight', isDisabled && 'isDisabled', className)}
         theme={theme}
         ref={ref}
         color={color}

@@ -53,12 +53,7 @@ export const StyledButton = styled.button<{
     padding: 10px 16px 10px 22px;
   }
 
-  &.focusDisabled:focus:not(:focus-visible) {
-    outline: 0;
-    box-shadow: none;
-  }
-
-  &:focus {
+  &:focus-visible {
     box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.base900};
     z-index: 10;
   }
