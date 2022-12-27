@@ -69,3 +69,5 @@ move forward with **tab-button**, back with **shift+tab-button**, **enter** to s
 - timeTitle - title for time input;
 - dir - direction, default is **ltr**, can be **rtl**
 - timeInputErrorText - error label for time input error, default is 'Please, enter valid time'
+- manualInput - allows user to set day by changing text input value, optional value, requires **inputMask** property to be set, false by default
+- inputMask - text input mask, required for manualInput usage

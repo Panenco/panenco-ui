@@ -22,6 +22,7 @@ export default decorator('DayPicker', DayPickerDocs, README).add('DayPicker', ()
       <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start', marginBottom: '10px' }}>
         <Col xs='12' md='12' lg='12'>
           <DayPicker
+            manualInput
             title='standard'
             value={value}
             onChange={handleChange}
