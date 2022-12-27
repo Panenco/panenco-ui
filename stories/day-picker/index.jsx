@@ -22,11 +22,13 @@ export default decorator('DayPicker', DayPickerDocs, README).add('DayPicker', ()
       <Row style={{ justifyContent: 'space-around', alignItems: 'flex-start', marginBottom: '10px' }}>
         <Col xs='12' md='12' lg='12'>
           <DayPicker
+            manualInput
             title='standard'
             value={value}
             onChange={handleChange}
-            format='MM/dd/yyyy'
-            placeholder='mm/dd/yy'
+            format='MM-dd-yyyy'
+            placeholder='mm-dd-yy'
+            inputMask={[/[0-1]/, /[0-9]/, '-', /[0-3]/, /[0-9]/, '-', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/]}
             dayPickerProps={{
               disabled: {
                 before: new Date(),
