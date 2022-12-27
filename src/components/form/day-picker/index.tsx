@@ -243,7 +243,6 @@ export const DayPicker = ({
           mask={manualInput ? inputMask : false}
           placeholder={placeholder}
           onChange={onTextInputChange}
-          // pipe={createAutoCorrectedDatePipe('mm/dd/yyyy')}
           value={textInputValue}
         />
 

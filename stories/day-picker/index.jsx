@@ -26,8 +26,9 @@ export default decorator('DayPicker', DayPickerDocs, README).add('DayPicker', ()
             title='standard'
             value={value}
             onChange={handleChange}
-            format='MM/dd/yyyy'
-            placeholder='mm/dd/yy'
+            format='MM-dd-yyyy'
+            placeholder='mm-dd-yy'
+            inputMask={[/[0-1]/, /[0-9]/, '-', /[0-3]/, /[0-9]/, '-', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/]}
             dayPickerProps={{
               disabled: {
                 before: new Date(),
