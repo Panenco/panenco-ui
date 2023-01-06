@@ -236,6 +236,7 @@ export const DayPicker = ({
               error={error}
               dir={dayPickerProps?.dir || dir}
               inputRef={customRef}
+              value={textInputValue}
               {...dateInputProps}
               {...restProps}
             />
