@@ -1,5 +1,6 @@
 import * as React from 'react';
-import cx from 'classnames';
+import * as cx from 'classnames';
+
 import { useTheme } from 'utils/hooks';
 import { Icon, icons, IconType } from 'components';
 import { useCombinedRefs } from 'utils/hooks/combinedrefs';

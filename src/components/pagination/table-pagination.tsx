@@ -1,5 +1,6 @@
 import * as React from 'react';
-import cx from 'classnames';
+import * as cx from 'classnames';
+
 import { useTheme } from 'utils/hooks';
 import { Text, SelectInput, Button } from 'components';
 import { usePagination } from './usePagination';

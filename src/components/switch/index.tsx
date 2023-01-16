@@ -1,5 +1,6 @@
 import * as React from 'react';
-import cx from 'classnames';
+import * as cx from 'classnames';
+
 import { Icon } from 'components';
 import { idGenerator, sizeToString } from 'utils/helpers';
 import { useTheme } from 'utils/hooks';

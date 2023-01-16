@@ -3,7 +3,8 @@ import { Icon, icons, Text, IconType } from 'components';
 import { Link } from 'react-router-dom';
 import { useTheme } from 'utils/hooks';
 
-import cx from 'classnames';
+import * as cx from 'classnames';
+
 import { StyledButtonIcon } from './style';
 
 export interface ButtonIconProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
