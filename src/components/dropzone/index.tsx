@@ -1,4 +1,4 @@
-import * as cx from 'classnames';
+import cx from 'classnames';
 
 import { Icon, Loader, Text, icons, IconType } from 'components';
 import * as React from 'react';

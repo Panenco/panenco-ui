@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as cx from 'classnames';
+import cx from 'classnames';
 
 import { Text } from 'components';
 import { useTheme } from 'utils/hooks';
