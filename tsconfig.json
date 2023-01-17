@@ -8,7 +8,7 @@
     "moduleResolution": "node",
     "target": "es2019",
     "module": "esnext",
-    "rootDir": ".",
+    "rootDirs": ["src", "stories"],
     "outDir": "./lib",
     "sourceMap": true,
     "checkJs": false,
