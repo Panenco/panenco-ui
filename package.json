@@ -8,6 +8,9 @@
   "license": "MIT",
   "author": "Panenco <info@panenco.com>",
   "repository": "git@github.com:Panenco/panenco-ui.git",
+  "files": [
+    "lib/**/*"
+  ],
   "scripts": {
     "start": "start-storybook -p 9000 -s .storybook -c .storybook",
     "build": "npm run clean && cross-env BABEL_ENV=production rollup --config rollup.config.js",
