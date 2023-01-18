@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Icon, Text } from 'components';
 import AnimatedHeight from 'react-animate-height';
 import cx from 'classnames';
+
 import { useAccordion } from 'components/accordion/useAccordion';
 import { useTheme } from 'utils/hooks';
 import { idGenerator } from 'utils/helpers';

@@ -1,4 +1,5 @@
 import cx from 'classnames';
+
 import { Text } from 'components';
 import * as React from 'react';
 import { idGenerator } from 'utils/helpers';

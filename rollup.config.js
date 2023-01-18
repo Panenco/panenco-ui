@@ -42,6 +42,9 @@ export default {
       clean: true,
       // tsconfig: './tsconfig.json',
       typescript: ttypescript,
+      tsconfigOverride: {
+        exclude: ['node_modules', 'lib', 'stories'],
+      },
     }),
     css({
       output: path.join(paths.outputPath, 'styles.css'),

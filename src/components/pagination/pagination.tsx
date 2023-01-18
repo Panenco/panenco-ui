@@ -1,5 +1,6 @@
 import * as React from 'react';
 import cx from 'classnames';
+
 import { useTheme } from 'utils/hooks';
 import { Text, Icon, Button } from 'components';
 import { generateItems } from './generateItems';

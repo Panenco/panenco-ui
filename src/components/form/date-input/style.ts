@@ -6,7 +6,12 @@ export const StyledDayPicker = styled.div<{
 }>`
   position: relative;
   display: flex;
+  flex-direction: column;
   background-color: transparent;
+
+  .dateInputWrapper {
+    display: flex;
+  }
 
   .dateInputItem {
     display: flex;
