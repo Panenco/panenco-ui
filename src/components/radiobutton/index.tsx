@@ -1,4 +1,4 @@
-import * as cx from 'classnames';
+import cx from 'classnames';
 
 import { Text } from 'components';
 import * as React from 'react';

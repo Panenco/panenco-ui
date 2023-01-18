@@ -2,9 +2,6 @@ const webpack = require('webpack');
 const path = require('path');
 const paths = require('../config/paths');
 const postcssFocusVisible = require('postcss-focus-visible');
-const Provision = require('atbmarket');
-const bag = new Provision({ size: 'small' });
-bag.draw();
 
 module.exports = {
   resolve: {
@@ -21,10 +18,7 @@ module.exports = {
       {
         test: /\.tsx?$/,
         include: path.resolve(paths.src),
-        use: [
-          'babel-loader',
-          'ts-loader',
-        ],
+        use: ['babel-loader', 'ts-loader'],
       },
       {
         test: /\.svg$/,

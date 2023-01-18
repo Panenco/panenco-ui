@@ -19,6 +19,7 @@
 // import ResponsiveTableStory from './responsive-table';
 // import SelectStory from './select';
 // import SliderStory from './slider';
+// import StampStory from './stamp';
 // import SwitchStory from './switch';
 // import TabStory from './tabs';
 // import TextStory from './text';
@@ -41,5 +42,6 @@
 // storiesOf('ResponsiveTable', ResponsiveTableStory);
 // storiesOf('Select', SelectStory);
 // storiesOf('Slider', SliderStory);
+// storiesOf('Stamp', StampStory);
 // storiesOf('Switcher', SwitchStory);
 // storiesOf('Tab', TabStory);
