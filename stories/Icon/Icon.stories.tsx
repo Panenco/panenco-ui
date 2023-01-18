@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Icon, Text, icons, TextInput } from 'components';
-import { ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import docs from './readme.md';
 
 export default {
@@ -14,11 +14,20 @@ export default {
     },
   },
   argTypes: {
-    backgroundColor: { control: 'color' },
+    height: { control: 'number' },
+    strokeWidth: { control: 'number' },
+    width: { control: 'number' },
+  },
+  args: {
+    icon: 'eye',
+    strokeWidth: 1.33,
+    size: 'md',
   },
 } as ComponentMeta<typeof Icon>;
 
-export const Icons = () => {
+export const IconDemo: ComponentStory<typeof Icon> = (args) => <Icon {...args} />;
+
+export const IconsList = () => {
   const [searchText, setSearchText] = useState('');
 
   const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>): void => {
@@ -28,13 +37,7 @@ export const Icons = () => {
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'column' }}>
       <div style={{ width: '300px', marginBottom: '10px' }}>
-        <TextInput
-          onChange={(e): void => {
-            handleChange(e);
-          }}
-          placeholder='Search icons'
-          iconBefore='search'
-        />
+        <TextInput onChange={handleChange} placeholder='Search icons' iconBefore='search' />
       </div>
 
       <div style={{ margin: '0 0 20px 0', marginRight: '20px' }}>
@@ -108,4 +111,8 @@ export const Icons = () => {
       </div>
     </div>
   );
+};
+
+IconsList.parameters = {
+  controls: { disable: true },
 };
