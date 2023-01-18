@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Text, icons, IconType } from 'components';
-import * as cx from 'classnames';
+import cx from 'classnames';
 
 import { useTheme } from 'utils/hooks';
 import { ButtonIcon } from 'components/button-icon';

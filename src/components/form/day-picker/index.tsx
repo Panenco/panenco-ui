@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as cx from 'classnames';
+import cx from 'classnames';
 
 import 'react-day-picker/dist/style.css';
 import { PrimaryButton, TextInput } from 'components';
@@ -13,6 +13,7 @@ import {
   setHours,
   setMinutes,
   isDate,
+  isValid,
 } from 'date-fns';
 import { DayPicker as ReactDayPicker, DayPickerSingleProps } from 'react-day-picker';
 import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe';
@@ -23,7 +24,10 @@ import { useTheme } from 'utils/hooks';
 // eslint-disable-next-line import/no-duplicates
 import en from 'date-fns/locale/en-GB';
 import FocusLock from 'react-focus-lock';
+import { useEffect, useMemo, useState } from 'react';
 import { StyledDayPicker } from './style';
+
+const defaultMask = [/[0-1]/, /[0-9]/, '/', /[0-3]/, /[0-9]/, '/', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/];
 
 const transformTime = (date = new Date()): string => {
   const hours = date.getHours() > 9 ? date.getHours() : `0${date.getHours()}`;
@@ -49,12 +53,15 @@ export interface DayPickerProps extends InputComponent, DayPickerSingleProps {
   defaultDay?: Date;
   format?: string;
   iconAfter?: HTMLObjectElement | JSX.Element | string;
+  inputMask?: (string | RegExp)[];
   isMobile?: boolean;
   isTimePicker?: boolean;
+  manualInput?: boolean;
   onChange?: (value: any) => void;
   overlayComponentProps?: any;
   placeholder?: string;
   position?: Placement;
+  preventClosingOnDaySelect?: boolean;
   saveLabel?: string;
   subTitle?: string;
   timeInputErrorText?: string;
@@ -87,19 +94,46 @@ export const DayPicker = ({
   timeTitle = 'time',
   dir = 'ltr',
   timeInputErrorText = 'Please, enter valid time',
+  preventClosingOnDaySelect,
+  manualInput = false,
+  inputMask = defaultMask,
 }: DayPickerProps): React.ReactElement => {
   const theme = useTheme();
 
-  const [isCalendarOpen, setIsCalendarOpen] = React.useState(false);
-  const [date, setDate] = React.useState<Date>(value || defaultDay || new Date());
-  const [dateTime, setDateTime] = React.useState(transformTime(new Date(date)));
-  const [isTimeValid, setIsTimeValid] = React.useState<boolean>(true);
+  const defaultDate = value || defaultDay || new Date();
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+  const [date, setDate] = useState<Date>(defaultDate);
+  const [dateTime, setDateTime] = useState(transformTime(new Date(date)));
+  const [isTimeValid, setIsTimeValid] = useState<boolean>(true);
+
+  const inputValue = useMemo(() => formatDate(date, format), [date, format]);
+
+  const [month, setMonth] = useState<Date>(defaultDate);
+
+  const [textInputValue, setTextInputValue] = useState<string>(inputValue);
 
   React.useEffect(() => {
     if (onChange) onChange(date);
   }, [date]);
 
+  useEffect(() => {
+    // get parsed date from text input
+    const parsedDate = parseDate(textInputValue, format);
+
+    // check if text input has string which is valid date
+    const isParsedDateValid = isValid(parsedDate);
+
+    if (isParsedDateValid && parsedDate) {
+      setDate(parsedDate);
+      setMonth(parsedDate);
+    }
+  }, [textInputValue]);
+
   const calendarRef = React.useRef<HTMLDivElement>(null);
+
+  const onTextInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTextInputValue(event.target.value);
+  };
 
   const closeCalendar = () => {
     if (isTimeValid) setIsCalendarOpen(false);
@@ -114,9 +148,11 @@ export const DayPicker = ({
     if (selectedDate) {
       const transformedDate = setHours(setMinutes(selectedDate, getMinutes(Number(date))), getHours(Number(date)));
       setDate(transformedDate);
-      if (isTimeValid) {
+      if (isTimeValid && !preventClosingOnDaySelect) {
         closeCalendar();
       }
+
+      setTextInputValue(formatDate(transformedDate, format));
     } else if (!selectedDate && isTimeValid) closeCalendar();
   };
 
@@ -139,6 +175,7 @@ export const DayPicker = ({
       if (!isTimeValid) setIsTimeValid(true);
       setDateTime(e.target.value);
       setDate(setHours(setMinutes(Number(date), minutes), hours));
+      setTextInputValue(formatDate(setHours(setMinutes(Number(date), minutes), hours), format));
     } else {
       setDateTime(e.target.value.replace(/[_:]/g, ''));
       setIsTimeValid(false);
@@ -180,26 +217,36 @@ export const DayPicker = ({
 
   return (
     <StyledDayPicker theme={theme} error={error} className='dayPickerWrapper' {...wrapperProps}>
-      <FocusLock returnFocus autoFocus disabled={!isCalendarOpen}>
-        <TextInput
-          title={title}
-          subTitle={subTitle}
-          onClick={showCalendar}
-          onChange={showCalendar}
-          onKeyUp={(event) => {
-            if (event.key === 'Enter') {
-              showCalendar();
-            }
-          }}
-          disabled={isCalendarOpen || dateInputProps?.disable}
-          type='text'
+      <FocusLock returnFocus autoFocus disabled={manualInput || !isCalendarOpen}>
+        <MaskedInput
+          id='date-input-id'
+          key='date-input-id'
+          render={(customRef, restProps): JSX.Element => (
+            <TextInput
+              title={title}
+              subTitle={subTitle}
+              onClick={showCalendar}
+              onKeyUp={(event) => {
+                if (event.key === 'Enter') {
+                  showCalendar();
+                }
+              }}
+              disabled={(isCalendarOpen && !manualInput) || dateInputProps?.disable}
+              type='text'
+              iconAfter={iconAfter}
+              error={error}
+              dir={dayPickerProps?.dir || dir}
+              inputRef={customRef}
+              {...dateInputProps}
+              {...restProps}
+            />
+          )}
+          mask={manualInput ? inputMask : false}
           placeholder={placeholder}
-          iconAfter={iconAfter}
-          value={formatDate(date, format)}
-          error={error}
-          dir={dayPickerProps?.dir || dir}
-          {...dateInputProps}
+          onChange={onTextInputChange}
+          value={textInputValue}
         />
+
         <div className='calendar-wrapper'>
           {isCalendarOpen && (
             <div
@@ -212,9 +259,11 @@ export const DayPicker = ({
               {...overlayComponentProps}
             >
               <ReactDayPicker
-                initialFocus={isCalendarOpen}
+                initialFocus={isCalendarOpen && !manualInput}
                 mode='single'
                 defaultMonth={date}
+                onMonthChange={setMonth}
+                month={month}
                 selected={date}
                 onSelect={handleDaySelect}
                 parseDate={parseDate}
