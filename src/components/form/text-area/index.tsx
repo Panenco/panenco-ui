@@ -40,6 +40,8 @@ export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
     const textareaRef = React.createRef() as any;
     const useCombinedrefs = useCombinedRefs(textareaRef, inputRef);
 
+    const { value } = props;
+
     React.useEffect(() => {
       useCombinedrefs.current = textareaRef.current;
     });
@@ -60,8 +62,10 @@ export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
     };
 
     React.useEffect(() => {
-      recalculateHeight();
-    }, []);
+      if (value && counter === 0) {
+        recalculateHeight(String(value));
+      }
+    }, [value]);
 
     const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>): void => {
       recalculateHeight(event.target.value);
