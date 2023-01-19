@@ -24,9 +24,9 @@ const Template: ComponentStory<typeof Radio> = (args) => <Radio {...args} />;
 export const RadioButton = Template.bind({});
 
 RadioButton.args = {
-  label: 'RadioButton label1',
+  label: 'Radio button label',
   error: 'Validation error',
-  pointColor: colors.base700,
+  pointColor: colors.primary700,
   disabled: false,
   checked: false,
 };
