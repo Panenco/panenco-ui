@@ -6,7 +6,7 @@ import { useAccordionContext } from './group';
 export interface UseAccordionProps {
   isOpen?: boolean;
   onClick?: (e?: MouseEvent) => void;
-  ref?: any;
+  ref?: React.RefObject<HTMLDivElement>;
   theme: PUITheme;
 }
 
