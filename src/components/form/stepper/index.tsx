@@ -1,4 +1,5 @@
 import cx from 'classnames';
+
 import { Icon, Text } from 'components';
 import * as React from 'react';
 import { useTheme } from 'utils/hooks';
@@ -7,16 +8,14 @@ import { InputComponent, InputPropsType, WrapperProps } from '../../../utils/typ
 import { StyledStepperInput } from './style';
 
 export interface StepperInputProps extends InputComponent, React.InputHTMLAttributes<HTMLInputElement> {
-  value: number;
-  onChange: any;
-  minValue: number;
-  maxValue: number;
-  step: number;
-  iconBefore?: HTMLObjectElement | JSX.Element;
-  iconAfter?: HTMLObjectElement | JSX.Element;
-  wrapperProps?: WrapperProps;
   inputProps?: InputPropsType;
   locales?: { [key: string]: string };
+  maxValue: number;
+  minValue: number;
+  onChange: any;
+  step: number;
+  value: number;
+  wrapperProps?: WrapperProps;
 }
 
 export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
@@ -90,7 +89,7 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
             type='button'
             disabled={currentValue === minValue || disabled}
           >
-            <Icon className='stepperButtonIcon' icon={Icon.icons.minus} />
+            <Icon className='stepperButtonIcon' icon='minus' />
           </button>
           <input
             type='number'
@@ -111,7 +110,7 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
             )}
             type='button'
           >
-            <Icon className='stepperButtonIcon' icon={Icon.icons.plus} />
+            <Icon className='stepperButtonIcon' icon='plus' />
           </button>
         </div>
         <div className='inputError'>

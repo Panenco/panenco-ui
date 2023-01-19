@@ -4,22 +4,36 @@ module.exports = {
   root: true,
   env: {
     browser: true,
-    es6: true
+    es6: true,
   },
-  extends: ['airbnb', 'eslint:recommended', 'plugin:import/recommended', 'plugin:react/recommended', 'plugin:@typescript-eslint/eslint-recommended', 'plugin:@typescript-eslint/recommended', 'prettier', 'prettier/react', 'prettier/@typescript-eslint', 'plugin:storybook/recommended'],
+  extends: [
+    'airbnb-base',
+    'plugin:json/recommended',
+    'plugin:prettier/recommended',
+    'plugin:typescript-sort-keys/recommended',
+    'eslint:recommended',
+    'plugin:import/recommended',
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'prettier',
+    'prettier/react',
+    'prettier/@typescript-eslint',
+    'plugin:storybook/recommended',
+  ],
   globals: {
     Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly'
+    SharedArrayBuffer: 'readonly',
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
     },
     ecmaVersion: 2018,
-    sourceType: 'module'
+    sourceType: 'module',
   },
-  plugins: ['react', 'prettier', '@typescript-eslint', 'react-hooks'],
+  plugins: ['react', 'prettier', '@typescript-eslint', 'react-hooks', 'typescript-sort-keys'],
   rules: {
     'jsx-a11y/anchor-is-valid': 0,
     'react/jsx-filename-extension': 0,
@@ -35,23 +49,23 @@ module.exports = {
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
     'react/require-default-props': 'off', // Since we do not use prop-types
-    quotes: [2, 'single', {
-      avoidEscape: true
-    }]
+    quotes: [2, 'single', { avoidEscape: true }],
   },
   settings: {
     'import/resolver': {
       typescript: {},
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
-        moduleDirectory: [path.resolve(__dirname, './node_modules'), path.resolve(__dirname, 'src')]
-      }
-    }
+        moduleDirectory: [path.resolve(__dirname, './node_modules'), path.resolve(__dirname, 'src')],
+      },
+    },
   },
-  overrides: [{
-    files: ['*.js', '*.jsx'],
-    rules: {
-      '@typescript-eslint/explicit-function-return-type': 'off'
-    }
-  }]
+  overrides: [
+    {
+      files: ['*.js', '*.jsx'],
+      rules: {
+        '@typescript-eslint/explicit-function-return-type': 'off',
+      },
+    },
+  ],
 };

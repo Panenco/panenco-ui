@@ -1,21 +1,21 @@
 import * as React from 'react';
 import { useTheme } from 'utils/hooks';
 import * as ReactDOM from 'react-dom';
-import FocusLock from 'react-focus-lock';
 import cx from 'classnames';
-import { StyledPopup, StyledPopupBackdrop, StyledPopupContainer } from './style';
+
+import { StyledPopup, StyledPopupBackdrop, StyledPopupContainer, StyledFocusLock } from './style';
 import { PopupContext } from './popupContext';
 import { PopupSizesType } from './types';
 
 export interface PopupProps extends React.HTMLAttributes<HTMLDivElement> {
+  autoFocus?: boolean;
+  backdropClosable?: boolean;
   children: React.ReactNode;
+  dialogClassName?: string;
+  disableEscapeKeyDown?: boolean;
   onHide?: () => void;
   show?: boolean;
-  backdropClosable?: boolean;
-  disableEscapeKeyDown?: boolean;
   size?: PopupSizesType;
-  dialogClassName?: string;
-  autoFocus?: boolean;
 }
 export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
   (
@@ -41,8 +41,8 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
       if (ev.key === 'Escape' && onHide) onHide();
     };
 
-    const handleBackdropClose = (e: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
-      if (backdropClosable && e.target === e.currentTarget && onHide) {
+    const handleBackdropClose = (): void => {
+      if (backdropClosable && onHide) {
         onHide();
       }
     };
@@ -70,26 +70,26 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
       <PopupContext.Provider value={{ onHide }}>
         {show &&
           ReactDOM.createPortal(
-            <FocusLock returnFocus autoFocus={autoFocus} {...props}>
+            <StyledFocusLock returnFocus autoFocus={autoFocus} {...props}>
               <StyledPopupBackdrop className='popupBackdrop' theme={theme} />
               <StyledPopupContainer
+                onMouseDown={handleBackdropClose}
                 className='popupContainer'
                 tabIndex={-1}
                 role='dialog'
                 aria-modal='true'
                 ref={ref}
-                onMouseDown={handleBackdropClose}
               >
                 <StyledPopup
                   size={size}
                   className={cx('popupDialog', dialogClassName)}
-                  onClick={popupStopPropagation}
+                  onMouseDown={popupStopPropagation}
                   theme={theme}
                 >
                   {children}
                 </StyledPopup>
               </StyledPopupContainer>
-            </FocusLock>,
+            </StyledFocusLock>,
             document.body,
           )}
       </PopupContext.Provider>

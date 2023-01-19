@@ -4,8 +4,8 @@ import { ColumnType, SortType, HandleSortType, SortIconsType } from './types';
 
 interface ColumnsProps {
   columns: Array<ColumnType>;
-  sort?: SortType;
   handleSort?: HandleSortType;
+  sort?: SortType;
   sortIcons?: SortIconsType;
 }
 

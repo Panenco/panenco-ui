@@ -1,5 +1,6 @@
 import * as React from 'react';
 import cx from 'classnames';
+
 import { Icon } from 'components/icon';
 import { Text } from 'components/text';
 import { useTheme } from 'utils/hooks';
@@ -13,9 +14,13 @@ interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
   /**
-   * Checkbox label;
+   * Border color;
    */
-  label?: string | React.ReactNode;
+  borderColor?: string;
+  /**
+   * Border width;
+   */
+  borderWidth?: string | number;
   /**
    * Color text-content;
    */
@@ -25,31 +30,23 @@ export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElemen
    */
   error?: string;
   /**
-   * Border width;
-   */
-  borderWidth?: string | number;
-  /**
-   * Border color;
-   */
-  borderColor?: string;
-  /**
    * Child html input component props. Will be removed in next version;
    */
-  inputProps?: InputPropsType; // will be removed in next version
+  inputProps?: InputPropsType;
   /**
-   * Wrapper props;
+   * Checkbox label;
    */
-  wrapperProps?: WrapperProps;
+  label?: string | React.ReactNode;
   /**
    * Child label classname;
    */
   labelClassName?: string;
+  // will be removed in next version
+  /**
+   * Wrapper props;
+   */
+  wrapperProps?: WrapperProps;
 }
-
-// interface CompoundedComponent
-//   extends React.ForwardRefExoticComponent<CheckboxProps & React.RefAttributes<HTMLLabelElement>> {
-//   defaultProps?: any;
-// }
 
 export const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
   (
@@ -91,7 +88,7 @@ export const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
             {...props}
           />
           <div className={cx('container', error && 'error')}>
-            {checked && <Icon icon={Icon.icons.check} className='tick' />}
+            {checked && <Icon icon='check' size='sm' className='tick' />}
           </div>
           {label && (
             <Text component='p' className={cx('labelTitle', labelClassName)}>
@@ -104,7 +101,7 @@ export const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
             {error}
           </Text>
         )}
-        <Icon icon={Icon.icons.check} className='tick' />
+        <Icon icon='check' className='tick' />
       </StyledCheckbox>
     );
   },

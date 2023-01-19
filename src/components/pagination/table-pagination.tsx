@@ -1,7 +1,8 @@
 import * as React from 'react';
 import cx from 'classnames';
+
 import { useTheme } from 'utils/hooks';
-import { Text, Icon, SelectInput, Button } from 'components';
+import { Text, SelectInput, Button } from 'components';
 import { usePagination } from './usePagination';
 import { StyledPagination } from './styles';
 import { additionalStyles } from '../select/style';
@@ -13,19 +14,19 @@ interface PaginationOption {
 
 export type TablePaginationProps = {
   [key: string]: any;
-  count?: number;
-  rowsPerPage: number;
-  page: number;
-  disabled?: boolean;
   contentBeforeSelect?: string;
-  rowsPerPageOptions?: any;
+  count?: number;
+  disabled?: boolean;
+  locales?: {
+    currentPage: (currentPage: number, allPages: number) => string;
+    displayingItems: (rangeStart: number, rangeEnd: number, count: number) => string;
+    itemsPerPage: string;
+  };
   onChangePage: (page: number | PaginationOption) => void;
   onChangeRowsPerPage: any;
-  locales?: {
-    itemsPerPage: string;
-    displayingItems: (rangeStart: number, rangeEnd: number, count: number) => string;
-    currentPage: (currentPage: number, allPages: number) => string;
-  };
+  page: number;
+  rowsPerPage: number;
+  rowsPerPageOptions?: any;
   selectStyles?: {
     [key: string]: (...args) => { [k: string]: any };
   };
@@ -134,7 +135,7 @@ export const TablePagination = ({
         <Button
           className='paginationButton'
           disabled={isFirst || disabled}
-          iconLeft={Icon.icons.chevronLeft}
+          iconLeft='chevronLeft'
           iconClassName={cx('paginationButtonIcon', 'paginationButtonIconNoMargin')}
           onClick={(): void => {
             onChangePage(page - 1);
@@ -154,7 +155,7 @@ export const TablePagination = ({
         <Button
           className='paginationButton'
           disabled={isLast || disabled}
-          iconRight={Icon.icons.chevronRight}
+          iconRight='chevronRight'
           iconClassName={cx('paginationButtonIcon', 'paginationButtonIconNoMargin')}
           onClick={(): void => {
             onChangePage(page + 1);

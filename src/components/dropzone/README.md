@@ -40,17 +40,17 @@ Component extends the functionality with next properties.
 - options - options will be added to argument of useDropzone function
 - ref - ref;
 
-| propName          | propType                                | defaultValue                              | isRequired |
-| ----------------- | --------------------------------------- | ----------------------------------------- | ---------- |
-| loading           | boolean                                 | -                                         | -          |
-| iconClassName     | string                                  | -                                         | -          |
-| loadingText       | string                                  | Uploading                                 | -          |
-| textContent       | string                                  | Drop your file here or click to this zone | -          |
-| textContentOnDrag | string                                  | Drop your file here                       | -          |
-| error             | string                                  | -                                         | -          |
-| icon              | HTMLObjectElement                       | -                                         | -          |
-| loader            | JSX.Element                             | -                                         | -          |
-| ref               | React.RefObject                         | -                                         | -          |
-| wrapperProps      | React.HTMLAttributes (HTMLDivElement)   | -                                         | -          |
-| inputProps        | React.HTMLAttributes (HTMLInputElement) | -                                         | -          |
-| options           | DropzoneOptions                         | -                                         | -          |
+| propName          | propType                                                                | defaultValue                              | isRequired |
+| ----------------- | ----------------------------------------------------------------------- | ----------------------------------------- | ---------- |
+| loading           | boolean                                                                 | -                                         | -          |
+| iconClassName     | string                                                                  | -                                         | -          |
+| loadingText       | string                                                                  | Uploading                                 | -          |
+| textContent       | string                                                                  | Drop your file here or click to this zone | -          |
+| textContentOnDrag | string                                                                  | Drop your file here                       | -          |
+| error             | string                                                                  | -                                         | -          |
+| icon              | [IconType](/?path=/story/icon--icon-component) \| keyof typeof icons.sm | "upload"                                  | -          |
+| loader            | JSX.Element                                                             | -                                         | -          |
+| ref               | React.RefObject                                                         | -                                         | -          |
+| wrapperProps      | React.HTMLAttributes (HTMLDivElement)                                   | -                                         | -          |
+| inputProps        | React.HTMLAttributes (HTMLInputElement)                                 | -                                         | -          |
+| options           | DropzoneOptions                                                         | -                                         | -          |

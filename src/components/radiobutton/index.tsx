@@ -1,4 +1,5 @@
 import cx from 'classnames';
+
 import { Text } from 'components';
 import * as React from 'react';
 import { idGenerator } from 'utils/helpers';
@@ -13,10 +14,10 @@ interface WrapperProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
 }
 
 export interface RadioButtonProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  label?: string;
   error?: string;
-  pointColor?: string;
-  inputProps?: InputPropsType; // will be removed in next version
+  inputProps?: InputPropsType;
+  label?: string;
+  pointColor?: string; // will be removed in next version
   wrapperProps?: WrapperProps;
 }
 

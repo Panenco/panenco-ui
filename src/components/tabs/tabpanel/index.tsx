@@ -1,12 +1,13 @@
 import * as React from 'react';
 import cx from 'classnames';
+
 import { useTabContext, getTabPanelId } from '../tabContext';
 import { StyledTabpanel } from './style';
 
 export interface TabpanelProps {
-  index: number;
-  className?: string;
   children: React.ReactNode;
+  className?: string;
+  index: number;
 }
 
 export const Tabpanel = React.forwardRef(
@@ -18,7 +19,7 @@ export const Tabpanel = React.forwardRef(
       <StyledTabpanel
         id={id}
         ref={ref}
-        role="tabpanel"
+        role='tabpanel'
         className={cx('tabpanel', className)}
         hidden={indexSelected !== index}
         {...props}

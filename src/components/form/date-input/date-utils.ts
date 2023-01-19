@@ -1,20 +1,25 @@
-import { format, isValid, isAfter as isAfterDateFns, isBefore as isBeforeDateFns } from 'date-fns';
-import dateFnsParse from 'date-fns/parse';
+import {
+  format,
+  isValid,
+  isAfter as isAfterDateFns,
+  isBefore as isBeforeDateFns,
+  parse as dateFnsParse,
+} from 'date-fns';
 
 interface DateUtilsInterface {
   date(value?: any): Date | null;
 
   formatByString(date: Date, formatString: string): string;
 
-  parse(value: string, formatString: string): null | Date;
-
-  isValid(value: any): boolean;
+  getDate(value: any, dateFormat: string): string;
 
   isAfter(value: Date, comparing: Date): boolean;
 
   isBefore(value: Date, comparing: Date): boolean;
 
-  getDate(value: any, dateFormat: string): string;
+  isValid(value: any): boolean;
+
+  parse(value: string, formatString: string): null | Date;
 }
 
 class DateUtils implements DateUtilsInterface {

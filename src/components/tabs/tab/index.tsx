@@ -1,19 +1,20 @@
 import * as React from 'react';
 import cx from 'classnames';
+
 import { useTheme } from 'utils/hooks';
-import { Icon } from 'components';
+import { Icon, icons, IconType } from 'components';
 import { useCombinedRefs } from 'utils/hooks/combinedrefs';
 import { useTabContext, getTabPanelId } from '../tabContext';
 import { StyledTab } from './style';
 
 export interface TabProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  index: number;
-  className?: string;
-  iconClassName?: string;
-  icon?: HTMLObjectElement;
-  disabled?: boolean;
-  selected?: boolean;
   children: React.ReactNode;
+  className?: string;
+  disabled?: boolean;
+  icon?: IconType | keyof typeof icons.sm;
+  iconClassName?: string;
+  index: number;
+  selected?: boolean;
 }
 
 const BaseTab = React.forwardRef<any, TabProps>(
@@ -53,7 +54,13 @@ const BaseTab = React.forwardRef<any, TabProps>(
         ref={combinedRef}
         {...props}
       >
-        {icon && <Icon icon={icon} className={cx('iconClass', iconClassName)} />}
+        {icon &&
+          (React.isValidElement(icon) ? (
+            icon
+          ) : (
+            <Icon size='sm' icon={icon} className={cx('iconClass', iconClassName)} />
+          ))}
+
         {children}
       </StyledTab>
     );

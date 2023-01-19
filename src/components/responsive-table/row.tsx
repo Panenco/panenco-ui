@@ -1,14 +1,15 @@
 import * as React from 'react';
+import { icons, IconType } from 'components';
 import Cell from './cell';
 import { RowType, ColumnType, ExpandRowType } from './types';
 
 interface RowProps {
+  expandRow: ExpandRowType;
+  hiddenColumns: Array<ColumnType>;
+  iconCreator?: (rowIsOpen: boolean) => IconType | keyof typeof icons.sm;
   row: RowType;
   rowIndex: string | number;
   visibleColumns: Array<ColumnType>;
-  hiddenColumns: Array<ColumnType>;
-  expandRow: ExpandRowType;
-  iconCreator?: (rowIsOpen: boolean) => string;
 }
 
 const Row = ({ row, rowIndex, visibleColumns, hiddenColumns, expandRow, iconCreator }: RowProps): JSX.Element => {
@@ -30,7 +31,7 @@ const Row = ({ row, rowIndex, visibleColumns, hiddenColumns, expandRow, iconCrea
     );
   });
 
-  return <tr className="tableBodyRow">{cells}</tr>;
+  return <tr className='tableBodyRow'>{cells}</tr>;
 };
 
 Row.defaultProps = {

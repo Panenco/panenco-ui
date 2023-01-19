@@ -1,18 +1,19 @@
 import * as React from 'react';
 import cx from 'classnames';
-import { Icon, Text } from 'components';
+
+import { Icon, icons, Text, IconType } from 'components';
 import { useTheme } from 'utils/hooks';
 import { idGenerator } from 'utils/helpers';
 import { InputComponent, WrapperProps, InputPropsType } from 'utils/types';
 import { StyledTextInput } from './style';
 
 export interface TextInputProps extends InputComponent, React.InputHTMLAttributes<HTMLInputElement> {
-  rightSubTitle?: React.ReactElement;
-  iconBefore?: HTMLObjectElement | JSX.Element;
-  iconAfter?: HTMLObjectElement | JSX.Element;
+  iconAfter?: IconType | keyof typeof icons.sm;
+  iconBefore?: IconType | keyof typeof icons.sm;
+  inputProps?: InputPropsType;
   inputRef?: React.Ref<HTMLInputElement>;
-  wrapperProps?: WrapperProps;
-  inputProps?: InputPropsType; // will be removed in next versions
+  rightSubTitle?: React.ReactElement;
+  wrapperProps?: WrapperProps; // will be removed in next versions
 }
 
 export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
@@ -82,7 +83,7 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
           <div className={cx('inputField', error && 'inputFieldError', disabled && 'inputFieldDisabled')}>
             {iconBefore && (
               <label className='iconBefore' htmlFor={defaultId}>
-                {React.isValidElement(iconBefore) ? iconBefore : <Icon icon={iconBefore} />}
+                {React.isValidElement(iconBefore) ? iconBefore : <Icon size='sm' icon={iconBefore} />}
               </label>
             )}
             <input
@@ -100,7 +101,7 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
             />
             {iconAfter && (
               <label className='iconAfter' htmlFor={defaultId}>
-                {React.isValidElement(iconAfter) ? iconAfter : <Icon icon={iconAfter} />}
+                {React.isValidElement(iconAfter) ? iconAfter : <Icon size='sm' icon={iconAfter} />}
               </label>
             )}
           </div>

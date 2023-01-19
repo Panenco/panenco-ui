@@ -6,16 +6,16 @@ import { TextSize, PUIColors, PUITheme } from 'utils/types';
 type EnumColors = keyof PUIColors;
 export interface TextProps extends React.HTMLAttributes<HTMLElement> {
   color?: string | EnumColors;
-  weight?: string | number;
-  size?: string | TextSize;
   component?: keyof React.ReactHTML | React.ComponentType;
+  size?: string | TextSize;
+  weight?: string | number;
 }
 
 const StyledComponent = styled.span<{
-  theme: PUITheme;
-  size?: string | TextSize;
-  weight?: string | number;
   color?: string | EnumColors;
+  size?: string | TextSize;
+  theme: PUITheme;
+  weight?: string | number;
 }>`
   font-size: ${(props: any): number | string => {
     if (typeof props.size === 'string' && Object.keys(props.theme.typography.sizes).includes(props.size)) {

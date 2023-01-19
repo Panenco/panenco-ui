@@ -24,21 +24,21 @@ This component inherits the attributes of the **input** element and extends the 
 - subTitle - Subtitle text content;
 - rightSubTitle - React element that would be displayed in the top right corner of the input
 - error - The text that would be displayed in case an error occurred;
-- iconBefore - An icon from `<Icon/>` component or some JSX.Element that would be displayed at the beginning of the input;
+- iconBefore - Icon component to be render at the beginning of the input;
 - iconAfter - The same as iconBefore. The only difference is that the element would be displayed at the end of the input;
 - wrapperProps - Attributes applied to the wrapper element;
 - inputProps - Attributes applied to the input element;
 - ref - The wrapper ref
 
-| propName     | propType                                | defaultValue | isRequired |
-| ------------ | --------------------------------------- | ------------ | ---------- |
-| title        | string                                  | -            | -          |
-| subtitle     | string                                  | -            | -          |
-| rightSubtitle| ReactElement                            | -            | -          |
-| error        | string                                  | -            | -          |
-| type         | string                                  | text         | -          |
-| iconBefore   | HTMLObjectElement or JSX.Element        | -            | -          |
-| iconAfter    | HTMLObjectElement or JSX.Element        | -            | -          |
-| inputProps   | React.HTMLAttributes (HTMLInputElement) | -            | -          |
-| wrapperProps | React.HTMLAttributes (HTMLDivElement)   | -            | -          |
-| ref          | React.RefObject                         | -            | -          |
+| propName      | propType                                                                | defaultValue | isRequired |
+| ------------- | ----------------------------------------------------------------------- | ------------ | ---------- |
+| title         | string                                                                  | -            | -          |
+| subtitle      | string                                                                  | -            | -          |
+| rightSubtitle | ReactElement                                                            | -            | -          |
+| error         | string                                                                  | -            | -          |
+| type          | string                                                                  | text         | -          |
+| iconBefore    | [IconType](/?path=/story/icon--icon-component) \| keyof typeof icons.sm | -            | -          |
+| iconAfter     | [IconType](/?path=/story/icon--icon-component) \| keyof typeof icons.sm | -            | -          |
+| inputProps    | React.HTMLAttributes (HTMLInputElement)                                 | -            | -          |
+| wrapperProps  | React.HTMLAttributes (HTMLDivElement)                                   | -            | -          |
+| ref           | React.RefObject                                                         | -            | -          |

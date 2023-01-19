@@ -2,7 +2,7 @@ name: Publishing NPM package
 
 on:
   push:
-    branches: [master]
+    branches: [ master ]
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -11,11 +11,12 @@ jobs:
         with:
           token: ${{ secrets.GH_TOKEN }}
 
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
-          node-version: '12'
+          node-version: '16'
+
       - name: Install dependencies
-        uses: bahmutov/npm-install@v1
+        run: yarn install
 
       - name: Build storybook
         run: yarn build:storybook
