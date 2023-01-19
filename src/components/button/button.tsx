@@ -1,4 +1,5 @@
 import cx from 'classnames';
+
 import { Icon, Text } from 'components';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
@@ -9,14 +10,14 @@ import Spinner from './spinner';
 import { StyledButton } from './style';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  color?: string;
   component?: React.ElementType;
-  to?: string;
-  iconClassName?: string;
   icon?: any;
+  iconClassName?: string;
   iconLeft?: any;
   iconRight?: any;
-  color?: string;
   isLoading?: boolean;
+  to?: string;
   variant?: ButtonVariantType;
 }
 

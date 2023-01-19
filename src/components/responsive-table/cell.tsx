@@ -1,21 +1,22 @@
 import * as React from 'react';
-import { Icon, Text } from 'components';
+import { Text, icons, IconType } from 'components';
 import cx from 'classnames';
+
 import { useTheme } from 'utils/hooks';
 import { ButtonIcon } from 'components/button-icon';
 import { RowType, ExpandRowType, CustomCellProps } from './types';
 
 export interface CellProps {
   accessor: string;
-  minWidth: number;
   cellIndex: number;
-  row: RowType;
-  rowIndex: string | number;
-  expandRow: ExpandRowType;
-  hiddenColumnLength: number;
   className?: string;
   component?: React.ComponentType<CustomCellProps>;
-  iconCreator?: (rowIsOpen: boolean) => string;
+  expandRow: ExpandRowType;
+  hiddenColumnLength: number;
+  iconCreator?: (rowIsOpen: boolean) => IconType | keyof typeof icons.sm;
+  minWidth: number;
+  row: RowType;
+  rowIndex: string | number;
 }
 
 const Cell = ({
@@ -34,7 +35,7 @@ const Cell = ({
   const IS_FIRST_CELL = cellIndex === 0;
   const IS_HIDDEN_COLUMNS = hiddenColumnLength !== 0;
 
-  const getIcon = (): string => {
+  const getIcon = (): IconType | keyof typeof icons.sm => {
     if (typeof iconCreator === 'function') {
       return iconCreator(!!row.isOpen);
     }
@@ -61,7 +62,7 @@ const Cell = ({
             onClick={(): void => {
               expandRow(rowIndex);
             }}
-            icon={Icon.icons[getIcon()]}
+            icon={getIcon()}
           />
           {typeof content === 'string' ? <Text className='tableCellWrapContent'>{content}</Text> : content}
         </div>

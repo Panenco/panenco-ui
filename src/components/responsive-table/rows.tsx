@@ -1,19 +1,20 @@
 import * as React from 'react';
 
+import { icons, IconType } from 'components';
 import ExpandedRow from './expanded-row';
 import Row from './row';
 import TableFiller from './table-filler';
 import { ColumnType, ExpandRowType, RowType } from './types';
 
 interface RowsProps {
+  containerWidth?: number;
+  expandRow: ExpandRowType;
+  hiddenColumns: Array<ColumnType>;
+  iconCreator?: (rowIsOpen: boolean) => IconType | keyof typeof icons.sm;
+  isLoading?: boolean;
+  itemsPerPage?: number;
   rows: Array<RowType>;
   visibleColumns: Array<ColumnType>;
-  hiddenColumns: Array<ColumnType>;
-  expandRow: ExpandRowType;
-  containerWidth?: number;
-  itemsPerPage?: number;
-  isLoading?: boolean;
-  iconCreator?: (rowIsOpen: boolean) => string;
 }
 
 const Rows = ({

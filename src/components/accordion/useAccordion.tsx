@@ -4,17 +4,17 @@ import { PUITheme } from '../../utils/types';
 import { useAccordionContext } from './group';
 
 export interface UseAccordionProps {
-  ref?: any;
-  onClick?: (e?: MouseEvent) => void;
   isOpen?: boolean;
+  onClick?: (e?: MouseEvent) => void;
+  ref?: any;
   theme: PUITheme;
 }
 
 export interface UseAccordinReturn {
   combinedRef: React.RefObject<HTMLDivElement>;
-  theme: PUITheme;
-  isOpen?: boolean;
   handleClick: (event?: React.UIEvent) => void | undefined;
+  isOpen?: boolean;
+  theme: PUITheme;
 }
 
 export const useAccordion = (props: UseAccordionProps): UseAccordinReturn => {

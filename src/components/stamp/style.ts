@@ -7,10 +7,10 @@ const getBackgroundColor = (backgroundColor: string, variant: any, lightColor: s
 };
 
 export const StyledStamp = styled.div<{
+  backgroundColor?: string;
+  borderRadius?: number;
   theme: PUITheme;
   variant?: StampVariantType;
-  borderRadius?: number;
-  backgroundColor?: string;
 }>`
   padding: 6px 16px;
   display: flex;

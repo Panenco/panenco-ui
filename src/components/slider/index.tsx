@@ -1,5 +1,6 @@
 import * as React from 'react';
 import cx from 'classnames';
+
 import { Slider as RCSlider, SliderProps as RSliderProps, Rail, Handles, Tracks } from 'react-compound-slider';
 import { withTheme } from 'utils/hocs';
 import { PUITheme } from '../../utils/types';
@@ -7,14 +8,14 @@ import { SliderRail, Handle, Track } from './components';
 import { StyledRootSlider } from './style';
 
 export interface SliderProps extends React.HTMLAttributes<HTMLDivElement> {
-  domain: number[];
-  startValues: number[];
-  formatValue: (value: any) => any;
   disabled?: boolean;
-  theme: PUITheme;
-  step?: number;
-  sliderProps?: RSliderProps;
+  domain: number[];
+  formatValue: (value: any) => any;
   innerRef?: any;
+  sliderProps?: RSliderProps;
+  startValues: number[];
+  step?: number;
+  theme: PUITheme;
 }
 
 interface SliderState {
