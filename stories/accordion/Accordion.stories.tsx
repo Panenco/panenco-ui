@@ -10,6 +10,14 @@ export default {
     iconLeft: true,
     iconRight: true,
     variant: 'outlined',
+    shouldRotateIcon: true,
+  },
+  argTypes: {
+    title: { control: 'text' },
+    iconLeft: { control: 'boolean' },
+    iconRight: { control: 'boolean' },
+    variant: { control: 'radio' },
+    shouldRotateIcon: { control: 'boolean' },
   },
 } as ComponentMeta<typeof PUIAccordion>;
 
@@ -40,3 +48,7 @@ export const AccordionGroup: ComponentStory<typeof PUIAccordion> = (args) => (
     </PUIAccordion>
   </PUIAccordionGroup>
 );
+
+AccordionGroup.parameters = {
+  controls: { disable: true },
+};
