@@ -3,8 +3,8 @@ import { idGenerator } from 'utils/helpers';
 
 interface TabContextType {
   idPrefix: string;
-  indexSelected: any;
-  setIndexSelected: (arg?: any) => void;
+  indexSelected: number;
+  setIndexSelected: (arg: number) => void;
 }
 
 export interface TabContextProps {

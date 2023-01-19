@@ -13,6 +13,7 @@ export default {
         component: docs,
       },
     },
+    controls: { disabled: true },
   },
 } as ComponentMeta<typeof Tabs>;
 
