@@ -8,7 +8,6 @@ export default {
 
   args: {
     src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJmD-ID1Gcf4RD0YWdMtgcjjpMqS89ldAE6w&usqp=CAU',
-    fontSize: { textSize: '16px', lineHeight: '150%' },
     imgProps: {
       alt: 'John Doe',
     },
