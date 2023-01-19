@@ -32,6 +32,8 @@ const render = () => {
         timeTitle = "Time"
         dir="ltr"
         timeInputErrorText="Please, enter valid time"
+        manualInput
+        inputMask={[/[0-1]/, /[0-9]/, '/', /[0-3]/, /[0-9]/, '/', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/]}
         dayPickerProps={{
           disabled: [{ before: new Date()}, { after: new Date()}],
           locale: es,
@@ -69,3 +71,5 @@ move forward with **tab-button**, back with **shift+tab-button**, **enter** to s
 - timeTitle - title for time input;
 - dir - direction, default is **ltr**, can be **rtl**
 - timeInputErrorText - error label for time input error, default is 'Please, enter valid time'
+- manualInput - allows user to set day by changing text input value, optional property, requires **inputMask** property to be set, false by default
+- inputMask - text input mask that follows text input format, required for manualInput usage

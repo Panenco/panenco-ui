@@ -3,7 +3,7 @@ import { Icon, icons, Text, IconType } from 'components';
 import { Link } from 'react-router-dom';
 import { useTheme } from 'utils/hooks';
 
-import * as cx from 'classnames';
+import cx from 'classnames';
 
 import { StyledButtonIcon } from './style';
 
