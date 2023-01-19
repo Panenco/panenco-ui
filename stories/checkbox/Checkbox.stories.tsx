@@ -14,19 +14,20 @@ export default {
       },
     },
   },
-  argTypes: {
-    color: { control: 'color' },
-    borderWidth: { control: { type: 'number', min: 1, step: 1 } },
-  },
 } as ComponentMeta<typeof Checkbox>;
 
 const Template: ComponentStory<typeof Checkbox> = (args) => <Checkbox {...args} />;
 
 export const CheckboxComponent = Template.bind({});
 
+CheckboxComponent.argTypes = {
+  color: { control: 'color' },
+  borderWidth: { control: { type: 'number', min: 1, step: 1 } },
+};
+
 CheckboxComponent.args = {
   label: 'Checkbox label',
-  error: 'Validation error',
-  color: colors.base700,
+  color: colors.primary700,
   disabled: false,
+  checked: true,
 };

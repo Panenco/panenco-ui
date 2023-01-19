@@ -21,6 +21,7 @@ export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElemen
    * Border width;
    */
   borderWidth?: string | number;
+  checked?: boolean;
   /**
    * Color text-content;
    */
@@ -101,7 +102,6 @@ export const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
             {error}
           </Text>
         )}
-        <Icon icon='check' className='tick' />
       </StyledCheckbox>
     );
   },
