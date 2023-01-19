@@ -11,7 +11,10 @@ export interface TabpanelProps {
 }
 
 export const Tabpanel = React.forwardRef(
-  ({ index, children, className, ...props }: TabpanelProps, ref: any): JSX.Element | null => {
+  (
+    { index, children, className, ...props }: TabpanelProps,
+    ref: React.RefObject<HTMLDivElement>,
+  ): JSX.Element | null => {
     const context = useTabContext()!;
     const id = getTabPanelId(context, index)!;
     const { indexSelected } = context;
