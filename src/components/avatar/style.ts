@@ -1,9 +1,6 @@
 import styled from 'styled-components';
-import { PUITheme } from 'utils/types';
 
-export const StyledAvatar = styled.div<{
-  theme: PUITheme;
-}>`
+export const StyledAvatar = styled.div`
   background-color: ${({ theme }) => theme.colors.base200};
   border-radius: 50%;
   border: 1px solid ${({ theme }) => theme.colors.base300};

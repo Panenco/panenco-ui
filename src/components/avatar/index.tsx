@@ -29,20 +29,16 @@ export interface AvatarProps {
 }
 
 export const Avatar: React.FC<AvatarProps> = ({ className, size = 54, children, imgProps, src }: AvatarProps) => {
-  const theme = useTheme();
+  const { typography, colors } = useTheme();
 
-  const fontSize = getFontSize(theme.typography.sizes, size);
+  const fontSize = getFontSize(typography.sizes, size);
 
   if (src)
     return <StyledAvatarImg style={{ height: size, width: size }} className={className} {...imgProps} src={src} />;
 
   return (
-    <StyledAvatar theme={theme} style={{ height: size, width: size }} className={className}>
-      <Text
-        size={fontSize || theme.typography.sizes.m}
-        weight={theme.typography.weights.bold}
-        color={theme.colors.base500}
-      >
+    <StyledAvatar style={{ height: size, width: size }} className={className}>
+      <Text size={fontSize || typography.sizes.m} weight={typography.weights.bold} color={colors.base500}>
         {children}
       </Text>
     </StyledAvatar>
