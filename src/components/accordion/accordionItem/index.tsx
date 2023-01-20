@@ -10,11 +10,37 @@ import { StyledAccordion } from './style';
 
 type IconType = keyof typeof icons.sm | boolean;
 export interface AccordionProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'> {
+  /**
+   * Content of the accordion
+   */
+  children: React.ReactNode;
+  /**
+   * Left icon
+   * @default chevronRight
+   */
   iconLeft?: IconType;
+  /**
+   * Left icon
+   * @default plus/minus
+   */
   iconRight?: IconType;
+  /**
+   * Callback fired when the component is clicked.
+   */
   onClick?: (e?: MouseEvent) => void;
+  /**
+   * Rotate icon when open
+   * @default true
+   */
   shouldRotateIcon?: boolean;
+  /**
+   * Title of the accordion
+   */
   title: string;
+  /**
+   * Variant of the accordion
+   * @default outlined
+   */
   variant?: 'outlined' | 'text';
 }
 

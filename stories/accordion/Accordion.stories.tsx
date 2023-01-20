@@ -1,54 +1,52 @@
 import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Accordion as PUIAccordion, AccordionGroup as PUIAccordionGroup } from 'components/accordion';
+import { Accordion } from 'components/accordion';
+import { icons } from 'components/icon';
 
 export default {
   title: 'Example/Accordion',
-  component: PUIAccordion,
+  component: Accordion,
   args: {
     title: 'Accordion Title',
-    iconLeft: true,
-    iconRight: true,
-    variant: 'outlined',
-    shouldRotateIcon: true,
+    children: 'Accordion Content',
   },
   argTypes: {
     title: { control: 'text' },
-    iconLeft: { control: 'boolean' },
-    iconRight: { control: 'boolean' },
+    iconLeft: {
+      control: 'select',
+      options: [true, ...Object.keys(icons.sm)],
+    },
+    iconRight: {
+      control: 'select',
+      options: [true, ...Object.keys(icons.sm)],
+    },
     variant: { control: 'radio' },
     shouldRotateIcon: { control: 'boolean' },
   },
-} as ComponentMeta<typeof PUIAccordion>;
+} as ComponentMeta<typeof Accordion>;
 
-export const Accordion: ComponentStory<typeof PUIAccordion> = (args) => (
-  <PUIAccordion {...args}>
-    We will verify your application and get back to you if we have any questions. The verification process can take a
-    couple of months. We will verify your application and get back to you if we have any questions. The verification
-    process can take a couple of months.
-  </PUIAccordion>
-);
+const Template: ComponentStory<typeof Accordion> = (args) => <Accordion {...args} />;
 
-export const AccordionGroup: ComponentStory<typeof PUIAccordion> = (args) => (
-  <PUIAccordionGroup>
-    <PUIAccordion {...args}>
-      We will verify your application and get back to you if we have any questions. The verification process can take a
-      couple of months. We will verify your application and get back to you if we have any questions. The verification
-      process can take a couple of months.
-    </PUIAccordion>
-    <PUIAccordion {...args}>
-      We will verify your application and get back to you if we have any questions. The verification process can take a
-      couple of months. We will verify your application and get back to you if we have any questions. The verification
-      process can take a couple of months.
-    </PUIAccordion>
-    <PUIAccordion {...args}>
-      We will verify your application and get back to you if we have any questions. The verification process can take a
-      couple of months. We will verify your application and get back to you if we have any questions. The verification
-      process can take a couple of months.
-    </PUIAccordion>
-  </PUIAccordionGroup>
-);
+export const Default = Template.bind({});
 
-AccordionGroup.parameters = {
-  controls: { disable: true },
+export const Outlined = Template.bind({});
+
+Outlined.args = {
+  iconLeft: true,
+  iconRight: true,
+  variant: 'outlined',
+};
+
+export const Text = Template.bind({});
+
+Text.args = {
+  iconLeft: true,
+  variant: 'text',
+};
+
+export const CustomIcons = Template.bind({});
+
+CustomIcons.args = {
+  iconLeft: 'chevronsRight',
+  iconRight: 'eye',
 };
