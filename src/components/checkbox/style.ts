@@ -11,6 +11,7 @@ export const StyledCheckbox = styled.div<{
   & .label {
     align-items: center;
     display: flex;
+    position: relative;
 
     &:focus-within {
       & .container {
