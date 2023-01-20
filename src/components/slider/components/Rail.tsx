@@ -11,7 +11,7 @@ type SliderRailProps = {
 export const SliderRail = ({ getRailProps, theme }: SliderRailProps): JSX.Element => {
   return (
     <StyledInputRange theme={theme}>
-      <div {...getRailProps()} className="rail" />
+      <div {...getRailProps()} className='rail' />
     </StyledInputRange>
   );
 };

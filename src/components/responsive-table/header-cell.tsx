@@ -1,18 +1,19 @@
 import * as React from 'react';
 import cx from 'classnames';
+
 import { Icon, Text } from 'components';
 import { SortType, HandleSortType, DataAttributeKey, SortIconsType } from './types';
 
 interface HeaderCellProps extends React.TableHTMLAttributes<HTMLTableCellElement> {
+  handleSort?: HandleSortType;
   label: any;
   minWidth: number;
-  sortName?: string;
   sort?: SortType;
-  handleSort?: HandleSortType;
+  sortIcons?: SortIconsType;
+  sortName?: string;
   thProps?: React.TableHTMLAttributes<HTMLTableCellElement> & {
     [dataAttribute: DataAttributeKey]: any;
   };
-  sortIcons?: SortIconsType;
 }
 
 const HeaderCell = ({
@@ -22,8 +23,8 @@ const HeaderCell = ({
   sort,
   handleSort,
   sortIcons = {
-    up: Icon.icons.chevronUp,
-    down: Icon.icons.chevronDown,
+    up: 'chevronUp',
+    down: 'chevronDown',
   },
   ...props
 }: HeaderCellProps): JSX.Element => {
@@ -52,8 +53,16 @@ const HeaderCell = ({
         <Text className='tableHeaderText'>{label}</Text>
         {sortName ? (
           <div className='tableHeaderContent'>
-            <Icon icon={sortIcons.up} className={cx('tableHeaderIcon', asc && 'tableHeaderIconActive')} />
-            <Icon icon={sortIcons.down} className={cx('tableHeaderIcon', desc && 'tableHeaderIconActive')} />
+            {React.isValidElement(sortIcons.up) ? (
+              React.cloneElement(sortIcons.up, { className: cx('tableHeaderIcon', asc && 'tableHeaderIconActive') })
+            ) : (
+              <Icon icon={sortIcons.up} className={cx('tableHeaderIcon', asc && 'tableHeaderIconActive')} />
+            )}
+            {React.isValidElement(sortIcons.down) ? (
+              React.cloneElement(sortIcons.down, { className: cx('tableHeaderIcon', desc && 'tableHeaderIconActive') })
+            ) : (
+              <Icon icon={sortIcons.down} className={cx('tableHeaderIcon', desc && 'tableHeaderIconActive')} />
+            )}
           </div>
         ) : null}
       </button>

@@ -1,25 +1,26 @@
 import * as React from 'react';
-import { Icon, Text } from 'components';
+import { Icon, icons, Text, IconType } from 'components';
 import { Link } from 'react-router-dom';
 import { useTheme } from 'utils/hooks';
 
 import cx from 'classnames';
+
 import { StyledButtonIcon } from './style';
 
 export interface ButtonIconProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  icon: HTMLObjectElement;
-  iconClassName?: string;
-  iconLeft?: boolean;
   color?: string;
   component?: React.ElementType;
-  to?: string;
+  icon: IconType | keyof typeof icons.sm;
+  iconClassName?: string;
+  iconLeft?: boolean;
   size?: number;
+  to?: string;
 }
 
 export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
   (props: ButtonIconProps, ref): JSX.Element => {
     const {
-      icon = Icon.icons.filter,
+      icon = 'filter',
       type,
       className,
       children,
@@ -49,7 +50,7 @@ export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
         {...rest}
         to={component === 'link' ? to : undefined}
       >
-        <Icon icon={icon} className={cx('iconClass', iconClassName)} />
+        {React.isValidElement(icon) ? icon : <Icon icon={icon} className={cx('iconClass', iconClassName)} />}
         {children && <Text className='buttonIconTitle'>{children}</Text>}
       </StyledButtonIcon>
     );

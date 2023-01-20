@@ -1,14 +1,11 @@
 import * as React from 'react';
 import cx from 'classnames';
+
 import { useTheme } from 'utils/hooks';
 import { StampVariantType } from 'index';
 import { StyledStamp } from './style';
 
 export interface StampProps extends React.HTMLAttributes<HTMLDivElement> {
-  /**
-   * Color text-content and border;
-   */
-  color?: string;
   /**
    * Color background and border (when variant === 'fulfilled')
    */
@@ -18,13 +15,17 @@ export interface StampProps extends React.HTMLAttributes<HTMLDivElement> {
    */
   borderRadius?: number;
   /**
-   * The variant to use
-   */
-  variant?: StampVariantType;
-  /**
    * content of the Stamp
    */
   children?: React.ReactNode;
+  /**
+   * Color text-content and border;
+   */
+  color?: string;
+  /**
+   * The variant to use
+   */
+  variant?: StampVariantType;
 }
 
 export const Stamp = React.forwardRef<HTMLDivElement, StampProps>(

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import cx from 'classnames';
+
 import { Icon } from 'components/icon';
 import { Text } from 'components/text';
 import { useTheme } from 'utils/hooks';
@@ -12,14 +13,15 @@ interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  label?: string | React.ReactNode;
+  borderColor?: string;
+  borderWidth?: string | number;
   color?: string;
   error?: string;
-  borderWidth?: string | number;
-  borderColor?: string;
-  inputProps?: InputPropsType; // will be removed in next version
-  wrapperProps?: WrapperProps;
+  inputProps?: InputPropsType;
+  label?: string | React.ReactNode;
   labelClassName?: string;
+  // will be removed in next version
+  wrapperProps?: WrapperProps;
 }
 
 // interface CompoundedComponent
@@ -67,7 +69,7 @@ export const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
             {...props}
           />
           <div className={cx('container', error && 'error')}>
-            {checked && <Icon icon={Icon.icons.check} className='tick' />}
+            {checked && <Icon icon='check' size='sm' className='tick' />}
           </div>
           {label && (
             <Text component='p' className={cx('labelTitle', labelClassName)}>

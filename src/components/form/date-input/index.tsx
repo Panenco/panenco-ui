@@ -1,10 +1,11 @@
 import cx from 'classnames';
+
 import { Text, TextInput } from 'components';
 
 import * as React from 'react';
 import { useMemo, useRef } from 'react';
 import { useTheme } from 'utils/hooks';
-import { WrapperProps } from 'utils/types';
+import { InputComponent, WrapperProps } from 'utils/types';
 import DateUtils from './date-utils';
 
 import { StyledDayPicker } from './style';
@@ -16,28 +17,28 @@ interface InputPropsType extends React.InputHTMLAttributes<HTMLTextAreaElement> 
 }
 
 interface InputProp extends InputPropsType {
-  type: string;
   format: string;
   title: string;
+  type: string;
 }
 
-export interface DateInputProps extends React.InputHTMLAttributes<HTMLTextAreaElement> {
-  wrapperProps?: WrapperProps;
+export interface DateInputProps extends React.InputHTMLAttributes<HTMLTextAreaElement>, Pick<InputComponent, 'error'> {
+  divider?: string;
   inputProps?: InputPropsType;
   /** inputProps will be removed in next versions */
   inputRef?: React.Ref<any>;
   inputs: InputProp[];
-  value: string;
-  divider?: string;
-  minDate?: Date;
   maxDate?: Date;
-
+  minDate?: Date;
   onChange(newValue): void;
+  value: string;
+
+  wrapperProps?: WrapperProps;
 }
 
 export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
   (
-    { inputs, disabled, divider, wrapperProps, value, onChange, minDate, maxDate, className }: DateInputProps,
+    { inputs, disabled, divider, wrapperProps, value, onChange, minDate, maxDate, className, error }: DateInputProps,
     ref,
   ): JSX.Element => {
     const theme = useTheme();
@@ -73,6 +74,10 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
     const isCurrentValueValid = currentInputValue.length ? validateValue(utils.date(value)) : true;
     const [currentDate, setDateToState] = React.useState<string>(currentInputValue);
     const [isValid, setValid] = React.useState<boolean>(isCurrentValueValid);
+
+    React.useEffect(() => {
+      if (!currentDate && currentInputValue !== currentDate) setDateToState(currentInputValue);
+    }, [currentInputValue]);
 
     // eslint-disable-next-line no-shadow
     const handleFocusNextInput = (value: string, index: number): void => {
@@ -115,34 +120,46 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
 
     return (
       <StyledDayPicker
-        className={cx('dateInput', !isValid && 'error', className)}
+        className={cx('dateInput', (!isValid || error) && 'error', className)}
         theme={theme}
         ref={ref}
         {...wrapperProps}
       >
-        {inputs.map((input, index) => {
-          const inputWidth = input.format.length * 10 + 40;
+        <div className='dateInputWrapper'>
+          {inputs.map((input, index) => {
+            const inputWidth = input.format.length * 10 + 40;
 
-          const isLastItem = index + 1 !== inputs.length;
-          return (
-            <div className='dateInputItem' key={`text-input-${input.type}`}>
-              <TextInput
-                id={`text-input-${input.type}`}
-                key={`text-input-${input.type}-input`}
-                onChange={(e): void => {
-                  handleChange(e, index, input.type);
-                }}
-                disabled={disabled}
-                inputRef={inputToRef[index]}
-                title={input.title}
-                style={{ width: `${inputWidth}px` }}
-                placeholder={input.placeholder}
-                value={currentDate.split('/')[index]}
-              />
-              {isLastItem ? <Text className='dateInputItemDivider'>{divider}</Text> : null}
-            </div>
-          );
-        })}
+            const isLastItem = index + 1 !== inputs.length;
+            return (
+              <div className='dateInputItem' key={`text-input-${input.type}`}>
+                <TextInput
+                  id={`text-input-${input.type}`}
+                  key={`text-input-${input.type}-input`}
+                  onChange={(e): void => {
+                    handleChange(e, index, input.type);
+                  }}
+                  disabled={disabled}
+                  inputRef={inputToRef[index]}
+                  title={input.title}
+                  style={{ width: `${inputWidth}px` }}
+                  placeholder={input.placeholder}
+                  value={currentDate.split('/')[index]}
+                />
+                {isLastItem ? <Text className='dateInputItemDivider'>{divider}</Text> : null}
+              </div>
+            );
+          })}
+        </div>
+        {error ? (
+          <Text
+            component='span'
+            size={theme.typography.sizes.xs}
+            color={theme.colors.error}
+            className='inputErrorLabel'
+          >
+            {error}
+          </Text>
+        ) : null}
       </StyledDayPicker>
     );
   },

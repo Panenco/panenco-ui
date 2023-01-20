@@ -22,29 +22,29 @@ const getFontSize = (theme, size) => {
 
 export interface AvatarProps {
   /**
-   * Avatar class name, allow to override styles
-   */
-  className?: string;
-  /**
-   * link to image
-   */
-  src?: string;
-  /**
    * alt text for avatar
    */
   alt?: string;
-  /**
-   * avatar size
-   */
-  size?: number;
   /**
    * content of the Avatar
    */
   children?: React.ReactNode | string;
   /**
+   * Avatar class name, allow to override styles
+   */
+  className?: string;
+  /**
    * props for Avatar image
    */
   imgProps?: React.ImgHTMLAttributes<HTMLImageElement>;
+  /**
+   * avatar size
+   */
+  size?: number;
+  /**
+   * link to image
+   */
+  src?: string;
 }
 
 export const Avatar: React.FC<AvatarProps> = ({ className, src, size = 54, alt, children, imgProps }: AvatarProps) => {
@@ -67,9 +67,7 @@ export const Avatar: React.FC<AvatarProps> = ({ className, src, size = 54, alt, 
         ) : (
           <StyledAvatar theme={theme} style={{ height: size, width: size }} className={className}>
             <Text size={fontSize} weight={theme.typography.weights.bold} color={theme.colors.base500}>
-              {children || alt?.charAt(0) || (
-                <Icon icon={Icon.icons.user} size={size / 2} style={{ display: 'flex' }} />
-              )}
+              {/* {children || alt?.charAt(0) || <Icon icon='user' size='sm' style={{ display: 'flex' }} />} */}
             </Text>
           </StyledAvatar>
         )}
