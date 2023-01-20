@@ -21,6 +21,9 @@ export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElemen
    * Border width;
    */
   borderWidth?: string | number;
+  /**
+   * Checkbox checked state;
+   * */
   checked?: boolean;
   /**
    * Color text-content;
@@ -42,7 +45,6 @@ export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElemen
    * Child label classname;
    */
   labelClassName?: string;
-  // will be removed in next version
   /**
    * Wrapper props;
    */
