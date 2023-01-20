@@ -1,32 +1,36 @@
 import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { colors } from 'styles';
 import { Radio } from 'components/radiobutton';
-import docs from './readme.md';
 
 export default {
-  title: 'Example/RadioButton',
+  title: 'Example/Radio',
   component: Radio,
-  parameters: {
-    docs: {
-      description: {
-        component: docs,
-      },
-    },
-  },
   argTypes: {
     pointColor: { control: 'color' },
+  },
+  args: {
+    label: 'Radio button label',
+    checked: true,
+    inputProps: {
+      id: 'radio-button',
+    },
   },
 } as ComponentMeta<typeof Radio>;
 
 const Template: ComponentStory<typeof Radio> = (args) => <Radio {...args} />;
 
-export const RadioButton = Template.bind({});
+export const Default = Template.bind({});
 
-RadioButton.args = {
-  label: 'Radio button label',
+export const Error = Template.bind({});
+
+Error.args = {
   error: 'Validation error',
-  pointColor: colors.primary700,
-  disabled: false,
+  checked: false,
+};
+
+export const Disabled = Template.bind({});
+
+Disabled.args = {
+  disabled: true,
   checked: false,
 };

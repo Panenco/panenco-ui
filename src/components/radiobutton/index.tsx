@@ -2,7 +2,6 @@ import cx from 'classnames';
 
 import { Text } from 'components';
 import * as React from 'react';
-import { idGenerator } from 'utils/helpers';
 import { useTheme } from 'utils/hooks';
 
 import { InputPropsType } from '../../utils/types';
@@ -14,6 +13,11 @@ interface WrapperProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
 }
 
 export interface RadioButtonProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  /**
+   * Is checked;
+   * @default false
+   * */
+  checked?: boolean;
   /**
    * Error text;
    */
@@ -29,7 +33,8 @@ export interface RadioButtonProps extends React.InputHTMLAttributes<HTMLInputEle
   /**
    * Point color;
    */
-  pointColor?: string; // will be removed in next version
+  pointColor?: string;
+  // will be removed in next version
   /**
    * Wrapper props;
    */
@@ -53,17 +58,15 @@ export const Radio = React.forwardRef<HTMLLabelElement, RadioButtonProps>(
     ref,
   ): JSX.Element => {
     const theme = useTheme();
-    const uniqueID = idGenerator();
-    const defaultId = uniqueID;
     const { className: inputClassName, id, ...otherInputProps } = inputProps;
 
     return (
       <StyledRadio theme={theme} ref={ref} error={error} pointColor={pointColor} {...wrapperProps}>
-        <label className={cx('label', disabled && 'labelDisabled', className)} htmlFor={id || defaultId}>
+        <label className={cx('label', disabled && 'labelDisabled', className)} htmlFor={id}>
           <input
             type='radio'
             className={cx('radiobox', inputClassName)}
-            id={id || defaultId}
+            id={id}
             disabled={disabled}
             checked={checked}
             value={value}
