@@ -14,8 +14,9 @@ import {
   setMinutes,
   isDate,
   isValid,
+  addDays,
 } from 'date-fns';
-import { DayPicker as ReactDayPicker, DayPickerSingleProps } from 'react-day-picker';
+import { DayPicker as ReactDayPicker, DateRange, DayPickerSingleProps } from 'react-day-picker';
 import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe';
 import { InputComponent } from 'utils/types';
 import { Placement } from '@popperjs/core';
@@ -51,6 +52,8 @@ export interface DayPickerProps extends InputComponent, DayPickerSingleProps {
   dateInputProps?: any;
   dayPickerProps?: any;
   defaultDay?: Date;
+  defaultRangeStartDate?: Date;
+  defaultRangeEndDate?: Date;
   format?: string;
   iconAfter?: HTMLObjectElement | JSX.Element | string;
   inputMask?: (string | RegExp)[];
@@ -97,20 +100,39 @@ export const DayPicker = ({
   preventClosingOnDaySelect,
   manualInput = false,
   inputMask = defaultMask,
+  defaultRangeStartDate = new Date(),
+  defaultRangeEndDate = addDays(new Date(), 7),
 }: DayPickerProps): React.ReactElement => {
   const theme = useTheme();
 
+  const { mode } = dayPickerProps;
+  const isRangeMode = mode === 'range';
+
+  const defaultRangeSelected: DateRange = {
+    from: defaultRangeStartDate,
+    to: defaultRangeEndDate,
+  };
+
+  const [range, setRange] = useState<DateRange | undefined>(defaultRangeSelected);
+
   const defaultDate = value || defaultDay || new Date();
+
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [date, setDate] = useState<Date>(defaultDate);
   const [dateTime, setDateTime] = useState(transformTime(new Date(date)));
   const [isTimeValid, setIsTimeValid] = useState<boolean>(true);
 
   const inputValue = useMemo(() => formatDate(date, format), [date, format]);
+  const rangeInputValue = useMemo(
+    () => `${formatDate(range?.from, format)} - ${formatDate(range?.to, format)}`,
+    [range, format],
+  );
 
   const [month, setMonth] = useState<Date>(defaultDate);
 
-  const [textInputValue, setTextInputValue] = useState<string>(inputValue);
+  const defaultTextInputValue = isRangeMode ? rangeInputValue : inputValue;
+
+  const [textInputValue, setTextInputValue] = useState<string>(defaultTextInputValue);
 
   React.useEffect(() => {
     if (onChange) onChange(date);
@@ -141,6 +163,11 @@ export const DayPicker = ({
 
   const showCalendar = () => {
     setIsCalendarOpen(true);
+  };
+
+  const handleRangeDaySelect = (newRange: { from: Date; to: Date }) => {
+    setRange(newRange);
+    setTextInputValue(`${formatDate(newRange.from, format)} - ${formatDate(newRange.to, format)}`);
   };
 
   const handleDaySelect = (selectedDate: Date) => {
@@ -265,8 +292,8 @@ export const DayPicker = ({
                 defaultMonth={date}
                 onMonthChange={setMonth}
                 month={month}
-                selected={date}
-                onSelect={handleDaySelect}
+                selected={isRangeMode ? range : date}
+                onSelect={isRangeMode ? handleRangeDaySelect : handleDaySelect}
                 parseDate={parseDate}
                 formatDate={formatDate}
                 weekStartsOn={dayPickerProps?.weekStartsOn || 1} // Monday as default value
