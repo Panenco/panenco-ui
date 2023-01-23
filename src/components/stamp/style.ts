@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PUITheme, StampVariantType } from 'utils/types';
+import { StampVariantType } from 'utils/types';
 
 const getBackgroundColor = (backgroundColor: string, variant: any, lightColor: string): string => {
   if (variant === 'fulfilled') return backgroundColor;
@@ -9,7 +9,6 @@ const getBackgroundColor = (backgroundColor: string, variant: any, lightColor: s
 export const StyledStamp = styled.div<{
   backgroundColor?: string;
   borderRadius?: number;
-  theme: PUITheme;
   variant?: StampVariantType;
 }>`
   padding: 6px 16px;

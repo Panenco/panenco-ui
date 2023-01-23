@@ -4,7 +4,7 @@ import AnimatedHeight from 'react-animate-height';
 import cx from 'classnames';
 
 import { useAccordion } from 'components/accordion/useAccordion';
-import { useTheme } from 'utils/hooks';
+import { useTheme } from 'styled-components';
 import { idGenerator } from 'utils/helpers';
 import { AccordionProps } from '../types';
 import { StyledAccordionSecondary } from './style';
@@ -22,7 +22,7 @@ export const AccordionSecondary = React.forwardRef((props: AccordionProps, ref: 
     ...otherProps
   } = props;
   const theme = useTheme();
-  const { combinedRef, handleClick, isOpen } = useAccordion({ ref, theme, ...otherProps });
+  const { combinedRef, handleClick, isOpen } = useAccordion({ ref, ...otherProps });
   const handleIconClick = (e: React.UIEvent): void => {
     e.persist();
     e.stopPropagation();
@@ -32,11 +32,8 @@ export const AccordionSecondary = React.forwardRef((props: AccordionProps, ref: 
 
   const checkTypeIconRight = typeof iconRight === 'boolean';
   const checkTypeIconLeft = typeof iconLeft === 'boolean';
-
-  const formRef = React.useRef<HTMLButtonElement | null>(null);
-
   return (
-    <StyledAccordionSecondary {...otherProps} ref={combinedRef} theme={theme} className={cx(className, 'accordion')}>
+    <StyledAccordionSecondary {...otherProps} ref={combinedRef} className={cx(className, 'accordion')}>
       <button type='button' className='accordionHeader' onClick={handleClick} aria-expanded={isOpen || 'false'}>
         {iconLeft && (
           <Icon

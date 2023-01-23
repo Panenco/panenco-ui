@@ -1,9 +1,6 @@
 import styled from 'styled-components';
-import { PUITheme } from 'utils/types';
 
-export const StyledStepperInput = styled.div<{
-  theme: PUITheme;
-}>`
+export const StyledStepperInput = styled.div`
   box-sizing: border-box;
   background-color: transparent;
   display: flex;

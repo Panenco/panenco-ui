@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useTheme } from 'utils/hooks';
 import { Row, Col } from 'components';
 import { StyledSelectWrapper } from './style';
 import ChipsComponent from './chips-component';
@@ -25,11 +24,8 @@ export const SelectInput = React.forwardRef<HTMLDivElement, SelectInputProps>(
     }: SelectInputProps,
     ref,
   ): JSX.Element => {
-    const theme = useTheme();
-
     return (
       <StyledSelectWrapper
-        theme={theme}
         ref={ref}
         style={style}
         className={className}

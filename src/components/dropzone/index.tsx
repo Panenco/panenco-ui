@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { Icon, Loader, Text, icons, IconType } from 'components';
 import * as React from 'react';
 import { DropzoneOptions, useDropzone } from 'react-dropzone';
-import { useTheme } from 'utils/hooks';
+import { useTheme } from 'styled-components';
 
 import { InputPropsType, WrapperProps } from '../../utils/types';
 import { StyledDropzone } from './style';
@@ -68,7 +68,6 @@ export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
         {...getRootProps()}
         {...wrapperProps}
         ref={ref}
-        theme={theme}
         loading={loading}
         isDragActive={isDragActive}
         error={error}

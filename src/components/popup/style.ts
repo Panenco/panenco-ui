@@ -1,4 +1,3 @@
-import { PUITheme } from 'utils/types';
 import styled from 'styled-components';
 import { breakpoints } from 'styles/breakpoints';
 import FocusLock from 'react-focus-lock';
@@ -21,9 +20,7 @@ export const StyledFocusLock = styled(FocusLock)`
   z-index: 1060;
 `;
 
-export const StyledPopupHeader = styled.div<{
-  theme: PUITheme;
-}>`
+export const StyledPopupHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -34,9 +31,7 @@ export const StyledPopupHeader = styled.div<{
   }
 `;
 
-export const StyledPopupFooter = styled.div<{
-  theme: PUITheme;
-}>`
+export const StyledPopupFooter = styled.div`
   padding: 16px 24px;
   border-top: 1px solid ${(props: any): string => props.theme.colors.base300};
   @media (max-width: ${breakpoints.sm}) {
@@ -53,7 +48,6 @@ export const StyledPopupBody = styled.div`
 
 export const StyledPopup = styled.div<{
   size: PopupSizesType;
-  theme: PUITheme;
 }>`
   background-clip: padding-box;
   background-color: ${(props: any): string => props.theme.colors.base100};
@@ -84,9 +78,7 @@ export const StyledPopupContainer = styled.div`
   }
 `;
 
-export const StyledPopupBackdrop = styled.div<{
-  theme: PUITheme;
-}>`
+export const StyledPopupBackdrop = styled.div`
   pointer-events: none;
   background-color: ${(props): string => props.theme.colors.base700};
   height: 100vh;
