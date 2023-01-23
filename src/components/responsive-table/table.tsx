@@ -2,8 +2,6 @@
 import { throttle } from 'lodash-es';
 import * as React from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
-import { useTheme } from 'utils/hooks';
-import { PUITheme } from 'utils/types';
 import { ColumnType } from '.';
 
 import Columns from './columns';
@@ -12,12 +10,7 @@ import { Styles } from './style';
 import { expandRow, resizeTable } from './table-actions';
 import { TableProps, TableState } from './types';
 
-class Table extends React.Component<
-  TableProps & {
-    theme: PUITheme;
-  },
-  TableState
-> {
+class Table extends React.Component<TableProps, TableState> {
   static separateColumns(cols: ColumnType[]): ColumnType[][] {
     const visible: ColumnType[] = [];
     const hidden: ColumnType[] = [];
@@ -123,7 +116,6 @@ class Table extends React.Component<
       sort,
       handleSort,
       innerRef,
-      theme,
       isLoading,
       iconCreator,
       sortIcons,
@@ -140,7 +132,7 @@ class Table extends React.Component<
     const [visibleCols, hiddenCols] = Table.separateColumns(columns);
 
     return (
-      <Styles theme={theme} ref={this.divRef}>
+      <Styles ref={this.divRef}>
         <table className='table' ref={innerRef} {...tableProps}>
           <Columns columns={visibleCols} sort={sort} handleSort={handleSort} sortIcons={sortIcons} />
           <Rows
@@ -160,6 +152,5 @@ class Table extends React.Component<
 }
 
 export const ResponsiveTable = React.forwardRef((props: TableProps, ref): JSX.Element => {
-  const theme = useTheme();
-  return <Table innerRef={ref} theme={theme} {...props} />;
+  return <Table innerRef={ref} {...props} />;
 });

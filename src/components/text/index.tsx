@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { useTheme } from 'utils/hooks';
-import { TextSize, PUIColors, PUITheme } from 'utils/types';
+import { TextSize, PUIColors } from 'utils/types';
 
 type EnumColors = keyof PUIColors;
 export interface TextProps extends React.HTMLAttributes<HTMLElement> {
@@ -14,7 +13,6 @@ export interface TextProps extends React.HTMLAttributes<HTMLElement> {
 const StyledComponent = styled.span<{
   color?: string | EnumColors;
   size?: string | TextSize;
-  theme: PUITheme;
   weight?: string | number;
 }>`
   font-size: ${(props: any): number | string => {
@@ -57,10 +55,8 @@ export const Text = React.forwardRef<HTMLElement, TextProps>(
     { color = 'inherit', size = 'inherit', weight = 'inherit', children, component = 'span', ...props }: TextProps,
     ref,
   ): JSX.Element => {
-    const theme = useTheme();
-
     return (
-      <StyledComponent as={component} theme={theme} color={color} size={size} weight={weight} ref={ref} {...props}>
+      <StyledComponent as={component} color={color} size={size} weight={weight} ref={ref} {...props}>
         {children}
       </StyledComponent>
     );

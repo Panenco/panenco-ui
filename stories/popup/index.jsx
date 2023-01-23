@@ -2,7 +2,7 @@
 // import PopupDocs from 'components/popup/DOCS.md';
 // import README from 'components/popup/README.md';
 // import { Row, Col, Text } from 'components';
-// import { useTheme } from 'utils/hooks';
+// import { useTheme } from 'styled-components';
 // import { decorator } from '../../utils/decorator';
 // import { WrappedComponent } from '../helpers/wrapped';
 

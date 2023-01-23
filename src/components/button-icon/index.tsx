@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Icon, icons, Text, IconType } from 'components';
 import { Link } from 'react-router-dom';
-import { useTheme } from 'utils/hooks';
 
 import cx from 'classnames';
 
@@ -34,7 +33,6 @@ export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
       size,
       ...rest
     } = props;
-    const theme = useTheme();
 
     return (
       <StyledButtonIcon
@@ -42,7 +40,6 @@ export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
         type={type}
         className={cx(iconLeft && 'buttonIconLeft', disabled && 'buttonDisabled', className)}
         disabled={disabled}
-        theme={theme}
         ref={ref}
         style={style}
         color={color}

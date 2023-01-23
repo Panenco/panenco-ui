@@ -1,10 +1,7 @@
 import styled from 'styled-components';
 import { transparentize } from 'polished';
-import { PUITheme } from 'utils/types';
 
-export const Styles = styled.div<{
-  theme: PUITheme;
-}>`
+export const Styles = styled.div`
   width: 100%;
   .table {
     border-spacing: 0;

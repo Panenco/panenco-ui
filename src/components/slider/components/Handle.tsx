@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { GetHandleProps } from 'react-compound-slider';
-import { PUITheme } from 'utils/types';
 import { StyledHandle } from '../style';
 
 interface HandleProps {
@@ -14,24 +13,16 @@ interface HandleProps {
   };
   isActive?: boolean;
   onChange?: any;
-  theme: PUITheme;
 }
 
-export const Handle = ({
-  handle,
-  getHandleProps,
-  formatValue,
-  onChange,
-  isActive,
-  theme,
-}: HandleProps): JSX.Element => {
+export const Handle = ({ handle, getHandleProps, formatValue, onChange, isActive }: HandleProps): JSX.Element => {
   const { id, value, percent } = handle;
 
   if (onChange) React.useEffect(() => onChange(value), [value]);
 
   const vLabel = formatValue(value);
   return (
-    <StyledHandle percent={percent} isActive={isActive} data-id={`${id}`} theme={theme} {...getHandleProps(id)}>
+    <StyledHandle percent={percent} isActive={isActive} data-id={`${id}`} {...getHandleProps(id)}>
       <span className='valueLabel'>{vLabel}</span>
     </StyledHandle>
   );

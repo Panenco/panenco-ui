@@ -1,9 +1,6 @@
 import styled from 'styled-components';
-import { PUITheme } from '../../utils/types';
 
-export const StyledPaper = styled.div<{
-  theme: PUITheme;
-}>`
+export const StyledPaper = styled.div`
   background-color: ${(props: any): string => {
     return props.theme.colors.base100;
   }};

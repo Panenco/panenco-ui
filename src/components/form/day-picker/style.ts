@@ -1,9 +1,7 @@
 import styled from 'styled-components';
-import { PUITheme } from 'utils/types';
 
 export const StyledDayPicker = styled.div<{
   error?: string;
-  theme: PUITheme;
 }>`
   .dayPickerWrapper {
     display: flex;
