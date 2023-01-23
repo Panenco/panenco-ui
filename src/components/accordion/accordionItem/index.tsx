@@ -7,6 +7,7 @@ import { useAccordion } from 'components/accordion/useAccordion';
 import { useTheme } from 'utils/hooks';
 import { idGenerator } from 'utils/helpers';
 import { StyledAccordion } from './style';
+import { AccordionVariant } from './types';
 
 type IconType = keyof typeof icons.sm | boolean;
 export interface AccordionProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'> {
@@ -41,7 +42,7 @@ export interface AccordionProps extends Omit<React.HTMLAttributes<HTMLDivElement
    * Variant of the accordion
    * @default outlined
    */
-  variant?: 'outlined' | 'text';
+  variant?: AccordionVariant;
 }
 
 export const Accordion = React.forwardRef(
@@ -71,7 +72,7 @@ export const Accordion = React.forwardRef(
         variant={variant}
         {...otherProps}
       >
-        <button type='button' className='accordionHeader' onClick={handleClick} aria-expanded={isOpen || 'false'}>
+        <button type='button' className='accordionHeader' onClick={handleClick} aria-expanded={isOpen}>
           {iconLeft && (
             <Icon
               className={cx(

@@ -13,12 +13,12 @@ export interface UseAccordionProps {
 export interface UseAccordinReturn {
   combinedRef: React.RefObject<HTMLDivElement>;
   handleClick: (event?: React.UIEvent) => void | undefined;
-  isOpen?: boolean;
+  isOpen: boolean;
   theme: PUITheme;
 }
 
 export const useAccordion = (props: UseAccordionProps): UseAccordinReturn => {
-  const { isOpen: isOpened, onClick, ref, theme } = props;
+  const { isOpen: isOpened = false, onClick, ref, theme } = props;
   const [isOpen, setOpen] = React.useState(isOpened);
   const innerRef = React.useRef();
   const combinedRef = useCombinedRefs(innerRef, ref);
