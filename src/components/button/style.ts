@@ -1,30 +1,25 @@
 import styled from 'styled-components';
 import { ButtonVariantType } from 'utils/types';
 
-const getBackgroundColor = (variant: any, lightColor: string): string => {
-  if (variant === 'transparent') return 'transparent';
-  return lightColor;
-};
-
 export const StyledButton = styled.button<{
   to?: string;
   variant?: ButtonVariantType;
 }>`
   position: relative;
-  border: 2px solid ${({ variant, theme: { colors } }: any): string =>
-    variant === 'text' ? 'transparent' : colors.primary500};
+  border: 2px solid
+    ${({ variant, theme: { colors } }): string => (variant === 'text' ? 'transparent' : colors.primary500)};
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px ${({ variant }: any): string => (variant === 'text' ? '0' : '22px')}};
+  padding: 10px ${({ variant }): string => (variant === 'text' ? '0' : '22px')};
   -webkit-appearance: none;
   min-height: 40px;
   border-radius: 4px;
   transition: 0.3s;
-  font-weight: ${(props: any): any => props.theme.typography.weights.bold};
-  background-color: ${({ variant, theme: { colors } }: any): string =>
+  font-weight: ${({ theme }) => theme.typography.weights.bold};
+  background-color: ${({ variant, theme: { colors } }): string =>
     variant === 'contained' ? colors.primary500 : 'transparent'};
-  color:  ${({ variant, color, theme: { colors } }: any): string =>
+  color: ${({ variant, color, theme: { colors } }): string =>
     color || (variant === 'contained' ? colors.base100 : colors.primary500)};
   cursor: pointer;
   overflow: hidden;
@@ -40,7 +35,8 @@ export const StyledButton = styled.button<{
     }
   }
 
-  &:disabled, &.isDisabled {
+  &:disabled,
+  &.isDisabled {
     opacity: 0.4;
     pointer-events: none !important;
   }
@@ -52,16 +48,16 @@ export const StyledButton = styled.button<{
   }
 
   &:focus-visible {
-    box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.base900};
+    box-shadow: 0 0 0 2px ${({ theme }): string => theme.colors.base900};
     z-index: 10;
   }
 
   &:hover {
-    color: ${({ variant, theme: { colors } }: any): string =>
+    color: ${({ variant, theme: { colors } }): string =>
       variant === 'contained' ? colors.base100 : colors.primary700};
-    background-color: ${({ variant, theme: { colors } }: any): string =>
+    background-color: ${({ variant, theme: { colors } }): string =>
       variant === 'contained' ? colors.primary700 : 'transparent'};
-    border-color: ${({ variant, theme: { colors } }: any): string =>
+    border-color: ${({ variant, theme: { colors } }): string =>
       variant === 'outlined' ? colors.primary700 : 'transparent'};
   }
 
@@ -87,41 +83,6 @@ export const StyledButton = styled.button<{
 
     &Default {
       right: 8px;
-    }
-  }
-
-  &.buttonPrimary {
-    background-color: ${({ variant, theme: { colors } }: any): string =>
-      getBackgroundColor(variant, colors.primary500)};
-    color: ${(props: any): string => props.color || props.theme.colors.base100};
-    padding: 10px 22px;
-    &:hover {
-      background-color: ${({ variant, theme: { colors } }: any): string =>
-        getBackgroundColor(variant, colors.primary700)};
-      color: ${(props: any): string => props.theme.colors.base100};
-    }
-    &:active {
-      background-color: ${({ variant, theme: { colors } }: any): string =>
-        getBackgroundColor(variant, colors.primary700)};
-    }
-  }
-
-  &.buttonSecondary {
-    border: 2px solid
-      ${(props: any): string => {
-        return props.color || props.theme.colors.primary700;
-      }};
-    padding: 10px 22px;
-    &:hover {
-      border: 2px solid
-        ${(props: any): string => props.theme.colors.primary700};
-      background-color: ${({ variant, theme: { colors } }: any): string =>
-        getBackgroundColor(variant, colors.primary200)};
-      color: ${(props: any): string => props.theme.colors.primary700};
-    }
-    &:active {
-      background-color: ${({ variant, theme: { colors } }: any): string =>
-        getBackgroundColor(variant, colors.primary200)};
     }
   }
 

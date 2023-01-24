@@ -1,6 +1,6 @@
 import cx from 'classnames';
 
-import { Icon, Text } from 'components';
+import { Icon, icons, Text } from 'components';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { useTheme } from 'styled-components';
@@ -10,14 +10,41 @@ import Spinner from './spinner';
 import { StyledButton } from './style';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  /**
+   * Button color
+   * */
   color?: string;
+  /**
+   * Button component
+   * */
   component?: React.ElementType;
-  icon?: any;
+  /**
+   * Button icon
+   * */
+  icon?: keyof typeof icons.sm;
+  /**
+   * Button icon class name
+   * */
   iconClassName?: string;
-  iconLeft?: any;
-  iconRight?: any;
+  /**
+   * Button icon left
+   * */
+  iconLeft?: keyof typeof icons.sm;
+  /**
+   * Button icon right
+   * */
+  iconRight?: keyof typeof icons.sm;
+  /**
+   * Button is loading
+   * */
   isLoading?: boolean;
+  /**
+   * Button link
+   * */
   to?: string;
+  /**
+   * Button variant
+   * */
   variant?: ButtonVariantType;
 }
 
@@ -60,33 +87,15 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         tabIndex={tabIndex || (isDisabled && component === 'link') ? -1 : 0}
       >
         <div className={cx('content', isLoading && 'contentInvisible')}>
-          {((icon && iconLeft) || iconLeft) && (
-            <Icon icon={icon || iconLeft} className={cx('buttonIcon', iconLeft && 'buttonIconLeft', iconClassName)} />
-          )}
+          {iconLeft && <Icon icon={iconLeft} className={cx('buttonIcon', 'buttonIconLeft', iconClassName)} />}
           <Text className='buttonTitle' size={theme.typography.sizes.m}>
             {children}
           </Text>
-          {((icon && !iconLeft) || iconRight) && (
-            <Icon
-              icon={icon || iconRight}
-              className={cx('buttonIcon', iconRight && 'buttonIconRight', iconClassName)}
-            />
-          )}
+          {icon && <Icon icon={icon} className={cx('buttonIcon', iconClassName)} />}
+          {iconRight && <Icon icon={iconRight} className={cx('buttonIcon', 'buttonIconRight', iconClassName)} />}
         </div>
         {isLoading && <Spinner />}
       </StyledButton>
     );
   },
-);
-
-export const PrimaryButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, iconClassName, ...props }: ButtonProps, ref): JSX.Element => (
-    <Button ref={ref} className={cx('buttonPrimary', className)} iconClassName={iconClassName} {...props} />
-  ),
-);
-
-export const SecondaryButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, iconClassName, ...props }: ButtonProps, ref): JSX.Element => (
-    <Button ref={ref} className={cx('buttonSecondary', className)} iconClassName={iconClassName} {...props} />
-  ),
 );
