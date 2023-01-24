@@ -1,33 +1,33 @@
 import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { colors } from 'styles';
 import { Checkbox } from 'components/checkbox';
-import docs from './readme.md';
 
 export default {
   title: 'Example/Checkbox',
   component: Checkbox,
-  parameters: {
-    docs: {
-      description: {
-        component: docs,
-      },
-    },
+
+  argTypes: {
+    color: { control: 'color' },
+    borderWidth: { control: { type: 'number', min: 1, step: 1 } },
+  },
+  args: {
+    label: 'Checkbox label',
+    checked: true,
   },
 } as ComponentMeta<typeof Checkbox>;
 
 const Template: ComponentStory<typeof Checkbox> = (args) => <Checkbox {...args} />;
 
-export const CheckboxComponent = Template.bind({});
+export const Default = Template.bind({});
 
-CheckboxComponent.argTypes = {
-  color: { control: 'color' },
-  borderWidth: { control: { type: 'number', min: 1, step: 1 } },
+export const Error = Template.bind({});
+
+Error.args = {
+  error: 'Error message',
+  checked: false,
 };
+export const Disabled = Template.bind({});
 
-CheckboxComponent.args = {
-  label: 'Checkbox label',
-  color: colors.primary700,
-  disabled: false,
-  checked: true,
+Disabled.args = {
+  disabled: true,
 };
