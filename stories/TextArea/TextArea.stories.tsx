@@ -26,10 +26,9 @@ Error.args = {
   error: 'Error message',
 };
 
-export const MaxLengthAndCounter = Template.bind({});
-MaxLengthAndCounter.args = {
+export const MaxLength = Template.bind({});
+MaxLength.args = {
   title: 'Title',
   maxLength: 10,
-  counter: true,
 };
-MaxLengthAndCounter.decorators = [(Story) => <div style={{ marginBottom: '30px' }}>{Story()}</div>];
+MaxLength.decorators = [(Story) => <div style={{ marginBottom: '30px' }}>{Story()}</div>];
