@@ -65,11 +65,25 @@ Disabled.args = {
   children: 'Disabled',
   disabled: true,
 };
+Disabled.argTypes = {
+  variant: {
+    control: {
+      disable: true,
+    },
+  },
+};
 
 export const Loading = TemplateVariants.bind({});
 Loading.args = {
   children: 'Loading',
   isLoading: true,
+};
+Loading.argTypes = {
+  variant: {
+    control: {
+      disable: true,
+    },
+  },
 };
 
 export const Icon = TemplateVariants.bind({});
@@ -83,6 +97,11 @@ Icon.argTypes = {
       disable: true,
     },
   },
+  variant: {
+    control: {
+      disable: true,
+    },
+  },
 };
 
 export const IconLeft = TemplateVariants.bind({});
@@ -90,17 +109,38 @@ IconLeft.args = {
   children: 'Icon Left',
   iconLeft: 'eye',
 };
+IconLeft.argTypes = {
+  variant: {
+    control: {
+      disable: true,
+    },
+  },
+};
 
 export const IconRight = TemplateVariants.bind({});
 IconRight.args = {
   children: 'Icon Right',
   iconRight: 'eye',
 };
+IconRight.argTypes = {
+  variant: {
+    control: {
+      disable: true,
+    },
+  },
+};
 
 export const Color = TemplateVariants.bind({});
 Color.args = {
   children: 'Color',
-  color: colors.success,
+  color: '#3e5e89',
+};
+Color.argTypes = {
+  variant: {
+    control: {
+      disable: true,
+    },
+  },
 };
 
 export const Component = TemplateVariants.bind({});
@@ -108,4 +148,11 @@ Component.args = {
   children: 'Component',
   component: 'a',
   href: 'https://google.com',
+};
+Component.argTypes = {
+  variant: {
+    control: {
+      disable: true,
+    },
+  },
 };

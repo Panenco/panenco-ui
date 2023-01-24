@@ -1,13 +1,16 @@
+import { darken } from 'polished';
 import styled from 'styled-components';
 import { ButtonVariantType } from 'utils/types';
 
 export const StyledButton = styled.button<{
+  color?: string;
   to?: string;
   variant?: ButtonVariantType;
 }>`
   position: relative;
   border: 2px solid
-    ${({ variant, theme: { colors } }): string => (variant === 'text' ? 'transparent' : colors.primary500)};
+    ${({ variant, color, theme: { colors } }): string =>
+      variant === 'text' ? 'transparent' : color || colors.primary500};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,10 +20,10 @@ export const StyledButton = styled.button<{
   border-radius: 4px;
   transition: 0.3s;
   font-weight: ${({ theme }) => theme.typography.weights.bold};
-  background-color: ${({ variant, theme: { colors } }): string =>
-    variant === 'contained' ? colors.primary500 : 'transparent'};
+  background-color: ${({ variant, color, theme: { colors } }): string =>
+    variant === 'contained' ? color || colors.primary500 : 'transparent'};
   color: ${({ variant, color, theme: { colors } }): string =>
-    color || (variant === 'contained' ? colors.base100 : colors.primary500)};
+    variant === 'contained' ? colors.base100 : color || colors.primary500};
   cursor: pointer;
   overflow: hidden;
 
@@ -53,12 +56,12 @@ export const StyledButton = styled.button<{
   }
 
   &:hover {
-    color: ${({ variant, theme: { colors } }): string =>
-      variant === 'contained' ? colors.base100 : colors.primary700};
-    background-color: ${({ variant, theme: { colors } }): string =>
-      variant === 'contained' ? colors.primary700 : 'transparent'};
-    border-color: ${({ variant, theme: { colors } }): string =>
-      variant === 'outlined' ? colors.primary700 : 'transparent'};
+    color: ${({ variant, color, theme: { colors } }): string =>
+      variant === 'contained' ? colors.base100 : (color && darken(0.1, color)) || colors.primary700};
+    background-color: ${({ variant, color, theme: { colors } }): string =>
+      variant === 'contained' ? (color && darken(0.1, color)) || colors.primary700 : 'transparent'};
+    border-color: ${({ variant, color, theme: { colors } }): string =>
+      variant === 'outlined' ? (color && darken(0.1, color)) || colors.primary700 : 'transparent'};
   }
 
   &:active {
