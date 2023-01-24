@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useTheme } from 'utils/hooks';
+import { useTheme } from 'styled-components';
 import { Text } from 'components';
 
 export interface PopupTitleProps extends React.HTMLAttributes<HTMLDivElement> {

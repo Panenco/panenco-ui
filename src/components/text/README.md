@@ -3,7 +3,8 @@
 ### Usage
 
 ```js
-import { Text, useTheme } from '@panenco/ui';
+import { Text } from '@panenco/ui';
+import { useTheme } from 'styled-components';
 
 const YourComponent = () => {
   const theme = useTheme();

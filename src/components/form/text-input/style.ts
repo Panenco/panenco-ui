@@ -1,12 +1,10 @@
 import { icons, IconType } from 'components/icon';
 import styled from 'styled-components';
-import { PUITheme } from 'utils/types';
 
 export const StyledTextInput = styled.div<{
   error;
   iconAfter?: IconType | keyof typeof icons.sm;
   iconBefore?: IconType | keyof typeof icons.sm;
-  theme: PUITheme;
 }>`
   display: flex;
   flex-direction: column;

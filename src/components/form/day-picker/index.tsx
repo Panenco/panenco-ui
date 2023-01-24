@@ -21,7 +21,6 @@ import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrect
 import { InputComponent } from 'utils/types';
 import { Placement } from '@popperjs/core';
 import { useOutsideClick } from 'utils/hooks/outside-click';
-import { useTheme } from 'utils/hooks';
 // eslint-disable-next-line import/no-duplicates
 import en from 'date-fns/locale/en-GB';
 import FocusLock from 'react-focus-lock';
@@ -52,8 +51,8 @@ export interface DayPickerProps extends InputComponent, DayPickerSingleProps {
   dateInputProps?: any;
   dayPickerProps?: any;
   defaultDay?: Date;
-  defaultRangeStartDate?: Date;
   defaultRangeEndDate?: Date;
+  defaultRangeStartDate?: Date;
   format?: string;
   iconAfter?: HTMLObjectElement | JSX.Element | string;
   inputMask?: (string | RegExp)[];
@@ -103,8 +102,6 @@ export const DayPicker = ({
   defaultRangeStartDate = new Date(),
   defaultRangeEndDate = addDays(new Date(), 7),
 }: DayPickerProps): React.ReactElement => {
-  const theme = useTheme();
-
   const { mode } = dayPickerProps;
   const isRangeMode = mode === 'range';
 
@@ -243,7 +240,7 @@ export const DayPicker = ({
   );
 
   return (
-    <StyledDayPicker theme={theme} error={error} className='dayPickerWrapper' {...wrapperProps}>
+    <StyledDayPicker error={error} className='dayPickerWrapper' {...wrapperProps}>
       <FocusLock returnFocus autoFocus disabled={manualInput || !isCalendarOpen}>
         <MaskedInput
           id='date-input-id'

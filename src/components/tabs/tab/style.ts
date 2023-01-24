@@ -1,9 +1,6 @@
 import styled from 'styled-components';
-import { PUITheme } from 'utils/types';
 
-export const StyledTab = styled.button<{
-  theme: PUITheme;
-}>`
+export const StyledTab = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;

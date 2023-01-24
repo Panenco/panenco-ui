@@ -26,13 +26,14 @@ To start importing and using components in your project, you need:
 
 - Import css of **Panenco UI** from `@panenco/ui/lib/styles.css`. It could be any way of global import of styles into your project. For instance, using `import` in js with propper loader or using `@import` in your `css`.
 - Include Panenco UI icons by importing `@panenco/ui/lib/spritesheet.svg` as file (to obtain it's URL and be able to inject it to DOM asyncronously) and pass it to `injectIcons` function as shown below.
-- Wrap your application with `ThemeProvider` component from `@panenco/ui` and pass theme to it.
+- Wrap your application with `ThemeProvider` component from `styled-components` and pass theme to it.
 
 ```javascript
 import React from 'react';
 import { render } from 'react-dom';
 import AppContainers from 'containers';
-import { ThemeProvider, injectIcons } from '@panenco/ui';
+import { ThemeProvider } from 'styled-components';
+import { injectIcons } from '@panenco/ui';
 import { theme } from './theme';
 
 import '@panenco/ui/lib/styles.css';

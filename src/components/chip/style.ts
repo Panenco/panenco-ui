@@ -1,10 +1,8 @@
 import styled from 'styled-components';
-import { PUITheme } from 'utils/types';
 
 export const StyledChip = styled.button<{
   checked?: boolean;
   iconSize?: number | string;
-  theme: PUITheme;
 }>`
   align-items: center;
   cursor: pointer;

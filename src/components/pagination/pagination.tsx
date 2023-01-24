@@ -1,8 +1,7 @@
 import * as React from 'react';
 import cx from 'classnames';
 
-import { useTheme } from 'utils/hooks';
-import { Text, Icon, Button } from 'components';
+import { Text, Button } from 'components';
 import { generateItems } from './generateItems';
 import { StyledListPagination } from './styles';
 import { usePagination } from './usePagination';
@@ -45,7 +44,6 @@ export const Pagination = ({
 }: PaginationProps): JSX.Element => {
   const [isFirst, isLast, pagesAmount] = usePagination({ page, count, rowsPerPage });
 
-  const theme = useTheme();
   const items = generateItems({ pagesAmount, currentPage: page + 1, ...otherProps });
 
   const renderListItem = (item: string | number): JSX.Element => {
@@ -112,7 +110,7 @@ export const Pagination = ({
   };
 
   return (
-    <StyledListPagination theme={theme} variant={variant} className={cx('pagination', className)} {...otherProps}>
+    <StyledListPagination variant={variant} className={cx('pagination', className)} {...otherProps}>
       {items.map((item, i) => (
         // eslint-disable-next-line
         <React.Fragment key={`item-${i}`}>{renderListItem(item)}</React.Fragment>

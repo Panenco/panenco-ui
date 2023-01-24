@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useTheme } from 'utils/hooks';
-import { Icon, Text } from '../../index';
+import { useTheme } from 'styled-components';
+import { Text } from '../../index';
 import { StyledAvatar, StyledAvatarImg } from './style';
 
 const getFontSize = (theme, size) => {
@@ -47,7 +47,7 @@ export const Avatar: React.FC<AvatarProps> = ({ className, src, size = 54, alt, 
             {...imgProps}
           />
         ) : (
-          <StyledAvatar theme={theme} style={{ height: size, width: size }} className={className}>
+          <StyledAvatar style={{ height: size, width: size }} className={className}>
             <Text size={fontSize} weight={theme.typography.weights.bold} color={theme.colors.base500}>
               {/* {children || alt?.charAt(0) || <Icon icon='user' size='sm' style={{ display: 'flex' }} />} */}
             </Text>
@@ -56,7 +56,7 @@ export const Avatar: React.FC<AvatarProps> = ({ className, src, size = 54, alt, 
       </>
     );
   return (
-    <StyledAvatar theme={theme} style={{ height: size, width: size }} className={className}>
+    <StyledAvatar style={{ height: size, width: size }} className={className}>
       <Text size={fontSize} weight={theme.typography.weights.bold} color={theme.colors.base500}>
         {children}
       </Text>

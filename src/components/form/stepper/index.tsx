@@ -2,7 +2,7 @@ import cx from 'classnames';
 
 import { Icon, Text } from 'components';
 import * as React from 'react';
-import { useTheme } from 'utils/hooks';
+import { useTheme } from 'styled-components';
 
 import { InputComponent, InputPropsType, WrapperProps } from '../../../utils/types';
 import { StyledStepperInput } from './style';
@@ -71,7 +71,7 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
     const notInRange = (isMinValue || isMaxValue) && (moreThenAllowed || lessThanAllowed);
 
     return (
-      <StyledStepperInput className={cx('stepper', className)} theme={theme} ref={ref} {...wrapperProps}>
+      <StyledStepperInput className={cx('stepper', className)} ref={ref} {...wrapperProps}>
         {title && (
           <Text size={theme.typography.sizes.xs} className='inputTitle'>
             {title}

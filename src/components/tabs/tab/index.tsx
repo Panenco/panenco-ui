@@ -1,7 +1,6 @@
 import * as React from 'react';
 import cx from 'classnames';
 
-import { useTheme } from 'utils/hooks';
 import { Icon, icons, IconType } from 'components';
 import { useCombinedRefs } from 'utils/hooks/combinedrefs';
 import { useTabContext, getTabPanelId } from '../tabContext';
@@ -22,7 +21,6 @@ const BaseTab = React.forwardRef<React.RefObject<HTMLButtonElement>, TabProps>(
     { index, className, iconClassName, icon, style, disabled, selected, onClick, children, ...props }: TabProps,
     ref,
   ): JSX.Element => {
-    const theme = useTheme();
     const tabRef = React.useRef();
     const combinedRef = useCombinedRefs(tabRef, ref);
 
@@ -42,7 +40,6 @@ const BaseTab = React.forwardRef<React.RefObject<HTMLButtonElement>, TabProps>(
 
     return (
       <StyledTab
-        theme={theme}
         style={style}
         role='tab'
         disabled={disabled}

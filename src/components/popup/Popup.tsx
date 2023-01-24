@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useTheme } from 'utils/hooks';
 import * as ReactDOM from 'react-dom';
 import cx from 'classnames';
 
@@ -32,7 +31,6 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
     }: PopupProps,
     ref,
   ): JSX.Element => {
-    const theme = useTheme();
     const popupStopPropagation = (e: React.MouseEvent<HTMLDivElement>): void => {
       e.stopPropagation();
     };
@@ -71,7 +69,7 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
         {show &&
           ReactDOM.createPortal(
             <StyledFocusLock returnFocus autoFocus={autoFocus} {...props}>
-              <StyledPopupBackdrop className='popupBackdrop' theme={theme} />
+              <StyledPopupBackdrop className='popupBackdrop' />
               <StyledPopupContainer
                 onMouseDown={handleBackdropClose}
                 className='popupContainer'
@@ -84,7 +82,6 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
                   size={size}
                   className={cx('popupDialog', dialogClassName)}
                   onMouseDown={popupStopPropagation}
-                  theme={theme}
                 >
                   {children}
                 </StyledPopup>

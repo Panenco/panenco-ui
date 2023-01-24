@@ -2,7 +2,7 @@ import * as React from 'react';
 import cx from 'classnames';
 
 import { Text } from 'components';
-import { useTheme } from 'utils/hooks';
+import { useTheme } from 'styled-components';
 import { useCombinedRefs } from 'utils/hooks/combinedrefs';
 import { InputComponent, WrapperProps } from '../../../utils/types';
 import { StyledTextArea } from './style';
@@ -83,7 +83,7 @@ export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
     };
 
     return (
-      <StyledTextArea className={cx('textArea', className)} error={error} theme={theme} ref={ref} {...wrapperProps}>
+      <StyledTextArea className={cx('textArea', className)} error={error} ref={ref} {...wrapperProps}>
         {title && (
           <Text weight={theme.typography.weights.bold} size={theme.typography.sizes.m} className='title'>
             {title}
