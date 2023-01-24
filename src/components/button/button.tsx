@@ -15,7 +15,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
    * */
   color?: string;
   /**
-   * Button component
+   * Component to be rendered, it could be **button** or **Link** from 'react-router-dom'
    * */
   component?: React.ElementType;
   /**
@@ -35,11 +35,11 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
    * */
   iconRight?: keyof typeof icons.sm;
   /**
-   * Button is loading
+   * Render spinner and disable button
    * */
   isLoading?: boolean;
   /**
-   * Button link
+   * Path to redirect (prop for **Link** component)
    * */
   to?: string;
   /**
