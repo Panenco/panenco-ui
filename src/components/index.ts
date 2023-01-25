@@ -19,5 +19,5 @@ export * from './pagination';
 export * from './paper';
 export * from './responsive-table';
 export * from './switch';
-export * from './popup';
+export * from './modal';
 export * from './tabs';
