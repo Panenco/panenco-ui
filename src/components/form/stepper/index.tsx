@@ -8,13 +8,41 @@ import { InputComponent, InputPropsType, WrapperProps } from '../../../utils/typ
 import { StyledStepperInput } from './style';
 
 export interface StepperInputProps extends InputComponent, React.InputHTMLAttributes<HTMLInputElement> {
+  /**
+   * Error message
+   * */
+  error?: string;
+  /**
+   * Additional props to be spread to the input element
+   * */
   inputProps?: InputPropsType;
+  /**
+   * An object that can take locale for notInRange message;
+   * */
   locales?: { [key: string]: string };
+  /**
+   * Maximum value of the input
+   */
   maxValue: number;
+  /**
+   * Minimum value of the input
+   */
   minValue: number;
+  /**
+   * Callback function to be called on change
+   */
   onChange: any;
+  /**
+   * Step of the input
+   */
   step: number;
+  /**
+   * Value of the input
+   */
   value: number;
+  /**
+   * Additional props to be spread to the wrapper element
+   */
   wrapperProps?: WrapperProps;
 }
 
