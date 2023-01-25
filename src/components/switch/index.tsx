@@ -3,7 +3,6 @@ import cx from 'classnames';
 
 import { Icon } from 'components';
 import { idGenerator, sizeToString } from 'utils/helpers';
-import { useTheme } from 'utils/hooks';
 import { StyledSwitch } from './style';
 
 export interface SwitchProps extends React.HTMLAttributes<HTMLElement> {
@@ -20,11 +19,9 @@ export const Switch: React.FC<SwitchProps> = React.forwardRef<HTMLElement, Switc
     { id: idProp, inputRef, value = false, height, width, size = 48, className, wrapperProps, ...props }: SwitchProps,
     ref,
   ): JSX.Element => {
-    const theme = useTheme();
     const id = idProp || idGenerator();
     return (
       <StyledSwitch
-        theme={theme}
         className={cx('switch', className)}
         htmlFor={id}
         ref={ref}

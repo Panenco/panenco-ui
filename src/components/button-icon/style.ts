@@ -1,11 +1,9 @@
 import styled from 'styled-components';
-import { PUITheme } from 'utils/types';
 
 const convertToPixels = (size) => size && size.toString().concat('px');
 
 export const StyledButtonIcon = styled.button<{
   size?: number;
-  theme: PUITheme;
   to?: string;
 }>`
   align-items: center;

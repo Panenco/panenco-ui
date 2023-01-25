@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cx from 'classnames';
 
-import { useTheme } from 'utils/hooks';
+import { useTheme } from 'styled-components';
 import { Text, SelectInput, Button } from 'components';
 import { usePagination } from './usePagination';
 import { StyledPagination } from './styles';
@@ -103,7 +103,7 @@ export const TablePagination = ({
   const rowsPerPageHandler = (option: PaginationOption): void => onChangeRowsPerPage(option.value);
 
   return (
-    <StyledPagination theme={theme} className={cx('pagination', className)} {...otherProps}>
+    <StyledPagination className={cx('pagination', className)} {...otherProps}>
       <div className='paginationSection'>
         <Text
           size={theme.typography.sizes.m}

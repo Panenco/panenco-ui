@@ -3,7 +3,7 @@ import cx from 'classnames';
 
 import { Text } from 'components/text';
 import { Icon, icons, IconType } from 'components/icon';
-import { useTheme } from 'utils/hooks';
+import { useTheme } from 'styled-components';
 import { StyledChip } from './style';
 
 export interface ChipProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -48,7 +48,6 @@ export const Chip = React.forwardRef<HTMLButtonElement, ChipProps>(
         checked={checked}
         className={cx(disabled && 'chipDisabled', checked && 'chipChecked', className)}
         style={style}
-        theme={theme}
         ref={ref}
         {...props}
       >

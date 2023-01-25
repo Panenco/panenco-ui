@@ -1,10 +1,8 @@
 import styled from 'styled-components';
-import { PUITheme } from 'utils/types';
 
 export const StyledCheckbox = styled.div<{
   borderColor?: string;
   borderWidth?: string | number;
-  theme: PUITheme;
 }>`
   position: relative;
 

@@ -1,11 +1,9 @@
 import styled from 'styled-components';
-import { PUITheme } from 'utils/types';
 
 export const StyledTextArea = styled.div<{
   error?: string;
   isDragActive?: boolean;
   loading?: boolean;
-  theme: PUITheme;
 }>`
   position: relative;
   display: flex;

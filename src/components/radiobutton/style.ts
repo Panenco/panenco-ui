@@ -1,10 +1,8 @@
 import styled from 'styled-components';
-import { PUITheme } from 'utils/types';
 
 export const StyledRadio = styled.label<{
   error;
   pointColor?: string;
-  theme: PUITheme;
 }>`
   .label {
     position: relative;

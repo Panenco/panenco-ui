@@ -27,6 +27,6 @@
       }
     ]
   },
-  "include": ["src", "./declaration.d.ts", "stories"],
+  "include": ["src", "./declaration.d.ts", "./styled.d.ts", "stories"],
   "exclude": ["node_modules", "lib"]
 }

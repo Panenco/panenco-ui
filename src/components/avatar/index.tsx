@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useTheme } from 'utils/hooks';
+import { useTheme } from 'styled-components';
 import { PUISizes, Text } from '../../index';
 import { StyledAvatar, StyledAvatarImg } from './style';
 

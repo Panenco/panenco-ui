@@ -2,19 +2,47 @@ import cx from 'classnames';
 
 import { Icon, Text } from 'components';
 import * as React from 'react';
-import { useTheme } from 'utils/hooks';
+import { useTheme } from 'styled-components';
 
 import { InputComponent, InputPropsType, WrapperProps } from '../../../utils/types';
 import { StyledStepperInput } from './style';
 
 export interface StepperInputProps extends InputComponent, React.InputHTMLAttributes<HTMLInputElement> {
+  /**
+   * Error message
+   * */
+  error?: string;
+  /**
+   * Additional props to be spread to the input element
+   * */
   inputProps?: InputPropsType;
+  /**
+   * An object that can take locale for notInRange message;
+   * */
   locales?: { [key: string]: string };
+  /**
+   * Maximum value of the input
+   */
   maxValue: number;
+  /**
+   * Minimum value of the input
+   */
   minValue: number;
+  /**
+   * Callback function to be called on change
+   */
   onChange: any;
+  /**
+   * Step of the input
+   */
   step: number;
+  /**
+   * Value of the input
+   */
   value: number;
+  /**
+   * Additional props to be spread to the wrapper element
+   */
   wrapperProps?: WrapperProps;
 }
 
@@ -71,7 +99,7 @@ export const StepperInput = React.forwardRef<HTMLDivElement, StepperInputProps>(
     const notInRange = (isMinValue || isMaxValue) && (moreThenAllowed || lessThanAllowed);
 
     return (
-      <StyledStepperInput className={cx('stepper', className)} theme={theme} ref={ref} {...wrapperProps}>
+      <StyledStepperInput className={cx('stepper', className)} ref={ref} {...wrapperProps}>
         {title && (
           <Text size={theme.typography.sizes.xs} className='inputTitle'>
             {title}

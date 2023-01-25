@@ -2,8 +2,6 @@ import * as React from 'react';
 import cx from 'classnames';
 
 import { Slider as RCSlider, SliderProps as RSliderProps, Rail, Handles, Tracks } from 'react-compound-slider';
-import { withTheme } from 'utils/hocs';
-import { PUITheme } from '../../utils/types';
 import { SliderRail, Handle, Track } from './components';
 import { StyledRootSlider } from './style';
 
@@ -15,7 +13,6 @@ export interface SliderProps extends React.HTMLAttributes<HTMLDivElement> {
   sliderProps?: RSliderProps;
   startValues: number[];
   step?: number;
-  theme: PUITheme;
 }
 
 interface SliderState {
@@ -23,7 +20,7 @@ interface SliderState {
   values: number[];
 }
 
-class MainSlider extends React.Component<SliderProps, SliderState> {
+export class Slider extends React.Component<SliderProps, SliderState> {
   activeId: any = null;
 
   refSLider: any = React.createRef<HTMLDivElement>();
@@ -102,7 +99,7 @@ class MainSlider extends React.Component<SliderProps, SliderState> {
   render(): JSX.Element {
     const {
       state: { domain, values },
-      props: { formatValue, disabled, className, onChange, theme, step, style, sliderProps, ...otherProps },
+      props: { formatValue, disabled, className, onChange, step, style, sliderProps, ...otherProps },
     } = this;
     return (
       <StyledRootSlider ref={this.refSLider} className={className} style={style} {...otherProps}>
@@ -115,7 +112,7 @@ class MainSlider extends React.Component<SliderProps, SliderState> {
           disabled={disabled}
           {...sliderProps}
         >
-          <Rail>{({ getRailProps }): JSX.Element => <SliderRail getRailProps={getRailProps} theme={theme} />}</Rail>
+          <Rail>{({ getRailProps }): JSX.Element => <SliderRail getRailProps={getRailProps} />}</Rail>
           <Handles>
             {({ handles, activeHandleID, getHandleProps }): JSX.Element => {
               this.activeId = activeHandleID;
@@ -130,7 +127,6 @@ class MainSlider extends React.Component<SliderProps, SliderState> {
                       getHandleProps={getHandleProps}
                       formatValue={formatValue}
                       onChange={onChange}
-                      theme={theme}
                     />
                   ))}
                 </div>
@@ -142,7 +138,7 @@ class MainSlider extends React.Component<SliderProps, SliderState> {
               return (
                 <div className='slider-tracks'>
                   {tracks.map(({ id, source, target }) => (
-                    <Track key={id} source={source} target={target} getTrackProps={getTrackProps} theme={theme} />
+                    <Track key={id} source={source} target={target} getTrackProps={getTrackProps} />
                   ))}
                 </div>
               );
@@ -153,8 +149,3 @@ class MainSlider extends React.Component<SliderProps, SliderState> {
     );
   }
 }
-
-export const Slider = React.forwardRef((props, ref) => {
-  const WrappedComponent = withTheme(MainSlider);
-  return <WrappedComponent innerRef={ref} {...props} />;
-});

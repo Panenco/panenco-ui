@@ -3,7 +3,7 @@ import cx from 'classnames';
 
 import { Icon } from 'components/icon';
 import { Text } from 'components/text';
-import { useTheme } from 'utils/hooks';
+import { useTheme } from 'styled-components';
 import { idGenerator } from 'utils/helpers';
 import { InputPropsType } from '../../utils/types';
 import { StyledCheckbox } from './style';
@@ -21,6 +21,9 @@ export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElemen
    * Border width;
    */
   borderWidth?: string | number;
+  /**
+   * Checkbox checked state;
+   * */
   checked?: boolean;
   /**
    * Color text-content;
@@ -42,7 +45,6 @@ export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElemen
    * Child label classname;
    */
   labelClassName?: string;
-  // will be removed in next version
   /**
    * Wrapper props;
    */
@@ -73,7 +75,7 @@ export const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
     const theme = useTheme();
 
     return (
-      <StyledCheckbox theme={theme} color={color} borderWidth={borderWidth} borderColor={borderColor} {...wrapperProps}>
+      <StyledCheckbox color={color} borderWidth={borderWidth} borderColor={borderColor} {...wrapperProps}>
         <label
           className={cx('label', disabled && 'labelDisabled', wrapperProps?.className)}
           htmlFor={id || defaultId}
