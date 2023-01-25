@@ -6,7 +6,6 @@ import docs from './readme.md';
 export default {
   title: 'Example/AccordionGroup',
   component: AccordionGroup,
-
   parameters: {
     docs: {
       description: {
@@ -15,6 +14,13 @@ export default {
     },
     controls: {
       disable: true,
+    },
+  },
+  argTypes: {
+    children: {
+      control: {
+        disable: true,
+      },
     },
   },
 } as ComponentMeta<typeof AccordionGroup>;

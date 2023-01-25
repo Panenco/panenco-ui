@@ -275,7 +275,6 @@ export const customStyles = (
 
 export const StyledSelectWrapper = styled.div<{
   error;
-  theme: PUITheme;
   wrapperSelectSizes;
 }>`
   position: relative;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import cx from 'classnames';
 
 import { Icon, icons, Text, IconType } from 'components';
-import { useTheme } from 'utils/hooks';
+import { useTheme } from 'styled-components';
 import { idGenerator } from 'utils/helpers';
 import { InputComponent, WrapperProps, InputPropsType } from 'utils/types';
 import { StyledTextInput } from './style';
@@ -56,7 +56,6 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
       <StyledTextInput
         className={cx('textInput', className)}
         error={error}
-        theme={theme}
         ref={ref}
         iconAfter={iconAfter}
         iconBefore={iconBefore}

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cx from 'classnames';
 
-import { useTheme } from 'utils/hooks';
+import { useTheme } from 'styled-components';
 import { StampVariantType } from 'index';
 import { StyledStamp } from './style';
 
@@ -43,7 +43,6 @@ export const Stamp = React.forwardRef<HTMLDivElement, StampProps>(
         color={color}
         backgroundColor={backgroundColor}
         borderRadius={borderRadius}
-        theme={theme}
         ref={ref}
         {...props}
       >

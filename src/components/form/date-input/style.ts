@@ -1,9 +1,6 @@
 import styled from 'styled-components';
-import { PUITheme } from 'utils/types';
 
-export const StyledDayPicker = styled.div<{
-  theme: PUITheme;
-}>`
+export const StyledDayPicker = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;

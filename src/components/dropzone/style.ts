@@ -1,11 +1,9 @@
 import styled from 'styled-components';
-import { PUITheme } from 'utils/types';
 
 export const StyledDropzone = styled.div<{
   error?: string;
   isDragActive?: boolean;
   loading?: boolean;
-  theme: PUITheme;
 }>`
   display: flex;
   align-items: center;

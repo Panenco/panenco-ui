@@ -1,9 +1,7 @@
 import styled, { css } from 'styled-components';
-import { PUITheme } from 'utils/types';
 import { AccordionVariant } from './types';
 
 export const StyledAccordion = styled.div<{
-  theme: PUITheme;
   variant: AccordionVariant;
 }>`
   position: relative;

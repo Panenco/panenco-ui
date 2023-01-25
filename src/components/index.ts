@@ -11,7 +11,6 @@ export * from './chip';
 export * from './checkbox';
 export * from './slider';
 export * from './stamp';
-export * from './theme-provider';
 export * from './radiobutton';
 export * from './select';
 export * from './dropzone';

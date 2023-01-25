@@ -2,7 +2,7 @@ import cx from 'classnames';
 
 import { Text } from 'components';
 import * as React from 'react';
-import { useTheme } from 'utils/hooks';
+import { useTheme } from 'styled-components';
 
 import { InputPropsType } from '../../utils/types';
 import { StyledRadio } from './style';
@@ -61,7 +61,7 @@ export const Radio = React.forwardRef<HTMLLabelElement, RadioButtonProps>(
     const { className: inputClassName, id, ...otherInputProps } = inputProps;
 
     return (
-      <StyledRadio theme={theme} ref={ref} error={error} pointColor={pointColor} {...wrapperProps}>
+      <StyledRadio ref={ref} error={error} pointColor={pointColor} {...wrapperProps}>
         <label className={cx('label', disabled && 'labelDisabled', className)} htmlFor={id}>
           <input
             type='radio'

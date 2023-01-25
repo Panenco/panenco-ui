@@ -4,7 +4,7 @@ import AnimatedHeight from 'react-animate-height';
 import cx from 'classnames';
 
 import { useAccordion } from 'components/accordion/useAccordion';
-import { useTheme } from 'utils/hooks';
+import { useTheme } from 'styled-components';
 import { idGenerator } from 'utils/helpers';
 import { StyledAccordion } from './style';
 import { AccordionVariant } from './types';
@@ -59,19 +59,13 @@ export const Accordion = React.forwardRef(
       ...otherProps
     } = props;
     const theme = useTheme();
-    const { combinedRef, handleClick, isOpen } = useAccordion({ ref, onClick, theme, ...otherProps });
+    const { combinedRef, handleClick, isOpen } = useAccordion({ ref, onClick, ...otherProps });
 
     const checkTypeIconRight = typeof iconRight === 'boolean';
     const checkTypeIconLeft = typeof iconLeft === 'boolean';
 
     return (
-      <StyledAccordion
-        ref={combinedRef}
-        theme={theme}
-        className={cx(className, 'accordion')}
-        variant={variant}
-        {...otherProps}
-      >
+      <StyledAccordion ref={combinedRef} className={cx(className, 'accordion')} variant={variant} {...otherProps}>
         <button type='button' className='accordionHeader' onClick={handleClick} aria-expanded={isOpen}>
           {iconLeft && (
             <Icon

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useTheme } from 'utils/hooks';
 import { ButtonIcon } from 'components';
 import { StyledPopupHeader } from './style';
 import { PopupContext } from './popupContext';
@@ -10,10 +9,9 @@ export interface PopupHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 export const PopupHeader = React.forwardRef<HTMLDivElement, PopupHeaderProps>(
   ({ children, closeButton = true, ...props }: PopupHeaderProps, ref): JSX.Element => {
-    const theme = useTheme();
     const { onHide } = React.useContext(PopupContext);
     return (
-      <StyledPopupHeader className='popupHeader' {...props} theme={theme} ref={ref}>
+      <StyledPopupHeader className='popupHeader' {...props} ref={ref}>
         <div>{children}</div>
         {closeButton && onHide && (
           <div>
