@@ -21,10 +21,25 @@ const getFontSize = (sizes: PUISizes, size: number) => {
 };
 
 export interface AvatarProps {
+  /**
+   * content of the Avatar
+   */
   children?: React.ReactNode | string;
+  /**
+   * Avatar class name, allow to override styles
+   */
   className?: string;
+  /**
+   * props for Avatar image
+   */
   imgProps?: React.ImgHTMLAttributes<HTMLImageElement>;
+  /**
+   * avatar size
+   */
   size?: number;
+  /**
+   * link to image
+   */
   src?: string;
 }
 
