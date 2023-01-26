@@ -272,12 +272,6 @@ export const customStyles = (
       ...additionalStyles('valueContainer', styles, provided, state),
     };
   },
-  // noOptionsMessage: (base: any, state: any) => {
-  //   return {
-  //     ...base,
-  //     color: 'red',
-  //   };
-  // },
 });
 
 export const StyledSelectWrapper = styled.div<{
@@ -308,7 +302,7 @@ export const StyledSelectWrapper = styled.div<{
   }
 
   .title {
-    color: ${(props: any): string => props.theme.colors.base900};
+    color: ${({ theme }) => theme.colors.base900};
 
     display: block;
   }
@@ -320,7 +314,7 @@ export const StyledSelectWrapper = styled.div<{
 
   .errorTitle {
     bottom: -16px;
-    color: ${(props: any): string => props.theme.colors.error};
+    color: ${({ theme }) => theme.colors.error};
     display: block;
     height: 16px;
     position: absolute;
