@@ -12,33 +12,33 @@ export const StyledChip = styled.button<{
   transition: 0.3s;
   padding: 3px 11px;
   border-radius: 4px;
-  background-color: ${(props: any): string => {
-    return props.checked ? props.theme.colors.primary500 : props.theme.colors.base100;
+  background-color: ${({ theme, checked }) => {
+    return checked ? theme.colors.primary500 : theme.colors.base100;
   }};
-  border: 1px solid ${(props: any): string => props.theme.colors.primary500};
-  color: ${(props: any): string => {
-    return props.checked ? props.theme.colors.base100 : props.theme.colors.primary500;
+  border: 1px solid ${({ theme }) => theme.colors.primary500};
+  color: ${({ theme, checked }) => {
+    return checked ? theme.colors.base100 : theme.colors.primary500;
   }};
 
   &:hover,
   &:active {
-    background-color: ${(props: any): string => {
-      return props.checked ? props.theme.colors.primary700 : props.theme.colors.primary200;
+    background-color: ${({ theme, checked }) => {
+      return checked ? theme.colors.primary700 : theme.colors.primary200;
     }};
-    border: 1px solid ${(props: any): string => props.theme.colors.primary700};
+    border: 1px solid ${({ theme }) => theme.colors.primary700};
     .labelTitle {
-      color: ${(props: any): string => {
-        return props.checked ? props.theme.colors.base100 : props.theme.colors.primary700;
+      color: ${({ theme, checked }) => {
+        return checked ? theme.colors.base100 : theme.colors.primary700;
       }};
     }
   }
 
   &:focus {
-    box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.base900};
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.base900};
   }
 
   &:focus-visible {
-    box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.base900};
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.base900};
   }
 
   .labelTitle {
