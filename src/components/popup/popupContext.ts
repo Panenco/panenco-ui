@@ -1,6 +1,9 @@
 import { createContext } from 'react';
 
 interface PopupContextInterface {
+  /**
+   * Callback function to hide the popup.
+   * */
   onHide: (() => void) | undefined;
 }
 

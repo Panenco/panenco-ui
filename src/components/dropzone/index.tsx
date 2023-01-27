@@ -9,18 +9,53 @@ import { InputPropsType, WrapperProps } from '../../utils/types';
 import { StyledDropzone } from './style';
 
 export interface DropzoneProps extends React.HTMLAttributes<HTMLDivElement> {
+  /**
+   * Additional content
+   * */
   children?: React.ReactNode;
+  /**
+   * Error message
+   * */
   error?: string;
+  /**
+   * Icon
+   * */
   icon?: IconType | keyof typeof icons.sm;
+  /**
+   * Icon class name
+   * */
   iconClassName?: string;
+  /**
+   * Input props
+   * */
   inputProps?: InputPropsType;
+  /**
+   * Loader component
+   * */
   loader?: JSX.Element;
+  /**
+   * Loading state
+   * */
   loading?: boolean;
+  /**
+   * Loading text
+   * */
   loadingText?: string;
-  // will be removed in next versions
+  /**
+   * Dropzone options
+   * */
   options?: DropzoneOptions;
+  /**
+   * Text content
+   * */
   textContent?: string;
+  /**
+   * Text content on drag
+   * */
   textContentOnDrag?: string;
+  /**
+   * Wrapper props
+   * */
   wrapperProps?: WrapperProps;
 }
 
@@ -31,8 +66,6 @@ export const Dropzone = React.forwardRef<HTMLDivElement, DropzoneProps>(
       loadingText = 'Uploading',
       textContent = 'Drop your file here or click to this zone',
       textContentOnDrag = 'Drop your file here',
-      // getInputProps: getOutsideInputProps,
-      // getRootProps: getOutsideRootProps,
       iconClassName,
       icon,
       wrapperProps,
