@@ -14,6 +14,11 @@ export type PaginationProps = {
   hidePrevButton?: boolean;
   locales?: {
     first: string;
+    goToFirstPage: string;
+    goToLastPage: string;
+    goToNextPage: string;
+    goToPage: (page: number) => string;
+    goToPreviousPage: string;
     last: string;
     next: string;
     previous: string;
@@ -39,6 +44,11 @@ export const Pagination = ({
     last: 'Last',
     previous: 'Previous',
     next: 'Next',
+    goToFirstPage: 'Go to the first page',
+    goToLastPage: 'Go to the last page',
+    goToNextPage: 'Go to the next page',
+    goToPreviousPage: 'Go to the previous page',
+    goToPage: (pageNumber: number): string => `Go to page ${pageNumber}`,
   },
   ...otherProps
 }: PaginationProps): JSX.Element => {
@@ -58,7 +68,13 @@ export const Pagination = ({
         );
       case 'first':
         return (
-          <Button className='paginationListItem' disabled={disabled} onClick={(): void => onButtonClick(0)}>
+          <Button
+            className='paginationListItem'
+            disabled={disabled}
+            onClick={(): void => onButtonClick(0)}
+            aria-label={locales.goToFirstPage}
+            title={locales.goToFirstPage}
+          >
             {locales.first}
           </Button>
         );
@@ -68,6 +84,8 @@ export const Pagination = ({
             className='paginationListItem'
             disabled={disabled}
             onClick={(): void => onButtonClick(pagesAmount - 1)}
+            aria-label={locales.goToLastPage}
+            title={locales.goToLastPage}
           >
             {locales.last}
           </Button>
@@ -80,6 +98,8 @@ export const Pagination = ({
             iconLeft='chevronLeft'
             iconClassName={cx('paginationButtonIcon', variant !== 'text' && 'paginationButtonIconNoMargin')}
             onClick={(): void => onButtonClick(page - 1)}
+            aria-label={locales.goToPreviousPage}
+            title={locales.goToPreviousPage}
           >
             {variant === 'text' && <Text>{locales.previous}</Text>}
           </Button>
@@ -92,6 +112,8 @@ export const Pagination = ({
             iconRight='chevronRight'
             iconClassName={cx('paginationButtonIcon', variant !== 'text' && 'paginationButtonIconNoMargin')}
             onClick={(): void => onButtonClick(page + 1)}
+            aria-label={locales.goToNextPage}
+            title={locales.goToNextPage}
           >
             {variant === 'text' && <Text>{locales.next}</Text>}
           </Button>
@@ -102,6 +124,9 @@ export const Pagination = ({
             className={cx('paginationListItem', page === (item as number) - 1 && 'paginationListItemActive')}
             disabled={disabled}
             onClick={(): void => onButtonClick((item as number) - 1)}
+            aria-label={locales.goToPage(item as number)}
+            title={locales.goToPage(item as number)}
+            aria-current={page === (item as number) - 1}
           >
             {item}
           </Button>

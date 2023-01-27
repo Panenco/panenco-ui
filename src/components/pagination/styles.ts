@@ -83,7 +83,7 @@ export const StyledPagination = styled.div`
   }
 `;
 
-export const StyledListPagination = styled.div<{
+export const StyledListPagination = styled.nav<{
   variant?: 'contained' | 'outlined' | 'text';
 }>`
   width: 100%;
