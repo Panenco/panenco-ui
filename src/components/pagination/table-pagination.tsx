@@ -28,13 +28,13 @@ export type TablePaginationProps = {
   /**
    *  used to pass props to the page select input
    */
-  pageSelectProps: SelectInputProps;
+  pageSelectProps?: SelectInputProps;
   rowsPerPage: number;
   rowsPerPageOptions?: any;
   /**
    * used to pass props to the rows per page select input
    */
-  rowsPerPageSelectProps: SelectInputProps;
+  rowsPerPageSelectProps?: SelectInputProps;
   selectStyles?: {
     [key: string]: (...args) => { [k: string]: any };
   };
