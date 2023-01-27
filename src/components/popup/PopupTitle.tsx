@@ -3,6 +3,9 @@ import { useTheme } from 'styled-components';
 import { Text } from 'components';
 
 export interface PopupTitleProps extends React.HTMLAttributes<HTMLDivElement> {
+  /**
+   * The content of the popup title
+   * */
   children: React.ReactNode;
 }
 export const PopupTitle = React.forwardRef<HTMLDivElement, PopupTitleProps>(
