@@ -136,9 +136,9 @@ export const Pagination = ({
 
   return (
     <StyledListPagination variant={variant} className={cx('pagination', className)} {...otherProps}>
-      {items.map((item, i) => (
+      {items.map((item) => (
         // eslint-disable-next-line
-        <React.Fragment key={`item-${i}`}>{renderListItem(item)}</React.Fragment>
+        <React.Fragment key={`item-${item}`}>{renderListItem(item)}</React.Fragment>
       ))}
     </StyledListPagination>
   );
