@@ -31,20 +31,18 @@ export const AvatarGroup: React.FC<AvatarGroupProps> = ({
 }: AvatarGroupProps) => {
   const modifiedAvatars = avatars.slice(0, max);
 
+  const hiddenCount = avatars.length - modifiedAvatars.length;
   return (
     <StyledAvatarGroup className={className}>
       {modifiedAvatars.map((avatar, idx) => (
         <Avatar
-          // eslint-disable-next-line react/no-array-index-key
           key={`avatar${idx}key`}
           {...avatarProps}
           {...avatar}
           className={cx('avatarGroupItem', avatarProps?.className)}
         />
       ))}
-      {!!(avatars.length - modifiedAvatars.length) && (
-        <Avatar {...avatarProps}>{`+${avatars.length - modifiedAvatars.length}`}</Avatar>
-      )}
+      {!!hiddenCount && <Avatar {...avatarProps}>{`+${hiddenCount}`}</Avatar>}
     </StyledAvatarGroup>
   );
 };
