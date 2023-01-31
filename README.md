@@ -1,32 +1,30 @@
 # Panenco UI
 
-Panenco UI is our own design system that is created to unify the way we create user interfaces.
+Panenco UI is our React component library created to unify how we create user interfaces.
 
-It provides you a way for it's customization via Theming.
+## Installation
 
-# Principles
+Run one of the following commands to add Panenco UI to your project:
 
-### Theme
-
-Theme - is a color pallete used for determination of whole project styling. While Panenco UI has it's crosstheme styles, that styles are project dependent. Choose or define Theme according to your project's branding colors, etc.
-
-# Installation and usage
-
-### Install
-
-In the project you'd like to add our lovely **Panenco UI** to, just add it as a depencency:
-
-```sh
+```
 yarn add @panenco/ui
 ```
 
-### Use
+Peer dependencies:
 
-To start importing and using components in your project, you need:
+- classnames
+- react
+- react-dom
+- react-router-dom
+- styled-components
 
-- Import css of **Panenco UI** from `@panenco/ui/lib/styles.css`. It could be any way of global import of styles into your project. For instance, using `import` in js with propper loader or using `@import` in your `css`.
-- Include Panenco UI icons by importing `@panenco/ui/lib/spritesheet.svg` as file (to obtain it's URL and be able to inject it to DOM asyncronously) and pass it to `injectIcons` function as shown below.
-- Wrap your application with `ThemeProvider` component from `styled-components` and pass theme to it.
+## Usage
+
+To start importing and using components in your project, you need the following:
+
+- Import css of **Panenco UI** from `@panenco/ui/lib/styles.css`. It could be any way of global import of styles into your project. For instance, using `import` in js with a proper loader or using `@import` in your `css`.
+- Include Panenco UI icons by importing `@panenco/ui/lib/spritesheet.svg` as a file (to obtain its URL and be able to inject it to DOM asynchronously) and pass it to the `injectIcons` function as shown below.
+- Wrap your application with the `ThemeProvider` component from `styled-components` and pass the theme to it.
 
 ```javascript
 import React from 'react';
@@ -52,7 +50,7 @@ render(<App />, document.getElementById('root'));
 
 ### Theme definition
 
-Theme is just a nested object with properties defining appearence of your UI.
+A theme is just a nested object with properties defining the appearance of your UI. It's passed to the `ThemeProvider` component from `styled-components`, and then it's available in all components of Panenco UI. The theme is defined as:
 
 ```typescript
 type PUITheme = {
@@ -64,11 +62,11 @@ type PUITheme = {
 };
 ```
 
-There are two properties `colors` and `typography`.
+There are two properties: `colors` and `typography`.
 
 #### `colors` definition
 
-Colors that are defined within theme is represented with next type:
+Colors that are defined within a theme are represented with the following type:
 
 ```typescript
 export type PUIColors = {
@@ -91,15 +89,15 @@ export type PUIColors = {
 };
 ```
 
-Also you have an option to override theme colors.
+Also, you can override theme colors:
 
 ```typescript
 colors: PUIColors;
 ```
 
-#### `typograpty` definition
+#### `typography` definition
 
-Typography consists of two properties: `sizes` and `weights`. They are used as a base for `Text` component. Setting of this properties has an impact on all text sizes in all components around Panenco UI. Also, when using custom fonts, it's highly recommended to set propper `weights` of the font you use.
+Typography consists of two properties: `sizes` and `weights`. They are used as a base for the `Text` component. The setting of these properties impacts all text sizes in all components around Panenco UI. Also, when using custom fonts, it's highly recommended to set the proper `weights` of the font you use.
 
 ```typescript
 export type PUIWeights = {
@@ -125,6 +123,17 @@ export type PUISizes = {
 };
 ```
 
-### Exported external modules
+### Styles injection order
+
+**Note**: `styled-components` inject their styles at the bottom of the HTML `<head>`, which gives `@panenco/ui` precedence over your custom styles. To remove the need for `!important`, you need to change the CSS injection order using `useInjectStylesFirst` hook imported from `@panenco/ui`
+
+```typescript
+import { useInjectStylesFirst } from '@panenco/ui';
+
+const App = () => {
+  useInjectStylesFirst();
+```
+
+## Exported external modules (deprecated)
 
 - react-focus-lock: https://github.com/theKashey/react-focus-lock
