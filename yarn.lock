@@ -3448,7 +3448,7 @@ __metadata:
     lodash-es: ^4.17.21
     mini-css-extract-plugin: ^0.9.0
     namor: ^2.0.2
-    polished: ^3.5.2
+    polished: ^4.0.0
     postcss-focus-visible: ^5.0.0
     postcss-loader: ^3.0.0
     prettier: ^2.0.4
@@ -15605,16 +15605,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"polished@npm:^3.5.2":
-  version: 3.7.2
-  resolution: "polished@npm:3.7.2"
-  dependencies:
-    "@babel/runtime": ^7.12.5
-  checksum: 2f6172fef712e716e20563ca9505162c57e2713579a90806738068b3de0b2622ed2e2d62c578ebd752fcab4c527ddde2036ece5d6f4cdefee09c92eb410a288f
-  languageName: node
-  linkType: hard
-
-"polished@npm:^4.2.2":
+"polished@npm:^4.0.0, polished@npm:^4.2.2":
   version: 4.2.2
   resolution: "polished@npm:4.2.2"
   dependencies:
