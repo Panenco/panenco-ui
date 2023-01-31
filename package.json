@@ -121,7 +121,7 @@
     "rimraf": "^3.0.2",
     "rollup": "^2.56.2",
     "rollup-plugin-analyzer": "^4.0.0",
-    "rollup-plugin-css-only": "^2.1.0",
+    "rollup-plugin-css-only": "^4.0.0",
     "rollup-plugin-postcss": "^4.0.1",
     "rollup-plugin-typescript2": "^0.30.0",
     "sass": "^1.49.7",
