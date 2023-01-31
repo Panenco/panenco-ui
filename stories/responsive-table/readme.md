@@ -1,5 +1,3 @@
-# Resposive Table
-
 ## Usage
 
 ### Case 1
@@ -142,8 +140,6 @@ const SomeComponentWithTable = ({
 }
 ```
 
-<!-- STORY -->
-
 ### Properties
 
 - `columns` - Just note that you set isVisible: true for each column unless you have case 2 column with the fact\*
@@ -152,15 +148,6 @@ const SomeComponentWithTable = ({
 - `sort` - Says which column and in which direction is sorted right now
 - `handleSort` - A callback that triggers a request to the server for the new sorted data
 - `isLoading` - Is data loading right now. Says if we need to show animated skeleton inside of the cells.
-
-| propName               | propType | defaultValue | isRequired |
-| ---------------------- | -------- | ------------ | ---------- |
-| columns                | array    | -            | +          |
-| rows                   | array    | -            | +          |
-| priorityLevelThreshold | number   | null         | -          |
-| sort                   | object   | null         | -          |
-| handleSort             | func     | null         | -          |
-| isLoading              | boolean  | false        | -          |
 
 ### Column fields
 
