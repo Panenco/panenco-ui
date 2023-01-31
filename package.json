@@ -105,7 +105,7 @@
     "eslint-plugin-typescript-sort-keys": "^2.1.0",
     "file-loader": "^6.0.0",
     "html-loader": "^1.1.0",
-    "husky": "^7.0.1",
+    "husky": "^8.0.0",
     "lint-staged": "^11.1.2",
     "mini-css-extract-plugin": "^0.9.0",
     "namor": "^2.0.2",
