@@ -10,9 +10,8 @@ import replace from '@rollup/plugin-replace';
 import typescript from 'rollup-plugin-typescript2';
 import ttypescript from 'ttypescript';
 
-import packageJson from './package.json';
-
-const paths = require('./config/paths');
+import packageJson from './package.json' assert { type: 'json' };
+import paths from './config/paths.js';
 
 const external = Object.keys(packageJson.peerDependencies);
 
@@ -33,7 +32,7 @@ export default {
     resolve({
       extensions: ['.ts', '.tsx', '.json'],
       preferBuiltins: false,
-      moduleDirectories: ['node_modules', paths.nodeModules, paths.src],
+      moduleDirectories: ['node_modules', 'src'],
     }),
     typescript({
       clean: true,
@@ -43,7 +42,7 @@ export default {
       },
     }),
     css({
-      output: path.join(paths.outputPath, 'styles.css'),
+      output: 'styles.css',
     }),
     commonjs(),
     json(),
