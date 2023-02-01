@@ -17,8 +17,6 @@ module.exports = {
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier',
-    'prettier/react',
-    'prettier/@typescript-eslint',
     'plugin:storybook/recommended',
   ],
   globals: {
