@@ -3335,7 +3335,7 @@ __metadata:
     "@commitlint/config-conventional": ^17.0.0
     "@panenco/rollup-plugin-svg-sprite": ^1.0.3
     "@popperjs/core": ^2.11.0
-    "@rollup/plugin-alias": ^3.1.2
+    "@rollup/plugin-alias": ^4.0.0
     "@rollup/plugin-babel": ^6.0.0
     "@rollup/plugin-commonjs": ^20.0.0
     "@rollup/plugin-json": ^4.1.0
@@ -3528,14 +3528,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-alias@npm:^3.1.2":
-  version: 3.1.9
-  resolution: "@rollup/plugin-alias@npm:3.1.9"
+"@rollup/plugin-alias@npm:^4.0.0":
+  version: 4.0.3
+  resolution: "@rollup/plugin-alias@npm:4.0.3"
   dependencies:
-    slash: ^3.0.0
+    slash: ^4.0.0
   peerDependencies:
-    rollup: ^1.20.0||^2.0.0
-  checksum: cefae9dfb7c30f0dc78d24f4ad9ccb8a0878397b313c0fa9d0f519667394941c58a930d968d841e25aee43b0fb892d1e3f7edbb55e8197f191cce7da6a50b882
+    rollup: ^1.20.0||^2.0.0||^3.0.0
+  peerDependenciesMeta:
+    rollup:
+      optional: true
+  checksum: 3efabf35bfe2a40722609397328513dcb72ed4e2d1e35082cd1c60b231af9041214285b3e74d8702e0f00e214ee5ef3022fbc442a1beb8d1b641e85cf2b10cbf
   languageName: node
   linkType: hard
 
