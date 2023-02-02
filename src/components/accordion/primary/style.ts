@@ -1,9 +1,6 @@
 import styled from 'styled-components';
-import { PUITheme } from 'utils/types';
 
-export const StyledAccordionPrimary = styled.div<{
-  theme: PUITheme;
-}>`
+export const StyledAccordionPrimary = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;

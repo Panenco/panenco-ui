@@ -1,54 +1,74 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { useTheme } from 'utils/hooks';
-import { TextSize, PUIColors, PUITheme } from 'utils/types';
+import { TextSize, PUIColors } from 'utils/types';
 
 type EnumColors = keyof PUIColors;
 export interface TextProps extends React.HTMLAttributes<HTMLElement> {
+  /**
+   * The content of the component.
+   * */
+  children: React.ReactNode;
+  /**
+   * The color of the text.
+   * */
   color?: string | EnumColors;
+  /**
+   * The component to render.
+   * */
   component?: keyof React.ReactHTML | React.ComponentType;
+  /**
+   * The size of the text.
+   * */
   size?: string | TextSize;
+  /**
+   * The weight of the text.
+   * */
   weight?: string | number;
 }
 
 const StyledComponent = styled.span<{
-  color?: string | EnumColors;
-  size?: string | TextSize;
-  theme: PUITheme;
-  weight?: string | number;
+  color: string | EnumColors;
+  size: string | TextSize;
+  weight: string | number;
 }>`
-  font-size: ${(props: any): number | string => {
-    if (typeof props.size === 'string' && Object.keys(props.theme.typography.sizes).includes(props.size)) {
-      return props.theme.typography.sizes[props.size].textSize;
+  font-size: ${({ size, theme }): number | string => {
+    if (typeof size === 'string' && Object.keys(theme.typography.sizes).includes(size)) {
+      return theme.typography.sizes[size].textSize;
     }
-    if (props.size === 'inherit') {
+    if (size === 'inherit') {
       return 'inherit';
     }
-    return props.size.textSize;
-  }};
-  line-height: ${(props: any): string | number => {
-    if (typeof props.size === 'string' && Object.keys(props.theme.typography.sizes).includes(props.size)) {
-      return props.theme.typography.sizes[props.size].lineHeight;
+    if (typeof size === 'object') {
+      return size.textSize;
     }
-    if (props.size === 'inherit') {
+    return theme.typography.sizes.m.textSize;
+  }};
+  line-height: ${({ size, theme }): string | number => {
+    if (typeof size === 'string' && Object.keys(theme.typography.sizes).includes(size)) {
+      return theme.typography.sizes[size].lineHeight;
+    }
+    if (size === 'inherit') {
       return 'inherit';
     }
-    return props.size.lineHeight;
-  }};
-  color: ${(props: any): string => {
-    if (typeof props.size === 'string' && Object.keys(props.theme.colors).includes(props.color)) {
-      return props.theme.colors[props.color];
+    if (typeof size === 'object') {
+      return size.lineHeight;
     }
-    return props.color;
+    return theme.typography.sizes.m.lineHeight;
   }};
-  font-weight: ${(props: any): string | number => {
+  color: ${({ size, theme, color }): string => {
+    if (typeof size === 'string' && Object.keys(theme.colors).includes(color)) {
+      return theme.colors[color];
+    }
+    return color;
+  }};
+  font-weight: ${({ weight, theme }): string | number => {
     if (
-      (typeof props.weight === 'number' || typeof props.weight === 'string') &&
-      Object.keys(props.theme.typography.weights).includes(props.weight)
+      (typeof weight === 'number' || typeof weight === 'string') &&
+      Object.keys(theme.typography.weights).includes(String(weight))
     ) {
-      return props.theme.typography.weights[props.weight];
+      return theme.typography.weights[weight];
     }
-    return props.weight;
+    return weight;
   }};
 `;
 
@@ -57,10 +77,8 @@ export const Text = React.forwardRef<HTMLElement, TextProps>(
     { color = 'inherit', size = 'inherit', weight = 'inherit', children, component = 'span', ...props }: TextProps,
     ref,
   ): JSX.Element => {
-    const theme = useTheme();
-
     return (
-      <StyledComponent as={component} theme={theme} color={color} size={size} weight={weight} ref={ref} {...props}>
+      <StyledComponent as={component} color={color} size={size} weight={weight} ref={ref} {...props}>
         {children}
       </StyledComponent>
     );

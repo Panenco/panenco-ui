@@ -23,7 +23,7 @@ const breakPointMax = (name: string, gridLayoutObject = gridLayout): string | nu
   return null;
 };
 
-const mediaBreakPointDown = (name, gridLayoutObject = gridLayout, content): any => {
+const mediaBreakPointDown = (name, content, gridLayoutObject = gridLayout): any => {
   const max = breakPointMax(name, gridLayoutObject);
   if (max) {
     return {
@@ -60,7 +60,7 @@ const mediaQueriesForColumn = () => {
             maxWidth: width,
           },
         };
-        const breakpointObject = mediaBreakPointDown(key, gridLayout, content);
+        const breakpointObject = mediaBreakPointDown(key, content, gridLayout);
         if (max && hasBreakpoint) {
           mediaQueries = {
             ...mediaQueries,
@@ -89,7 +89,7 @@ const mediaQueriesForContainer = () => {
     };
     mediaQueries = {
       ...mediaQueries,
-      ...mediaBreakPointDown(key, gridLayout, content),
+      ...mediaBreakPointDown(key, content, gridLayout),
     };
   });
 
@@ -143,7 +143,7 @@ const spacingForRow = (): any => {
             },
           },
         };
-        const breakpointObject = mediaBreakPointDown(key, gridLayout, content);
+        const breakpointObject = mediaBreakPointDown(key, content, gridLayout);
         mediaQueries = {
           ...mediaQueries,
           [breakpoint]: {

@@ -23,9 +23,6 @@ export default {
     format: 'esm',
   },
   plugins: [
-    // alias({
-    //   config: paths.appConfig,
-    // }),
     replace({
       preventAssignment: true,
       'process.env.NODE_ENV': JSON.stringify('production'),
@@ -40,20 +37,15 @@ export default {
     }),
     typescript({
       clean: true,
-      // tsconfig: './tsconfig.json',
       typescript: ttypescript,
+      tsconfigOverride: {
+        exclude: ['node_modules', 'lib', 'stories'],
+      },
     }),
     css({
       output: path.join(paths.outputPath, 'styles.css'),
     }),
     commonjs(),
-    //   {
-    //   namedExports: {
-    //     'node_modules/react/index.js': ['cloneElement', 'createContext', 'Component', 'createElement'],
-    //     'node_modules/react-dom/index.js': ['render', 'hydrate'],
-    //     'node_modules/react-is/index.js': ['isElement', 'isValidElementType', 'ForwardRef', 'Memo'],
-    //   },
-    // }
     json(),
     svgSprite({
       outputFolder: paths.outputPath,

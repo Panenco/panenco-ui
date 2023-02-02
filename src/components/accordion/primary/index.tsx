@@ -2,8 +2,9 @@ import * as React from 'react';
 import { Icon, Text } from 'components';
 import AnimatedHeight from 'react-animate-height';
 import cx from 'classnames';
+
 import { useAccordion } from 'components/accordion/useAccordion';
-import { useTheme } from 'utils/hooks';
+import { useTheme } from 'styled-components';
 import { idGenerator } from 'utils/helpers';
 import { AccordionProps } from '../types';
 import { StyledAccordionPrimary } from './style';
@@ -22,7 +23,7 @@ export const AccordionPrimary = React.forwardRef((props: AccordionProps, ref: an
     ...otherProps
   } = props;
   const theme = useTheme();
-  const { combinedRef, handleClick, isOpen } = useAccordion({ ref, onClick, theme, ...otherProps });
+  const { combinedRef, handleClick, isOpen } = useAccordion({ ref, onClick, ...otherProps });
 
   const handleIconClick = (e: React.UIEvent): void => {
     e.persist();
@@ -35,7 +36,7 @@ export const AccordionPrimary = React.forwardRef((props: AccordionProps, ref: an
   const checkTypeIconLeft = typeof iconLeft === 'boolean';
 
   return (
-    <StyledAccordionPrimary ref={combinedRef} theme={theme} className={cx(className, 'accordion')} {...otherProps}>
+    <StyledAccordionPrimary ref={combinedRef} className={cx(className, 'accordion')} {...otherProps}>
       <button type='button' className='accordionHeader' onClick={handleClick} aria-expanded={isOpen || 'false'}>
         {iconLeft && (
           <Icon

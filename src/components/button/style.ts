@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ButtonVariantType, PUITheme } from 'utils/types';
+import { ButtonVariantType } from 'utils/types';
 
 const getBackgroundColor = (variant: any, lightColor: string): string => {
   if (variant === 'transparent') return 'transparent';
@@ -7,10 +7,8 @@ const getBackgroundColor = (variant: any, lightColor: string): string => {
 };
 
 export const StyledButton = styled.button<{
-  theme: PUITheme;
   to?: string;
   variant?: ButtonVariantType;
-  // as: HTMLElement;
 }>`
   position: relative;
   border: 2px solid ${({ variant, theme: { colors } }: any): string =>
@@ -53,7 +51,7 @@ export const StyledButton = styled.button<{
     padding: 10px 16px 10px 22px;
   }
 
-  &:focus {
+  &:focus-visible {
     box-shadow: 0 0 0 2px ${(props: any): string => props.theme.colors.base900};
     z-index: 10;
   }

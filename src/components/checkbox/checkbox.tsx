@@ -1,8 +1,9 @@
 import * as React from 'react';
 import cx from 'classnames';
+
 import { Icon } from 'components/icon';
 import { Text } from 'components/text';
-import { useTheme } from 'utils/hooks';
+import { useTheme } from 'styled-components';
 import { idGenerator } from 'utils/helpers';
 import { InputPropsType } from '../../utils/types';
 import { StyledCheckbox } from './style';
@@ -12,21 +13,43 @@ interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  /**
+   * Border color;
+   */
   borderColor?: string;
+  /**
+   * Border width;
+   */
   borderWidth?: string | number;
+  /**
+   * Checkbox checked state;
+   * */
+  checked?: boolean;
+  /**
+   * Color text-content;
+   */
   color?: string;
+  /**
+   * Error text;
+   */
   error?: string;
+  /**
+   * Child html input component props. Will be removed in next version;
+   */
   inputProps?: InputPropsType;
+  /**
+   * Checkbox label;
+   */
   label?: string | React.ReactNode;
+  /**
+   * Child label classname;
+   */
   labelClassName?: string;
-  // will be removed in next version
+  /**
+   * Wrapper props;
+   */
   wrapperProps?: WrapperProps;
 }
-
-// interface CompoundedComponent
-//   extends React.ForwardRefExoticComponent<CheckboxProps & React.RefAttributes<HTMLLabelElement>> {
-//   defaultProps?: any;
-// }
 
 export const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
   (
@@ -52,7 +75,7 @@ export const Checkbox = React.forwardRef<HTMLLabelElement, CheckboxProps>(
     const theme = useTheme();
 
     return (
-      <StyledCheckbox theme={theme} color={color} borderWidth={borderWidth} borderColor={borderColor} {...wrapperProps}>
+      <StyledCheckbox color={color} borderWidth={borderWidth} borderColor={borderColor} {...wrapperProps}>
         <label
           className={cx('label', disabled && 'labelDisabled', wrapperProps?.className)}
           htmlFor={id || defaultId}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cx from 'classnames';
-import { useTheme } from 'utils/hooks';
+
 import { Icon, icons, IconType } from 'components';
 import { useCombinedRefs } from 'utils/hooks/combinedrefs';
 import { useTabContext, getTabPanelId } from '../tabContext';
@@ -16,12 +16,11 @@ export interface TabProps extends React.ButtonHTMLAttributes<HTMLButtonElement> 
   selected?: boolean;
 }
 
-const BaseTab = React.forwardRef<any, TabProps>(
+const BaseTab = React.forwardRef<React.RefObject<HTMLButtonElement>, TabProps>(
   (
     { index, className, iconClassName, icon, style, disabled, selected, onClick, children, ...props }: TabProps,
     ref,
   ): JSX.Element => {
-    const theme = useTheme();
     const tabRef = React.useRef();
     const combinedRef = useCombinedRefs(tabRef, ref);
 
@@ -41,7 +40,6 @@ const BaseTab = React.forwardRef<any, TabProps>(
 
     return (
       <StyledTab
-        theme={theme}
         style={style}
         role='tab'
         disabled={disabled}
@@ -67,13 +65,13 @@ const BaseTab = React.forwardRef<any, TabProps>(
 );
 
 export const Tab = React.forwardRef(
-  ({ className, ...props }: TabProps, ref): JSX.Element => (
+  ({ className, ...props }: TabProps, ref: React.Ref<React.RefObject<HTMLButtonElement>> | undefined): JSX.Element => (
     <BaseTab ref={ref} className={cx('tab', className)} {...props} />
   ),
 );
 
 export const BookmarkTab = React.forwardRef(
-  ({ className, ...props }: TabProps, ref): JSX.Element => (
+  ({ className, ...props }: TabProps, ref: React.Ref<React.RefObject<HTMLButtonElement>>): JSX.Element => (
     <BaseTab ref={ref} className={cx('bookmarkTab', className)} {...props} />
   ),
 );

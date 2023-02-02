@@ -1,7 +1,8 @@
 import * as React from 'react';
 import cx from 'classnames';
-import { useTheme } from 'utils/hooks';
-import { Text, SelectInput, Button } from 'components';
+
+import { useTheme } from 'styled-components';
+import { Text, SelectInput, SelectInputProps, Button } from 'components';
 import { usePagination } from './usePagination';
 import { StyledPagination } from './styles';
 import { additionalStyles } from '../select/style';
@@ -24,8 +25,16 @@ export type TablePaginationProps = {
   onChangePage: (page: number | PaginationOption) => void;
   onChangeRowsPerPage: any;
   page: number;
+  /**
+   *  used to pass props to the page select input
+   */
+  pageSelectProps?: SelectInputProps;
   rowsPerPage: number;
   rowsPerPageOptions?: any;
+  /**
+   * used to pass props to the rows per page select input
+   */
+  rowsPerPageSelectProps?: SelectInputProps;
   selectStyles?: {
     [key: string]: (...args) => { [k: string]: any };
   };
@@ -87,6 +96,8 @@ export const TablePagination = ({
       `Displaying ${rangeStart}-${rangeEnd} of ${pCount} items`,
     currentPage: (currentPage: number, pagesAmount: number) => `${currentPage} of ${pagesAmount} pages`,
   },
+  rowsPerPageSelectProps = {},
+  pageSelectProps = {},
   ...otherProps
 }: TablePaginationProps): JSX.Element => {
   const [isFirst, isLast, pagesAmount] = usePagination({ page, count, rowsPerPage });
@@ -102,7 +113,7 @@ export const TablePagination = ({
   const rowsPerPageHandler = (option: PaginationOption): void => onChangeRowsPerPage(option.value);
 
   return (
-    <StyledPagination theme={theme} className={cx('pagination', className)} {...otherProps}>
+    <StyledPagination className={cx('pagination', className)} {...otherProps}>
       <div className='paginationSection'>
         <Text
           size={theme.typography.sizes.m}
@@ -113,6 +124,7 @@ export const TablePagination = ({
           {locales.itemsPerPage}
         </Text>
         <SelectInput
+          {...rowsPerPageSelectProps}
           options={rowsPerPageOptions}
           className='paginationSelect'
           id='rowsPerPage'
@@ -141,6 +153,7 @@ export const TablePagination = ({
           }}
         />
         <SelectInput
+          {...pageSelectProps}
           options={pagesOptions}
           className='paginationSelect'
           id='page'

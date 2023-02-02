@@ -82,8 +82,17 @@ export type PUITheme = {
 };
 
 export interface InputComponent {
+  /**
+   * The text that would be displayed in case an error occurred
+   */
   error?: string;
+  /**
+   * Subtitle text content
+   */
   subTitle?: string;
+  /**
+   * Title text content
+   */
   title?: string;
 }
 export interface InputPropsType extends React.InputHTMLAttributes<HTMLInputElement> {
