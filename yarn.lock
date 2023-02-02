@@ -3411,7 +3411,7 @@ __metadata:
     react-text-mask: ^5.4.3
     resize-observer-polyfill: ^1.5.1
     rimraf: ^4.0.0
-    rollup: ^2.56.2
+    rollup: ^3.0.0
     rollup-plugin-analyzer: ^4.0.0
     rollup-plugin-css-only: ^2.1.0
     rollup-plugin-postcss: ^4.0.1
@@ -18123,9 +18123,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup@npm:^2.56.2":
-  version: 2.67.2
-  resolution: "rollup@npm:2.67.2"
+"rollup@npm:^3.0.0":
+  version: 3.12.1
+  resolution: "rollup@npm:3.12.1"
   dependencies:
     fsevents: ~2.3.2
   dependenciesMeta:
@@ -18133,7 +18133,7 @@ __metadata:
       optional: true
   bin:
     rollup: dist/bin/rollup
-  checksum: 9aca5251ba4b441064183cde2394b91567259002d68086bdd3906db66d55dd148ab27e57c51eb53830d7b9b813c2d4e834b7735d65e2a869780bc639d4a20c38
+  checksum: b6b3aa4bcc13b1f15c1945201f3837be07b249854ed8a73bd67411ffe56f691b808d5b563246b78ecea4110afdb9e9e6cc7d5a3f82965a5592187dbb10d3671f
   languageName: node
   linkType: hard
 
