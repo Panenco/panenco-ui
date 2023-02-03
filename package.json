@@ -117,7 +117,7 @@
     "react-hot-loader": "^4.12.20",
     "react-router-dom": "^5.2.0",
     "react-select": "^3.0.4",
-    "react-select-async-paginate": "^0.4.0",
+    "react-select-async-paginate": "^0.7.0",
     "rimraf": "^4.0.0",
     "rollup": "^3.0.0",
     "rollup-plugin-analyzer": "^4.0.0",

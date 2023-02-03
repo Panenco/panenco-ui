@@ -3407,7 +3407,7 @@ __metadata:
     react-popper: ^2.2.5
     react-router-dom: ^5.2.0
     react-select: ^3.0.4
-    react-select-async-paginate: ^0.4.0
+    react-select-async-paginate: ^0.7.0
     react-text-mask: ^5.4.3
     resize-observer-polyfill: ^1.5.1
     rimraf: ^4.0.0
@@ -3654,7 +3654,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@seznam/compose-react-refs@npm:^1.0.4":
+"@seznam/compose-react-refs@npm:^1.0.6":
   version: 1.0.6
   resolution: "@seznam/compose-react-refs@npm:1.0.6"
   checksum: f9b1840385a6866a564897d8a2aad3a3dcdde1ccb5bef8476616ef447b689c75cdc5f47bf40e0d2e2d3b37c8e934ec13eeb9d09388fb98bb280a897788d1f478
@@ -5742,6 +5742,15 @@ __metadata:
     "@typescript-eslint/types": 5.48.2
     eslint-visitor-keys: ^3.3.0
   checksum: 4d83d1e4b39ad76fe865b0580dbfcad6d6f9e936de3d40c1c13d552d40e394eab390a7f9d1172ba59ce457853b93ed0ec253642e6d07cd6cf4fa0b5ec006f0c4
+  languageName: node
+  linkType: hard
+
+"@vtaits/use-lazy-ref@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "@vtaits/use-lazy-ref@npm:0.1.0"
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+  checksum: ee34c7e34cdc8fca2bfa445c6beb6468b15bc8299f61902406270536c8e63e84f542a4fbed69e92ac6e66dc8fc6d12e5efa116411ad3ba502cdeae400f86bf29
   languageName: node
   linkType: hard
 
@@ -17205,16 +17214,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-is-mounted-hook@npm:^1.0.3":
-  version: 1.1.2
-  resolution: "react-is-mounted-hook@npm:1.1.2"
-  peerDependencies:
-    react: ^16.8.6 || ^17
-    react-dom: ^16.8.6 || ^17
-  checksum: 297e28bc6fe77f1ba13536246a1747c1478e1896fe7ade7b0801baf902774116cd2ec38ad91a08eb9b9706e03fbf63ca4534bdbc9b7a0ce9e4a15d9295712f13
-  languageName: node
-  linkType: hard
-
 "react-is@npm:17.0.2, react-is@npm:^17.0.1":
   version: 17.0.2
   resolution: "react-is@npm:17.0.2"
@@ -17300,18 +17299,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-select-async-paginate@npm:^0.4.0":
-  version: 0.4.1
-  resolution: "react-select-async-paginate@npm:0.4.1"
+"react-select-async-paginate@npm:^0.7.0":
+  version: 0.7.2
+  resolution: "react-select-async-paginate@npm:0.7.2"
   dependencies:
-    "@babel/runtime": ^7.11.2
-    "@seznam/compose-react-refs": ^1.0.4
-    react-is-mounted-hook: ^1.0.3
-    sleep-promise: ^8.0.1
+    "@seznam/compose-react-refs": ^1.0.6
+    "@vtaits/use-lazy-ref": ^0.1.0
+    sleep-promise: ^9.1.0
+    use-is-mounted-ref: ^1.5.0
   peerDependencies:
-    react: ^16.8.0
-    react-select: ^2.0.0 || ^3.0.0
-  checksum: 4d06bb61c3d830e051e005badbdbc87d418f71ac2e7297e6a2475c1edad21510d4a48ca40348a03790b8b8f0b1bb30ceb98b9179616bbfe71f62a3fc3ec7b9d3
+    react: ^16.14.0 || ^17.0.0 || ^18.0.0
+    react-select: ^5.0.0
+  checksum: 0f277aea99ba7e40d647b2c43150ee08c6979277db10468fde0d7d516d6b90044e547e382057a68627d08a5dda030aa1eb881cecb1e52fda54d5936a52cfe5a0
   languageName: node
   linkType: hard
 
@@ -18591,10 +18590,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sleep-promise@npm:^8.0.1":
-  version: 8.0.1
-  resolution: "sleep-promise@npm:8.0.1"
-  checksum: 323d53dc01023043e4d27af7255f507dbc5346231f5a155d7f3d7c2e650629b688341235dd31ee496f8f8ef312b41c41ebfe1f2bea16d0e5096129f688e27212
+"sleep-promise@npm:^9.1.0":
+  version: 9.1.0
+  resolution: "sleep-promise@npm:9.1.0"
+  checksum: a93359c18d2e4d586f2ecd4575cbdbc92bcbd9d387bd4bca249892abb512ca4e80075f67e53ec1279ea4555e8a1f6dc9df9e90f8aa71178ad943e9ba1f27debb
   languageName: node
   linkType: hard
 
@@ -20662,6 +20661,15 @@ __metadata:
     "@types/react":
       optional: true
   checksum: b0027242311ed3fb006575c3be69efe31946f17129f2464707f4fcf2e167b91917236569a1d622c57b36843bc05efd9740a4ba51591553ad6fe2799cc12b138e
+  languageName: node
+  linkType: hard
+
+"use-is-mounted-ref@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "use-is-mounted-ref@npm:1.5.0"
+  peerDependencies:
+    react: ">=16.0.0"
+  checksum: 51deac5c49f44128252ec1d7d4864f86585aed450d449007066f93f42aecdd3bab54c3ca2402001ae4ac5b5285b3186feaabadf8bbe148107f3cff1f1e014aa6
   languageName: node
   linkType: hard
 
