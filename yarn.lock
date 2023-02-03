@@ -3397,7 +3397,7 @@ __metadata:
     postcss-loader: ^3.0.0
     prettier: ^2.0.4
     react: ^17.0.2
-    react-animate-height: ^2.0.23
+    react-animate-height: ^3.0.0
     react-compound-slider: ^3.3.1
     react-day-picker: ^8.0.4
     react-dom: ^17.0.2
@@ -8036,7 +8036,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"classnames@npm:*, classnames@npm:^2.2.5":
+"classnames@npm:*":
   version: 2.3.1
   resolution: "classnames@npm:2.3.1"
   checksum: 14db8889d56c267a591f08b0834989fe542d47fac659af5a539e110cc4266694e8de86e4e3bbd271157dbd831361310a8293e0167141e80b0f03a0f175c80960
@@ -17017,16 +17017,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-animate-height@npm:^2.0.23":
-  version: 2.0.23
-  resolution: "react-animate-height@npm:2.0.23"
-  dependencies:
-    classnames: ^2.2.5
-    prop-types: ^15.6.1
+"react-animate-height@npm:^3.0.0":
+  version: 3.1.0
+  resolution: "react-animate-height@npm:3.1.0"
   peerDependencies:
-    react: ">=15.6.2"
-    react-dom: ">=15.6.2"
-  checksum: 280f504b38a98e06323981eaa7752f568d5f761b6d511e21625adc04b0b96222b3a20224c5af9146dff23fb834064437065f834b781ba9377243427a66f1553c
+    react: ">=16.8.0"
+    react-dom: ">=16.8.0"
+  checksum: 46f802fe1e70d5d451d74fabece0dc8e2060543ea106dd56fc0ff544391e8939f8876af480323854dc39cbefd286d8cece29e509de3fb2d231fa9f77097532af
   languageName: node
   linkType: hard
 
