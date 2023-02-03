@@ -37,7 +37,7 @@
   "peerDependencies": {
     "classnames": "^2.2.6",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react-dom": "^18.0.0",
     "react-router-dom": "^5.2.0",
     "styled-components": ">= 5"
   },
@@ -73,7 +73,7 @@
     "@storybook/testing-library": "^0.0.13",
     "@types/classnames": "^2.2.10",
     "@types/react": "^17.0.19",
-    "@types/react-dom": "^17.0.9",
+    "@types/react-dom": "^18.0.0",
     "@types/react-router-dom": "^5.1.8",
     "@types/react-select": "^3.0.11",
     "@types/styled-components": "^5.1.26",
@@ -113,7 +113,7 @@
     "postcss-loader": "^3.0.0",
     "prettier": "^2.0.4",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react-dom": "^18.0.0",
     "react-hot-loader": "^4.12.20",
     "react-router-dom": "^5.2.0",
     "react-select": "^3.0.4",
