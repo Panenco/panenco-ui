@@ -1,4 +1,4 @@
-# DEPRECATED!!!
+# ⚠️ Will be DEPRECATED!!! soon ⚠️
 
 Support for this package will be discontinued in the near future. Consider migrating to [Material UI](https://material-ui.com/).
 
