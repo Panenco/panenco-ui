@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Select, { components, Props as SelectProps } from 'react-select';
-import { useTheme } from 'utils/hooks';
+import { useTheme } from 'styled-components';
 import CreatableSelect from 'react-select/creatable';
 import AsyncSelect from 'react-select/async';
 import AsyncCreatableSelect from 'react-select/async-creatable';

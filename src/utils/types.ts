@@ -82,8 +82,17 @@ export type PUITheme = {
 };
 
 export interface InputComponent {
+  /**
+   * The text that would be displayed in case an error occurred
+   */
   error?: string;
+  /**
+   * Subtitle text content
+   */
   subTitle?: string;
+  /**
+   * Title text content
+   */
   title?: string;
 }
 export interface InputPropsType extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -94,17 +103,6 @@ export interface InputPropsType extends React.InputHTMLAttributes<HTMLInputEleme
 export interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {
   [key: string]: any;
   ref?: React.Ref<HTMLDivElement>;
-}
-
-export interface AccordionProps extends React.HTMLAttributes<HTMLDivElement> {
-  iconLeft?: boolean | string;
-  iconRight?: boolean | string;
-  icons?: Array<string>;
-  isOpen?: boolean;
-  onClick?: any;
-  onIconClick?: any;
-  shouldRotateIcon?: boolean;
-  title?: string;
 }
 
 export type IconVariantSize = 'sm' | 'md' | 'lg';

@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Text, icons, IconType } from 'components';
 import cx from 'classnames';
-import { useTheme } from 'utils/hooks';
+
+import { useTheme } from 'styled-components';
 import { ButtonIcon } from 'components/button-icon';
 import { RowType, ExpandRowType, CustomCellProps } from './types';
 

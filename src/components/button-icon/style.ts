@@ -1,11 +1,9 @@
 import styled from 'styled-components';
-import { PUITheme } from 'utils/types';
 
 const convertToPixels = (size) => size && size.toString().concat('px');
 
 export const StyledButtonIcon = styled.button<{
   size?: number;
-  theme: PUITheme;
   to?: string;
 }>`
   align-items: center;
@@ -24,28 +22,28 @@ export const StyledButtonIcon = styled.button<{
   &:active {
     & .iconClass,
     & .buttonIconTitle {
-      color: ${(props: any): string => props.theme.colors.primary700};
+      color: ${({ theme }) => theme.colors.primary700};
     }
   }
 
   &:focus {
-    outline: 2px solid ${(props: any): string => props.theme.colors.base900};
+    outline: 2px solid ${({ theme }) => theme.colors.base900};
   }
 
   & .iconClass {
-    color: ${(props: any): string => props.color || props.theme.colors.base700};
+    color: ${({ color, theme }) => color || theme.colors.base700};
     display: flex;
     flex-shrink: 0;
     transition: 0.3s;
-    height: ${(props: any): string => convertToPixels(props.size) || props.theme.typography.sizes.m.textSize};
-    width: ${(props: any): string => convertToPixels(props.size) || props.theme.typography.sizes.m.textSize};
+    height: ${({ size, theme }) => convertToPixels(size) || theme.typography.sizes.m.textSize};
+    width: ${({ size, theme }) => convertToPixels(size) || theme.typography.sizes.m.textSize};
   }
 
   & .buttonIconTitle {
-    color: ${(props: any): string => props.color || props.theme.colors.base700};
-    font-weight: ${(props: any): string => props.theme.typography.weights.regular};
-    font-size: ${(props: any): string => props.theme.typography.sizes.m.textSize};
-    line-height: ${(props: any): string => props.theme.typography.sizes.m.lineHeight};
+    color: ${({ color, theme }) => color || theme.colors.base700};
+    font-weight: ${({ theme }) => theme.typography.weights.regular};
+    font-size: ${({ theme }) => theme.typography.sizes.m.textSize};
+    line-height: ${({ theme }) => theme.typography.sizes.m.lineHeight};
     transition: 0.3s;
   }
 

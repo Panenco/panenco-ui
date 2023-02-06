@@ -1,9 +1,6 @@
 import styled from 'styled-components';
-import { PUITheme } from 'utils/types';
 
-export const StyledPagination = styled.div<{
-  theme: PUITheme;
-}>`
+export const StyledPagination = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
@@ -86,8 +83,7 @@ export const StyledPagination = styled.div<{
   }
 `;
 
-export const StyledListPagination = styled.div<{
-  theme: PUITheme;
+export const StyledListPagination = styled.nav<{
   variant?: 'contained' | 'outlined' | 'text';
 }>`
   width: 100%;
