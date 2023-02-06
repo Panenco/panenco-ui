@@ -2,9 +2,8 @@ import * as React from 'react';
 import cx from 'classnames';
 
 import 'react-day-picker/dist/style.css';
-import { PrimaryButton, TextInput } from 'components';
+import { Button, TextInput } from 'components';
 import MaskedInput from 'react-text-mask';
-// eslint-disable-next-line import/no-duplicates
 import {
   format as dateFnsFormat,
   parse as dateFnsParse,
@@ -14,13 +13,14 @@ import {
   setMinutes,
   isDate,
   isValid,
+  addDays,
+  // eslint-disable-next-line import/no-duplicates
 } from 'date-fns';
-import { DayPicker as ReactDayPicker, DayPickerSingleProps } from 'react-day-picker';
+import { DayPicker as ReactDayPicker, DateRange, DayPickerSingleProps } from 'react-day-picker';
 import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe';
 import { InputComponent } from 'utils/types';
 import { Placement } from '@popperjs/core';
 import { useOutsideClick } from 'utils/hooks/outside-click';
-import { useTheme } from 'utils/hooks';
 // eslint-disable-next-line import/no-duplicates
 import en from 'date-fns/locale/en-GB';
 import FocusLock from 'react-focus-lock';
@@ -35,7 +35,7 @@ const transformTime = (date = new Date()): string => {
   return `${hours}:${minutes}`;
 };
 
-export function parseDate(str, format, locale?): Date | undefined {
+export function parseDate(str, format): Date | undefined {
   const parsed = dateFnsParse(str, format, new Date());
   if (isDate(parsed)) {
     return parsed;
@@ -43,32 +43,106 @@ export function parseDate(str, format, locale?): Date | undefined {
   return undefined;
 }
 
-export function formatDate(date, format: string, locale?): string {
+export function formatDate(date, format: string): string {
   return dateFnsFormat(date, format);
 }
 
 export interface DayPickerProps extends InputComponent, DayPickerSingleProps {
+  /**
+   * Props for date input
+   */
   dateInputProps?: any;
+  /**
+   * Allow to pass props to DayPicker component from 'react-day-picker' library
+   * */
   dayPickerProps?: any;
+  /**
+   * Will be default date if **value** not passed
+   * */
   defaultDay?: Date;
+  /**
+   * Default end date for the range picker
+   * */
+  defaultRangeEndDate?: Date;
+  /**
+   * Default start date for the range picker
+   * */
+  defaultRangeStartDate?: Date;
+  /**
+   * Date format
+   * */
   format?: string;
+  /**
+   * Icon after input
+   * */
   iconAfter?: HTMLObjectElement | JSX.Element | string;
+  /**
+   * Text input mask that follows text input format, required for manualInput usage
+   * */
   inputMask?: (string | RegExp)[];
+  /**
+   * Allow to show mobile view of the component
+   * */
   isMobile?: boolean;
+  /**
+   * Allow to show input for changing time
+   * */
   isTimePicker?: boolean;
+  /**
+   * Allows user to set day by changing text input value, optional property, requires **inputMask** property to be set, false by default
+   * */
   manualInput?: boolean;
+  /**
+   * Callback for changing date
+   * */
   onChange?: (value: any) => void;
+  /**
+   * Props for overlay component
+   * */
   overlayComponentProps?: any;
+  /**
+   * Placeholder for input
+   * */
   placeholder?: string;
+  /**
+   * Allow to position calendar, can be: bottom-end, bottom-start, by default is bottom-start
+   * */
   position?: Placement;
+  /**
+   * Prevent closing on day select
+   * */
   preventClosingOnDaySelect?: boolean;
+  /**
+   * Label for change time button
+   * */
   saveLabel?: string;
+  /**
+   * Subtitle for DayPicker
+   * */
   subTitle?: string;
+  /**
+   * Error label for time input error, default is 'Please, enter valid time'
+   * */
   timeInputErrorText?: string;
+  /**
+   * Props for time input
+   * */
   timeInputProps?: any;
+  /**
+   * Title for time input
+   * */
   timeTitle?: string;
+  /**
+   * Title for DayPicker
+   * */
   title?: string;
+  /**
+   * Date of DayPicker, has the highest priority
+   * */
   value?: Date;
+  /**
+   * Props for wrapper
+   * */
   wrapperProps?: any;
 }
 
@@ -83,7 +157,7 @@ export const DayPicker = ({
   saveLabel = 'Save',
   wrapperProps,
   timeInputProps,
-  dayPickerProps,
+  dayPickerProps = {},
   overlayComponentProps,
   dateInputProps,
   isTimePicker,
@@ -97,20 +171,37 @@ export const DayPicker = ({
   preventClosingOnDaySelect,
   manualInput = false,
   inputMask = defaultMask,
+  defaultRangeStartDate = new Date(),
+  defaultRangeEndDate = addDays(new Date(), 7),
 }: DayPickerProps): React.ReactElement => {
-  const theme = useTheme();
+  const { mode } = dayPickerProps;
+  const isRangeMode = mode === 'range';
+
+  const defaultRangeSelected: DateRange = {
+    from: defaultRangeStartDate,
+    to: defaultRangeEndDate,
+  };
+
+  const [range, setRange] = useState<DateRange | undefined>(defaultRangeSelected);
 
   const defaultDate = value || defaultDay || new Date();
+
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [date, setDate] = useState<Date>(defaultDate);
   const [dateTime, setDateTime] = useState(transformTime(new Date(date)));
   const [isTimeValid, setIsTimeValid] = useState<boolean>(true);
 
   const inputValue = useMemo(() => formatDate(date, format), [date, format]);
+  const rangeInputValue = useMemo(
+    () => `${formatDate(range?.from, format)} - ${formatDate(range?.to, format)}`,
+    [range, format],
+  );
 
   const [month, setMonth] = useState<Date>(defaultDate);
 
-  const [textInputValue, setTextInputValue] = useState<string>(inputValue);
+  const defaultTextInputValue = isRangeMode ? rangeInputValue : inputValue;
+
+  const [textInputValue, setTextInputValue] = useState<string>(defaultTextInputValue);
 
   React.useEffect(() => {
     if (onChange) onChange(date);
@@ -141,6 +232,11 @@ export const DayPicker = ({
 
   const showCalendar = () => {
     setIsCalendarOpen(true);
+  };
+
+  const handleRangeDaySelect = (newRange: { from: Date; to: Date }) => {
+    setRange(newRange);
+    setTextInputValue(`${formatDate(newRange.from, format)} - ${formatDate(newRange.to, format)}`);
   };
 
   const handleDaySelect = (selectedDate: Date) => {
@@ -209,14 +305,14 @@ export const DayPicker = ({
         onChange={handleTimeChange}
         value={dateTime}
       />
-      <PrimaryButton className='submitTime' type='button' onClick={closeCalendar}>
+      <Button variant='contained' className='submitTime' type='button' onClick={closeCalendar}>
         {saveLabel}
-      </PrimaryButton>
+      </Button>
     </div>
   );
 
   return (
-    <StyledDayPicker theme={theme} error={error} className='dayPickerWrapper' {...wrapperProps}>
+    <StyledDayPicker error={error} className='dayPickerWrapper' {...wrapperProps}>
       <FocusLock returnFocus autoFocus disabled={manualInput || !isCalendarOpen}>
         <MaskedInput
           id='date-input-id'
@@ -237,6 +333,7 @@ export const DayPicker = ({
               error={error}
               dir={dayPickerProps?.dir || dir}
               inputRef={customRef}
+              value={textInputValue}
               {...dateInputProps}
               {...restProps}
             />
@@ -264,8 +361,8 @@ export const DayPicker = ({
                 defaultMonth={date}
                 onMonthChange={setMonth}
                 month={month}
-                selected={date}
-                onSelect={handleDaySelect}
+                selected={isRangeMode ? range : date}
+                onSelect={isRangeMode ? handleRangeDaySelect : handleDaySelect}
                 parseDate={parseDate}
                 formatDate={formatDate}
                 weekStartsOn={dayPickerProps?.weekStartsOn || 1} // Monday as default value

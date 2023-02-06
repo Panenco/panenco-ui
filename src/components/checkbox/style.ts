@@ -1,20 +1,20 @@
 import styled from 'styled-components';
-import { PUITheme } from 'utils/types';
 
 export const StyledCheckbox = styled.div<{
   borderColor?: string;
   borderWidth?: string | number;
-  theme: PUITheme;
+  color?: string;
 }>`
   position: relative;
 
   & .label {
     align-items: center;
     display: flex;
+    position: relative;
 
     &:focus-within {
       & .container {
-        box-shadow: 0px 0px 0px 2px ${(props: any): string => props.theme.colors.base900};
+        box-shadow: 0px 0px 0px 2px ${({ theme }) => theme.colors.base900};
       }
     }
 
@@ -22,24 +22,24 @@ export const StyledCheckbox = styled.div<{
       cursor: pointer;
 
       .container {
-        border: ${(props: any): string => {
-            if (props.borderWidth) {
-              return `${props.borderWidth}px`;
+        border: ${({ borderWidth }) => {
+            if (borderWidth) {
+              return `${borderWidth}px`;
             }
             return '2px';
           }}
           solid
-          ${(props: any): string => {
-            if (props.color) {
-              return props.color;
+          ${({ color, theme }) => {
+            if (color) {
+              return color;
             }
-            return props.theme.colors.primary700;
+            return theme.colors.primary700;
           }};
       }
 
       .container.error {
-        border-color: ${(props: any): string => {
-          return props.theme.colors.error;
+        border-color: ${({ theme }) => {
+          return theme.colors.error;
         }};
       }
     }
@@ -54,14 +54,14 @@ export const StyledCheckbox = styled.div<{
       display: flex;
       margin-left: 8px;
       vertical-align: middle;
-      color: ${(props: any): string => props.theme.colors.base900};
+      color: ${({ theme }) => theme.colors.base900};
     }
   }
 
   .error {
     position: absolute;
     left: 28px;
-    color: ${(props: any): string => props.theme.colors.error};
+    color: ${({ theme }) => theme.colors.error};
   }
 
   .checkbox {
@@ -77,23 +77,23 @@ export const StyledCheckbox = styled.div<{
     position: relative;
     left: unset;
     color: unset;
-    border-color: ${(props: any): string => props.theme.colors.error};
+    border-color: ${({ theme }) => theme.colors.error};
   }
 
   .container {
     background-color: transparent;
-    border: ${(props: any): string => {
-        if (props.borderWidth) {
-          return `${props.borderWidth}px`;
+    border: ${({ borderWidth }) => {
+        if (borderWidth) {
+          return `${borderWidth}px`;
         }
         return '2px';
       }}
       solid
-      ${(props: any): string => {
-        if (props.borderColor) {
-          return props.borderColor;
+      ${({ borderColor, theme }) => {
+        if (borderColor) {
+          return borderColor;
         }
-        return props.theme.colors.base700;
+        return theme.colors.base700;
       }};
     border-radius: 4px;
     box-sizing: border-box;
@@ -115,7 +115,7 @@ export const StyledCheckbox = styled.div<{
   }
 
   .tick {
-    color: ${(props: any): string => props.theme.colors.base100};
+    color: ${({ theme }) => theme.colors.base100};
     left: 50%;
     position: absolute;
     top: 50%;
@@ -123,33 +123,33 @@ export const StyledCheckbox = styled.div<{
   }
 
   & .checkbox:checked + .container {
-    background-color: ${(props: any): string => {
-      if (props.color) {
-        return props.color;
+    background-color: ${({ color, theme }) => {
+      if (color) {
+        return color;
       }
-      return props.theme.colors.primary500;
+      return theme.colors.primary500;
     }};
-    border: ${(props: any): string => {
-        if (props.borderWidth) {
-          return `${props.borderWidth}px`;
+    border: ${({ borderWidth }) => {
+        if (borderWidth) {
+          return `${borderWidth}px`;
         }
         return '2px';
       }}
       solid
-      ${(props: any): string => {
-        if (props.color) {
-          return props.color;
+      ${({ color, theme }) => {
+        if (color) {
+          return color;
         }
-        return props.theme.colors.primary500;
+        return theme.colors.primary500;
       }};
   }
 
   & .checkbox:checked + .container.error {
-    background-color: ${(props: any): string => {
-      return props.theme.colors.error;
+    background-color: ${({ theme }) => {
+      return theme.colors.error;
     }};
-    border-color: ${(props: any): string => {
-      return props.theme.colors.error;
+    border-color: ${({ theme }) => {
+      return theme.colors.error;
     }};
   }
 
@@ -157,33 +157,33 @@ export const StyledCheckbox = styled.div<{
     &:hover,
     &:active {
       & + .container {
-        background-color: ${(props: any): string => {
-          if (props.color) {
-            return props.color;
+        background-color: ${({ color, theme }) => {
+          if (color) {
+            return color;
           }
-          return props.theme.colors.primary700;
+          return theme.colors.primary700;
         }};
-        border: ${(props: any): string => {
-            if (props.borderWidth) {
-              return `${props.borderWidth}px`;
+        border: ${({ borderWidth }) => {
+            if (borderWidth) {
+              return `${borderWidth}px`;
             }
             return '2px';
           }}
           solid
-          ${(props: any): string => {
-            if (props.color) {
-              return props.color;
+          ${({ color, theme }) => {
+            if (color) {
+              return color;
             }
-            return props.theme.colors.primary700;
+            return theme.colors.primary700;
           }};
       }
 
       & + .container.error {
-        background-color: ${(props: any): string => {
-          return props.theme.colors.error;
+        background-color: ${({ theme }) => {
+          return theme.colors.error;
         }};
-        border-color: ${(props: any): string => {
-          return props.theme.colors.error;
+        border-color: ${({ theme }) => {
+          return theme.colors.error;
         }};
       }
     }

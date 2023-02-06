@@ -1,9 +1,6 @@
 import styled from 'styled-components';
-import { PUITheme } from 'utils/types';
 
-export const StyledLoader = styled.div<{
-  theme: PUITheme;
-}>`
+export const StyledLoader = styled.div`
   height: 20px;
   width: 20px;
   position: relative;

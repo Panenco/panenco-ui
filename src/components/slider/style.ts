@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { PUITheme } from 'utils/types';
 
 export const StyledRootSlider = styled.div`
   position: relative;
@@ -12,9 +11,7 @@ export const StyledRootSlider = styled.div`
   }
 `;
 
-export const StyledHandle = styled.div<{
-  theme: PUITheme;
-}>`
+export const StyledHandle = styled.div`
   align-items: center;
   border-radius: 4px;
   cursor: pointer;
@@ -48,9 +45,7 @@ export const StyledHandle = styled.div<{
   }
 `;
 
-export const StyledInputRange = styled.div<{
-  theme: PUITheme;
-}>`
+export const StyledInputRange = styled.div`
   height: 32px;
   position: relative;
   width: 100%;
@@ -67,9 +62,7 @@ export const StyledInputRange = styled.div<{
   }
 `;
 
-export const StyledTrack = styled.div<{
-  theme: PUITheme;
-}>`
+export const StyledTrack = styled.div`
   border-radius: 4px;
   cursor: pointer;
   height: 32px;

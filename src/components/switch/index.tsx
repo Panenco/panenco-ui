@@ -3,35 +3,53 @@ import cx from 'classnames';
 
 import { Icon } from 'components';
 import { idGenerator, sizeToString } from 'utils/helpers';
-import { useTheme } from 'utils/hooks';
 import { StyledSwitch } from './style';
 
 export interface SwitchProps extends React.HTMLAttributes<HTMLElement> {
+  /**
+   * Height of the switch.
+   * */
   height?: string | number;
+  /**
+   * Id of the input element.
+   * */
+  id?: string;
+  /**
+   * Ref of the input element.
+   * */
   inputRef?: React.Ref<HTMLInputElement>;
+  /**
+   * Size of the switch.
+   * */
   size?: number;
+  /**
+   * Value of the switch.
+   * */
   value: boolean;
+  /**
+   * Width of the switch.
+   * */
   width?: string | number;
-  wrapperProps?: any;
+  /**
+   * Props to be passed to the wrapper.
+   * */
+  wrapperProps?: React.HTMLAttributes<HTMLLabelElement>;
 }
 
-export const Switch: React.FC<SwitchProps> = React.forwardRef<HTMLElement, SwitchProps>(
+export const Switch: React.FC<SwitchProps> = React.forwardRef<HTMLLabelElement, SwitchProps>(
   (
     { id: idProp, inputRef, value = false, height, width, size = 48, className, wrapperProps, ...props }: SwitchProps,
     ref,
   ): JSX.Element => {
-    const theme = useTheme();
     const id = idProp || idGenerator();
     return (
       <StyledSwitch
-        theme={theme}
         className={cx('switch', className)}
         htmlFor={id}
         ref={ref}
         height={sizeToString(height)}
         width={sizeToString(width)}
         size={size}
-        value={value}
         {...wrapperProps}
       >
         <input ref={inputRef} id={id} type='checkbox' checked={value} {...props} />

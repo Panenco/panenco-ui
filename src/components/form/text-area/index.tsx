@@ -2,7 +2,7 @@ import * as React from 'react';
 import cx from 'classnames';
 
 import { Text } from 'components';
-import { useTheme } from 'utils/hooks';
+import { useTheme } from 'styled-components';
 import { useCombinedRefs } from 'utils/hooks/combinedrefs';
 import { InputComponent, WrapperProps } from '../../../utils/types';
 import { StyledTextArea } from './style';
@@ -12,9 +12,21 @@ interface InputPropsType extends React.InputHTMLAttributes<HTMLTextAreaElement> 
 }
 
 export interface TextAreaProps extends InputComponent, React.InputHTMLAttributes<HTMLTextAreaElement> {
+  /**
+   * Attributes applied to the input element
+   */
   inputProps?: InputPropsType;
-  // will be removed in next versions
+  /**
+   * Input ref to be used with useCombinedRefs
+   */
   inputRef?: React.Ref<any>;
+  /**
+   * TextArea max length
+   * */
+  maxLength?: number;
+  /**
+   *  Attributes applied to the wrapper element
+   * */
   wrapperProps?: WrapperProps;
 }
 
@@ -83,7 +95,7 @@ export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
     };
 
     return (
-      <StyledTextArea className={cx('textArea', className)} error={error} theme={theme} ref={ref} {...wrapperProps}>
+      <StyledTextArea className={cx('textArea', className)} error={error} ref={ref} {...wrapperProps}>
         {title && (
           <Text weight={theme.typography.weights.bold} size={theme.typography.sizes.m} className='title'>
             {title}

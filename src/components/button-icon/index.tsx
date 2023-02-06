@@ -1,19 +1,43 @@
 import * as React from 'react';
 import { Icon, icons, Text, IconType } from 'components';
 import { Link } from 'react-router-dom';
-import { useTheme } from 'utils/hooks';
 
 import cx from 'classnames';
 
 import { StyledButtonIcon } from './style';
 
 export interface ButtonIconProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  /**
+   * Children to render
+   * */
+  children?: React.ReactNode;
+  /**
+   * Color of the button
+   * */
   color?: string;
+  /**
+   * Component to be rendered, it could be **button** or **Link** from 'react-router-dom';
+   * */
   component?: React.ElementType;
-  icon: IconType | keyof typeof icons.sm;
+  /**
+   * Icon to render
+   * */
+  icon?: IconType | keyof typeof icons.sm;
+  /**
+   * Icon class name
+   * */
   iconClassName?: string;
+  /**
+   * Icon on the left
+   * */
   iconLeft?: boolean;
+  /**
+   * Size of the button
+   * */
   size?: number;
+  /**
+   * path to redirect (prop for **Link** component);
+   * */
   to?: string;
 }
 
@@ -34,7 +58,6 @@ export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
       size,
       ...rest
     } = props;
-    const theme = useTheme();
 
     return (
       <StyledButtonIcon
@@ -42,7 +65,6 @@ export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
         type={type}
         className={cx(iconLeft && 'buttonIconLeft', disabled && 'buttonDisabled', className)}
         disabled={disabled}
-        theme={theme}
         ref={ref}
         style={style}
         color={color}

@@ -1,9 +1,6 @@
 import styled from 'styled-components';
-import { PUITheme } from 'utils/types';
 
-export const StyledTab = styled.button<{
-  theme: PUITheme;
-}>`
+export const StyledTab = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,12 +16,12 @@ export const StyledTab = styled.button<{
   }
 
   &:not(.selected):hover {
-    background-color: ${(props: any): string => props.theme.colors.primary200};
+    background-color: ${({ theme }) => theme.colors.primary200};
   }
 
   &:focus {
     z-index: 1;
-    outline: 2px solid ${(props: any): string => props.theme.colors.base900};
+    outline: 2px solid ${({ theme }) => theme.colors.base900};
     outline-offset: 0;
   }
 
@@ -34,13 +31,13 @@ export const StyledTab = styled.button<{
   }
 
   &.tab {
-    border-bottom: 1px solid ${(props: any): string => props.theme.colors.base700};
-    color: ${(props: any): string => props.theme.colors.base700};
+    border-bottom: 1px solid ${({ theme }) => theme.colors.base700};
+    color: ${({ theme }) => theme.colors.base700};
 
     &.selected {
       padding-bottom: 10px;
-      border-bottom: 3px solid ${(props: any): string => props.theme.colors.primary500};
-      color: ${(props: any): string => props.theme.colors.base900};
+      border-bottom: 3px solid ${({ theme }) => theme.colors.primary500};
+      color: ${({ theme }) => theme.colors.base900};
     }
 
     &:not(.selected) {
@@ -49,12 +46,12 @@ export const StyledTab = styled.button<{
   }
 
   &.bookmarkTab {
-    color: ${(props: any): string => props.theme.colors.base900};
+    color: ${({ theme }) => theme.colors.base900};
 
     &.selected {
       padding-top: 9px;
-      border-top: 3px solid ${(props: any): string => props.theme.colors.primary500};
-      background-color: ${(props: any): string => props.theme.colors.base100};
+      border-top: 3px solid ${({ theme }) => theme.colors.primary500};
+      background-color: ${({ theme }) => theme.colors.base100};
     }
 
     &:not(.selected) {

@@ -1,12 +1,9 @@
 import styled from 'styled-components';
-import { PUITheme } from 'utils/types';
 
-export const StyledAvatar = styled.div<{
-  theme: PUITheme;
-}>`
-  background-color: ${(props: any): string => props.theme.colors.base200};
+export const StyledAvatar = styled.div`
+  background-color: ${({ theme }) => theme.colors.base200};
   border-radius: 50%;
-  border: 1px solid ${(props: any): string => props.theme.colors.base300};
+  border: 1px solid ${({ theme }) => theme.colors.base300};
   display: flex;
   align-items: center;
   justify-content: center;
