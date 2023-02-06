@@ -2,7 +2,7 @@ import * as React from 'react';
 import cx from 'classnames';
 
 import 'react-day-picker/dist/style.css';
-import { PrimaryButton, TextInput } from 'components';
+import { Button, TextInput } from 'components';
 import MaskedInput from 'react-text-mask';
 import {
   format as dateFnsFormat,
@@ -305,9 +305,9 @@ export const DayPicker = ({
         onChange={handleTimeChange}
         value={dateTime}
       />
-      <PrimaryButton className='submitTime' type='button' onClick={closeCalendar}>
+      <Button variant='contained' className='submitTime' type='button' onClick={closeCalendar}>
         {saveLabel}
-      </PrimaryButton>
+      </Button>
     </div>
   );
 
