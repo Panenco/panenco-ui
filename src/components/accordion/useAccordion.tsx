@@ -5,7 +5,7 @@ import { useAccordionContext } from './group';
 export interface UseAccordionProps {
   isOpen?: boolean;
   onClick?: (e?: MouseEvent) => void;
-  ref?: any;
+  ref?: React.RefObject<HTMLDivElement>;
 }
 
 export interface UseAccordinReturn {
@@ -15,7 +15,7 @@ export interface UseAccordinReturn {
 }
 
 export const useAccordion = (props: UseAccordionProps): UseAccordinReturn => {
-  const { isOpen: isOpened, onClick, ref } = props;
+  const { isOpen: isOpened = false, onClick, ref } = props;
   const [isOpen, setOpen] = React.useState(isOpened);
   const innerRef = React.useRef();
   const combinedRef = useCombinedRefs(innerRef, ref);
