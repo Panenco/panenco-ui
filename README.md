@@ -1,3 +1,7 @@
+# DEPRECATED!!!
+
+Support for this package will be discontinued in the near future. Consider migrating to [Material UI](https://material-ui.com/).
+
 # Panenco UI
 
 Panenco UI is our React component library created to unify how we create user interfaces.
