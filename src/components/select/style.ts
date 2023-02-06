@@ -39,13 +39,6 @@ export const customStyles = (
     pointerEvents: state.isDisabled ? 'none' : 'auto',
     width: '100%',
     opacity: state.isDisabled ? '0.4' : '1',
-    // width: `${((): string => {
-    //   if (error) return '100%';
-    //   return `calc(100% - 24px)`;
-    // })()}`,
-    // [`@media (max-width: ${breakpoints.l})`]: {
-    //   width: '100%',
-    // },
     ...additionalStyles('container', styles, provided, state),
   }),
   control: (provided, state): any => {
