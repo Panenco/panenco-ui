@@ -105,4 +105,15 @@ export interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {
   ref?: React.Ref<HTMLDivElement>;
 }
 
+export interface AccordionProps extends React.HTMLAttributes<HTMLDivElement> {
+  iconLeft?: boolean | string;
+  iconRight?: boolean | string;
+  icons?: Array<string>;
+  isOpen?: boolean;
+  onClick?: any;
+  onIconClick?: any;
+  shouldRotateIcon?: boolean;
+  title?: string;
+}
+
 export type IconVariantSize = 'sm' | 'md' | 'lg';
