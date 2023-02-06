@@ -7,13 +7,42 @@ import { PopupContext } from './popupContext';
 import { PopupSizesType } from './types';
 
 export interface PopupProps extends React.HTMLAttributes<HTMLDivElement> {
+  /**
+   * If `true`, the popup will be focused on open
+   * @default true
+   * */
   autoFocus?: boolean;
+  /**
+   * If `true`, the popup will be closed when the backdrop is clicked
+   * @default true
+   * */
   backdropClosable?: boolean;
+  /**
+   * The content of the popup
+   * */
   children: React.ReactNode;
+  /**
+   * The CSS class name of the popup dialog
+   * */
   dialogClassName?: string;
+  /**
+   * If `true`, the popup will not be closed when the escape key is pressed
+   * @default false
+   * */
   disableEscapeKeyDown?: boolean;
+  /**
+   * Callback fired when the popup requests to be closed
+   * */
   onHide?: () => void;
+  /**
+   * If `true`, the popup is visible
+   * @default true
+   * */
   show?: boolean;
+  /**
+   * The size of the popup
+   * @default md
+   * */
   size?: PopupSizesType;
 }
 export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(

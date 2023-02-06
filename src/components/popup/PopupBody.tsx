@@ -2,7 +2,13 @@ import * as React from 'react';
 import { StyledPopupBody } from './style';
 
 export interface PopupBodyProps extends React.HTMLAttributes<HTMLDivElement> {
+  /**
+   * If `true`, the popup content will be focused on open
+   * */
   autofocusInside?: boolean;
+  /**
+   * The content of the popup body
+   * */
   children: React.ReactNode;
 }
 

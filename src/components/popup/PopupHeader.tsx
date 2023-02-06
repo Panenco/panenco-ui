@@ -4,7 +4,13 @@ import { StyledPopupHeader } from './style';
 import { PopupContext } from './popupContext';
 
 export interface PopupHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
+  /**
+   * The content of the popup header
+   * */
   children?: React.ReactNode;
+  /**
+   * If `true`, the close button will be displayed
+   * */
   closeButton?: boolean;
 }
 export const PopupHeader = React.forwardRef<HTMLDivElement, PopupHeaderProps>(

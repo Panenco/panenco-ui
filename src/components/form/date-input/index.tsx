@@ -23,16 +23,41 @@ interface InputProp extends InputPropsType {
 }
 
 export interface DateInputProps extends React.InputHTMLAttributes<HTMLTextAreaElement>, Pick<InputComponent, 'error'> {
+  /**
+   * Input divider
+   */
   divider?: string;
+  /**
+   * The props used for input component
+   * */
   inputProps?: InputPropsType;
-  /** inputProps will be removed in next versions */
+  /**
+   * Pass a ref to the `input` element
+   * */
   inputRef?: React.Ref<any>;
+  /**
+   * Inputs config
+   * */
   inputs: InputProp[];
+  /**
+   * Max valid date (strict equality)
+   * */
   maxDate?: Date;
+  /**
+   * Min valid date (strict equality)
+   * */
   minDate?: Date;
+  /**
+   * Callback fired when the value changes
+   * */
   onChange(newValue): void;
+  /**
+   * The value of the input
+   * */
   value: string;
-
+  /**
+   * The props used for wrapper component
+   * */
   wrapperProps?: WrapperProps;
 }
 
@@ -113,7 +138,7 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
 
       setDateToState(date);
       date = date === null ? null : utils.parse(date, format);
-      setValid(validateValue(date));
+      setValid(!value || validateValue(date));
       onChange(date);
       handleFocusNextInput(value, index);
     };

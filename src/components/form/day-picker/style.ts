@@ -15,7 +15,7 @@ export const StyledDayPicker = styled.div<{
 
   .calendar {
     background: #fff;
-    border: 1px solid ${(props: any): string => props.theme.colors.base700};
+    border: 1px solid ${({ theme }) => theme.colors.base700};
     border-radius: 4px;
     margin-top: 10px;
     position: absolute;
@@ -27,8 +27,8 @@ export const StyledDayPicker = styled.div<{
   }
 
   .rdp-head_cell {
-    background-color: ${(props: any): string => props.theme.colors.base100};
-    border: 1px solid ${(props: any): string => props.theme.colors.base100};
+    background-color: ${({ theme }) => theme.colors.base100};
+    border: 1px solid ${({ theme }) => theme.colors.base100};
   }
 
   .mobile {
@@ -70,14 +70,14 @@ export const StyledDayPicker = styled.div<{
   }
 
   .rdp-caption_label {
-    font-size: ${(props: any): string => props.theme.typography.sizes.l.textSize};
-    line-height: ${(props: any): string => props.theme.typography.sizes.l.lineHeight};
-    font-weight: ${(props: any): string => props.theme.typography.weights.regular};
+    font-size: ${({ theme }) => theme.typography.sizes.l.textSize};
+    line-height: ${({ theme }) => theme.typography.sizes.l.lineHeight};
+    font-weight: ${({ theme }) => theme.typography.weights.regular};
   }
 
   .rdp-nav_button {
     svg {
-      color: ${(props: any): string => props.theme.colors.base700};
+      color: ${({ theme }) => theme.colors.base700};
     }
   }
 
@@ -90,11 +90,11 @@ export const StyledDayPicker = styled.div<{
   .rdp-button:active:not([disabled]) {
     border-radius: 4px;
     border: none;
-    background: ${(props: any): string => props.theme.colors.primary200};
+    background: ${({ theme }) => theme.colors.primary200};
   }
 
   .rdp-day:hover:not([disabled]) {
-    background: ${(props: any): string => props.theme.colors.primary200};
+    background: ${({ theme }) => theme.colors.primary200};
     border-radius: 4px;
   }
 
@@ -102,7 +102,7 @@ export const StyledDayPicker = styled.div<{
   .rdp-day_selected:focus:not([disabled]),
   .rdp-day_selected:active:not([disabled]),
   .rdp-day_selected:hover:not([disabled]) {
-    background: ${(props: any): string => props.theme.colors.primary700};
+    background: ${({ theme }) => theme.colors.primary700};
     border-radius: 4px;
     border: none;
   }

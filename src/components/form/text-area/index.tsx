@@ -12,9 +12,21 @@ interface InputPropsType extends React.InputHTMLAttributes<HTMLTextAreaElement> 
 }
 
 export interface TextAreaProps extends InputComponent, React.InputHTMLAttributes<HTMLTextAreaElement> {
+  /**
+   * Attributes applied to the input element
+   */
   inputProps?: InputPropsType;
-  // will be removed in next versions
+  /**
+   * Input ref to be used with useCombinedRefs
+   */
   inputRef?: React.Ref<any>;
+  /**
+   * TextArea max length
+   * */
+  maxLength?: number;
+  /**
+   *  Attributes applied to the wrapper element
+   * */
   wrapperProps?: WrapperProps;
 }
 

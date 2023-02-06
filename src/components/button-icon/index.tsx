@@ -7,12 +7,37 @@ import cx from 'classnames';
 import { StyledButtonIcon } from './style';
 
 export interface ButtonIconProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  /**
+   * Children to render
+   * */
+  children?: React.ReactNode;
+  /**
+   * Color of the button
+   * */
   color?: string;
+  /**
+   * Component to be rendered, it could be **button** or **Link** from 'react-router-dom';
+   * */
   component?: React.ElementType;
-  icon: IconType | keyof typeof icons.sm;
+  /**
+   * Icon to render
+   * */
+  icon?: IconType | keyof typeof icons.sm;
+  /**
+   * Icon class name
+   * */
   iconClassName?: string;
+  /**
+   * Icon on the left
+   * */
   iconLeft?: boolean;
+  /**
+   * Size of the button
+   * */
   size?: number;
+  /**
+   * path to redirect (prop for **Link** component);
+   * */
   to?: string;
 }
 
