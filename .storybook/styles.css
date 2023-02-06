@@ -13,15 +13,6 @@
   padding: 15px 30px;
 }
 
-svg [fill]:not([fill='none']):not([fill^='url(']),
-symbol [fill]:not([fill='none']):not([fill^='url(']) {
-  fill: currentColor !important;
-}
-svg [stroke]:not([stroke='none']):not([stroke^='url(']),
-symbol [stroke]:not([stroke='none']):not([stroke^='url(']) {
-  stroke: currentColor !important;
-}
-
 ul {
   list-style: none;
 }
