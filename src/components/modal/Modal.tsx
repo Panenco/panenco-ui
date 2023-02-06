@@ -2,50 +2,50 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import cx from 'classnames';
 
-import { StyledPopup, StyledPopupBackdrop, StyledPopupContainer, StyledFocusLock } from './style';
-import { PopupContext } from './popupContext';
-import { PopupSizesType } from './types';
+import { StyledModal, StyledModalBackdrop, StyledModalContainer, StyledFocusLock } from './style';
+import { ModalContext } from './modalContext';
+import { ModalSizesType } from './types';
 
-export interface PopupProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
-   * If `true`, the popup will be focused on open
+   * If `true`, the modal will be focused on open
    * @default true
    * */
   autoFocus?: boolean;
   /**
-   * If `true`, the popup will be closed when the backdrop is clicked
+   * If `true`, the modal will be closed when the backdrop is clicked
    * @default true
    * */
   backdropClosable?: boolean;
   /**
-   * The content of the popup
+   * The content of the modal
    * */
   children: React.ReactNode;
   /**
-   * The CSS class name of the popup dialog
+   * The CSS class name of the modal dialog
    * */
   dialogClassName?: string;
   /**
-   * If `true`, the popup will not be closed when the escape key is pressed
+   * If `true`, the modal will not be closed when the escape key is pressed
    * @default false
    * */
   disableEscapeKeyDown?: boolean;
   /**
-   * Callback fired when the popup requests to be closed
+   * Callback fired when the modal requests to be closed
    * */
   onHide?: () => void;
   /**
-   * If `true`, the popup is visible
+   * If `true`, the modal is visible
    * @default true
    * */
   show?: boolean;
   /**
-   * The size of the popup
+   * The size of the modal
    * @default md
    * */
-  size?: PopupSizesType;
+  size?: ModalSizesType;
 }
-export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
+export const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
   (
     {
       children,
@@ -57,10 +57,10 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
       dialogClassName,
       autoFocus = true,
       ...props
-    }: PopupProps,
+    }: ModalProps,
     ref,
   ): JSX.Element => {
-    const popupStopPropagation = (e: React.MouseEvent<HTMLDivElement>): void => {
+    const modalStopPropagation = (e: React.MouseEvent<HTMLDivElement>): void => {
       e.stopPropagation();
     };
 
@@ -94,31 +94,31 @@ export const Popup = React.forwardRef<HTMLDivElement, PopupProps>(
     }, [show, disableEscapeKeyDown]);
 
     return (
-      <PopupContext.Provider value={{ onHide }}>
+      <ModalContext.Provider value={{ onHide }}>
         {show &&
           ReactDOM.createPortal(
             <StyledFocusLock returnFocus autoFocus={autoFocus} {...props}>
-              <StyledPopupBackdrop className='popupBackdrop' />
-              <StyledPopupContainer
+              <StyledModalBackdrop className='modalBackdrop' />
+              <StyledModalContainer
                 onMouseDown={handleBackdropClose}
-                className='popupContainer'
+                className='modalContainer'
                 tabIndex={-1}
                 role='dialog'
                 aria-modal='true'
                 ref={ref}
               >
-                <StyledPopup
+                <StyledModal
                   size={size}
-                  className={cx('popupDialog', dialogClassName)}
-                  onMouseDown={popupStopPropagation}
+                  className={cx('modalDialog', dialogClassName)}
+                  onMouseDown={modalStopPropagation}
                 >
                   {children}
-                </StyledPopup>
-              </StyledPopupContainer>
+                </StyledModal>
+              </StyledModalContainer>
             </StyledFocusLock>,
             document.body,
           )}
-      </PopupContext.Provider>
+      </ModalContext.Provider>
     );
   },
 );

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { breakpoints } from 'styles/breakpoints';
 import FocusLock from 'react-focus-lock';
-import { PopupSizesType } from './types';
+import { ModalSizesType } from './types';
 
 const sizeOptions = {
   sm: '320px',
@@ -20,7 +20,7 @@ export const StyledFocusLock = styled(FocusLock)`
   z-index: 1060;
 `;
 
-export const StyledPopupHeader = styled.div`
+export const StyledModalHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -31,7 +31,7 @@ export const StyledPopupHeader = styled.div`
   }
 `;
 
-export const StyledPopupFooter = styled.div`
+export const StyledModalFooter = styled.div`
   padding: 16px 24px;
   border-top: 1px solid ${(props: any): string => props.theme.colors.base300};
   @media (max-width: ${breakpoints.sm}) {
@@ -39,15 +39,15 @@ export const StyledPopupFooter = styled.div`
   }
 `;
 
-export const StyledPopupBody = styled.div`
+export const StyledModalBody = styled.div`
   padding: 16px 24px;
   @media (max-width: ${breakpoints.sm}) {
     padding: 16px;
   }
 `;
 
-export const StyledPopup = styled.div<{
-  size: PopupSizesType;
+export const StyledModal = styled.div<{
+  size: ModalSizesType;
 }>`
   background-clip: padding-box;
   background-color: ${(props: any): string => props.theme.colors.base100};
@@ -67,7 +67,7 @@ export const StyledPopup = styled.div<{
   }
 `;
 
-export const StyledPopupContainer = styled.div`
+export const StyledModalContainer = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -78,7 +78,7 @@ export const StyledPopupContainer = styled.div`
   }
 `;
 
-export const StyledPopupBackdrop = styled.div`
+export const StyledModalBackdrop = styled.div`
   pointer-events: none;
   background-color: ${(props): string => props.theme.colors.base700};
   height: 100vh;
