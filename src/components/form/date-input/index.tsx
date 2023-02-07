@@ -106,14 +106,14 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
 
     // eslint-disable-next-line no-shadow
     const handleFocusNextInput = (value: string, index: number): void => {
-      if (value[0] === '0' && value.length > 1) {
+      if (value[0] === '0' && value.length > 1 && inputToRef[index + 1]?.current) {
         inputToRef[index + 1].current.focus();
         return;
       }
 
-      if (Number(value) > 9 && inputs[index + 1] && inputToRef[index + 1].current) {
+      if (Number(value) > 9 && inputs[index + 1] && inputToRef[index + 1]?.current) {
         inputToRef[index + 1].current.focus();
-      } else {
+      } else if (inputToRef[index]?.current) {
         inputToRef[index].current.focus();
       }
     };
