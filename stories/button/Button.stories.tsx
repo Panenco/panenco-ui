@@ -4,7 +4,7 @@ import { colors } from 'styles';
 import { Button } from 'components/button';
 
 export default {
-  title: 'Example/Button',
+  title: 'Components/Button',
   component: Button,
   args: {
     children: 'Button',

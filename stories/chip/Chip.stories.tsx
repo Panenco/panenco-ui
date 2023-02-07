@@ -4,7 +4,7 @@ import { Chip } from 'components/chip';
 import { icons } from 'components';
 
 export default {
-  title: 'Example/Chip',
+  title: 'Components/Chip',
   component: Chip,
   args: {
     children: 'Chip content',

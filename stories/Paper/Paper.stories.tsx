@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Paper } from 'components/paper';
 
 export default {
-  title: 'Example/Paper (deprecated)',
+  title: 'Components/Paper (deprecated)',
   component: Paper,
   argTypes: {
     children: {

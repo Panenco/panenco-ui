@@ -4,7 +4,7 @@ import { Accordion } from 'components/accordion';
 import { icons } from 'components/icon';
 
 export default {
-  title: 'Example/Accordion',
+  title: 'Components/Accordion',
   component: Accordion,
   args: {
     title: 'Accordion Title',

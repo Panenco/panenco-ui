@@ -4,7 +4,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import docs from './readme.md';
 
 export default {
-  title: 'Example/Icons',
+  title: 'Components/Icons',
   component: Icon,
   parameters: {
     docs: {

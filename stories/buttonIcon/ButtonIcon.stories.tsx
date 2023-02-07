@@ -5,7 +5,7 @@ import { ButtonIcon } from 'components/button-icon';
 import { icons } from 'components';
 
 export default {
-  title: 'Example/ButtonIcon',
+  title: 'Components/ButtonIcon',
   component: ButtonIcon,
   argTypes: {
     children: {

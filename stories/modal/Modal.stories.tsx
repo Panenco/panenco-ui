@@ -5,7 +5,7 @@ import { Button } from 'components/button';
 import docs from './readme.md';
 
 export default {
-  title: 'Example/Modal',
+  title: 'Components/Modal',
   component: Modal,
   parameters: {
     docs: {

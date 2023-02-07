@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { DateInput } from 'components/form/date-input';
 
 export default {
-  title: 'Example/Form/DateInput',
+  title: 'Components/Form/DateInput',
   component: DateInput,
   args: {
     inputs: [

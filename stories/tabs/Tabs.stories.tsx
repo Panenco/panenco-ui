@@ -5,7 +5,7 @@ import docs from './readme.md';
 import Tabs from './Tabs';
 
 export default {
-  title: 'Example/Tabs',
+  title: 'Components/Tabs',
   component: Tabs,
   parameters: {
     docs: {
