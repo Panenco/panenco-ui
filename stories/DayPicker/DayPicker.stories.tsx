@@ -4,7 +4,7 @@ import { DayPicker } from 'components/form/day-picker';
 import { icons } from 'components';
 
 export default {
-  title: 'Example/Form/DayPicker',
+  title: 'Example/Form/DayPicker (deprecated)',
   component: DayPicker,
   args: {
     title: 'title',
