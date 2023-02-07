@@ -4,7 +4,7 @@ import { TextInput } from 'components/form/text-input';
 import { icons } from 'components';
 
 export default {
-  title: 'Example/Form/TextInput',
+  title: 'Components/Form/TextInput',
   component: TextInput,
   args: {
     title: 'Title',

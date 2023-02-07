@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Col, Row } from 'components';
 
 export default {
-  title: 'Example/Pagination/Pagination',
+  title: 'Components/Pagination/Pagination',
   component: Pagination,
 } as ComponentMeta<typeof Pagination>;
 

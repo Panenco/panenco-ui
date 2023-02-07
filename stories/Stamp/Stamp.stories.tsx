@@ -4,7 +4,7 @@ import { colors } from 'styles';
 import { Stamp } from 'components/stamp';
 
 export default {
-  title: 'Example/Stamp',
+  title: 'Components/Stamp',
   component: Stamp,
   args: {
     children: 'Stamp content',

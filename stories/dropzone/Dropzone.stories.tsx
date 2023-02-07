@@ -4,7 +4,7 @@ import { Dropzone } from 'components/dropzone';
 import docs from './readme.md';
 
 export default {
-  title: 'Example/Dropzone (deprecated)',
+  title: 'Components/Dropzone (deprecated)',
   component: Dropzone,
   parameters: {
     docs: {

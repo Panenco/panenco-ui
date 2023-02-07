@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Switch } from 'components/switch';
 
 export default {
-  title: 'Example/Switch',
+  title: 'Components/Switch',
   component: Switch,
   argTypes: {
     width: { control: 'number' },

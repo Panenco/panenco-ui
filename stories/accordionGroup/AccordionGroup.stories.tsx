@@ -4,7 +4,7 @@ import { Accordion, AccordionGroup } from 'components/accordion';
 import docs from './readme.md';
 
 export default {
-  title: 'Example/AccordionGroup',
+  title: 'Components/AccordionGroup',
   component: AccordionGroup,
   parameters: {
     docs: {

@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { TextArea } from 'components/form/text-area';
 
 export default {
-  title: 'Example/Form/TextArea',
+  title: 'Components/Form/TextArea',
   component: TextArea,
   args: {
     placeholder: 'Placeholder',

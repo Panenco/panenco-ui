@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Radio } from 'components/radiobutton';
 
 export default {
-  title: 'Example/Radio',
+  title: 'Components/Radio',
   component: Radio,
   argTypes: {
     pointColor: { control: 'color' },

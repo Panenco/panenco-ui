@@ -4,7 +4,7 @@ import { StepperInput } from 'components/form/stepper';
 import docs from './readme.md';
 
 export default {
-  title: 'Example/Form/StepperInput (deprecated)',
+  title: 'Components/Form/StepperInput (deprecated)',
   component: StepperInput,
   parameters: {
     docs: {

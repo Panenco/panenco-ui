@@ -24,7 +24,7 @@ const avatars = [
 ];
 
 export default {
-  title: 'Example/AvatarGroup',
+  title: 'Components/AvatarGroup',
   component: AvatarGroup,
   args: {
     avatars,

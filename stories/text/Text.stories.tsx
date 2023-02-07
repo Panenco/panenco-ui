@@ -5,7 +5,7 @@ import { Text } from 'components/text';
 import docs from './readme.md';
 
 export default {
-  title: 'Example/Text',
+  title: 'Components/Text',
   component: Text,
   parameters: {
     docs: {

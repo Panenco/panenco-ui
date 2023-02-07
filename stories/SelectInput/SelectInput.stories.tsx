@@ -5,7 +5,7 @@ import { Col, Row } from 'components';
 import docs from './readme.md';
 
 export default {
-  title: 'Example/SelectInput (deprecated)',
+  title: 'Components/SelectInput (deprecated)',
   component: SelectInput,
   parameters: {
     docs: {

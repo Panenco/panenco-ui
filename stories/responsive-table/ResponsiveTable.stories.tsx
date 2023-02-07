@@ -25,7 +25,7 @@ const options = [
 ];
 
 export default {
-  title: 'Example/ResponsiveTable',
+  title: 'Components/ResponsiveTable',
   component: ResponsiveTable,
   parameters: {
     docs: {

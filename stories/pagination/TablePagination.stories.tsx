@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Col, Row } from 'components';
 
 export default {
-  title: 'Example/Pagination/TablePagination',
+  title: 'Components/Pagination/TablePagination',
   component: TablePagination,
 } as ComponentMeta<typeof TablePagination>;
 

@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Slider } from 'components/slider';
 
 export default {
-  title: 'Example/Slider (deprecated)',
+  title: 'Components/Slider (deprecated)',
   component: Slider,
   argTypes: {
     domain: {
