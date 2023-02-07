@@ -40,38 +40,10 @@ module.exports = {
         ],
       },
       {
-        test: /\.scss$/,
-        sideEffects: true,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: {
-                mode: 'local',
-                localIdentName: '[local]-[hash:base64:5]',
-              },
-            },
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sassOptions: {
-                includePaths: [paths.scss],
-              },
-            },
-          },
-        ],
-      },
-      {
         include: [paths.publicFiles],
         loader: 'file-loader',
       },
     ],
   },
-  // devServer: {
-  //   historyApiFallback: true,
-  //   hot: true,
-  // },
   plugins: [new webpack.HotModuleReplacementPlugin()],
 };

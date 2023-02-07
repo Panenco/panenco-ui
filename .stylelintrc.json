@@ -2,7 +2,6 @@
   "extends": ["stylelint-config-standard"],
   "plugins": ["stylelint-order"],
   "ignoreFiles": ["**/*.ts", "**/*.tsx"],
-  "syntax": "scss",
   "rules": {
     "indentation": 2,
     "order/properties-alphabetical-order": true,
