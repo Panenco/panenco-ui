@@ -37,21 +37,20 @@ export const withIcons =
         { icon = 'eye', className, strokeWidth = 1.33, onClick, size = 'md', disabled, width, height, ...iconProps },
         ref,
       ): React.ReactElement<unknown, string | React.JSXElementConstructor<any>> => {
-        const iconToRender = icons[size][icon] || icons.sm[icon] || icons.md[icon] || icons.lg[icon];
+        const IconToRender = icons[size][icon] || icons.sm[icon] || icons.md[icon] || icons.lg[icon];
 
         return (
           <StyledSVG
+            as={IconToRender}
             className={cx(disabled && 'disabled', 'svg', className)}
-            viewBox={iconToRender.viewBox}
+            viewBox={IconToRender.viewBox}
             width={width || sizeToPx[size]}
             height={height || sizeToPx[size]}
             strokeWidth={strokeWidth}
             onClick={onClick}
             ref={ref}
             {...iconProps}
-          >
-            <use xlinkHref={`#${iconToRender.id}`} />
-          </StyledSVG>
+          />
         );
       },
     );

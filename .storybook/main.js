@@ -21,8 +21,9 @@ module.exports = {
     });
 
     config.module.rules.push({
-      test: /\.svg$/,
-      loader: require.resolve('svg-sprite-loader'),
+      test: /\.svg$/i,
+      issuer: /\.[jt]sx?$/,
+      use: [require.resolve('@svgr/webpack')],
     });
 
     return config;
