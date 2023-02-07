@@ -21,7 +21,7 @@ export const ModalHeader = React.forwardRef<HTMLDivElement, ModalHeaderProps>(
         <div>{children}</div>
         {closeButton && onHide && (
           <div>
-            <ButtonIcon aria-label='Close' onClick={onHide} icon='remove' />
+            <ButtonIcon aria-label='Close' onClick={onHide} icon='remove' size={24} />
           </div>
         )}
       </StyledModalHeader>
