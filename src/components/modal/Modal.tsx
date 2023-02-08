@@ -4,7 +4,7 @@ import cx from 'classnames';
 
 import { StyledModal, StyledModalBackdrop, StyledModalContainer, StyledFocusLock } from './style';
 import { ModalContext } from './modalContext';
-import { ModalSizesType } from './types';
+import { ModalScrollType, ModalSizesType } from './types';
 
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
@@ -35,6 +35,11 @@ export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
    * */
   onHide?: () => void;
   /**
+   * The scroll behavior of the modal
+   * @default body
+   * */
+  scroll?: ModalScrollType;
+  /**
    * If `true`, the modal is visible
    * @default true
    * */
@@ -56,6 +61,7 @@ export const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
       size = 'md',
       dialogClassName,
       autoFocus = true,
+      scroll = 'body',
       ...props
     }: ModalProps,
     ref,
@@ -106,6 +112,7 @@ export const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
                 role='dialog'
                 aria-modal='true'
                 ref={ref}
+                scroll={scroll}
               >
                 <StyledModal
                   size={size}
