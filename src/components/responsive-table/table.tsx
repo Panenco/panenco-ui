@@ -1,7 +1,7 @@
 /* eslint-disable react/static-property-placement */
 import { throttle } from 'lodash-es';
 import * as React from 'react';
-import ResizeObserver from 'resize-observer-polyfill';
+import { ResizeObserver } from '@juggle/resize-observer';
 import { ColumnType } from '.';
 
 import Columns from './columns';
