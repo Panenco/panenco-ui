@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { breakpoints } from 'styles/breakpoints';
 import FocusLock from 'react-focus-lock';
-import { ModalSizesType } from './types';
+import { ModalScrollType, ModalSizesType } from './types';
 
 const sizeOptions = {
   sm: '320px',
@@ -67,12 +67,31 @@ export const StyledModal = styled.div<{
   }
 `;
 
-export const StyledModalContainer = styled.div`
+export const StyledModalContainer = styled.div<{
+  scroll: ModalScrollType;
+}>`
   display: flex;
   align-items: flex-start;
   justify-content: center;
   padding: 0;
   min-height: 100%;
+  ${({ scroll }) =>
+    scroll === 'paper' &&
+    css`
+      height: 100%;
+
+      ${StyledModal} {
+        max-height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+
+      ${StyledModalBody} {
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+    `}
+
   @media (min-width: ${breakpoints.sm}) {
     padding: 100px 10px;
   }
