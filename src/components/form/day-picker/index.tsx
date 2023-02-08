@@ -59,7 +59,7 @@ export interface DayPickerProps extends InputComponent, DayPickerSingleProps {
   /**
    * Will be default date if **value** not passed
    * */
-  defaultDay?: Date;
+  defaultDay?: Date | null;
   /**
    * Default end date for the range picker
    * */
@@ -139,7 +139,7 @@ export interface DayPickerProps extends InputComponent, DayPickerSingleProps {
   /**
    * Date of DayPicker, has the highest priority
    * */
-  value?: Date;
+  value?: Date | null;
   /**
    * Props for wrapper
    * */

@@ -49,7 +49,16 @@ const Template: ComponentStory<typeof Modal> = (args) => {
         <Modal.Header>
           <Modal.Title id='exampleModal'>Modal title</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Modal body</Modal.Body>
+        <Modal.Body>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere quasi praesentium sed dolorem, voluptas
+          maiores sapiente reiciendis tempora repudiandae error! Adipisci voluptates debitis reiciendis rem officia
+          eaque, commodi nesciunt, quos sequi, eius quibusdam magnam. Omnis quod quia nulla! Fuga, quibusdam. Cumque
+          dicta numquam cupiditate dolore repellendus expedita est, voluptatum aspernatur dignissimos hic et ratione,
+          facilis quam aliquam, ullam eum error soluta deserunt pariatur mollitia alias sed repellat. Dolor laborum
+          omnis cupiditate deserunt ratione inventore porro, sapiente magnam eum molestias quaerat molestiae incidunt
+          culpa adipisci ducimus. Odit cum doloremque accusamus nemo animi asperiores quisquam molestiae. Aperiam sint
+          nostrum vitae doloribus perferendis!
+        </Modal.Body>
         <Modal.Footer>Modal footer</Modal.Footer>
       </Modal>
     </>
@@ -71,4 +80,9 @@ Medium.args = {
 export const Large = Template.bind({});
 Large.args = {
   size: 'lg',
+};
+
+export const ScrollPaper = Template.bind({});
+ScrollPaper.args = {
+  scroll: 'paper',
 };
