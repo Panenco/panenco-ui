@@ -3177,6 +3177,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@juggle/resize-observer@npm:^3.4.0":
+  version: 3.4.0
+  resolution: "@juggle/resize-observer@npm:3.4.0"
+  checksum: 2505028c05cc2e17639fcad06218b1c4b60f932a4ebb4b41ab546ef8c157031ae377e3f560903801f6d01706dbefd4943b6c4704bf19ed86dfa1c62f1473a570
+  languageName: node
+  linkType: hard
+
 "@mdx-js/mdx@npm:^1.6.22":
   version: 1.6.22
   resolution: "@mdx-js/mdx@npm:1.6.22"
@@ -3333,6 +3340,7 @@ __metadata:
     "@babel/preset-typescript": ^7.15.0
     "@commitlint/cli": ^17.0.0
     "@commitlint/config-conventional": ^17.0.0
+    "@juggle/resize-observer": ^3.4.0
     "@panenco/rollup-plugin-svg-sprite": ^1.0.3
     "@popperjs/core": ^2.11.0
     "@rollup/plugin-alias": ^4.0.0
@@ -3409,7 +3417,6 @@ __metadata:
     react-select: ^3.0.4
     react-select-async-paginate: ^0.4.0
     react-text-mask: ^5.4.3
-    resize-observer-polyfill: ^1.5.1
     rimraf: ^4.0.0
     rollup: ^3.0.0
     rollup-plugin-analyzer: ^4.0.0
@@ -17792,13 +17799,6 @@ __metadata:
   version: 4.1.7
   resolution: "reselect@npm:4.1.7"
   checksum: 738d8e2b8f0dca154ad29de6a209c9fbca2d70ae6788fd85df87f2c74b95a65bbf2d16d43a9e2faff39de34d17a29d706ba08a6b2ee5660c09589edbd19af7e1
-  languageName: node
-  linkType: hard
-
-"resize-observer-polyfill@npm:^1.5.1":
-  version: 1.5.1
-  resolution: "resize-observer-polyfill@npm:1.5.1"
-  checksum: 57e7f79489867b00ba43c9c051524a5c8f162a61d5547e99333549afc23e15c44fd43f2f318ea0261ea98c0eb3158cca261e6f48d66e1ed1cd1f340a43977094
   languageName: node
   linkType: hard
 
