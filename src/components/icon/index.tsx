@@ -7,9 +7,9 @@ import { StyledSVG } from './style';
 import { defaultIcons } from './icons';
 
 const sizeToPx = {
-  sm: '16px',
-  md: '24px',
-  lg: '28px',
+  sm: 16,
+  md: 24,
+  lg: 28,
 };
 
 export type IconProps<T extends { lg: any; md: any; sm: any }> = {
@@ -43,9 +43,9 @@ export const withIcons =
           <StyledSVG
             as={IconToRender}
             className={cx(disabled && 'disabled', 'svg', className)}
-            viewBox={IconToRender.viewBox}
-            width={width || sizeToPx[size]}
-            height={height || sizeToPx[size]}
+            viewBox={`0 0 ${sizeToPx[size]} ${sizeToPx[size]}`}
+            width={width || `${sizeToPx[size]}px`}
+            height={height || `${sizeToPx[size]}px`}
             strokeWidth={strokeWidth}
             onClick={onClick}
             ref={ref}
