@@ -13,7 +13,7 @@ export const StyledChip = styled.button<{
   padding: 3px 11px;
   border-radius: 4px;
   background-color: ${({ theme, checked }) => {
-    return checked ? theme.colors.primary500 : theme.colors.base100;
+    return checked ? theme.colors.primary500 : 'transparent';
   }};
   border: 1px solid ${({ theme }) => theme.colors.primary500};
   color: ${({ theme, checked }) => {

@@ -19,7 +19,8 @@ export const StyledStamp = styled.div<{
   font-size: 12px;
   color: ${({ color, theme, variant }) =>
     color || (variant === 'fulfilled' ? theme.colors.base100 : theme.colors.success)};
-  border: 1px solid ${({ variant, backgroundColor, color }) => (variant === 'fulfilled' ? backgroundColor : color)};
+  border: 1px solid
+    ${({ variant, backgroundColor, color }) => (variant === 'fulfilled' ? backgroundColor || 'transparent' : color)};
   background-color: ${({ backgroundColor, variant, theme }) =>
-    getBackgroundColor(backgroundColor || theme.colors.success, variant, theme.colors.base100)};
+    getBackgroundColor(backgroundColor || theme.colors.success, variant, 'transparent')};
 `;
