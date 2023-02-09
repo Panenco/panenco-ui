@@ -5,8 +5,18 @@ import { useCombinedRefs } from 'utils/hooks/combinedrefs';
 import { StyledTablist } from './style';
 
 export interface TablistProps {
+  /**
+   * Whether to automatically activate the next tab when the user presses the left or right arrow keys.
+   * @default false
+   * */
   autoActivation?: boolean;
+  /**
+   * The content of the tablist.
+   * */
   children: React.ReactNode;
+  /**
+   * The class name of the tablist.
+   * */
   className?: string;
 }
 
