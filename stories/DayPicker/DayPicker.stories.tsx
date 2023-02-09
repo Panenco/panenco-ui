@@ -62,9 +62,9 @@ SaveLabel.args = {
   isTimePicker: true,
 };
 
-export const DefaultDate = Template.bind({});
-DefaultDate.args = {
-  defaultDate: new Date(),
+export const DefaultDay = Template.bind({});
+DefaultDay.args = {
+  defaultDay: new Date(),
 };
 
 export const IconAfter = Template.bind({});
