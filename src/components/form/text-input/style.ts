@@ -25,6 +25,7 @@ export const StyledTextInput = styled.div<{
       border: 1px solid ${(props: any): string => props.theme.colors.base700};
       border-radius: 4px;
       position: relative;
+      background-color: ${({ theme }) => theme.colors.base100};
 
       & .iconBefore {
         position: absolute;

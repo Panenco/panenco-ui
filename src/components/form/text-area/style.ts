@@ -39,7 +39,7 @@ export const StyledTextArea = styled.div<{
       border: 1px solid ${(props: any): string => props.theme.colors.base700};
       border-radius: 4px;
       font-size: ${(props: any): string => props.theme.typography.sizes.m.textSize};
-      background-color: transparent;
+      background-color: ${({ theme }) => theme.colors.base100};
       &::placeholder {
         color: ${(props: any): string => props.theme.colors.base700};
       }
