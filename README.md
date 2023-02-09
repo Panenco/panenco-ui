@@ -27,7 +27,6 @@ Peer dependencies:
 To start importing and using components in your project, you need the following:
 
 - Import css of **Panenco UI** from `@panenco/ui/lib/styles.css`. It could be any way of global import of styles into your project. For instance, using `import` in js with a proper loader or using `@import` in your `css`.
-- Include Panenco UI icons by importing `@panenco/ui/lib/spritesheet.svg` as a file (to obtain its URL and be able to inject it to DOM asynchronously) and pass it to the `injectIcons` function as shown below.
 - Wrap your application with the `ThemeProvider` component from `styled-components` and pass the theme to it.
 
 ```javascript
@@ -35,13 +34,9 @@ import React from 'react';
 import { render } from 'react-dom';
 import AppContainers from 'containers';
 import { ThemeProvider } from 'styled-components';
-import { injectIcons } from '@panenco/ui';
 import { theme } from './theme';
 
 import '@panenco/ui/lib/styles.css';
-import svgSprite from '!file-loader!@panenco/ui/lib/spritesheet.svg';
-
-injectIcons(svgSprite);
 
 const App = () => (
   <ThemeProvider theme={theme}>

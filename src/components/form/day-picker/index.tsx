@@ -30,12 +30,18 @@ import { StyledDayPicker } from './style';
 const defaultMask = [/[0-1]/, /[0-9]/, '/', /[0-3]/, /[0-9]/, '/', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/];
 
 const transformTime = (date = new Date()): string => {
+  if (!isValid(date)) {
+    return '';
+  }
   const hours = date.getHours() > 9 ? date.getHours() : `0${date.getHours()}`;
   const minutes = date.getMinutes() > 9 ? date.getMinutes() : `0${date.getMinutes()}`;
   return `${hours}:${minutes}`;
 };
 
 export function parseDate(str, format): Date | undefined {
+  if (!str) {
+    return undefined;
+  }
   const parsed = dateFnsParse(str, format, new Date());
   if (isDate(parsed)) {
     return parsed;
@@ -44,6 +50,9 @@ export function parseDate(str, format): Date | undefined {
 }
 
 export function formatDate(date, format: string): string {
+  if (!isValid(date)) {
+    return '';
+  }
   return dateFnsFormat(date, format);
 }
 
@@ -184,11 +193,11 @@ export const DayPicker = ({
 
   const [range, setRange] = useState<DateRange | undefined>(defaultRangeSelected);
 
-  const defaultDate = value || defaultDay || new Date();
+  const defaultDate = value || defaultDay || null;
 
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
-  const [date, setDate] = useState<Date>(defaultDate);
-  const [dateTime, setDateTime] = useState(transformTime(new Date(date)));
+  const [date, setDate] = useState<Date | null>(defaultDate);
+  const [dateTime, setDateTime] = useState(transformTime(date ? new Date(date) : undefined));
   const [isTimeValid, setIsTimeValid] = useState<boolean>(true);
 
   const inputValue = useMemo(() => formatDate(date, format), [date, format]);
@@ -197,7 +206,7 @@ export const DayPicker = ({
     [range, format],
   );
 
-  const [month, setMonth] = useState<Date>(defaultDate);
+  const [month, setMonth] = useState<Date | undefined>(defaultDate || undefined);
 
   const defaultTextInputValue = isRangeMode ? rangeInputValue : inputValue;
 
@@ -240,13 +249,10 @@ export const DayPicker = ({
   };
 
   const handleDaySelect = (selectedDate: Date) => {
-    if (!isTimePicker) closeCalendar();
+    if (!isTimePicker && !preventClosingOnDaySelect) closeCalendar();
     if (selectedDate) {
       const transformedDate = setHours(setMinutes(selectedDate, getMinutes(Number(date))), getHours(Number(date)));
       setDate(transformedDate);
-      if (isTimeValid && !preventClosingOnDaySelect) {
-        closeCalendar();
-      }
 
       setTextInputValue(formatDate(transformedDate, format));
     } else if (!selectedDate && isTimeValid) closeCalendar();
@@ -295,6 +301,7 @@ export const DayPicker = ({
             dir={dayPickerProps?.dir || dir}
             autoFocus
             error={!isTimeValid && timeInputErrorText}
+            disabled={!date}
             {...timeInputProps}
             {...restProps}
           />
@@ -305,7 +312,7 @@ export const DayPicker = ({
         onChange={handleTimeChange}
         value={dateTime}
       />
-      <Button variant='contained' className='submitTime' type='button' onClick={closeCalendar}>
+      <Button disabled={!date} variant='contained' className='submitTime' type='button' onClick={closeCalendar}>
         {saveLabel}
       </Button>
     </div>

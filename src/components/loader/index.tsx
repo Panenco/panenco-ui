@@ -2,6 +2,9 @@ import * as React from 'react';
 import { StyledLoader } from './style';
 
 export interface LoaderProps extends React.HTMLAttributes<HTMLDivElement> {
+  /**
+   * The color of the loader
+   * */
   color?: string;
 }
 
