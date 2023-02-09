@@ -1,5 +1,4 @@
 /* eslint-disable global-require */
-import svgSprite from '@panenco/rollup-plugin-svg-sprite';
 import path from 'path';
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
@@ -9,6 +8,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import typescript from 'rollup-plugin-typescript2';
 import ttypescript from 'ttypescript';
+import svgr from '@svgr/rollup';
 
 import packageJson from './package.json' assert { type: 'json' };
 import paths from './config/paths.js';
@@ -22,6 +22,7 @@ export default {
     format: 'esm',
   },
   plugins: [
+    svgr(),
     replace({
       preventAssignment: true,
       'process.env.NODE_ENV': JSON.stringify('production'),
@@ -46,10 +47,6 @@ export default {
     }),
     commonjs(),
     json(),
-    svgSprite({
-      outputFolder: paths.outputPath,
-      spriteFilename: 'spritesheet.svg',
-    }),
   ],
   external,
 };

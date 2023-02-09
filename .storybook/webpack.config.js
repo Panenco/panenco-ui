@@ -21,9 +21,9 @@ module.exports = {
         use: ['babel-loader', 'ts-loader'],
       },
       {
-        test: /\.svg$/,
-        exclude: [paths.publicFiles],
-        loader: 'svg-sprite-loader',
+       test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        use: ['@svgr/webpack'],
       },
       {
         test: /\.css$/,
