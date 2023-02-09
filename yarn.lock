@@ -3399,7 +3399,7 @@ __metadata:
     lint-staged: ^13.0.0
     lodash-es: ^4.17.21
     mini-css-extract-plugin: ^0.12.0
-    namor: ^2.0.2
+    namor: ^3.0.0
     polished: ^4.0.0
     postcss-focus-visible: ^8.0.0
     postcss-loader: ^3.0.0
@@ -14756,12 +14756,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"namor@npm:^2.0.2":
-  version: 2.0.3
-  resolution: "namor@npm:2.0.3"
+"namor@npm:^3.0.0":
+  version: 3.0.1
+  resolution: "namor@npm:3.0.1"
   dependencies:
     crypto-extra: 1.0.1
-  checksum: 7ce3df1cf4e539f6667e7e89823f083f6073ad6934a039c5075e9f53a53a6affc866c2cb1dc8227c3afa58159b2f521f8b6bb47f5023db31a983c090883644c2
+  checksum: 49d97d36681a6d525a156f3d7b5bb890f2fc7e6fada84ce2cfc2286c5036d029735b2d90280e5ae1b3c4afa09bcd7b60016915c848150a135ef86440ff7cda2a
   languageName: node
   linkType: hard
 
