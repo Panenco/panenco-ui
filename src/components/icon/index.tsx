@@ -12,6 +12,12 @@ const sizeToPx = {
   lg: 28,
 };
 
+const sizeToStrokeWidth = {
+  sm: '1.33333px',
+  md: '2px',
+  lg: '2.33333px',
+};
+
 export type IconProps<T extends { lg: any; md: any; sm: any }> = {
   className?: string;
   disabled?: boolean;
@@ -34,7 +40,7 @@ export const withIcons =
 
     const Icon = React.forwardRef<any, IconProps<T>>(
       (
-        { icon = 'eye', className, strokeWidth = 1.33, onClick, size = 'md', disabled, width, height, ...iconProps },
+        { icon = 'eye', className, strokeWidth, onClick, size = 'md', disabled, width, height, ...iconProps },
         ref,
       ): React.ReactElement<unknown, string | React.JSXElementConstructor<any>> => {
         const IconToRender = icons[size][icon] || icons.sm[icon] || icons.md[icon] || icons.lg[icon];
@@ -42,11 +48,11 @@ export const withIcons =
         return (
           <StyledSVG
             as={IconToRender}
-            className={cx(disabled && 'disabled', 'svg', className)}
+            className={cx(disabled && 'disabled', 'svg', `pui-icon-${size}`, className)}
             viewBox={`0 0 ${sizeToPx[size]} ${sizeToPx[size]}`}
             width={width || `${sizeToPx[size]}px`}
             height={height || `${sizeToPx[size]}px`}
-            strokeWidth={strokeWidth}
+            strokeWidth={strokeWidth || sizeToStrokeWidth[size]}
             onClick={onClick}
             ref={ref}
             {...iconProps}
