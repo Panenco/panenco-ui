@@ -20,7 +20,6 @@ export default {
   },
   args: {
     icon: 'eye',
-    strokeWidth: 1.33,
     size: 'md',
   },
 } as ComponentMeta<typeof Icon>;
