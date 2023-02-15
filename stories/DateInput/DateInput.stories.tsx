@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { DateInput } from 'components/form/date-input';
+import { isValid } from 'date-fns';
 
 export default {
   title: 'Components/Form/DateInput',
@@ -17,7 +18,7 @@ export default {
         title: 'Month',
         type: 'month',
         format: 'MMM',
-        placeholder: '12',
+        placeholder: 'Jan',
       },
       {
         title: 'Year',
@@ -36,6 +37,20 @@ export default {
   },
 } as ComponentMeta<typeof DateInput>;
 
-const Template: ComponentStory<typeof DateInput> = (args) => <DateInput {...args} />;
+const Template: ComponentStory<typeof DateInput> = (args) => {
+  const [value, setValue] = React.useState<Date | null>(null);
+  const [error, setError] = React.useState<string | null>(null);
+
+  const handleChange = (v) => {
+    if (isValid(v)) {
+      setError(null);
+    } else {
+      setError('Invalid date');
+    }
+    setValue(v);
+  };
+
+  return <DateInput {...args} error={error} onChange={handleChange} value={value} />;
+};
 
 export const Default = Template.bind({});
