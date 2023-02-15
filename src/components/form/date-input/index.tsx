@@ -1,7 +1,6 @@
 import cx from 'classnames';
 
 import { Text, TextInput } from 'components';
-import { isValid } from 'date-fns';
 
 import * as React from 'react';
 import { useMemo, useRef } from 'react';
@@ -77,6 +76,12 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
 
     const currentInputValue = utils.getDate(value, format);
 
+    const [currentDate, setDateToState] = React.useState<string>(currentInputValue);
+
+    React.useEffect(() => {
+      if (!currentDate && currentInputValue !== currentDate) setDateToState(currentInputValue);
+    }, [currentInputValue]);
+
     // eslint-disable-next-line no-shadow
     const handleFocusNextInput = (value: string, index: number): void => {
       if (value[0] === '0' && value.length > 1 && inputToRef[index + 1]?.current) {
@@ -91,14 +96,24 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
       }
     };
 
-    const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>, index: number): void => {
+    // eslint-disable-next-line no-shadow
+    const validateLength = (type: string, value: string): boolean => {
+      return inputs.some((item) => item.type === type && value.length <= item.format.length);
+    };
+
+    const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>, index: number, type: string): void => {
       // eslint-disable-next-line no-shadow
       const { value } = target;
+
+      if (!validateLength(type, value)) {
+        return;
+      }
 
       let date: string | null | Date | Array<HTMLInputElement> = Object.values(inputToRef)
         .filter((item) => item.current)
         .map((item) => item?.current?.value)
         .join('/');
+      setDateToState(date);
       date = date === null ? null : utils.parse(date, format);
       onChange(date);
       handleFocusNextInput(value, index);
@@ -117,14 +132,14 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
                   id={`text-input-${input.type}`}
                   key={`text-input-${input.type}-input`}
                   onChange={(e): void => {
-                    handleChange(e, index);
+                    handleChange(e, index, input.type);
                   }}
                   disabled={disabled}
                   inputRef={inputToRef[index]}
                   title={input.title}
                   style={{ width: `${inputWidth}px` }}
                   placeholder={input.placeholder}
-                  value={isValid(currentInputValue) ? currentInputValue.split('/')[index] : undefined}
+                  value={currentDate.split('/')[index]}
                 />
                 {isLastItem ? <Text className='dateInputItemDivider'>{divider}</Text> : null}
               </div>
