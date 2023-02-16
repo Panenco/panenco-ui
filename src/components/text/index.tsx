@@ -7,7 +7,7 @@ export interface TextProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * The content of the component.
    * */
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /**
    * The color of the text.
    * */
