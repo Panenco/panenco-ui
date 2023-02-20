@@ -22,8 +22,11 @@ export const StyledButton = styled.button<{
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   background-color: ${({ variant, color, theme: { colors } }): string =>
     variant === 'contained' ? color || colors.primary500 : 'transparent'};
-  color: ${({ variant, color, theme: { colors } }): string =>
-    variant === 'contained' ? colors.base100 : color || colors.primary500};
+  color: ${({ variant, color, theme }): string => {
+    const convertedColor =
+      typeof color === 'string' && Object.keys(theme.colors).includes(color) ? theme.colors[color] : color;
+    return variant === 'contained' ? theme.colors.base100 : convertedColor || theme.colors.primary500;
+  }};
   cursor: pointer;
   overflow: hidden;
 
@@ -56,8 +59,13 @@ export const StyledButton = styled.button<{
   }
 
   &:hover {
-    color: ${({ variant, color, theme: { colors } }): string =>
-      variant === 'contained' ? colors.base100 : (color && darken(0.1, color)) || colors.primary700};
+    color: ${({ variant, color, theme }): string => {
+      const convertedColor =
+        typeof color === 'string' && Object.keys(theme.colors).includes(color) ? theme.colors[color] : color;
+      return variant === 'contained'
+        ? theme.colors.base100
+        : (convertedColor && darken(0.1, convertedColor)) || theme.colors.primary700;
+    }};
     background-color: ${({ variant, color, theme: { colors } }): string =>
       variant === 'contained' ? (color && darken(0.1, color)) || colors.primary700 : 'transparent'};
     border-color: ${({ variant, color, theme: { colors } }): string =>
