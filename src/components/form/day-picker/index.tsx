@@ -287,7 +287,6 @@ export const DayPicker = ({
   const CalendarComponent = () => (
     <div className='footer'>
       <MaskedInput
-        id='my-input-id'
         key='my-input-id'
         render={(customRef, restProps): JSX.Element => (
           <TextInput
@@ -322,7 +321,6 @@ export const DayPicker = ({
     <StyledDayPicker error={error} className='dayPickerWrapper' {...wrapperProps}>
       <FocusLock returnFocus autoFocus disabled={manualInput || !isCalendarOpen}>
         <MaskedInput
-          id='date-input-id'
           key='date-input-id'
           render={(customRef, restProps): JSX.Element => (
             <TextInput
