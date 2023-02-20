@@ -55,8 +55,8 @@ const StyledComponent = styled.span<{
     }
     return theme.typography.sizes.m.lineHeight;
   }};
-  color: ${({ size, theme, color }): string => {
-    if (typeof size === 'string' && Object.keys(theme.colors).includes(color)) {
+  color: ${({ theme, color }): string => {
+    if (typeof color === 'string' && Object.keys(theme.colors).includes(color)) {
       return theme.colors[color];
     }
     return color;

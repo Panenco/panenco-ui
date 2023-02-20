@@ -31,7 +31,11 @@ export const StyledButtonIcon = styled.button<{
   }
 
   & .iconClass {
-    color: ${({ color, theme }) => color || theme.colors.base700};
+    color: ${({ color, theme }) => {
+      const convertedColor =
+        typeof color === 'string' && Object.keys(theme.colors).includes(color) ? theme.colors[color] : color;
+      return convertedColor || theme.colors.base700;
+    }};
     display: flex;
     flex-shrink: 0;
     transition: 0.3s;
@@ -40,7 +44,11 @@ export const StyledButtonIcon = styled.button<{
   }
 
   & .buttonIconTitle {
-    color: ${({ color, theme }) => color || theme.colors.base700};
+    color: ${({ color, theme }) => {
+      const convertedColor =
+        typeof color === 'string' && Object.keys(theme.colors).includes(color) ? theme.colors[color] : color;
+      return convertedColor || theme.colors.base700;
+    }};
     font-weight: ${({ theme }) => theme.typography.weights.regular};
     font-size: ${({ theme }) => theme.typography.sizes.m.textSize};
     line-height: ${({ theme }) => theme.typography.sizes.m.lineHeight};
