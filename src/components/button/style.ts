@@ -9,8 +9,11 @@ export const StyledButton = styled.button<{
 }>`
   position: relative;
   border: 2px solid
-    ${({ variant, color, theme: { colors } }): string =>
-      variant === 'text' ? 'transparent' : color || colors.primary500};
+    ${({ variant, color, theme }): string => {
+      const convertedColor =
+        typeof color === 'string' && Object.keys(theme.colors).includes(color) ? theme.colors[color] : color;
+      return variant === 'text' ? 'transparent' : convertedColor || theme.colors.primary500;
+    }};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,10 +69,20 @@ export const StyledButton = styled.button<{
         ? theme.colors.base100
         : (convertedColor && darken(0.1, convertedColor)) || theme.colors.primary700;
     }};
-    background-color: ${({ variant, color, theme: { colors } }): string =>
-      variant === 'contained' ? (color && darken(0.1, color)) || colors.primary700 : 'transparent'};
-    border-color: ${({ variant, color, theme: { colors } }): string =>
-      variant === 'outlined' ? (color && darken(0.1, color)) || colors.primary700 : 'transparent'};
+    background-color: ${({ variant, color, theme }): string => {
+      const convertedColor =
+        typeof color === 'string' && Object.keys(theme.colors).includes(color) ? theme.colors[color] : color;
+      return variant === 'contained'
+        ? (convertedColor && darken(0.1, convertedColor)) || theme.colors.primary700
+        : 'transparent';
+    }};
+    border-color: ${({ variant, color, theme }): string => {
+      const convertedColor =
+        typeof color === 'string' && Object.keys(theme.colors).includes(color) ? theme.colors[color] : color;
+      return variant === 'outlined'
+        ? (convertedColor && darken(0.1, convertedColor)) || theme.colors.primary700
+        : 'transparent';
+    }};
   }
 
   &:active {
