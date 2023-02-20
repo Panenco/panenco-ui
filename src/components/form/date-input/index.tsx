@@ -22,7 +22,9 @@ interface InputProp extends InputPropsType {
   type: string;
 }
 
-export interface DateInputProps extends React.InputHTMLAttributes<HTMLTextAreaElement>, Pick<InputComponent, 'error'> {
+export interface DateInputProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'value'>,
+    Pick<InputComponent, 'error'> {
   /**
    * Input divider
    */
@@ -40,13 +42,17 @@ export interface DateInputProps extends React.InputHTMLAttributes<HTMLTextAreaEl
    * */
   inputs: InputProp[];
   /**
+   * Callback fired when the input is blurred
+   * */
+  onBlur?: React.FocusEventHandler<HTMLInputElement>;
+  /**
    * Callback fired when the value changes
    * */
   onChange(newValue): void;
   /**
    * The value of the input
    * */
-  value: string;
+  value?: string | Date | null;
   /**
    * The props used for wrapper component
    * */
@@ -55,7 +61,7 @@ export interface DateInputProps extends React.InputHTMLAttributes<HTMLTextAreaEl
 
 export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
   (
-    { inputs, disabled, divider, wrapperProps, value, onChange, className, error }: DateInputProps,
+    { inputs, disabled, divider, wrapperProps, value, onChange, onBlur, className, error }: DateInputProps,
     ref,
   ): JSX.Element => {
     const theme = useTheme();
@@ -119,6 +125,17 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
       handleFocusNextInput(value, index);
     };
 
+    const handleBlur = (e: React.FocusEvent<HTMLInputElement>): void => {
+      if (
+        onBlur &&
+        inputToRef[0].current !== e.relatedTarget &&
+        inputToRef[1].current !== e.relatedTarget &&
+        inputToRef[2].current !== e.relatedTarget
+      ) {
+        onBlur(e);
+      }
+    };
+
     return (
       <StyledDayPicker className={cx('dateInput', error && 'error', className)} ref={ref} {...wrapperProps}>
         <div className='dateInputWrapper'>
@@ -129,11 +146,11 @@ export const DateInput = React.forwardRef<HTMLDivElement, DateInputProps>(
             return (
               <div className='dateInputItem' key={`text-input-${input.type}`}>
                 <TextInput
-                  id={`text-input-${input.type}`}
                   key={`text-input-${input.type}-input`}
                   onChange={(e): void => {
                     handleChange(e, index, input.type);
                   }}
+                  onBlur={handleBlur}
                   disabled={disabled}
                   inputRef={inputToRef[index]}
                   title={input.title}

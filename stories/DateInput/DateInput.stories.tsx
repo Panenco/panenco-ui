@@ -34,16 +34,19 @@ export default {
         type: 'date',
       },
     },
+    onBlur: {
+      control: { disable: true },
+    },
   },
 } as ComponentMeta<typeof DateInput>;
 
 const Template: ComponentStory<typeof DateInput> = (args) => {
   const [value, setValue] = React.useState<Date | null>(null);
-  const [error, setError] = React.useState<string | null>(null);
+  const [error, setError] = React.useState<string | undefined>(undefined);
 
   const handleChange = (v) => {
     if (isValid(v)) {
-      setError(null);
+      setError(undefined);
     } else {
       setError('Invalid date');
     }
