@@ -104,9 +104,9 @@ export const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
         {show &&
           ReactDOM.createPortal(
             <StyledFocusLock returnFocus autoFocus={autoFocus} {...props}>
-              <StyledModalBackdrop className='modalBackdrop' />
+              <StyledModalBackdrop className='modalBackdrop' onClick={handleBackdropClose} />
               <StyledModalContainer
-                onMouseDown={handleBackdropClose}
+                // onMouseDown={handleBackdropClose}
                 className='modalContainer'
                 tabIndex={-1}
                 role='dialog'
@@ -117,7 +117,7 @@ export const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
                 <StyledModal
                   size={size}
                   className={cx('modalDialog', dialogClassName)}
-                  onMouseDown={modalStopPropagation}
+                  // onMouseDown={modalStopPropagation}
                 >
                   {children}
                 </StyledModal>

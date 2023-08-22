@@ -14,6 +14,7 @@ import {
   isDate,
   isValid,
   addDays,
+  isSameDay,
   // eslint-disable-next-line import/no-duplicates
 } from 'date-fns';
 import { DayPicker as ReactDayPicker, DateRange, DayPickerSingleProps } from 'react-day-picker';
@@ -257,6 +258,13 @@ export const DayPicker = ({
       setTextInputValue(formatDate(transformedDate, format));
     } else if (!selectedDate && isTimeValid) closeCalendar();
   };
+
+  React.useEffect(() => {
+    if (value && date && !isSameDay(value, date)) {
+      setDate(value);
+      handleDaySelect(value);
+    }
+  }, [value]);
 
   React.useEffect(() => {
     const close = (e) => {

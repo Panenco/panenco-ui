@@ -98,7 +98,6 @@ export const StyledModalContainer = styled.div<{
 `;
 
 export const StyledModalBackdrop = styled.div`
-  pointer-events: none;
   background-color: ${(props): string => props.theme.colors.base700};
   height: 100vh;
   left: 0;
