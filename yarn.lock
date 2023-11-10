@@ -16106,12 +16106,12 @@ __metadata:
   linkType: hard
 
 "react-animate-height@npm:^3.0.0":
-  version: 3.1.0
-  resolution: "react-animate-height@npm:3.1.0"
+  version: 3.2.3
+  resolution: "react-animate-height@npm:3.2.3"
   peerDependencies:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
-  checksum: 46f802fe1e70d5d451d74fabece0dc8e2060543ea106dd56fc0ff544391e8939f8876af480323854dc39cbefd286d8cece29e509de3fb2d231fa9f77097532af
+  checksum: 2289dd7df284d6323a1d06adea112ec3e0d43025ee7029eeccee6dbb05d058fcd6cc4fc9907729ca83466db7d191f68008df409f59cd3e21582846b056b5c8ec
   languageName: node
   linkType: hard
 
