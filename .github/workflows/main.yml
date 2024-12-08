@@ -37,7 +37,7 @@ jobs:
           tag-prefix: 'v'
           commit-message: 'CI: bumps version to {{version}} [skip ci]'
 
-      - uses: JS-DevTools/npm-publish@v1
+      - uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.ACTION_PUBLISH_TOKEN }}
 
