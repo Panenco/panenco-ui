@@ -68,7 +68,7 @@
     "@storybook/manager-webpack4": "^6.5.16",
     "@storybook/react": "^6.5.16",
     "@storybook/storybook-deployer": "^2.8.16",
-    "@storybook/testing-library": "^0.0.13",
+    "@storybook/testing-library": "^0.2.0",
     "@svgr/rollup": "^6.5.1",
     "@svgr/webpack": "5.5.0",
     "@types/classnames": "^2.2.10",
